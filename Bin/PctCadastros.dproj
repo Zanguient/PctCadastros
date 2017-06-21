@@ -1,0 +1,455 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{22D68462-980E-4065-87B3-A85697234122}</ProjectGuid>
+			<MainSource>PctCadastros.dpk</MainSource>
+			<ProjectVersion>13.4</ProjectVersion>
+			<FrameworkType>VCL</FrameworkType>
+			<Base>True</Base>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<Platform Condition="'$(Platform)'==''">Win32</Platform>
+			<TargetedPlatforms>1</TargetedPlatforms>
+			<AppType>Package</AppType>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+			<Base_Win64>true</Base_Win64>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+			<Base_Win32>true</Base_Win32>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
+			<Cfg_1_Win32>true</Cfg_1_Win32>
+			<CfgParent>Cfg_1</CfgParent>
+			<Cfg_1>true</Cfg_1>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UsePackage>rtl;dbrtl;$(DCC_UsePackage)</DCC_UsePackage>
+			<DCC_CBuilderOutput>All</DCC_CBuilderOutput>
+			<DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
+			<GenPackage>true</GenPackage>
+			<GenDll>true</GenDll>
+			<DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
+			<DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base_Win64)'!=''">
+			<DCC_UsePackage>vcl;vcldb;adortl;vclimg;vclx;dxCoreRS16;cxDataRS16;cxLibraryRS16;dxGDIPlusRS16;dxThemeRS16;cxEditorsRS16;dxBarRS16;dxComnRS16;dxBarExtItemsRS16;dxRibbonRS16;cxPageControlRS16;dxLayoutControlRS16;cxGridRS16;dxSkinsCoreRS16;dxSkinscxPCPainterRS16;dxSkinsdxBarPainterRS16;dxPSCoreRS16;dxPSLnksRS16;dxPScxCommonRS16;dxPScxExtCommonRS16;dxPScxGridLnkRS16;dxPSdxLCLnkRS16;dxPScxPCProdRS16;dxPsPrVwAdvRS16;dxPSPrVwRibbonRS16;dxSkinBlackRS16;dxSkinBlueRS16;dxSkinCaramelRS16;dxSkinCoffeeRS16;dxSkinDarkRoomRS16;dxSkinDarkSideRS16;dxSkinFoggyRS16;dxSkinGlassOceansRS16;dxSkiniMaginaryRS16;dxSkinLilianRS16;dxSkinLiquidSkyRS16;dxSkinLondonLiquidSkyRS16;dxSkinMcSkinRS16;dxSkinMoneyTwinsRS16;dxSkinOffice2007BlackRS16;dxSkinOffice2007BlueRS16;dxSkinOffice2007GreenRS16;dxSkinOffice2007PinkRS16;dxSkinOffice2007SilverRS16;dxSkinOffice2010BlackRS16;dxSkinOffice2010BlueRS16;dxSkinOffice2010SilverRS16;dxSkinPumpkinRS16;dxSkinSevenRS16;dxSkinSharpRS16;dxSkinSilverRS16;dxSkinSpringTimeRS16;dxSkinStardustRS16;dxSkinSummer2008RS16;dxSkinValentineRS16;dxSkinXmas2008BlueRS16;dxSkinBlueprintRS16;dxSkinDevExpressDarkStyleRS16;dxSkinDevExpressStyleRS16;dxSkinHighContrastRS16;dxSkinSevenClassicRS16;dxSkinSharpPlusRS16;dxSkinTheAsphaltWorldRS16;dxSkinVS2010RS16;dxSkinWhiteprintRS16;$(DCC_UsePackage)</DCC_UsePackage>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base_Win32)'!=''">
+			<DCC_UsePackage>vcl;vcldb;adortl;FAVOperacoesBasicas;vclimg;vclx;dxCoreRS16;cxDataRS16;cxLibraryRS16;dxGDIPlusRS16;dxThemeRS16;cxEditorsRS16;dxBarRS16;dxComnRS16;dxBarExtItemsRS16;dxRibbonRS16;cxPageControlRS16;dxLayoutControlRS16;cxGridRS16;dxSkinsCoreRS16;dxSkinscxPCPainterRS16;dxSkinsdxBarPainterRS16;dxPSCoreRS16;dxPSLnksRS16;dxPScxCommonRS16;dxPScxExtCommonRS16;dxPScxGridLnkRS16;dxPSdxLCLnkRS16;dxPScxPCProdRS16;dxPsPrVwAdvRS16;dxPSPrVwRibbonRS16;dxSkinBlackRS16;dxSkinBlueRS16;dxSkinCaramelRS16;dxSkinCoffeeRS16;dxSkinDarkRoomRS16;dxSkinDarkSideRS16;dxSkinFoggyRS16;dxSkinGlassOceansRS16;dxSkiniMaginaryRS16;dxSkinLilianRS16;dxSkinLiquidSkyRS16;dxSkinLondonLiquidSkyRS16;dxSkinMcSkinRS16;dxSkinMoneyTwinsRS16;dxSkinOffice2007BlackRS16;dxSkinOffice2007BlueRS16;dxSkinOffice2007GreenRS16;dxSkinOffice2007PinkRS16;dxSkinOffice2007SilverRS16;dxSkinOffice2010BlackRS16;dxSkinOffice2010BlueRS16;dxSkinOffice2010SilverRS16;dxSkinPumpkinRS16;dxSkinSevenRS16;dxSkinSharpRS16;dxSkinSilverRS16;dxSkinSpringTimeRS16;dxSkinStardustRS16;dxSkinSummer2008RS16;dxSkinValentineRS16;dxSkinXmas2008BlueRS16;dxSkinBlueprintRS16;dxSkinDevExpressDarkStyleRS16;dxSkinDevExpressStyleRS16;dxSkinHighContrastRS16;dxSkinSevenClassicRS16;dxSkinSharpPlusRS16;dxSkinTheAsphaltWorldRS16;dxSkinVS2010RS16;dxSkinWhiteprintRS16;$(DCC_UsePackage)</DCC_UsePackage>
+			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+			<DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+			<VerInfo_Locale>1033</VerInfo_Locale>
+			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+			<DCC_Optimize>false</DCC_Optimize>
+			<DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+			<DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+			<DCC_RemoteDebug>true</DCC_RemoteDebug>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+			<Debugger_HostApplication>E:\FAV Sistemas\Projetos Clientes\FAV Pecuária 2.0\Modulo 4\bin\FAVRural4.exe</Debugger_HostApplication>
+			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+			<VerInfo_Locale>1033</VerInfo_Locale>
+			<DCC_RemoteDebug>false</DCC_RemoteDebug>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="$(MainSource)">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="rtl.dcp"/>
+			<DCCReference Include="vcl.dcp"/>
+			<DCCReference Include="vclimg.dcp"/>
+			<DCCReference Include="vclx.dcp"/>
+			<DCCReference Include="dbrtl.dcp"/>
+			<DCCReference Include="vcldb.dcp"/>
+			<DCCReference Include="adortl.dcp"/>
+			<DCCReference Include="dxCoreRS16.dcp"/>
+			<DCCReference Include="cxDataRS16.dcp"/>
+			<DCCReference Include="cxLibraryRS16.dcp"/>
+			<DCCReference Include="dxGDIPlusRS16.dcp"/>
+			<DCCReference Include="dxThemeRS16.dcp"/>
+			<DCCReference Include="cxEditorsRS16.dcp"/>
+			<DCCReference Include="dxBarRS16.dcp"/>
+			<DCCReference Include="dxComnRS16.dcp"/>
+			<DCCReference Include="dxBarExtItemsRS16.dcp"/>
+			<DCCReference Include="dxRibbonRS16.dcp"/>
+			<DCCReference Include="cxPageControlRS16.dcp"/>
+			<DCCReference Include="dxLayoutControlRS16.dcp"/>
+			<DCCReference Include="cxGridRS16.dcp"/>
+			<DCCReference Include="dxSkinsCoreRS16.dcp"/>
+			<DCCReference Include="dxSkinscxPCPainterRS16.dcp"/>
+			<DCCReference Include="dxSkinsdxBarPainterRS16.dcp"/>
+			<DCCReference Include="dxPSCoreRS16.dcp"/>
+			<DCCReference Include="dxPSLnksRS16.dcp"/>
+			<DCCReference Include="dxPScxCommonRS16.dcp"/>
+			<DCCReference Include="dxPScxExtCommonRS16.dcp"/>
+			<DCCReference Include="dxPScxGridLnkRS16.dcp"/>
+			<DCCReference Include="dxPSdxLCLnkRS16.dcp"/>
+			<DCCReference Include="dxPScxPCProdRS16.dcp"/>
+			<DCCReference Include="dxPsPrVwAdvRS16.dcp"/>
+			<DCCReference Include="dxPSPrVwRibbonRS16.dcp"/>
+			<DCCReference Include="dxSkinBlackRS16.dcp"/>
+			<DCCReference Include="dxSkinBlueRS16.dcp"/>
+			<DCCReference Include="dxSkinCaramelRS16.dcp"/>
+			<DCCReference Include="dxSkinCoffeeRS16.dcp"/>
+			<DCCReference Include="dxSkinDarkRoomRS16.dcp"/>
+			<DCCReference Include="dxSkinDarkSideRS16.dcp"/>
+			<DCCReference Include="dxSkinFoggyRS16.dcp"/>
+			<DCCReference Include="dxSkinGlassOceansRS16.dcp"/>
+			<DCCReference Include="dxSkiniMaginaryRS16.dcp"/>
+			<DCCReference Include="dxSkinLilianRS16.dcp"/>
+			<DCCReference Include="dxSkinLiquidSkyRS16.dcp"/>
+			<DCCReference Include="dxSkinLondonLiquidSkyRS16.dcp"/>
+			<DCCReference Include="dxSkinMcSkinRS16.dcp"/>
+			<DCCReference Include="dxSkinMoneyTwinsRS16.dcp"/>
+			<DCCReference Include="dxSkinOffice2007BlackRS16.dcp"/>
+			<DCCReference Include="dxSkinOffice2007BlueRS16.dcp"/>
+			<DCCReference Include="dxSkinOffice2007GreenRS16.dcp"/>
+			<DCCReference Include="dxSkinOffice2007PinkRS16.dcp"/>
+			<DCCReference Include="dxSkinOffice2007SilverRS16.dcp"/>
+			<DCCReference Include="dxSkinOffice2010BlackRS16.dcp"/>
+			<DCCReference Include="dxSkinOffice2010BlueRS16.dcp"/>
+			<DCCReference Include="dxSkinOffice2010SilverRS16.dcp"/>
+			<DCCReference Include="dxSkinPumpkinRS16.dcp"/>
+			<DCCReference Include="dxSkinSevenRS16.dcp"/>
+			<DCCReference Include="dxSkinSharpRS16.dcp"/>
+			<DCCReference Include="dxSkinSilverRS16.dcp"/>
+			<DCCReference Include="dxSkinSpringTimeRS16.dcp"/>
+			<DCCReference Include="dxSkinStardustRS16.dcp"/>
+			<DCCReference Include="dxSkinSummer2008RS16.dcp"/>
+			<DCCReference Include="dxSkinValentineRS16.dcp"/>
+			<DCCReference Include="dxSkinXmas2008BlueRS16.dcp"/>
+			<DCCReference Include="dxSkinBlueprintRS16.dcp"/>
+			<DCCReference Include="dxSkinDevExpressDarkStyleRS16.dcp"/>
+			<DCCReference Include="dxSkinDevExpressStyleRS16.dcp"/>
+			<DCCReference Include="dxSkinHighContrastRS16.dcp"/>
+			<DCCReference Include="dxSkinSevenClassicRS16.dcp"/>
+			<DCCReference Include="dxSkinSharpPlusRS16.dcp"/>
+			<DCCReference Include="dxSkinTheAsphaltWorldRS16.dcp"/>
+			<DCCReference Include="dxSkinVS2010RS16.dcp"/>
+			<DCCReference Include="dxSkinWhiteprintRS16.dcp"/>
+			<DCCReference Include="dsnap.dcp"/>
+			<DCCReference Include="DbxCommonDriver.dcp"/>
+			<DCCReference Include="dbexpress.dcp"/>
+			<DCCReference Include="cxTreeListRS16.dcp"/>
+			<DCCReference Include="cxTreeListdxBarPopupMenuRS16.dcp"/>
+			<DCCReference Include="..\Src\Entidade\CidadeEntidade.pas"/>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Produto.pas">
+				<Form>FrmCadastro_Produto</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UDM.pas">
+				<Form>DM</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Src\Dominio\CidadeDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\AtividadeEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\AtividadeDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Cidade.pas">
+				<Form>FrmCadastro_Cidade</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\GrupoProdutoEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\MarcaEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\ProdutoEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\PropriedadeEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\RegistroAtividadeAtividadesEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\RegistroAtividadeEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\RegistroAtividadePlantioEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\SafraEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\TalhaoEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\VariedadeCulturaEntidade.pas"/>
+			<DCCReference Include="..\Src\Formularios\URegistro_Atividade.pas">
+				<Form>FrmRegistro_Atividade</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Dominio\GrupoProdutoDominio.pas"/>
+			<DCCReference Include="..\Src\Interface\ICadastro.pas"/>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Grupo_Produto.pas">
+				<Form>FrmCadastro_Grupo_Produto</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Dominio\MarcaDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Marca.pas">
+				<Form>FrmCadastro_Marca</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Dominio\VariedadeCulturaDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\SafraDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Variedade_Cultura.pas">
+				<Form>FrmCadastro_Variedade_Cultura</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Dominio\TalhaoDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Safra.pas">
+				<Form>FrmCadastro_Safra</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Dominio\ProdutoDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\URel_Estoque_Produto.pas">
+				<Form>FrmRel_Estoque_Produto</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Pessoa.pas">
+				<Form>FrmCadastro_Pessoa</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Dominio\RegistroAtividadeAtividadesDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\RegistroAtividadeDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\RegistroAtividadePlantioDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Talhao.pas">
+				<Form>FrmCadastro_Talhao</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Veiculo.pas">
+				<Form>FrmCadastro_Veiculo</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\PessoaEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\PessoaDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\PessoaTelefoneEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\PessoaTelefoneDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\PessoaDocumentosEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\PessoaDocumentosDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\VeiculoEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\VeiculoDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UContrato_Venda.pas">
+				<Form>FrmContrato_Venda</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\RomaneioEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\RomaneioDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\IniciaDadosCadastros.pas"/>
+			<DCCReference Include="..\Src\Entidade\RegistroAtividadeAtividadesProdutoEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\RegistroAtividadeAtividadesProdutoDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\RegistroAtividadeAtividadesTalhaoEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\RegistroAtividadeAtividadesTalhaoDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\PessoaTipoEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\PessoaTipoDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\ContratoEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\ContratoDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\ContratoPagamentoEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\ContratoPagamentoDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UFolha_Pagamento.pas">
+				<Form>FrmFolha_Pagamento</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\ContratoVendaEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\ContratoVendaDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\EstoqueEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\EstoqueDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\ProdutoAplicacaoEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\ProdutoAplicacaoDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\RegistroAtividadeAtividadesMaquinaEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\RegistroAtividadeAtividadesMaquinaDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\ULancamento_Financeiro.pas">
+				<Form>FrmLancamento_Financeiro</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Servico.pas">
+				<Form>FrmCadastro_Servico</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\LoginEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\LoginDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Ocorrencia.pas">
+				<Form>FrmCadastro_Ocorrencia</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\ServicoEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\ServicoDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\ManutencaoMaquinaEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\ManutencaoMaquinaServicoEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\ManutencaoMaquinaServicoProximaRevisaoEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\ManutencaoMaquinaDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\ManutencaoMaquinaServicoDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\ManutencaoMaquinaProdutoEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\ManutencaoMaquinaProdutoDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\OcorrenciaEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\OcorrenciaDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Condicao_Pagamento.pas">
+				<Form>FrmCadastro_Condicao_Pagamento</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\RegistroAtividadePlantioOcorrenciaEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\RegistroAtividadePlantioOcorrenciaDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\CondicaoPagamentoEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\TipoDocumentoEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\DepartamentoEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\PlanoFinanceiroEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\TipoDocumentoDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\DepartamentoDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\CondicaoPagamentoDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\PlanoFinanceiroDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\ULancamento_Banco.pas">
+				<Form>FrmLancamento_Banco</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Tipo_Documento.pas">
+				<Form>FrmCadastro_Tipo_Documento</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Plano_Financeiro.pas">
+				<Form>FrmCadastro_Plano_Financeiro</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Departamento.pas">
+				<Form>FrmCadastro_Departamento</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UContrato.pas">
+				<Form>FrmContrato</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\LancamentoFinanceiroParcelasEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\LancamentoFinanceiroParcelasDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\LancamentoFinanceiroEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\LancamentoFinanceiroDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\ContaBancariaEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\OperacaoBancariaEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\ChequeEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\LancamentoBancoEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\OperacaoBancariaDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\ContaBancariaDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\ChequeDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\LancamentoBancoDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Operacao_Bancaria.pas">
+				<Form>FrmCadastro_Operacao_Bancaria</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Conta_Bancaria.pas">
+				<Form>FrmCadastro_Conta_Bancaria</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UDados_Clima.pas">
+				<Form>FrmDados_Clima</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Cheque.pas">
+				<Form>FrmCadastro_Cheque</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\URel_Atividades.pas">
+				<Form>FrmRel_Atividades</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UConciliacao_Bancaria.pas">
+				<Form>FrmConciliacao_Bancaria</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\TituloBaixarEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\HistoricoMovimentacaoFinanceiraEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\HistoricoMovimentacaoFinanceiraDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\ULista_Lancamento_Financeiro.pas">
+				<Form>FrmLista_Lancamento_Financeiro</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UManutencao_Maquina.pas">
+				<Form>FrmManutencao_Maquina</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\EntradaProdutoEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\EntradaProdutoProdutosEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\EntradaProdutoDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\EntradaProdutoProdutosDominio.pas"/>
+			<DCCReference Include="..\Src\Entidade\EstoqueProdutoEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\EstoqueProdutoDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Item_Folha_Pagamento.pas">
+				<Form>FrmCadastro_Item_Folha_Pagamento</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Atividade.pas">
+				<Form>FrmCadastro_Atividade</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\PluviometroEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\ItemFolhaPagamentoEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\DadosClimaEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\PluviometroDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\ItemFolhaPagamentoDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\DadosClimaDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Pluviometro.pas">
+				<Form>FrmCadastro_Pluviometro</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UEntrada_Produto.pas">
+				<Form>FrmEntrada_Produto</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\FolhaPagamentoEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\FolhaPagamentoItensEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\FolhaPagamentoDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\FolhaPagamentoItensDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UBaixa_Titulo.pas">
+				<Form>FrmBaixa_Titulo</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UDica_Financeiro.pas">
+				<Form>FrmDica_Financeiro</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UDica_Estoque.pas">
+				<Form>FrmDica_Estoque</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UDica_Cadastro.pas">
+				<Form>FrmDica_Cadastro</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\URel_Visao_Geral.pas">
+				<Form>FrmRel_Visao_Geral</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\URel_Estoque_Grao.pas">
+				<Form>FrmRel_Estoque_Grao</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>Package</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">PctCadastros.dpk</Source>
+					</Source>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1046</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\dcloffice2k160.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\dclofficexp160.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+					</Excluded_Packages>
+				</Delphi.Personality>
+				<Deployment/>
+				<Platforms>
+					<Platform value="Win64">False</Platform>
+					<Platform value="OSX32">False</Platform>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')" Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
+	</Project>

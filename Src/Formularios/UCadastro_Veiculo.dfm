@@ -32,7 +32,7 @@ object FrmCadastro_Veiculo: TFrmCadastro_Veiculo
     Width = 521
     Height = 294
     Cursor = crHandPoint
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
@@ -191,6 +191,7 @@ object FrmCadastro_Veiculo: TFrmCadastro_Veiculo
         BevelOuter = bvRaised
         BorderStyle = bsNone
         Color = clBtnFace
+        Enabled = False
         TabOrder = 0
       end
       object MEdtData_Cadastro: TMaskEdit
@@ -293,20 +294,26 @@ object FrmCadastro_Veiculo: TFrmCadastro_Veiculo
       object dateEntrada: TcxDateEdit
         Left = 0
         Top = 148
+        Hint = 'Data da entrada da m'#225'quina na propriedade'
+        ParentShowHint = False
         Properties.DateButtons = [btnClear, btnToday]
         Properties.EditFormat = 'DD/MM/YYYY'
         Properties.SaveTime = False
         Properties.ShowTime = False
+        ShowHint = True
         TabOrder = 5
         Width = 90
       end
       object dateSaida: TcxDateEdit
         Left = 167
         Top = 148
+        Hint = 'Data da sa'#237'da da m'#225'quina na propriedade'
+        ParentShowHint = False
         Properties.DateButtons = [btnClear, btnToday]
         Properties.EditFormat = 'DD/MM/YYYY'
         Properties.SaveTime = False
         Properties.ShowTime = False
+        ShowHint = True
         TabOrder = 7
         Width = 90
       end
@@ -609,7 +616,6 @@ object FrmCadastro_Veiculo: TFrmCadastro_Veiculo
     end
   end
   object qryConsulta: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

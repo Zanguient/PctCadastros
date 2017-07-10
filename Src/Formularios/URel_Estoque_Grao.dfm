@@ -1494,22 +1494,26 @@ object FrmRel_Estoque_Grao: TFrmRel_Estoque_Grao
       object cxGrid1DBTableViewEstoqueSafra: TcxGridDBColumn
         DataBinding.FieldName = 'Safra'
         Options.Editing = False
+        Styles.Header = DM.cxStyle1
         Width = 162
       end
       object cxGrid1DBTableViewEstoqueArmazem: TcxGridDBColumn
         Caption = 'Armaz'#233'm'
         DataBinding.FieldName = 'Armazem'
         Options.Editing = False
+        Styles.Header = DM.cxStyle1
         Width = 228
       end
       object cxGrid1DBTableViewEstoqueProduto: TcxGridDBColumn
         DataBinding.FieldName = 'Produto'
         Options.Editing = False
+        Styles.Header = DM.cxStyle1
         Width = 152
       end
       object cxGrid1DBTableViewEstoqueEstoque: TcxGridDBColumn
         DataBinding.FieldName = 'Estoque'
         Options.Editing = False
+        Styles.Header = DM.cxStyle1
         Width = 88
       end
     end
@@ -1540,7 +1544,9 @@ object FrmRel_Estoque_Grao: TFrmRel_Estoque_Grao
     object cmbSafra: TcxLookupComboBox
       Left = 127
       Top = 15
-      Hint = 'Escolha uma safra'
+      Hint = 
+        'Escolha uma safra'#13#10#13#10'* Deixe o campo em branco para pesquisar em' +
+        ' todas as safras.'
       ParentShowHint = False
       Properties.CharCase = ecUpperCase
       Properties.KeyFieldNames = 'Codigo'
@@ -2359,6 +2365,7 @@ object FrmRel_Estoque_Grao: TFrmRel_Estoque_Grao
       item
         Component = cxGrid1DBTableViewEstoqueSafra
         Properties.Strings = (
+          'Options.Filtering'
           'SortOrder'
           'Visible'
           'Width')
@@ -2412,7 +2419,7 @@ object FrmRel_Estoque_Grao: TFrmRel_Estoque_Grao
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 42907.577934224540000000
+      ReportDocument.CreationDate = 42916.503758506940000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET

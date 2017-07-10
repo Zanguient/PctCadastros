@@ -113,6 +113,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
         BevelOuter = bvRaised
         BorderStyle = bsNone
         Color = clBtnFace
+        Enabled = False
         TabOrder = 0
       end
       object MEdtData_Cadastro: TMaskEdit
@@ -137,7 +138,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
         Width = 864
         Height = 330
         Cursor = crHandPoint
-        ActivePage = TabSheet5
+        ActivePage = TabSheet3
         Style = tsFlatButtons
         TabOrder = 4
         OnChange = PageControl2Change
@@ -193,12 +194,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               DataController.KeyFieldNames = 'Codigo'
               DataController.MasterKeyFieldNames = 'Codigo'
               DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoImmediatePost]
-              DataController.Summary.DefaultGroupSummaryItems = <
-                item
-                  Kind = skCount
-                  Position = spFooter
-                  FieldName = 'Codigo_Talhao'
-                end>
+              DataController.Summary.DefaultGroupSummaryItems = <>
               DataController.Summary.FooterSummaryItems = <>
               DataController.Summary.SummaryGroups = <>
               DateTimeHandling.DateFormat = 'DD/MM/YYYY'
@@ -458,16 +454,17 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 DataBinding.FieldName = 'Produto'
                 Width = 311
               end
-              object cxGridDBTableViewAtividadeProdutoQuantidade: TcxGridDBColumn
-                DataBinding.FieldName = 'Quantidade'
-                Width = 76
-              end
               object cxGridDBTableViewAtividadeProdutoUnidade: TcxGridDBColumn
                 Caption = 'Un.'
                 DataBinding.FieldName = 'Unidade'
                 PropertiesClassName = 'TcxTextEditProperties'
                 Properties.CharCase = ecUpperCase
                 Width = 37
+              end
+              object cxGridDBTableViewAtividadeProdutoQuantidade: TcxGridDBColumn
+                DataBinding.FieldName = 'Quantidade'
+                PropertiesClassName = 'TcxTextEditProperties'
+                Properties.OnEditValueChanged = cxGridDBTableViewAtividadeProdutoQuantidadePropertiesEditValueChanged
               end
               object cxGridDBTableViewAtividadeProdutoPrecoCompra: TcxGridDBColumn
                 Caption = 'Pre'#231'o Unit'#225'rio'
@@ -1682,6 +1679,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
             Top = 175
             Width = 853
             Height = 124
+            Hint = 'O estoque listado corresponde '#224' fazenda ativa.'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -1724,6 +1722,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               FilterBox.Position = fpTop
               FilterBox.Visible = fvNever
               DataController.DataSource = dsEstoqueGrao
+              DataController.KeyFieldNames = 'Codigo'
               DataController.Summary.DefaultGroupSummaryItems = <>
               DataController.Summary.FooterSummaryItems = <>
               DataController.Summary.SummaryGroups = <>
@@ -1746,9 +1745,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               Preview.Visible = True
               Bands = <
                 item
-                  Caption = 
-                    'Acompanhamento do estoque de gr'#227'os por armaz'#233'm e fazenda durante' +
-                    ' os lan'#231'amentos dos romaneios'
+                  Caption = 'Acompanhamento do estoque de gr'#227'os por armaz'#233'm e produto.'
                   HeaderAlignmentHorz = taLeftJustify
                   Options.Moving = False
                   Options.Sizing = False
@@ -1811,21 +1808,13 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 Position.ColIndex = 6
                 Position.RowIndex = 0
               end
-              object cxGrid1DBBandedTableView1Fazenda: TcxGridDBBandedColumn
-                DataBinding.FieldName = 'Fazenda'
-                Options.Editing = False
-                Width = 193
-                Position.BandIndex = 0
-                Position.ColIndex = 7
-                Position.RowIndex = 0
-              end
               object cxGrid1DBBandedTableView1Estoque: TcxGridDBBandedColumn
                 Caption = 'Estoque (t)'
                 DataBinding.FieldName = 'Estoque'
                 Options.Editing = False
                 Width = 129
                 Position.BandIndex = 0
-                Position.ColIndex = 8
+                Position.ColIndex = 7
                 Position.RowIndex = 0
               end
             end
@@ -1997,6 +1986,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               FilterBox.CustomizeButtonAlignment = fbaLeft
               FilterBox.Position = fpTop
               FilterBox.Visible = fvNever
+              OnFocusedItemChanged = cxGrid5DBBandedTableView2FocusedItemChanged
               DataController.DataSource = dsRegistroAtividadeMaquina
               DataController.KeyFieldNames = 'Codigo'
               DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoImmediatePost]
@@ -2065,20 +2055,11 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 Position.ColIndex = 2
                 Position.RowIndex = 0
               end
-              object cxGrid5DBBandedTableView2Maquina: TcxGridDBBandedColumn
-                Caption = 'Placa M'#225'quina'
-                DataBinding.FieldName = 'Maquina'
-                Width = 88
-                Position.BandIndex = 0
-                Position.ColIndex = 3
-                Position.RowIndex = 0
-              end
               object cxGrid5DBBandedTableView2Modelo: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'Modelo'
-                Options.Editing = False
                 Width = 189
                 Position.BandIndex = 0
-                Position.ColIndex = 4
+                Position.ColIndex = 3
                 Position.RowIndex = 0
               end
               object cxGrid5DBBandedTableView2Tipo_Atividade: TcxGridDBBandedColumn
@@ -2092,7 +2073,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                   'COLHEITA')
                 Width = 95
                 Position.BandIndex = 0
-                Position.ColIndex = 5
+                Position.ColIndex = 4
                 Position.RowIndex = 0
               end
               object cxGrid5DBBandedTableView2UT_Inicial: TcxGridDBBandedColumn
@@ -2100,7 +2081,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 DataBinding.FieldName = 'UT_Inicial'
                 HeaderHint = 'Unidade de Trabalho Inicial'
                 Position.BandIndex = 0
-                Position.ColIndex = 6
+                Position.ColIndex = 5
                 Position.RowIndex = 0
               end
               object cxGrid5DBBandedTableView2UT_Final: TcxGridDBBandedColumn
@@ -2108,7 +2089,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 DataBinding.FieldName = 'UT_Final'
                 HeaderHint = 'Unidade de Trabalho Final'
                 Position.BandIndex = 0
-                Position.ColIndex = 7
+                Position.ColIndex = 6
                 Position.RowIndex = 0
               end
               object cxGrid5DBBandedTableView2Preco_UT: TcxGridDBBandedColumn
@@ -2118,7 +2099,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 HeaderHint = 'Pre'#231'o Unit'#225'rio'
                 Width = 100
                 Position.BandIndex = 0
-                Position.ColIndex = 8
+                Position.ColIndex = 7
                 Position.RowIndex = 0
               end
               object cxGrid5DBBandedTableView2Preco_Total: TcxGridDBBandedColumn
@@ -2127,7 +2108,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 PropertiesClassName = 'TcxCurrencyEditProperties'
                 Width = 100
                 Position.BandIndex = 0
-                Position.ColIndex = 9
+                Position.ColIndex = 8
                 Position.RowIndex = 0
               end
               object cxGrid5DBBandedTableView2Data_Cadastro: TcxGridDBBandedColumn
@@ -2135,7 +2116,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 DataBinding.FieldName = 'Data_Cadastro'
                 Width = 70
                 Position.BandIndex = 0
-                Position.ColIndex = 10
+                Position.ColIndex = 9
                 Position.RowIndex = 0
               end
               object cxGrid5DBBandedTableView2Data_Trabalho_Inicial: TcxGridDBBandedColumn
@@ -2143,7 +2124,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 DataBinding.FieldName = 'Data_Trabalho_Inicial'
                 Width = 70
                 Position.BandIndex = 0
-                Position.ColIndex = 11
+                Position.ColIndex = 10
                 Position.RowIndex = 0
               end
               object cxGrid5DBBandedTableView2Data_Trabalho_Final: TcxGridDBBandedColumn
@@ -2151,7 +2132,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 DataBinding.FieldName = 'Data_Trabalho_Final'
                 Width = 70
                 Position.BandIndex = 0
-                Position.ColIndex = 12
+                Position.ColIndex = 11
                 Position.RowIndex = 0
               end
               object cxGrid5DBBandedTableView2Observacao: TcxGridDBBandedColumn
@@ -2161,7 +2142,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 Properties.CharCase = ecUpperCase
                 Width = 300
                 Position.BandIndex = 0
-                Position.ColIndex = 13
+                Position.ColIndex = 12
                 Position.RowIndex = 0
               end
             end
@@ -2303,7 +2284,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     end
   end
   object qryConsulta: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -2345,6 +2325,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     Version = 0
     Left = 464
     object dxComponentPrinter1Link1: TdxGridReportLink
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2386,6 +2367,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False
@@ -2417,8 +2399,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     end
   end
   object qryRegistroAtividadeAtividades: TADOQuery
-    Active = True
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -2468,8 +2448,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     Top = 8
   end
   object qryRegistroAtividadePlantio: TADOQuery
-    Active = True
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -2562,7 +2540,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     Top = 56
   end
   object qryRegistroAtividadeColheita: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     BeforePost = qryRegistroAtividadeColheitaBeforePost
     AfterPost = qryRegistroAtividadeColheitaAfterPost
@@ -2723,8 +2700,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     Top = 56
   end
   object qryRegistroAtividadeAtividadesProduto: TADOQuery
-    Active = True
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -2783,8 +2758,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     Top = 56
   end
   object qryRegistroAtividadeAtividadesTalhao: TADOQuery
-    Active = True
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     BeforePost = qryRegistroAtividadeAtividadesTalhaoBeforePost
     Parameters = <>
@@ -2835,69 +2808,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     Left = 888
     Top = 96
   end
-  object qryEstoqueGrao: TADOQuery
-    Connection = DM.ADOConnection1
-    CursorType = ctStatic
-    BeforePost = qryRegistroAtividadeColheitaBeforePost
-    OnPostError = qryRegistroAtividadeColheitaPostError
-    Parameters = <>
-    SQL.Strings = (
-      'select * from Estoque_Grao')
-    Left = 688
-    Top = 104
-    object qryEstoqueGraoCodigo: TAutoIncField
-      FieldName = 'Codigo'
-      ReadOnly = True
-    end
-    object qryEstoqueGraoCodigo_Safra: TIntegerField
-      FieldName = 'Codigo_Safra'
-    end
-    object qryEstoqueGraoCodigo_Armazem: TIntegerField
-      FieldName = 'Codigo_Armazem'
-    end
-    object qryEstoqueGraoCodigo_Produto: TIntegerField
-      FieldName = 'Codigo_Produto'
-    end
-    object qryEstoqueGraoCodigo_Fazenda: TIntegerField
-      FieldName = 'Codigo_Fazenda'
-    end
-    object qryEstoqueGraoEstoque: TFloatField
-      FieldName = 'Estoque'
-    end
-    object qryEstoqueGraoArmazem: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Armazem'
-      LookupDataSet = DM.qryArmazem
-      LookupKeyFields = 'Codigo'
-      LookupResultField = 'Nome'
-      KeyFields = 'Codigo_Armazem'
-      LookupCache = True
-      Size = 100
-      Lookup = True
-    end
-    object qryEstoqueGraoProduto: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Produto'
-      LookupDataSet = DM.qryProduto
-      LookupKeyFields = 'Codigo'
-      LookupResultField = 'Descricao'
-      KeyFields = 'Codigo_Produto'
-      LookupCache = True
-      Size = 100
-      Lookup = True
-    end
-    object qryEstoqueGraoFazenda: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Fazenda'
-      LookupDataSet = DM.qryPropriedade
-      LookupKeyFields = 'Codigo'
-      LookupResultField = 'Nome'
-      KeyFields = 'Codigo_Fazenda'
-      LookupCache = True
-      Size = 100
-      Lookup = True
-    end
-  end
   object dsEstoqueGrao: TDataSource
     DataSet = qryEstoqueGrao
     Left = 720
@@ -2934,8 +2844,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     end
   end
   object qryRegistroAtividadeAtividadesMaquina: TADOQuery
-    Active = True
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -2980,17 +2888,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
       FieldName = 'Observacao'
       Size = 800
     end
-    object qryRegistroAtividadeAtividadesMaquinaMaquina: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Maquina'
-      LookupDataSet = DM.qryVeiculo
-      LookupKeyFields = 'Codigo'
-      LookupResultField = 'Placa'
-      KeyFields = 'Codigo_Maquina'
-      LookupCache = True
-      Size = 50
-      Lookup = True
-    end
     object qryRegistroAtividadeAtividadesMaquinaModelo: TStringField
       FieldKind = fkLookup
       FieldName = 'Modelo'
@@ -3009,8 +2906,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     Top = 16
   end
   object qryRegistroAtividadePlantioOcorrencia: TADOQuery
-    Active = True
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -3065,5 +2960,54 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     DataSet = qryRegistroAtividadePlantioOcorrencia
     Left = 560
     Top = 104
+  end
+  object qryEstoqueGrao: TADOQuery
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select * from Estoque_Grao')
+    Left = 688
+    Top = 104
+    object qryEstoqueGraoCodigo: TAutoIncField
+      FieldName = 'Codigo'
+      ReadOnly = True
+    end
+    object qryEstoqueGraoCodigo_Safra: TIntegerField
+      FieldName = 'Codigo_Safra'
+    end
+    object qryEstoqueGraoCodigo_Armazem: TIntegerField
+      FieldName = 'Codigo_Armazem'
+    end
+    object qryEstoqueGraoCodigo_Produto: TIntegerField
+      FieldName = 'Codigo_Produto'
+    end
+    object qryEstoqueGraoCodigo_Fazenda: TIntegerField
+      FieldName = 'Codigo_Fazenda'
+    end
+    object qryEstoqueGraoEstoque: TFloatField
+      FieldName = 'Estoque'
+    end
+    object qryEstoqueGraoArmazem: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Armazem'
+      LookupDataSet = DM.qryArmazem
+      LookupKeyFields = 'Codigo'
+      LookupResultField = 'Nome'
+      KeyFields = 'Codigo_Armazem'
+      LookupCache = True
+      Size = 100
+      Lookup = True
+    end
+    object qryEstoqueGraoProduto: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Produto'
+      LookupDataSet = DM.qryProduto
+      LookupKeyFields = 'Codigo'
+      LookupResultField = 'Descricao'
+      KeyFields = 'Codigo_Produto'
+      LookupCache = True
+      Size = 100
+      Lookup = True
+    end
   end
 end

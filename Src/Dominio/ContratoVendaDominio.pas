@@ -17,7 +17,7 @@ type
       function Alterar(var Retorno: AnsiString): integer;
       function Excluir(var Retorno: AnsiString): integer;
       function Buscar(Codigo_Propriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
-      function Buscar(Codigo_Propriedade: integer; IdVenda: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
+      function Buscar(Codigo_Propriedade: integer; Codigo_Safra: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       constructor Create(var Conexao: TADOConnection; FContratoVenda: TContratoVendaEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
 
@@ -34,7 +34,7 @@ begin
 
 end;
 
-function TContratoVendaDominio.Buscar(Codigo_Propriedade: integer; IdVenda: integer; var Query: TADOQuery;
+function TContratoVendaDominio.Buscar(Codigo_Propriedade: integer; Codigo_Safra: integer; var Query: TADOQuery;
   var Retorno: AnsiString): integer;
 var
   FComandoSQL: TComandoSQLEntidade;
@@ -42,11 +42,23 @@ begin
   try
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
-    FComandoSQL.ComandoSQL:= 'select * from Contrato_Venda where Codigo = :Codigo and Codigo_Propriedade = :Codigo_Propriedade';
-    FComandoSQL.Parametros.Add('Codigo');
+    FComandoSQL.ComandoSQL:= 'sselect CV.*, CS.Descricao as Safra, CPesArm.Nome as Armazem,'+
+                            ' CP.Descricao as Produto, CPesCli.Nome as Cliente, CPag.Descricao as CondPag,'+
+                            ' CPlan.Descricao as PlanoFinanceiro, CTD.Descricao as TipoDocumento,'+
+                            ' CD.Descricao as Departamento from Contrato_Venda CV'+
+                            ' left join Cadastro_Safra CS on (CV.Codigo_Safra = CS.Codigo)'+
+                            ' left join Cadastro_Pessoa CPesArm on (CV.Codigo_Armazem = CPesArm.Codigo)'+
+                            ' left join Cadastro_Produtos CP on (CV.Codigo_Produto = CP.Codigo)'+
+                            ' left join Cadastro_Pessoa CPesCli on (CV.Codigo_Cliente = CPesCli.Codigo)'+
+                            ' left join Condicao_Pagamento CPag on (CV.Codigo_Forma_Pagamento = CPag.Codigo)'+
+                            ' left join Cadastro_Plano_Financeiro CPlan on (CV.Codigo_Plano_Financeiro = CPlan.Codigo)'+
+                            ' left join Cadastro_Tipo_Documento CTD on (CV.Codigo_Tipo_Documento = CTD.Codigo)'+
+                            ' left join Cadastro_Departamento CD on (CV.Codigo_Departamento = CD.Codigo)'+
+                            ' where CV.Codigo_Fazenda = :Codigo_Propriedade and CV.Codigo_Safra = :Codigo_Safra';
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
-    FComandoSQL.Valores.Add(IdVenda);
+    FComandoSQL.Parametros.Add('Codigo_Safra');
     FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FComandoSQL.Valores.Add(Codigo_Safra);
     FContratoVendaDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FContratoVendaDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally
@@ -84,10 +96,19 @@ begin
   try
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
-    FComandoSQL.ComandoSQL:= 'select CV.*, CP.Nome, CS.Descricao from Contrato_Venda CV '+
-                             ' left join Cadastro_Pessoa CP on (CV.Codigo_Cliente = CP.Codigo) '+
-                             ' left join Cadastro_Safra CS on (CV.Codigo_Safra = CS.Codigo)'+
-                             ' where CV.Codigo_Fazenda = :Codigo_Propriedade';
+    FComandoSQL.ComandoSQL:= 'select CV.*, CS.Descricao as Safra, CPesArm.Nome as Armazem,'+
+                            ' CP.Descricao as Produto, CPesCli.Nome as Cliente, CPag.Descricao as CondPag,'+
+                            ' CPlan.Descricao as PlanoFinanceiro, CTD.Descricao as TipoDocumento,'+
+                            ' CD.Descricao as Departamento from Contrato_Venda CV'+
+                            ' left join Cadastro_Safra CS on (CV.Codigo_Safra = CS.Codigo)'+
+                            ' left join Cadastro_Pessoa CPesArm on (CV.Codigo_Armazem = CPesArm.Codigo)'+
+                            ' left join Cadastro_Produtos CP on (CV.Codigo_Produto = CP.Codigo)'+
+                            ' left join Cadastro_Pessoa CPesCli on (CV.Codigo_Cliente = CPesCli.Codigo)'+
+                            ' left join Condicao_Pagamento CPag on (CV.Codigo_Forma_Pagamento = CPag.Codigo)'+
+                            ' left join Cadastro_Plano_Financeiro CPlan on (CV.Codigo_Plano_Financeiro = CPlan.Codigo)'+
+                            ' left join Cadastro_Tipo_Documento CTD on (CV.Codigo_Tipo_Documento = CTD.Codigo)'+
+                            ' left join Cadastro_Departamento CD on (CV.Codigo_Departamento = CD.Codigo)'+
+                            ' where CV.Codigo_Fazenda = :Codigo_Propriedade';
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Valores.Add(Codigo_Propriedade);
     FContratoVendaDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);

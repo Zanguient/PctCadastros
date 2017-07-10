@@ -94,8 +94,11 @@ type
     FTipoDocumento: TTipoDocumentoEntidade;
     FTipoDocumentoDominio: TTipoDocumentoDominio;
     FComandoSQL: TComandoSQLEntidade;
+    Conexao: TADOConnection;
+
     function Confira: boolean;
     procedure BuscaDados;
+    procedure IniciaTela;
   public
     ativo, enderec, achei: boolean;
 
@@ -107,7 +110,7 @@ var
   FrmCadastro_Tipo_Documento: TFrmCadastro_Tipo_Documento;
 implementation
 
-uses UDM;
+uses UDM, OperacoesConexao;
 
 {$R *.dfm}
 
@@ -116,7 +119,8 @@ uses UDM;
 procedure TFrmCadastro_Tipo_Documento.BBtnCancelarClick(Sender: TObject);
 begin
   Op.LimpaCampos(FrmCadastro_Tipo_Documento);
-  Op.DesabilitaEdits(FrmCadastro_Tipo_Documento);
+  Op.DesabilitaCampos(FrmCadastro_Tipo_Documento);
+  TOperacoesConexao.CancelaConexao(Conexao);
   BBtnSalvar.Enabled:= false;
   BBtnCancelar.Enabled:= false;
   BBtnNovo.Enabled:= true;
@@ -129,30 +133,28 @@ var
 begin
   if (Mensagens.MensagemConfirmacao(MensagemConfirmaExclusao)) then
   begin
-    FTipoDocumentoDominio:= TTipoDocumentoDominio.Create(dm.ADOConnection1, FTipoDocumento);
-    if (FTipoDocumentoDominio.Excluir(Retorno) <> 0) then
+    FTipoDocumentoDominio:= TTipoDocumentoDominio.Create(Conexao, FTipoDocumento);
+    if (FTipoDocumentoDominio.Excluir(Retorno) = 0) then
     begin
-      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-      EdtCodigo.Text +' '+EdtDescricao.Text, date, TimeToStr(time), 'Exclusão');
-      HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-      begin
-        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-      end;
-
-      Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-    end
-    else
-    begin
-      Mensagens.MensagemErro(MensagemErroAoGravar);
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+      Exit;
     end;
 
-    BBtnSalvar.Enabled:= false;
-    BBtnExcluir.Enabled:= false;
-    BBtnNovo.Enabled:= true;
-    BBtnCancelar.Enabled:= false;
-    Op.DesabilitaEdits(FrmCadastro_Tipo_Documento);
-    BuscaDados;
+    HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+    EdtCodigo.Text +' '+EdtDescricao.Text, date, TimeToStr(time), 'Exclusão');
+    HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+    if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
+    begin
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+      Exit;
+    end;
+    TOperacoesConexao.ConfirmaConexao(Conexao);
+    IniciaTela;
+    Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
   end;
 end;
 
@@ -169,12 +171,15 @@ end;
 procedure TFrmCadastro_Tipo_Documento.BBtnNovoClick(Sender: TObject);
 begin
   PageControl1.TabIndex:= 0;
-  Op.HabilitaEdits(FrmCadastro_Tipo_Documento);
+  Op.HabilitaCampos(FrmCadastro_Tipo_Documento);
   Op.LimpaCampos(FrmCadastro_Tipo_Documento);
   BBtnSalvar.Enabled:= true;
   BBtnCancelar.Enabled:= true;
   BBtnNovo.Enabled:= false;
   BBtnExcluir.Enabled:= false;
+  Conexao:= TOperacoesConexao.NovaConexao(Conexao);
+  TOperacoesConexao.IniciaQuerys([qryConsulta], Conexao);
+  BuscaDados;
   achei:= false;
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
   EdtDescricao.SetFocus;
@@ -192,60 +197,68 @@ begin
 
     FTipoDocumento.Descricao:= EdtDescricao.Text;
     FTipoDocumento.Data_Cadastro:= StrToDateTime(MEdtData_Cadastro.Text);
-    FTipoDocumentoDominio:= TTipoDocumentoDominio.Create(dm.ADOConnection1, FTipoDocumento);
+    FTipoDocumentoDominio:= TTipoDocumentoDominio.Create(Conexao, FTipoDocumento);
 
     if (achei = false) then
     begin
-      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Tipo_Documento', dm.ADOConnection1));
+      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Tipo_Documento', Conexao));
       FTipoDocumento.Codigo:= StrToInt(EdtCodigo.Text);
 
-      if (FTipoDocumentoDominio.Salvar(Retorno) <> 0) then
+      if (FTipoDocumentoDominio.Salvar(Retorno) = 0) then
       begin
-        HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-        EdtCodigo.Text +' '+EdtDescricao.Text, date, TimeToStr(time), 'Inserção');
-        HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-        if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-        begin
-          Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-        end;
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+        Exit;
+      end;
 
-        Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-      end
-      else
+      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+      EdtCodigo.Text +' '+EdtDescricao.Text, date, TimeToStr(time), 'Inserção');
+      HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
-        Mensagens.MensagemErro(MensagemErroAoGravar + Retorno);
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Exit;
       end;
     end
     else
     begin
       FTipoDocumento.Codigo:= StrToInt(EdtCodigo.Text);
 
-      if (FTipoDocumentoDominio.Alterar(Retorno) <> 0) then
+      if (FTipoDocumentoDominio.Alterar(Retorno) = 0) then
       begin
-        HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-        EdtCodigo.Text +' '+EdtDescricao.Text, date, TimeToStr(time), 'Alteração');
-        HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-        if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-        begin
-          Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-        end;
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+        Exit;
+      end;
 
-        Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-      end
-      else
+      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+      EdtCodigo.Text +' '+EdtDescricao.Text, date, TimeToStr(time), 'Alteração');
+      HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
-        Mensagens.MensagemErro(MensagemErroAoGravar + Retorno);
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Exit;
       end;
     end;
-  end
-  else
-    exit;
+    TOperacoesConexao.ConfirmaConexao(Conexao);
+    IniciaTela;
+    Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
+  end;
+end;
 
+procedure TFrmCadastro_Tipo_Documento.IniciaTela;
+begin
   BBtnSalvar.Enabled:= false;
   BBtnNovo.Enabled:= true;
   BBtnCancelar.Enabled:= false;
   BBtnExcluir.Enabled:= false;
-  Op.DesabilitaEdits(FrmCadastro_Tipo_Documento);
+  Op.DesabilitaCampos(FrmCadastro_Tipo_Documento);
   BuscaDados;
 end;
 
@@ -253,7 +266,7 @@ procedure TFrmCadastro_Tipo_Documento.BuscaDados;
 var
   Retorno: AnsiString;
 begin
-  FTipoDocumentoDominio:= TTipoDocumentoDominio.Create(dm.ADOConnection1);
+  FTipoDocumentoDominio:= TTipoDocumentoDominio.Create(Conexao);
   if (FTipoDocumentoDominio.Buscar(qryConsulta, Retorno) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
@@ -285,7 +298,7 @@ procedure TFrmCadastro_Tipo_Documento.cxGrid1DBTableView1DblClick(Sender: TObjec
 begin
   PageControl1.TabIndex:= 0;
   achei:= true;
-  Op.HabilitaEdits(FrmCadastro_Tipo_Documento);
+  Op.HabilitaCampos(FrmCadastro_Tipo_Documento);
 
   EdtCodigo.Text:= qryConsultaCodigo.AsString;
   MEdtData_Cadastro.Text:= qryConsultaData_Cadastro.AsString;
@@ -363,10 +376,9 @@ var
   Retorno: AnsiString;
 begin
   PageControl1.TabIndex:= 0;
-  BuscaDados;
   Op.HabilitaCampos(FrmCadastro_Tipo_Documento);
   Op.LimpaCampos(FrmCadastro_Tipo_Documento);
-  Op.DesabilitaEdits(FrmCadastro_Tipo_Documento);
+  Op.DesabilitaCampos(FrmCadastro_Tipo_Documento);
 end;
 
 procedure TFrmCadastro_Tipo_Documento.MEdtData_CadastroEnter(Sender: TObject);

@@ -1,3 +1,6 @@
 Bin/Win32/
 *.dcu
 Src/Formularios/__history/
+Bin/__history/
+Src/Dominio/__history/
+Src/Entidade/__history/

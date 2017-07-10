@@ -113,6 +113,27 @@ constructor TFrmRel_Estoque_Grao.Create(FPropriedade: TPropriedadeEntidade;
 begin
   Self.FPropriedade:= FPropriedade;
   Self.FUsuario:= FUsuario;
+  dxComponentPrinter1Link1.ReportTitle.Text:= 'Estoque de Grãos';
+  dxComponentPrinter1Link1.ReportTitle.Font.Size:= 14;
+  dxComponentPrinter1Link1.OptionsView.FilterBar:= true;
+  dxComponentPrinter1Link1.OptionsView.Footers:= true;
+  dxComponentPrinter1Link1.OptionsView.ExpandButtons:= True;
+  dxComponentPrinter1Link1.PrinterPage.Margins.Top:= 16900;
+  dxComponentPrinter1Link1.PrinterPage.AutoSwapMargins:= false;
+  dxComponentPrinter1Link1.ReportFootnotes.Text:= NotaRodape;
+  dxComponentPrinter1Link1.ReportFootnotes.Font.Size:= 8;
+  dxComponentPrinter1Link1.PDFExportOptions.Author:= AutorSistema;
+  dxComponentPrinter1Link1.PDFExportOptions.Creator:= AutorSistema;
+  dxComponentPrinter1Link1.PDFExportOptions.DefaultFileName:= TituloPadraoRelatorio;
+  dxComponentPrinter1Link1.PDFExportOptions.Title:= 'Estoque de Grãos';
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Text:= '';
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.LeftTitle.Text:= 'Fazenda:  '+FPropriedade.NomeFazenda + #13+
+                                                                   'Endereço: '+FPropriedade.Endereco +#13+
+                                                                   'Cidade:   '+FPropriedade.Cidade.Cidade +#13;
+
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.RightTitle.Text:= NomeSistema + ', versão '+ VersaoSistema +#13+
+                                                                    'Contato: '+TelefoneEmpresaDesenvolvedora;
+  dxComponentPrinter1Link1.PrinterPage.Orientation:= poPortrait;
 end;
 
 procedure TFrmRel_Estoque_Grao.cxImage1Click(Sender: TObject);
@@ -129,18 +150,23 @@ procedure TFrmRel_Estoque_Grao.cxImage3Click(Sender: TObject);
 var
   Retorno: AnsiString;
 begin
-  if (cmbSafra.Text = '') then
+  if (cmbSafra.Text <> '') then
   begin
-    Mensagens.MensagemWarning(MensagemCampoNulo);
-    cmbSafra.SetFocus;
-    exit;
-  end;
-
-  FEstoqueDominio:= TEstoqueDominio.Create(Conexao);
-  if (FEstoqueDominio.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, 0, qryEstoque, Retorno) = 0) and (Retorno <> '') then
+    FEstoqueDominio:= TEstoqueDominio.Create(Conexao);
+    if (FEstoqueDominio.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, 0, qryEstoque, Retorno) = 0) and (Retorno <> '') then
+    begin
+      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Exit;
+    end;
+  end
+  else
   begin
-    Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
-    Exit;
+    FEstoqueDominio:= TEstoqueDominio.Create(Conexao);
+    if (FEstoqueDominio.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, 1, qryEstoque, Retorno) = 0) and (Retorno <> '') then
+    begin
+      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Exit;
+    end;
   end;
 
   cxGrid1DBTableViewEstoque.ViewData.Collapse(true);
@@ -163,18 +189,6 @@ begin
   IniDados:= IniciaDadosCadastro.Create;
   IniDados.BuscaDadosSafra(Conexao);
 
-  dxComponentPrinter1Link1.ReportTitle.Text:= 'Estoque de Grãos';
-  dxComponentPrinter1Link1.ReportTitle.Font.Size:= 14;
-  dxComponentPrinter1Link1.ReportFootnotes.Text:= NotaRodape;
-  dxComponentPrinter1Link1.ReportFootnotes.Font.Size:= 8;
-  dxComponentPrinter1Link1.PDFExportOptions.Author:= AutorSistema;
-  dxComponentPrinter1Link1.PDFExportOptions.Creator:= CriadorSistema;
-  dxComponentPrinter1Link1.PDFExportOptions.DefaultFileName:= TituloPadraoRelatorio;
-  dxComponentPrinter1Link1.PDFExportOptions.Title:= 'Estoque de Grãos';
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Text:= EmpresaDesenvolvedora;
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.LeftTitle.Text:= CriadorSistema;
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.RightTitle.Text:= TelefoneEmpresaDesenvolvedora;
-  dxComponentPrinter1Link1.PrinterPage.Orientation:= poPortrait;
 end;
 
 end.

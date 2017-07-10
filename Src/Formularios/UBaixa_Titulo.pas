@@ -424,7 +424,11 @@ var
   i: Integer;
 begin
   //Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  //TOperacoesConexao.IniciaQuerys([qryLancamento], Conexao);
+  TOperacoesConexao.IniciaQuerys([dm.qryLancamentoBanco,
+                                  dm.qryCheque,
+                                  dm.qryOperacaoBancaria,
+                                  dm.qryContaBancaria,
+                                  dm.qryplanoFinanceiro], FrmLista_Lancamento_Financeiro.Conexao);
 
   IniDados:= IniciaDadosCadastro.Create;
   IniDados.BuscaDadosLancamentoBanco(FPropriedade.Codigo, FrmLista_Lancamento_Financeiro.Conexao);
@@ -436,6 +440,7 @@ begin
   Op.FormataFloat(2, EdtValor_Total, ValorTotal);
   CBBanco.Checked:= false;
   FrmBaixa_Titulo.Height:= 139;
+  qryLancamento.Connection:= FrmLista_Lancamento_Financeiro.Conexao;
   {for i := 0 to FTituloBaixarLista.Count-1 do
   begin
     Memo1.Lines.Add(IntToStr(FTituloBaixarLista.Items[i].CodigoConta));

@@ -302,8 +302,15 @@ begin
   TipoPessoa:= TList<AnsiString>.Create();
 
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryConsulta, qryContrato, dm.qryArmazem, dm.qryProduto, DM.qrySafra, dm.qryCliente,
-                                  dm.qrytipoDocumento, dm.qrydepartamento, dm.qrycondicaoPagamento,
+  TOperacoesConexao.IniciaQuerys([qryConsulta,
+                                  qryContrato,
+                                  dm.qryArmazem,
+                                  dm.qryProduto,
+                                  DM.qrySafra,
+                                  dm.qrypessoa,
+                                  dm.qrytipoDocumento,
+                                  dm.qrydepartamento,
+                                  dm.qrycondicaoPagamento,
                                   dm.qryplanoFinanceiro], Conexao);
 
   FAplicacao.Add('CONTRATOS');
@@ -346,8 +353,8 @@ begin
   FLF.Codigo_Safra:= dm.qrySafraCodigo.AsInteger;
   FLF.Codigo_Forma_Pagamento:= dm.qrycondicaoPagamentoCodigo.AsInteger;
 
-  FLF.Data_Lancamento:= dateVenda.Date;
-  FLF.Data_Vencimento:= dateVenda.Date;
+  FLF.Data_Lancamento:= StrToDateTime(MEdtData_Cadastro.Text);
+  FLF.Data_Vencimento:= StrToDateTime(MEdtData_Cadastro.Text);
   FLF.Codigo_Pessoa:= DM.qrypessoaCodigo.AsInteger;
 
   if (cmbTipoDocumento.Text = '') then

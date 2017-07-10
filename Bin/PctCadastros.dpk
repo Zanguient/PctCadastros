@@ -104,7 +104,8 @@ requires
   DbxCommonDriver,
   dbexpress,
   cxTreeListRS16,
-  cxTreeListdxBarPopupMenuRS16;
+  cxTreeListdxBarPopupMenuRS16,
+  dxSkinsdxRibbonPainterRS16;
 
 contains
   CidadeEntidade in '..\Src\Entidade\CidadeEntidade.pas',
@@ -136,7 +137,7 @@ contains
   TalhaoDominio in '..\Src\Dominio\TalhaoDominio.pas',
   UCadastro_Safra in '..\Src\Formularios\UCadastro_Safra.pas' {FrmCadastro_Safra},
   ProdutoDominio in '..\Src\Dominio\ProdutoDominio.pas',
-  URel_Estoque_Produto in '..\Src\Formularios\URel_Estoque_Produto.pas' {FrmRel_Estoque_Produto},
+  URel_Manutencao_Maquina in '..\Src\Formularios\URel_Manutencao_Maquina.pas' {FrmRel_Manutencao_Maquina},
   UCadastro_Pessoa in '..\Src\Formularios\UCadastro_Pessoa.pas' {FrmCadastro_Pessoa},
   RegistroAtividadeAtividadesDominio in '..\Src\Dominio\RegistroAtividadeAtividadesDominio.pas',
   RegistroAtividadeDominio in '..\Src\Dominio\RegistroAtividadeDominio.pas',
@@ -254,6 +255,13 @@ contains
   UDica_Estoque in '..\Src\Formularios\UDica_Estoque.pas' {FrmDica_Estoque},
   UDica_Cadastro in '..\Src\Formularios\UDica_Cadastro.pas' {FrmDica_Cadastro},
   URel_Visao_Geral in '..\Src\Formularios\URel_Visao_Geral.pas' {FrmRel_Visao_Geral},
-  URel_Estoque_Grao in '..\Src\Formularios\URel_Estoque_Grao.pas' {FrmRel_Estoque_Grao};
+  URel_Clima in '..\Src\Formularios\URel_Clima.pas' {FrmRel_Clima},
+  URel_Estoque_Produto in '..\Src\Formularios\URel_Estoque_Produto.pas' {FrmRel_Estoque_Produto},
+  URel_Folha_Pagamento in '..\Src\Formularios\URel_Folha_Pagamento.pas' {FrmRel_Folha_Pagamento},
+  URel_Lancamento_Financeiro in '..\Src\Formularios\URel_Lancamento_Financeiro.pas' {FrmRel_Lancamento_Financeiro},
+  URel_Entrada_Produto in '..\Src\Formularios\URel_Entrada_Produto.pas' {FrmRel_Entrada_Produto},
+  URel_Estoque_Grao in '..\Src\Formularios\URel_Estoque_Grao.pas' {FrmRel_Estoque_Grao},
+  URel_Contrato in '..\Src\Formularios\URel_Contrato.pas' {FrmRel_Contrato},
+  URel_Contrato_Venda in '..\Src\Formularios\URel_Contrato_Venda.pas' {FrmRel_Contrato_Venda};
 
 end.

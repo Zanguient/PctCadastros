@@ -14,7 +14,8 @@ type
       function Salvar(var Retorno: AnsiString): integer;
       function Alterar(var Retorno: AnsiString): integer;
       function Excluir(var Retorno: AnsiString): integer;
-      function Buscar(Codigo_Propriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): integer;
+      function Buscar(Codigo_Propriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
+      function Buscar(Codigo_Propriedade: integer; Codigo_Safra: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       constructor Create(var Conexao: TADOConnection; FManutencaoMaquina: TManutencaoMaquinaEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
   end;
@@ -70,11 +71,37 @@ begin
   try
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
-    FComandoSQL.ComandoSQL:= 'select MM.*, CV.Modelo from Manutencao_Maquina MM '+
-                             'left join Cadastro_Veiculo CV on (MM.Codigo_Maquina = CV.Codigo)'+
+    FComandoSQL.ComandoSQL:= 'select MM.*, CS.Descricao as Safra, CV.Modelo as Veiculo from Manutencao_Maquina MM '+
+                             'left join Cadastro_Safra CS on (MM.Codigo_Safra = CS.Codigo) '+
+                             'left join Cadastro_Veiculo CV on (MM.Codigo_Maquina = CV.Codigo) '+
                              ' where MM.Codigo_Propriedade = :Codigo_Propriedade';
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FManutencaoMaquinaDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FManutencaoMaquinaDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TManutencaoMaquinaDominio.Buscar(Codigo_Propriedade,
+  Codigo_Safra: integer; var Query: TADOQuery;
+  var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select MM.*, CS.Descricao as Safra, CV.Modelo as Veiculo from Manutencao_Maquina MM '+
+                             'left join Cadastro_Safra CS on (MM.Codigo_Safra = CS.Codigo) '+
+                             'left join Cadastro_Veiculo CV on (MM.Codigo_Maquina = CV.Codigo) '+
+                             ' where MM.Codigo_Propriedade = :Codigo_Propriedade and '+
+                             ' MM.Codigo_Safra = :Codigo_Safra';
+    FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    FComandoSQL.Parametros.Add('Codigo_Safra');
+    FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FComandoSQL.Valores.Add(Codigo_Safra);
     FManutencaoMaquinaDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FManutencaoMaquinaDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally

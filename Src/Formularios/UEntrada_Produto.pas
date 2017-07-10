@@ -210,6 +210,10 @@ type
     cxGrid1DBTableView1Valor_Desconto: TcxGridDBColumn;
     cxGrid1DBTableView1Valor_Total_NF: TcxGridDBColumn;
     cxGrid1DBTableView1Observacoes: TcxGridDBColumn;
+    Label15: TLabel;
+    cmbComprador: TcxLookupComboBox;
+    qryConsultaCodigo_Comprador: TIntegerField;
+    qryConsultaCodigo_Lancamento_Financeiro: TIntegerField;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -411,8 +415,9 @@ begin
   TOperacoesConexao.IniciaQuerys([qryConsulta,
                                   qryEntradaProdutos,
                                   DM.qrySafra,
-                                  dm.qryfornecedor,
+                                  dm.qrypessoa,
                                   dm.qrycondicaoPagamento,
+                                  dm.qryProdutor,
                                   dm.qryplanoFinanceiro,
                                   dm.qrytipoDocumento,
                                   dm.qrydepartamento,
@@ -430,6 +435,7 @@ begin
   IniDados:= IniciaDadosCadastro.Create;
   IniDados.BuscaDadosPessoa(TipoPessoa, Conexao);
   IniDados.BuscaDadosCondicaoPagamento(Conexao);
+  IniDados.BuscaDadosProdutor(Conexao);
   IniDados.BuscaDadosPlanoFinanceiro(Conexao);
   IniDados.BuscaDadosSafra(Conexao);
   IniDados.BuscaDadosTipoDocumento(Conexao);
@@ -472,6 +478,7 @@ begin
     FEntradaProdutoEntidade.N_Nota_Fiscal:= EdtN_Nota_Fiscal.Text;
     FEntradaProdutoEntidade.Data_Emissao:= dateEmissao.Date;
     FEntradaProdutoEntidade.Codigo_Fornecedor:= dm.qrypessoaCodigo.AsInteger;
+    FEntradaProdutoEntidade.Codigo_Comprador:= dm.qryProdutorCodigo.AsInteger;
     FEntradaProdutoEntidade.Codigo_Forma_Pagamento:= dm.qrycondicaoPagamentoCodigo.AsInteger;
 
     if (cmbPlano.Text <> '') then
@@ -651,6 +658,13 @@ function TFrmEntrada_Produto.Confira: boolean;
 begin
   Confira:= false;
 
+  if (cmbComprador.Text = '') then
+  begin
+    Mensagens.MensagemErro(MensagemFaltaDados);
+    cmbComprador.SetFocus;
+    exit;
+  end;
+
   if (EdtN_Nota_Fiscal.Text = '') then
   begin
     Mensagens.MensagemErro(MensagemFaltaDados);
@@ -748,6 +762,7 @@ begin
   cmbSafra.EditValue:= qryConsultaCodigo_Safra.AsInteger;
   cmbTipoDocumento.EditValue:= qryConsultaCodigo_Tipo_Documento.AsInteger;
   cmbDepartamento.EditValue:= qryConsultaCodigo_Departamento.AsInteger;
+  cmbComprador.EditValue:= qryConsultaCodigo_Comprador.AsInteger;
 
   Op.FormataFloat(2, EdtValor_Total_Produtos, qryConsultaValor_Produtos.AsFloat);
   Op.FormataFloat(2, EdtValor_Frete, qryConsultaValor_Frete.AsFloat);

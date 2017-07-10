@@ -204,8 +204,6 @@ type
     procedure FormShow(Sender: TObject);
     procedure EdtPreco_CompraKeyPress(Sender: TObject; var Key: Char);
     procedure EdtNTalhaoKeyPress(Sender: TObject; var Key: Char);
-    procedure Button1Click(Sender: TObject);
-    procedure cmbMarcaPropertiesCloseUp(Sender: TObject);
     procedure MEdtUltima_CompraExit(Sender: TObject);
     procedure MEdtValidadeExit(Sender: TObject);
     procedure qryConsultaData_Ultima_CompraGetText(Sender: TField;
@@ -352,7 +350,12 @@ begin
   EdtVolume.Text:= '0';
   EdtCarencia.Text:= '0';
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryConsulta, qryProdutoAplicacao, qryEstoqueFazenda], Conexao);
+  TOperacoesConexao.IniciaQuerys([qryConsulta,
+                                  qryProdutoAplicacao,
+                                  qryEstoqueFazenda,
+                                  qryGrupo,
+                                  qryMarca,
+                                  DM.qrypessoa], Conexao);
   BuscaDados;
   BuscaDadosGrupo;
   BuscaDadosMarca;
@@ -589,16 +592,6 @@ begin
   finally
 
   end;
-end;
-
-procedure TFrmCadastro_Produto.Button1Click(Sender: TObject);
-begin
-  ShowMessage(qryMarcaDescricao.AsString);
-end;
-
-procedure TFrmCadastro_Produto.cmbMarcaPropertiesCloseUp(Sender: TObject);
-begin
-  ShowMessage(qryMarcaCodigo.AsString + ' '+qryMarcaDescricao.AsString);
 end;
 
 function TFrmCadastro_Produto.Confira: boolean;
@@ -849,6 +842,7 @@ var
 begin
   PageControl1.TabIndex:= 0;
   qryEstoqueFazenda.Close;
+  cxGrid2.ShowHint:= true;
   Op.HabilitaCampos(FrmCadastro_Produto);
   Op.LimpaCampos(FrmCadastro_Produto);
   Op.DesabilitaCampos(FrmCadastro_Produto);

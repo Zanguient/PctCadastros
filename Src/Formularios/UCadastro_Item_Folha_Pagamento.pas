@@ -97,8 +97,11 @@ type
     FEntidade: TItemFolhaPagamentoEntidade;
     FEntidadeDominio: TItemFolhaPagamentoDominio;
     FComandoSQL: TComandoSQLEntidade;
+    Conexao: TADOConnection;
+
     function Confira: boolean;
     procedure BuscaDados;
+    procedure IniciaTela;
   public
     ativo, enderec, achei: boolean;
 
@@ -110,7 +113,7 @@ var
   FrmCadastro_Item_Folha_Pagamento: TFrmCadastro_Item_Folha_Pagamento;
 implementation
 
-uses UDM;
+uses UDM, OperacoesConexao;
 
 {$R *.dfm}
 
@@ -119,7 +122,8 @@ uses UDM;
 procedure TFrmCadastro_Item_Folha_Pagamento.BBtnCancelarClick(Sender: TObject);
 begin
   Op.LimpaCampos(FrmCadastro_Item_Folha_Pagamento);
-  Op.DesabilitaEdits(FrmCadastro_Item_Folha_Pagamento);
+  Op.DesabilitaCampos(FrmCadastro_Item_Folha_Pagamento);
+  TOperacoesConexao.CancelaConexao(Conexao);
   BBtnSalvar.Enabled:= false;
   BBtnCancelar.Enabled:= false;
   BBtnNovo.Enabled:= true;
@@ -132,33 +136,28 @@ var
 begin
   if (Mensagens.MensagemConfirmacao(MensagemConfirmaExclusao)) then
   begin
-    FEntidadeDominio:= TItemFolhaPagamentoDominio.Create(dm.ADOConnection1, FEntidade);
-    if (FEntidadeDominio.Excluir(Retorno) <> 0) then
+    FEntidadeDominio:= TItemFolhaPagamentoDominio.Create(Conexao, FEntidade);
+    if (FEntidadeDominio.Excluir(Retorno) = 0) then
     begin
-      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-      EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Exclusão');
-      HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-      begin
-        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-      end;
-
-      Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-    end
-    else
-    begin
-      Mensagens.MensagemErro(MensagemErroAoGravar);
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+      Exit;
     end;
 
-
-      //Util.Insere_Historico(usuario, 'EXCLUIU CIDADE ' + EdtCidade.Text + '.', TimeToStr(time), exclusao, date);
-
-    BBtnSalvar.Enabled:= false;
-    BBtnExcluir.Enabled:= false;
-    BBtnNovo.Enabled:= true;
-    BBtnCancelar.Enabled:= false;
-    Op.DesabilitaEdits(FrmCadastro_Item_Folha_Pagamento);
-    BuscaDados;
+    HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+    EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Exclusão');
+    HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+    if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
+    begin
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+      Exit;
+    end;
+    TOperacoesConexao.ConfirmaConexao(Conexao);
+    IniciaTela;
+    Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
   end;
 end;
 
@@ -175,13 +174,15 @@ end;
 procedure TFrmCadastro_Item_Folha_Pagamento.BBtnNovoClick(Sender: TObject);
 begin
   PageControl1.TabIndex:= 0;
-  Op.HabilitaEdits(FrmCadastro_Item_Folha_Pagamento);
+  Op.HabilitaCampos(FrmCadastro_Item_Folha_Pagamento);
   Op.LimpaCampos(FrmCadastro_Item_Folha_Pagamento);
   BBtnSalvar.Enabled:= true;
   BBtnCancelar.Enabled:= true;
   BBtnNovo.Enabled:= false;
   BBtnExcluir.Enabled:= false;
   achei:= false;
+  Conexao:= TOperacoesConexao.NovaConexao(Conexao);
+  TOperacoesConexao.IniciaQuerys([qryConsulta], Conexao);
   BuscaDados;
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
   EdtDescricao.SetFocus;
@@ -199,60 +200,68 @@ begin
     FEntidade.Descricao:= EdtDescricao.Text;
     FEntidade.Tipo:= rgTipo.Properties.Items[rgTipo.ItemIndex].Caption;
     FEntidade.Data_Cadastro:= StrToDateTime(MEdtData_Cadastro.Text);
-    FEntidadeDominio:= TItemFolhaPagamentoDominio.Create(dm.ADOConnection1, FEntidade);
+    FEntidadeDominio:= TItemFolhaPagamentoDominio.Create(Conexao, FEntidade);
 
     if (achei = false) then
     begin
-      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Item_Folha_Pagamento', dm.ADOConnection1));
+      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Item_Folha_Pagamento', Conexao));
       FEntidade.Codigo:= StrToInt(EdtCodigo.Text);
 
-      if (FEntidadeDominio.Salvar(Retorno) <> 0) then
+      if (FEntidadeDominio.Salvar(Retorno) = 0) then
       begin
-        HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-        EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Inserção');
-        HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-        if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-        begin
-          Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-        end;
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+        Exit;
+      end;
 
-        Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-      end
-      else
+      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+      EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Inserção');
+      HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
-        Mensagens.MensagemErro(MensagemErroAoGravar + Retorno);
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Exit;
       end;
     end
     else
     begin
       FEntidade.Codigo:= StrToInt(EdtCodigo.Text);
 
-      if (FEntidadeDominio.Alterar(Retorno) <> 0) then
+      if (FEntidadeDominio.Alterar(Retorno) = 0) then
       begin
-        HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-        EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Alteração');
-        HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-        if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-        begin
-          Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-        end;
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+        Exit;
+      end;
 
-        Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-      end
-      else
+      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+      EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Alteração');
+      HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
-        Mensagens.MensagemErro(MensagemErroAoGravar + Retorno);
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Exit;
       end;
     end;
-  end
-  else
-    exit;
+    TOperacoesConexao.ConfirmaConexao(Conexao);
+    IniciaTela;
+    Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
+  end;
+end;
 
+procedure TFrmCadastro_Item_Folha_Pagamento.IniciaTela;
+begin
   BBtnSalvar.Enabled:= false;
   BBtnNovo.Enabled:= true;
   BBtnCancelar.Enabled:= false;
   BBtnExcluir.Enabled:= false;
-  Op.DesabilitaEdits(FrmCadastro_Item_Folha_Pagamento);
+  Op.DesabilitaCampos(FrmCadastro_Item_Folha_Pagamento);
   BuscaDados;
 end;
 
@@ -260,7 +269,7 @@ procedure TFrmCadastro_Item_Folha_Pagamento.BuscaDados;
 var
   Retorno: AnsiString;
 begin
-  FEntidadeDominio:= TItemFolhaPagamentoDominio.Create(dm.ADOConnection1);
+  FEntidadeDominio:= TItemFolhaPagamentoDominio.Create(Conexao);
   if (FEntidadeDominio.Buscar(qryConsulta, Retorno) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
@@ -292,7 +301,7 @@ procedure TFrmCadastro_Item_Folha_Pagamento.cxGrid1DBTableView1DblClick(Sender: 
 begin
   PageControl1.TabIndex:= 0;
   achei:= true;
-  Op.HabilitaEdits(FrmCadastro_Item_Folha_Pagamento);
+  Op.HabilitaCampos(FrmCadastro_Item_Folha_Pagamento);
 
   EdtCodigo.Text:= qryConsultaCodigo.AsString;
   MEdtData_Cadastro.Text:= qryConsultaData_Cadastro.AsString;
@@ -377,7 +386,7 @@ begin
   PageControl1.TabIndex:= 0;
   Op.HabilitaCampos(FrmCadastro_Item_Folha_Pagamento);
   Op.LimpaCampos(FrmCadastro_Item_Folha_Pagamento);
-  Op.DesabilitaEdits(FrmCadastro_Item_Folha_Pagamento);
+  Op.DesabilitaCampos(FrmCadastro_Item_Folha_Pagamento);
 end;
 
 procedure TFrmCadastro_Item_Folha_Pagamento.MEdtData_CadastroEnter(Sender: TObject);

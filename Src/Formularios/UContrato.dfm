@@ -32,7 +32,7 @@ object FrmContrato: TFrmContrato
     Width = 520
     Height = 260
     Cursor = crHandPoint
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
@@ -217,6 +217,7 @@ object FrmContrato: TFrmContrato
         BevelOuter = bvRaised
         BorderStyle = bsNone
         Color = clBtnFace
+        Enabled = False
         TabOrder = 0
       end
       object MEdtData_Cadastro: TMaskEdit
@@ -271,6 +272,8 @@ object FrmContrato: TFrmContrato
       object cmbContratante: TcxLookupComboBox
         Left = 0
         Top = 148
+        Hint = 'Neste campo s'#227'o listados todos os clientes.'
+        ParentShowHint = False
         Properties.CharCase = ecUpperCase
         Properties.KeyFieldNames = 'Codigo'
         Properties.ListColumns = <
@@ -279,6 +282,7 @@ object FrmContrato: TFrmContrato
           end>
         Properties.ListOptions.SyncMode = True
         Properties.ListSource = DM.dsCliente
+        ShowHint = True
         TabOrder = 7
         Width = 239
       end
@@ -429,7 +433,7 @@ object FrmContrato: TFrmContrato
           Navigator.Buttons.Append.Visible = False
           Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
           Navigator.Buttons.Delete.ImageIndex = 2
-          Navigator.Buttons.Delete.Visible = True
+          Navigator.Buttons.Delete.Visible = False
           Navigator.Buttons.Edit.Visible = False
           Navigator.Buttons.Post.Visible = False
           Navigator.Buttons.Cancel.Visible = False
@@ -453,6 +457,10 @@ object FrmContrato: TFrmContrato
             item
               Kind = skCount
               FieldName = 'Codigo'
+            end
+            item
+              Kind = skCount
+              Column = cxGrid1DBTableView1Codigo
             end>
           DataController.Summary.SummaryGroups = <>
           DateTimeHandling.DateFormat = 'DD/MM/YYYY'
@@ -474,10 +482,10 @@ object FrmContrato: TFrmContrato
           OptionsView.Indicator = True
           Preview.Visible = True
           object cxGrid1DBTableView1Codigo: TcxGridDBColumn
-            Caption = 'C'#243'd. Contrato'
+            Caption = 'C'#243'digo'
             DataBinding.FieldName = 'Codigo'
             Options.Editing = False
-            Width = 78
+            Width = 64
           end
           object cxGrid1DBTableView1N_Contrato: TcxGridDBColumn
             Caption = 'N'#186' Contrato'
@@ -486,8 +494,7 @@ object FrmContrato: TFrmContrato
             Width = 86
           end
           object cxGrid1DBTableView1Nome: TcxGridDBColumn
-            Caption = 'Contratante'
-            DataBinding.FieldName = 'Nome'
+            DataBinding.FieldName = 'Contratante'
             Options.Editing = False
             Width = 200
           end
@@ -646,15 +653,15 @@ object FrmContrato: TFrmContrato
     end
   end
   object qryConsulta: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      'select C.*, CP.Nome from Contrato C'
+      'select C.*, CP.Nome as Contratante from Contrato C'
       
         'left join Cadastro_Pessoa CP on (C.Codigo_Contratante = CP.Codig' +
         'o)')
     Left = 440
+    Top = 64
     object qryConsultaCodigo: TIntegerField
       FieldName = 'Codigo'
     end
@@ -692,22 +699,30 @@ object FrmContrato: TFrmContrato
       FieldName = 'Observacao'
       Size = 800
     end
-    object qryConsultaNome: TStringField
-      FieldName = 'Nome'
-      Size = 100
-    end
     object qryConsultaCodigo_Produto: TIntegerField
       FieldName = 'Codigo_Produto'
+    end
+    object qryConsultaCodigo_Propriedade: TIntegerField
+      FieldName = 'Codigo_Propriedade'
+    end
+    object qryConsultaCodigo_Usuario: TIntegerField
+      FieldName = 'Codigo_Usuario'
+    end
+    object qryConsultaContratante: TStringField
+      FieldName = 'Contratante'
+      Size = 100
     end
   end
   object dsConsulta: TDataSource
     DataSet = qryConsulta
     Left = 472
+    Top = 64
   end
   object cxPropertiesStore1: TcxPropertiesStore
     Components = <>
     StorageName = 'ConfiguraGrid'
     Left = 336
+    Top = 64
   end
   object dxComponentPrinter1: TdxComponentPrinter
     CurrentLink = dxComponentPrinter1Link1
@@ -716,6 +731,7 @@ object FrmContrato: TFrmContrato
     PrintTitle = 'Impress'#227'o de relat'#243'rio'
     Version = 0
     Left = 368
+    Top = 64
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
       PrinterPage.DMPaper = 9
@@ -769,17 +785,18 @@ object FrmContrato: TFrmContrato
   end
   object cxEditRepository1: TcxEditRepository
     Left = 400
+    Top = 64
     object cxEditRepository1TextItem1: TcxEditRepositoryTextItem
       Properties.CharCase = ecUpperCase
     end
   end
   object qryContratoPagamento: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
       'select * from Contrato_Pagamento')
     Left = 272
+    Top = 64
     object qryContratoPagamentoCodigo: TAutoIncField
       FieldName = 'Codigo'
       ReadOnly = True
@@ -807,5 +824,6 @@ object FrmContrato: TFrmContrato
   object dsContratoPagamento: TDataSource
     DataSet = qryContratoPagamento
     Left = 304
+    Top = 64
   end
 end

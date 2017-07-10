@@ -15,7 +15,8 @@ type
       function Alterar(var Retorno: AnsiString): integer;
       function Excluir(var Retorno: AnsiString): integer;
       function BuscaCodigoLancamentoFinanceiro(CodigoEntrada: integer; var Retorno: AnsiString): integer;
-      function Buscar(CodigoPropriedade: Integer; var Query: TADOQuery; var Retorno: AnsiString): integer;
+      function Buscar(CodigoPropriedade: Integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
+      function Buscar(CodigoPropriedade: Integer; CodigoSafra: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       constructor Create(var Conexao: TADOConnection; FEntidade: TEntradaProdutoEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
   end;
@@ -37,6 +38,7 @@ begin
       ' SET N_Nota_Fiscal = :N_Nota_Fiscal'+
       ' ,Data_Emissao = :Data_Emissao'+
       ' ,Codigo_Fornecedor = :Codigo_Fornecedor'+
+      ' ,Codigo_Comprador = :Codigo_Comprador'+
       ' ,Codigo_Forma_Pagamento = :Codigo_Forma_Pagamento'+
       ' ,Codigo_Plano_Financeiro = :Codigo_Plano_Financeiro'+
       ' ,Codigo_Safra = :Codigo_Safra'+
@@ -54,6 +56,7 @@ begin
     FComandoSQL.Parametros.Add('N_Nota_Fiscal');
     FComandoSQL.Parametros.Add('Data_Emissao');
     FComandoSQL.Parametros.Add('Codigo_Fornecedor');
+    FComandoSQL.Parametros.Add('Codigo_Comprador');
     FComandoSQL.Parametros.Add('Codigo_Forma_Pagamento');
     FComandoSQL.Parametros.Add('Codigo_Plano_Financeiro');
     FComandoSQL.Parametros.Add('Codigo_Safra');
@@ -71,6 +74,7 @@ begin
     FComandoSQL.Valores.Add(FEntidade.N_Nota_Fiscal);
     FComandoSQL.Valores.Add(FEntidade.Data_Emissao);
     FComandoSQL.Valores.Add(FEntidade.Codigo_Fornecedor);
+    FComandoSQL.Valores.Add(FEntidade.Codigo_Comprador);
     FComandoSQL.Valores.Add(FEntidade.Codigo_Forma_Pagamento);
     FComandoSQL.Valores.Add(FEntidade.Codigo_Plano_Financeiro);
     FComandoSQL.Valores.Add(FEntidade.Codigo_Safra);
@@ -114,6 +118,36 @@ begin
   end;
 end;
 
+function TEntradaProdutoDominio.Buscar(CodigoPropriedade, CodigoSafra: integer;
+  var Query: TADOQuery; var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select EP.*, CPesForn.Nome as Fornecedor, CPesComp.Nome as Comprador, CPag.Descricao as CondPag, '+
+                            ' CPlan.Descricao as PlanoFinanceiro, CS.Descricao as Safra, CTD.Descricao as TipoDocumento, '+
+                            ' CD.Descricao as Departamento from Entrada_Produto EP '+
+                            ' left join Cadastro_Pessoa CPesForn on (EP.Codigo_Fornecedor = CPesForn.Codigo) '+
+                            ' left join Cadastro_Pessoa CPesComp on (EP.Codigo_Comprador = CPesComp.Codigo) '+
+                            ' left join Condicao_Pagamento CPag on (EP.Codigo_Forma_Pagamento = CPag.Codigo) '+
+                            ' left join Cadastro_Plano_Financeiro CPlan on (EP.Codigo_Plano_Financeiro = CPlan.Codigo) '+
+                            ' left join Cadastro_Safra CS on (EP.Codigo_Safra = CS.Codigo) '+
+                            ' left join Cadastro_Tipo_Documento CTD on (EP.Codigo_Tipo_Documento = CTD.Codigo) '+
+                            ' left join Cadastro_Departamento CD on (EP.Codigo_Departamento = CD.Codigo) '+
+                            '  where EP.Codigo_Propriedade = :Codigo_Propriedade and EP.Codigo_Safra = :Codigo_Safra';
+    FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    FComandoSQL.Parametros.Add('Codigo_Safra');
+    FComandoSQL.Valores.Add(CodigoPropriedade);
+    FComandoSQL.Valores.Add(CodigoSafra);
+    FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FEntidadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
 function TEntradaProdutoDominio.Buscar(CodigoPropriedade: Integer; var Query: TADOQuery;
   var Retorno: AnsiString): integer;
 var
@@ -122,7 +156,17 @@ begin
   try
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
-    FComandoSQL.ComandoSQL:= 'select * from Entrada_Produto where Codigo_Propriedade = :Codigo_Propriedade';
+    FComandoSQL.ComandoSQL:= 'select EP.*, CPesForn.Nome as Fornecedor, CPesComp.Nome as Comprador, CPag.Descricao as CondPag, '+
+                            ' CPlan.Descricao as PlanoFinanceiro, CS.Descricao as Safra, CTD.Descricao as TipoDocumento, '+
+                            ' CD.Descricao as Departamento from Entrada_Produto EP '+
+                            ' left join Cadastro_Pessoa CPesForn on (EP.Codigo_Fornecedor = CPesForn.Codigo) '+
+                            ' left join Cadastro_Pessoa CPesComp on (EP.Codigo_Comprador = CPesComp.Codigo) '+
+                            ' left join Condicao_Pagamento CPag on (EP.Codigo_Forma_Pagamento = CPag.Codigo) '+
+                            ' left join Cadastro_Plano_Financeiro CPlan on (EP.Codigo_Plano_Financeiro = CPlan.Codigo) '+
+                            ' left join Cadastro_Safra CS on (EP.Codigo_Safra = CS.Codigo) '+
+                            ' left join Cadastro_Tipo_Documento CTD on (EP.Codigo_Tipo_Documento = CTD.Codigo) '+
+                            ' left join Cadastro_Departamento CD on (EP.Codigo_Departamento = CD.Codigo) '+
+                            '  where EP.Codigo_Propriedade = :Codigo_Propriedade';
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Valores.Add(CodigoPropriedade);
     FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
@@ -176,6 +220,7 @@ begin
            ' ,N_Nota_Fiscal '+
            ' ,Data_Emissao '+
            ' ,Codigo_Fornecedor '+
+           ' ,Codigo_Comprador '+
            ' ,Codigo_Forma_Pagamento '+
            ' ,Codigo_Plano_Financeiro '+
            ' ,Codigo_Safra '+
@@ -197,6 +242,7 @@ begin
            ' ,:N_Nota_Fiscal '+
            ' ,:Data_Emissao '+
            ' ,:Codigo_Fornecedor '+
+           ' ,:Codigo_Comprador '+
            ' ,:Codigo_Forma_Pagamento '+
            ' ,:Codigo_Plano_Financeiro '+
            ' ,:Codigo_Safra '+
@@ -217,6 +263,7 @@ begin
     FComandoSQL.Parametros.Add('N_Nota_Fiscal');
     FComandoSQL.Parametros.Add('Data_Emissao');
     FComandoSQL.Parametros.Add('Codigo_Fornecedor');
+    FComandoSQL.Parametros.Add('Codigo_Comprador');
     FComandoSQL.Parametros.Add('Codigo_Forma_Pagamento');
     FComandoSQL.Parametros.Add('Codigo_Plano_Financeiro');
     FComandoSQL.Parametros.Add('Codigo_Safra');
@@ -237,6 +284,7 @@ begin
     FComandoSQL.Valores.Add(FEntidade.N_Nota_Fiscal);
     FComandoSQL.Valores.Add(FEntidade.Data_Emissao);
     FComandoSQL.Valores.Add(FEntidade.Codigo_Fornecedor);
+    FComandoSQL.Valores.Add(FEntidade.Codigo_Comprador);
     FComandoSQL.Valores.Add(FEntidade.Codigo_Forma_Pagamento);
     FComandoSQL.Valores.Add(FEntidade.Codigo_Plano_Financeiro);
     FComandoSQL.Valores.Add(FEntidade.Codigo_Safra);

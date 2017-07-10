@@ -9,7 +9,7 @@ uses
 type
   TDM = class(TDataModule)
     ImgComandos: TImageList;
-    ADOConnection1: TADOConnection;
+    ADOConnection: TADOConnection;
     ImgChama: TImageList;
     ImageList1: TImageList;
     ImgImagens_Consulta: TImageList;
@@ -320,10 +320,10 @@ implementation
 procedure TDM.DataModuleCreate(Sender: TObject);
 begin
   try
-    DM.ADOConnection1.Connected:= true;
+    //DM.ADOConnection1.Connected:= true;
   except on e:Exception do
   begin
-    Mensagens.MensagemErro('Erro ao abrir conexão: '+e.Message);
+    //Mensagens.MensagemErro('Erro ao abrir conexão: '+e.Message);
   end;
 
   end;

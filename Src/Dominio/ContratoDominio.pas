@@ -16,7 +16,7 @@ type
       function Alterar(var Retorno: AnsiString): integer;
       function Excluir(var Retorno: AnsiString): integer;
       function Buscar(Codigo_Propriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
-      function Buscar(Codigo_Propriedade: integer; IdContrato: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
+      function Buscar(Codigo_Propriedade: integer; Codigo_Safra: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       function BuscarContratoSafra(IdSafra: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       constructor Create(var Conexao: TADOConnection; FContrato: TContratoEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
@@ -81,9 +81,12 @@ begin
   try
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
-    FComandoSQL.ComandoSQL:= 'select C.*, CP.Nome from Contrato C '+
-                             ' left join Cadastro_Pessoa CP on (C.Codigo_Contratante = CP.Codigo)'+
-                             ' where C.Codigo_Propriedade = :Codigo_Propriedade';
+    FComandoSQL.ComandoSQL:= 'select Con.*, CS.Descricao as Safra, CP.Descricao as Produto, CPes.Nome as Contratante'+
+                             ' from Contrato Con '+
+                             ' left join Cadastro_Safra CS on (Con.Codigo_Safra = CS.Codigo)'+
+                             ' left join Cadastro_Produtos CP on (Con.Codigo_Produto = CP.Codigo)'+
+                             ' left join Cadastro_Pessoa CPes on (Con.Codigo_Contratante = CPes.Codigo)'+
+                             ' where Con.Codigo_Propriedade = :Codigo_Propriedade';
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Valores.Add(Codigo_Propriedade);
     FContratoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
@@ -93,7 +96,7 @@ begin
   end;
 end;
 
-function TContratoDominio.Buscar(Codigo_Propriedade: integer; IdContrato: integer; var Query: TADOQuery;
+function TContratoDominio.Buscar(Codigo_Propriedade: integer; Codigo_Safra: integer; var Query: TADOQuery;
   var Retorno: AnsiString): integer;
 var
   FComandoSQL: TComandoSQLEntidade;
@@ -101,11 +104,16 @@ begin
   try
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
-    FComandoSQL.ComandoSQL:= 'select * from Contrato where Codigo = :Codigo and Codigo_Propriedade = :Codigo_Propriedade';
-    FComandoSQL.Parametros.Add('Codigo');
+    FComandoSQL.ComandoSQL:= 'select Con.*, CS.Descricao as Safra, CP.Descricao as Produto, CPes.Nome as Contratante'+
+                             ' from Contrato Con '+
+                             ' left join Cadastro_Safra CS on (Con.Codigo_Safra = CS.Codigo)'+
+                             ' left join Cadastro_Produtos CP on (Con.Codigo_Produto = CP.Codigo)'+
+                             ' left join Cadastro_Pessoa CPes on (Con.Codigo_Contratante = CPes.Codigo)'+
+                             ' where Con.Codigo_Propriedade = :Codigo_Propriedade and Con.Codigo_Safra = :Codigo_Safra';
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
-    FComandoSQL.Valores.Add(IdContrato);
+    FComandoSQL.Parametros.Add('Codigo_Safra');
     FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FComandoSQL.Valores.Add(Codigo_Safra);
     FContratoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FContratoDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally

@@ -93,8 +93,11 @@ type
     FOcorrencia: TOcorrenciaEntidade;
     FOcorrenciaDominio: TOcorrenciaDominio;
     FComandoSQL: TComandoSQLEntidade;
+    Conexao: TADOConnection;
+
     function Confira: boolean;
     procedure BuscaDados;
+    procedure IniciaTela;
   public
     ativo, enderec, achei: boolean;
 
@@ -106,7 +109,7 @@ var
   FrmCadastro_Ocorrencia: TFrmCadastro_Ocorrencia;
 implementation
 
-uses UDM;
+uses UDM, OperacoesConexao;
 
 {$R *.dfm}
 
@@ -115,11 +118,22 @@ uses UDM;
 procedure TFrmCadastro_Ocorrencia.BBtnCancelarClick(Sender: TObject);
 begin
   Op.LimpaCampos(FrmCadastro_Ocorrencia);
-  Op.DesabilitaEdits(FrmCadastro_Ocorrencia);
+  Op.DesabilitaCampos(FrmCadastro_Ocorrencia);
+  TOperacoesConexao.CancelaConexao(Conexao);
   BBtnSalvar.Enabled:= false;
   BBtnCancelar.Enabled:= false;
   BBtnNovo.Enabled:= true;
   BBtnExcluir.Enabled:= false;
+end;
+
+procedure TFrmCadastro_Ocorrencia.IniciaTela;
+begin
+  BBtnSalvar.Enabled:= false;
+  BBtnNovo.Enabled:= true;
+  BBtnCancelar.Enabled:= false;
+  BBtnExcluir.Enabled:= false;
+  Op.DesabilitaCampos(FrmCadastro_Ocorrencia);
+  BuscaDados;
 end;
 
 procedure TFrmCadastro_Ocorrencia.BBtnExcluirClick(Sender: TObject);
@@ -128,32 +142,29 @@ var
 begin
   if (Mensagens.MensagemConfirmacao(MensagemConfirmaExclusao)) then
   begin
-    FOcorrenciaDominio:= TOcorrenciaDominio.Create(dm.ADOConnection1, FOcorrencia);
-    if (FOcorrenciaDominio.Excluir(Retorno) <> 0) then
+    FOcorrenciaDominio:= TOcorrenciaDominio.Create(Conexao, FOcorrencia);
+    if (FOcorrenciaDominio.Excluir(Retorno) = 0) then
     begin
-      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-      EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Exclusão');
-      HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-      begin
-        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-      end;
-
-      Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-    end
-    else
-    begin
-      Mensagens.MensagemErro(MensagemErroAoGravar);
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+      Exit;
     end;
 
-      //Util.Insere_Historico(usuario, 'EXCLUIU CIDADE ' + EdtCidade.Text + '.', TimeToStr(time), exclusao, date);
+    HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+    EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Exclusão');
+    HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+    if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
+    begin
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+      Exit;
+    end;
 
-    BBtnSalvar.Enabled:= false;
-    BBtnExcluir.Enabled:= false;
-    BBtnNovo.Enabled:= true;
-    BBtnCancelar.Enabled:= false;
-    Op.DesabilitaEdits(FrmCadastro_Ocorrencia);
-    BuscaDados;
+    TOperacoesConexao.ConfirmaConexao(Conexao);
+    IniciaTela;
+    Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
   end;
 end;
 
@@ -170,12 +181,15 @@ end;
 procedure TFrmCadastro_Ocorrencia.BBtnNovoClick(Sender: TObject);
 begin
   PageControl1.TabIndex:= 0;
-  Op.HabilitaEdits(FrmCadastro_Ocorrencia);
+  Op.HabilitaCampos(FrmCadastro_Ocorrencia);
   Op.LimpaCampos(FrmCadastro_Ocorrencia);
   BBtnSalvar.Enabled:= true;
   BBtnCancelar.Enabled:= true;
   BBtnNovo.Enabled:= false;
   BBtnExcluir.Enabled:= false;
+  Conexao:= TOperacoesConexao.NovaConexao(Conexao);
+  TOperacoesConexao.IniciaQuerys([qryConsulta], Conexao);
+  BuscaDados;
   achei:= false;
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
   EdtDescricao.SetFocus;
@@ -192,66 +206,65 @@ begin
     FOcorrencia.Codigo_Usuario:= FUsuario.Codigo;
     FOcorrencia.Descricao:= EdtDescricao.Text;
     FOcorrencia.DataCadastro:= StrToDateTime(MEdtData_Cadastro.Text);
-    FOcorrenciaDominio:= TOcorrenciaDominio.Create(dm.ADOConnection1, FOcorrencia);
+    FOcorrenciaDominio:= TOcorrenciaDominio.Create(Conexao, FOcorrencia);
     if (achei = false) then
     begin
-      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Ocorrencia', dm.ADOConnection1));
+      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Ocorrencia', Conexao));
       FOcorrencia.Codigo:= StrToInt(EdtCodigo.Text);
-      if (FOcorrenciaDominio.Salvar(Retorno) <> 0) then
+      if (FOcorrenciaDominio.Salvar(Retorno) = 0) then
       begin
-        HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-        EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Inserção');
-        HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-        if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-        begin
-          Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-        end;
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+        Exit;
+      end;
 
-        Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-      end
-      else
+      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+      EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Inserção');
+      HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
-        Mensagens.MensagemErro(MensagemErroAoGravar + Retorno);
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Exit;
       end;
     end
     else
     begin
       FOcorrencia.Codigo:= StrToInt(EdtCodigo.Text);
 
-      if (FOcorrenciaDominio.Alterar(Retorno) <> 0) then
+      if (FOcorrenciaDominio.Alterar(Retorno) = 0) then
       begin
-        HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-        EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Alteração');
-        HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-        if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-        begin
-          Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-        end;
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+        Exit;
+      end;
 
-        Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-      end
-      else
+      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+      EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Alteração');
+      HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
-        Mensagens.MensagemErro(MensagemErroAoGravar + Retorno);
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Exit;
       end;
     end;
-  end
-  else
-    exit;
 
-  BBtnSalvar.Enabled:= false;
-  BBtnNovo.Enabled:= true;
-  BBtnCancelar.Enabled:= false;
-  BBtnExcluir.Enabled:= false;
-  Op.DesabilitaEdits(FrmCadastro_Ocorrencia);
-  BuscaDados;
+    TOperacoesConexao.ConfirmaConexao(Conexao);
+    IniciaTela;
+    Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
+  end;
 end;
 
 procedure TFrmCadastro_Ocorrencia.BuscaDados;
 var
   Retorno: AnsiString;
 begin
-  FOcorrenciaDominio:= TOcorrenciaDominio.Create(dm.ADOConnection1);
+  FOcorrenciaDominio:= TOcorrenciaDominio.Create(Conexao);
   if (FOcorrenciaDominio.Buscar(qryConsulta, Retorno) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
@@ -283,7 +296,7 @@ procedure TFrmCadastro_Ocorrencia.cxGrid1DBTableView1DblClick(Sender: TObject);
 begin
   PageControl1.TabIndex:= 0;
   achei:= true;
-  Op.HabilitaEdits(FrmCadastro_Ocorrencia);
+  Op.HabilitaCampos(FrmCadastro_Ocorrencia);
 
   EdtCodigo.Text:= qryConsultaCodigo.AsString;
   MEdtData_Cadastro.Text:= qryConsultaData_Cadastro.AsString;
@@ -361,10 +374,9 @@ var
   Retorno: AnsiString;
 begin
   PageControl1.TabIndex:= 0;
-  BuscaDados;
   Op.HabilitaCampos(FrmCadastro_Ocorrencia);
   Op.LimpaCampos(FrmCadastro_Ocorrencia);
-  Op.DesabilitaEdits(FrmCadastro_Ocorrencia);
+  Op.DesabilitaCampos(FrmCadastro_Ocorrencia);
 end;
 
 procedure TFrmCadastro_Ocorrencia.MEdtData_CadastroEnter(Sender: TObject);

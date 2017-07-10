@@ -93,6 +93,8 @@ type
     cxGrid1DBTableView1Temperatura_Maxima: TcxGridDBColumn;
     cxGrid1DBTableView1Data_Verificacao: TcxGridDBColumn;
     cxGrid1DBTableView1Data_Cadastro: TcxGridDBColumn;
+    qryConsultaPluviometro: TStringField;
+    cxGrid1DBTableView1Pluviometro: TcxGridDBColumn;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -127,8 +129,11 @@ type
     FEntidadeDominio: TDadosClimaDominio;
     FComandoSQL: TComandoSQLEntidade;
     IniDados: IniciaDadosCadastro;
+    Conexao: TADOConnection;
+
     function Confira: boolean;
     procedure BuscaDados;
+    procedure IniciaTela;
   public
     ativo, enderec, achei: boolean;
 
@@ -140,7 +145,7 @@ var
   FrmDados_Clima: TFrmDados_Clima;
 implementation
 
-uses UDM;
+uses UDM, OperacoesConexao;
 
 {$R *.dfm}
 
@@ -150,6 +155,7 @@ procedure TFrmDados_Clima.BBtnCancelarClick(Sender: TObject);
 begin
   Op.LimpaCampos(FrmDados_Clima);
   Op.DesabilitaCampos(FrmDados_Clima);
+  TOperacoesConexao.CancelaConexao(Conexao);
   BBtnSalvar.Enabled:= false;
   BBtnCancelar.Enabled:= false;
   BBtnNovo.Enabled:= true;
@@ -162,33 +168,28 @@ var
 begin
   if (Mensagens.MensagemConfirmacao(MensagemConfirmaExclusao)) then
   begin
-    FEntidadeDominio:= TDadosClimaDominio.Create(dm.ADOConnection1, FEntidade);
-    if (FEntidadeDominio.Excluir(Retorno) <> 0) then
+    FEntidadeDominio:= TDadosClimaDominio.Create(Conexao, FEntidade);
+    if (FEntidadeDominio.Excluir(Retorno) = 0) then
     begin
-      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-      EdtCodigo.Text +' '+ cmbPluviometro.Text +' '+EdtChuva.Text, date, TimeToStr(time), 'Exclusão');
-      HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-      begin
-        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-      end;
-
-      Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-    end
-    else
-    begin
-      Mensagens.MensagemErro(MensagemErroAoGravar);
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+      Exit;
     end;
 
-
-      //Util.Insere_Historico(usuario, 'EXCLUIU CIDADE ' + EdtCidade.Text + '.', TimeToStr(time), exclusao, date);
-
-    BBtnSalvar.Enabled:= false;
-    BBtnExcluir.Enabled:= false;
-    BBtnNovo.Enabled:= true;
-    BBtnCancelar.Enabled:= false;
-    Op.DesabilitaCampos(FrmDados_Clima);
-    BuscaDados;
+    HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+    EdtCodigo.Text +' '+ cmbPluviometro.Text +' '+EdtChuva.Text, date, TimeToStr(time), 'Exclusão');
+    HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+    if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
+    begin
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+      Exit;
+    end;
+    TOperacoesConexao.ConfirmaConexao(Conexao);
+    IniciaTela;
+    Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
   end;
 end;
 
@@ -213,9 +214,14 @@ begin
   BBtnExcluir.Enabled:= false;
   achei:= false;
 
+  Conexao:= TOperacoesConexao.NovaConexao(Conexao);
+  TOperacoesConexao.IniciaQuerys([qryConsulta,
+                                  DM.qrypluviometro,
+                                  DM.qrySafra], Conexao);
+
   IniDados:= IniciaDadosCadastro.Create;
-  IniDados.BuscaDadosSafra(dm.ADOConnection1);
-  IniDados.BuscaDadosPluviometro(dm.ADOConnection1);
+  IniDados.BuscaDadosSafra(Conexao);
+  IniDados.BuscaDadosPluviometro(Conexao);
 
   EdtUmidade.Text:= '0';
   EdtChuva.Text:= '0';
@@ -236,6 +242,7 @@ begin
     FEntidade.Codigo_Propriedade:= FPropriedade.Codigo;
     FEntidade.Codigo_Usuario:= FUsuario.Codigo;
     FEntidade.Codigo_Safra:= dm.qrySafraCodigo.AsInteger;
+
     FEntidade.Codigo_Pluviometro:= dm.qrypluviometroCodigo.AsInteger;
     FEntidade.Umidade:= StrToFloat(EdtUmidade.Text);
     FEntidade.Quantidade_Chuva:= StrToFloat(EdtChuva.Text);
@@ -243,55 +250,63 @@ begin
     FEntidade.Temperatura_Maxima:= StrToFloat(EdtTemperatura_Maxima.Text);
     FEntidade.Data_Verificacao:= dateVerificacao.Date;
     FEntidade.Data_Cadastro:= StrToDateTime(MEdtData_Cadastro.Text);
-    FEntidadeDominio:= TDadosClimaDominio.Create(dm.ADOConnection1, FEntidade);
+    FEntidadeDominio:= TDadosClimaDominio.Create(Conexao, FEntidade);
 
     if (achei = false) then
     begin
-      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Dados_Clima', dm.ADOConnection1));
+      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Dados_Clima', Conexao));
       FEntidade.Codigo:= StrToInt(EdtCodigo.Text);
 
-      if (FEntidadeDominio.Salvar(Retorno) <> 0) then
+      if (FEntidadeDominio.Salvar(Retorno) = 0) then
       begin
-        HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-        EdtCodigo.Text +' '+ cmbPluviometro.Text+' '+EdtChuva.Text, date, TimeToStr(time), 'Inserção');
-        HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-        if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-        begin
-          Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-        end;
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+        Exit;
+      end;
 
-        Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-      end
-      else
+      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+      EdtCodigo.Text +' '+ cmbPluviometro.Text+' '+EdtChuva.Text, date, TimeToStr(time), 'Inserção');
+      HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
-        Mensagens.MensagemErro(MensagemErroAoGravar + Retorno);
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Exit;
       end;
     end
     else
     begin
       FEntidade.Codigo:= StrToInt(EdtCodigo.Text);
 
-      if (FEntidadeDominio.Alterar(Retorno) <> 0) then
+      if (FEntidadeDominio.Alterar(Retorno) = 0) then
       begin
-        HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-        EdtCodigo.Text +' '+ cmbPluviometro.Text+' '+EdtChuva.Text, date, TimeToStr(time), 'Alteração');
-        HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-        if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-        begin
-          Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-        end;
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+        Exit;
+      end;
 
-        Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-      end
-      else
+      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+      EdtCodigo.Text +' '+ cmbPluviometro.Text+' '+EdtChuva.Text, date, TimeToStr(time), 'Alteração');
+      HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
-        Mensagens.MensagemErro(MensagemErroAoGravar + Retorno);
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Exit;
       end;
     end;
-  end
-  else
-    exit;
+    TOperacoesConexao.ConfirmaConexao(Conexao);
+    IniciaTela;
+    Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
+  end;
+end;
 
+procedure TFrmDados_Clima.IniciaTela;
+begin
   BBtnSalvar.Enabled:= false;
   BBtnNovo.Enabled:= true;
   BBtnCancelar.Enabled:= false;
@@ -304,7 +319,7 @@ procedure TFrmDados_Clima.BuscaDados;
 var
   Retorno: AnsiString;
 begin
-  FEntidadeDominio:= TDadosClimaDominio.Create(dm.ADOConnection1);
+  FEntidadeDominio:= TDadosClimaDominio.Create(Conexao);
   if (FEntidadeDominio.Buscar(FPropriedade.Codigo, qryConsulta, Retorno) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);

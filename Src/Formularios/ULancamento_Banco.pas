@@ -331,8 +331,12 @@ begin
   BBtnExcluir.Enabled:= false;
   achei:= false;
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryConsulta, DM.qryContaBancaria, dm.qryContaBancariaDestino, dm.qryOperacaoBancaria,
-                                  dm.qryplanoFinanceiro, dm.qryCheque], Conexao);
+  TOperacoesConexao.IniciaQuerys([qryConsulta,
+                                  DM.qryContaBancaria,
+                                  dm.qryContaBancariaDestino,
+                                  dm.qryOperacaoBancaria,
+                                  dm.qryplanoFinanceiro,
+                                  dm.qryCheque], Conexao);
   IniDados:= IniciaDadosCadastro.Create;
   IniDados.BuscaDadosContaBancaria(FPropriedade.Codigo, Conexao);
   IniDados.BuscaDadosContaBancariaDestino(FPropriedade.Codigo, Conexao);

@@ -93,11 +93,13 @@ type
     FMarca: TMarcaEntidade;
     FMarcaDominio: TMarcaDominio;
     FComandoSQL: TComandoSQLEntidade;
+    Conexao: TADOConnection;
 
     //HistoricoEntidade: THistoricoEntidade;
     //HistoricoDominio: THistoricoDominio;
     function Confira: boolean;
     procedure BuscaDados;
+    procedure IniciaTela;
   public
     ativo, enderec, achei: boolean;
     constructor Create(FPropriedade: TPropriedadeEntidade; FUsuario: TLoginEntidade);
@@ -111,7 +113,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDM;
+uses UDM, OperacoesConexao;
 
 { TFrmPadrao }
 
@@ -119,6 +121,7 @@ procedure TFrmCadastro_Marca.BBtnCancelarClick(Sender: TObject);
 begin
   Op.LimpaCampos(FrmCadastro_Marca);
   Op.DesabilitaCampos(FrmCadastro_Marca);
+  TOperacoesConexao.CancelaConexao(Conexao);
   BBtnSalvar.Enabled:= false;
   BBtnCancelar.Enabled:= false;
   BBtnNovo.Enabled:= true;
@@ -131,32 +134,28 @@ var
 begin
   if (Mensagens.MensagemConfirmacao(MensagemConfirmaExclusao)) then
   begin
-    FMarcaDominio:= TMarcaDominio.Create(dm.ADOConnection1, FMarca);
-    if (FMarcaDominio.Excluir(Retorno) <> 0) then
+    FMarcaDominio:= TMarcaDominio.Create(Conexao, FMarca);
+    if (FMarcaDominio.Excluir(Retorno) = 0) then
     begin
-      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-      EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Exclusão');
-      HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-      begin
-        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-      end;
-
-      Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-    end
-    else
-    begin
-      Mensagens.MensagemErro(MensagemErroAoGravar);
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+      Exit;
     end;
 
-      //Util.Insere_Historico(usuario, 'EXCLUIU CIDADE ' + EdtCidade.Text + '.', TimeToStr(time), exclusao, date);
-
-    BBtnSalvar.Enabled:= false;
-    BBtnExcluir.Enabled:= false;
-    BBtnNovo.Enabled:= true;
-    BBtnCancelar.Enabled:= false;
-    Op.DesabilitaCampos(FrmCadastro_Marca);
-    BuscaDados;
+    HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+    EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Exclusão');
+    HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+    if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
+    begin
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+      Exit;
+    end;
+    TOperacoesConexao.ConfirmaConexao(Conexao);
+    IniciaTela;
+    Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
   end;
 end;
 
@@ -180,6 +179,8 @@ begin
   BBtnNovo.Enabled:= false;
   BBtnExcluir.Enabled:= false;
   achei:= false;
+  Conexao:= TOperacoesConexao.NovaConexao(Conexao);
+  TOperacoesConexao.IniciaQuerys([qryConsulta], Conexao);
   BuscaDados;
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
   EdtDescricao.SetFocus;
@@ -196,55 +197,63 @@ begin
     FMarca.Codigo_Propriedade:= FPropriedade.Codigo;
     FMarca.Codigo_Usuario:= FUsuario.Codigo;
     FMarca.DataCadastro:= StrToDateTime(MEdtData_Cadastro.Text);
-    FMarcaDominio:= TMarcaDominio.Create(dm.ADOConnection1, FMarca);
+    FMarcaDominio:= TMarcaDominio.Create(Conexao, FMarca);
 
     if (achei = false) then
     begin
-      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Marca', dm.ADOConnection1));
+      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Marca', Conexao));
       FMarca.Codigo:= StrToInt(EdtCodigo.Text);
 
-      if (FMarcaDominio.Salvar(Retorno) <> 0) then
+      if (FMarcaDominio.Salvar(Retorno) = 0) then
       begin
-        HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-        EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Inserção');
-        HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-        if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-        begin
-          Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-        end;
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+        Exit;
+      end;
 
-        Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-      end
-      else
+      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+      EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Inserção');
+      HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
-        Mensagens.MensagemErro(MensagemErroAoGravar + Retorno);
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Exit;
       end;
     end
     else
     begin
       FMarca.Codigo:= StrToInt(EdtCodigo.Text);
 
-      if (FMarcaDominio.Alterar(Retorno) <> 0) then
+      if (FMarcaDominio.Alterar(Retorno) = 0) then
       begin
-        HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-        EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Alteração');
-        HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-        if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-        begin
-          Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-        end;
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+        Exit;
+      end;
 
-        Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-      end
-      else
+      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+      EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Alteração');
+      HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
-        Mensagens.MensagemErro(MensagemErroAoGravar + Retorno);
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Exit;
       end;
     end;
-  end
-  else
-    exit;
+    TOperacoesConexao.ConfirmaConexao(Conexao);
+    IniciaTela;
+    Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
+  end;
+end;
 
+procedure TFrmCadastro_Marca.IniciaTela;
+begin
   BBtnSalvar.Enabled:= false;
   BBtnNovo.Enabled:= true;
   BBtnCancelar.Enabled:= false;
@@ -257,7 +266,7 @@ procedure TFrmCadastro_Marca.BuscaDados;
 var
   Retorno: AnsiString;
 begin
-  FMarcaDominio:= TMarcaDominio.Create(dm.ADOConnection1);
+  FMarcaDominio:= TMarcaDominio.Create(Conexao);
   if (FMarcaDominio.Buscar(qryConsulta, Retorno) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);

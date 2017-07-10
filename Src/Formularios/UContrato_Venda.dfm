@@ -32,7 +32,7 @@ object FrmContrato_Venda: TFrmContrato_Venda
     Width = 480
     Height = 374
     Cursor = crHandPoint
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
@@ -282,6 +282,7 @@ object FrmContrato_Venda: TFrmContrato_Venda
         BevelOuter = bvRaised
         BorderStyle = bsNone
         Color = clBtnFace
+        Enabled = False
         TabOrder = 0
       end
       object MEdtData_Cadastro: TMaskEdit
@@ -584,10 +585,6 @@ object FrmContrato_Venda: TFrmContrato_Venda
     object TabSheet2: TTabSheet
       Caption = 'Pesquisar'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
@@ -617,7 +614,7 @@ object FrmContrato_Venda: TFrmContrato_Venda
           Navigator.Buttons.Append.Visible = False
           Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
           Navigator.Buttons.Delete.ImageIndex = 2
-          Navigator.Buttons.Delete.Visible = True
+          Navigator.Buttons.Delete.Visible = False
           Navigator.Buttons.Edit.Visible = False
           Navigator.Buttons.Post.Visible = False
           Navigator.Buttons.Cancel.Visible = False
@@ -641,6 +638,10 @@ object FrmContrato_Venda: TFrmContrato_Venda
             item
               Kind = skCount
               FieldName = 'Codigo'
+            end
+            item
+              Kind = skCount
+              Column = cxGrid1DBTableView1Codigo
             end>
           DataController.Summary.SummaryGroups = <>
           DateTimeHandling.DateFormat = 'DD/MM/YYYY'
@@ -664,70 +665,90 @@ object FrmContrato_Venda: TFrmContrato_Venda
           object cxGrid1DBTableView1Codigo: TcxGridDBColumn
             Caption = 'C'#243'digo'
             DataBinding.FieldName = 'Codigo'
-            Width = 44
+            Options.Editing = False
+            Width = 64
           end
           object cxGrid1DBTableView1Nome: TcxGridDBColumn
             Caption = 'Cliente'
             DataBinding.FieldName = 'Nome'
-            Width = 218
+            Options.Editing = False
+            Width = 185
           end
           object cxGrid1DBTableView1Descricao: TcxGridDBColumn
             Caption = 'Safra'
             DataBinding.FieldName = 'Descricao'
+            Options.Editing = False
             Width = 100
           end
           object cxGrid1DBTableView1Data_Venda: TcxGridDBColumn
             Caption = 'Venda'
             DataBinding.FieldName = 'Data_Venda'
+            Options.Editing = False
             Width = 76
           end
           object cxGrid1DBTableView1Data_Cadastro: TcxGridDBColumn
             DataBinding.FieldName = 'Data_Cadastro'
             Visible = False
+            Options.Editing = False
           end
           object cxGrid1DBTableView1N_Nota_Fiscal: TcxGridDBColumn
             DataBinding.FieldName = 'N_Nota_Fiscal'
             Visible = False
+            Options.Editing = False
           end
           object cxGrid1DBTableView1Codigo_Safra: TcxGridDBColumn
             DataBinding.FieldName = 'Codigo_Safra'
             Visible = False
+            Options.Editing = False
           end
           object cxGrid1DBTableView1Codigo_Armazem: TcxGridDBColumn
             DataBinding.FieldName = 'Codigo_Armazem'
             Visible = False
+            Options.Editing = False
           end
           object cxGrid1DBTableView1Codigo_Produto: TcxGridDBColumn
             DataBinding.FieldName = 'Codigo_Produto'
             Visible = False
+            Options.Editing = False
           end
           object cxGrid1DBTableView1Codigo_Fazenda: TcxGridDBColumn
             DataBinding.FieldName = 'Codigo_Fazenda'
             Visible = False
+            Options.Editing = False
           end
           object cxGrid1DBTableView1Codigo_Cliente: TcxGridDBColumn
             DataBinding.FieldName = 'Codigo_Cliente'
             Visible = False
+            Options.Editing = False
           end
           object cxGrid1DBTableView1Codigo_Contrato: TcxGridDBColumn
             DataBinding.FieldName = 'Codigo_Contrato'
             Visible = False
+            Options.Editing = False
           end
           object cxGrid1DBTableView1Quantidade_Saca: TcxGridDBColumn
+            Caption = 'Qtd. Saca'
             DataBinding.FieldName = 'Quantidade_Saca'
-            Visible = False
+            Options.Editing = False
           end
           object cxGrid1DBTableView1Preco_Saca: TcxGridDBColumn
+            Caption = 'Pre'#231'o Saca'
             DataBinding.FieldName = 'Preco_Saca'
-            Visible = False
+            PropertiesClassName = 'TcxCurrencyEditProperties'
+            Options.Editing = False
+            Width = 100
           end
           object cxGrid1DBTableView1Valor_Total: TcxGridDBColumn
+            Caption = 'Valor Total'
             DataBinding.FieldName = 'Valor_Total'
-            Visible = False
+            PropertiesClassName = 'TcxCurrencyEditProperties'
+            Options.Editing = False
+            Width = 100
           end
           object cxGrid1DBTableView1Observacao: TcxGridDBColumn
             DataBinding.FieldName = 'Observacao'
             Visible = False
+            Options.Editing = False
           end
         end
         object cxGrid1Level1: TcxGridLevel
@@ -841,15 +862,14 @@ object FrmContrato_Venda: TFrmContrato_Venda
     end
   end
   object qryConsulta: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
       'select CV.*, CP.Nome, CS.Descricao from Contrato_Venda CV'
       'left join Cadastro_Pessoa CP on (CV.Codigo_Cliente = CP.Codigo) '
       'left join Cadastro_Safra CS on (CV.Codigo_Safra = CS.Codigo)')
-    Left = 520
-    Top = 8
+    Left = 456
+    Top = 56
     object qryConsultaCodigo: TAutoIncField
       FieldName = 'Codigo'
       ReadOnly = True
@@ -923,14 +943,14 @@ object FrmContrato_Venda: TFrmContrato_Venda
   end
   object dsConsulta: TDataSource
     DataSet = qryConsulta
-    Left = 552
-    Top = 8
+    Left = 488
+    Top = 56
   end
   object cxPropertiesStore1: TcxPropertiesStore
     Components = <>
     StorageName = 'ConfiguraGrid'
-    Left = 424
-    Top = 8
+    Left = 360
+    Top = 56
   end
   object dxComponentPrinter1: TdxComponentPrinter
     CurrentLink = dxComponentPrinter1Link1
@@ -938,8 +958,8 @@ object FrmContrato_Venda: TFrmContrato_Venda
     PreviewOptions.WindowState = wsMaximized
     PrintTitle = 'Impress'#227'o de relat'#243'rio'
     Version = 0
-    Left = 456
-    Top = 8
+    Left = 392
+    Top = 56
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
       PrinterPage.DMPaper = 9
@@ -992,14 +1012,13 @@ object FrmContrato_Venda: TFrmContrato_Venda
     end
   end
   object cxEditRepository1: TcxEditRepository
-    Left = 488
-    Top = 8
+    Left = 424
+    Top = 56
     object cxEditRepository1TextItem1: TcxEditRepositoryTextItem
       Properties.CharCase = ecUpperCase
     end
   end
   object qryContrato: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

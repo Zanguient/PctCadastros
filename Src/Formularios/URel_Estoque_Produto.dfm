@@ -1494,17 +1494,20 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
         Caption = 'Fazenda'
         DataBinding.FieldName = 'Nome'
         Options.Editing = False
+        Styles.Header = DM.cxStyle1
         Width = 258
       end
       object cxGrid1DBTableViewEstoqueDescricao: TcxGridDBColumn
         Caption = 'Produto'
         DataBinding.FieldName = 'Descricao'
         Options.Editing = False
+        Styles.Header = DM.cxStyle1
         Width = 231
       end
       object cxGrid1DBTableViewEstoqueEstoque: TcxGridDBColumn
         DataBinding.FieldName = 'Estoque'
         Options.Editing = False
+        Styles.Header = DM.cxStyle1
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -2338,7 +2341,7 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 42907.575504780090000000
+      ReportDocument.CreationDate = 42916.485202407410000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET

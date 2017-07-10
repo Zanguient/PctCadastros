@@ -296,6 +296,7 @@ object FrmLancamento_Financeiro: TFrmLancamento_Financeiro
         BevelOuter = bvRaised
         BorderStyle = bsNone
         Color = clBtnFace
+        Enabled = False
         TabOrder = 0
       end
       object EdtN_Documento: TEdit
@@ -902,6 +903,7 @@ object FrmLancamento_Financeiro: TFrmLancamento_Financeiro
           object cxGrid2DBBandedTableView1Codigo: TcxGridDBBandedColumn
             Caption = 'C'#243'd. Geral'
             DataBinding.FieldName = 'Codigo'
+            Visible = False
             Options.Editing = False
             Position.BandIndex = 0
             Position.ColIndex = 0
@@ -1035,7 +1037,7 @@ object FrmLancamento_Financeiro: TFrmLancamento_Financeiro
           Navigator.Buttons.Append.Visible = False
           Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
           Navigator.Buttons.Delete.ImageIndex = 2
-          Navigator.Buttons.Delete.Visible = True
+          Navigator.Buttons.Delete.Visible = False
           Navigator.Buttons.Edit.Visible = False
           Navigator.Buttons.Post.Visible = False
           Navigator.Buttons.Cancel.Visible = False
@@ -1059,6 +1061,10 @@ object FrmLancamento_Financeiro: TFrmLancamento_Financeiro
             item
               Kind = skCount
               FieldName = 'Codigo'
+            end
+            item
+              Kind = skCount
+              Column = cxGrid1DBTableView1Codigo
             end>
           DataController.Summary.SummaryGroups = <>
           DateTimeHandling.DateFormat = 'DD/MM/YYYY'
@@ -1272,7 +1278,6 @@ object FrmLancamento_Financeiro: TFrmLancamento_Financeiro
     end
   end
   object qryConsulta: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -1427,7 +1432,6 @@ object FrmLancamento_Financeiro: TFrmLancamento_Financeiro
     end
   end
   object qryParcelas: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

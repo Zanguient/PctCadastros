@@ -32,12 +32,16 @@ object FrmLancamento_Banco: TFrmLancamento_Banco
     Width = 552
     Height = 271
     Cursor = crHandPoint
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Cadastrar'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object LblCodigo: TLabel
         Left = 0
         Top = 13
@@ -191,6 +195,7 @@ object FrmLancamento_Banco: TFrmLancamento_Banco
         BevelOuter = bvRaised
         BorderStyle = bsNone
         Color = clBtnFace
+        Enabled = False
         TabOrder = 0
       end
       object MEdtData_Lancamento: TMaskEdit
@@ -534,7 +539,7 @@ object FrmLancamento_Banco: TFrmLancamento_Banco
           Navigator.Buttons.Append.Visible = False
           Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
           Navigator.Buttons.Delete.ImageIndex = 2
-          Navigator.Buttons.Delete.Visible = True
+          Navigator.Buttons.Delete.Visible = False
           Navigator.Buttons.Edit.Visible = False
           Navigator.Buttons.Post.Visible = False
           Navigator.Buttons.Cancel.Visible = False
@@ -558,6 +563,10 @@ object FrmLancamento_Banco: TFrmLancamento_Banco
             item
               Kind = skCount
               FieldName = 'Codigo'
+            end
+            item
+              Kind = skCount
+              Column = cxGrid1DBTableView1Codigo
             end>
           DataController.Summary.SummaryGroups = <>
           DateTimeHandling.DateFormat = 'DD/MM/YYYY'
@@ -626,7 +635,7 @@ object FrmLancamento_Banco: TFrmLancamento_Banco
             Options.Editing = False
           end
           object cxGrid1DBTableView1Descricao: TcxGridDBColumn
-            Caption = 'Descri'#231#227'o'
+            Caption = 'Hist'#243'rico'
             DataBinding.FieldName = 'Descricao'
             Options.Editing = False
             Width = 183
@@ -769,7 +778,6 @@ object FrmLancamento_Banco: TFrmLancamento_Banco
     end
   end
   object qryConsulta: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

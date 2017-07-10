@@ -331,15 +331,19 @@ var
   TipoPessoa: TList<AnsiString>;
 begin
   Op.HabilitaCampos(FrmLancamento_Financeiro);
-  //Op.HabilitaEdits(FrmLancamento_Financeiro);
   Op.LimpaCampos(FrmLancamento_Financeiro);
   PageControl1.TabIndex:= 0;
   TipoPessoa:= TList<AnsiString>.Create();
 
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryConsulta, qryParcelas, DM.qrySafra, dm.qryCliente, dm.qryfornecedor,
-                                  dm.qryProduto, dm.qrycondicaoPagamento, dm.qrytipoDocumento,
-                                  dm.qrydepartamento, dm.qryplanoFinanceiro], Conexao);
+  TOperacoesConexao.IniciaQuerys([qryConsulta,
+                                  qryParcelas,
+                                  DM.qrySafra,
+                                  dm.qrypessoa,
+                                  dm.qrycondicaoPagamento,
+                                  dm.qrytipoDocumento,
+                                  dm.qrydepartamento,
+                                  dm.qryplanoFinanceiro], Conexao);
 
   TipoPessoa.Add('FUNCIONÁRIO');
   TipoPessoa.Add('FORNECEDOR');
@@ -348,8 +352,6 @@ begin
   IniDados:= IniciaDadosCadastro.Create;
   IniDados.BuscaDadosSafra(Conexao);
   IniDados.BuscaDadosPessoa(TipoPessoa, Conexao);
-  //IniDados.BuscaDadosFornecedor(Conexao);
-  IniDados.BuscaDadosProduto(Conexao);
   IniDados.BuscaDadosCondicaoPagamento(Conexao);
   IniDados.BuscaDadosTipoDocumento(Conexao);
   IniDados.BuscaDadosDepartamento(Conexao);
@@ -366,6 +368,7 @@ begin
   BBtnNovo.Enabled:= false;
   BBtnExcluir.Enabled:= false;
   BuscaDados;
+  qryParcelas.Close;
   achei:= false;
   EdtN_Documento.SetFocus;
 end;

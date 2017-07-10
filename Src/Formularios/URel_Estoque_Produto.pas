@@ -106,6 +106,27 @@ constructor TFrmRel_Estoque_Produto.Create(FPropriedade: TPropriedadeEntidade;
 begin
   Self.FPropriedade:= FPropriedade;
   Self.FUsuario:= FUsuario;
+  dxComponentPrinter1Link1.ReportTitle.Text:= 'Estoque de Produtos';
+  dxComponentPrinter1Link1.ReportTitle.Font.Size:= 14;
+  dxComponentPrinter1Link1.OptionsView.FilterBar:= true;
+  dxComponentPrinter1Link1.OptionsView.Footers:= true;
+  dxComponentPrinter1Link1.OptionsView.ExpandButtons:= True;
+  dxComponentPrinter1Link1.PrinterPage.Margins.Top:= 16900;
+  dxComponentPrinter1Link1.PrinterPage.AutoSwapMargins:= false;
+  dxComponentPrinter1Link1.ReportFootnotes.Text:= NotaRodape;
+  dxComponentPrinter1Link1.ReportFootnotes.Font.Size:= 8;
+  dxComponentPrinter1Link1.PDFExportOptions.Author:= AutorSistema;
+  dxComponentPrinter1Link1.PDFExportOptions.Creator:= AutorSistema;
+  dxComponentPrinter1Link1.PDFExportOptions.DefaultFileName:= TituloPadraoRelatorio;
+  dxComponentPrinter1Link1.PDFExportOptions.Title:= 'Estoque de Produtos';
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Text:= '';
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.LeftTitle.Text:= 'Fazenda:  '+FPropriedade.NomeFazenda + #13+
+                                                                   'Endereço: '+FPropriedade.Endereco +#13+
+                                                                   'Cidade:   '+FPropriedade.Cidade.Cidade +#13;
+
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.RightTitle.Text:= NomeSistema + ', versão '+ VersaoSistema +#13+
+                                                                    'Contato: '+TelefoneEmpresaDesenvolvedora;
+  dxComponentPrinter1Link1.PrinterPage.Orientation:= poPortrait;
 end;
 
 procedure TFrmRel_Estoque_Produto.cxImage1Click(Sender: TObject);
@@ -160,18 +181,6 @@ begin
   IniDados:= IniciaDadosCadastro.Create;
   //IniDados.BuscaDadosSafra(Conexao);
 
-  dxComponentPrinter1Link1.ReportTitle.Text:= 'Estoque de Grãos';
-  dxComponentPrinter1Link1.ReportTitle.Font.Size:= 14;
-  dxComponentPrinter1Link1.ReportFootnotes.Text:= NotaRodape;
-  dxComponentPrinter1Link1.ReportFootnotes.Font.Size:= 8;
-  dxComponentPrinter1Link1.PDFExportOptions.Author:= AutorSistema;
-  dxComponentPrinter1Link1.PDFExportOptions.Creator:= CriadorSistema;
-  dxComponentPrinter1Link1.PDFExportOptions.DefaultFileName:= TituloPadraoRelatorio;
-  dxComponentPrinter1Link1.PDFExportOptions.Title:= 'Estoque de Grãos';
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Text:= EmpresaDesenvolvedora;
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.LeftTitle.Text:= CriadorSistema;
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.RightTitle.Text:= TelefoneEmpresaDesenvolvedora;
-  dxComponentPrinter1Link1.PrinterPage.Orientation:= poPortrait;
 end;
 
 end.

@@ -387,15 +387,15 @@ begin
   TOperacoesConexao.IniciaQuerys([qryConsulta,
                                   qryManutencaoMaquinaServico,
                                   qryManutencaoMaquinaServicoProxRev,
+                                  qryManutencaoMaquinaProduto,
+                                  DM.qryservico,
+                                  DM.qryProduto,
                                   DM.qrySafra,
-                                  dm.qryfornecedor,
-                                  dm.qryVeiculo,
-                                  qryManutencaoMaquinaProduto], Conexao);
+                                  dm.qryVeiculo], Conexao);
 
   FAplicacao.Add('MANUTENÇÕES DE MÁQUINAS');
   IniDados:= IniciaDadosCadastro.Create;
   IniDados.BuscaDadosSafra(Conexao);
-  //IniDados.BuscaDadosFornecedor(Conexao);
   IniDados.BuscaDadosVeiculo(FPropriedade.Codigo, Conexao);
   IniDados.BuscaDadosServico(Conexao);
   IniDados.BuscaDadosProduto(FAplicacao, Conexao);

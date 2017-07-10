@@ -11,6 +11,7 @@ type
       FN_Nota_Fiscal: AnsiString;
       FData_Emissao: TDateTime;
       FCodigo_Fornecedor: integer;
+      FCodigo_Comprador: integer;
       FCodigo_Forma_Pagamento: integer;
       FCodigo_Plano_Financeiro: integer;
       FCodigo_Safra: integer;
@@ -43,7 +44,8 @@ type
       procedure SetValor_Seguro(const Value: double);
       procedure SetValor_Total_NF(const Value: double);
       procedure SetValor_Produtos(const Value: double);
-    procedure SetCodigo_Lancamento_Financeiro(const Value: Integer);
+      procedure SetCodigo_Lancamento_Financeiro(const Value: Integer);
+    procedure SetCodigo_Comprador(const Value: integer);
     public
       property Codigo: integer read FCodigo write SetCodigo;
       property Data_Cadastro: TDateTime read FData_Cadastro write SetData_Cadastro;
@@ -52,6 +54,7 @@ type
       property N_Nota_Fiscal: AnsiString read FN_Nota_Fiscal write SetN_Nota_Fiscal;
       property Data_Emissao: TDateTime read FData_Emissao write SetData_Emissao;
       property Codigo_Fornecedor: integer read FCodigo_Fornecedor write SetCodigo_Fornecedor;
+      property Codigo_Comprador: integer read FCodigo_Comprador write SetCodigo_Comprador;
       property Codigo_Forma_Pagamento: integer read FCodigo_Forma_Pagamento write SetCodigo_Forma_Pagamento;
       property Codigo_Plano_Financeiro: integer read FCodigo_Plano_Financeiro write SetCodigo_Plano_Financeiro;
       property Codigo_Safra: integer read FCodigo_Safra write SetCodigo_Safra;
@@ -74,6 +77,11 @@ implementation
 procedure TEntradaProdutoEntidade.SetCodigo(const Value: integer);
 begin
   FCodigo := Value;
+end;
+
+procedure TEntradaProdutoEntidade.SetCodigo_Comprador(const Value: integer);
+begin
+  FCodigo_Comprador := Value;
 end;
 
 procedure TEntradaProdutoEntidade.SetCodigo_Departamento(const Value: integer);

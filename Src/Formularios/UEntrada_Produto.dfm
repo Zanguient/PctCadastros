@@ -32,7 +32,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
     Width = 705
     Height = 436
     Cursor = crHandPoint
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
@@ -259,6 +259,19 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
         Font.Style = [fsBold]
         ParentFont = False
       end
+      object Label15: TLabel
+        Left = 167
+        Top = 15
+        Width = 63
+        Height = 13
+        Caption = 'Comprador'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
       object EdtCodigo: TEdit
         Left = 0
         Top = 32
@@ -269,6 +282,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
         BevelOuter = bvRaised
         BorderStyle = bsNone
         Color = clBtnFace
+        Enabled = False
         TabOrder = 0
       end
       object MEdtData_Cadastro: TMaskEdit
@@ -298,7 +312,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
         BorderStyle = bsNone
         CharCase = ecUpperCase
         MaxLength = 10
-        TabOrder = 2
+        TabOrder = 3
       end
       object dateEmissao: TcxDateEdit
         Left = 103
@@ -307,7 +321,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
         Properties.EditFormat = 'DD/MM/YYYY'
         Properties.SaveTime = False
         Properties.ShowTime = False
-        TabOrder = 3
+        TabOrder = 4
         Width = 90
       end
       object cmbFornecedor: TcxLookupComboBox
@@ -325,7 +339,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
           end>
         Properties.ListOptions.SyncMode = True
         Properties.ListSource = DM.dspessoa
-        TabOrder = 4
+        TabOrder = 5
         Width = 193
       end
       object cmbSafra: TcxLookupComboBox
@@ -339,7 +353,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
           end>
         Properties.ListOptions.SyncMode = True
         Properties.ListSource = DM.dsSafra
-        TabOrder = 7
+        TabOrder = 8
         Width = 192
       end
       object MMOObservacao: TMemo
@@ -352,7 +366,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
         BevelOuter = bvRaised
         BorderStyle = bsNone
         MaxLength = 800
-        TabOrder = 10
+        TabOrder = 11
       end
       object cxGrid2: TcxGrid
         Left = 0
@@ -365,7 +379,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        TabOrder = 17
+        TabOrder = 18
         LookAndFeel.NativeStyle = False
         RootLevelOptions.DetailTabsPosition = dtpTop
         object cxGridDBTableViewTalhao: TcxGridDBTableView
@@ -1147,7 +1161,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
           end>
         Properties.ListOptions.SyncMode = True
         Properties.ListSource = DM.dscondicaoPagamento
-        TabOrder = 5
+        TabOrder = 6
         Width = 170
       end
       object cmbTipoDocumento: TcxLookupComboBox
@@ -1161,7 +1175,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
           end>
         Properties.ListOptions.SyncMode = True
         Properties.ListSource = DM.dstipoDocumento
-        TabOrder = 8
+        TabOrder = 9
         Width = 170
       end
       object cmbPlano: TcxLookupComboBox
@@ -1175,7 +1189,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
           end>
         Properties.ListOptions.SyncMode = True
         Properties.ListSource = DM.dsplanoFinanceiro
-        TabOrder = 6
+        TabOrder = 7
         Width = 177
       end
       object cmbDepartamento: TcxLookupComboBox
@@ -1189,7 +1203,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
           end>
         Properties.ListOptions.SyncMode = True
         Properties.ListSource = DM.dsdepartamento
-        TabOrder = 9
+        TabOrder = 10
         Width = 177
       end
       object EdtValor_Frete: TEdit
@@ -1205,7 +1219,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
         MaxLength = 50
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 12
+        TabOrder = 13
         OnChange = EdtValor_FreteChange
         OnExit = EdtValor_FreteExit
         OnKeyPress = EdtValor_FreteKeyPress
@@ -1223,7 +1237,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
         MaxLength = 50
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 13
+        TabOrder = 14
         OnChange = EdtValor_SeguroChange
         OnExit = EdtValor_SeguroExit
         OnKeyPress = EdtValor_SeguroKeyPress
@@ -1241,7 +1255,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
         MaxLength = 50
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 14
+        TabOrder = 15
         OnChange = EdtValor_Outras_DespesasChange
         OnExit = EdtValor_Outras_DespesasExit
         OnKeyPress = EdtValor_Outras_DespesasKeyPress
@@ -1259,7 +1273,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
         MaxLength = 50
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 15
+        TabOrder = 16
         OnChange = EdtValor_DescontoChange
         OnExit = EdtValor_DescontoExit
         OnKeyPress = EdtValor_DescontoKeyPress
@@ -1282,7 +1296,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
         MaxLength = 50
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 16
+        TabOrder = 17
         OnEnter = EdtValor_Total_NFEnter
         OnExit = EdtValor_Total_NFExit
         OnKeyPress = EdtValor_Total_NFKeyPress
@@ -1303,9 +1317,26 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
         MaxLength = 50
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 11
+        TabOrder = 12
         OnExit = EdtValor_Total_ProdutosExit
         OnKeyPress = EdtValor_Total_ProdutosKeyPress
+      end
+      object cmbComprador: TcxLookupComboBox
+        Left = 167
+        Top = 29
+        Hint = 'Neste campo s'#227'o listados todos os produtores.'
+        ParentShowHint = False
+        Properties.CharCase = ecUpperCase
+        Properties.KeyFieldNames = 'Codigo'
+        Properties.ListColumns = <
+          item
+            FieldName = 'Nome'
+          end>
+        Properties.ListOptions.SyncMode = True
+        Properties.ListSource = DM.dsProdutor
+        ShowHint = True
+        TabOrder = 2
+        Width = 193
       end
     end
     object TabSheet2: TTabSheet
@@ -1340,7 +1371,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
           Navigator.Buttons.Append.Visible = False
           Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
           Navigator.Buttons.Delete.ImageIndex = 2
-          Navigator.Buttons.Delete.Visible = True
+          Navigator.Buttons.Delete.Visible = False
           Navigator.Buttons.Edit.Visible = False
           Navigator.Buttons.Post.Visible = False
           Navigator.Buttons.Cancel.Visible = False
@@ -1364,6 +1395,10 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
             item
               Kind = skCount
               FieldName = 'Codigo'
+            end
+            item
+              Kind = skCount
+              Column = cxGrid1DBTableView1Codigo
             end>
           DataController.Summary.SummaryGroups = <>
           DateTimeHandling.DateFormat = 'DD/MM/YYYY'
@@ -1592,7 +1627,6 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
     end
   end
   object qryConsulta: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -1655,6 +1689,12 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
     object qryConsultaObservacoes: TStringField
       FieldName = 'Observacoes'
       Size = 800
+    end
+    object qryConsultaCodigo_Comprador: TIntegerField
+      FieldName = 'Codigo_Comprador'
+    end
+    object qryConsultaCodigo_Lancamento_Financeiro: TIntegerField
+      FieldName = 'Codigo_Lancamento_Financeiro'
     end
   end
   object dsConsulta: TDataSource
@@ -1745,7 +1785,6 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
     end
   end
   object qryEntradaProdutos: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

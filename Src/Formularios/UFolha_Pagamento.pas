@@ -134,25 +134,6 @@ type
     Label2: TLabel;
     EdtTotal_Credito: TEdit;
     Label14: TLabel;
-    cxGrid1DBTableView1Codigo: TcxGridDBColumn;
-    cxGrid1DBTableView1Data_Cadastro: TcxGridDBColumn;
-    cxGrid1DBTableView1Codigo_Propriedade: TcxGridDBColumn;
-    cxGrid1DBTableView1Codigo_Usuario: TcxGridDBColumn;
-    cxGrid1DBTableView1N_Nota_Fiscal: TcxGridDBColumn;
-    cxGrid1DBTableView1Data_Emissao: TcxGridDBColumn;
-    cxGrid1DBTableView1Codigo_Fornecedor: TcxGridDBColumn;
-    cxGrid1DBTableView1Codigo_Forma_Pagamento: TcxGridDBColumn;
-    cxGrid1DBTableView1Codigo_Plano_Financeiro: TcxGridDBColumn;
-    cxGrid1DBTableView1Codigo_Safra: TcxGridDBColumn;
-    cxGrid1DBTableView1Codigo_Tipo_Documento: TcxGridDBColumn;
-    cxGrid1DBTableView1Codigo_Departamento: TcxGridDBColumn;
-    cxGrid1DBTableView1Valor_Produtos: TcxGridDBColumn;
-    cxGrid1DBTableView1Valor_Frete: TcxGridDBColumn;
-    cxGrid1DBTableView1Valor_Seguro: TcxGridDBColumn;
-    cxGrid1DBTableView1Valor_Outras_Despesas: TcxGridDBColumn;
-    cxGrid1DBTableView1Valor_Desconto: TcxGridDBColumn;
-    cxGrid1DBTableView1Valor_Total_NF: TcxGridDBColumn;
-    cxGrid1DBTableView1Observacoes: TcxGridDBColumn;
     Label10: TLabel;
     Label13: TLabel;
     cmbCondicaoPagamento: TcxLookupComboBox;
@@ -191,6 +172,24 @@ type
     qryConsultaCodigo_Tipo_Documento: TIntegerField;
     qryConsultaCodigo_Lancamento_Financeiro: TIntegerField;
     qryitensfolhaItem: TStringField;
+    cxGrid1DBTableView1Codigo: TcxGridDBColumn;
+    cxGrid1DBTableView1Codigo_Propriedade: TcxGridDBColumn;
+    cxGrid1DBTableView1Codigo_Usuario: TcxGridDBColumn;
+    cxGrid1DBTableView1Codigo_Safra: TcxGridDBColumn;
+    cxGrid1DBTableView1Codigo_Funcionario: TcxGridDBColumn;
+    cxGrid1DBTableView1Data_Lancamento: TcxGridDBColumn;
+    cxGrid1DBTableView1Mes_Ano: TcxGridDBColumn;
+    cxGrid1DBTableView1Total_Credito: TcxGridDBColumn;
+    cxGrid1DBTableView1Total_Debito: TcxGridDBColumn;
+    cxGrid1DBTableView1Salario_Final: TcxGridDBColumn;
+    cxGrid1DBTableView1Observacao: TcxGridDBColumn;
+    cxGrid1DBTableView1Codigo_Forma_Pagamento: TcxGridDBColumn;
+    cxGrid1DBTableView1Codigo_Plano_Financeiro: TcxGridDBColumn;
+    cxGrid1DBTableView1Codigo_Departamento: TcxGridDBColumn;
+    cxGrid1DBTableView1Codigo_Tipo_Documento: TcxGridDBColumn;
+    cxGrid1DBTableView1Codigo_Lancamento_Financeiro: TcxGridDBColumn;
+    qryConsultaFuncionario: TStringField;
+    cxGrid1DBTableView1Funcionario: TcxGridDBColumn;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -353,8 +352,9 @@ begin
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
   TOperacoesConexao.IniciaQuerys([qryConsulta,
                                   qryitensfolha,
+                                  DM.qryitensFolha,
                                   DM.qrySafra,
-                                  dm.qryfuncionario,
+                                  dm.qrypessoa,
                                   dm.qrycondicaoPagamento,
                                   dm.qryplanoFinanceiro,
                                   dm.qrytipoDocumento,
@@ -462,7 +462,6 @@ begin
     begin
       FFolhaDominio:= TFolhaPagamentoDominio.Create(Conexao);
       FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao);
-      ShowMessage(IntToStr(FFolhaDominio.BuscaCodigoLancamentoFinanceiro( StrToInt(EdtCodigo.Text), Retorno)));
       if (FLFDominio.ExcluirPeloCodigoMovimentacao(FFolhaDominio.BuscaCodigoLancamentoFinanceiro( StrToInt(EdtCodigo.Text), Retorno)
                                                   , Retorno)=0) and (Retorno <> '') then
       begin
@@ -482,7 +481,6 @@ begin
 
       FFolhaEntidade.Codigo_Lancamento_Financeiro:= CodigoLancamentoFinanceiro;
       FFolhaDominio:= TFolhaPagamentoDominio.Create(Conexao, FFolhaEntidade);
-      ShowMessage(IntToStr(CodigoLancamentoFinanceiro));
 
       if (FFolhaDominio.Alterar(Retorno) = 0) then
       begin

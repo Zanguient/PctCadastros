@@ -7,6 +7,7 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
   ClientHeight = 436
   ClientWidth = 830
   Color = clWindow
+  Enabled = False
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -1109,7 +1110,7 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
           Navigator.Buttons.Append.Visible = False
           Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
           Navigator.Buttons.Delete.ImageIndex = 2
-          Navigator.Buttons.Delete.Visible = True
+          Navigator.Buttons.Delete.Visible = False
           Navigator.Buttons.Edit.Visible = False
           Navigator.Buttons.Post.Visible = False
           Navigator.Buttons.Cancel.Visible = False
@@ -1133,6 +1134,10 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
             item
               Kind = skCount
               FieldName = 'Codigo'
+            end
+            item
+              Kind = skCount
+              Column = cxGrid1DBTableView1Codigo
             end>
           DataController.Summary.SummaryGroups = <>
           DateTimeHandling.DateFormat = 'DD/MM/YYYY'
@@ -1320,7 +1325,6 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
     end
   end
   object qryConsulta: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -1439,7 +1443,6 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
     end
   end
   object qryManutencaoMaquinaServico: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -1496,7 +1499,6 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
     end
   end
   object qryManutencaoMaquinaServicoProxRev: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -1523,7 +1525,6 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
     Top = 48
   end
   object qryManutencaoMaquinaProduto: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     AfterInsert = qryManutencaoMaquinaProdutoAfterInsert
     Parameters = <>

@@ -13,7 +13,8 @@ type
     public
       function Salvar(var Retorno: AnsiString): integer;
       function Excluir(var Retorno: AnsiString): integer;
-      function Buscar(CodigoLancamento: integer; var Query: TADOQuery; var Retorno: AnsiString): integer;
+      function Buscar(CodigoLancamento: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
+      function Buscar(var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       function AtualizaParcela(CodigoConta: integer; Status: AnsiString; DataPagamento: TDate; Cheque,
                                ContaBancaria: AnsiString; CodigoLancamentoBancario: integer;
                                Observacoes: AnsiString): Integer;
@@ -90,6 +91,24 @@ constructor TLancamentoFinanceiroParcelasDominio.Create(
 begin
   Self.Conexao:= Conexao;
   Self.FLFParcelas:= FLFParcelas;
+end;
+
+function TLancamentoFinanceiroParcelasDominio.Buscar(var Query: TADOQuery;
+  var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select LFP.* from Lancamento_Financeiro_Parcelas LFP order by LFP.Codigo';
+    //FComandoSQL.Parametros.Add('Codigo');
+    //FComandoSQL.Valores.Add(CodigoLancamento);
+    FLFParcelasDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FLFParcelasDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
 end;
 
 constructor TLancamentoFinanceiroParcelasDominio.Create(

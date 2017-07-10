@@ -133,8 +133,11 @@ type
     FVeiculo: TVeiculoEntidade;
     FVeiculoDominio: TVeiculoDominio;
     FComandoSQL: TComandoSQLEntidade;
+    Conexao: TADOConnection;
+
     function Confira: boolean;
     procedure BuscaDados;
+    procedure IniciaTela;
   public
     ativo, enderec, achei: boolean;
 
@@ -146,7 +149,7 @@ var
   FrmCadastro_Veiculo: TFrmCadastro_Veiculo;
 implementation
 
-uses UDM;
+uses UDM, OperacoesConexao;
 
 {$R *.dfm}
 
@@ -156,6 +159,7 @@ procedure TFrmCadastro_Veiculo.BBtnCancelarClick(Sender: TObject);
 begin
   Op.LimpaCampos(FrmCadastro_Veiculo);
   Op.DesabilitaCampos(FrmCadastro_Veiculo);
+  TOperacoesConexao.CancelaConexao(Conexao);
   BBtnSalvar.Enabled:= false;
   BBtnCancelar.Enabled:= false;
   BBtnNovo.Enabled:= true;
@@ -168,30 +172,28 @@ var
 begin
   if (Mensagens.MensagemConfirmacao(MensagemConfirmaExclusao)) then
   begin
-    FVeiculoDominio:= TVeiculoDominio.Create(dm.ADOConnection1, FVeiculo);
-    if (FVeiculoDominio.Excluir(Retorno) <> 0) then
+    FVeiculoDominio:= TVeiculoDominio.Create(Conexao, FVeiculo);
+    if (FVeiculoDominio.Excluir(Retorno) = 0) then
     begin
-      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-      EdtCodigo.Text +' '+EdtPlaca.Text+' '+EdtModelo.Text, date, TimeToStr(time), 'Exclusão');
-      HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-      begin
-        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-      end;
-
-      Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-    end
-    else
-    begin
-      Mensagens.MensagemErro(MensagemErroAoGravar);
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+      Exit;
     end;
 
-    BBtnSalvar.Enabled:= false;
-    BBtnExcluir.Enabled:= false;
-    BBtnNovo.Enabled:= true;
-    BBtnCancelar.Enabled:= false;
-    Op.DesabilitaCampos(FrmCadastro_Veiculo);
-    BuscaDados;
+    HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+    EdtCodigo.Text +' '+EdtPlaca.Text+' '+EdtModelo.Text, date, TimeToStr(time), 'Exclusão');
+    HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+    if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
+    begin
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+      Exit;
+    end;
+    TOperacoesConexao.ConfirmaConexao(Conexao);
+    IniciaTela;
+    Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
   end;
 end;
 
@@ -216,6 +218,8 @@ begin
   BBtnExcluir.Enabled:= false;
   achei:= false;
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
+  Conexao:= TOperacoesConexao.NovaConexao(Conexao);
+  TOperacoesConexao.IniciaQuerys([qryConsulta], Conexao);
   BuscaDados;
   EdtKm_Entrada.Text:= '0';
   EdtKm_Saida.Text:= '0';
@@ -257,55 +261,63 @@ begin
     FVeiculo.Tipo:= rgTipo.Properties.Items[rgTipo.ItemIndex].Caption;
     FVeiculo.Unidade_Trabalho:= rgUnidadeTrabalho.Properties.Items[rgUnidadeTrabalho.ItemIndex].Caption;
     FVeiculo.DataCadastro:= StrToDateTime(MEdtData_Cadastro.Text);
-    FVeiculoDominio:= TVeiculoDominio.Create(dm.ADOConnection1, FVeiculo);
+    FVeiculoDominio:= TVeiculoDominio.Create(Conexao, FVeiculo);
 
     if (achei = false) then
     begin
-      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Veiculo', dm.ADOConnection1));
+      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Veiculo', Conexao));
       FVeiculo.Codigo:= StrToInt(EdtCodigo.Text);
 
-      if (FVeiculoDominio.Salvar(Retorno) <> 0) then
+      if (FVeiculoDominio.Salvar(Retorno) = 0) then
       begin
-        HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-        EdtCodigo.Text +' '+EdtPlaca.Text+' '+EdtModelo.Text, date, TimeToStr(time), 'Inserção');
-        HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-        if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-        begin
-          Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-        end;
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+        Exit;
+      end;
 
-        Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-      end
-      else
+      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+      EdtCodigo.Text +' '+EdtPlaca.Text+' '+EdtModelo.Text, date, TimeToStr(time), 'Inserção');
+      HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
-        Mensagens.MensagemErro(MensagemErroAoGravar + Retorno);
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Exit;
       end;
     end
     else
     begin
       FVeiculo.Codigo:= StrToInt(EdtCodigo.Text);
 
-      if (FVeiculoDominio.Alterar(Retorno) <> 0) then
+      if (FVeiculoDominio.Alterar(Retorno) = 0) then
       begin
-        HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-        EdtCodigo.Text +' '+EdtPlaca.Text+' '+EdtModelo.Text, date, TimeToStr(time), 'Alteração');
-        HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-        if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-        begin
-          Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-        end;
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+        Exit;
+      end;
 
-        Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-      end
-      else
+      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+      EdtCodigo.Text +' '+EdtPlaca.Text+' '+EdtModelo.Text, date, TimeToStr(time), 'Alteração');
+      HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
-        Mensagens.MensagemErro(MensagemErroAoGravar + Retorno);
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Exit;
       end;
     end;
-  end
-  else
-    exit;
+    TOperacoesConexao.ConfirmaConexao(Conexao);
+    IniciaTela;
+    Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
+  end;
+end;
 
+procedure TFrmCadastro_Veiculo.IniciaTela;
+begin
   BBtnSalvar.Enabled:= false;
   BBtnNovo.Enabled:= true;
   BBtnCancelar.Enabled:= false;
@@ -318,7 +330,7 @@ procedure TFrmCadastro_Veiculo.BuscaDados;
 var
   Retorno: AnsiString;
 begin
-  FVeiculoDominio:= TVeiculoDominio.Create(dm.ADOConnection1);
+  FVeiculoDominio:= TVeiculoDominio.Create(Conexao);
   if (FVeiculoDominio.Buscar(FPropriedade.Codigo, qryConsulta, Retorno) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);

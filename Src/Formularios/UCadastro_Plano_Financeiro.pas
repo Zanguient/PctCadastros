@@ -132,9 +132,9 @@ uses UDM, OperacoesConexao;
 
 procedure TFrmCadastro_Plano_Financeiro.BBtnCancelarClick(Sender: TObject);
 begin
-  TOperacoesConexao.CancelaConexao(Conexao);
   Op.LimpaCampos(FrmCadastro_Plano_Financeiro);
-  Op.DesabilitaEdits(FrmCadastro_Plano_Financeiro);
+  Op.DesabilitaCampos(FrmCadastro_Plano_Financeiro);
+  TOperacoesConexao.CancelaConexao(Conexao);
   BBtnSalvar.Enabled:= false;
   BBtnCancelar.Enabled:= false;
   BBtnNovo.Enabled:= true;
@@ -146,7 +146,7 @@ var
 begin
   if (Mensagens.MensagemConfirmacao(MensagemConfirmaExclusao)) then
   begin
-    FPlanoFinanceiroDominio:= TPlanoFinanceiroDominio.Create(dm.ADOConnection1, FPlanoFinanceiro);
+    FPlanoFinanceiroDominio:= TPlanoFinanceiroDominio.Create(Conexao, FPlanoFinanceiro);
     if (FPlanoFinanceiroDominio.Excluir(Retorno) <> 0) then
     begin
       Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
@@ -161,7 +161,7 @@ begin
     BBtnSalvar.Enabled:= false;
     BBtnNovo.Enabled:= true;
     BBtnCancelar.Enabled:= false;
-    Op.DesabilitaEdits(FrmCadastro_Plano_Financeiro);
+    Op.DesabilitaCampos(FrmCadastro_Plano_Financeiro);
     BuscaDados;
   end;
 end;
@@ -179,7 +179,7 @@ end;
 procedure TFrmCadastro_Plano_Financeiro.BBtnNovoClick(Sender: TObject);
 begin
   PageControl1.TabIndex:= 0;
-  Op.HabilitaEdits(FrmCadastro_Plano_Financeiro);
+  Op.HabilitaCampos(FrmCadastro_Plano_Financeiro);
   Op.LimpaCampos(FrmCadastro_Plano_Financeiro);
   BBtnCancelar.Enabled:= true;
   BBtnSalvar.Enabled:= true;
@@ -187,7 +187,7 @@ begin
   achei:= false;
 
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryConsulta], Conexao);
+  TOperacoesConexao.IniciaQuerys([qryConsulta, dm.qryplanoFinanceiro], Conexao);
 
   IniDados:= IniciaDadosCadastro.Create();
   IniDados.BuscaDadosPlanoFinanceiro(Conexao);
@@ -203,7 +203,7 @@ begin
   begin
     TOperacoesConexao.ConfirmaConexao(Conexao);
     {FPlanoFinanceiro:= TPlanoFinanceiroEntidade.Create;
-    FPlanoFinanceiroDominio:= TPlanoFinanceiroDominio.Create(dm.ADOConnection1, FPlanoFinanceiro);
+    FPlanoFinanceiroDominio:= TPlanoFinanceiroDominio.Create(Conexao, FPlanoFinanceiro);
 
     if (achei = false) then
     begin
@@ -234,7 +234,7 @@ begin
   BBtnSalvar.Enabled:= false;
   BBtnNovo.Enabled:= true;
   BBtnCancelar.Enabled:= false;
-  Op.DesabilitaEdits(FrmCadastro_Plano_Financeiro);
+  Op.DesabilitaCampos(FrmCadastro_Plano_Financeiro);
   BuscaDados;
 end;
 
@@ -242,7 +242,7 @@ procedure TFrmCadastro_Plano_Financeiro.BuscaDados;
 var
   Retorno: AnsiString;
 begin
-  FPlanoFinanceiroDominio:= TPlanoFinanceiroDominio.Create(dm.ADOConnection1);
+  FPlanoFinanceiroDominio:= TPlanoFinanceiroDominio.Create(Conexao);
   if (FPlanoFinanceiroDominio.Buscar(qryConsulta, Retorno) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
@@ -296,7 +296,7 @@ procedure TFrmCadastro_Plano_Financeiro.cxGrid1DBTableView1DblClick(Sender: TObj
 begin
   PageControl1.TabIndex:= 0;
   achei:= true;
-  Op.HabilitaEdits(FrmCadastro_Plano_Financeiro);
+  Op.HabilitaCampos(FrmCadastro_Plano_Financeiro);
 
   FPlanoFinanceiro:= TPlanoFinanceiroEntidade.Create;
   FPlanoFinanceiro.Codigo:= qryConsultaCodigo.AsInteger;
@@ -370,7 +370,7 @@ begin
   PageControl1.TabIndex:= 0;
   Op.HabilitaCampos(FrmCadastro_Plano_Financeiro);
   Op.LimpaCampos(FrmCadastro_Plano_Financeiro);
-  Op.DesabilitaEdits(FrmCadastro_Plano_Financeiro);
+  Op.DesabilitaCampos(FrmCadastro_Plano_Financeiro);
 end;
 
 procedure TFrmCadastro_Plano_Financeiro.MEdtData_CadastroExit(Sender: TObject);

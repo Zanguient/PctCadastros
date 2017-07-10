@@ -93,11 +93,13 @@ type
     FVariedade: TVariedadeCulturaEntidade;
     FVariedadeDominio: TVariedadeCulturaDominio;
     FComandoSQL: TComandoSQLEntidade;
+    Conexao: TADOConnection;
 
     //HistoricoEntidade: THistoricoEntidade;
     //HistoricoDominio: THistoricoDominio;
     function Confira: boolean;
     procedure BuscaDados;
+    procedure IniciaTela;
   public
     ativo, enderec, achei: boolean;
     constructor Create(FPropriedade: TPropriedadeEntidade; FUsuario: TLoginEntidade);
@@ -111,14 +113,15 @@ implementation
 
 {$R *.dfm}
 
-uses UDM;
+uses UDM, OperacoesConexao;
 
 { TFrmPadrao }
 
 procedure TFrmCadastro_Variedade_Cultura.BBtnCancelarClick(Sender: TObject);
 begin
   Op.LimpaCampos(FrmCadastro_Variedade_Cultura);
-  Op.DesabilitaEdits(FrmCadastro_Variedade_Cultura);
+  Op.DesabilitaCampos(FrmCadastro_Variedade_Cultura);
+  TOperacoesConexao.CancelaConexao(Conexao);
   BBtnSalvar.Enabled:= false;
   BBtnCancelar.Enabled:= false;
   BBtnNovo.Enabled:= true;
@@ -131,30 +134,29 @@ var
 begin
   if (Mensagens.MensagemConfirmacao(MensagemConfirmaExclusao)) then
   begin
-    FVariedadeDominio:= TVariedadeCulturaDominio.Create(dm.ADOConnection1, FVariedade);
-    if (FVariedadeDominio.Excluir(Retorno) <> 0) then
+    FVariedadeDominio:= TVariedadeCulturaDominio.Create(Conexao, FVariedade);
+    if (FVariedadeDominio.Excluir(Retorno) = 0) then
     begin
-      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-      EdtCodigo.Text +' '+EdtDescricao.Text, date, TimeToStr(time), 'Exclusão');
-      HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-      begin
-        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-      end;
-
-      Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-    end
-    else
-    begin
-      Mensagens.MensagemErro(MensagemErroAoGravar);
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+      Exit;
     end;
 
-    BBtnSalvar.Enabled:= false;
-    BBtnExcluir.Enabled:= false;
-    BBtnNovo.Enabled:= true;
-    BBtnCancelar.Enabled:= false;
-    Op.DesabilitaEdits(FrmCadastro_Variedade_Cultura);
-    BuscaDados;
+    HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+    EdtCodigo.Text +' '+EdtDescricao.Text, date, TimeToStr(time), 'Exclusão');
+    HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+    if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
+    begin
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+      Exit;
+    end;
+
+    TOperacoesConexao.ConfirmaConexao(Conexao);
+    IniciaTela;
+    Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
   end;
 end;
 
@@ -171,12 +173,15 @@ end;
 procedure TFrmCadastro_Variedade_Cultura.BBtnNovoClick(Sender: TObject);
 begin
   PageControl1.TabIndex:= 0;
-  Op.HabilitaEdits(FrmCadastro_Variedade_Cultura);
+  Op.HabilitaCampos(FrmCadastro_Variedade_Cultura);
   Op.LimpaCampos(FrmCadastro_Variedade_Cultura);
   BBtnSalvar.Enabled:= true;
   BBtnCancelar.Enabled:= true;
   BBtnNovo.Enabled:= false;
   BBtnExcluir.Enabled:= false;
+  Conexao:= TOperacoesConexao.NovaConexao(Conexao);
+  TOperacoesConexao.IniciaQuerys([qryConsulta], Conexao);
+  BuscaDados;
   achei:= false;
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
   EdtDescricao.SetFocus;
@@ -194,60 +199,68 @@ begin
 
     FVariedade.Descricao:= EdtDescricao.Text;
     FVariedade.DataCadastro:= StrToDateTime(MEdtData_Cadastro.Text);
-    FVariedadeDominio:= TVariedadeCulturaDominio.Create(dm.ADOConnection1, FVariedade);
+    FVariedadeDominio:= TVariedadeCulturaDominio.Create(Conexao, FVariedade);
 
     if (achei = false) then
     begin
-      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Variedade_Cultura', dm.ADOConnection1));
+      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Variedade_Cultura', Conexao));
       FVariedade.Codigo:= StrToInt(EdtCodigo.Text);
 
-      if (FVariedadeDominio.Salvar(Retorno) <> 0) then
+      if (FVariedadeDominio.Salvar(Retorno) = 0) then
       begin
-        HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-        EdtCodigo.Text +' '+EdtDescricao.Text, date, TimeToStr(time), 'Inserção');
-        HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-        if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-        begin
-          Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-        end;
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+        Exit;
+      end;
 
-        Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-      end
-      else
+      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+      EdtCodigo.Text +' '+EdtDescricao.Text, date, TimeToStr(time), 'Inserção');
+      HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
-        Mensagens.MensagemErro(MensagemErroAoGravar + Retorno);
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Exit;
       end;
     end
     else
     begin
       FVariedade.Codigo:= StrToInt(EdtCodigo.Text);
 
-      if (FVariedadeDominio.Alterar(Retorno) <> 0) then
+      if (FVariedadeDominio.Alterar(Retorno) = 0) then
       begin
-        HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-        EdtCodigo.Text +' '+EdtDescricao.Text, date, TimeToStr(time), 'Alteração');
-        HistoricoDominio:= THistoricoDominio.Create(dm.ADOConnection1, HistoricoEntidade);
-        if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
-        begin
-          Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-        end;
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+        Exit;
+      end;
 
-        Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
-      end
-      else
+      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+      EdtCodigo.Text +' '+EdtDescricao.Text, date, TimeToStr(time), 'Alteração');
+      HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
-        Mensagens.MensagemErro(MensagemErroAoGravar + Retorno);
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Exit;
       end;
     end;
-  end
-  else
-    exit;
+    TOperacoesConexao.ConfirmaConexao(Conexao);
+    IniciaTela;
+    Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
+  end;
+end;
 
+procedure TFrmCadastro_Variedade_Cultura.IniciaTela;
+begin
   BBtnSalvar.Enabled:= false;
   BBtnNovo.Enabled:= true;
   BBtnCancelar.Enabled:= false;
   BBtnExcluir.Enabled:= false;
-  Op.DesabilitaEdits(FrmCadastro_Variedade_Cultura);
+  Op.DesabilitaCampos(FrmCadastro_Variedade_Cultura);
   BuscaDados;
 end;
 
@@ -255,7 +268,7 @@ procedure TFrmCadastro_Variedade_Cultura.BuscaDados;
 var
   Retorno: AnsiString;
 begin
-  FVariedadeDominio:= TVariedadeCulturaDominio.Create(dm.ADOConnection1);
+  FVariedadeDominio:= TVariedadeCulturaDominio.Create(Conexao);
   if (FVariedadeDominio.Buscar(FPropriedade.Codigo, qryConsulta, Retorno) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
@@ -288,7 +301,7 @@ procedure TFrmCadastro_Variedade_Cultura.cxGrid1DBTableView1DblClick(Sender: TOb
 begin
   PageControl1.TabIndex:= 0;
   achei:= true;
-  Op.HabilitaEdits(FrmCadastro_Variedade_Cultura);
+  Op.HabilitaCampos(FrmCadastro_Variedade_Cultura);
 
   EdtCodigo.Text:= qryConsultaCodigo.AsString;
   MEdtData_Cadastro.Text:= qryConsultaData_Cadastro.AsString;
@@ -366,10 +379,9 @@ var
   Retorno: AnsiString;
 begin
   PageControl1.TabIndex:= 0;
-  BuscaDados;
   Op.HabilitaCampos(FrmCadastro_Variedade_Cultura);
   Op.LimpaCampos(FrmCadastro_Variedade_Cultura);
-  Op.DesabilitaEdits(FrmCadastro_Variedade_Cultura);
+  Op.DesabilitaCampos(FrmCadastro_Variedade_Cultura);
 end;
 
 procedure TFrmCadastro_Variedade_Cultura.MEdtData_CadastroEnter(Sender: TObject);

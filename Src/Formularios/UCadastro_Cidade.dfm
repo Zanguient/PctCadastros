@@ -32,12 +32,16 @@ object FrmCadastro_Cidade: TFrmCadastro_Cidade
     Width = 472
     Height = 251
     Cursor = crHandPoint
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Cadastrar'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object LblCodigo: TLabel
         Left = 0
         Top = 13
@@ -113,6 +117,7 @@ object FrmCadastro_Cidade: TFrmCadastro_Cidade
         BevelOuter = bvRaised
         BorderStyle = bsNone
         Color = clBtnFace
+        Enabled = False
         TabOrder = 0
       end
       object MEdtData_Cadastro: TMaskEdit
@@ -234,7 +239,7 @@ object FrmCadastro_Cidade: TFrmCadastro_Cidade
           Navigator.Buttons.Append.Visible = False
           Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
           Navigator.Buttons.Delete.ImageIndex = 2
-          Navigator.Buttons.Delete.Visible = True
+          Navigator.Buttons.Delete.Visible = False
           Navigator.Buttons.Edit.Visible = False
           Navigator.Buttons.Post.Visible = False
           Navigator.Buttons.Cancel.Visible = False
@@ -288,17 +293,20 @@ object FrmCadastro_Cidade: TFrmCadastro_Cidade
             DataBinding.FieldName = 'Cidade'
             RepositoryItem = cxEditRepository1TextItem1
             MinWidth = 50
+            Options.Editing = False
             Width = 193
           end
           object cxGrid1DBTableView1UF: TcxGridDBColumn
             DataBinding.FieldName = 'UF'
             RepositoryItem = cxEditRepository1TextItem1
             MinWidth = 2
+            Options.Editing = False
             Width = 39
           end
           object cxGrid1DBTableView1DDD: TcxGridDBColumn
             DataBinding.FieldName = 'DDD'
             MinWidth = 2
+            Options.Editing = False
             Width = 45
           end
           object cxGrid1DBTableView1Data_Cadastro: TcxGridDBColumn
@@ -409,7 +417,6 @@ object FrmCadastro_Cidade: TFrmCadastro_Cidade
     end
   end
   object qryConsulta: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

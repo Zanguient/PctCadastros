@@ -82,8 +82,8 @@ begin
     if (Tipo = 0) then
     begin
       FComandoSQL.ComandoSQL:= 'select * from Estoque_Grao EG where '+
-                               ' Codigo_Safra = :Codigo_Safra and '+
-                               ' Codigo_Fazenda = :Codigo_Fazenda ';
+                               ' EG.Codigo_Safra = :Codigo_Safra and '+
+                               ' EG.Codigo_Fazenda = :Codigo_Fazenda ';
       FComandoSQL.Parametros.Add('Codigo_Safra');
       //FComandoSQL.Parametros.Add('Codigo_Armazem');
       //FComandoSQL.Parametros.Add('Codigo_Produto');

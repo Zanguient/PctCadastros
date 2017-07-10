@@ -57,7 +57,9 @@ begin
   try
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
-    FComandoSQL.ComandoSQL:= 'select * from Folha_Pagamento_Itens';
+    FComandoSQL.ComandoSQL:= 'select FPI.*, CIFP.Descricao as Item from Folha_Pagamento_Itens FPI '+
+                             ' left join Cadastro_Item_Folha_Pagamento CIFP on (FPI.Codigo_Item = CIFP.Codigo)' +
+                             ' order by FPI.Codigo ';
     FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FEntidadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally

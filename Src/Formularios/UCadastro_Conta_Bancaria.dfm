@@ -32,7 +32,7 @@ object FrmCadastro_Conta_Bancaria: TFrmCadastro_Conta_Bancaria
     Width = 472
     Height = 251
     Cursor = crHandPoint
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
@@ -152,6 +152,7 @@ object FrmCadastro_Conta_Bancaria: TFrmCadastro_Conta_Bancaria
         BevelOuter = bvRaised
         BorderStyle = bsNone
         Color = clBtnFace
+        Enabled = False
         TabOrder = 0
       end
       object MEdtData_Cadastro: TMaskEdit
@@ -287,7 +288,7 @@ object FrmCadastro_Conta_Bancaria: TFrmCadastro_Conta_Bancaria
           Navigator.Buttons.Append.Visible = False
           Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
           Navigator.Buttons.Delete.ImageIndex = 2
-          Navigator.Buttons.Delete.Visible = True
+          Navigator.Buttons.Delete.Visible = False
           Navigator.Buttons.Edit.Visible = False
           Navigator.Buttons.Post.Visible = False
           Navigator.Buttons.Cancel.Visible = False
@@ -311,6 +312,10 @@ object FrmCadastro_Conta_Bancaria: TFrmCadastro_Conta_Bancaria
             item
               Kind = skCount
               FieldName = 'Codigo'
+            end
+            item
+              Kind = skCount
+              Column = cxGrid1DBTableView1Codigo
             end>
           DataController.Summary.SummaryGroups = <>
           DateTimeHandling.DateFormat = 'DD/MM/YYYY'
@@ -486,7 +491,6 @@ object FrmCadastro_Conta_Bancaria: TFrmCadastro_Conta_Bancaria
     end
   end
   object qryConsulta: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

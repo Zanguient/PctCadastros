@@ -15,8 +15,10 @@ type
       function Alterar(var Retorno: AnsiString): integer;
       function Excluir(var Retorno: AnsiString): integer;
       function ExcluirProximaRevisao(var Retorno: AnsiString): integer;
-      function Buscar(CodigoManutencao: integer; var Query: TADOQuery; var Retorno: AnsiString): integer;
-      function BuscarServicoProximaRevisao(CodigoManutencao: integer; var Query: TADOQuery; var Retorno: AnsiString): integer;
+      function Buscar(CodigoManutencao: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
+      function Buscar(var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
+      function BuscarServicoProximaRevisao(CodigoManutencao: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
+      function BuscarServicoProximaRevisao(var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       constructor Create(var Conexao: TADOConnection; FManutencaoMaquinaServico: TManutencaoMaquinaServicoEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
   end;
@@ -44,6 +46,40 @@ begin
     FComandoSQL.ComandoSQL:= 'select * from Manutencao_Maquina_Servico where Codigo_Manutencao = :Codigo_Manutencao';
     FComandoSQL.Parametros.Add('Codigo_Manutencao');
     FComandoSQL.Valores.Add(CodigoManutencao);
+    FManutencaoMaquinaServicoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FManutencaoMaquinaServicoDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TManutencaoMaquinaServicoDominio.Buscar(var Query: TADOQuery;
+  var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select MMS.*, CS.Descricao as Servico from Manutencao_Maquina_Servico MMS '+
+                             ' left join Cadastro_Servico CS on (MMS.Codigo_Servico = CS.Codigo)'+
+                             ' order by MMS.Codigo';
+    FManutencaoMaquinaServicoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FManutencaoMaquinaServicoDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TManutencaoMaquinaServicoDominio.BuscarServicoProximaRevisao(
+  var Query: TADOQuery; var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select MMSPR.* from Manutencao_Maquina_Servico_Proxima_Revisao MMSPR order by MMSPR.Codigo ';
     FManutencaoMaquinaServicoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FManutencaoMaquinaServicoDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally

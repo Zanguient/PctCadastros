@@ -217,6 +217,7 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
         BevelOuter = bvRaised
         BorderStyle = bsNone
         Color = clBtnFace
+        Enabled = False
         TabOrder = 0
       end
       object cmbSafra: TcxLookupComboBox
@@ -1181,7 +1182,7 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
           Navigator.Buttons.Append.Visible = False
           Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
           Navigator.Buttons.Delete.ImageIndex = 2
-          Navigator.Buttons.Delete.Visible = True
+          Navigator.Buttons.Delete.Visible = False
           Navigator.Buttons.Edit.Visible = False
           Navigator.Buttons.Post.Visible = False
           Navigator.Buttons.Cancel.Visible = False
@@ -1205,6 +1206,10 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
             item
               Kind = skCount
               FieldName = 'Codigo'
+            end
+            item
+              Kind = skCount
+              Column = cxGrid1DBTableView1Codigo
             end>
           DataController.Summary.SummaryGroups = <>
           DateTimeHandling.DateFormat = 'DD/MM/YYYY'
@@ -1230,12 +1235,6 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
             DataBinding.FieldName = 'Codigo'
             Options.Editing = False
           end
-          object cxGrid1DBTableView1Data_Cadastro: TcxGridDBColumn
-            Caption = 'Cadastro'
-            DataBinding.FieldName = 'Data_Cadastro'
-            Options.Editing = False
-            Width = 80
-          end
           object cxGrid1DBTableView1Codigo_Propriedade: TcxGridDBColumn
             DataBinding.FieldName = 'Codigo_Propriedade'
             Visible = False
@@ -1246,20 +1245,56 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
             Visible = False
             Options.Editing = False
           end
-          object cxGrid1DBTableView1Data_Emissao: TcxGridDBColumn
-            Caption = 'Emiss'#227'o'
-            DataBinding.FieldName = 'Data_Emissao'
+          object cxGrid1DBTableView1Codigo_Safra: TcxGridDBColumn
+            DataBinding.FieldName = 'Codigo_Safra'
+            Visible = False
             Options.Editing = False
-            Width = 80
           end
-          object cxGrid1DBTableView1N_Nota_Fiscal: TcxGridDBColumn
-            Caption = 'N'#186' Nota Fiscal'
-            DataBinding.FieldName = 'N_Nota_Fiscal'
+          object cxGrid1DBTableView1Codigo_Funcionario: TcxGridDBColumn
+            DataBinding.FieldName = 'Codigo_Funcionario'
+            Visible = False
             Options.Editing = False
-            Width = 114
           end
-          object cxGrid1DBTableView1Codigo_Fornecedor: TcxGridDBColumn
-            DataBinding.FieldName = 'Codigo_Fornecedor'
+          object cxGrid1DBTableView1Data_Lancamento: TcxGridDBColumn
+            DataBinding.FieldName = 'Data_Lancamento'
+            Visible = False
+            Options.Editing = False
+          end
+          object cxGrid1DBTableView1Funcionario: TcxGridDBColumn
+            Caption = 'Funcion'#225'rio'
+            DataBinding.FieldName = 'Funcionario'
+            Options.Editing = False
+            Width = 200
+          end
+          object cxGrid1DBTableView1Mes_Ano: TcxGridDBColumn
+            Caption = 'M'#234's/Ano'
+            DataBinding.FieldName = 'Mes_Ano'
+            Options.Editing = False
+            Width = 66
+          end
+          object cxGrid1DBTableView1Total_Credito: TcxGridDBColumn
+            Caption = 'Total Cr'#233'dito'
+            DataBinding.FieldName = 'Total_Credito'
+            PropertiesClassName = 'TcxCurrencyEditProperties'
+            Options.Editing = False
+            Width = 110
+          end
+          object cxGrid1DBTableView1Total_Debito: TcxGridDBColumn
+            Caption = 'Total D'#233'bito'
+            DataBinding.FieldName = 'Total_Debito'
+            PropertiesClassName = 'TcxCurrencyEditProperties'
+            Options.Editing = False
+            Width = 110
+          end
+          object cxGrid1DBTableView1Salario_Final: TcxGridDBColumn
+            Caption = 'Sal'#225'rio Final'
+            DataBinding.FieldName = 'Salario_Final'
+            PropertiesClassName = 'TcxCurrencyEditProperties'
+            Options.Editing = False
+            Width = 110
+          end
+          object cxGrid1DBTableView1Observacao: TcxGridDBColumn
+            DataBinding.FieldName = 'Observacao'
             Visible = False
             Options.Editing = False
           end
@@ -1273,8 +1308,8 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
             Visible = False
             Options.Editing = False
           end
-          object cxGrid1DBTableView1Codigo_Safra: TcxGridDBColumn
-            DataBinding.FieldName = 'Codigo_Safra'
+          object cxGrid1DBTableView1Codigo_Departamento: TcxGridDBColumn
+            DataBinding.FieldName = 'Codigo_Departamento'
             Visible = False
             Options.Editing = False
           end
@@ -1283,43 +1318,8 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
             Visible = False
             Options.Editing = False
           end
-          object cxGrid1DBTableView1Codigo_Departamento: TcxGridDBColumn
-            DataBinding.FieldName = 'Codigo_Departamento'
-            Visible = False
-            Options.Editing = False
-          end
-          object cxGrid1DBTableView1Valor_Produtos: TcxGridDBColumn
-            DataBinding.FieldName = 'Valor_Produtos'
-            Visible = False
-            Options.Editing = False
-          end
-          object cxGrid1DBTableView1Valor_Frete: TcxGridDBColumn
-            DataBinding.FieldName = 'Valor_Frete'
-            Visible = False
-            Options.Editing = False
-          end
-          object cxGrid1DBTableView1Valor_Seguro: TcxGridDBColumn
-            DataBinding.FieldName = 'Valor_Seguro'
-            Visible = False
-            Options.Editing = False
-          end
-          object cxGrid1DBTableView1Valor_Outras_Despesas: TcxGridDBColumn
-            DataBinding.FieldName = 'Valor_Outras_Despesas'
-            Visible = False
-            Options.Editing = False
-          end
-          object cxGrid1DBTableView1Valor_Desconto: TcxGridDBColumn
-            DataBinding.FieldName = 'Valor_Desconto'
-            Visible = False
-            Options.Editing = False
-          end
-          object cxGrid1DBTableView1Valor_Total_NF: TcxGridDBColumn
-            DataBinding.FieldName = 'Valor_Total_NF'
-            Visible = False
-            Options.Editing = False
-          end
-          object cxGrid1DBTableView1Observacoes: TcxGridDBColumn
-            DataBinding.FieldName = 'Observacoes'
+          object cxGrid1DBTableView1Codigo_Lancamento_Financeiro: TcxGridDBColumn
+            DataBinding.FieldName = 'Codigo_Lancamento_Financeiro'
             Visible = False
             Options.Editing = False
           end
@@ -1433,12 +1433,12 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
     end
   end
   object qryConsulta: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
       'select * from Folha_Pagamento')
     Left = 560
+    Top = 56
     object qryConsultaCodigo: TIntegerField
       FieldName = 'Codigo'
     end
@@ -1488,15 +1488,28 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
     object qryConsultaCodigo_Lancamento_Financeiro: TIntegerField
       FieldName = 'Codigo_Lancamento_Financeiro'
     end
+    object qryConsultaFuncionario: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Funcionario'
+      LookupDataSet = DM.qrypessoa
+      LookupKeyFields = 'Codigo'
+      LookupResultField = 'Nome'
+      KeyFields = 'Codigo_Funcionario'
+      LookupCache = True
+      Size = 100
+      Lookup = True
+    end
   end
   object dsConsulta: TDataSource
     DataSet = qryConsulta
     Left = 592
+    Top = 56
   end
   object cxPropertiesStore1: TcxPropertiesStore
     Components = <>
     StorageName = 'ConfiguraGrid'
     Left = 456
+    Top = 56
   end
   object dxComponentPrinter1: TdxComponentPrinter
     CurrentLink = dxComponentPrinter1Link1
@@ -1505,6 +1518,7 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
     PrintTitle = 'Impress'#227'o de relat'#243'rio'
     Version = 0
     Left = 488
+    Top = 56
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
       PrinterPage.DMPaper = 9
@@ -1558,6 +1572,7 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
   end
   object cxEditRepository1: TcxEditRepository
     Left = 520
+    Top = 56
     object cxEditRepository1TextItem1: TcxEditRepositoryTextItem
       Properties.CharCase = ecUpperCase
     end
@@ -1566,6 +1581,7 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
   end
   object cxStyleRepository1: TcxStyleRepository
     Left = 624
+    Top = 56
     PixelsPerInch = 96
     object cxStyle1: TcxStyle
       AssignedValues = [svFont]
@@ -1577,13 +1593,13 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
     end
   end
   object qryitensfolha: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     AfterPost = qryitensfolhaAfterPost
     Parameters = <>
     SQL.Strings = (
       'select * from Folha_Pagamento_Itens')
     Left = 664
+    Top = 56
     object qryitensfolhaCodigo: TIntegerField
       FieldName = 'Codigo'
     end
@@ -1621,5 +1637,6 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
   object dsitensfolha: TDataSource
     DataSet = qryitensfolha
     Left = 696
+    Top = 56
   end
 end

@@ -421,7 +421,8 @@ end;
 procedure TFrmLista_Lancamento_Financeiro.IniciaConexao;
 begin
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryLancamento], Conexao);
+  TOperacoesConexao.IniciaQuerys([qryLancamento,
+                                  dm.qrySafra], Conexao);
 end;
 
 procedure TFrmLista_Lancamento_Financeiro.qryParcelasData_PagamentoGetText(
@@ -475,7 +476,7 @@ var
   Tipo: integer;
 begin
   try
-    FLancamentoFinanceiroDominio:= TLancamentoFinanceiroDominio.Create;
+    FLancamentoFinanceiroDominio:= TLancamentoFinanceiroDominio.Create(Conexao);
 
     if (rgTipo.ItemIndex = 0) then
     begin

@@ -263,6 +263,7 @@ begin
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
   TOperacoesConexao.IniciaQuerys([qryConsulta, qrypessoaTelefone, qryPessoaDocumentos], Conexao);
   EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Pessoa', Conexao));
+  BuscaDados;
   BuscaDadosTelefone;
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
   EdtNome.SetFocus;
@@ -599,8 +600,6 @@ var
   Retorno: AnsiString;
 begin
   PageControl1.TabIndex:= 0;
-  BuscaDados;
-  //BuscaDadosTelefone;
   Op.HabilitaCampos(FrmCadastro_Pessoa);
   Op.LimpaCampos(FrmCadastro_Pessoa);
   Op.DesabilitaCampos(FrmCadastro_Pessoa);

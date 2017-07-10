@@ -140,7 +140,7 @@ object FrmLista_Lancamento_Financeiro: TFrmLista_Lancamento_Financeiro
         Caption = 'Lan'#231'amento'
         DataBinding.FieldName = 'Data_Lancamento'
         Options.Editing = False
-        Width = 70
+        Width = 64
         Position.BandIndex = 0
         Position.ColIndex = 5
         Position.RowIndex = 0
@@ -149,7 +149,7 @@ object FrmLista_Lancamento_Financeiro: TFrmLista_Lancamento_Financeiro
         Caption = 'Vencimento'
         DataBinding.FieldName = 'Data_Vencimento'
         Options.Editing = False
-        Width = 70
+        Width = 64
         Position.BandIndex = 0
         Position.ColIndex = 6
         Position.RowIndex = 0
@@ -429,7 +429,6 @@ object FrmLista_Lancamento_Financeiro: TFrmLista_Lancamento_Financeiro
     Width = 122
   end
   object qryLancamento: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

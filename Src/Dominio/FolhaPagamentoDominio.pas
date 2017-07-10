@@ -15,7 +15,8 @@ type
       function Alterar(var Retorno: AnsiString): integer;
       function Excluir(var Retorno: AnsiString): integer;
       function BuscaCodigoLancamentoFinanceiro(CodigoFolha: integer; var Retorno: AnsiString): integer;
-      function Buscar(CodigoPropriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): integer;
+      function Buscar(CodigoPropriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
+      function Buscar(CodigoPropriedade: integer; CodigoSafra: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       constructor Create(var Conexao: TADOConnection; FEntidade: TFolhaPagamentoEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
   end;
@@ -97,6 +98,35 @@ begin
   end;
 end;
 
+function TFolhaPagamentoDominio.Buscar(CodigoPropriedade, CodigoSafra: integer;
+  var Query: TADOQuery; var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select FP.*, CS.Descricao as Safra, CPesFun.Nome as Funcionario, CPag.Descricao as CondPag, '+
+                            ' CPlan.Descricao as PlanoFinanceiro, CTD.Descricao as TipoDocumento, '+
+                            ' CD.Descricao as Departamento from Folha_Pagamento FP '+
+                            ' left join Cadastro_Safra CS on (FP.Codigo_Safra = CS.Codigo) '+
+                            ' left join Cadastro_Pessoa CPesFun on (FP.Codigo_Funcionario = CPesFun.Codigo) '+
+                            ' left join Condicao_Pagamento CPag on (FP.Codigo_Forma_Pagamento = CPag.Codigo) '+
+                            ' left join Cadastro_Plano_Financeiro CPlan on (FP.Codigo_Plano_Financeiro = CPlan.Codigo) '+
+                            ' left join Cadastro_Tipo_Documento CTD on (FP.Codigo_Tipo_Documento = CTD.Codigo) '+
+                            ' left join Cadastro_Departamento CD on (FP.Codigo_Departamento = CD.Codigo) '+
+                            ' where FP.Codigo_Propriedade = :Codigo_Propriedade and FP.Codigo_Safra = :Codigo_Safra';
+    FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    FComandoSQL.Parametros.Add('Codigo_Safra');
+    FComandoSQL.Valores.Add(CodigoPropriedade);
+    FComandoSQL.Valores.Add(CodigoSafra);
+    FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FEntidadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
 function TFolhaPagamentoDominio.Buscar(CodigoPropriedade: integer;
   var Query: TADOQuery; var Retorno: AnsiString): integer;
 var
@@ -105,7 +135,16 @@ begin
   try
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
-    FComandoSQL.ComandoSQL:= 'select * from Folha_Pagamento where Codigo_Propriedade = :Codigo_Propriedade';
+    FComandoSQL.ComandoSQL:= 'select FP.*, CS.Descricao as Safra, CPesFun.Nome as Funcionario, CPag.Descricao as CondPag, '+
+                            ' CPlan.Descricao as PlanoFinanceiro, CTD.Descricao as TipoDocumento, '+
+                            ' CD.Descricao as Departamento from Folha_Pagamento FP '+
+                            ' left join Cadastro_Safra CS on (FP.Codigo_Safra = CS.Codigo) '+
+                            ' left join Cadastro_Pessoa CPesFun on (FP.Codigo_Funcionario = CPesFun.Codigo) '+
+                            ' left join Condicao_Pagamento CPag on (FP.Codigo_Forma_Pagamento = CPag.Codigo) '+
+                            ' left join Cadastro_Plano_Financeiro CPlan on (FP.Codigo_Plano_Financeiro = CPlan.Codigo) '+
+                            ' left join Cadastro_Tipo_Documento CTD on (FP.Codigo_Tipo_Documento = CTD.Codigo) '+
+                            ' left join Cadastro_Departamento CD on (FP.Codigo_Departamento = CD.Codigo) '+
+                            ' where FP.Codigo_Propriedade = :Codigo_Propriedade';
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Valores.Add(CodigoPropriedade);
     FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);

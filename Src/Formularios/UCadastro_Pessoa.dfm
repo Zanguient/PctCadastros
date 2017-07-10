@@ -126,6 +126,7 @@ object FrmCadastro_Pessoa: TFrmCadastro_Pessoa
         BevelOuter = bvRaised
         BorderStyle = bsNone
         Color = clBtnFace
+        Enabled = False
         TabOrder = 0
       end
       object MEdtData_Cadastro: TMaskEdit
@@ -284,13 +285,15 @@ object FrmCadastro_Pessoa: TFrmCadastro_Pessoa
               OptionsView.Indicator = True
               Preview.Visible = True
               object cxGridDBTableView1CodigoTelefone: TcxGridDBColumn
+                Caption = 'C'#243'digo'
                 DataBinding.FieldName = 'CodigoTelefone'
-                Visible = False
                 Options.Editing = False
+                Width = 41
               end
               object cxGridDBTableView1CodigoPessoa: TcxGridDBColumn
                 Caption = 'C'#243'digo'
                 DataBinding.FieldName = 'CodigoPessoa'
+                Visible = False
                 Options.Editing = False
                 Width = 47
               end
@@ -550,6 +553,10 @@ object FrmCadastro_Pessoa: TFrmCadastro_Pessoa
             item
               Kind = skCount
               FieldName = 'Codigo'
+            end
+            item
+              Kind = skCount
+              Column = cxGrid1DBTableView1Codigo
             end>
           DataController.Summary.SummaryGroups = <>
           DateTimeHandling.DateFormat = 'DD/MM/YYYY'
@@ -703,7 +710,6 @@ object FrmCadastro_Pessoa: TFrmCadastro_Pessoa
     end
   end
   object qryConsulta: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -811,7 +817,6 @@ object FrmCadastro_Pessoa: TFrmCadastro_Pessoa
     end
   end
   object qrypessoaTelefone: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -837,7 +842,6 @@ object FrmCadastro_Pessoa: TFrmCadastro_Pessoa
     Top = 240
   end
   object qryPessoaDocumentos: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -866,7 +870,6 @@ object FrmCadastro_Pessoa: TFrmCadastro_Pessoa
     Top = 288
   end
   object qryPessoaTipo: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

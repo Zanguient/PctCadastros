@@ -165,6 +165,7 @@ object FrmDados_Clima: TFrmDados_Clima
         BevelOuter = bvRaised
         BorderStyle = bsNone
         Color = clBtnFace
+        Enabled = False
         TabOrder = 0
       end
       object MEdtData_Cadastro: TMaskEdit
@@ -326,7 +327,7 @@ object FrmDados_Clima: TFrmDados_Clima
           Navigator.Buttons.Append.Visible = False
           Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
           Navigator.Buttons.Delete.ImageIndex = 2
-          Navigator.Buttons.Delete.Visible = True
+          Navigator.Buttons.Delete.Visible = False
           Navigator.Buttons.Edit.Visible = False
           Navigator.Buttons.Post.Visible = False
           Navigator.Buttons.Cancel.Visible = False
@@ -350,6 +351,10 @@ object FrmDados_Clima: TFrmDados_Clima
             item
               Kind = skCount
               FieldName = 'Codigo'
+            end
+            item
+              Kind = skCount
+              Column = cxGrid1DBTableView1Codigo
             end>
           DataController.Summary.SummaryGroups = <>
           DateTimeHandling.DateFormat = 'DD/MM/YYYY'
@@ -371,6 +376,7 @@ object FrmDados_Clima: TFrmDados_Clima
           OptionsView.Indicator = True
           Preview.Visible = True
           object cxGrid1DBTableView1Codigo: TcxGridDBColumn
+            Caption = 'C'#243'digo'
             DataBinding.FieldName = 'Codigo'
             Options.Editing = False
           end
@@ -394,14 +400,22 @@ object FrmDados_Clima: TFrmDados_Clima
             Visible = False
             Options.Editing = False
           end
+          object cxGrid1DBTableView1Pluviometro: TcxGridDBColumn
+            Caption = 'Pluvi'#244'metro'
+            DataBinding.FieldName = 'Pluviometro'
+            Options.Editing = False
+            Width = 111
+          end
           object cxGrid1DBTableView1Umidade: TcxGridDBColumn
             DataBinding.FieldName = 'Umidade'
             Options.Editing = False
+            Width = 58
           end
           object cxGrid1DBTableView1Quantidade_Chuva: TcxGridDBColumn
             Caption = 'Chuva'
             DataBinding.FieldName = 'Quantidade_Chuva'
             Options.Editing = False
+            Width = 56
           end
           object cxGrid1DBTableView1Temperatura_Minima: TcxGridDBColumn
             DataBinding.FieldName = 'Temperatura_Minima'
@@ -417,7 +431,7 @@ object FrmDados_Clima: TFrmDados_Clima
             Caption = 'Verifica'#231#227'o'
             DataBinding.FieldName = 'Data_Verificacao'
             Options.Editing = False
-            Width = 75
+            Width = 70
           end
           object cxGrid1DBTableView1Data_Cadastro: TcxGridDBColumn
             Caption = 'Cadastro'
@@ -527,7 +541,6 @@ object FrmDados_Clima: TFrmDados_Clima
     end
   end
   object qryConsulta: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -566,6 +579,17 @@ object FrmDados_Clima: TFrmDados_Clima
     end
     object qryConsultaData_Cadastro: TDateTimeField
       FieldName = 'Data_Cadastro'
+    end
+    object qryConsultaPluviometro: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Pluviometro'
+      LookupDataSet = DM.qrypluviometro
+      LookupKeyFields = 'Codigo'
+      LookupResultField = 'Descricao'
+      KeyFields = 'Codigo_Pluviometro'
+      LookupCache = True
+      Size = 50
+      Lookup = True
     end
   end
   object dsConsulta: TDataSource

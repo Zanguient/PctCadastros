@@ -14,7 +14,8 @@ type
       function Salvar(var Retorno: AnsiString): integer;
       function Alterar(var Retorno: AnsiString): integer;
       function Excluir(var Retorno: AnsiString): integer;
-      function Buscar(CodigoManutencao: integer; var Query: TADOQuery; var Retorno: AnsiString): integer;
+      function Buscar(CodigoManutencao: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
+      function Buscar(var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       constructor Create(var Conexao: TADOConnection; FManutencaoMaquinaProduto: TManutencaoMaquinaProdutoEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
 
@@ -44,6 +45,24 @@ begin
                              'where Codigo_Manutencao = :Codigo_Manutencao';
     FComandoSQL.Parametros.Add('Codigo_Manutencao');
     FComandoSQL.Valores.Add(CodigoManutencao);
+    FManutencaoMaquinaProdutoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FManutencaoMaquinaProdutoDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TManutencaoMaquinaProdutoDominio.Buscar(var Query: TADOQuery;
+  var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select MMP.*, CP.Descricao as Produto from Manutencao_Maquina_Produto MMP '+
+                             ' left join Cadastro_Produtos CP on (MMP.Codigo_Produto = CP.Codigo)'+
+                             ' order by MMP.Codigo';
     FManutencaoMaquinaProdutoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FManutencaoMaquinaProdutoDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally

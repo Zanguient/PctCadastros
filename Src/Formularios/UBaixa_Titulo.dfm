@@ -345,7 +345,6 @@ object FrmBaixa_Titulo: TFrmBaixa_Titulo
     OnKeyPress = EdtValor_TotalKeyPress
   end
   object qryLancamento: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

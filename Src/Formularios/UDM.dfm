@@ -9,7 +9,7 @@ object DM: TDM
     Left = 128
     Top = 8
     Bitmap = {
-      494C01010B00B8005C0420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010B00B800780420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1600,8 +1600,7 @@ object DM: TDM
       FFFFFFFFFFFFFE0FFFFFFFFF3C00013F00000000000000000000000000000000
       000000000000}
   end
-  object ADOConnection1: TADOConnection
-    Connected = True
+  object ADOConnection: TADOConnection
     ConnectionString = 
       'Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security In' +
       'fo=False;Initial Catalog=db_fav_pec;Data Source=FLAVIO;Use Proce' +
@@ -1610,8 +1609,8 @@ object DM: TDM
       'lation when possible=False;'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
-    Left = 32
-    Top = 8
+    Left = 80
+    Top = 64
   end
   object ImgChama: TImageList
     Height = 32
@@ -1619,7 +1618,7 @@ object DM: TDM
     Left = 208
     Top = 8
     Bitmap = {
-      494C010102000800F80320002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000800140420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000002000000001002000000000000040
       000000000000000000000000000000000000000000000000000000000000B484
       84006C666E006C666E0000000000000000000000000000000000000000000000
@@ -2160,7 +2159,7 @@ object DM: TDM
     Left = 32
     Top = 88
     Bitmap = {
-      494C01010300A0003C040C000C00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010300A00058040C000C00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000300000000C00000001002000000000000009
       000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -2248,7 +2247,7 @@ object DM: TDM
     Left = 321
     Top = 7
     Bitmap = {
-      494C010109000C005C0720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109000C00780720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3840,7 +3839,6 @@ object DM: TDM
       000000000000}
   end
   object qrySafra: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -3864,7 +3862,6 @@ object DM: TDM
     Top = 136
   end
   object qryMotorista: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -3900,7 +3897,6 @@ object DM: TDM
     Top = 136
   end
   object qryTransportadora: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -3936,7 +3932,6 @@ object DM: TDM
     Top = 136
   end
   object qryArmazem: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -3977,7 +3972,6 @@ object DM: TDM
     Top = 184
   end
   object qryProduto: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4051,7 +4045,6 @@ object DM: TDM
     Top = 184
   end
   object qryVeiculo: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4110,7 +4103,6 @@ object DM: TDM
     Top = 184
   end
   object qryDepositante: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4146,7 +4138,6 @@ object DM: TDM
     Top = 184
   end
   object qryProdutor: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4177,7 +4168,6 @@ object DM: TDM
     end
   end
   object qryAtividade: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4206,7 +4196,6 @@ object DM: TDM
     Top = 288
   end
   object ADOQuery1: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4231,7 +4220,6 @@ object DM: TDM
     end
   end
   object qryVariedadeCultura: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4260,7 +4248,6 @@ object DM: TDM
     Top = 288
   end
   object ADOQuery2: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4279,8 +4266,6 @@ object DM: TDM
     end
   end
   object qryTalhao: TADOQuery
-    Active = True
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4313,7 +4298,6 @@ object DM: TDM
     Top = 240
   end
   object qryCliente: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4349,7 +4333,6 @@ object DM: TDM
     Top = 184
   end
   object qryPropriedade: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4391,7 +4374,6 @@ object DM: TDM
     Top = 136
   end
   object qryservico: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4416,7 +4398,6 @@ object DM: TDM
     Top = 240
   end
   object qryfornecedor: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4452,7 +4433,6 @@ object DM: TDM
     Top = 288
   end
   object qryocorrencia: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4476,7 +4456,6 @@ object DM: TDM
     Top = 336
   end
   object qryplanoFinanceiro: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4517,7 +4496,6 @@ object DM: TDM
     Top = 136
   end
   object qrytipoDocumento: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4541,7 +4519,6 @@ object DM: TDM
     Top = 184
   end
   object qrydepartamento: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4565,7 +4542,6 @@ object DM: TDM
     Top = 240
   end
   object qrycondicaoPagamento: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4608,7 +4584,6 @@ object DM: TDM
     Top = 288
   end
   object qryOperacaoBancaria: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4647,7 +4622,6 @@ object DM: TDM
     Top = 184
   end
   object qryContaBancaria: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4687,7 +4661,6 @@ object DM: TDM
     end
   end
   object qryCheque: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4772,7 +4745,6 @@ object DM: TDM
     Top = 288
   end
   object qryLancamentoBanco: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4834,7 +4806,6 @@ object DM: TDM
     end
   end
   object qryContaBancariaDestino: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4879,7 +4850,6 @@ object DM: TDM
     Top = 336
   end
   object qrypluviometro: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4909,7 +4879,6 @@ object DM: TDM
     Top = 384
   end
   object qryitensFolha: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4947,7 +4916,6 @@ object DM: TDM
     Top = 384
   end
   object qryfuncionario: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -4984,7 +4952,6 @@ object DM: TDM
     end
   end
   object qrypessoa: TADOQuery
-    Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

@@ -101,7 +101,6 @@ type
     qryConsultaPreco: TFloatField;
     qryConsultaVigencia: TIntegerField;
     qryConsultaObservacao: TStringField;
-    qryConsultaNome: TStringField;
     cxGrid1DBTableView1Codigo: TcxGridDBColumn;
     cxGrid1DBTableView1N_Contrato: TcxGridDBColumn;
     cxGrid1DBTableView1Codigo_Safra: TcxGridDBColumn;
@@ -118,6 +117,9 @@ type
     Label10: TLabel;
     cmbProduto: TcxLookupComboBox;
     qryConsultaCodigo_Produto: TIntegerField;
+    qryConsultaCodigo_Propriedade: TIntegerField;
+    qryConsultaCodigo_Usuario: TIntegerField;
+    qryConsultaContratante: TStringField;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -182,9 +184,9 @@ uses UDM, OperacoesConexao, RegistroAtividadeDominio, PessoaDominio,
 
 procedure TFrmContrato.BBtnCancelarClick(Sender: TObject);
 begin
-  TOperacoesConexao.CancelaConexao(Conexao);
   Op.LimpaCampos(FrmContrato);
   Op.DesabilitaCampos(FrmContrato);
+  TOperacoesConexao.CancelaConexao(Conexao);
   BBtnSalvar.Enabled:= false;
   BBtnCancelar.Enabled:= false;
   BBtnNovo.Enabled:= true;
@@ -244,7 +246,7 @@ begin
   PageControl1.TabIndex:= 0;
   FAplicacao:= TList<AnsiString>.Create();
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryConsulta, qryContratoPagamento, DM.qrySafra, dm.qryCliente], Conexao);
+  TOperacoesConexao.IniciaQuerys([qryConsulta, DM.qrySafra, dm.qryCliente, dm.qryProduto], Conexao);
 
   FAplicacao.Add('CONTRATOS');
   IniDados:= IniciaDadosCadastro.Create;
@@ -254,8 +256,8 @@ begin
 
   EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Contrato', Conexao));
 
-  FContratoPagamentoDominio:= TContratoPagamentoDominio.Create(Conexao);
-  FContratoPagamentoDominio.Buscar(StrToInt(EdtCodigo.Text), qryContratoPagamento, Retorno);
+  //FContratoPagamentoDominio:= TContratoPagamentoDominio.Create(Conexao);
+  //FContratoPagamentoDominio.Buscar(StrToInt(EdtCodigo.Text), qryContratoPagamento, Retorno);
 
   EdtQuantidade_Saca.Text:= '0';
   EdtArea.Text:= '0';
@@ -473,8 +475,8 @@ begin
   FContrato:= TContratoEntidade.Create;
   FContrato.Codigo:= qryConsultaCodigo.AsInteger;
 
-  FContratoPagamentoDominio:= TContratoPagamentoDominio.Create(Conexao);
-  FContratoPagamentoDominio.Buscar(qryConsultaCodigo.AsInteger, qryContratoPagamento, Retorno);
+  //FContratoPagamentoDominio:= TContratoPagamentoDominio.Create(Conexao);
+  //FContratoPagamentoDominio.Buscar(qryConsultaCodigo.AsInteger, qryContratoPagamento, Retorno);
   BBtnNovo.Enabled:= false;
   BBtnSalvar.Enabled:= True;
   BBtnExcluir.Enabled:= true;

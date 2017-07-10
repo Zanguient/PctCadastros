@@ -17,7 +17,8 @@ type
       function ExcluirPeloCodigoMovimentacao(CodigoLancamento:integer; var Retorno: AnsiString): integer;
       function ExcluirPeloCodigoEntrada(CodigoEntrada:integer; var Retorno: AnsiString): integer;
       function ExcluirPeloCodigoSaida(CodigoSaida:integer; var Retorno: AnsiString): integer;
-      function Buscar(Codigo_Propriedade: integer; Query: TADOQuery; var Retorno: AnsiString): integer;
+      function Buscar(Codigo_Propriedade: integer; Query: TADOQuery; var Retorno: AnsiString): integer; overload;
+      function Buscar(Codigo_Propriedade, Codigo_Safra: integer; Tipo, Status: AnsiString; Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       function BuscarParaBaixar(Codigo_Propriedade: integer; Query: TADOQuery; Tudo, CodigoSafra: Integer; Status, Tipo: AnsiString; var Retorno: AnsiString): integer;
       constructor Create(var Conexao: TADOConnection; FLFLancamento: TLancamentoFinanceiroEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
@@ -103,6 +104,39 @@ begin
                              ' where LF.Codigo_Propriedade = :Codigo_Propriedade';
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FLFLancamentoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FLFLancamentoDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TLancamentoFinanceiroDominio.Buscar(Codigo_Propriedade, Codigo_Safra: integer; Tipo, Status: AnsiString; Query: TADOQuery;
+  var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select LF.*, CPag.Descricao as CondPag, CPes.Nome as Pessoa, CTD.Descricao as TipoDocumento,'+
+                             ' CD.Descricao as Departamento, CPlan.Descricao as PlanoFinanceiro from Lancamento_Financeiro LF '+
+                             //' left join Lancamento_Financeiro_Parcelas LFP on (LF.Codigo = LFP.Codigo_Lancamento_Financeiro) '+
+                             ' left join Condicao_Pagamento CPag on (LF.Codigo_Forma_Pagamento = CPag.Codigo)'+
+                             ' left join Cadastro_Pessoa CPes on (LF.Codigo_Pessoa = CPes.Codigo)'+
+                             ' left join Cadastro_Tipo_Documento CTD on (LF.Codigo_Tipo_Documento = CTD.Codigo)'+
+                             ' left join Cadastro_Departamento CD on (LF.Codigo_Departamento = CD.Codigo)'+
+                             ' left join Cadastro_Plano_Financeiro CPlan on (LF.Codigo_Plano = CPlan.Codigo)'+
+                             ' where LF.Codigo_Propriedade = :Codigo_Propriedade and LF.Codigo_Safra = :Codigo_Safra '+
+                             ' and LF.Tipo = :Tipo';
+    FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    FComandoSQL.Parametros.Add('Codigo_Safra');
+    FComandoSQL.Parametros.Add('Tipo');
+    //FComandoSQL.Parametros.Add('Status');
+    FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FComandoSQL.Valores.Add(Codigo_Safra);
+    FComandoSQL.Valores.Add(Tipo);
+    //FComandoSQL.Valores.Add(Status);
     FLFLancamentoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FLFLancamentoDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally

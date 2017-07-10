@@ -158,6 +158,7 @@
 			<DCCReference Include="dbexpress.dcp"/>
 			<DCCReference Include="cxTreeListRS16.dcp"/>
 			<DCCReference Include="cxTreeListdxBarPopupMenuRS16.dcp"/>
+			<DCCReference Include="dxSkinsdxRibbonPainterRS16.dcp"/>
 			<DCCReference Include="..\Src\Entidade\CidadeEntidade.pas"/>
 			<DCCReference Include="..\Src\Formularios\UCadastro_Produto.pas">
 				<Form>FrmCadastro_Produto</Form>
@@ -204,8 +205,8 @@
 				<Form>FrmCadastro_Safra</Form>
 			</DCCReference>
 			<DCCReference Include="..\Src\Dominio\ProdutoDominio.pas"/>
-			<DCCReference Include="..\Src\Formularios\URel_Estoque_Produto.pas">
-				<Form>FrmRel_Estoque_Produto</Form>
+			<DCCReference Include="..\Src\Formularios\URel_Manutencao_Maquina.pas">
+				<Form>FrmRel_Manutencao_Maquina</Form>
 			</DCCReference>
 			<DCCReference Include="..\Src\Formularios\UCadastro_Pessoa.pas">
 				<Form>FrmCadastro_Pessoa</Form>
@@ -386,8 +387,29 @@
 			<DCCReference Include="..\Src\Formularios\URel_Visao_Geral.pas">
 				<Form>FrmRel_Visao_Geral</Form>
 			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\URel_Clima.pas">
+				<Form>FrmRel_Clima</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\URel_Estoque_Produto.pas">
+				<Form>FrmRel_Estoque_Produto</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\URel_Folha_Pagamento.pas">
+				<Form>FrmRel_Folha_Pagamento</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\URel_Lancamento_Financeiro.pas">
+				<Form>FrmRel_Lancamento_Financeiro</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\URel_Entrada_Produto.pas">
+				<Form>FrmRel_Entrada_Produto</Form>
+			</DCCReference>
 			<DCCReference Include="..\Src\Formularios\URel_Estoque_Grao.pas">
 				<Form>FrmRel_Estoque_Grao</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\URel_Contrato.pas">
+				<Form>FrmRel_Contrato</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\URel_Contrato_Venda.pas">
+				<Form>FrmRel_Contrato_Venda</Form>
 			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>

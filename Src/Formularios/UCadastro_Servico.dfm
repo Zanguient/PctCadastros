@@ -32,7 +32,7 @@ object FrmCadastro_Servico: TFrmCadastro_Servico
     Width = 472
     Height = 251
     Cursor = crHandPoint
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
@@ -87,6 +87,7 @@ object FrmCadastro_Servico: TFrmCadastro_Servico
         BevelOuter = bvRaised
         BorderStyle = bsNone
         Color = clBtnFace
+        Enabled = False
         TabOrder = 0
       end
       object MEdtData_Cadastro: TMaskEdit
@@ -151,7 +152,7 @@ object FrmCadastro_Servico: TFrmCadastro_Servico
           Navigator.Buttons.Append.Visible = False
           Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
           Navigator.Buttons.Delete.ImageIndex = 2
-          Navigator.Buttons.Delete.Visible = True
+          Navigator.Buttons.Delete.Visible = False
           Navigator.Buttons.Edit.Visible = False
           Navigator.Buttons.Post.Visible = False
           Navigator.Buttons.Cancel.Visible = False
@@ -205,6 +206,7 @@ object FrmCadastro_Servico: TFrmCadastro_Servico
             Caption = 'Descri'#231#227'o'
             DataBinding.FieldName = 'Descricao'
             RepositoryItem = cxEditRepository1TextItem1
+            Options.Editing = False
             Width = 245
           end
           object cxGrid1DBTableView1Data_Cadastro: TcxGridDBColumn
@@ -315,7 +317,6 @@ object FrmCadastro_Servico: TFrmCadastro_Servico
     end
   end
   object qryConsulta: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

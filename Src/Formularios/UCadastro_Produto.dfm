@@ -244,6 +244,7 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
         BevelOuter = bvRaised
         BorderStyle = bsNone
         Color = clBtnFace
+        Enabled = False
         TabOrder = 0
       end
       object MEdtData_Cadastro: TMaskEdit
@@ -313,12 +314,15 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
         Top = 108
         Width = 60
         Height = 17
+        Hint = 'Unidade Comercial (unidade de compra)'
         BevelInner = bvNone
         BevelKind = bkFlat
         BevelOuter = bvRaised
         BorderStyle = bsNone
         CharCase = ecUpperCase
         MaxLength = 3
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 9
       end
       object EdtVolume: TEdit
@@ -341,12 +345,15 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
         Top = 148
         Width = 86
         Height = 17
+        Hint = 'Data da '#250'ltima compra'
         BevelInner = bvNone
         BevelOuter = bvRaised
         BevelKind = bkFlat
         BorderStyle = bsNone
         EditMask = '!99/99/9999;1;_'
         MaxLength = 10
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 11
         Text = '  /  /    '
         OnExit = MEdtUltima_CompraExit
@@ -356,12 +363,14 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
         Top = 148
         Width = 86
         Height = 17
+        Hint = 'Data de validade '
         BevelInner = bvNone
         BevelOuter = bvRaised
         BevelKind = bkFlat
         BorderStyle = bsNone
         EditMask = '!99/99/9999;1;_'
         MaxLength = 10
+        ReadOnly = True
         TabOrder = 12
         Text = '  /  /    '
         OnExit = MEdtValidadeExit
@@ -397,7 +406,13 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
         Top = 12
         Width = 53
         Height = 17
+        Hint = 
+          'Se essa op'#231#227'o estiver selecionada, o produto ser'#225' listado nas mo' +
+          'vimenta'#231#245'es que utilizarem produtos. '#13#10'Caso contr'#225'rio, n'#227'o ser'#225' ' +
+          'listado, mas o mesmo ainda estar'#225' na base de dados do sistema.'
         Caption = 'Ativo'
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 2
       end
       object CBControla_Estoque: TCheckBox
@@ -405,7 +420,13 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
         Top = 32
         Width = 106
         Height = 17
+        Hint = 
+          'Se essa op'#231#227'o estiver selecionada, em qualquer movimenta'#231#227'o que ' +
+          'envolva produtos, ser'#225' atualizado o estoque do mesmo. '#13#10'Caso con' +
+          'tr'#225'rio, n'#227'o ser'#225' atualizado o estoque.'
         Caption = 'Controla Estoque'
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 3
       end
       object EdtCarencia: TEdit
@@ -428,12 +449,15 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
         Top = 108
         Width = 60
         Height = 17
+        Hint = 'Unidade de Estoque (unidade em que os produtos s'#227'o estocados)'
         BevelInner = bvNone
         BevelKind = bkFlat
         BevelOuter = bvRaised
         BorderStyle = bsNone
         CharCase = ecUpperCase
         MaxLength = 3
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 10
       end
       object cmbGrupo: TcxLookupComboBox
@@ -468,7 +492,6 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
         Properties.ListOptions.SyncMode = True
         Properties.ListSource = dsMarca
         Properties.MaxLength = 50
-        Properties.OnCloseUp = cmbMarcaPropertiesCloseUp
         Style.HotTrack = True
         Style.TransparentBorder = True
         TabOrder = 16
@@ -477,7 +500,9 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
       object cgAplicacao: TcxCheckGroup
         Left = 347
         Top = 19
+        Hint = 'Informe em quais locais este produto '#233' aplicado (utilizado)'
         Caption = 'Aplicado em'
+        ParentShowHint = False
         Properties.Columns = 2
         Properties.Items = <
           item
@@ -499,6 +524,7 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
             Caption = 'OUTROS'
           end>
         Properties.WordWrap = True
+        ShowHint = True
         TabOrder = 17
         Height = 106
         Width = 289
@@ -539,7 +565,7 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
           Navigator.Buttons.Append.Visible = False
           Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
           Navigator.Buttons.Delete.ImageIndex = 2
-          Navigator.Buttons.Delete.Visible = True
+          Navigator.Buttons.Delete.Visible = False
           Navigator.Buttons.Edit.Visible = False
           Navigator.Buttons.Post.Visible = False
           Navigator.Buttons.Cancel.Visible = False
@@ -563,6 +589,10 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
             item
               Kind = skCount
               FieldName = 'Codigo'
+            end
+            item
+              Kind = skCount
+              Column = cxGrid1DBTableView1Codigo
             end>
           DataController.Summary.SummaryGroups = <>
           DateTimeHandling.DateFormat = 'DD/MM/YYYY'
@@ -584,6 +614,7 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
           OptionsView.Indicator = True
           Preview.Visible = True
           object cxGrid1DBTableView1Codigo: TcxGridDBColumn
+            Caption = 'C'#243'digo'
             DataBinding.FieldName = 'Codigo'
             Options.Editing = False
             Width = 49
@@ -797,6 +828,12 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
     Top = 155
     Width = 287
     Height = 173
+    Hint = 
+      #201' poss'#237'vel configurar a quantidade em estoque do produto selecio' +
+      'nado para cada fazenda.'#13#10'Para isso, clique em adicionar (sinal d' +
+      'e + abaixo), escolha a fazenda e informe a quantidade em estoque' +
+      '.'#13#10'Para remover uma fazenda com seu estoque, selecione o registr' +
+      'o desejado e clique em remover (sinal de - abaixo).'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -1155,6 +1192,7 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
           Kind = skSum
         end>
       DataController.Summary.SummaryGroups = <>
+      OptionsBehavior.CellHints = True
       OptionsBehavior.NavigatorHints = True
       OptionsView.ScrollBars = ssNone
       OptionsView.GroupByBox = False
@@ -1222,7 +1260,6 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
     end
   end
   object qryConsulta: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -1233,7 +1270,8 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
       
         'left join Cadastro_Grupo_Produtos CG on (CP.Codigo_Grupo = CG.Co' +
         'digo)')
-    Left = 328
+    Left = 560
+    Top = 64
     object qryConsultaCodigo: TIntegerField
       FieldName = 'Codigo'
     end
@@ -1322,7 +1360,8 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
   end
   object dsConsulta: TDataSource
     DataSet = qryConsulta
-    Left = 360
+    Left = 592
+    Top = 64
   end
   object cxPropertiesStore1: TcxPropertiesStore
     Components = <
@@ -1446,7 +1485,8 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
           'Width')
       end>
     StorageName = 'ConfiguraGrid'
-    Left = 264
+    Left = 496
+    Top = 64
   end
   object dxComponentPrinter1: TdxComponentPrinter
     CurrentLink = dxComponentPrinter1Link1
@@ -1454,7 +1494,8 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
     PreviewOptions.WindowState = wsMaximized
     PrintTitle = 'Impress'#227'o de relat'#243'rio'
     Version = 0
-    Left = 296
+    Left = 528
+    Top = 64
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
       PrinterPage.DMPaper = 9
@@ -1507,12 +1548,12 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
     end
   end
   object qryGrupo: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
       'select * from Cadastro_Grupo_Produtos')
-    Left = 168
+    Left = 400
+    Top = 64
     object qryGrupoCodigo: TIntegerField
       FieldName = 'Codigo'
     end
@@ -1526,16 +1567,16 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
   end
   object dsGrupo: TDataSource
     DataSet = qryGrupo
-    Left = 200
+    Left = 432
+    Top = 64
   end
   object qryMarca: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
       'select * from Cadastro_Marca')
     Left = 168
-    Top = 40
+    Top = 64
     object qryMarcaCodigo: TIntegerField
       FieldName = 'Codigo'
     end
@@ -1550,22 +1591,22 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
   object dsMarca: TDataSource
     DataSet = qryMarca
     Left = 200
-    Top = 40
+    Top = 64
   end
   object cxEditRepository1: TcxEditRepository
-    Left = 392
+    Left = 624
+    Top = 64
     object cxEditRepository1TextItem1: TcxEditRepositoryTextItem
       Properties.CharCase = ecUpperCase
     end
   end
   object qryProdutoAplicacao: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
       'select * from Cadastro_Produtos_Aplicacao')
     Left = 232
-    Top = 40
+    Top = 64
     object qryProdutoAplicacaoCodigo: TAutoIncField
       FieldName = 'Codigo'
       ReadOnly = True
@@ -1581,16 +1622,15 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
   object dsProdutoAplicacao: TDataSource
     DataSet = qryProdutoAplicacao
     Left = 264
-    Top = 40
+    Top = 64
   end
   object qryEstoqueFazenda: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
       'select EP.* from Estoque_Produto EP')
     Left = 304
-    Top = 40
+    Top = 64
     object qryEstoqueFazendaCodigo: TAutoIncField
       FieldName = 'Codigo'
       ReadOnly = True
@@ -1619,7 +1659,7 @@ object FrmCadastro_Produto: TFrmCadastro_Produto
   object dsEstoqueFazenda: TDataSource
     DataSet = qryEstoqueFazenda
     Left = 336
-    Top = 40
+    Top = 64
   end
   object cxStyleRepository1: TcxStyleRepository
     PixelsPerInch = 96

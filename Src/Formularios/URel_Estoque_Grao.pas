@@ -35,7 +35,8 @@ uses
   cxDateUtils, cxCalendar, TituloBaixarEntidade, System.Generics.Collections,
   HistoricoMovimentacaoFinanceiraDominio,
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
-  cxMemo, EstoqueDominio, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses;
+  cxMemo, EstoqueDominio, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses,
+  cxNavigator, dxSkinsdxRibbonPainter;
 type
   TFrmRel_Estoque_Grao = class(TForm)
     cxGrid1: TcxGrid;
@@ -184,7 +185,7 @@ var
   Retorno: AnsiString;
 begin
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryEstoque], Conexao);
+  TOperacoesConexao.IniciaQuerys([qryEstoque, dm.qrySafra], Conexao);
 
   IniDados:= IniciaDadosCadastro.Create;
   IniDados.BuscaDadosSafra(Conexao);

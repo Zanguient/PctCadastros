@@ -2274,7 +2274,6 @@ object FrmRel_Estoque_Grao: TFrmRel_Estoque_Grao
     end
   end
   object qryEstoque: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -2419,7 +2418,7 @@ object FrmRel_Estoque_Grao: TFrmRel_Estoque_Grao
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 42916.503758506940000000
+      ReportDocument.CreationDate = 42942.615676956020000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET

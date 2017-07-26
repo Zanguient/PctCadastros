@@ -2615,7 +2615,6 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
     end
   end
   object qryLancamento: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -3140,7 +3139,7 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 42916.485310578700000000
+      ReportDocument.CreationDate = 42942.616098900460000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET
@@ -3166,7 +3165,6 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
     end
   end
   object qryParcelas: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

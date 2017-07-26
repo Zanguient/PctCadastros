@@ -42,7 +42,8 @@ uses
   ProdutoDominio, LancamentoFinanceiroEntidade, LancamentoFinanceiroDominio,
   EstoqueProdutoDominio, System.Generics.Collections,
   FolhaPagamentoItensEntidade, FolhaPagamentoItensDominio,
-  FolhaPagamentoDominio, FolhaPagamentoEntidade;
+  FolhaPagamentoDominio, FolhaPagamentoEntidade, cxNavigator,
+  dxSkinsdxRibbonPainter;
 
 type
   TFrmFolha_Pagamento = class(TForm)
@@ -190,6 +191,7 @@ type
     cxGrid1DBTableView1Codigo_Lancamento_Financeiro: TcxGridDBColumn;
     qryConsultaFuncionario: TStringField;
     cxGrid1DBTableView1Funcionario: TcxGridDBColumn;
+    cbGerar_Financeiro: TCheckBox;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -383,6 +385,7 @@ begin
   BBtnExcluir.Enabled:= false;
   BuscaDados;
   achei:= false;
+  cbGerar_Financeiro.Checked:= false;
   iniciou:= true;
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
   EdtMes_Ano.SetFocus;
@@ -427,12 +430,15 @@ begin
 
     if (achei = false) then
     begin
-      if (GeraFinanceiro(Retorno) = 0) then
+      if (cbGerar_Financeiro.Checked) then
       begin
-        TOperacoesConexao.CancelaConexao(Conexao);
-        IniciaTela;
-        Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
-        Exit;
+        if (GeraFinanceiro(Retorno) = 0) then
+        begin
+          TOperacoesConexao.CancelaConexao(Conexao);
+          IniciaTela;
+          Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
+          Exit;
+        end;
       end;
 
       FFolhaEntidade.Codigo_Lancamento_Financeiro:= CodigoLancamentoFinanceiro;
@@ -471,12 +477,15 @@ begin
         Exit;
       end;
 
-      if (GeraFinanceiro(Retorno) = 0) then
+      if (cbGerar_Financeiro.Checked) then
       begin
-        TOperacoesConexao.CancelaConexao(Conexao);
-        IniciaTela;
-        Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
-        Exit;
+        if (GeraFinanceiro(Retorno) = 0) then
+        begin
+          TOperacoesConexao.CancelaConexao(Conexao);
+          IniciaTela;
+          Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
+          Exit;
+        end;
       end;
 
       FFolhaEntidade.Codigo_Lancamento_Financeiro:= CodigoLancamentoFinanceiro;

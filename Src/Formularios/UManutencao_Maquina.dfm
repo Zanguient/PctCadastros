@@ -1328,7 +1328,7 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      'select MM.*, CV.Modelo from Manutencao_Maquina MM'
+      'select MM.*, CV.Modelo as Veiculo from Manutencao_Maquina MM'
       'left join Cadastro_Veiculo CV on (MM.Codigo_Maquina = CV.Codigo)')
     Left = 432
     object qryConsultaCodigo: TIntegerField
@@ -1336,10 +1336,6 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
     end
     object qryConsultaN_Documento: TStringField
       FieldName = 'N_Documento'
-    end
-    object qryConsultaModelo: TStringField
-      FieldName = 'Modelo'
-      Size = 100
     end
     object qryConsultaData_Servico: TDateTimeField
       FieldName = 'Data_Servico'
@@ -1366,6 +1362,13 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
       FieldName = 'Observacoes'
       Size = 1000
     end
+    object qryConsultaCodigo_Usuario: TIntegerField
+      FieldName = 'Codigo_Usuario'
+    end
+    object qryConsultaVeiculo: TStringField
+      FieldName = 'Veiculo'
+      Size = 100
+    end
   end
   object dsConsulta: TDataSource
     DataSet = qryConsulta
@@ -1385,7 +1388,6 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
     Left = 360
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1427,7 +1429,6 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

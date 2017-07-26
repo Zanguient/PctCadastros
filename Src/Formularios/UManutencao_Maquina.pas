@@ -151,7 +151,6 @@ type
     cxGrid1DBTableView1Codigo_Safra: TcxGridDBColumn;
     cxGrid1DBTableView1Codigo_Propriedade: TcxGridDBColumn;
     cxGrid1DBTableView1Observacoes: TcxGridDBColumn;
-    qryConsultaModelo: TStringField;
     cxGrid2DBBandedTableViewServicoCodigo: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableViewServicoCodigo_Manutencao: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableViewServicoCodigo_Servico: TcxGridDBBandedColumn;
@@ -191,6 +190,8 @@ type
     qryManutencaoMaquinaProdutoControla_Estoque: TBooleanField;
     cxGrid2DBBandedTableView1Controla_Estoque: TcxGridDBBandedColumn;
     cxGrid1DBTableView1Modelo: TcxGridDBColumn;
+    qryConsultaCodigo_Usuario: TIntegerField;
+    qryConsultaVeiculo: TStringField;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

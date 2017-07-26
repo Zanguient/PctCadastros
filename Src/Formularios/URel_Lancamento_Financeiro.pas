@@ -37,7 +37,7 @@ uses
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
   cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses,
   EstoqueProdutoDominio, LancamentoFinanceiroDominio,
-  LancamentoFinanceiroParcelasDominio;
+  LancamentoFinanceiroParcelasDominio, cxNavigator, dxSkinsdxRibbonPainter;
 type
   TFrmRel_Lancamento_Financeiro = class(TForm)
     cxGrid1: TcxGrid;
@@ -274,7 +274,7 @@ var
   Retorno: AnsiString;
 begin
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryLancamento, qryParcelas], Conexao);
+  TOperacoesConexao.IniciaQuerys([qryLancamento, qryParcelas, dm.qrySafra], Conexao);
 
   IniDados:= IniciaDadosCadastro.Create;
   IniDados.BuscaDadosSafra(Conexao);

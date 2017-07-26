@@ -1149,6 +1149,14 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
         TabOrder = 13
         Text = '  /  /       :  :  '
       end
+      object cbGerar_Financeiro: TCheckBox
+        Left = 242
+        Top = 32
+        Width = 97
+        Height = 17
+        Caption = 'Gerar Financeiro'
+        TabOrder = 14
+      end
     end
     object TabSheet2: TTabSheet
       Caption = 'Pesquisar'
@@ -1521,6 +1529,7 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
     Top = 56
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1562,6 +1571,7 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

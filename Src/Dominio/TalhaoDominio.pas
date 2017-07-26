@@ -33,17 +33,14 @@ begin
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
     FComandoSQL.ComandoSQL:= 'Update Cadastro_Talhao set '+
-                             'Codigo_Propriedade = :Codigo_Propriedade, '+
                              'Numero_Talhao = :Numero_Talhao, '+
                              'Descricao_Talhao = :Descricao_Talhao, '+
                              'Area = :Area ' +
                              'where Codigo = :Codigo';
-    FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Parametros.Add('Numero_Talhao');
     FComandoSQL.Parametros.Add('Descricao_Talhao');
     FComandoSQL.Parametros.Add('Area');
     FComandoSQL.Parametros.Add('Codigo');
-    FComandoSQL.Valores.Add(1);//(FTalhao.Propriedade.Codigo);
     FComandoSQL.Valores.Add(FTalhao.NumeroTalhao);
     FComandoSQL.Valores.Add(FTalhao.DescricaoTalhao);
     FComandoSQL.Valores.Add(FTalhao.Area);

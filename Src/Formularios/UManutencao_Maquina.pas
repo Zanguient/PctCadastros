@@ -37,7 +37,8 @@ uses
   ManutencaoMaquinaServicoEntidade, ManutencaoMaquinaServicoDominio,
   PropriedadeEntidade, ManutencaoMaquinaProdutoEntidade,
   ManutencaoMaquinaProdutoDominio, LoginEntidade, HistoricoEntidade,
-  HistoricoDominio, ProdutoDominio, EstoqueProdutoDominio, System.Generics.Collections;
+  HistoricoDominio, ProdutoDominio, EstoqueProdutoDominio, System.Generics.Collections,
+  cxNavigator, dxSkinsdxRibbonPainter;
 
 type
   TFrmManutencao_Maquina = class(TForm)
@@ -836,6 +837,7 @@ begin
   Op.HabilitaCampos(FrmManutencao_Maquina);
   Op.LimpaCampos(FrmManutencao_Maquina);
   Op.DesabilitaCampos(FrmManutencao_Maquina);
+  qryManutencaoMaquinaProduto.Close;
   qryManutencaoMaquinaServico.Close;
   qryManutencaoMaquinaServicoProxRev.Close;
 end;

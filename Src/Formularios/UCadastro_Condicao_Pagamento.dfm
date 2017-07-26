@@ -32,7 +32,7 @@ object FrmCadastro_Condicao_Pagamento: TFrmCadastro_Condicao_Pagamento
     Width = 472
     Height = 251
     Cursor = crHandPoint
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
@@ -96,19 +96,6 @@ object FrmCadastro_Condicao_Pagamento: TFrmCadastro_Condicao_Pagamento
         Width = 32
         Height = 13
         Caption = 'Prazo'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label1: TLabel
-        Left = 345
-        Top = 57
-        Width = 28
-        Height = 13
-        Caption = 'Taxa'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -192,17 +179,6 @@ object FrmCadastro_Condicao_Pagamento: TFrmCadastro_Condicao_Pagamento
         NumbersOnly = True
         TabOrder = 5
       end
-      object EdtTaxa_Juros: TEdit
-        Left = 344
-        Top = 72
-        Width = 57
-        Height = 17
-        BevelInner = bvNone
-        BevelKind = bkFlat
-        BorderStyle = bsNone
-        TabOrder = 6
-        OnKeyPress = EdtTaxa_JurosKeyPress
-      end
       object rgTipoPagamento: TcxRadioGroup
         Left = 3
         Top = 95
@@ -215,23 +191,7 @@ object FrmCadastro_Condicao_Pagamento: TFrmCadastro_Condicao_Pagamento
             Caption = 'A Prazo'
           end>
         ItemIndex = 0
-        TabOrder = 7
-        Height = 58
-        Width = 110
-      end
-      object rgJuro: TcxRadioGroup
-        Left = 119
-        Top = 95
-        Caption = 'Juro'
-        Properties.Items = <
-          item
-            Caption = 'Simples'
-          end
-          item
-            Caption = 'Composto'
-          end>
-        ItemIndex = 0
-        TabOrder = 8
+        TabOrder = 6
         Height = 58
         Width = 110
       end

@@ -35,24 +35,19 @@ begin
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
     FComandoSQL.ComandoSQL:= 'update Condicao_Pagamento set Status = :Status, Descricao = :Descricao, '+
-                             ' Parcela = :Parcela, Prazo = :Prazo, Taxa = :Taxa, Tipo_Pagamento = :Tipo_Pagamento, '+
-                             ' Tipo_Juro = :Tipo_Juro '+
+                             ' Parcela = :Parcela, Prazo = :Prazo, Tipo_Pagamento = :Tipo_Pagamento '+
                              ' where Codigo = :Codigo';
     FComandoSQL.Parametros.Add('Status');
     FComandoSQL.Parametros.Add('Descricao');
     FComandoSQL.Parametros.Add('Parcela');
     FComandoSQL.Parametros.Add('Prazo');
-    FComandoSQL.Parametros.Add('Taxa');
     FComandoSQL.Parametros.Add('Tipo_Pagamento');
-    FComandoSQL.Parametros.Add('Tipo_Juro');
     FComandoSQL.Parametros.Add('Codigo');
     FComandoSQL.Valores.Add(FCondicaoPagamento.Status);
     FComandoSQL.Valores.Add(FCondicaoPagamento.Descricao);
     FComandoSQL.Valores.Add(FCondicaoPagamento.Parcela);
     FComandoSQL.Valores.Add(FCondicaoPagamento.Prazo);
-    FComandoSQL.Valores.Add(FCondicaoPagamento.Taxa);
     FComandoSQL.Valores.Add(FCondicaoPagamento.Tipo_Pagamento);
-    FComandoSQL.Valores.Add(FCondicaoPagamento.Tipo_Juro);
     FComandoSQL.Valores.Add(FCondicaoPagamento.Codigo);
     FCondicaoPagamentoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FCondicaoPagamentoDAO.ExecutaComandoSQLSalvarAlterarExcluir(Retorno);
@@ -159,9 +154,9 @@ begin
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
     FComandoSQL.ComandoSQL:= 'insert into Condicao_Pagamento '+
-                             '(Codigo, Codigo_Propriedade, Codigo_Usuario, Status, Descricao, Parcela, Prazo, Taxa, Tipo_Pagamento, Tipo_Juro, Data_Cadastro)'+
+                             '(Codigo, Codigo_Propriedade, Codigo_Usuario, Status, Descricao, Parcela, Prazo, Tipo_Pagamento, Data_Cadastro)'+
                              ' values '+
-                             '(:Codigo, :Codigo_Propriedade, :Codigo_Usuario, :Status, :Descricao, :Parcela, :Prazo, :Taxa, :Tipo_Pagamento, :Tipo_Juro, :Data_Cadastro)';
+                             '(:Codigo, :Codigo_Propriedade, :Codigo_Usuario, :Status, :Descricao, :Parcela, :Prazo, :Tipo_Pagamento, :Data_Cadastro)';
     FComandoSQL.Parametros.Add('Codigo');
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Parametros.Add('Codigo_Usuario');
@@ -169,9 +164,7 @@ begin
     FComandoSQL.Parametros.Add('Descricao');
     FComandoSQL.Parametros.Add('Parcela');
     FComandoSQL.Parametros.Add('Prazo');
-    FComandoSQL.Parametros.Add('Taxa');
     FComandoSQL.Parametros.Add('Tipo_Pagamento');
-    FComandoSQL.Parametros.Add('Tipo_Juro');
     FComandoSQL.Parametros.Add('Data_Cadastro');
     FComandoSQL.Valores.Add(FCondicaoPagamento.Codigo);
     FComandoSQL.Valores.Add(FCondicaoPagamento.CodigoPropriedade);
@@ -180,9 +173,7 @@ begin
     FComandoSQL.Valores.Add(FCondicaoPagamento.Descricao);
     FComandoSQL.Valores.Add(FCondicaoPagamento.Parcela);
     FComandoSQL.Valores.Add(FCondicaoPagamento.Prazo);
-    FComandoSQL.Valores.Add(FCondicaoPagamento.Taxa);
     FComandoSQL.Valores.Add(FCondicaoPagamento.Tipo_Pagamento);
-    FComandoSQL.Valores.Add(FCondicaoPagamento.Tipo_Juro);
     FComandoSQL.Valores.Add(FCondicaoPagamento.Data_Cadastro);
     FCondicaoPagamentoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FCondicaoPagamentoDAO.ExecutaComandoSQLSalvarAlterarExcluir(Retorno);

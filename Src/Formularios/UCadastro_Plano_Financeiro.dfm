@@ -32,7 +32,7 @@
     Width = 833
     Height = 465
     Cursor = crHandPoint
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
@@ -49,12 +49,14 @@
               'Cadastre os planos de contas e visualize-os de maneira integrada' +
               ' nessa tela'
             Styles.Header = cxStyle1
+            Width = 804
           end>
         DataController.DataSource = dsConsulta
-        DataController.ParentField = 'Codigo_SubNivel'
+        DataController.ParentField = 'Codigo_Pai'
         DataController.KeyField = 'Codigo'
         LookAndFeel.NativeStyle = False
         Navigator.Buttons.OnButtonClick = cxDBTreeList1NavigatorButtonsButtonClick
+        Navigator.Buttons.ConfirmDelete = True
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = False
         Navigator.Buttons.PriorPage.Visible = False
@@ -63,11 +65,13 @@
         Navigator.Buttons.NextPage.Visible = False
         Navigator.Buttons.Last.Visible = False
         Navigator.Buttons.Edit.Visible = False
-        Navigator.Buttons.Post.Visible = True
+        Navigator.Buttons.Post.Visible = False
         Navigator.Buttons.Cancel.Visible = False
         Navigator.Buttons.Refresh.Visible = False
         Navigator.Buttons.SaveBookmark.Visible = False
         Navigator.Buttons.GotoBookmark.Visible = False
+        Navigator.InfoPanel.DisplayMask = '[RecordIndex] de [RecordCount]'
+        Navigator.InfoPanel.Visible = True
         Navigator.Visible = True
         OptionsBehavior.GoToNextCellOnEnter = True
         OptionsBehavior.GoToNextCellOnTab = True
@@ -76,6 +80,7 @@
         OptionsData.Inserting = True
         OptionsView.Bands = True
         OptionsView.CategorizedColumn = cxDBTreeList1cxDBTreeListTipo
+        OptionsView.Indicator = True
         RootValue = -1
         TabOrder = 0
         object cxDBTreeList1cxDBTreeListTipo: TcxDBTreeListColumn
@@ -83,8 +88,9 @@
           Properties.Items.Strings = (
             'Receita'
             'Despesa')
+          Properties.OnEditValueChanged = cxDBTreeList1cxDBTreeListTipoPropertiesEditValueChanged
           DataBinding.FieldName = 'Tipo'
-          Width = 100
+          Width = 59
           Position.ColIndex = 2
           Position.RowIndex = 0
           Position.BandIndex = 0
@@ -92,9 +98,11 @@
           Summary.GroupFooterSummaryItems = <>
         end
         object cxDBTreeList1cxDBTreeListDescricao: TcxDBTreeListColumn
+          PropertiesClassName = 'TcxTextEditProperties'
+          Properties.OnEditValueChanged = cxDBTreeList1cxDBTreeListDescricaoPropertiesEditValueChanged
           Caption.Text = 'Descri'#231#227'o'
           DataBinding.FieldName = 'Descricao'
-          Width = 256
+          Width = 257
           Position.ColIndex = 1
           Position.RowIndex = 0
           Position.BandIndex = 0
@@ -117,7 +125,7 @@
           Properties.Alignment.Horz = taCenter
           Caption.Text = 'C'#243'd. Subn'#237'vel'
           DataBinding.FieldName = 'Codigo_SubNivel'
-          Width = 74
+          Width = 86
           Position.ColIndex = 5
           Position.RowIndex = 0
           Position.BandIndex = 0
@@ -129,7 +137,7 @@
           Properties.Alignment.Horz = taCenter
           Caption.Text = 'Subn'#237'vel'
           DataBinding.FieldName = 'Sub_Nivel'
-          Width = 53
+          Width = 63
           Position.ColIndex = 6
           Position.RowIndex = 0
           Position.BandIndex = 0
@@ -140,10 +148,11 @@
           PropertiesClassName = 'TcxLookupComboBoxProperties'
           Properties.ListColumns = <>
           Properties.ListFieldIndex = -1
+          Properties.ListOptions.SyncMode = True
           Properties.OnChange = cxDBTreeList1cxDBTreeListPaiPropertiesChange
           Caption.Text = 'Grupo Principal'
           DataBinding.FieldName = 'Pai'
-          Width = 200
+          Width = 202
           Position.ColIndex = 0
           Position.RowIndex = 0
           Position.BandIndex = 0
@@ -154,7 +163,7 @@
           PropertiesClassName = 'TcxTextEditProperties'
           Properties.Alignment.Horz = taCenter
           DataBinding.FieldName = 'Codigo'
-          Width = 55
+          Width = 66
           Position.ColIndex = 3
           Position.RowIndex = 0
           Position.BandIndex = 0
@@ -164,7 +173,7 @@
         object cxDBTreeList1cxDBTreeListData_Cadastro: TcxDBTreeListColumn
           Caption.Text = 'Cadastro'
           DataBinding.FieldName = 'Data_Cadastro'
-          Width = 69
+          Width = 71
           Position.ColIndex = 7
           Position.RowIndex = 0
           Position.BandIndex = 0
@@ -179,8 +188,8 @@
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
-        Width = 464
-        Height = 220
+        Width = 825
+        Height = 433
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -259,7 +268,7 @@
             Caption = 'Descri'#231#227'o'
             DataBinding.FieldName = 'Descricao'
             RepositoryItem = cxEditRepository1TextItem1
-            Width = 245
+            Width = 513
           end
           object cxGrid1DBTableView1Data_Cadastro: TcxGridDBColumn
             Caption = 'Data Cadastro'
@@ -386,6 +395,9 @@
     object qryConsultaCodigo_Pai: TIntegerField
       FieldName = 'Codigo_Pai'
     end
+    object qryConsultaCodigo_Usuario: TIntegerField
+      FieldName = 'Codigo_Usuario'
+    end
     object qryConsultaPai: TStringField
       FieldKind = fkLookup
       FieldName = 'Pai'
@@ -394,7 +406,7 @@
       LookupResultField = 'Descricao'
       KeyFields = 'Codigo_Pai'
       LookupCache = True
-      Size = 500
+      Size = 100
       Lookup = True
     end
   end

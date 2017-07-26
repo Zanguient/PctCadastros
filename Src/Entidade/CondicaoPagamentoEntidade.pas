@@ -11,9 +11,7 @@ type
       FDescricao: Ansistring;
       FParcela: Integer;
       FPrazo: Integer;
-      FTaxa: Double;
       FTipo_Pagamento: AnsiString;
-      FTipo_Juro: AnsiString;
       FData_Cadastro: TDateTime;
       procedure SetCodigo(const Value: integer);
       procedure SetData_Cadastro(const Value: TDateTime);
@@ -21,8 +19,6 @@ type
       procedure SetParcela(const Value: Integer);
       procedure SetPrazo(const Value: Integer);
       procedure SetStatus(const Value: AnsiString);
-      procedure SetTaxa(const Value: Double);
-      procedure SetTipo_Juro(const Value: AnsiString);
       procedure SetTipo_Pagamento(const Value: AnsiString);
       procedure SetCodigoPropriedade(const Value: integer);
       procedure SetCodigoUsuario(const Value: integer);
@@ -34,9 +30,7 @@ type
       property Descricao: Ansistring read FDescricao write SetDescricao;
       property Parcela: Integer read FParcela write SetParcela;
       property Prazo: Integer read FPrazo write SetPrazo;
-      property Taxa: Double read FTaxa write SetTaxa;
       property Tipo_Pagamento: AnsiString read FTipo_Pagamento write SetTipo_Pagamento;
-      property Tipo_Juro: AnsiString read FTipo_Juro write SetTipo_Juro;
       property Data_Cadastro: TDateTime read FData_Cadastro write SetData_Cadastro;
 
 
@@ -83,16 +77,6 @@ end;
 procedure TCondicaoPagamentoEntidade.SetStatus(const Value: AnsiString);
 begin
   FStatus := Value;
-end;
-
-procedure TCondicaoPagamentoEntidade.SetTaxa(const Value: Double);
-begin
-  FTaxa := Value;
-end;
-
-procedure TCondicaoPagamentoEntidade.SetTipo_Juro(const Value: AnsiString);
-begin
-  FTipo_Juro := Value;
 end;
 
 procedure TCondicaoPagamentoEntidade.SetTipo_Pagamento(const Value: AnsiString);

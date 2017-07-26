@@ -32,7 +32,8 @@ uses
   cxRadioGroup, IniciaDadosCadastros, cxGridBandedTableView,
   cxGridDBBandedTableView, cxCurrencyEdit, cxLabel, PropriedadeEntidade,
   LoginEntidade, HistoricoEntidade, HistoricoDominio, cxCheckBox,
-  TituloBaixarEntidade, System.Generics.Collections;
+  TituloBaixarEntidade, System.Generics.Collections, cxNavigator,
+  dxSkinsdxRibbonPainter;
 const
   UM_CHECK = WM_USER + 10000;
 type

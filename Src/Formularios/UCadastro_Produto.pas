@@ -35,7 +35,7 @@ uses
   EstoqueProdutoDominio, EstoqueProdutoEntidade, cxCurrencyEdit, cxCalendar,
   cxGridBandedTableView, cxGridDBBandedTableView, dxLayoutContainer,
   cxGridCustomLayoutView, cxGridLayoutView, cxGridDBLayoutView,
-  IniciaDadosCadastros;
+  IniciaDadosCadastros, cxNavigator, dxSkinsdxRibbonPainter;
 
 type
   TFrmCadastro_Produto = class(TForm)

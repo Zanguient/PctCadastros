@@ -40,7 +40,8 @@ uses
   HistoricoDominio, EntradaProdutoEntidade, EntradaProdutoDominio,
   EntradaProdutoProdutosEntidade, EntradaProdutoProdutosDominio, cxMemo,
   ProdutoDominio, LancamentoFinanceiroEntidade, LancamentoFinanceiroDominio,
-  EstoqueProdutoDominio, System.Generics.Collections;
+  EstoqueProdutoDominio, System.Generics.Collections, cxNavigator,
+  dxSkinsdxRibbonPainter;
 
 type
   TFrmEntrada_Produto = class(TForm)
@@ -465,7 +466,9 @@ end;
 
 procedure TFrmEntrada_Produto.BBtnSalvarClick(Sender: TObject);
 var
-  Retorno: AnsiString;
+  Retorno, CodigoProduto, ValorCompra, UnCompra: AnsiString;
+  DataCompra, DataValidade: TDate;
+  i: integer;
 begin
   if (Confira = true) then
   begin
@@ -543,7 +546,6 @@ begin
     begin
       FEntradaProdutoDominio:= TEntradaProdutoDominio.Create(Conexao);
       FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao);
-      ShowMessage(IntToStr(FEntradaProdutoDominio.BuscaCodigoLancamentoFinanceiro( StrToInt(EdtCodigo.Text), Retorno)));
       if (FLFDominio.ExcluirPeloCodigoMovimentacao(FEntradaProdutoDominio.BuscaCodigoLancamentoFinanceiro( StrToInt(EdtCodigo.Text), Retorno)
                                               , Retorno)=0) and (Retorno <> '') then
       begin
@@ -563,7 +565,6 @@ begin
 
       FEntradaProdutoEntidade.Codigo_Lancamento_Financeiro:= CodigoLancamentoFinanceiro;
       FEntradaProdutoDominio:= TEntradaProdutoDominio.Create(Conexao, FEntradaProdutoEntidade);
-      ShowMessage(IntToStr(CodigoLancamentoFinanceiro));
 
       if (FEntradaProdutoDominio.Alterar(Retorno) = 0) then
       begin
@@ -583,6 +584,32 @@ begin
         Exit;
       end;
     end;
+
+    with cxGrid2DBBandedTableView1.DataController do
+    begin
+      FProdutoDominio:= TProdutoDominio.Create(Conexao);
+      for i := 0 to RecordCount - 1 do
+      begin
+        CodigoProduto:= VarToStr(cxGrid2DBBandedTableView1.DataController.
+                                            Values[i,cxGrid2DBBandedTableView1Codigo_Produto.Index]);
+        ValorCompra:= VarToStr(cxGrid2DBBandedTableView1.DataController.
+                                            Values[i,cxGrid2DBBandedTableView1Valor_Compra.Index]);
+        UnCompra:= VarToStr(cxGrid2DBBandedTableView1.DataController.
+                                            Values[i,cxGrid2DBBandedTableView1Unidade.Index]);
+        DataCompra:= Date;
+        DataValidade:= 0;
+
+        if (FProdutoDominio.AtualizaDadosProduto(StrToInt(CodigoProduto), StrToFloat(ValorCompra), UnCompra, DataCompra,
+                                              DataValidade, Retorno)=0) then
+        begin
+          TOperacoesConexao.CancelaConexao(Conexao);
+          IniciaTela;
+          Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
+          Exit;
+        end;
+      end;
+    end;
+
 
     TOperacoesConexao.ConfirmaConexao(Conexao);
     IniciaTela;

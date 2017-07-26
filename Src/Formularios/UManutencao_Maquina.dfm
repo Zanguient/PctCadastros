@@ -7,7 +7,6 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
   ClientHeight = 436
   ClientWidth = 830
   Color = clWindow
-  Enabled = False
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -166,6 +165,7 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
         BevelOuter = bvRaised
         BorderStyle = bsNone
         Color = clBtnFace
+        Enabled = False
         TabOrder = 0
       end
       object MEdtData_Cadastro: TMaskEdit
@@ -1385,6 +1385,7 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
     Left = 360
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1426,6 +1427,7 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

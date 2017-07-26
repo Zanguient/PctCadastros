@@ -18,6 +18,7 @@ uses
       function BuscarAplicacao(Aplicacao: TList<AnsiString>; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       //function BuscarAplicacao2(Aplicacao: TList<AnsiString>; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       function BuscarDaSafra(CodigoSafra, CodigoPropriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): integer;
+      function AtualizaDadosProduto(CodigoProduto: integer; ValorCompra: double; UnCompra: AnsiString; DataCompra, DataValidade: TDate; var Retorno: AnsiString): integer;
       //function BuscarEstoqueAtual(CodigoProduto: integer): double;
       //function AtualizarEstoque(CodigoProduto: integer; Quantidade: double; Tipo: AnsiString): integer;
       constructor Create(var Conexao: TADOConnection; FProduto: TProdutoEntidade); overload;
@@ -130,6 +131,38 @@ begin
 
   end;
 end;}
+
+function TProdutoDominio.AtualizaDadosProduto(CodigoProduto: integer; ValorCompra: double; UnCompra: AnsiString; DataCompra, DataValidade: TDate; var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'Update Cadastro_Produtos set '+
+                             'Preco_Compra = :Preco_Compra, ' +
+                             'Unidade_Compra = :Unidade_Compra, ' +
+                             'Data_Ultima_Compra = :Data_Ultima_Compra, ' +
+                             'Data_Validade = :Data_Validade ' +
+
+                             'where Codigo = :Codigo';
+    FComandoSQL.Parametros.Add('Preco_Compra');
+    FComandoSQL.Parametros.Add('Unidade_Compra');
+    FComandoSQL.Parametros.Add('Data_Ultima_Compra');
+    FComandoSQL.Parametros.Add('Data_Validade');
+    FComandoSQL.Parametros.Add('Codigo');
+
+    FComandoSQL.Valores.Add(ValorCompra);
+    FComandoSQL.Valores.Add(UnCompra);
+    FComandoSQL.Valores.Add(DataCompra);
+    FComandoSQL.Valores.Add(DataValidade);
+    FComandoSQL.Valores.Add(CodigoProduto);
+    FProdutoDAO:= TExecutaComandosSQLDominio.Create( FComandoSQL);
+    Result:= FProdutoDAO.ExecutaComandoSQLSalvarAlterarExcluir(Retorno);
+  finally
+
+  end;
+end;
 
 function TProdutoDominio.Buscar(Tipo: integer; var Query: TADOQuery;
   var Retorno: AnsiString): integer;

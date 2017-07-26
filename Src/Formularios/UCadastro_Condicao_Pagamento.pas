@@ -29,7 +29,8 @@ uses
   dxPSCore, dxPScxCommon, cxPropertiesStore, cxEditRepositoryItems, MetodosBasicos,
   cxContainer, cxGroupBox,
   cxRadioGroup, CondicaoPagamentoEntidade, CondicaoPagamentoDominio,
-  LoginEntidade, PropriedadeEntidade, HistoricoEntidade, HistoricoDominio;
+  LoginEntidade, PropriedadeEntidade, HistoricoEntidade, HistoricoDominio,
+  cxNavigator, dxSkinsdxRibbonPainter;
 
 type
   TFrmCadastro_Condicao_Pagamento = class(TForm)
@@ -67,12 +68,9 @@ type
     CBStatus: TCheckBox;
     LblParcelas: TLabel;
     LblDias: TLabel;
-    Label1: TLabel;
     EdtParcela: TEdit;
     EdtPrazo: TEdit;
-    EdtTaxa_Juros: TEdit;
     rgTipoPagamento: TcxRadioGroup;
-    rgJuro: TcxRadioGroup;
     qryConsultaStatus: TStringField;
     qryConsultaParcela: TIntegerField;
     qryConsultaPrazo: TIntegerField;
@@ -217,9 +215,7 @@ begin
     FCondicaoPagamento.Descricao:= EdtDescricao.Text;
     FCondicaoPagamento.Parcela:= StrToInt(EdtParcela.Text);
     FCondicaoPagamento.Prazo:= StrToInt(EdtPrazo.Text);
-    FCondicaoPagamento.Taxa:= StrToFloat(EdtTaxa_Juros.Text);
     FCondicaoPagamento.Tipo_Pagamento:= rgTipoPagamento.Properties.Items[rgTipoPagamento.ItemIndex].Caption;
-    FCondicaoPagamento.Tipo_Juro:= rgJuro.Properties.Items[rgJuro.ItemIndex].Caption;
     FCondicaoPagamento.Data_Cadastro:= StrToDateTime(MEdtData_Cadastro.Text);
     FCondicaoPagamentoDominio:= TCondicaoPagamentoDominio.Create(Conexao, FCondicaoPagamento);
 
@@ -323,13 +319,6 @@ begin
     exit;
   end;
 
-  if (EdtTaxa_Juros.Text = '') then
-  begin
-    Mensagens.MensagemErro(MensagemFaltaDados);
-    EdtTaxa_Juros.SetFocus;
-    exit;
-  end;
-
   Confira:= true;
 end;
 
@@ -355,16 +344,10 @@ begin
 
   EdtParcela.Text:= qryConsultaParcela.AsString;
   EdtPrazo.Text:= qryConsultaPrazo.AsString;
-  EdtTaxa_Juros.Text:= qryConsultaTaxa.AsString;
   if (qryConsultaTipo_Pagamento.AsString = 'À Vista') then
     rgTipoPagamento.ItemIndex:= 0
   else
     rgTipoPagamento.ItemIndex:= 1;
-
-  if (qryConsultaTipo_Juro.AsString = 'Simples') then
-    rgJuro.ItemIndex:= 0
-  else
-    rgJuro.ItemIndex:= 1;
 
   FCondicaoPagamento:= TCondicaoPagamentoEntidade.Create;
   FCondicaoPagamento.Codigo:= qryConsultaCodigo.AsInteger;

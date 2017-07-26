@@ -31,7 +31,8 @@ uses
   cxTLdxBarBuiltInMenu, cxInplaceContainer, cxTLData, cxDBTL, cxMaskEdit,
   cxCalendar, cxDBLookupComboBox, PlanoFinanceiroEntidade,
   PlanoFinanceiroDominio, IniciaDadosCadastros, cxTextEdit, cxDropDownEdit,
-  PropriedadeEntidade, LoginEntidade, HistoricoEntidade, HistoricoDominio;
+  PropriedadeEntidade, LoginEntidade, HistoricoEntidade, HistoricoDominio,
+  cxNavigator, dxSkinsdxRibbonPainter;
 
 type
   TFrmCadastro_Plano_Financeiro = class(TForm)
@@ -70,12 +71,13 @@ type
     cxDBTreeList1cxDBTreeListCodSubNivel: TcxDBTreeListColumn;
     cxDBTreeList1cxDBTreeListSubnivel: TcxDBTreeListColumn;
     cxDBTreeList1cxDBTreeListPai: TcxDBTreeListColumn;
-    qryConsultaPai: TStringField;
     cxDBTreeList1cxDBTreeListCódigo: TcxDBTreeListColumn;
     BBtnSalvar: TToolButton;
     cxDBTreeList1cxDBTreeListData_Cadastro: TcxDBTreeListColumn;
     cxStyleRepository1: TcxStyleRepository;
     cxStyle1: TcxStyle;
+    qryConsultaCodigo_Usuario: TIntegerField;
+    qryConsultaPai: TStringField;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -95,6 +97,10 @@ type
     procedure cxDBTreeList1cxDBTreeListPaiPropertiesChange(Sender: TObject);
     procedure cxDBTreeList1NavigatorButtonsButtonClick(Sender: TObject;
       AButtonIndex: Integer; var ADone: Boolean);
+    procedure cxDBTreeList1cxDBTreeListDescricaoPropertiesEditValueChanged(
+      Sender: TObject);
+    procedure cxDBTreeList1cxDBTreeListTipoPropertiesEditValueChanged(
+      Sender: TObject);
   private
     FPropriedade: TPropriedadeEntidade;
     FUsuario: TLoginEntidade;
@@ -113,6 +119,7 @@ type
 
     function Confira: boolean;
     procedure BuscaDados;
+    procedure CarregaPlanos;
   public
     ativo, enderec, achei: boolean;
 
@@ -202,6 +209,7 @@ begin
   if (Confira = true) then
   begin
     TOperacoesConexao.ConfirmaConexao(Conexao);
+    Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
     {FPlanoFinanceiro:= TPlanoFinanceiroEntidade.Create;
     FPlanoFinanceiroDominio:= TPlanoFinanceiroDominio.Create(Conexao, FPlanoFinanceiro);
 
@@ -250,6 +258,21 @@ begin
   end;
 end;
 
+procedure TFrmCadastro_Plano_Financeiro.CarregaPlanos;
+var
+  FPlanoFinanceiroDominio: TPlanoFinanceiroDominio;
+  Retorno: AnsiString;
+begin
+  FPlanoFinanceiroDominio:= TPlanoFinanceiroDominio.Create(Conexao);
+  FPlanoFinanceiroDominio.Buscar(dm.qryplanoFinanceiro, Retorno);
+  dm.qryplanoFinanceiro.First;
+  while not dm.qryplanoFinanceiro.Eof do
+  begin
+    //cxDBTreeList1cxDBTreeListPai.
+    Next;
+  end;
+end;
+
 function TFrmCadastro_Plano_Financeiro.Confira: boolean;
 begin
   Confira:= false;
@@ -263,6 +286,12 @@ begin
   Self.FUsuario:= FUsuario;
 end;
 
+procedure TFrmCadastro_Plano_Financeiro.cxDBTreeList1cxDBTreeListDescricaoPropertiesEditValueChanged(
+  Sender: TObject);
+begin
+  cxDBTreeList1.DataController.Post(true);
+end;
+
 procedure TFrmCadastro_Plano_Financeiro.cxDBTreeList1cxDBTreeListPaiPropertiesChange(
   Sender: TObject);
 var
@@ -270,13 +299,26 @@ var
   Pai: AnsiString;
 begin
   Pai:= dm.qryplanoFinanceiroDescricao.AsString;
-  CodPai:= StrToInt(VarToStr(StrToInt(TcxLookupComboBox(Sender).EditValue)));
+  //CodPai:= StrToInt(VarToStr(StrToInt(TcxLookupComboBox(Sender).EditValue)));
+  CodPai:= dm.qryplanoFinanceiroCodigo_Pai.AsInteger;
   ShowMessage('Pai: '+Pai);
   ShowMessage('CodPai: '+IntTostr(CodPai));
   qryConsulta.Edit;
+  qryConsultaCodigo_Propriedade.AsInteger:= FPropriedade.Codigo;
+  qryConsultaCodigo_Usuario.AsInteger:= FUsuario.Codigo;
+  qryConsultaCodigo_Pai.AsInteger:= CodPai;
+  qryConsultaPai.AsString:= Pai;
   qryConsultaDescricao.AsString:= Pai + ' : ';
+  //qryConsultaSub_Nivel.AsString:= IntToStr(CodPai)+'.'+qryConsultaCodigo.AsString;
+  qryConsultaCodigo_SubNivel.AsInteger:= dm.qryplanoFinanceiroCodigo.AsInteger;
   qryConsultaCodigo_Pai.AsInteger:= CodPai;
   qryConsulta.Post;
+end;
+
+procedure TFrmCadastro_Plano_Financeiro.cxDBTreeList1cxDBTreeListTipoPropertiesEditValueChanged(
+  Sender: TObject);
+begin
+  cxDBTreeList1.DataController.Post(true);
 end;
 
 procedure TFrmCadastro_Plano_Financeiro.cxDBTreeList1NavigatorButtonsButtonClick(
@@ -286,7 +328,9 @@ begin
   begin
     qryConsulta.Insert;
     qryConsultaData_Cadastro.AsDateTime:= now;
-    //qryRegistroAtividadeAtividadesCodigo_Registro_Atividade_Talhao.AsInteger:= qryRegistroAtividadeAtividadesTalhaoCodigo.AsInteger;
+    qryConsultaCodigo.AsInteger:= GeraCodigo.GeraCodigoSequencia('Cadastro_Plano_Financeiro', Conexao);
+    IniDados:= IniciaDadosCadastro.Create();
+    IniDados.BuscaDadosPlanoFinanceiro(Conexao);
     //qryRegistroAtividadeColheitaIdSafra.AsInteger:= DM.qrySafraCodigo.AsInteger;
     ADone:= true;
   end;

@@ -32,7 +32,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
     Width = 705
     Height = 436
     Cursor = crHandPoint
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0

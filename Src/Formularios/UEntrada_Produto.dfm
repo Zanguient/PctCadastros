@@ -38,6 +38,8 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Cadastrar'
+      ExplicitLeft = 92
+      ExplicitTop = 19
       object LblCodigo: TLabel
         Left = 0
         Top = 13
@@ -1338,6 +1340,14 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
         TabOrder = 2
         Width = 193
       end
+      object cbGerar_Financeiro: TCheckBox
+        Left = 366
+        Top = 31
+        Width = 97
+        Height = 17
+        Caption = 'Gerar Financeiro'
+        TabOrder = 19
+      end
     end
     object TabSheet2: TTabSheet
       Caption = 'Pesquisar'
@@ -1575,7 +1585,9 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
         'Clique para Salvar/Alterar o registro'#13#10#13#10'AVISO IMPORTANTE:'#13#10'* O ' +
         'sistema automaticamente vai gerar o contas a pagar dessa nota fi' +
         'scal.'#13#10'* O sistema automaticamente vai atualizar a quantidade de' +
-        ' estoque dos produtos.'
+        ' estoque dos produtos.'#13#10'* Ao EDITAR uma informa'#231#227'o E gerar o fin' +
+        'anceiro (op'#231#227'o Gerar Financeiro marcada), '#13#10'o sistema deletar'#225' o' +
+        ' financeiro gerado anteriormente e gerar'#225' novamente.'
       Caption = '&Salvar'
       Enabled = False
       ImageIndex = 0
@@ -1715,6 +1727,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
     Left = 488
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1756,6 +1769,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

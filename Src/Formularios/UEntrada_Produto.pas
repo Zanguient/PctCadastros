@@ -215,6 +215,7 @@ type
     cmbComprador: TcxLookupComboBox;
     qryConsultaCodigo_Comprador: TIntegerField;
     qryConsultaCodigo_Lancamento_Financeiro: TIntegerField;
+    cbGerar_Financeiro: TCheckBox;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -457,6 +458,7 @@ begin
   BBtnNovo.Enabled:= false;
   BBtnExcluir.Enabled:= false;
   CodigoLancamentoFinanceiro:= 0;
+  cbGerar_Financeiro.Checked:= false;
   BuscaDados;
   achei:= false;
   iniciou:= true;
@@ -511,12 +513,15 @@ begin
 
     if (achei = false) then
     begin
-      if (GeraFinanceiro(Retorno) = 0) then
+      if (cbGerar_Financeiro.Checked) then
       begin
-        TOperacoesConexao.CancelaConexao(Conexao);
-        IniciaTela;
-        Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
-        Exit;
+        if (GeraFinanceiro(Retorno) = 0) then
+        begin
+          TOperacoesConexao.CancelaConexao(Conexao);
+          IniciaTela;
+          Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
+          Exit;
+        end;
       end;
 
       FEntradaProdutoEntidade.Codigo_Lancamento_Financeiro:= CodigoLancamentoFinanceiro;
@@ -544,23 +549,26 @@ begin
     end
     else
     begin
-      FEntradaProdutoDominio:= TEntradaProdutoDominio.Create(Conexao);
-      FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao);
-      if (FLFDominio.ExcluirPeloCodigoMovimentacao(FEntradaProdutoDominio.BuscaCodigoLancamentoFinanceiro( StrToInt(EdtCodigo.Text), Retorno)
-                                              , Retorno)=0) and (Retorno <> '') then
+      if (cbGerar_Financeiro.Checked) then
       begin
-        TOperacoesConexao.CancelaConexao(Conexao);
-        IniciaTela;
-        Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
-        Exit;
-      end;
+        FEntradaProdutoDominio:= TEntradaProdutoDominio.Create(Conexao);
+        FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao);
+        if (FLFDominio.ExcluirPeloCodigoMovimentacao(FEntradaProdutoDominio.BuscaCodigoLancamentoFinanceiro( StrToInt(EdtCodigo.Text), Retorno)
+                                                , Retorno)=0) and (Retorno <> '') then
+        begin
+          TOperacoesConexao.CancelaConexao(Conexao);
+          IniciaTela;
+          Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
+          Exit;
+        end;
 
-      if (GeraFinanceiro(Retorno) = 0) then
-      begin
-        TOperacoesConexao.CancelaConexao(Conexao);
-        IniciaTela;
-        Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
-        Exit;
+        if (GeraFinanceiro(Retorno) = 0) then
+        begin
+          TOperacoesConexao.CancelaConexao(Conexao);
+          IniciaTela;
+          Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
+          Exit;
+        end;
       end;
 
       FEntradaProdutoEntidade.Codigo_Lancamento_Financeiro:= CodigoLancamentoFinanceiro;
@@ -1138,6 +1146,7 @@ begin
   Op.LimpaCampos(FrmEntrada_Produto);
   Op.DesabilitaCampos(FrmEntrada_Produto);
   qryEntradaProdutos.Close;
+  cbGerar_Financeiro.Checked:= false;
 end;
 
 function TFrmEntrada_Produto.GeraFinanceiro(var Retorno: AnsiString): integer;

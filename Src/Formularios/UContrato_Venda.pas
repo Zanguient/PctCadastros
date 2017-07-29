@@ -35,7 +35,8 @@ uses
   ContratoPagamentoDominio, ContratoVendaEntidade, ContratoVendaDominio,
   EstoqueEntidade, EstoqueDominio, PropriedadeEntidade, LoginEntidade,
   HistoricoEntidade, HistoricoDominio, LancamentoFinanceiroEntidade,
-  LancamentoFinanceiroDominio, System.Generics.Collections;
+  LancamentoFinanceiroDominio, System.Generics.Collections, cxNavigator,
+  dxSkinsdxRibbonPainter;
 
 type
   TFrmContrato_Venda = class(TForm)

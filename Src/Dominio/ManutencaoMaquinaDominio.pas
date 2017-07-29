@@ -14,6 +14,7 @@ type
       function Salvar(var Retorno: AnsiString): integer;
       function Alterar(var Retorno: AnsiString): integer;
       function Excluir(var Retorno: AnsiString): integer;
+      function BuscaCodigoLancamentoFinanceiro(CodigoManutencaoMaquina: integer; var Retorno: AnsiString): integer;
       function Buscar(Codigo_Propriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       function Buscar(Codigo_Propriedade: integer; Codigo_Safra: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       constructor Create(var Conexao: TADOConnection; FManutencaoMaquina: TManutencaoMaquinaEntidade); overload;
@@ -22,7 +23,7 @@ type
 implementation
 
 uses
-  ComandoSQLEntidade;
+  ComandoSQLEntidade, SysUtils;
 
 { TManutencaoMaquinaDominio }
 
@@ -36,7 +37,13 @@ begin
     FComandoSQL.ComandoSQL:= 'update Manutencao_Maquina set N_Documento = :N_Documento, Data_Servico = :Data_Servico, '+
                              'Codigo_Maquina = :Codigo_Maquina, UT_Maquina = :UT_Maquina, Valor_Total = :Valor_Total,'+
                              'Codigo_Safra = :Codigo_Safra, '+
-                             'Codigo_Propriedade = :Codigo_Propriedade, Observacoes = :Observacoes '+
+                             'Codigo_Forma_Pagamento = :Codigo_Forma_Pagamento,'+
+                             'Codigo_Plano_Financeiro = :Codigo_Plano_Financeiro, '+
+                             'Codigo_Departamento = :Codigo_Departamento, '+
+                             'Codigo_Tipo_Documento = :Codigo_Tipo_Documento, '+
+                             'Codigo_Lancamento_Financeiro = :Codigo_Lancamento_Financeiro, '+
+                             'Codigo_Fornecedor = :Codigo_Fornecedor, '+
+                             'Observacoes = :Observacoes '+
                              ' where Codigo = :Codigo';
     FComandoSQL.Parametros.Add('N_Documento');
     FComandoSQL.Parametros.Add('Data_Servico');
@@ -44,7 +51,12 @@ begin
     FComandoSQL.Parametros.Add('UT_Maquina');
     FComandoSQL.Parametros.Add('Valor_Total');
     FComandoSQL.Parametros.Add('Codigo_Safra');
-    FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    FComandoSQL.Parametros.Add('Codigo_Forma_Pagamento');
+    FComandoSQL.Parametros.Add('Codigo_Plano_Financeiro');
+    FComandoSQL.Parametros.Add('Codigo_Departamento');
+    FComandoSQL.Parametros.Add('Codigo_Tipo_Documento');
+    FComandoSQL.Parametros.Add('Codigo_Lancamento_Financeiro');
+    FComandoSQL.Parametros.Add('Codigo_Fornecedor');
     FComandoSQL.Parametros.Add('Observacoes');
     FComandoSQL.Parametros.Add('Codigo');
     FComandoSQL.Valores.Add(FManutencaoMaquina.N_Documento);
@@ -53,7 +65,12 @@ begin
     FComandoSQL.Valores.Add(FManutencaoMaquina.UT_Maquina);
     FComandoSQL.Valores.Add(FManutencaoMaquina.Valor_Total);
     FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Safra);
-    FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Propriedade);
+    FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Forma_Pagamento);
+    FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Plano_Financeiro);
+    FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Departamento);
+    FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Tipo_Documento);
+    FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Lancamento_Financeiro);
+    FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Fornecedor);
     FComandoSQL.Valores.Add(FManutencaoMaquina.Observacoes);
     FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo);
     FManutencaoMaquinaDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
@@ -81,6 +98,28 @@ begin
     Result:= FManutencaoMaquinaDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally
 
+  end;
+end;
+
+function TManutencaoMaquinaDominio.BuscaCodigoLancamentoFinanceiro(
+  CodigoManutencaoMaquina: integer; var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+  Query: TADOQuery;
+begin
+  try
+    Query:= TADOQuery.Create(nil);
+    Query.Connection:= Conexao;
+
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select Codigo_Lancamento_Financeiro from Manutencao_Maquina where Codigo = :Codigo';
+    FComandoSQL.Parametros.Add('Codigo');
+    FComandoSQL.Valores.Add(CodigoManutencaoMaquina);
+    FManutencaoMaquinaDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FManutencaoMaquinaDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+    FreeAndNil(Query);
   end;
 end;
 
@@ -149,12 +188,26 @@ begin
                              '(Codigo, N_Documento, Data_Servico, Data_Cadastro, '+
                              'Codigo_Maquina, UT_Maquina, Valor_Total,'+
                              'Codigo_Safra, Codigo_Propriedade, '+
-                             'Codigo_Usuario, Observacoes) '+
+                             'Codigo_Usuario, '+
+                             'Codigo_Forma_Pagamento, '+
+                             'Codigo_Plano_Financeiro, '+
+                             'Codigo_Departamento, '+
+                             'Codigo_Tipo_Documento, '+
+                             'Codigo_Lancamento_Financeiro, '+
+                             'Codigo_Fornecedor, '+
+                             'Observacoes) '+
                              ' values '+
                              '(:Codigo, :N_Documento, :Data_Servico, :Data_Cadastro, '+
                              ':Codigo_Maquina, :UT_Maquina, :Valor_Total,'+
                              ':Codigo_Safra, :Codigo_Propriedade, '+
-                             ':Codigo_Usuario, :Observacoes) ';
+                             ':Codigo_Usuario, '+
+                             ':Codigo_Forma_Pagamento, '+
+                             ':Codigo_Plano_Financeiro, '+
+                             ':Codigo_Departamento, '+
+                             ':Codigo_Tipo_Documento, '+
+                             ':Codigo_Lancamento_Financeiro, '+
+                             ':Codigo_Fornecedor, '+
+                             ':Observacoes) ';
 
     FComandoSQL.Parametros.Add('Codigo');
     FComandoSQL.Parametros.Add('N_Documento');
@@ -166,6 +219,12 @@ begin
     FComandoSQL.Parametros.Add('Codigo_Safra');
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Parametros.Add('Codigo_Usuario');
+    FComandoSQL.Parametros.Add('Codigo_Forma_Pagamento');
+    FComandoSQL.Parametros.Add('Codigo_Plano_Financeiro');
+    FComandoSQL.Parametros.Add('Codigo_Departamento');
+    FComandoSQL.Parametros.Add('Codigo_Tipo_Documento');
+    FComandoSQL.Parametros.Add('Codigo_Lancamento_Financeiro');
+    FComandoSQL.Parametros.Add('Codigo_Fornecedor');
     FComandoSQL.Parametros.Add('Observacoes');
     FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo);
     FComandoSQL.Valores.Add(FManutencaoMaquina.N_Documento);
@@ -177,6 +236,12 @@ begin
     FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Safra);
     FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Propriedade);
     FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Usuario);
+    FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Forma_Pagamento);
+    FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Plano_Financeiro);
+    FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Departamento);
+    FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Tipo_Documento);
+    FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Lancamento_Financeiro);
+    FComandoSQL.Valores.Add(FManutencaoMaquina.Codigo_Fornecedor);
     FComandoSQL.Valores.Add(FManutencaoMaquina.Observacoes);
     FManutencaoMaquinaDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FManutencaoMaquinaDAO.ExecutaComandoSQLSalvarAlterarExcluir(Retorno);

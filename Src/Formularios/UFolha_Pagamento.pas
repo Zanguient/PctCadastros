@@ -127,18 +127,12 @@ type
     cxEditRepository1CurrencyItem1: TcxEditRepositoryCurrencyItem;
     Label6: TLabel;
     cmbFuncionario: TcxLookupComboBox;
-    Label11: TLabel;
-    cmbDepartamento: TcxLookupComboBox;
     Label5: TLabel;
     EdtTotal_Debito: TEdit;
     EdtSalario_Final: TEdit;
     Label2: TLabel;
     EdtTotal_Credito: TEdit;
     Label14: TLabel;
-    Label10: TLabel;
-    Label13: TLabel;
-    cmbCondicaoPagamento: TcxLookupComboBox;
-    cmbPlano: TcxLookupComboBox;
     Label7: TLabel;
     EdtMes_Ano: TMaskEdit;
     qryitensfolhaCodigo: TIntegerField;
@@ -163,8 +157,6 @@ type
     qryConsultaTotal_Debito: TFloatField;
     qryConsultaSalario_Final: TFloatField;
     qryConsultaObservacao: TStringField;
-    Label8: TLabel;
-    cmbTipoDocumento: TcxLookupComboBox;
     LblData_Cadastro: TLabel;
     MEdtData_Cadastro: TMaskEdit;
     qryConsultaCodigo_Forma_Pagamento: TIntegerField;
@@ -192,6 +184,15 @@ type
     qryConsultaFuncionario: TStringField;
     cxGrid1DBTableView1Funcionario: TcxGridDBColumn;
     cbGerar_Financeiro: TCheckBox;
+    gbDadosFinanceiro: TGroupBox;
+    Label11: TLabel;
+    Label10: TLabel;
+    Label13: TLabel;
+    Label8: TLabel;
+    cmbDepartamento: TcxLookupComboBox;
+    cmbCondicaoPagamento: TcxLookupComboBox;
+    cmbPlano: TcxLookupComboBox;
+    cmbTipoDocumento: TcxLookupComboBox;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -379,6 +380,7 @@ begin
   EdtTotal_Debito.Text:= '0,00';
   EdtTotal_Credito.Text:= '0,00';
   EdtSalario_Final.Text:= '0,00';
+  CodigoLancamentoFinanceiro:= 0;
   BBtnSalvar.Enabled:= true;
   BBtnCancelar.Enabled:= true;
   BBtnNovo.Enabled:= false;
@@ -404,7 +406,11 @@ begin
     FFolhaEntidade.Codigo_Usuario:= FUsuario.Codigo;
     FFolhaEntidade.Codigo_Safra:= dm.qrySafraCodigo.AsInteger;
     FFolhaEntidade.Codigo_Funcionario:= dm.qrypessoaCodigo.AsInteger;
-    FFolhaEntidade.Codigo_Forma_Pagamento:= dm.qrycondicaoPagamentoCodigo.AsInteger;
+
+    if (cmbCondicaoPagamento.Text <> '') then
+      FFolhaEntidade.Codigo_Forma_Pagamento:= dm.qrycondicaoPagamentoCodigo.AsInteger
+    else
+      FFolhaEntidade.Codigo_Forma_Pagamento:= 0;
 
     if (cmbPlano.Text <> '') then
       FFolhaEntidade.Codigo_Plano_Financeiro:= dm.qryplanoFinanceiroCodigo.AsInteger
@@ -466,19 +472,19 @@ begin
     end
     else
     begin
-      FFolhaDominio:= TFolhaPagamentoDominio.Create(Conexao);
-      FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao);
-      if (FLFDominio.ExcluirPeloCodigoMovimentacao(FFolhaDominio.BuscaCodigoLancamentoFinanceiro( StrToInt(EdtCodigo.Text), Retorno)
-                                                  , Retorno)=0) and (Retorno <> '') then
-      begin
-        TOperacoesConexao.CancelaConexao(Conexao);
-        IniciaTela;
-        Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
-        Exit;
-      end;
-
       if (cbGerar_Financeiro.Checked) then
       begin
+        FFolhaDominio:= TFolhaPagamentoDominio.Create(Conexao);
+        FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao);
+        if (FLFDominio.ExcluirPeloCodigoMovimentacao(FFolhaDominio.BuscaCodigoLancamentoFinanceiro( StrToInt(EdtCodigo.Text), Retorno)
+                                                    , Retorno)=0) and (Retorno <> '') then
+        begin
+          TOperacoesConexao.CancelaConexao(Conexao);
+          IniciaTela;
+          Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
+          Exit;
+        end;
+
         if (GeraFinanceiro(Retorno) = 0) then
         begin
           TOperacoesConexao.CancelaConexao(Conexao);
@@ -614,11 +620,14 @@ begin
     exit;
   end;
 
-  if (cmbCondicaoPagamento.Text = '') then
+  if (cbGerar_Financeiro.Checked) then
   begin
-    Mensagens.MensagemErro(MensagemFaltaDados);
-    cmbCondicaoPagamento.SetFocus;
-    exit;
+    if (cmbCondicaoPagamento.Text = '') then
+    begin
+      Mensagens.MensagemErro(MensagemFaltaDados);
+      cmbCondicaoPagamento.SetFocus;
+      exit;
+    end;
   end;
 
   Confira:= true;
@@ -838,6 +847,7 @@ begin
   Op.LimpaCampos(FrmFolha_Pagamento);
   Op.DesabilitaCampos(FrmFolha_Pagamento);
   qryitensfolha.Close;
+  cbGerar_Financeiro.Checked:= false;
 end;
 
 function TFrmFolha_Pagamento.GeraFinanceiro(var Retorno: AnsiString): integer;

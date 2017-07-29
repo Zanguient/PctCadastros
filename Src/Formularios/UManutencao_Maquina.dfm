@@ -118,7 +118,7 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
       end
       object Label4: TLabel
         Left = 343
-        Top = 53
+        Top = 130
         Width = 73
         Height = 13
         Caption = 'Observa'#231#245'es'
@@ -148,6 +148,19 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
         Width = 61
         Height = 13
         Caption = 'Valor Total'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label6: TLabel
+        Left = 190
+        Top = 91
+        Width = 64
+        Height = 13
+        Caption = 'Fornecedor'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -226,6 +239,7 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
         Top = 147
         Width = 73
         Height = 17
+        Hint = 'Unidade de Trabalho atual da m'#225'quina (Km, Hora e etc).'
         BevelInner = bvNone
         BevelKind = bkFlat
         BevelOuter = bvRaised
@@ -241,9 +255,9 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
       end
       object MMOObservacao: TMemo
         Left = 343
-        Top = 68
-        Width = 338
-        Height = 98
+        Top = 147
+        Width = 351
+        Height = 25
         BevelInner = bvNone
         BevelKind = bkFlat
         BevelOuter = bvRaised
@@ -1077,6 +1091,167 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
         TabOrder = 7
         OnKeyPress = EdtValor_TotalKeyPress
       end
+      object gbDadosFinanceiro: TGroupBox
+        Left = 368
+        Top = 29
+        Width = 326
+        Height = 97
+        Hint = 
+          'Caso a op'#231#227'o Gerar Financeiro estiver selecionada, obrigatoriame' +
+          'nte deve ser informada a condi'#231#227'o de pagamento e, opcionalmente,' +
+          ' os demais itens.'
+        Caption = 'Dados do Financeiro'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 10
+        object Label11: TLabel
+          Left = 8
+          Top = 56
+          Width = 83
+          Height = 13
+          Caption = 'Departamento'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label2: TLabel
+          Left = 8
+          Top = 19
+          Width = 58
+          Height = 13
+          Caption = 'Cond. Pag.'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label13: TLabel
+          Left = 164
+          Top = 17
+          Width = 92
+          Height = 13
+          Caption = 'Plano Financeiro'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label8: TLabel
+          Left = 164
+          Top = 56
+          Width = 92
+          Height = 13
+          Caption = 'Tipo Documento'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object cmbDepartamento: TcxLookupComboBox
+          Left = 8
+          Top = 70
+          Properties.CharCase = ecUpperCase
+          Properties.KeyFieldNames = 'Codigo'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Descricao'
+            end>
+          Properties.ListOptions.SyncMode = True
+          Properties.ListSource = DM.dsdepartamento
+          TabOrder = 2
+          Width = 150
+        end
+        object cmbCondicaoPagamento: TcxLookupComboBox
+          Left = 8
+          Top = 33
+          Properties.CharCase = ecUpperCase
+          Properties.KeyFieldNames = 'Codigo'
+          Properties.ListColumns = <
+            item
+              Caption = 'Descri'#231#227'o'
+              FieldName = 'Descricao'
+            end
+            item
+              FieldName = 'Parcela'
+            end
+            item
+              FieldName = 'Prazo'
+            end>
+          Properties.ListOptions.SyncMode = True
+          Properties.ListSource = DM.dscondicaoPagamento
+          TabOrder = 0
+          Width = 150
+        end
+        object cmbPlano: TcxLookupComboBox
+          Left = 164
+          Top = 31
+          Properties.CharCase = ecUpperCase
+          Properties.KeyFieldNames = 'Codigo'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Descricao'
+            end>
+          Properties.ListOptions.SyncMode = True
+          Properties.ListSource = DM.dsplanoFinanceiro
+          TabOrder = 1
+          Width = 150
+        end
+        object cmbTipoDocumento: TcxLookupComboBox
+          Left = 164
+          Top = 70
+          Properties.CharCase = ecUpperCase
+          Properties.KeyFieldNames = 'Codigo'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Descricao'
+            end>
+          Properties.ListOptions.SyncMode = True
+          Properties.ListSource = DM.dstipoDocumento
+          TabOrder = 3
+          Width = 150
+        end
+      end
+      object cbGerar_Financeiro: TCheckBox
+        Left = 175
+        Top = 34
+        Width = 97
+        Height = 17
+        Caption = 'Gerar Financeiro'
+        TabOrder = 11
+        OnClick = cbGerar_FinanceiroClick
+      end
+      object cmbFornecedor: TcxLookupComboBox
+        Left = 190
+        Top = 105
+        Hint = 
+          'Neste caso, entende-se como Fornecedor a empresa que realizou o ' +
+          'servi'#231'o (fornecedor do servi'#231'o).'
+        ParentShowHint = False
+        Properties.CharCase = ecUpperCase
+        Properties.KeyFieldNames = 'Codigo'
+        Properties.ListColumns = <
+          item
+            FieldName = 'Nome'
+          end
+          item
+            Caption = 'Tipo'
+            FieldName = 'Tipo_Pessoa'
+          end>
+        Properties.ListOptions.SyncMode = True
+        Properties.ListSource = DM.dspessoa
+        ShowHint = True
+        TabOrder = 12
+        Width = 177
+      end
     end
     object TabSheet2: TTabSheet
       Caption = 'Pesquisar'
@@ -1274,7 +1449,9 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
       Hint = 
         'Clique para Salvar/Alterar o registro'#13#10#13#10'AVISO IMPORTANTE:'#13#10'* O ' +
         'sistema automaticamente vai atualizar a quantidade de estoque do' +
-        's produtos.'
+        's produtos.'#13#10'* Ao EDITAR uma informa'#231#227'o E gerar o financeiro (op' +
+        #231#227'o Gerar Financeiro marcada), '#13#10'o sistema deletar'#225' o financeiro' +
+        ' gerado anteriormente e gerar'#225' novamente.'
       Caption = '&Salvar'
       Enabled = False
       ImageIndex = 0
@@ -1369,6 +1546,24 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
       FieldName = 'Veiculo'
       Size = 100
     end
+    object qryConsultaCodigo_Forma_Pagamento: TIntegerField
+      FieldName = 'Codigo_Forma_Pagamento'
+    end
+    object qryConsultaCodigo_Plano_Financeiro: TIntegerField
+      FieldName = 'Codigo_Plano_Financeiro'
+    end
+    object qryConsultaCodigo_Departamento: TIntegerField
+      FieldName = 'Codigo_Departamento'
+    end
+    object qryConsultaCodigo_Tipo_Documento: TIntegerField
+      FieldName = 'Codigo_Tipo_Documento'
+    end
+    object qryConsultaCodigo_Lancamento_Financeiro: TIntegerField
+      FieldName = 'Codigo_Lancamento_Financeiro'
+    end
+    object qryConsultaCodigo_Fornecedor: TIntegerField
+      FieldName = 'Codigo_Fornecedor'
+    end
   end
   object dsConsulta: TDataSource
     DataSet = qryConsulta
@@ -1451,7 +1646,6 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
     SQL.Strings = (
       'select * from Manutencao_Maquina_Servico')
     Left = 600
-    Top = 104
     object qryManutencaoMaquinaServicoCodigo: TAutoIncField
       FieldName = 'Codigo'
       ReadOnly = True
@@ -1487,7 +1681,6 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
   object dsManutencaoMaquinaServico: TDataSource
     DataSet = qryManutencaoMaquinaServico
     Left = 632
-    Top = 104
   end
   object cxStyleRepository1: TcxStyleRepository
     Left = 496
@@ -1506,8 +1699,7 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
     Parameters = <>
     SQL.Strings = (
       'select * from Manutencao_Maquina_Servico_Proxima_Revisao')
-    Left = 600
-    Top = 48
+    Left = 672
     object qryManutencaoMaquinaServicoProxRevCodigo: TAutoIncField
       FieldName = 'Codigo'
       ReadOnly = True
@@ -1524,8 +1716,7 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
   end
   object dsManutencaoMaquinaServicoProxRev: TDataSource
     DataSet = qryManutencaoMaquinaServicoProxRev
-    Left = 632
-    Top = 48
+    Left = 704
   end
   object qryManutencaoMaquinaProduto: TADOQuery
     CursorType = ctStatic
@@ -1533,8 +1724,7 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
     Parameters = <>
     SQL.Strings = (
       'select MMP.* from Manutencao_Maquina_Produto MMP')
-    Left = 688
-    Top = 48
+    Left = 744
     object qryManutencaoMaquinaProdutoCodigo: TAutoIncField
       FieldName = 'Codigo'
       ReadOnly = True
@@ -1585,7 +1775,6 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
   end
   object dsManutencaoMaquinaProduto: TDataSource
     DataSet = qryManutencaoMaquinaProduto
-    Left = 720
-    Top = 48
+    Left = 776
   end
 end

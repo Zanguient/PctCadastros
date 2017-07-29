@@ -90,19 +90,6 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object Label11: TLabel
-        Left = 0
-        Top = 124
-        Width = 83
-        Height = 13
-        Caption = 'Departamento'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
       object Label5: TLabel
         Left = 432
         Top = 50
@@ -142,51 +129,12 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object Label10: TLabel
-        Left = 0
-        Top = 86
-        Width = 58
-        Height = 13
-        Caption = 'Cond. Pag.'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label13: TLabel
-        Left = 167
-        Top = 86
-        Width = 92
-        Height = 13
-        Caption = 'Plano Financeiro'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
       object Label7: TLabel
         Left = 168
         Top = 13
         Width = 51
         Height = 13
         Caption = 'M'#234's/Ano'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label8: TLabel
-        Left = 166
-        Top = 124
-        Width = 92
-        Height = 13
-        Caption = 'Tipo Documento'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -231,33 +179,33 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
           end>
         Properties.ListOptions.SyncMode = True
         Properties.ListSource = DM.dsSafra
-        TabOrder = 1
+        TabOrder = 3
         Width = 170
       end
       object MMOObservacao: TMemo
         Left = 342
         Top = 101
         Width = 355
-        Height = 57
+        Height = 83
         BevelInner = bvNone
         BevelKind = bkFlat
         BevelOuter = bvRaised
         BorderStyle = bsNone
         MaxLength = 800
-        TabOrder = 4
+        TabOrder = 8
       end
       object cxGrid2: TcxGrid
         Left = 0
-        Top = 171
+        Top = 191
         Width = 697
-        Height = 234
+        Height = 214
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        TabOrder = 8
+        TabOrder = 9
         LookAndFeel.NativeStyle = False
         RootLevelOptions.DetailTabsPosition = dtpTop
         object cxGridDBTableViewTalhao: TcxGridDBTableView
@@ -993,22 +941,8 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
           end>
         Properties.ListOptions.SyncMode = True
         Properties.ListSource = DM.dspessoa
-        TabOrder = 2
+        TabOrder = 4
         Width = 177
-      end
-      object cmbDepartamento: TcxLookupComboBox
-        Left = 0
-        Top = 138
-        Properties.CharCase = ecUpperCase
-        Properties.KeyFieldNames = 'Codigo'
-        Properties.ListColumns = <
-          item
-            FieldName = 'Descricao'
-          end>
-        Properties.ListOptions.SyncMode = True
-        Properties.ListSource = DM.dsdepartamento
-        TabOrder = 3
-        Width = 169
       end
       object EdtTotal_Debito: TEdit
         Left = 432
@@ -1071,41 +1005,6 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
         OnExit = EdtTotal_CreditoExit
         OnKeyPress = EdtTotal_CreditoKeyPress
       end
-      object cmbCondicaoPagamento: TcxLookupComboBox
-        Left = 0
-        Top = 100
-        Properties.CharCase = ecUpperCase
-        Properties.KeyFieldNames = 'Codigo'
-        Properties.ListColumns = <
-          item
-            Caption = 'Descri'#231#227'o'
-            FieldName = 'Descricao'
-          end
-          item
-            FieldName = 'Parcela'
-          end
-          item
-            FieldName = 'Prazo'
-          end>
-        Properties.ListOptions.SyncMode = True
-        Properties.ListSource = DM.dscondicaoPagamento
-        TabOrder = 9
-        Width = 170
-      end
-      object cmbPlano: TcxLookupComboBox
-        Left = 167
-        Top = 100
-        Properties.CharCase = ecUpperCase
-        Properties.KeyFieldNames = 'Codigo'
-        Properties.ListColumns = <
-          item
-            FieldName = 'Descricao'
-          end>
-        Properties.ListOptions.SyncMode = True
-        Properties.ListSource = DM.dsplanoFinanceiro
-        TabOrder = 10
-        Width = 177
-      end
       object EdtMes_Ano: TMaskEdit
         Left = 168
         Top = 32
@@ -1117,23 +1016,9 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
         BorderStyle = bsNone
         EditMask = '99/9999;1;_'
         MaxLength = 7
-        TabOrder = 11
+        TabOrder = 2
         Text = '  /    '
         OnEnter = EdtMes_AnoEnter
-      end
-      object cmbTipoDocumento: TcxLookupComboBox
-        Left = 166
-        Top = 138
-        Properties.CharCase = ecUpperCase
-        Properties.KeyFieldNames = 'Codigo'
-        Properties.ListColumns = <
-          item
-            FieldName = 'Descricao'
-          end>
-        Properties.ListOptions.SyncMode = True
-        Properties.ListSource = DM.dstipoDocumento
-        TabOrder = 12
-        Width = 178
       end
       object MEdtData_Cadastro: TMaskEdit
         Left = 55
@@ -1146,7 +1031,7 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
         BorderStyle = bsNone
         EditMask = '!99/99/9999 99:99:99;1;_'
         MaxLength = 19
-        TabOrder = 13
+        TabOrder = 1
         Text = '  /  /       :  :  '
       end
       object cbGerar_Financeiro: TCheckBox
@@ -1155,7 +1040,136 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
         Width = 97
         Height = 17
         Caption = 'Gerar Financeiro'
-        TabOrder = 14
+        TabOrder = 10
+      end
+      object gbDadosFinanceiro: TGroupBox
+        Left = 0
+        Top = 89
+        Width = 334
+        Height = 96
+        Hint = 
+          'Caso a op'#231#227'o Gerar Financeiro estiver selecionada, obrigatoriame' +
+          'nte deve ser informada a condi'#231#227'o de pagamento e, opcionalmente,' +
+          ' os demais itens.'
+        Caption = 'Dados do Financeiro'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 11
+        object Label11: TLabel
+          Left = 8
+          Top = 53
+          Width = 83
+          Height = 13
+          Caption = 'Departamento'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label10: TLabel
+          Left = 8
+          Top = 15
+          Width = 58
+          Height = 13
+          Caption = 'Cond. Pag.'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label13: TLabel
+          Left = 169
+          Top = 15
+          Width = 92
+          Height = 13
+          Caption = 'Plano Financeiro'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label8: TLabel
+          Left = 169
+          Top = 53
+          Width = 92
+          Height = 13
+          Caption = 'Tipo Documento'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object cmbDepartamento: TcxLookupComboBox
+          Left = 8
+          Top = 67
+          Properties.CharCase = ecUpperCase
+          Properties.KeyFieldNames = 'Codigo'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Descricao'
+            end>
+          Properties.ListOptions.SyncMode = True
+          Properties.ListSource = DM.dsdepartamento
+          TabOrder = 2
+          Width = 150
+        end
+        object cmbCondicaoPagamento: TcxLookupComboBox
+          Left = 8
+          Top = 29
+          Properties.CharCase = ecUpperCase
+          Properties.KeyFieldNames = 'Codigo'
+          Properties.ListColumns = <
+            item
+              Caption = 'Descri'#231#227'o'
+              FieldName = 'Descricao'
+            end
+            item
+              FieldName = 'Parcela'
+            end
+            item
+              FieldName = 'Prazo'
+            end>
+          Properties.ListOptions.SyncMode = True
+          Properties.ListSource = DM.dscondicaoPagamento
+          TabOrder = 0
+          Width = 150
+        end
+        object cmbPlano: TcxLookupComboBox
+          Left = 169
+          Top = 29
+          Properties.CharCase = ecUpperCase
+          Properties.KeyFieldNames = 'Codigo'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Descricao'
+            end>
+          Properties.ListOptions.SyncMode = True
+          Properties.ListSource = DM.dsplanoFinanceiro
+          TabOrder = 1
+          Width = 150
+        end
+        object cmbTipoDocumento: TcxLookupComboBox
+          Left = 169
+          Top = 67
+          Properties.CharCase = ecUpperCase
+          Properties.KeyFieldNames = 'Codigo'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Descricao'
+            end>
+          Properties.ListOptions.SyncMode = True
+          Properties.ListSource = DM.dstipoDocumento
+          TabOrder = 3
+          Width = 150
+        end
       end
     end
     object TabSheet2: TTabSheet
@@ -1389,7 +1403,9 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
         'Clique para Salvar/Alterar o registro'#13#10#13#10'AVISO IMPORTANTE:'#13#10'* O ' +
         'sistema automaticamente vai gerar o contas a pagar dessa nota fi' +
         'scal.'#13#10'* O sistema automaticamente vai atualizar a quantidade de' +
-        ' estoque dos produtos.'
+        ' estoque dos produtos.'#13#10'* Ao EDITAR uma informa'#231#227'o E gerar o fin' +
+        'anceiro (op'#231#227'o Gerar Financeiro marcada), '#13#10'o sistema deletar'#225' o' +
+        ' financeiro gerado anteriormente e gerar'#225' novamente.'
       Caption = '&Salvar'
       Enabled = False
       ImageIndex = 0

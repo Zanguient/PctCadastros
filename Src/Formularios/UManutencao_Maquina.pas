@@ -38,7 +38,8 @@ uses
   PropriedadeEntidade, ManutencaoMaquinaProdutoEntidade,
   ManutencaoMaquinaProdutoDominio, LoginEntidade, HistoricoEntidade,
   HistoricoDominio, ProdutoDominio, EstoqueProdutoDominio, System.Generics.Collections,
-  cxNavigator, dxSkinsdxRibbonPainter;
+  cxNavigator, dxSkinsdxRibbonPainter, LancamentoFinanceiroEntidade,
+  LancamentoFinanceiroDominio;
 
 type
   TFrmManutencao_Maquina = class(TForm)
@@ -192,6 +193,24 @@ type
     cxGrid1DBTableView1Modelo: TcxGridDBColumn;
     qryConsultaCodigo_Usuario: TIntegerField;
     qryConsultaVeiculo: TStringField;
+    gbDadosFinanceiro: TGroupBox;
+    Label11: TLabel;
+    Label2: TLabel;
+    Label13: TLabel;
+    Label8: TLabel;
+    cmbDepartamento: TcxLookupComboBox;
+    cmbCondicaoPagamento: TcxLookupComboBox;
+    cmbPlano: TcxLookupComboBox;
+    cmbTipoDocumento: TcxLookupComboBox;
+    cbGerar_Financeiro: TCheckBox;
+    Label6: TLabel;
+    cmbFornecedor: TcxLookupComboBox;
+    qryConsultaCodigo_Forma_Pagamento: TIntegerField;
+    qryConsultaCodigo_Plano_Financeiro: TIntegerField;
+    qryConsultaCodigo_Departamento: TIntegerField;
+    qryConsultaCodigo_Tipo_Documento: TIntegerField;
+    qryConsultaCodigo_Lancamento_Financeiro: TIntegerField;
+    qryConsultaCodigo_Fornecedor: TIntegerField;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -235,11 +254,13 @@ type
     procedure cxGrid2DBBandedTableViewServicoDataControllerSummaryAfterSummary(
       ASender: TcxDataSummary);
     procedure EdtUT_MaquinaExit(Sender: TObject);
+    procedure cbGerar_FinanceiroClick(Sender: TObject);
   private
     FPropriedade: TPropriedadeEntidade;
     FUsuario: TLoginEntidade;
     HistoricoEntidade: THistoricoEntidade;
     HistoricoDominio: THistoricoDominio;
+    CodigoLancamentoFinanceiro: integer;
 
     Op: TOperacoes;
     Mensagens: TMensagens;
@@ -258,6 +279,8 @@ type
     IniDados: IniciaDadosCadastro;
     FProdutoDominio: TProdutoDominio;
     FEstoqueProdutoDominio: TEstoqueProdutoDominio;
+    FLF: TLancamentoFinanceiroEntidade;
+    FLFDominio: TLancamentoFinanceiroDominio;
 
     ValorQuantidadeAtual, ValorNovaQuantidade, ValorDiferencaQuantidade: double;
     ValorTotalServico, ValorTotalProduto: double;
@@ -268,6 +291,7 @@ type
     procedure CalculaValorTotal;
     function VoltaEstoque: integer;
     procedure IniciaTela;
+    function GeraFinanceiro(var Retorno: AnsiString): integer;
   public
     ativo, enderec, achei, iniciou: boolean;
 
@@ -379,28 +403,41 @@ var
   Retorno: AnsiString;
   SafraDominio: TSafraDominio;
   FAplicacao: TList<AnsiString>;
+  TipoPessoa: TList<AnsiString>;
 begin
   Op.HabilitaCampos(FrmManutencao_Maquina);
   Op.LimpaCampos(FrmManutencao_Maquina);
   PageControl1.TabIndex:= 0;
   FAplicacao:= TList<AnsiString>.Create();
+  TipoPessoa:= TList<AnsiString>.Create();
 
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
   TOperacoesConexao.IniciaQuerys([qryConsulta,
                                   qryManutencaoMaquinaServico,
                                   qryManutencaoMaquinaServicoProxRev,
                                   qryManutencaoMaquinaProduto,
+                                  dm.qrypessoa,
                                   DM.qryservico,
                                   DM.qryProduto,
                                   DM.qrySafra,
+                                  dm.qrycondicaoPagamento,
+                                  dm.qryplanoFinanceiro,
+                                  dm.qrytipoDocumento,
+                                  dm.qrydepartamento,
                                   dm.qryVeiculo], Conexao);
 
   FAplicacao.Add('MANUTENÇÕES DE MÁQUINAS');
+  TipoPessoa.Add('FORNECEDOR');
   IniDados:= IniciaDadosCadastro.Create;
   IniDados.BuscaDadosSafra(Conexao);
   IniDados.BuscaDadosVeiculo(FPropriedade.Codigo, Conexao);
   IniDados.BuscaDadosServico(Conexao);
   IniDados.BuscaDadosProduto(FAplicacao, Conexao);
+  IniDados.BuscaDadosCondicaoPagamento(Conexao);
+  IniDados.BuscaDadosPlanoFinanceiro(Conexao);
+  IniDados.BuscaDadosTipoDocumento(Conexao);
+  IniDados.BuscaDadosDepartamento(Conexao);
+  IniDados.BuscaDadosPessoa(TipoPessoa, Conexao);
 
   EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Manutencao_Maquina', Conexao));
   EdtN_Documento.Text:= EdtCodigo.Text;
@@ -415,6 +452,7 @@ begin
 
   EdtUT_Maquina.Text:= '0';
   EdtValor_Total.Text:= '0,00';
+  CodigoLancamentoFinanceiro:= 0;
   BBtnSalvar.Enabled:= true;
   BBtnCancelar.Enabled:= true;
   BBtnNovo.Enabled:= false;
@@ -422,6 +460,8 @@ begin
   BuscaDados;
   achei:= false;
   iniciou:= True;
+  cbGerar_Financeiro.Checked:= false;
+  gbDadosFinanceiro.Visible:= false;
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
   EdtN_Documento.SetFocus;
 end;
@@ -444,11 +484,45 @@ begin
     FManutencaoMaquina.Codigo_Safra:= dm.qrySafraCodigo.AsInteger;
     FManutencaoMaquina.Codigo_Propriedade:= FPropriedade.Codigo;
     FManutencaoMaquina.Codigo_Usuario:= FUsuario.Codigo;
+    FManutencaoMaquina.Codigo_Fornecedor:= dm.qrypessoaCodigo.AsInteger;
     FManutencaoMaquina.Observacoes:= MMOObservacao.Text;
-    FManutencaoMaquinaDominio:= TManutencaoMaquinaDominio.Create(Conexao, FManutencaoMaquina);
+
+    if (cmbCondicaoPagamento.Text <> '') then
+      FManutencaoMaquina.Codigo_Forma_Pagamento:= dm.qrycondicaoPagamentoCodigo.AsInteger
+    else
+      FManutencaoMaquina.Codigo_Forma_Pagamento:= 0;
+
+    if (cmbPlano.Text <> '') then
+      FManutencaoMaquina.Codigo_Plano_Financeiro:= dm.qryplanoFinanceiroCodigo.AsInteger
+    else
+      FManutencaoMaquina.Codigo_Plano_Financeiro:= 0;
+
+    if (cmbDepartamento.Text <> '') then
+      FManutencaoMaquina.Codigo_Departamento:= dm.qrydepartamentoCodigo.AsInteger
+    else
+      FManutencaoMaquina.Codigo_Departamento:= 0;
+
+    if (cmbTipoDocumento.Text <> '') then
+      FManutencaoMaquina.Codigo_Tipo_Documento:= dm.qrytipoDocumentoCodigo.AsInteger
+    else
+      FManutencaoMaquina.Codigo_Tipo_Documento:= 0;
 
     if (achei = false) then
     begin
+      if (cbGerar_Financeiro.Checked) then
+      begin
+        if (GeraFinanceiro(Retorno) = 0) then
+        begin
+          TOperacoesConexao.CancelaConexao(Conexao);
+          IniciaTela;
+          Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
+          Exit;
+        end;
+      end;
+
+      FManutencaoMaquina.Codigo_Lancamento_Financeiro:= CodigoLancamentoFinanceiro;
+      FManutencaoMaquinaDominio:= TManutencaoMaquinaDominio.Create(Conexao, FManutencaoMaquina);
+
       if (FManutencaoMaquinaDominio.Salvar(Retorno) = 0) then
       begin
         TOperacoesConexao.CancelaConexao(Conexao);
@@ -470,6 +544,31 @@ begin
     end
     else
     begin
+      if (cbGerar_Financeiro.Checked) then
+      begin
+        FManutencaoMaquinaDominio:= TManutencaoMaquinaDominio.Create(Conexao);
+        FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao);
+        if (FLFDominio.ExcluirPeloCodigoMovimentacao(FManutencaoMaquinaDominio.BuscaCodigoLancamentoFinanceiro( StrToInt(EdtCodigo.Text), Retorno)
+                                                    , Retorno)=0) and (Retorno <> '') then
+        begin
+          TOperacoesConexao.CancelaConexao(Conexao);
+          IniciaTela;
+          Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
+          Exit;
+        end;
+
+        if (GeraFinanceiro(Retorno) = 0) then
+        begin
+          TOperacoesConexao.CancelaConexao(Conexao);
+          IniciaTela;
+          Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
+          Exit;
+        end;
+      end;
+
+      FManutencaoMaquina.Codigo_Lancamento_Financeiro:= CodigoLancamentoFinanceiro;
+      FManutencaoMaquinaDominio:= TManutencaoMaquinaDominio.Create(Conexao, FManutencaoMaquina);
+
       if (FManutencaoMaquinaDominio.Alterar(Retorno) = 0) then
       begin
         TOperacoesConexao.CancelaConexao(Conexao);
@@ -541,6 +640,18 @@ begin
   Op.FormataFloat(2, EdtValor_Total, Total);
 end;
 
+procedure TFrmManutencao_Maquina.cbGerar_FinanceiroClick(Sender: TObject);
+begin
+  if (cbGerar_Financeiro.Checked) then
+  begin
+    gbDadosFinanceiro.Visible:= true
+  end
+  else
+  begin
+    gbDadosFinanceiro.Visible:= false;
+  end;
+end;
+
 function TFrmManutencao_Maquina.Confira: boolean;
 begin
   Confira:= false;
@@ -559,6 +670,20 @@ begin
     exit;
   end;
 
+  if (cmbMaquina.Text = '') then
+  begin
+    Mensagens.MensagemErro(MensagemFaltaDados);
+    cmbMaquina.SetFocus;
+    exit;
+  end;
+
+  if (cmbFornecedor.Text = '') then
+  begin
+    Mensagens.MensagemErro(MensagemFaltaDados);
+    cmbFornecedor.SetFocus;
+    exit;
+  end;
+
   if (EdtUT_Maquina.Text = '') then
   begin
     Mensagens.MensagemErro(MensagemFaltaDados);
@@ -571,6 +696,16 @@ begin
     Mensagens.MensagemErro(MensagemFaltaDados);
     EdtValor_Total.SetFocus;
     exit;
+  end;
+
+  if (cbGerar_Financeiro.Checked) then
+  begin
+    if (cmbCondicaoPagamento.Text = '') then
+    begin
+      Mensagens.MensagemErro(MensagemFaltaDados);
+      cmbCondicaoPagamento.SetFocus;
+      exit;
+    end;
   end;
 
   Confira:= true;
@@ -599,6 +734,11 @@ begin
   Op.FormataFloat(2, EdtValor_Total, qryConsultaValor_Total.AsFloat);
   cmbSafra.EditValue:= qryConsultaCodigo_Safra.AsInteger;
   MMOObservacao.Text:= qryConsultaObservacoes.AsString;
+  cmbFornecedor.EditValue:= qryConsultaCodigo_Fornecedor.AsInteger;
+  cmbCondicaoPagamento.EditValue:= qryConsultaCodigo_Forma_Pagamento.AsInteger;
+  cmbPlano.EditValue:= qryConsultaCodigo_Plano_Financeiro.AsInteger;
+  cmbDepartamento.EditValue:= qryConsultaCodigo_Departamento.AsInteger;
+  cmbTipoDocumento.EditValue:= qryConsultaCodigo_Tipo_Documento.AsInteger;
 
   FManutencaoMaquina:= TManutencaoMaquinaEntidade.Create;
   FManutencaoMaquina.Codigo:= qryConsultaCodigo.AsInteger;
@@ -618,6 +758,17 @@ begin
 
   cxGrid2DBBandedTableViewServico.ViewData.Collapse(true);
   cxGrid2DBTableViewProxRev.ViewData.Collapse(true);
+
+  if (qryConsultaCodigo_Forma_Pagamento.AsInteger <> 0) then
+  begin
+    cbGerar_Financeiro.Checked:= true;
+    gbDadosFinanceiro.Visible:= true;
+  end
+  else
+  begin
+    cbGerar_Financeiro.Checked:= false;
+    gbDadosFinanceiro.Visible:= false;
+  end;
 
   BBtnNovo.Enabled:= false;
   BBtnSalvar.Enabled:= True;
@@ -841,6 +992,8 @@ begin
   qryManutencaoMaquinaProduto.Close;
   qryManutencaoMaquinaServico.Close;
   qryManutencaoMaquinaServicoProxRev.Close;
+  cbGerar_Financeiro.Checked:= false;
+  gbDadosFinanceiro.Visible:= false;
 end;
 
 procedure TFrmManutencao_Maquina.MEdtData_CadastroEnter(Sender: TObject);
@@ -936,6 +1089,59 @@ begin
     Mensagens.MensagemErro(e.Message);
     Result:= 0;
   end;
+  end;
+end;
+
+function TFrmManutencao_Maquina.GeraFinanceiro(var Retorno: AnsiString): integer;
+begin
+  FLF:= TLancamentoFinanceiroEntidade.Create;
+  CodigoLancamentoFinanceiro:= GeraCodigo.GeraCodigoSequencia('Lancamento_Financeiro', Conexao);
+  FLF.Codigo:= CodigoLancamentoFinanceiro;
+  FLF.Codigo_Propriedade:= FPropriedade.Codigo;
+  FLF.Codigo_Usuario:= FUsuario.Codigo;
+
+  FLF.N_Documento:= StrToInt(EdtN_Documento.Text);
+  FLF.Codigo_Safra:= dm.qrySafraCodigo.AsInteger;
+  FLF.Codigo_Forma_Pagamento:= dm.qrycondicaoPagamentoCodigo.AsInteger;
+
+  FLF.Data_Lancamento:= dateServico.Date;
+  FLF.Data_Vencimento:= dateServico.Date;
+  FLF.Codigo_Pessoa:= DM.qrypessoaCodigo.AsInteger;
+
+  if (cmbTipoDocumento.Text = '') then
+    FLF.Codigo_Tipo_Documento:= 0
+  else
+    FLF.Codigo_Tipo_Documento:= dm.qrytipoDocumentoCodigo.AsInteger;
+
+  if (cmbDepartamento.Text = '') then
+    FLF.Codigo_Departamento:= 0
+  else
+    FLF.Codigo_Departamento:= dm.qrydepartamentoCodigo.AsInteger;
+
+  if (cmbPlano.Text = '') then
+    FLF.Codigo_Plano:= 0
+  else
+    FLF.Codigo_Plano:= dm.qryplanoFinanceiroCodigo.AsInteger;
+
+  FLF.Historico:= 'Manutenção da máquina '+cmbMaquina.Text;
+  FLF.Tipo:= 'Pagar';
+  FLF.Fiscal:= 'Sim';
+
+  FLF.Valor_Documento:= StrToFloat(EdtValor_Total.Text);
+  FLF.Desconto:= 0;
+  FLF.Multa:= 0;
+  FLF.Valor_Cobrado:= StrToFloat(EdtValor_Total.Text);
+  FLF.Observacoes:= 'Manutenção da máquina '+cmbMaquina.Text;
+
+  FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao, FLF);
+
+  if (FLFDominio.Salvar(Retorno) <> 0) then
+  begin
+    Result:= CodigoLancamentoFinanceiro;
+  end
+  else
+  begin
+    Result:= 0;
   end;
 end;
 

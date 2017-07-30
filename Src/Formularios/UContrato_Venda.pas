@@ -99,20 +99,6 @@ type
     qryContratoPreco: TFloatField;
     qryContratoVigencia: TIntegerField;
     qryContratoObservacao: TStringField;
-    qryConsultaCodigo: TAutoIncField;
-    qryConsultaData_Cadastro: TDateTimeField;
-    qryConsultaData_Venda: TDateTimeField;
-    qryConsultaN_Nota_Fiscal: TIntegerField;
-    qryConsultaCodigo_Safra: TIntegerField;
-    qryConsultaCodigo_Armazem: TIntegerField;
-    qryConsultaCodigo_Produto: TIntegerField;
-    qryConsultaCodigo_Fazenda: TIntegerField;
-    qryConsultaCodigo_Cliente: TIntegerField;
-    qryConsultaCodigo_Contrato: TIntegerField;
-    qryConsultaQuantidade_Saca: TFloatField;
-    qryConsultaPreco_Saca: TFloatField;
-    qryConsultaValor_Total: TFloatField;
-    qryConsultaObservacao: TStringField;
     qryContratoNome: TStringField;
     qryContratoCodigo_Produto: TIntegerField;
     cxGrid1DBTableView1Codigo: TcxGridDBColumn;
@@ -129,13 +115,12 @@ type
     cxGrid1DBTableView1Preco_Saca: TcxGridDBColumn;
     cxGrid1DBTableView1Valor_Total: TcxGridDBColumn;
     cxGrid1DBTableView1Observacao: TcxGridDBColumn;
-    qryConsultaNome: TStringField;
-    qryConsultaDescricao: TStringField;
     cxGrid1DBTableView1Nome: TcxGridDBColumn;
     cxGrid1DBTableView1Descricao: TcxGridDBColumn;
     Label11: TLabel;
     EdtQuantidade_Kg: TEdit;
-    qryConsultaQuantidade_Kg: TFloatField;
+    cbGerar_Financeiro: TCheckBox;
+    GroupBox1: TGroupBox;
     Label12: TLabel;
     Label13: TLabel;
     Label14: TLabel;
@@ -144,11 +129,35 @@ type
     cmbTipoDocumento: TcxLookupComboBox;
     cmbPlano: TcxLookupComboBox;
     cmbDepartamento: TcxLookupComboBox;
+    qryConsultaCodigo: TIntegerField;
     qryConsultaCodigo_Usuario: TIntegerField;
+    qryConsultaData_Cadastro: TDateTimeField;
+    qryConsultaData_Venda: TDateTimeField;
+    qryConsultaN_Nota_Fiscal: TIntegerField;
+    qryConsultaCodigo_Safra: TIntegerField;
+    qryConsultaCodigo_Armazem: TIntegerField;
+    qryConsultaCodigo_Produto: TIntegerField;
+    qryConsultaCodigo_Fazenda: TIntegerField;
+    qryConsultaCodigo_Cliente: TIntegerField;
+    qryConsultaCodigo_Contrato: TIntegerField;
     qryConsultaCodigo_Forma_Pagamento: TIntegerField;
     qryConsultaCodigo_Plano_Financeiro: TIntegerField;
     qryConsultaCodigo_Tipo_Documento: TIntegerField;
     qryConsultaCodigo_Departamento: TIntegerField;
+    qryConsultaQuantidade_Kg: TFloatField;
+    qryConsultaQuantidade_Saca: TFloatField;
+    qryConsultaPreco_Saca: TFloatField;
+    qryConsultaValor_Total: TFloatField;
+    qryConsultaCodigo_Lancamento_Financeiro: TIntegerField;
+    qryConsultaObservacao: TStringField;
+    qryConsultaSafra: TStringField;
+    qryConsultaArmazem: TStringField;
+    qryConsultaProduto: TStringField;
+    qryConsultaCliente: TStringField;
+    qryConsultaCondPag: TStringField;
+    qryConsultaPlanoFinanceiro: TStringField;
+    qryConsultaTipoDocumento: TStringField;
+    qryConsultaDepartamento: TStringField;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -337,6 +346,8 @@ begin
   BBtnNovo.Enabled:= false;
   BBtnExcluir.Enabled:= false;
   BuscaDados;
+  CodigoLancamentoFinanceiro:= 0;
+  cbGerar_Financeiro.Checked:= false;
   achei:= false;
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
   cmbSafra.SetFocus;
@@ -423,7 +434,10 @@ begin
       FContratoVenda.CodigoContrato:= 0;
     end;
 
-    FContratoVenda.CodigoFormaPagamento:= dm.qrycondicaoPagamentoCodigo.AsInteger;
+    if (cmbCondicaoPagamento.Text <> '') then
+      FContratoVenda.CodigoFormaPagamento:= dm.qrycondicaoPagamentoCodigo.AsInteger
+    else
+      FContratoVenda.CodigoFormaPagamento:= 0;
 
     if (cmbPlano.Text <> '') then
       FContratoVenda.CodigoPlanoFinanceiro:= dm.qryplanoFinanceiroCodigo.AsInteger
@@ -448,12 +462,15 @@ begin
 
     if (achei = false) then
     begin
-      if (GeraFinanceiro(Retorno) = 0) then
+      if (cbGerar_Financeiro.Checked) then
       begin
-        TOperacoesConexao.CancelaConexao(Conexao);
-        IniciaTela;
-        Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
-        Exit;
+        if (GeraFinanceiro(Retorno) = 0) then
+        begin
+          TOperacoesConexao.CancelaConexao(Conexao);
+          IniciaTela;
+          Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
+          Exit;
+        end;
       end;
 
       FContratoVenda.Codigo_Lancamento_Financeiro:= CodigoLancamentoFinanceiro;
@@ -585,11 +602,14 @@ begin
     exit;
   end;
 
-  if (cmbCondicaoPagamento.Text = '') then
+  if (cbGerar_Financeiro.Checked) then
   begin
-    Mensagens.MensagemErro(MensagemFaltaDados);
-    cmbCondicaoPagamento.SetFocus;
-    exit;
+    if (cmbCondicaoPagamento.Text = '') then
+    begin
+      Mensagens.MensagemErro(MensagemFaltaDados);
+      cmbCondicaoPagamento.SetFocus;
+      exit;
+    end;
   end;
 
   Confira:= true;
@@ -815,6 +835,7 @@ begin
   Op.HabilitaCampos(FrmContrato_Venda);
   Op.LimpaCampos(FrmContrato_Venda);
   Op.DesabilitaCampos(FrmContrato_Venda);
+  cbGerar_Financeiro.Checked:= false;
 end;
 
 procedure TFrmContrato_Venda.MEdtData_CadastroEnter(Sender: TObject);

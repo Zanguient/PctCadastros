@@ -380,13 +380,13 @@ begin
   EdtTotal_Debito.Text:= '0,00';
   EdtTotal_Credito.Text:= '0,00';
   EdtSalario_Final.Text:= '0,00';
-  CodigoLancamentoFinanceiro:= 0;
   BBtnSalvar.Enabled:= true;
   BBtnCancelar.Enabled:= true;
   BBtnNovo.Enabled:= false;
   BBtnExcluir.Enabled:= false;
   BuscaDados;
   achei:= false;
+  CodigoLancamentoFinanceiro:= 0;
   cbGerar_Financeiro.Checked:= false;
   iniciou:= true;
   MEdtData_Cadastro.Text:= DateTimeToStr(now);

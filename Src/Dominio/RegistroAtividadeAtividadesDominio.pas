@@ -76,7 +76,7 @@ begin
                              'CT.Numero_Talhao + ' + QuotedStr(' - ') + ' + CT.Descricao_Talhao as Talhao, CT.Area from Registro_Atividade_Atividades RAA '+
                              'left join Cadastro_Atividade CA on (RAA.Codigo_Atividade = CA.Codigo) '+
                              'left join Cadastro_Talhao CT on (RAA.Codigo_Talhao = CT.Codigo) '+
-                             ' where Codigo_Propriedade = :Codigo_Propriedade order by RAA.Codigo_Registro_Atividade';
+                             ' where RAA.Codigo_Propriedade = :Codigo_Propriedade order by RAA.Codigo_Registro_Atividade';
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Valores.Add(Codigo_Propriedade);
     FAtividadesDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);

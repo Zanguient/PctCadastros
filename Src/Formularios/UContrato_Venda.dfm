@@ -144,7 +144,7 @@ object FrmContrato_Venda: TFrmContrato_Venda
       end
       object Label4: TLabel
         Left = 1
-        Top = 254
+        Top = 260
         Width = 73
         Height = 13
         Caption = 'Observa'#231#245'es'
@@ -183,7 +183,7 @@ object FrmContrato_Venda: TFrmContrato_Venda
       end
       object Label5: TLabel
         Left = 1
-        Top = 128
+        Top = 124
         Width = 55
         Height = 13
         Caption = 'Armaz'#233'm'
@@ -196,7 +196,7 @@ object FrmContrato_Venda: TFrmContrato_Venda
       end
       object Label10: TLabel
         Left = 197
-        Top = 128
+        Top = 124
         Width = 45
         Height = 13
         Caption = 'Produto'
@@ -213,58 +213,6 @@ object FrmContrato_Venda: TFrmContrato_Venda
         Width = 47
         Height = 13
         Caption = 'Qtde. Kg'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label12: TLabel
-        Left = 1
-        Top = 170
-        Width = 58
-        Height = 13
-        Caption = 'Cond. Pag.'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label13: TLabel
-        Left = 1
-        Top = 213
-        Width = 92
-        Height = 13
-        Caption = 'Tipo Documento'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label14: TLabel
-        Left = 196
-        Top = 170
-        Width = 92
-        Height = 13
-        Caption = 'Plano Financeiro'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label15: TLabel
-        Left = 196
-        Top = 213
-        Width = 83
-        Height = 13
-        Caption = 'Departamento'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -408,7 +356,7 @@ object FrmContrato_Venda: TFrmContrato_Venda
       end
       object MMOObservacao: TMemo
         Left = 2
-        Top = 269
+        Top = 275
         Width = 464
         Height = 68
         BevelInner = bvNone
@@ -417,7 +365,7 @@ object FrmContrato_Venda: TFrmContrato_Venda
         BorderStyle = bsNone
         CharCase = ecUpperCase
         MaxLength = 800
-        TabOrder = 17
+        TabOrder = 14
       end
       object cmbContrato: TcxLookupComboBox
         Left = 133
@@ -460,7 +408,7 @@ object FrmContrato_Venda: TFrmContrato_Venda
       end
       object cmbArmazem: TcxLookupComboBox
         Left = 1
-        Top = 142
+        Top = 138
         Hint = 
           'Se a safra for selecionada e n'#227'o aparecer nenhum armaz'#233'm, poss'#237'v' +
           'elmente n'#227'o foi lan'#231'ado nenhum romaneio nessa safra na proprieda' +
@@ -481,7 +429,7 @@ object FrmContrato_Venda: TFrmContrato_Venda
       end
       object cmbProduto: TcxLookupComboBox
         Left = 197
-        Top = 142
+        Top = 138
         Hint = 
           'Se a safra for selecionada e n'#227'o aparecer nenhum produto, poss'#237'v' +
           'elmente n'#227'o foi lan'#231'ado nenhum romaneio nessa safra na proprieda' +
@@ -518,68 +466,136 @@ object FrmContrato_Venda: TFrmContrato_Venda
         OnExit = EdtQuantidade_KgExit
         OnKeyPress = EdtQuantidade_KgKeyPress
       end
-      object cmbCondicaoPagamento: TcxLookupComboBox
-        Left = 1
-        Top = 184
-        Properties.CharCase = ecUpperCase
-        Properties.KeyFieldNames = 'Codigo'
-        Properties.ListColumns = <
-          item
-            Caption = 'Descri'#231#227'o'
-            FieldName = 'Descricao'
-          end
-          item
-            FieldName = 'Parcela'
-          end
-          item
-            FieldName = 'Prazo'
-          end>
-        Properties.ListOptions.SyncMode = True
-        Properties.ListSource = DM.dscondicaoPagamento
-        TabOrder = 13
-        Width = 199
-      end
-      object cmbTipoDocumento: TcxLookupComboBox
-        Left = 1
-        Top = 227
-        Properties.CharCase = ecUpperCase
-        Properties.KeyFieldNames = 'Codigo'
-        Properties.ListColumns = <
-          item
-            FieldName = 'Descricao'
-          end>
-        Properties.ListOptions.SyncMode = True
-        Properties.ListSource = DM.dstipoDocumento
+      object cbGerar_Financeiro: TCheckBox
+        Left = 175
+        Top = 31
+        Width = 97
+        Height = 17
+        Caption = 'Gerar Financeiro'
         TabOrder = 15
-        Width = 199
       end
-      object cmbPlano: TcxLookupComboBox
-        Left = 196
-        Top = 184
-        Properties.CharCase = ecUpperCase
-        Properties.KeyFieldNames = 'Codigo'
-        Properties.ListColumns = <
-          item
-            FieldName = 'Descricao'
-          end>
-        Properties.ListOptions.SyncMode = True
-        Properties.ListSource = DM.dsplanoFinanceiro
-        TabOrder = 14
-        Width = 200
-      end
-      object cmbDepartamento: TcxLookupComboBox
-        Left = 196
-        Top = 227
-        Properties.CharCase = ecUpperCase
-        Properties.KeyFieldNames = 'Codigo'
-        Properties.ListColumns = <
-          item
-            FieldName = 'Descricao'
-          end>
-        Properties.ListOptions.SyncMode = True
-        Properties.ListSource = DM.dsdepartamento
-        TabOrder = 16
-        Width = 200
+      object GroupBox1: TGroupBox
+        Left = 1
+        Top = 160
+        Width = 406
+        Height = 99
+        Caption = 'Dados Financeiro'
+        TabOrder = 13
+        object Label12: TLabel
+          Left = 3
+          Top = 17
+          Width = 58
+          Height = 13
+          Caption = 'Cond. Pag.'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label13: TLabel
+          Left = 3
+          Top = 60
+          Width = 92
+          Height = 13
+          Caption = 'Tipo Documento'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label14: TLabel
+          Left = 198
+          Top = 17
+          Width = 92
+          Height = 13
+          Caption = 'Plano Financeiro'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label15: TLabel
+          Left = 198
+          Top = 60
+          Width = 83
+          Height = 13
+          Caption = 'Departamento'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object cmbCondicaoPagamento: TcxLookupComboBox
+          Left = 3
+          Top = 31
+          Properties.CharCase = ecUpperCase
+          Properties.KeyFieldNames = 'Codigo'
+          Properties.ListColumns = <
+            item
+              Caption = 'Descri'#231#227'o'
+              FieldName = 'Descricao'
+            end
+            item
+              FieldName = 'Parcela'
+            end
+            item
+              FieldName = 'Prazo'
+            end>
+          Properties.ListOptions.SyncMode = True
+          Properties.ListSource = DM.dscondicaoPagamento
+          TabOrder = 0
+          Width = 199
+        end
+        object cmbTipoDocumento: TcxLookupComboBox
+          Left = 3
+          Top = 74
+          Properties.CharCase = ecUpperCase
+          Properties.KeyFieldNames = 'Codigo'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Descricao'
+            end>
+          Properties.ListOptions.SyncMode = True
+          Properties.ListSource = DM.dstipoDocumento
+          TabOrder = 2
+          Width = 199
+        end
+        object cmbPlano: TcxLookupComboBox
+          Left = 198
+          Top = 31
+          Properties.CharCase = ecUpperCase
+          Properties.KeyFieldNames = 'Codigo'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Descricao'
+            end>
+          Properties.ListOptions.SyncMode = True
+          Properties.ListSource = DM.dsplanoFinanceiro
+          TabOrder = 1
+          Width = 200
+        end
+        object cmbDepartamento: TcxLookupComboBox
+          Left = 198
+          Top = 74
+          Properties.CharCase = ecUpperCase
+          Properties.KeyFieldNames = 'Codigo'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Descricao'
+            end>
+          Properties.ListOptions.SyncMode = True
+          Properties.ListSource = DM.dsdepartamento
+          TabOrder = 3
+          Width = 200
+        end
       end
     end
     object TabSheet2: TTabSheet
@@ -862,17 +878,51 @@ object FrmContrato_Venda: TFrmContrato_Venda
     end
   end
   object qryConsulta: TADOQuery
+    Connection = DM.ADOConnection
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      'select CV.*, CP.Nome, CS.Descricao from Contrato_Venda CV'
-      'left join Cadastro_Pessoa CP on (CV.Codigo_Cliente = CP.Codigo) '
-      'left join Cadastro_Safra CS on (CV.Codigo_Safra = CS.Codigo)')
+      'select CV.*, CS.Descricao as Safra, CPesArm.Nome as Armazem,'
+      
+        '                            CP.Descricao as Produto, CPesCli.Nom' +
+        'e as Cliente, CPag.Descricao as CondPag,'
+      
+        '                            CPlan.Descricao as PlanoFinanceiro, ' +
+        'CTD.Descricao as TipoDocumento,'
+      
+        '                            CD.Descricao as Departamento from Co' +
+        'ntrato_Venda CV'
+      
+        '                            left join Cadastro_Safra CS on (CV.C' +
+        'odigo_Safra = CS.Codigo)'
+      
+        '                            left join Cadastro_Pessoa CPesArm on' +
+        ' (CV.Codigo_Armazem = CPesArm.Codigo)'
+      
+        '                            left join Cadastro_Produtos CP on (C' +
+        'V.Codigo_Produto = CP.Codigo)'
+      
+        '                            left join Cadastro_Pessoa CPesCli on' +
+        ' (CV.Codigo_Cliente = CPesCli.Codigo)'
+      
+        '                            left join Condicao_Pagamento CPag on' +
+        ' (CV.Codigo_Forma_Pagamento = CPag.Codigo)'
+      
+        '                            left join Cadastro_Plano_Financeiro ' +
+        'CPlan on (CV.Codigo_Plano_Financeiro = CPlan.Codigo)'
+      
+        '                            left join Cadastro_Tipo_Documento CT' +
+        'D on (CV.Codigo_Tipo_Documento = CTD.Codigo)'
+      
+        '                            left join Cadastro_Departamento CD o' +
+        'n (CV.Codigo_Departamento = CD.Codigo)')
     Left = 456
     Top = 56
-    object qryConsultaCodigo: TAutoIncField
+    object qryConsultaCodigo: TIntegerField
       FieldName = 'Codigo'
-      ReadOnly = True
+    end
+    object qryConsultaCodigo_Usuario: TIntegerField
+      FieldName = 'Codigo_Usuario'
     end
     object qryConsultaData_Cadastro: TDateTimeField
       FieldName = 'Data_Cadastro'
@@ -901,33 +951,6 @@ object FrmContrato_Venda: TFrmContrato_Venda
     object qryConsultaCodigo_Contrato: TIntegerField
       FieldName = 'Codigo_Contrato'
     end
-    object qryConsultaQuantidade_Saca: TFloatField
-      FieldName = 'Quantidade_Saca'
-    end
-    object qryConsultaPreco_Saca: TFloatField
-      FieldName = 'Preco_Saca'
-    end
-    object qryConsultaValor_Total: TFloatField
-      FieldName = 'Valor_Total'
-    end
-    object qryConsultaObservacao: TStringField
-      FieldName = 'Observacao'
-      Size = 800
-    end
-    object qryConsultaNome: TStringField
-      FieldName = 'Nome'
-      Size = 100
-    end
-    object qryConsultaDescricao: TStringField
-      FieldName = 'Descricao'
-      Size = 50
-    end
-    object qryConsultaQuantidade_Kg: TFloatField
-      FieldName = 'Quantidade_Kg'
-    end
-    object qryConsultaCodigo_Usuario: TIntegerField
-      FieldName = 'Codigo_Usuario'
-    end
     object qryConsultaCodigo_Forma_Pagamento: TIntegerField
       FieldName = 'Codigo_Forma_Pagamento'
     end
@@ -939,6 +962,57 @@ object FrmContrato_Venda: TFrmContrato_Venda
     end
     object qryConsultaCodigo_Departamento: TIntegerField
       FieldName = 'Codigo_Departamento'
+    end
+    object qryConsultaQuantidade_Kg: TFloatField
+      FieldName = 'Quantidade_Kg'
+    end
+    object qryConsultaQuantidade_Saca: TFloatField
+      FieldName = 'Quantidade_Saca'
+    end
+    object qryConsultaPreco_Saca: TFloatField
+      FieldName = 'Preco_Saca'
+    end
+    object qryConsultaValor_Total: TFloatField
+      FieldName = 'Valor_Total'
+    end
+    object qryConsultaCodigo_Lancamento_Financeiro: TIntegerField
+      FieldName = 'Codigo_Lancamento_Financeiro'
+    end
+    object qryConsultaObservacao: TStringField
+      FieldName = 'Observacao'
+      Size = 800
+    end
+    object qryConsultaSafra: TStringField
+      FieldName = 'Safra'
+      Size = 50
+    end
+    object qryConsultaArmazem: TStringField
+      FieldName = 'Armazem'
+      Size = 100
+    end
+    object qryConsultaProduto: TStringField
+      FieldName = 'Produto'
+      Size = 50
+    end
+    object qryConsultaCliente: TStringField
+      FieldName = 'Cliente'
+      Size = 100
+    end
+    object qryConsultaCondPag: TStringField
+      FieldName = 'CondPag'
+      Size = 50
+    end
+    object qryConsultaPlanoFinanceiro: TStringField
+      FieldName = 'PlanoFinanceiro'
+      Size = 500
+    end
+    object qryConsultaTipoDocumento: TStringField
+      FieldName = 'TipoDocumento'
+      Size = 50
+    end
+    object qryConsultaDepartamento: TStringField
+      FieldName = 'Departamento'
+      Size = 50
     end
   end
   object dsConsulta: TDataSource
@@ -962,7 +1036,6 @@ object FrmContrato_Venda: TFrmContrato_Venda
     Top = 56
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1004,7 +1077,6 @@ object FrmContrato_Venda: TFrmContrato_Venda
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

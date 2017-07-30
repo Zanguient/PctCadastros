@@ -29,7 +29,8 @@ uses
   dxPSCore, dxPScxCommon, cxPropertiesStore, cxEditRepositoryItems, MetodosBasicos,
   TalhaoEntidade, TalhaoDominio, cxContainer, cxTextEdit, cxMaskEdit,
   cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxGroupBox,
-  cxRadioGroup, PropriedadeEntidade, LoginEntidade;
+  cxRadioGroup, PropriedadeEntidade, LoginEntidade, cxNavigator,
+  dxSkinsdxRibbonPainter, IniciaDadosCadastros;
 
 type
   TFrmRel_Atividades = class(TForm)
@@ -102,11 +103,6 @@ type
     BBtnFechar: TToolButton;
     Label12: TLabel;
     cmbSafra: TcxLookupComboBox;
-    qrySafra: TADOQuery;
-    qrySafraCodigo: TIntegerField;
-    qrySafraDescricao: TStringField;
-    qrySafraData_Cadastro: TDateTimeField;
-    dsSafra: TDataSource;
     cxGrid1DBTableView8: TcxGridDBTableView;
     cxGrid1DBTableView8Codigo: TcxGridDBColumn;
     cxGrid1DBTableView8Codigo_Registro_Atividade: TcxGridDBColumn;
@@ -252,8 +248,8 @@ type
     FTalhaoDominio: TTalhaoDominio;
     FComandoSQL: TComandoSQLEntidade;
     Conexao: TADOConnection;
+    IniDados: IniciaDadosCadastro;
 
-    procedure BuscaDadosSafra;
   public
     ativo, enderec, achei: boolean;
     constructor Create(FPropriedade: TPropriedadeEntidade; FUsuario: TLoginEntidade);
@@ -316,9 +312,15 @@ var
   Retorno: AnsiString;
 begin
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryRegistroAtividade, qryRegistroAtividadeAtividades, qryRegistroAtividadePlantio], Conexao);
+  TOperacoesConexao.IniciaQuerys([qryRegistroAtividade,
+                                  qryRegistroAtividadeAtividades,
+                                  qryRegistroAtividadePlantio,
+                                  qryRegistroAtividadeColheita,
+                                  dm.qrySafra,
+                                  dm.qryPropriedade], Conexao);
 
-  BuscaDadosSafra;
+  IniDados:= IniciaDadosCadastro.Create;
+  IniDados.BuscaDadosSafra(Conexao);
   Op.LimpaCampos(FrmRel_Atividades);
 end;
 
@@ -338,7 +340,7 @@ begin
 
     if (rgTipo.ItemIndex = 1) then
     begin
-      if (RegistroAtividade.BuscarConsulta(FPropriedade.Codigo, 1, qryRegistroAtividade, Retorno, qrySafraCodigo.AsInteger) = 0) and (Retorno <> '') then
+      if (RegistroAtividade.BuscarConsulta(FPropriedade.Codigo, 1, qryRegistroAtividade, Retorno, dm.qrySafraCodigo.AsInteger) = 0) and (Retorno <> '') then
       begin
         Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
         Exit;
@@ -346,7 +348,7 @@ begin
     end
     else
     begin
-      if (RegistroAtividade.BuscarConsulta(FPropriedade.Codigo, 0, qryRegistroAtividade, Retorno, qrySafraCodigo.AsInteger) = 0) and (Retorno <> '') then
+      if (RegistroAtividade.BuscarConsulta(FPropriedade.Codigo, 0, qryRegistroAtividade, Retorno, dm.qrySafraCodigo.AsInteger) = 0) and (Retorno <> '') then
       begin
         Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
         Exit;
@@ -392,23 +394,7 @@ begin
   qryRegistroAtividade.Close;
   qryRegistroAtividadePlantio.Close;
   qryRegistroAtividadeAtividades.Close;
-end;
-
-procedure TFrmRel_Atividades.BuscaDadosSafra;
-var
-  SafraDominio: TSafraDominio;
-  Retorno: AnsiString;
-begin
-  try
-    SafraDominio:= TSafraDominio.Create(Conexao);
-    if (SafraDominio.Buscar(qrySafra, Retorno) = 0) and (Retorno <> '') then
-    begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
-      Exit;
-    end;
-  finally
-
-  end;
+  qryRegistroAtividadeColheita.Close;
 end;
 
 constructor TFrmRel_Atividades.Create(FPropriedade: TPropriedadeEntidade;

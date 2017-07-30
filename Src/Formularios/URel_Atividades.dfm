@@ -804,7 +804,6 @@ object FrmRel_Atividades: TFrmRel_Atividades
         FieldName = 'Codigo'
       end>
     Properties.ListOptions.SyncMode = True
-    Properties.ListSource = dsSafra
     Style.BorderColor = clWindow
     Style.BorderStyle = ebsUltraFlat
     Style.ButtonStyle = btsDefault
@@ -836,7 +835,6 @@ object FrmRel_Atividades: TFrmRel_Atividades
     Width = 122
   end
   object qryRegistroAtividade: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -890,6 +888,7 @@ object FrmRel_Atividades: TFrmRel_Atividades
     Left = 560
     Top = 8
     object dxComponentPrinter1Link1: TdxGridReportLink
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -931,6 +930,7 @@ object FrmRel_Atividades: TFrmRel_Atividades
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False
@@ -952,7 +952,7 @@ object FrmRel_Atividades: TFrmRel_Atividades
     Top = 8
   end
   object qryRegistroAtividadeAtividades: TADOQuery
-    Connection = DM.ADOConnection1
+    Connection = DM.ADOConnection
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -1030,7 +1030,7 @@ object FrmRel_Atividades: TFrmRel_Atividades
     end
   end
   object qryRegistroAtividadePlantio: TADOQuery
-    Connection = DM.ADOConnection1
+    Connection = DM.ADOConnection
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -1089,32 +1089,7 @@ object FrmRel_Atividades: TFrmRel_Atividades
     Left = 792
     Top = 8
   end
-  object qrySafra: TADOQuery
-    Connection = DM.ADOConnection1
-    CursorType = ctStatic
-    Parameters = <>
-    SQL.Strings = (
-      'select * from Cadastro_Safra')
-    Left = 464
-    Top = 8
-    object qrySafraCodigo: TIntegerField
-      FieldName = 'Codigo'
-    end
-    object qrySafraDescricao: TStringField
-      FieldName = 'Descricao'
-      Size = 50
-    end
-    object qrySafraData_Cadastro: TDateTimeField
-      FieldName = 'Data_Cadastro'
-    end
-  end
-  object dsSafra: TDataSource
-    DataSet = qrySafra
-    Left = 496
-    Top = 8
-  end
   object qryRegistroAtividadeColheita: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

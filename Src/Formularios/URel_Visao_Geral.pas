@@ -39,7 +39,8 @@ uses
   RegistroAtividadeAtividadesProdutoDominio,
   RegistroAtividadeAtividadesTalhaoDominio, RegistroAtividadePlantioDominio,
   RegistroAtividadePlantioOcorrenciaDominio, RomaneioDominio,
-  RegistroAtividadeAtividadesMaquinaDominio, cxImage, dxGDIPlusClasses;
+  RegistroAtividadeAtividadesMaquinaDominio, cxImage, dxGDIPlusClasses,
+  cxNavigator, dxSkinsdxRibbonPainter;
 type
   TFrmRel_Visao_Geral = class(TForm)
     cxGrid1: TcxGrid;
@@ -505,10 +506,24 @@ end;
 procedure TFrmRel_Visao_Geral.FormShow(Sender: TObject);
 begin
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryAtividades, qryAtividadesTalhao, qryAtividadesProdutos,
-                                  qryPlantis, qryPlantioOcorrencia,
-                                  qryRomaneios, dm.qrySafra,
-                                  qryManutencoes], Conexao);
+  TOperacoesConexao.IniciaQuerys([qryAtividades,
+                                  qryAtividadesProdutos,
+                                  qryAtividadesTalhao,
+                                  qryPlantis,
+                                  qryPlantioOcorrencia,
+                                  qryRomaneios,
+                                  qryManutencoes,
+                                  dm.qrySafra,
+                                  dm.qryPropriedade,
+                                  dm.qryAtividade,
+                                  dm.qryProduto,
+                                  dm.qryTalhao,
+                                  dm.qryocorrencia,
+                                  dm.qryVeiculo,
+                                  dm.qryProdutor,
+                                  dm.qryDepositante,
+                                  dm.qryVariedadeCultura,
+                                  dm.qryArmazem], Conexao);
 
   IniDados:= IniciaDadosCadastro.Create;
   IniDados.BuscaDadosSafra(Conexao);

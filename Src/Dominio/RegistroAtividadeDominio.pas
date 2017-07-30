@@ -101,7 +101,7 @@ begin
                                'from Registro_Atividade RA '+
                                'inner join Cadastro_Safra CS on (RA.Codigo_Safra = CS.Codigo) '+
                                'inner join Cadastro_Propriedade CP on (RA.Codigo_Propriedade = CP.Codigo) '+
-                               ' where RA.Codigo_Safra = :Codigo_Safra and Codigo_Propriedade = :Codigo_Propriedade order by RA.Codigo';
+                               ' where RA.Codigo_Safra = :Codigo_Safra and RA.Codigo_Propriedade = :Codigo_Propriedade order by RA.Codigo';
       FComandoSQL.Parametros.Add('Codigo_Safra');
       FComandoSQL.Parametros.Add('Codigo_Propriedade');
       FComandoSQL.Valores.Add(IdSafra);
@@ -113,7 +113,7 @@ begin
                                'from Registro_Atividade RA '+
                                'inner join Cadastro_Safra CS on (RA.Codigo_Safra = CS.Codigo) '+
                                'inner join Cadastro_Propriedade CP on (RA.Codigo_Propriedade = CP.Codigo)'+
-                               ' where Codigo_Propriedade = :Codigo_Propriedade';
+                               ' where RA.Codigo_Propriedade = :Codigo_Propriedade';
     end;
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Valores.Add(Codigo_Propriedade);

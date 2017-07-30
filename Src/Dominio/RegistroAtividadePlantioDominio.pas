@@ -76,7 +76,7 @@ begin
                              'CT.Numero_Talhao + ' + QuotedStr(' - ') + ' + CT.Descricao_Talhao as Talhao, CT.Area from Registro_Atividade_Plantio RAP '+
                              'left join Cadastro_Variedade_Cultura CVC on (RAP.Codigo_Variedade = CVC.Codigo)'+
                              'left join Cadastro_Talhao CT on (RAP.Codigo_Talhao = CT.Codigo) '+
-                             ' where Codigo_Propriedade = :Codigo_Propriedade order by RAP.Codigo_Registro_Atividade';
+                             ' where RAP.Codigo_Propriedade = :Codigo_Propriedade order by RAP.Codigo_Registro_Atividade';
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Valores.Add(Codigo_Propriedade);
     FPlantioDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);

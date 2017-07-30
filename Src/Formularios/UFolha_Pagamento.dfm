@@ -1420,9 +1420,8 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
       Cursor = crHandPoint
       Hint = 
         'Clique para Excluir o registro'#13#10#13#10'AVISO IMPORTANTE:'#13#10'* O sistema' +
-        ' automaticamente vai excluir o contas a pagar dessa nota fiscal.' +
-        #13#10'* O sistema automaticamente vai atualizar a quantidade de esto' +
-        'que dos produtos.'
+        ' automaticamente vai excluir o contas a pagar dessa folha de pag' +
+        'amento.'
       Caption = '&Excluir'
       Enabled = False
       ImageIndex = 1
@@ -1545,7 +1544,6 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
     Top = 56
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1587,7 +1585,6 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

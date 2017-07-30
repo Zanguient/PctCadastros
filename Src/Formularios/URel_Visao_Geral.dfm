@@ -2100,7 +2100,6 @@
     end
   end
   object qryAtividades: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -2160,7 +2159,6 @@
     Top = 104
   end
   object qryPlantis: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -2257,7 +2255,6 @@
     Top = 152
   end
   object qryRomaneios: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -2398,7 +2395,6 @@
     Top = 200
   end
   object qryManutencoes: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -2460,7 +2456,6 @@
     end
   end
   object qryAtividadesProdutos: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -2512,7 +2507,6 @@
     Top = 56
   end
   object qryAtividadesTalhao: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -2567,7 +2561,6 @@
     Top = 56
   end
   object qryPlantioOcorrencia: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -2720,7 +2713,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 42916.485447766200000000
+      ReportDocument.CreationDate = 42945.378350243050000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET

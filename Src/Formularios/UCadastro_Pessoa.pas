@@ -31,7 +31,8 @@ uses
   cxDropDownEdit, cxGroupBox, cxRadioGroup, PessoaEntidade, PessoaDominio,
   PessoaDocumentosEntidade, PessoaDocumentosDominio, PessoaTelefoneDominio,
   cxCheckGroup, PessoaTipoEntidade, PessoaTipoDominio, PropriedadeEntidade,
-  LoginEntidade, HistoricoEntidade, HistoricoDominio;
+  LoginEntidade, HistoricoEntidade, HistoricoDominio, cxNavigator,
+  dxSkinsdxRibbonPainter;
 
 type
   TFrmCadastro_Pessoa = class(TForm)
@@ -261,7 +262,10 @@ begin
   BBtnExcluir.Enabled:= false;
   achei:= false;
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryConsulta, qrypessoaTelefone, qryPessoaDocumentos], Conexao);
+  TOperacoesConexao.IniciaQuerys([qryConsulta,
+                                  qrypessoaTelefone,
+                                  qryPessoaDocumentos,
+                                  qryPessoaTipo], Conexao);
   EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Pessoa', Conexao));
   BuscaDados;
   BuscaDadosTelefone;

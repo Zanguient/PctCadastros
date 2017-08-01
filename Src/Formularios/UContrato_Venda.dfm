@@ -304,7 +304,10 @@ object FrmContrato_Venda: TFrmContrato_Venda
         Top = 105
         Width = 60
         Height = 17
-        Hint = 'Quantidade de sacas por hectare'
+        Hint = 
+          'Quantidade de sacas por hectare'#13#10#13#10'Se este campo estiver zerado,' +
+          ' o sistema calcular'#225' o valor atrav'#233's da'#13#10'quantidade de kilos: Qt' +
+          'de. Kg / 60.'
         BevelInner = bvNone
         BevelKind = bkFlat
         BevelOuter = bvRaised
@@ -453,6 +456,10 @@ object FrmContrato_Venda: TFrmContrato_Venda
         Top = 105
         Width = 60
         Height = 17
+        Hint = 
+          'Se n'#227'o houver valor para este campo, deixe zerado, pois o sistem' +
+          'a calcular'#225' '#13#10'a quantidade de kilos atrav'#233's da quantidade de sac' +
+          'as (Qtde. Sc * 60).'
         BevelInner = bvNone
         BevelKind = bkFlat
         BevelOuter = bvRaised
@@ -878,7 +885,6 @@ object FrmContrato_Venda: TFrmContrato_Venda
     end
   end
   object qryConsulta: TADOQuery
-    Connection = DM.ADOConnection
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

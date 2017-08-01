@@ -117,7 +117,8 @@ begin
     FComandoSQL.Parametros.Add('Codigo');
     FComandoSQL.Valores.Add(CodigoManutencaoMaquina);
     FManutencaoMaquinaDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
-    Result:= FManutencaoMaquinaDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+    FManutencaoMaquinaDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+    Result:= Query.FieldByName('Codigo_Lancamento_Financeiro').AsInteger;
   finally
     FreeAndNil(Query);
   end;

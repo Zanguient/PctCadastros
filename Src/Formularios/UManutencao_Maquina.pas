@@ -469,9 +469,11 @@ end;
 procedure TFrmManutencao_Maquina.BBtnSalvarClick(Sender: TObject);
 var
   Retorno: AnsiString;
+  CodLan: integer;
 begin
   if (Confira = true) then
   begin
+    CodLan:= 0;
     FManutencaoMaquina:= TManutencaoMaquinaEntidade.Create;
 
     FManutencaoMaquina.Codigo:= StrToInt(EdtCodigo.Text);
@@ -548,7 +550,8 @@ begin
       begin
         FManutencaoMaquinaDominio:= TManutencaoMaquinaDominio.Create(Conexao);
         FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao);
-        if (FLFDominio.ExcluirPeloCodigoMovimentacao(FManutencaoMaquinaDominio.BuscaCodigoLancamentoFinanceiro( StrToInt(EdtCodigo.Text), Retorno)
+        CodLan:= FManutencaoMaquinaDominio.BuscaCodigoLancamentoFinanceiro( StrToInt(EdtCodigo.Text), Retorno);
+        if (FLFDominio.ExcluirPeloCodigoMovimentacao(CodLan
                                                     , Retorno)=0) and (Retorno <> '') then
         begin
           TOperacoesConexao.CancelaConexao(Conexao);

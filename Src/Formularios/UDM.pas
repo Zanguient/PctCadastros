@@ -178,9 +178,7 @@ type
     qrycondicaoPagamentoDescricao: TStringField;
     qrycondicaoPagamentoParcela: TIntegerField;
     qrycondicaoPagamentoPrazo: TIntegerField;
-    qrycondicaoPagamentoTaxa: TFloatField;
     qrycondicaoPagamentoTipo_Pagamento: TStringField;
-    qrycondicaoPagamentoTipo_Juro: TStringField;
     qrycondicaoPagamentoData_Cadastro: TDateTimeField;
     qryOperacaoBancaria: TADOQuery;
     dsOperacaoBancaria: TDataSource;

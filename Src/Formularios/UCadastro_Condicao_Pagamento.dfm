@@ -419,14 +419,8 @@ object FrmCadastro_Condicao_Pagamento: TFrmCadastro_Condicao_Pagamento
     object qryConsultaPrazo: TIntegerField
       FieldName = 'Prazo'
     end
-    object qryConsultaTaxa: TFloatField
-      FieldName = 'Taxa'
-    end
     object qryConsultaTipo_Pagamento: TStringField
       FieldName = 'Tipo_Pagamento'
-    end
-    object qryConsultaTipo_Juro: TStringField
-      FieldName = 'Tipo_Juro'
     end
   end
   object dsConsulta: TDataSource
@@ -471,6 +465,7 @@ object FrmCadastro_Condicao_Pagamento: TFrmCadastro_Condicao_Pagamento
     Top = 32
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -512,6 +507,7 @@ object FrmCadastro_Condicao_Pagamento: TFrmCadastro_Condicao_Pagamento
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

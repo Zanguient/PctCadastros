@@ -745,19 +745,31 @@ procedure TFrmContrato_Venda.EdtQuantidade_SacaEnter(Sender: TObject);
 var
   QtKg, QtSc, Resultado: double;
 begin
-  QtKg:= StrToFloat(EdtQuantidade_Kg.Text);
-  //QtSc:= StrToFloat(EdtQuantidade_Saca);
-  Resultado:= QtKg / 60;
-  Op.FormataFloat(2, EdtQuantidade_Saca, Resultado);
+  if (EdtQuantidade_Saca.Text = '0') then
+  begin
+    QtKg:= StrToFloat(EdtQuantidade_Kg.Text);
+    Resultado:= QtKg / 60;
+    Op.FormataFloat(2, EdtQuantidade_Saca, Resultado);
+  end;
 end;
 
 procedure TFrmContrato_Venda.EdtQuantidade_SacaExit(Sender: TObject);
+var
+  QtSc, Resultado: double;
 begin
   if (Op.VerificaCampoEmBranco(EdtQuantidade_Saca)) then
   begin
     Mensagens.MensagemErro(MensagemCampoNulo);
     Exit;
   end;
+
+  if (EdtQuantidade_Kg.Text = '0') then
+  begin
+    QtSc:= StrToFloat(EdtQuantidade_Saca.Text);
+    Resultado:= QtSc * 60;
+    Op.FormataFloat(2, EdtQuantidade_Kg, Resultado);
+  end;
+
   Op.FormataFloat(2, EdtQuantidade_Saca, StrToFloat(EdtQuantidade_Saca.Text));
 end;
 

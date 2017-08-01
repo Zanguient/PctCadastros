@@ -74,9 +74,7 @@ type
     qryConsultaStatus: TStringField;
     qryConsultaParcela: TIntegerField;
     qryConsultaPrazo: TIntegerField;
-    qryConsultaTaxa: TFloatField;
     qryConsultaTipo_Pagamento: TStringField;
-    qryConsultaTipo_Juro: TStringField;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

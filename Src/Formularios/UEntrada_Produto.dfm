@@ -38,8 +38,6 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Cadastrar'
-      ExplicitLeft = 92
-      ExplicitTop = 19
       object LblCodigo: TLabel
         Left = 0
         Top = 13

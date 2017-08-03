@@ -32,12 +32,16 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
     Width = 705
     Height = 436
     Cursor = crHandPoint
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Cadastrar'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object LblCodigo: TLabel
         Left = 0
         Top = 13
@@ -1583,7 +1587,6 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
     Left = 360
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1625,7 +1628,6 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

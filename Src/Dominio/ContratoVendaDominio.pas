@@ -82,7 +82,8 @@ begin
     FComandoSQL.Parametros.Add('Codigo');
     FComandoSQL.Valores.Add(CodigoVenda);
     FContratoVendaDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
-    Result:= FContratoVendaDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+    FContratoVendaDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+    Result:= Query.FieldByName('Codigo_Lancamento_Financeiro').AsInteger;
   finally
     FreeAndNil(Query);
   end;

@@ -346,6 +346,16 @@ begin
     end;
 
     FEntradaProdutoDominio:= TEntradaProdutoDominio.Create(Conexao, FEntradaProdutoEntidade);
+    FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao);
+    if (FLFDominio.ExcluirPeloCodigoMovimentacao(FEntradaProdutoDominio.BuscaCodigoLancamentoFinanceiro( StrToInt(EdtCodigo.Text), Retorno),
+                                                 Retorno)=0) and (Retorno <> '') then
+    begin
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
+      Exit;
+    end;
+
     if (FEntradaProdutoDominio.Excluir(Retorno) = 0) then
     begin
       TOperacoesConexao.CancelaConexao(Conexao);
@@ -361,16 +371,6 @@ begin
       IniciaTela;
       Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
       exit;
-    end;
-
-    FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao);
-    if (FLFDominio.ExcluirPeloCodigoMovimentacao(FEntradaProdutoDominio.BuscaCodigoLancamentoFinanceiro( StrToInt(EdtCodigo.Text), Retorno),
-                                                 Retorno)=0) and (Retorno <> '') then
-    begin
-      TOperacoesConexao.CancelaConexao(Conexao);
-      IniciaTela;
-      Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
-      Exit;
     end;
 
     HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
@@ -815,6 +815,15 @@ begin
 
   FEntradaProdutoProdutosDominio:= TEntradaProdutoProdutosDominio.Create(Conexao);
   FEntradaProdutoProdutosDominio.Buscar(qryConsultaCodigo.AsInteger, qryEntradaProdutos, Retorno);
+
+  if (qryConsultaCodigo_Forma_Pagamento.AsInteger <> 0) then
+  begin
+    cbGerar_Financeiro.Checked:= true;
+  end
+  else
+  begin
+    cbGerar_Financeiro.Checked:= false;
+  end;
 
   cxGrid2DBBandedTableView1.ViewData.Collapse(true);
 

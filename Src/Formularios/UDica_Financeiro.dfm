@@ -401,8 +401,9 @@ object FrmDica_Financeiro: TFrmDica_Financeiro
     Lines.Strings = (
       '1) O financeiro '#233' gerado automaticamente nas seguintes telas:'
       '   a) Entrada de produtos (a pagar)'
-      '   b) Faturamento de contratos de gr'#227'os (a receber)'
+      '   b) Venda de gr'#227'os (a receber)'
       '   c) Folha de pagamento (a pagar)'
+      '   d) Manuten'#231#227'o de M'#225'quinas (a pagar)'
       ''
       
         '2) Para gerar uma conta a pagar e/ou a receber manualmente, aces' +

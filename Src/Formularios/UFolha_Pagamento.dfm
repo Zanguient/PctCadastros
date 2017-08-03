@@ -32,7 +32,7 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
     Width = 705
     Height = 436
     Cursor = crHandPoint
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0

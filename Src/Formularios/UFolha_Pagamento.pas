@@ -288,6 +288,16 @@ begin
   begin
 
     FFolhaDominio:= TFolhaPagamentoDominio.Create(Conexao, FFolhaEntidade);
+    FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao);
+    if (FLFDominio.ExcluirPeloCodigoMovimentacao(FFolhaDominio.BuscaCodigoLancamentoFinanceiro(StrToInt(EdtCodigo.Text), Retorno),
+                Retorno)=0) and (Retorno <> '') then
+    begin
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
+      Exit;
+    end;
+
     if (FFolhaDominio.Excluir(Retorno) = 0) then
     begin
       TOperacoesConexao.CancelaConexao(Conexao);
@@ -303,15 +313,6 @@ begin
       IniciaTela;
       Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
       exit;
-    end;
-
-    FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao);
-    if (FLFDominio.ExcluirPeloCodigoEntrada(StrToInt(EdtCodigo.Text), Retorno)=0) and (Retorno <> '') then
-    begin
-      TOperacoesConexao.CancelaConexao(Conexao);
-      IniciaTela;
-      Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
-      Exit;
     end;
 
     HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
@@ -672,6 +673,15 @@ begin
   FFolhaItensDominio.Buscar(qryConsultaCodigo.AsInteger, qryitensfolha, Retorno);
 
   cxGrid2DBBandedTableView1.ViewData.Collapse(true);
+
+  if (qryConsultaCodigo_Forma_Pagamento.AsInteger <> 0) then
+  begin
+    cbGerar_Financeiro.Checked:= true;
+  end
+  else
+  begin
+    cbGerar_Financeiro.Checked:= false;
+  end;
 
   BBtnNovo.Enabled:= false;
   BBtnSalvar.Enabled:= True;

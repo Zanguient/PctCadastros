@@ -249,20 +249,7 @@ begin
   if (Mensagens.MensagemConfirmacao(MensagemConfirmaExclusao)) then
   begin
     FContratoVendaDominio:= TContratoVendaDominio.Create(Conexao, FContratoVenda);
-    if (FContratoVendaDominio.Excluir(Retorno) = 0) then
-    begin
-      TOperacoesConexao.CancelaConexao(Conexao);
-      IniciaTela;
-      Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
-      Exit;
-    end;
-
-    FEstoqueDominio:= FEstoqueDominio.Create(Conexao);
-    FEstoqueDominio.AtualizaEstoque(dm.qrySafraCodigo.AsInteger, dm.qryArmazemCodigo.AsInteger,
-                                    dm.qryProdutoCodigo.AsInteger, FPropriedade.Codigo, Retorno);
-
     FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao);
-
     if (FLFDominio.ExcluirPeloCodigoMovimentacao( FContratoVendaDominio.BuscaCodigoLancamentoFinanceiro( StrToInt(EdtCodigo.Text), Retorno),
                                                    Retorno)=0) and (Retorno <> '') then
     begin
@@ -272,8 +259,20 @@ begin
       Exit;
     end;
 
+    if (FContratoVendaDominio.Excluir(Retorno) = 0) then
+    begin
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+      Exit;
+    end;
+
+    FEstoqueDominio:= TEstoqueDominio.Create(Conexao);
+    FEstoqueDominio.AtualizaEstoque(dm.qrySafraCodigo.AsInteger, dm.qryArmazemCodigo.AsInteger,
+                                    dm.qryProdutoCodigo.AsInteger, FPropriedade.Codigo, Retorno);
+
     HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-    EdtCodigo.Text +' '+qryContratoN_Contrato.AsString+' - '+dm.qrypessoaNome.AsString, date, TimeToStr(time), 'Exclusão');
+    EdtCodigo.Text +' - '+dm.qrypessoaNome.AsString, date, TimeToStr(time), 'Exclusão');
     HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
     if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
     begin
@@ -489,7 +488,7 @@ begin
                                       dm.qryProdutoCodigo.AsInteger, FPropriedade.Codigo, Retorno);
 
       HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-      EdtCodigo.Text +' - '+qryContratoN_Contrato.AsString+' - '+dm.qrypessoaNome.AsString, date, TimeToStr(time), 'Inserção');
+      EdtCodigo.Text +' - '+dm.qrypessoaNome.AsString, date, TimeToStr(time), 'Inserção');
       HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
       if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
@@ -698,11 +697,23 @@ begin
   FEstoque.CodigoProduto:= qryConsultaCodigo_Produto.AsInteger;
   FEstoque.CodigoFazenda:= FPropriedade.Codigo;
 
+  FContratoVenda:= TContratoVendaEntidade.Create;
+  FContratoVenda.Codigo:= qryConsultaCodigo.AsInteger;
+
   FPessoaDominio:= TPessoaDominio.Create(Conexao);
   FPessoaDominio.BuscarDaSafra(qryConsultaCodigo_Safra.AsInteger, FPropriedade.Codigo, dm.qryArmazem, Retorno);
 
   FProdutoDominio:= TProdutoDominio.Create(Conexao);
   FProdutoDominio.BuscarDaSafra(qryConsultaCodigo_Safra.AsInteger, FPropriedade.Codigo, dm.qryProduto, Retorno);
+
+  if (qryConsultaCodigo_Forma_Pagamento.AsInteger <> 0) then
+  begin
+    cbGerar_Financeiro.Checked:= true;
+  end
+  else
+  begin
+    cbGerar_Financeiro.Checked:= false;
+  end;
 
   BBtnNovo.Enabled:= false;
   BBtnSalvar.Enabled:= True;
@@ -732,7 +743,7 @@ begin
     Mensagens.MensagemErro(MensagemCampoNulo);
     Exit;
   end;
-  Op.FormataFloat(2, EdtQuantidade_Kg, StrToFloat(EdtQuantidade_Kg.Text));
+  Op.FormataFloat(0, EdtQuantidade_Kg, StrToFloat(EdtQuantidade_Kg.Text));
 end;
 
 procedure TFrmContrato_Venda.EdtQuantidade_KgKeyPress(Sender: TObject;
@@ -749,7 +760,7 @@ begin
   begin
     QtKg:= StrToFloat(EdtQuantidade_Kg.Text);
     Resultado:= QtKg / 60;
-    Op.FormataFloat(2, EdtQuantidade_Saca, Resultado);
+    Op.FormataFloat(0, EdtQuantidade_Saca, Resultado);
   end;
 end;
 
@@ -767,10 +778,10 @@ begin
   begin
     QtSc:= StrToFloat(EdtQuantidade_Saca.Text);
     Resultado:= QtSc * 60;
-    Op.FormataFloat(2, EdtQuantidade_Kg, Resultado);
+    Op.FormataFloat(0, EdtQuantidade_Kg, Resultado);
   end;
 
-  Op.FormataFloat(2, EdtQuantidade_Saca, StrToFloat(EdtQuantidade_Saca.Text));
+  Op.FormataFloat(0, EdtQuantidade_Saca, StrToFloat(EdtQuantidade_Saca.Text));
 end;
 
 procedure TFrmContrato_Venda.EdtQuantidade_SacaKeyPress(Sender: TObject;

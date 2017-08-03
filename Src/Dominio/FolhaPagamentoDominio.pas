@@ -92,7 +92,8 @@ begin
     FComandoSQL.Parametros.Add('Codigo');
     FComandoSQL.Valores.Add(CodigoFolha);
     FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
-    Result:= FEntidadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+    FEntidadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+    Result:= Query.FieldByName('Codigo_Lancamento_Financeiro').AsInteger;
   finally
     FreeAndNil(Query);
   end;

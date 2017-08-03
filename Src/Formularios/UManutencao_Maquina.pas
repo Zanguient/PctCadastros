@@ -336,6 +336,17 @@ begin
       exit;
     end;
 
+    FManutencaoMaquinaDominio:= TManutencaoMaquinaDominio.Create(Conexao, FManutencaoMaquina);
+    FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao);
+    if (FLFDominio.ExcluirPeloCodigoMovimentacao( FManutencaoMaquinaDominio.BuscaCodigoLancamentoFinanceiro( StrToInt(EdtCodigo.Text), Retorno),
+                                                   Retorno)=0) and (Retorno <> '') then
+    begin
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemErroAoGravar + ' - '+ Retorno);
+      Exit;
+    end;
+
     FManutencaoMaquinaServicoDominio:= TManutencaoMaquinaServicoDominio.Create(Conexao, FManutencaoMaquinaServico);
     if (FManutencaoMaquinaServicoDominio.ExcluirProximaRevisao(Retorno) = 0) and (Retorno <> '') then
     begin
@@ -362,7 +373,6 @@ begin
       exit;
     end;
 
-    FManutencaoMaquinaDominio:= TManutencaoMaquinaDominio.Create(Conexao, FManutencaoMaquina);
     if (FManutencaoMaquinaDominio.Excluir(Retorno) = 0) and (Retorno <> '') then
     begin
       TOperacoesConexao.CancelaConexao(Conexao);

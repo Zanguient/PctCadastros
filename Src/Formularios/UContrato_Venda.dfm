@@ -32,7 +32,7 @@ object FrmContrato_Venda: TFrmContrato_Venda
     Width = 480
     Height = 374
     Cursor = crHandPoint
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
@@ -692,14 +692,12 @@ object FrmContrato_Venda: TFrmContrato_Venda
             Width = 64
           end
           object cxGrid1DBTableView1Nome: TcxGridDBColumn
-            Caption = 'Cliente'
-            DataBinding.FieldName = 'Nome'
+            DataBinding.FieldName = 'Cliente'
             Options.Editing = False
             Width = 185
           end
           object cxGrid1DBTableView1Descricao: TcxGridDBColumn
-            Caption = 'Safra'
-            DataBinding.FieldName = 'Descricao'
+            DataBinding.FieldName = 'Safra'
             Options.Editing = False
             Width = 100
           end

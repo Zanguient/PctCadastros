@@ -185,7 +185,10 @@ var
   Retorno: AnsiString;
 begin
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryEstoque, dm.qrySafra], Conexao);
+  TOperacoesConexao.IniciaQuerys([qryEstoque,
+                                  dm.qrySafra,
+                                  dm.qryArmazem,
+                                  dm.qryProduto], Conexao);
 
   IniDados:= IniciaDadosCadastro.Create;
   IniDados.BuscaDadosSafra(Conexao);

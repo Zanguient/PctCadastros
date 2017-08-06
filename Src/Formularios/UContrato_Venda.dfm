@@ -32,7 +32,7 @@ object FrmContrato_Venda: TFrmContrato_Venda
     Width = 480
     Height = 374
     Cursor = crHandPoint
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0

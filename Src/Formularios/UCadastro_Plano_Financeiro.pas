@@ -300,9 +300,9 @@ var
 begin
   Pai:= dm.qryplanoFinanceiroDescricao.AsString;
   //CodPai:= StrToInt(VarToStr(StrToInt(TcxLookupComboBox(Sender).EditValue)));
-  CodPai:= dm.qryplanoFinanceiroCodigo_Pai.AsInteger;
-  ShowMessage('Pai: '+Pai);
-  ShowMessage('CodPai: '+IntTostr(CodPai));
+  CodPai:= dm.qryplanoFinanceiroCodigo.AsInteger;
+  //ShowMessage('Pai: '+Pai);
+  //ShowMessage('CodPai: '+IntTostr(CodPai));
   qryConsulta.Edit;
   qryConsultaCodigo_Propriedade.AsInteger:= FPropriedade.Codigo;
   qryConsultaCodigo_Usuario.AsInteger:= FUsuario.Codigo;

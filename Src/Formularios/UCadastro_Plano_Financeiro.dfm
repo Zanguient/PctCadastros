@@ -52,7 +52,7 @@
             Width = 804
           end>
         DataController.DataSource = dsConsulta
-        DataController.ParentField = 'Codigo_Pai'
+        DataController.ParentField = 'Codigo'
         DataController.KeyField = 'Codigo'
         LookAndFeel.NativeStyle = False
         Navigator.Buttons.OnButtonClick = cxDBTreeList1NavigatorButtonsButtonClick
@@ -79,9 +79,8 @@
         OptionsBehavior.NavigatorHints = True
         OptionsData.Inserting = True
         OptionsView.Bands = True
-        OptionsView.CategorizedColumn = cxDBTreeList1cxDBTreeListTipo
         OptionsView.Indicator = True
-        RootValue = -1
+        RootValue = 0
         TabOrder = 0
         object cxDBTreeList1cxDBTreeListTipo: TcxDBTreeListColumn
           PropertiesClassName = 'TcxComboBoxProperties'
@@ -90,7 +89,7 @@
             'Despesa')
           Properties.OnEditValueChanged = cxDBTreeList1cxDBTreeListTipoPropertiesEditValueChanged
           DataBinding.FieldName = 'Tipo'
-          Width = 59
+          Width = 60
           Position.ColIndex = 2
           Position.RowIndex = 0
           Position.BandIndex = 0
@@ -102,7 +101,7 @@
           Properties.OnEditValueChanged = cxDBTreeList1cxDBTreeListDescricaoPropertiesEditValueChanged
           Caption.Text = 'Descri'#231#227'o'
           DataBinding.FieldName = 'Descricao'
-          Width = 257
+          Width = 261
           Position.ColIndex = 1
           Position.RowIndex = 0
           Position.BandIndex = 0
@@ -114,7 +113,7 @@
           Caption.Text = 'C'#243'd. Pai'
           DataBinding.FieldName = 'Codigo_Pai'
           Width = 100
-          Position.ColIndex = 4
+          Position.ColIndex = 3
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -125,7 +124,7 @@
           Properties.Alignment.Horz = taCenter
           Caption.Text = 'C'#243'd. Subn'#237'vel'
           DataBinding.FieldName = 'Codigo_SubNivel'
-          Width = 86
+          Width = 88
           Position.ColIndex = 5
           Position.RowIndex = 0
           Position.BandIndex = 0
@@ -137,7 +136,7 @@
           Properties.Alignment.Horz = taCenter
           Caption.Text = 'Subn'#237'vel'
           DataBinding.FieldName = 'Sub_Nivel'
-          Width = 63
+          Width = 64
           Position.ColIndex = 6
           Position.RowIndex = 0
           Position.BandIndex = 0
@@ -152,7 +151,7 @@
           Properties.OnChange = cxDBTreeList1cxDBTreeListPaiPropertiesChange
           Caption.Text = 'Grupo Principal'
           DataBinding.FieldName = 'Pai'
-          Width = 202
+          Width = 205
           Position.ColIndex = 0
           Position.RowIndex = 0
           Position.BandIndex = 0
@@ -163,8 +162,8 @@
           PropertiesClassName = 'TcxTextEditProperties'
           Properties.Alignment.Horz = taCenter
           DataBinding.FieldName = 'Codigo'
-          Width = 66
-          Position.ColIndex = 3
+          Width = 54
+          Position.ColIndex = 4
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -173,7 +172,7 @@
         object cxDBTreeList1cxDBTreeListData_Cadastro: TcxDBTreeListColumn
           Caption.Text = 'Cadastro'
           DataBinding.FieldName = 'Data_Cadastro'
-          Width = 71
+          Width = 72
           Position.ColIndex = 7
           Position.RowIndex = 0
           Position.BandIndex = 0
@@ -452,6 +451,7 @@
     Top = 320
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -493,6 +493,7 @@
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

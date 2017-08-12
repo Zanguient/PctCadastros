@@ -32,7 +32,7 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
     Width = 705
     Height = 436
     Cursor = crHandPoint
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
@@ -913,11 +913,18 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
             Position.ColIndex = 4
             Position.RowIndex = 0
           end
+          object cxGrid2DBBandedTableView1Data: TcxGridDBBandedColumn
+            DataBinding.FieldName = 'Data'
+            Width = 90
+            Position.BandIndex = 0
+            Position.ColIndex = 5
+            Position.RowIndex = 0
+          end
           object cxGrid2DBBandedTableView1Valor: TcxGridDBBandedColumn
             DataBinding.FieldName = 'Valor'
             Width = 104
             Position.BandIndex = 0
-            Position.ColIndex = 5
+            Position.ColIndex = 6
             Position.RowIndex = 0
           end
         end
@@ -1544,6 +1551,7 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
     Top = 56
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1585,6 +1593,7 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False
@@ -1652,6 +1661,9 @@ object FrmFolha_Pagamento: TFrmFolha_Pagamento
       KeyFields = 'Codigo_Item'
       LookupCache = True
       Lookup = True
+    end
+    object qryitensfolhaData: TDateTimeField
+      FieldName = 'Data'
     end
     object qryitensfolhaValor: TFloatField
       FieldName = 'Valor'

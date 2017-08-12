@@ -193,6 +193,8 @@ type
     cmbCondicaoPagamento: TcxLookupComboBox;
     cmbPlano: TcxLookupComboBox;
     cmbTipoDocumento: TcxLookupComboBox;
+    qryitensfolhaData: TDateTimeField;
+    cxGrid2DBBandedTableView1Data: TcxGridDBBandedColumn;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

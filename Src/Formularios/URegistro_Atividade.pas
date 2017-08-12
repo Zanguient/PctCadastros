@@ -389,6 +389,7 @@ type
     qryEstoqueGraoArmazem: TStringField;
     qryEstoqueGraoProduto: TStringField;
     cxGridDBTableViewAtividadeProdutoQuantidade: TcxGridDBColumn;
+    cxGrid3DBBandedTableView1: TcxGridDBBandedTableView;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -424,7 +425,6 @@ type
     procedure cxGridDBTableViewTalhaoNavigatorButtonsButtonClick(
       Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
     procedure cxGridDBTableViewTalhaoTalhaoPropertiesCloseUp(Sender: TObject);
-    procedure qryRegistroAtividadeAtividadesTalhaoBeforePost(DataSet: TDataSet);
     procedure qryRegistroAtividadeColheitaPostError(DataSet: TDataSet;
       E: EDatabaseError; var Action: TDataAction);
     procedure qryRegistroAtividadeColheitaBeforePost(DataSet: TDataSet);
@@ -445,6 +445,8 @@ type
       AFocusedItem: TcxCustomGridTableItem);
     procedure cxGridDBTableViewAtividadeProdutoQuantidadePropertiesEditValueChanged(
       Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure qryRegistroAtividadeColheitaAfterDelete(DataSet: TDataSet);
   private
     FPropriedade: TPropriedadeEntidade;
     FUsuario: TLoginEntidade;
@@ -492,6 +494,7 @@ type
     procedure BuscaDadosRegistroAtividadesMaquina;
     //procedure BuscaDadosSafra;
     procedure IniciaTela;
+    procedure AtualizaEstoque;
   public
     ativo, enderec, achei: boolean;
     constructor Create(FPropriedade: TPropriedadeEntidade; FUsuario: TLoginEntidade);
@@ -508,11 +511,49 @@ uses UDM, ProdutoDominio, SafraDominio, TalhaoDominio, VariedadeCulturaDominio, 
 
 { TFrmPadrao }
 
+procedure TFrmRegistro_Atividade.AtualizaEstoque;
+var
+  FEstoque: TEstoqueEntidade;
+  FEstoqueDominio: TEstoqueDominio;
+  Retorno: AnsiString;
+begin
+  FEstoque:= TEstoqueEntidade.Create;
+  FEstoque.CodigoSafra:= dm.qrySafraCodigo.AsInteger;
+  FEstoque.CodigoArmazem:= qryRegistroAtividadeColheitaIdArmazem.AsInteger;
+  FEstoque.CodigoProduto:= qryRegistroAtividadeColheitaIdProduto.AsInteger;
+  FEstoque.CodigoFazenda:= FPropriedade.Codigo;
+  FEstoque.Estoque:= qryRegistroAtividadeColheitaLiquidoSeco.AsFloat;
+
+  FEstoqueDominio:= TEstoqueDominio.Create(Conexao, FEstoque);
+
+  if (FEstoqueDominio.Salvar(Retorno) <> 0) then
+  begin
+
+  end
+  else
+  begin
+    FEstoqueDominio.AtualizaEstoque(dm.qrySafraCodigo.AsInteger, qryRegistroAtividadeColheitaIdArmazem.AsInteger,
+                                      qryRegistroAtividadeColheitaIdProduto.AsInteger, FPropriedade.Codigo, Retorno);
+  end;
+
+  FEstoqueDominio.Buscar(FPropriedade.Codigo, DM.qrySafraCodigo.AsInteger, 0,qryEstoqueGrao, Retorno);
+end;
+
 procedure TFrmRegistro_Atividade.BBtnCancelarClick(Sender: TObject);
 begin
   Op.LimpaCampos(FrmRegistro_Atividade);
   Op.DesabilitaCampos(FrmRegistro_Atividade);
   TOperacoesConexao.CancelaConexao(Conexao);
+
+  qryRegistroAtividadeAtividades.Close;
+  qryRegistroAtividadeAtividadesProduto.Close;
+  qryRegistroAtividadeAtividadesTalhao.Close;
+  qryRegistroAtividadeColheita.Close;
+  qryRegistroAtividadePlantio.Close;
+  qryRegistroAtividadePlantioOcorrencia.Close;
+  qryRegistroAtividadeAtividadesMaquina.Close;
+  qryEstoqueGrao.Close;
+
   BBtnSalvar.Enabled:= false;
   BBtnCancelar.Enabled:= false;
   BBtnNovo.Enabled:= true;
@@ -578,14 +619,6 @@ begin
 
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
   TOperacoesConexao.IniciaQuerys([qryConsulta,
-                                  qryEstoqueGrao,
-                                  qryRegistroAtividadeAtividades,
-                                  qryRegistroAtividadePlantio,
-                                  qryRegistroAtividadePlantioOcorrencia,
-                                  qryRegistroAtividadeColheita,
-                                  qryRegistroAtividadeAtividadesMaquina,
-                                  qryRegistroAtividadeAtividadesProduto,
-                                  qryRegistroAtividadeAtividadesTalhao,
                                   DM.qryAtividade,
                                   DM.qryVariedadeCultura,
                                   DM.qryTalhao,
@@ -598,7 +631,16 @@ begin
                                   DM.qryDepositante,
                                   DM.qrySafra,
                                   DM.qryPropriedade,
-                                  DM.qryocorrencia], Conexao);
+                                  DM.qryocorrencia,
+                                  qryEstoqueGrao,
+                                  qryRegistroAtividadeAtividades,
+                                  qryRegistroAtividadeAtividadesProduto,
+                                  qryRegistroAtividadeAtividadesMaquina,
+                                  qryRegistroAtividadeAtividadesTalhao,
+                                  qryRegistroAtividadePlantio,
+                                  qryRegistroAtividadePlantioOcorrencia,
+                                  qryRegistroAtividadeColheita
+                                  ], Conexao);
 
   FAplicacao.Add('ATIVIDADES AGRÍCOLAS');
   FAplicacao.Add('PLANTIO');
@@ -804,6 +846,11 @@ begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
     Exit;
   end;
+end;
+
+procedure TFrmRegistro_Atividade.Button1Click(Sender: TObject);
+begin
+  qryRegistroAtividadeAtividadesProduto.Refresh;
 end;
 
 {procedure TFrmRegistro_Atividade.BuscaDadosSafra;
@@ -1051,7 +1098,8 @@ begin
       qryRegistroAtividadeAtividadesProduto.Insert;
       qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade.AsInteger:= qryRegistroAtividadeAtividadesCodigo_Registro_Atividade.AsInteger;
       qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade_Atividade.AsInteger:= qryRegistroAtividadeAtividadesCodigo.AsInteger;
-      //qryRegistroAtividadeColheitaIdSafra.AsInteger:= DM.qrySafraCodigo.AsInteger;
+      qryRegistroAtividadeAtividadesProduto.Post;
+      //qryRegistroAtividadeAtividadesProduto.Append;
       ADone:= true;
     end
     else
@@ -1060,18 +1108,15 @@ begin
       Exit;
     end;
   end;
-  {if (AButtonIndex = 6) then
+
+  if (AButtonIndex = 8) then
   begin
-    if (cxGridDBTableViewAtividadeProduto.Controller.SelectedRecordCount = 0) then
-    begin
-      Mensagens.MensagemWarning('Por favor, selecione uma atividade para lançar produtos a ela.');
-      Exit;
-    end;
-    qryRegistroAtividadeAtividadesProduto.Insert;
-    qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade.AsInteger:= qryRegistroAtividadeAtividadesCodigo_Registro_Atividade.AsInteger;
-    //qryRegistroAtividadeAtividadesCodigo_Atividade.AsInteger:= qryAtividadeCodigo.AsInteger;
-    ADone:= true;
-  end;}
+    //qryRegistroAtividadeAtividadesProduto.Edit;
+    //qryRegistroAtividadeAtividadesProduto.Delete;
+    //qryRegistroAtividadeAtividadesProduto.Post;
+    //qryRegistroAtividadeAtividadesProduto.Close;
+    //qryRegistroAtividadeAtividadesProduto.Open;
+  end;
 end;
 
 procedure TFrmRegistro_Atividade.cxGridDBTableViewAtividadeProdutoQuantidadePropertiesEditValueChanged(
@@ -1195,6 +1240,9 @@ begin
   qryRegistroAtividadeAtividadesTalhao.Close;
   qryRegistroAtividadeColheita.Close;
   qryRegistroAtividadePlantio.Close;
+  qryRegistroAtividadePlantioOcorrencia.Close;
+  qryRegistroAtividadeAtividadesMaquina.Close;
+  qryEstoqueGrao.Close;
   //qryRegistroAtividadeAtividadesMaquina.Close;
   //cxGridDBTableViewAtividade.ViewData.Collapse(False);
   //cxGrid2DBTableViewAtividadeProduto.ViewData.Collapse(false);
@@ -1220,6 +1268,14 @@ begin
     BuscaDadosRegistroAtividadesPlantioOcorrencia;
     BuscaDadosRegistroAtividadesColheita;
     BuscaDadosRegistroAtividadesMaquina;
+
+    qryRegistroAtividadeAtividades.Properties['Unique Table'].Value:= 'Registro_Atividade_Atividades';
+    qryRegistroAtividadeAtividadesProduto.Properties['Unique Table'].Value:= 'Registro_Atividade_Atividades_Produto';
+    qryRegistroAtividadeAtividadesTalhao.Properties['Unique Table'].Value:= 'Registro_Atividade_Atividades_Talhao';
+    qryRegistroAtividadePlantio.Properties['Unique Table'].Value:= 'Registro_Atividade_Plantio';
+    qryRegistroAtividadePlantioOcorrencia.Properties['Unique Table'].Value:= 'Registro_Atividade_Plantio_Ocorrencia';
+    qryRegistroAtividadeColheita.Properties['Unique Table'].Value:= 'Registro_Atividade_Colheita';
+    qryRegistroAtividadeAtividadesMaquina.Properties['Unique Table'].Value:= 'Registro_Atividade_Trabalho_Maquina';
 
     cxGridDBTableViewAtividade.ViewData.Collapse(true);
     cxGridDBTableViewAtividadeProduto.ViewData.Collapse(true);
@@ -1280,6 +1336,14 @@ begin
     BuscaDadosRegistroAtividadesColheita;
     BuscaDadosRegistroAtividadesMaquina;
 
+    qryRegistroAtividadeAtividades.Properties['Unique Table'].Value:= 'Registro_Atividade_Atividades';
+    qryRegistroAtividadeAtividadesProduto.Properties['Unique Table'].Value:= 'Registro_Atividade_Atividades_Produto';
+    qryRegistroAtividadeAtividadesTalhao.Properties['Unique Table'].Value:= 'Registro_Atividade_Atividades_Talhao';
+    qryRegistroAtividadePlantio.Properties['Unique Table'].Value:= 'Registro_Atividade_Plantio';
+    qryRegistroAtividadePlantioOcorrencia.Properties['Unique Table'].Value:= 'Registro_Atividade_Plantio_Ocorrencia';
+    qryRegistroAtividadeColheita.Properties['Unique Table'].Value:= 'Registro_Atividade_Colheita';
+    qryRegistroAtividadeAtividadesMaquina.Properties['Unique Table'].Value:= 'Registro_Atividade_Trabalho_Maquina';
+
     cxGridDBTableViewAtividade.ViewData.Collapse(true);
     cxGridDBTableViewAtividadeProduto.ViewData.Collapse(true);
     cxGridDBTableViewTalhao.ViewData.Collapse(true);
@@ -1332,55 +1396,16 @@ begin
   qryRegistroAtividadeAtividadesProduto.Post;}
 end;
 
-procedure TFrmRegistro_Atividade.qryRegistroAtividadeAtividadesTalhaoBeforePost(
+procedure TFrmRegistro_Atividade.qryRegistroAtividadeColheitaAfterDelete(
   DataSet: TDataSet);
 begin
-  //qryRegistroAtividadeAtividadesTalhao.Edit;
-  //qryRegistroAtividadeAtividadesTalhaoTalhao.AsString:= dm.qryTalhaoDescricao_Talhao.AsString;
-  //qryRegistroAtividadeAtividadesTalhaoArea.AsFloat:= dm.qryTalhaoArea.AsFloat;
-  //qryRegistroAtividadeAtividadesTalhao.Post;
-  //qryRegistroAtividadeAtividadesTalhao.Refresh;
-  //qryRegistroAtividadeAtividadesTalhaoArea.AsFloat:= dm.qryTalhaoArea.AsFloat;
+  AtualizaEstoque;
 end;
 
 procedure TFrmRegistro_Atividade.qryRegistroAtividadeColheitaAfterPost(
   DataSet: TDataSet);
-var
-  FEstoque: TEstoqueEntidade;
-  FEstoqueDominio: TEstoqueDominio;
-  Retorno: AnsiString;
 begin
-  FEstoque:= TEstoqueEntidade.Create;
-  FEstoque.CodigoSafra:= dm.qrySafraCodigo.AsInteger;
-  FEstoque.CodigoArmazem:= qryRegistroAtividadeColheitaIdArmazem.AsInteger;
-  FEstoque.CodigoProduto:= qryRegistroAtividadeColheitaIdProduto.AsInteger;
-  FEstoque.CodigoFazenda:= FPropriedade.Codigo;
-  FEstoque.Estoque:= qryRegistroAtividadeColheitaLiquidoSeco.AsFloat;
-
-  FEstoqueDominio:= TEstoqueDominio.Create(Conexao, FEstoque);
-
-  if (FEstoqueDominio.Salvar(Retorno) <> 0) then
-  begin
-
-  end
-  else
-  begin
-    //ShowMessage('Vai atualizar estoque');
-    //Mensagens.MensagemWarning('O sistema encontrou um lançamento contendo o conjunto: Safra > Armazém > Produto e Propriedade já lançada. O sistema irá atualizar o estoque do produto.');
-    {ShowMessage('Armazém: ' + qryRegistroAtividadeColheitaIdArmazem.AsString + ' '+qryRegistroAtividadeColheitaArmazem.AsString);
-    ShowMessage('Produto: ' + qryRegistroAtividadeColheitaIdProduto.AsString + ' '+qryRegistroAtividadeColheitaProduto.AsString);
-    ShowMessage('Liquido Seco: ' + qryRegistroAtividadeColheitaLiquidoSeco.AsString);
-    ShowMessage('Propriedade: ' + IntToStr(CodigoPropriedade));
-    ShowMessage('Safra: ' + dm.qrySafraCodigo.AsString + ' ' + dm.qrySafraDescricao.AsString);                   }
-    FEstoqueDominio.AtualizaEstoque(dm.qrySafraCodigo.AsInteger, qryRegistroAtividadeColheitaIdArmazem.AsInteger,
-                                      qryRegistroAtividadeColheitaIdProduto.AsInteger, FPropriedade.Codigo, Retorno);
-  end;
-
-  FEstoqueDominio.Buscar(FPropriedade.Codigo, DM.qrySafraCodigo.AsInteger, 0,qryEstoqueGrao, Retorno);
-  {ShowMessage('Armazém After Post: ' + qryRegistroAtividadeColheitaIdArmazem.AsString + ' '+qryRegistroAtividadeColheitaArmazem.AsString);
-  ShowMessage('Produto After Post: ' + qryRegistroAtividadeColheitaIdProduto.AsString + ' '+qryRegistroAtividadeColheitaProduto.AsString);
-  ShowMessage('Liquido Seco After Post: ' + qryRegistroAtividadeColheitaLiquidoSeco.AsString);
-  ShowMessage('Nº Romaneio After Post: ' + qryRegistroAtividadeColheitaNRomaneio.AsString);}
+  AtualizaEstoque;
 end;
 
 procedure TFrmRegistro_Atividade.qryRegistroAtividadeColheitaBeforePost(

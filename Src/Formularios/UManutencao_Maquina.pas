@@ -238,7 +238,6 @@ type
       AItem: TcxCustomGridTableItem; var AAllow: Boolean);
     procedure cxGrid2DBBandedTableView1QuantidadePropertiesEditValueChanged(
       Sender: TObject);
-    procedure qryManutencaoMaquinaProdutoAfterInsert(DataSet: TDataSet);
     procedure cxGrid2DBBandedTableView1QuantidadePropertiesValidate(
       Sender: TObject; var DisplayValue: Variant; var ErrorText: TCaption;
       var Error: Boolean);
@@ -420,41 +419,38 @@ begin
   PageControl1.TabIndex:= 0;
   FAplicacao:= TList<AnsiString>.Create();
   TipoPessoa:= TList<AnsiString>.Create();
-
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
   TOperacoesConexao.IniciaQuerys([qryConsulta,
-                                  qryManutencaoMaquinaServico,
-                                  qryManutencaoMaquinaServicoProxRev,
-                                  qryManutencaoMaquinaProduto,
+                                  DM.qryProduto,
                                   dm.qrypessoa,
                                   DM.qryservico,
-                                  DM.qryProduto,
                                   DM.qrySafra,
                                   dm.qrycondicaoPagamento,
                                   dm.qryplanoFinanceiro,
                                   dm.qrytipoDocumento,
                                   dm.qrydepartamento,
+                                  qryManutencaoMaquinaServico,
+                                  qryManutencaoMaquinaServicoProxRev,
+                                  qryManutencaoMaquinaProduto,
                                   dm.qryVeiculo], Conexao);
-
   FAplicacao.Add('MANUTENÇÕES DE MÁQUINAS');
   TipoPessoa.Add('FORNECEDOR');
   IniDados:= IniciaDadosCadastro.Create;
   IniDados.BuscaDadosSafra(Conexao);
   IniDados.BuscaDadosVeiculo(FPropriedade.Codigo, Conexao);
   IniDados.BuscaDadosServico(Conexao);
+  IniDados.BuscaDadosPessoa(TipoPessoa, Conexao);
   IniDados.BuscaDadosProduto(FAplicacao, Conexao);
   IniDados.BuscaDadosCondicaoPagamento(Conexao);
   IniDados.BuscaDadosPlanoFinanceiro(Conexao);
   IniDados.BuscaDadosTipoDocumento(Conexao);
   IniDados.BuscaDadosDepartamento(Conexao);
-  IniDados.BuscaDadosPessoa(TipoPessoa, Conexao);
 
   EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Manutencao_Maquina', Conexao));
   EdtN_Documento.Text:= EdtCodigo.Text;
 
   FManutencaoMaquinaServicoDominio:= TManutencaoMaquinaServicoDominio.Create(Conexao);
   FManutencaoMaquinaProdutoDominio:= TManutencaoMaquinaProdutoDominio.Create(Conexao);
-
   FManutencaoMaquinaProdutoDominio.Buscar(StrToInt(EdtCodigo.Text), qryManutencaoMaquinaProduto, Retorno);
 
   FManutencaoMaquinaServicoDominio.Buscar(StrToInt(EdtCodigo.Text), qryManutencaoMaquinaServico, Retorno);
@@ -1055,12 +1051,6 @@ begin
   end;
 end;
 
-procedure TFrmManutencao_Maquina.qryManutencaoMaquinaProdutoAfterInsert(
-  DataSet: TDataSet);
-begin
-  //qryManutencaoMaquinaProdutoQuantidade.AsFloat:= 1;
-end;
-
 function TFrmManutencao_Maquina.VoltaEstoque: integer;
 var
   i :integer;
@@ -1106,9 +1096,12 @@ begin
 end;
 
 function TFrmManutencao_Maquina.GeraFinanceiro(var Retorno: AnsiString): integer;
+var
+  V1: Variant;
 begin
   FLF:= TLancamentoFinanceiroEntidade.Create;
   CodigoLancamentoFinanceiro:= GeraCodigo.GeraCodigoSequencia('Lancamento_Financeiro', Conexao);
+  V1 := cxGrid2DBBandedTableViewServico.DataController.Summary.FooterSummaryValues[0];
   FLF.Codigo:= CodigoLancamentoFinanceiro;
   FLF.Codigo_Propriedade:= FPropriedade.Codigo;
   FLF.Codigo_Usuario:= FUsuario.Codigo;
@@ -1140,11 +1133,11 @@ begin
   FLF.Tipo:= 'Pagar';
   FLF.Fiscal:= 'Sim';
 
-  FLF.Valor_Documento:= StrToFloat(EdtValor_Total.Text);
+  FLF.Valor_Documento:= StrToFloat(V1);//StrToFloat(EdtValor_Total.Text);
   FLF.Desconto:= 0;
   FLF.Multa:= 0;
-  FLF.Valor_Cobrado:= StrToFloat(EdtValor_Total.Text);
-  FLF.Observacoes:= 'Manutenção da máquina '+cmbMaquina.Text;
+  FLF.Valor_Cobrado:= StrToFloat(V1);//StrToFloat(EdtValor_Total.Text);
+  FLF.Observacoes:= 'Manutenção da máquina '+cmbMaquina.Text+'. O valor deste lançamento é composto apenas pelo valor total de serviços.';
 
   FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao, FLF);
 

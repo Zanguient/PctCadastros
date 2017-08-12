@@ -138,7 +138,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
         Width = 864
         Height = 330
         Cursor = crHandPoint
-        ActivePage = TabSheet3
+        ActivePage = TabSheet5
         Style = tsFlatButtons
         TabOrder = 4
         OnChange = PageControl2Change
@@ -207,7 +207,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               OptionsBehavior.ExpandMasterRowOnDblClick = False
               OptionsCustomize.ColumnHiding = True
               OptionsCustomize.DataRowSizing = True
-              OptionsSelection.MultiSelect = True
               OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
               OptionsView.GroupByBox = False
               OptionsView.GroupFooters = gfAlwaysVisible
@@ -297,9 +296,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               OptionsBehavior.GoToNextCellOnEnter = True
               OptionsBehavior.NavigatorHints = True
               OptionsBehavior.ExpandMasterRowOnDblClick = False
-              OptionsCustomize.ColumnHiding = True
-              OptionsCustomize.DataRowSizing = True
-              OptionsSelection.MultiSelect = True
               OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
               OptionsView.GroupByBox = False
               OptionsView.GroupFooters = gfAlwaysVisible
@@ -419,19 +415,15 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               OptionsBehavior.GoToNextCellOnEnter = True
               OptionsBehavior.NavigatorHints = True
               OptionsBehavior.ExpandMasterRowOnDblClick = False
-              OptionsCustomize.ColumnHiding = True
-              OptionsCustomize.DataRowSizing = True
-              OptionsSelection.MultiSelect = True
               OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
               OptionsView.GroupByBox = False
               OptionsView.GroupFooters = gfAlwaysVisible
               OptionsView.GroupSummaryLayout = gslAlignWithColumns
               OptionsView.Indicator = True
-              Preview.Visible = True
               object cxGridDBTableViewAtividadeProdutoCodigo: TcxGridDBColumn
-                Caption = 'C'#243'digo Un. Produto'
+                Caption = 'C'#243'digo'
                 DataBinding.FieldName = 'Codigo'
-                Visible = False
+                Options.Editing = False
                 Width = 107
               end
               object cxGridDBTableViewAtividadeProdutoCodigo_Registro_Atividade_Atividade: TcxGridDBColumn
@@ -1065,8 +1057,8 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               Bands = <
                 item
                   Caption = 
-                    'Lan'#231'amento do plantio. Al'#233'm disso, '#233' poss'#237'vel lan'#231'ar as ocorr'#234'nc' +
-                    'ias e est'#225'dios do plantio.'
+                    'Lan'#231'amentos do plantio. Al'#233'm disso, '#233' poss'#237'vel lan'#231'ar as ocorr'#234'n' +
+                    'cias e est'#225'dios do plantio.'
                   HeaderAlignmentHorz = taLeftJustify
                   Styles.Header = cxStyle2
                 end>
@@ -1368,6 +1360,15 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               OptionsView.GroupSummaryLayout = gslAlignWithColumns
               OptionsView.Indicator = True
               Preview.Visible = True
+            end
+            object cxGrid3DBBandedTableView1: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              Bands = <
+                item
+                end>
             end
             object cxGrid3Level1: TcxGridLevel
               Caption = 'Plantio'
@@ -2325,7 +2326,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     Version = 0
     Left = 464
     object dxComponentPrinter1Link1: TdxGridReportLink
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2367,7 +2367,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False
@@ -2543,6 +2542,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     CursorType = ctStatic
     BeforePost = qryRegistroAtividadeColheitaBeforePost
     AfterPost = qryRegistroAtividadeColheitaAfterPost
+    AfterDelete = qryRegistroAtividadeColheitaAfterDelete
     OnPostError = qryRegistroAtividadeColheitaPostError
     Parameters = <>
     SQL.Strings = (
@@ -2759,7 +2759,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
   end
   object qryRegistroAtividadeAtividadesTalhao: TADOQuery
     CursorType = ctStatic
-    BeforePost = qryRegistroAtividadeAtividadesTalhaoBeforePost
     Parameters = <>
     SQL.Strings = (
       'select * from Registro_Atividade_Atividades_Talhao')

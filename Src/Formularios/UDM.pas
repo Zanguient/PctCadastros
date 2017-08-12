@@ -318,7 +318,7 @@ implementation
 procedure TDM.DataModuleCreate(Sender: TObject);
 begin
   try
-    //DM.ADOConnection1.Connected:= true;
+    //ADOConnection.Connected:= true;
   except on e:Exception do
   begin
     //Mensagens.MensagemErro('Erro ao abrir conexão: '+e.Message);

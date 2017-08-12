@@ -32,16 +32,12 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
     Width = 705
     Height = 436
     Cursor = crHandPoint
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Cadastrar'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object LblCodigo: TLabel
         Left = 0
         Top = 13
@@ -965,28 +961,6 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
           end
           object cxGrid2DBBandedTableView1Produto: TcxGridDBBandedColumn
             DataBinding.FieldName = 'Produto'
-            PropertiesClassName = 'TcxLookupComboBoxProperties'
-            Properties.CharCase = ecUpperCase
-            Properties.KeyFieldNames = 'Codigo'
-            Properties.ListColumns = <
-              item
-                Caption = 'C'#243'd.'
-                Width = 40
-                FieldName = 'Codigo'
-              end
-              item
-                Caption = 'Produto'
-                Width = 200
-                FieldName = 'Descricao'
-              end
-              item
-                Caption = 'Pre'#231'o'
-                RepositoryItem = cxEditRepository1CurrencyItem1
-                Width = 120
-                FieldName = 'Preco_Compra'
-              end>
-            Properties.ListFieldIndex = 1
-            Properties.OnChange = cxGrid2DBBandedTableView1ProdutoPropertiesChange
             Width = 281
             Position.BandIndex = 0
             Position.ColIndex = 3
@@ -1724,7 +1698,6 @@ object FrmManutencao_Maquina: TFrmManutencao_Maquina
   end
   object qryManutencaoMaquinaProduto: TADOQuery
     CursorType = ctStatic
-    AfterInsert = qryManutencaoMaquinaProdutoAfterInsert
     Parameters = <>
     SQL.Strings = (
       'select MMP.* from Manutencao_Maquina_Produto MMP')

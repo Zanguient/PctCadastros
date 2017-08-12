@@ -59,9 +59,9 @@ begin
     begin
       FComandoSQL:= TComandoSQLEntidade.Create;
       FComandoSQL.Conexao:= Conexao;
-      FComandoSQL.ComandoSQL:= 'select * from Registro_Atividade_Atividades_Talhao where Codigo_Registro_Atividade = :Codigo';
-      FComandoSQL.Parametros.Add('Codigo');
-      FComandoSQL.Valores.Add(IdRegistroAtividadesTalhao);
+      FComandoSQL.ComandoSQL:= 'select * from Registro_Atividade_Atividades_Talhao';// where Codigo_Registro_Atividade = :Codigo';
+      //FComandoSQL.Parametros.Add('Codigo');
+      //FComandoSQL.Valores.Add(IdRegistroAtividadesTalhao);
     end
     else
     begin

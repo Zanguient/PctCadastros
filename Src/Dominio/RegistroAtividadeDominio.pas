@@ -35,7 +35,8 @@ begin
   try
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
-    FComandoSQL.ComandoSQL:= 'update Registro_Atividade set Inicio_Safra = :Inicio_Safra, Fim_Safra = :Fim_Safra where Codigo = :Codigo ';
+    FComandoSQL.ComandoSQL:= 'update Registro_Atividade set Inicio_Safra = :Inicio_Safra, Fim_Safra = :Fim_Safra '+
+                             ' where Codigo = :Codigo ';
     FComandoSQL.Parametros.Add('Inicio_Safra');
     FComandoSQL.Parametros.Add('Fim_Safra');
     FComandoSQL.Parametros.Add('Codigo');

@@ -883,7 +883,7 @@ begin
   begin
     Mensagens.MensagemErro(MensagemCampoNulo);
     cxGrid2.SetFocus;
-    Abort;
+    exit;
   end;
 end;
 

@@ -52,18 +52,21 @@
             Width = 804
           end>
         DataController.DataSource = dsConsulta
-        DataController.ParentField = 'Codigo'
+        DataController.ParentField = 'Codigo_Pai'
         DataController.KeyField = 'Codigo'
         LookAndFeel.NativeStyle = False
         Navigator.Buttons.OnButtonClick = cxDBTreeList1NavigatorButtonsButtonClick
         Navigator.Buttons.ConfirmDelete = True
         Navigator.Buttons.CustomButtons = <>
+        Navigator.Buttons.Images = DM.ImageList1
         Navigator.Buttons.First.Visible = False
         Navigator.Buttons.PriorPage.Visible = False
         Navigator.Buttons.Prior.Visible = False
         Navigator.Buttons.Next.Visible = False
         Navigator.Buttons.NextPage.Visible = False
         Navigator.Buttons.Last.Visible = False
+        Navigator.Buttons.Delete.ImageIndex = 2
+        Navigator.Buttons.Delete.Visible = True
         Navigator.Buttons.Edit.Visible = False
         Navigator.Buttons.Post.Visible = False
         Navigator.Buttons.Cancel.Visible = False
@@ -79,18 +82,34 @@
         OptionsBehavior.NavigatorHints = True
         OptionsData.Inserting = True
         OptionsView.Bands = True
-        OptionsView.Indicator = True
-        RootValue = 0
+        OptionsView.GridLines = tlglBoth
+        OptionsView.TreeLineStyle = tllsNone
+        RootValue = ''
         TabOrder = 0
-        object cxDBTreeList1cxDBTreeListTipo: TcxDBTreeListColumn
-          PropertiesClassName = 'TcxComboBoxProperties'
-          Properties.Items.Strings = (
-            'Receita'
-            'Despesa')
-          Properties.OnEditValueChanged = cxDBTreeList1cxDBTreeListTipoPropertiesEditValueChanged
-          DataBinding.FieldName = 'Tipo'
-          Width = 60
-          Position.ColIndex = 2
+        object cxDBTreeList1cxDBTreeListPai: TcxDBTreeListColumn
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.ListColumns = <>
+          Properties.ListFieldIndex = -1
+          Properties.ListOptions.SyncMode = True
+          Properties.OnCloseUp = cxDBTreeList1cxDBTreeListPaiPropertiesCloseUp
+          Caption.Text = 'Grupo Principal'
+          DataBinding.FieldName = 'Pai'
+          Width = 174
+          Position.ColIndex = 0
+          Position.RowIndex = 0
+          Position.BandIndex = 0
+          Summary.FooterSummaryItems = <>
+          Summary.GroupFooterSummaryItems = <>
+        end
+        object cxDBTreeList1cxDBTreeListNo_Pai: TcxDBTreeListColumn
+          PropertiesClassName = 'TcxCheckBoxProperties'
+          Properties.ImmediatePost = True
+          Properties.NullStyle = nssUnchecked
+          Properties.OnChange = cxDBTreeList1cxDBTreeListNo_PaiPropertiesChange
+          Caption.Text = 'N'#243' Pai'
+          DataBinding.FieldName = 'No_Pai'
+          Width = 43
+          Position.ColIndex = 1
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -98,22 +117,34 @@
         end
         object cxDBTreeList1cxDBTreeListDescricao: TcxDBTreeListColumn
           PropertiesClassName = 'TcxTextEditProperties'
-          Properties.OnEditValueChanged = cxDBTreeList1cxDBTreeListDescricaoPropertiesEditValueChanged
           Caption.Text = 'Descri'#231#227'o'
           DataBinding.FieldName = 'Descricao'
-          Width = 261
-          Position.ColIndex = 1
+          Width = 224
+          Position.ColIndex = 2
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
           Summary.GroupFooterSummaryItems = <>
         end
-        object cxDBTreeList1cxDBTreeListColumn3: TcxDBTreeListColumn
-          Visible = False
+        object cxDBTreeList1cxDBTreeListTipo: TcxDBTreeListColumn
+          PropertiesClassName = 'TcxComboBoxProperties'
+          Properties.Items.Strings = (
+            'Receita'
+            'Despesa')
+          Properties.OnEditValueChanged = cxDBTreeList1cxDBTreeListTipoPropertiesEditValueChanged
+          DataBinding.FieldName = 'Tipo'
+          Width = 51
+          Position.ColIndex = 3
+          Position.RowIndex = 0
+          Position.BandIndex = 0
+          Summary.FooterSummaryItems = <>
+          Summary.GroupFooterSummaryItems = <>
+        end
+        object cxDBTreeList1cxDBTreeListCod_Pai: TcxDBTreeListColumn
           Caption.Text = 'C'#243'd. Pai'
           DataBinding.FieldName = 'Codigo_Pai'
-          Width = 100
-          Position.ColIndex = 3
+          Width = 57
+          Position.ColIndex = 4
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -124,8 +155,8 @@
           Properties.Alignment.Horz = taCenter
           Caption.Text = 'C'#243'd. Subn'#237'vel'
           DataBinding.FieldName = 'Codigo_SubNivel'
-          Width = 88
-          Position.ColIndex = 5
+          Width = 85
+          Position.ColIndex = 6
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -136,23 +167,8 @@
           Properties.Alignment.Horz = taCenter
           Caption.Text = 'Subn'#237'vel'
           DataBinding.FieldName = 'Sub_Nivel'
-          Width = 64
-          Position.ColIndex = 6
-          Position.RowIndex = 0
-          Position.BandIndex = 0
-          Summary.FooterSummaryItems = <>
-          Summary.GroupFooterSummaryItems = <>
-        end
-        object cxDBTreeList1cxDBTreeListPai: TcxDBTreeListColumn
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.ListColumns = <>
-          Properties.ListFieldIndex = -1
-          Properties.ListOptions.SyncMode = True
-          Properties.OnChange = cxDBTreeList1cxDBTreeListPaiPropertiesChange
-          Caption.Text = 'Grupo Principal'
-          DataBinding.FieldName = 'Pai'
-          Width = 205
-          Position.ColIndex = 0
+          Width = 51
+          Position.ColIndex = 7
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -162,8 +178,8 @@
           PropertiesClassName = 'TcxTextEditProperties'
           Properties.Alignment.Horz = taCenter
           DataBinding.FieldName = 'Codigo'
-          Width = 54
-          Position.ColIndex = 4
+          Width = 51
+          Position.ColIndex = 5
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -172,112 +188,12 @@
         object cxDBTreeList1cxDBTreeListData_Cadastro: TcxDBTreeListColumn
           Caption.Text = 'Cadastro'
           DataBinding.FieldName = 'Data_Cadastro'
-          Width = 72
-          Position.ColIndex = 7
+          Width = 68
+          Position.ColIndex = 8
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
           Summary.GroupFooterSummaryItems = <>
-        end
-      end
-    end
-    object TabSheet2: TTabSheet
-      Caption = 'Pesquisar'
-      ImageIndex = 1
-      object cxGrid1: TcxGrid
-        Left = 0
-        Top = 0
-        Width = 825
-        Height = 433
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 0
-        LookAndFeel.NativeStyle = False
-        object cxGrid1DBTableView1: TcxGridDBTableView
-          OnDblClick = cxGrid1DBTableView1DblClick
-          Navigator.Buttons.CustomButtons = <>
-          Navigator.Buttons.Images = DM.ImageList1
-          Navigator.Buttons.First.Visible = False
-          Navigator.Buttons.PriorPage.Visible = False
-          Navigator.Buttons.Prior.Visible = False
-          Navigator.Buttons.Next.Enabled = False
-          Navigator.Buttons.Next.Visible = False
-          Navigator.Buttons.NextPage.Visible = False
-          Navigator.Buttons.Last.Visible = False
-          Navigator.Buttons.Insert.Enabled = False
-          Navigator.Buttons.Insert.Visible = False
-          Navigator.Buttons.Append.Visible = False
-          Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
-          Navigator.Buttons.Delete.ImageIndex = 2
-          Navigator.Buttons.Delete.Visible = False
-          Navigator.Buttons.Edit.Visible = False
-          Navigator.Buttons.Post.Visible = False
-          Navigator.Buttons.Cancel.Visible = False
-          Navigator.Buttons.Refresh.Visible = False
-          Navigator.Buttons.SaveBookmark.Visible = False
-          Navigator.Buttons.GotoBookmark.Visible = False
-          Navigator.Buttons.Filter.Visible = False
-          Navigator.Visible = True
-          FilterBox.CustomizeButtonAlignment = fbaLeft
-          FilterBox.Position = fpTop
-          FilterBox.Visible = fvNever
-          DataController.DataSource = dsConsulta
-          DataController.Filter.Active = True
-          DataController.Summary.DefaultGroupSummaryItems = <
-            item
-              Format = '#0.0,0'
-              Kind = skSum
-              Position = spFooter
-            end>
-          DataController.Summary.FooterSummaryItems = <
-            item
-              Kind = skCount
-              FieldName = 'Codigo'
-              Column = cxGrid1DBTableView1Codigo
-            end>
-          DataController.Summary.SummaryGroups = <>
-          DateTimeHandling.DateFormat = 'DD/MM/YYYY'
-          FilterRow.InfoText = 'Clique para definir um filtro'
-          FilterRow.Visible = True
-          NewItemRow.InfoText = 'Clique para adicionar uma nova linha'
-          NewItemRow.SeparatorColor = clMenu
-          OptionsBehavior.GoToNextCellOnEnter = True
-          OptionsCustomize.ColumnHiding = True
-          OptionsCustomize.ColumnsQuickCustomization = True
-          OptionsCustomize.DataRowSizing = True
-          OptionsSelection.MultiSelect = True
-          OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
-          OptionsView.Footer = True
-          OptionsView.GroupByBox = False
-          OptionsView.GroupFooterMultiSummaries = True
-          OptionsView.GroupFooters = gfAlwaysVisible
-          OptionsView.GroupSummaryLayout = gslAlignWithColumns
-          OptionsView.Indicator = True
-          Preview.Visible = True
-          object cxGrid1DBTableView1Codigo: TcxGridDBColumn
-            Caption = 'C'#243'digo'
-            DataBinding.FieldName = 'Codigo'
-            Options.Editing = False
-          end
-          object cxGrid1DBTableView1Descricao: TcxGridDBColumn
-            Caption = 'Descri'#231#227'o'
-            DataBinding.FieldName = 'Descricao'
-            RepositoryItem = cxEditRepository1TextItem1
-            Width = 513
-          end
-          object cxGrid1DBTableView1Data_Cadastro: TcxGridDBColumn
-            Caption = 'Data Cadastro'
-            DataBinding.FieldName = 'Data_Cadastro'
-            Options.Editing = False
-            Width = 94
-          end
-        end
-        object cxGrid1Level1: TcxGridLevel
-          GridView = cxGrid1DBTableView1
         end
       end
     end
@@ -408,6 +324,9 @@
       Size = 100
       Lookup = True
     end
+    object qryConsultaNo_Pai: TBooleanField
+      FieldName = 'No_Pai'
+    end
   end
   object dsConsulta: TDataSource
     DataSet = qryConsulta
@@ -415,28 +334,7 @@
     Top = 320
   end
   object cxPropertiesStore1: TcxPropertiesStore
-    Components = <
-      item
-        Component = cxGrid1DBTableView1Codigo
-        Properties.Strings = (
-          'SortOrder'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = cxGrid1DBTableView1Data_Cadastro
-        Properties.Strings = (
-          'SortOrder'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = cxGrid1DBTableView1Descricao
-        Properties.Strings = (
-          'SortOrder'
-          'Visible'
-          'Width')
-      end>
+    Components = <>
     StorageName = 'ConfiguraGrid'
     Left = 776
     Top = 320
@@ -450,7 +348,6 @@
     Left = 808
     Top = 320
     object dxComponentPrinter1Link1: TdxGridReportLink
-      Component = cxGrid1
       PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350

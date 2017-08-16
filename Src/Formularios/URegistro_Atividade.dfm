@@ -138,7 +138,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
         Width = 864
         Height = 330
         Cursor = crHandPoint
-        ActivePage = TabSheet5
+        ActivePage = TabSheet3
         Style = tsFlatButtons
         TabOrder = 4
         OnChange = PageControl2Change
@@ -368,7 +368,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               DataController.Summary.SummaryGroups = <>
             end
             object cxGridDBTableViewAtividadeProduto: TcxGridDBTableView
-              Navigator.Buttons.OnButtonClick = cxGridDBTableViewAtividadeProdutoNavigatorButtonsButtonClick
               Navigator.Buttons.CustomButtons = <>
               Navigator.Buttons.Images = DM.ImageList1
               Navigator.Buttons.First.Visible = False
@@ -400,7 +399,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               FilterBox.Visible = fvNever
               DataController.DataSource = dsRegistroAtividadeProduto
               DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
-              DataController.Filter.Active = True
               DataController.KeyFieldNames = 'Codigo'
               DataController.MasterKeyFieldNames = 'Codigo'
               DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoImmediatePost]
@@ -414,12 +412,10 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               OptionsBehavior.FocusFirstCellOnNewRecord = True
               OptionsBehavior.GoToNextCellOnEnter = True
               OptionsBehavior.NavigatorHints = True
-              OptionsBehavior.ExpandMasterRowOnDblClick = False
               OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
               OptionsView.GroupByBox = False
               OptionsView.GroupFooters = gfAlwaysVisible
               OptionsView.GroupSummaryLayout = gslAlignWithColumns
-              OptionsView.Indicator = True
               object cxGridDBTableViewAtividadeProdutoCodigo: TcxGridDBColumn
                 Caption = 'C'#243'digo'
                 DataBinding.FieldName = 'Codigo'
@@ -444,6 +440,9 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               end
               object cxGridDBTableViewAtividadeProdutoProduto: TcxGridDBColumn
                 DataBinding.FieldName = 'Produto'
+                PropertiesClassName = 'TcxLookupComboBoxProperties'
+                Properties.ListColumns = <>
+                Properties.ListFieldIndex = -1
                 Width = 311
               end
               object cxGridDBTableViewAtividadeProdutoUnidade: TcxGridDBColumn
@@ -456,7 +455,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               object cxGridDBTableViewAtividadeProdutoQuantidade: TcxGridDBColumn
                 DataBinding.FieldName = 'Quantidade'
                 PropertiesClassName = 'TcxTextEditProperties'
-                Properties.OnEditValueChanged = cxGridDBTableViewAtividadeProdutoQuantidadePropertiesEditValueChanged
               end
               object cxGridDBTableViewAtividadeProdutoPrecoCompra: TcxGridDBColumn
                 Caption = 'Pre'#231'o Unit'#225'rio'
@@ -807,17 +805,407 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 Width = 200
               end
             end
+            object cxGrid2DBBandedTableViewAtividade: TcxGridDBBandedTableView
+              Navigator.Buttons.OnButtonClick = cxGrid2DBBandedTableView1NavigatorButtonsButtonClick
+              Navigator.Buttons.CustomButtons = <>
+              Navigator.Buttons.Images = DM.ImageList1
+              Navigator.Buttons.First.Visible = False
+              Navigator.Buttons.PriorPage.Visible = False
+              Navigator.Buttons.Prior.Visible = False
+              Navigator.Buttons.Next.Enabled = False
+              Navigator.Buttons.Next.Visible = False
+              Navigator.Buttons.NextPage.Visible = False
+              Navigator.Buttons.Last.Visible = False
+              Navigator.Buttons.Insert.Hint = 'Clique para inserir uma nova atividade'
+              Navigator.Buttons.Insert.Visible = True
+              Navigator.Buttons.Append.Visible = False
+              Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
+              Navigator.Buttons.Delete.ImageIndex = 2
+              Navigator.Buttons.Delete.Visible = True
+              Navigator.Buttons.Edit.Visible = False
+              Navigator.Buttons.Post.Hint = 'Clique para confirmar o registro'
+              Navigator.Buttons.Post.Visible = True
+              Navigator.Buttons.Cancel.Visible = False
+              Navigator.Buttons.Refresh.Visible = False
+              Navigator.Buttons.SaveBookmark.Visible = False
+              Navigator.Buttons.GotoBookmark.Visible = False
+              Navigator.Buttons.Filter.Visible = False
+              Navigator.InfoPanel.DisplayMask = '[RecordIndex] de [RecordCount]'
+              Navigator.InfoPanel.Visible = True
+              Navigator.Visible = True
+              FilterBox.CustomizeButtonAlignment = fbaLeft
+              FilterBox.Position = fpTop
+              FilterBox.Visible = fvNever
+              DataController.DataSource = dsRegistroAtividade
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoImmediatePost]
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              DateTimeHandling.DateFormat = 'DD/MM/YYYY'
+              FilterRow.InfoText = 'Clique para definir um filtro'
+              NewItemRow.InfoText = 'Clique para adicionar uma nova linha'
+              NewItemRow.SeparatorColor = clMenu
+              OptionsBehavior.FocusFirstCellOnNewRecord = True
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsBehavior.NavigatorHints = True
+              OptionsBehavior.ExpandMasterRowOnDblClick = False
+              OptionsCustomize.ColumnHiding = True
+              OptionsCustomize.DataRowSizing = True
+              OptionsSelection.MultiSelect = True
+              OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
+              OptionsView.GroupByBox = False
+              OptionsView.GroupFooters = gfAlwaysVisible
+              OptionsView.GroupSummaryLayout = gslAlignWithColumns
+              OptionsView.Indicator = True
+              Bands = <
+                item
+                  Caption = 'Atividades'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = cxStyle2
+                end>
+              object cxGrid2DBBandedTableViewAtividadeCodigo: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeCodigo_Registro_Atividade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Width = 135
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeCodigo_Atividade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Atividade'
+                Visible = False
+                Width = 89
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeAtividade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Atividade'
+                Width = 195
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeData_Cadastro: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeData_Inicio_Atividade: TcxGridDBBandedColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Atividade'
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeData_Fim_Atividade: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Atividade'
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeTipo_Atividade: TcxGridDBBandedColumn
+                Caption = 'Tipo'
+                DataBinding.FieldName = 'Tipo_Atividade'
+                Width = 81
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeObservacao: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#227'o'
+                DataBinding.FieldName = 'Observacao'
+                Width = 800
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+            end
+            object cxGrid2DBBandedTableViewAtividadeProduto: TcxGridDBBandedTableView
+              Navigator.Buttons.OnButtonClick = cxGrid2DBBandedTableView2NavigatorButtonsButtonClick
+              Navigator.Buttons.CustomButtons = <>
+              Navigator.Buttons.Images = DM.ImageList1
+              Navigator.Buttons.First.Visible = False
+              Navigator.Buttons.PriorPage.Visible = False
+              Navigator.Buttons.Prior.Visible = False
+              Navigator.Buttons.Next.Enabled = False
+              Navigator.Buttons.Next.Visible = False
+              Navigator.Buttons.NextPage.Visible = False
+              Navigator.Buttons.Last.Visible = False
+              Navigator.Buttons.Insert.Hint = 'Clique para inserir um novo produto'
+              Navigator.Buttons.Insert.Visible = True
+              Navigator.Buttons.Append.Visible = False
+              Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
+              Navigator.Buttons.Delete.ImageIndex = 2
+              Navigator.Buttons.Delete.Visible = True
+              Navigator.Buttons.Edit.Visible = False
+              Navigator.Buttons.Post.Hint = 'Clique para confirmar o registro'
+              Navigator.Buttons.Post.Visible = True
+              Navigator.Buttons.Cancel.Visible = False
+              Navigator.Buttons.Refresh.Visible = False
+              Navigator.Buttons.SaveBookmark.Visible = False
+              Navigator.Buttons.GotoBookmark.Visible = False
+              Navigator.Buttons.Filter.Visible = False
+              Navigator.InfoPanel.DisplayMask = '[RecordIndex] de [RecordCount]'
+              Navigator.InfoPanel.Visible = True
+              Navigator.Visible = True
+              FilterBox.CustomizeButtonAlignment = fbaLeft
+              FilterBox.Position = fpTop
+              FilterBox.Visible = fvNever
+              OnEditing = cxGrid2DBBandedTableViewAtividadeProdutoEditing
+              OnFocusedItemChanged = cxGrid2DBBandedTableViewAtividadeProdutoFocusedItemChanged
+              DataController.DataSource = dsRegistroAtividadeProduto
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoImmediatePost]
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              DateTimeHandling.DateFormat = 'DD/MM/YYYY'
+              FilterRow.InfoText = 'Clique para definir um filtro'
+              NewItemRow.InfoText = 'Clique para adicionar uma nova linha'
+              NewItemRow.SeparatorColor = clMenu
+              OptionsBehavior.FocusFirstCellOnNewRecord = True
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsBehavior.NavigatorHints = True
+              OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
+              OptionsView.GroupByBox = False
+              OptionsView.GroupFooters = gfAlwaysVisible
+              OptionsView.GroupSummaryLayout = gslAlignWithColumns
+              OptionsView.Indicator = True
+              Bands = <
+                item
+                  Caption = 'Produtos'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = cxStyle2
+                end>
+              object cxGrid2DBBandedTableViewAtividadeProdutoCodigo: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeProdutoCodigo_Registro_Atividade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Width = 135
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeProdutoCodigo_Registro_Atividade_Atividade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade_Atividade'
+                Visible = False
+                Width = 198
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeProdutoCodigo_Produto: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Produto'
+                Visible = False
+                Width = 82
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeProdutoProduto: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Width = 300
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeProdutoUnidade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Unidade'
+                Width = 56
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeProdutoPrecoCompra: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Compra'
+                DataBinding.FieldName = 'PrecoCompra'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Width = 120
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeProdutoQuantidade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Quantidade'
+                PropertiesClassName = 'TcxTextEditProperties'
+                Properties.OnEditValueChanged = cxGrid2DBBandedTableViewAtividadeProdutoQuantidadePropertiesEditValueChanged
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeProdutoCusto: TcxGridDBBandedColumn
+                Caption = 'Custo Total'
+                DataBinding.FieldName = 'Custo'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Width = 120
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeProdutoControla_Estoque: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Controla_Estoque'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+            end
+            object cxGrid2DBBandedTableViewAtividadeTalhao: TcxGridDBBandedTableView
+              Navigator.Buttons.OnButtonClick = cxGrid2DBBandedTableView3NavigatorButtonsButtonClick
+              Navigator.Buttons.CustomButtons = <>
+              Navigator.Buttons.Images = DM.ImageList1
+              Navigator.Buttons.First.Visible = False
+              Navigator.Buttons.PriorPage.Visible = False
+              Navigator.Buttons.Prior.Visible = False
+              Navigator.Buttons.Next.Enabled = False
+              Navigator.Buttons.Next.Visible = False
+              Navigator.Buttons.NextPage.Visible = False
+              Navigator.Buttons.Last.Visible = False
+              Navigator.Buttons.Insert.Hint = 'Clique para inserir um novo talh'#227'o na atividade selecionada'
+              Navigator.Buttons.Insert.Visible = True
+              Navigator.Buttons.Append.Visible = False
+              Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
+              Navigator.Buttons.Delete.ImageIndex = 2
+              Navigator.Buttons.Delete.Visible = True
+              Navigator.Buttons.Edit.Visible = False
+              Navigator.Buttons.Post.Hint = 'Clique para confirmar o registro'
+              Navigator.Buttons.Post.Visible = True
+              Navigator.Buttons.Cancel.Visible = False
+              Navigator.Buttons.Refresh.Visible = False
+              Navigator.Buttons.SaveBookmark.Visible = False
+              Navigator.Buttons.GotoBookmark.Visible = False
+              Navigator.Buttons.Filter.Visible = False
+              Navigator.InfoPanel.DisplayMask = '[RecordIndex] de [RecordCount]'
+              Navigator.InfoPanel.Visible = True
+              Navigator.Visible = True
+              FilterBox.CustomizeButtonAlignment = fbaLeft
+              FilterBox.Position = fpTop
+              FilterBox.Visible = fvNever
+              DataController.DataSource = dsRegistroAtividadeTalhao
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoImmediatePost]
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              DateTimeHandling.DateFormat = 'DD/MM/YYYY'
+              FilterRow.InfoText = 'Clique para definir um filtro'
+              NewItemRow.InfoText = 'Clique para adicionar uma nova linha'
+              NewItemRow.SeparatorColor = clMenu
+              OptionsBehavior.FocusFirstCellOnNewRecord = True
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsBehavior.NavigatorHints = True
+              OptionsBehavior.ExpandMasterRowOnDblClick = False
+              OptionsCustomize.ColumnHiding = True
+              OptionsCustomize.DataRowSizing = True
+              OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
+              OptionsView.GroupByBox = False
+              OptionsView.GroupFooters = gfAlwaysVisible
+              OptionsView.GroupSummaryLayout = gslAlignWithColumns
+              OptionsView.Indicator = True
+              Preview.Visible = True
+              Bands = <
+                item
+                  Caption = 'Talh'#245'es'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = cxStyle2
+                end>
+              object cxGrid2DBBandedTableViewAtividadeTalhaoCodigo: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeTalhaoCodigo_Registro_Atividade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Width = 135
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeTalhaoCodigo_Registro_Atividade_Atividade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade_Atividade'
+                Visible = False
+                Width = 186
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeTalhaoCodigo_Talhao: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+                Visible = False
+                Width = 76
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeTalhaoTalhao: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeTalhaoAreaDisponivel: TcxGridDBBandedColumn
+                Caption = #193'rea Dispon'#237'vel'
+                DataBinding.FieldName = 'AreaDisponivel'
+                Options.Editing = False
+                Width = 76
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableViewAtividadeTalhaoArea: TcxGridDBBandedColumn
+                Caption = #193'rea Utilizada'
+                DataBinding.FieldName = 'Area'
+                PropertiesClassName = 'TcxTextEditProperties'
+                Properties.OnValidate = cxGrid2DBBandedTableViewAtividadeTalhaoAreaPropertiesValidate
+                Width = 71
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+            end
             object cxGridLevel1: TcxGridLevel
               Caption = 'Atividades'
-              GridView = cxGridDBTableViewAtividade
+              GridView = cxGrid2DBBandedTableViewAtividade
               Options.DetailTabsPosition = dtpTop
-              object cxGrid2Level1: TcxGridLevel
-                Caption = 'Insumos'
-                GridView = cxGridDBTableViewAtividadeProduto
+              object cxGrid2Level3: TcxGridLevel
+                Caption = 'Produtos'
+                GridView = cxGrid2DBBandedTableViewAtividadeProduto
+                Options.DetailTabsPosition = dtpTop
               end
-              object cxGrid2Level2: TcxGridLevel
+              object cxGrid2Level4: TcxGridLevel
                 Caption = 'Talh'#245'es'
-                GridView = cxGridDBTableViewTalhao
+                GridView = cxGrid2DBBandedTableViewAtividadeTalhao
+                Options.DetailTabsPosition = dtpTop
               end
             end
           end
@@ -1032,6 +1420,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               FilterBox.CustomizeButtonAlignment = fbaLeft
               FilterBox.Position = fpTop
               FilterBox.Visible = fvNever
+              OnEditing = cxGrid3DBBandedTableViewPlantioEditing
               DataController.DataSource = dsRegistroAtividadePlantio
               DataController.KeyFieldNames = 'Codigo'
               DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoImmediatePost]
@@ -1429,6 +1818,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               FilterBox.Position = fpTop
               FilterBox.Visible = fvNever
               DataController.DataSource = dsRegistroAtividadeColheita
+              DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoImmediatePost]
               DataController.Summary.DefaultGroupSummaryItems = <>
               DataController.Summary.FooterSummaryItems = <>
               DataController.Summary.SummaryGroups = <>
@@ -1736,6 +2126,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               OptionsBehavior.NavigatorHints = True
               OptionsCustomize.ColumnHiding = True
               OptionsCustomize.DataRowSizing = True
+              OptionsData.Deleting = False
               OptionsSelection.MultiSelect = True
               OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
               OptionsView.ExpandButtonsForEmptyDetails = False
@@ -2750,6 +3141,16 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     end
     object qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade_Atividade: TIntegerField
       FieldName = 'Codigo_Registro_Atividade_Atividade'
+    end
+    object qryRegistroAtividadeAtividadesProdutoControla_Estoque: TBooleanField
+      FieldKind = fkLookup
+      FieldName = 'Controla_Estoque'
+      LookupDataSet = DM.qryProduto
+      LookupKeyFields = 'Codigo'
+      LookupResultField = 'Controla_Estoque'
+      KeyFields = 'Codigo_Produto'
+      LookupCache = True
+      Lookup = True
     end
   end
   object dsRegistroAtividadeProduto: TDataSource

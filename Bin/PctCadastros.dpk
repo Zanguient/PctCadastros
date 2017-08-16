@@ -105,7 +105,8 @@ requires
   dbexpress,
   cxTreeListRS16,
   cxTreeListdxBarPopupMenuRS16,
-  dxSkinsdxRibbonPainterRS16;
+  dxSkinsdxRibbonPainterRS16,
+  dxdbtrRS16;
 
 contains
   CidadeEntidade in '..\Src\Entidade\CidadeEntidade.pas',

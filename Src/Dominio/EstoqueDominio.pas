@@ -249,7 +249,7 @@ begin
 
     BuscaTotalSaida(CodigoSafra, CodigoArmazem, CodigoProduto, CodigoFazenda);
     TotalSaida:= QueryTotalSaida.FieldByName('TotalSaida').AsFloat;
-    //ShowMessage('Total Saida: '+FloatToStr(TotalSaida));
+    //ShowMessage('Total Saída: '+FloatToStr(TotalSaida));
 
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;

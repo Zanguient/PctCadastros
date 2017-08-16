@@ -159,6 +159,7 @@
 			<DCCReference Include="cxTreeListRS16.dcp"/>
 			<DCCReference Include="cxTreeListdxBarPopupMenuRS16.dcp"/>
 			<DCCReference Include="dxSkinsdxRibbonPainterRS16.dcp"/>
+			<DCCReference Include="dxdbtrRS16.dcp"/>
 			<DCCReference Include="..\Src\Entidade\CidadeEntidade.pas"/>
 			<DCCReference Include="..\Src\Formularios\UCadastro_Produto.pas">
 				<Form>FrmCadastro_Produto</Form>

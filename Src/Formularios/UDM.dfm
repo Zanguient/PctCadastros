@@ -9,7 +9,7 @@ object DM: TDM
     Left = 128
     Top = 8
     Bitmap = {
-      494C01010B00B800880420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010B00B800900420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1618,7 +1618,7 @@ object DM: TDM
     Left = 208
     Top = 8
     Bitmap = {
-      494C010102000800240420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101020008002C0420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000002000000001002000000000000040
       000000000000000000000000000000000000000000000000000000000000B484
       84006C666E006C666E0000000000000000000000000000000000000000000000
@@ -2159,7 +2159,7 @@ object DM: TDM
     Left = 32
     Top = 88
     Bitmap = {
-      494C01010300A00068040C000C00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010300A00070040C000C00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000300000000C00000001002000000000000009
       000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -2247,7 +2247,7 @@ object DM: TDM
     Left = 321
     Top = 7
     Bitmap = {
-      494C010109000C00880720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109000C00900720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5002,5 +5002,164 @@ object DM: TDM
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
     end
+  end
+  object qryperfil_usuario: TADOQuery
+    Connection = ADOConnection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select * from Cadastro_Perfil_Usuario_ProCampo4')
+    Left = 64
+    Top = 384
+    object qryperfil_usuarioCodigo: TIntegerField
+      FieldName = 'Codigo'
+    end
+    object qryperfil_usuarioCodigo_Propriedade: TIntegerField
+      FieldName = 'Codigo_Propriedade'
+    end
+    object qryperfil_usuarioCodigo_Usuario: TIntegerField
+      FieldName = 'Codigo_Usuario'
+    end
+    object qryperfil_usuarioDescricao: TStringField
+      FieldName = 'Descricao'
+      Size = 50
+    end
+    object qryperfil_usuarioCadastro_Pessoa: TBooleanField
+      FieldName = 'Cadastro_Pessoa'
+    end
+    object qryperfil_usuarioCadastro_Veiculo: TBooleanField
+      FieldName = 'Cadastro_Veiculo'
+    end
+    object qryperfil_usuarioCadastro_Grupo_Produto: TBooleanField
+      FieldName = 'Cadastro_Grupo_Produto'
+    end
+    object qryperfil_usuarioCadastro_Produto: TBooleanField
+      FieldName = 'Cadastro_Produto'
+    end
+    object qryperfil_usuarioCadastro_Talhao: TBooleanField
+      FieldName = 'Cadastro_Talhao'
+    end
+    object qryperfil_usuarioCadastro_Safra: TBooleanField
+      FieldName = 'Cadastro_Safra'
+    end
+    object qryperfil_usuarioCadastro_Variedade_Cultura: TBooleanField
+      FieldName = 'Cadastro_Variedade_Cultura'
+    end
+    object qryperfil_usuarioCadastro_Marca: TBooleanField
+      FieldName = 'Cadastro_Marca'
+    end
+    object qryperfil_usuarioCadastro_Atividade: TBooleanField
+      FieldName = 'Cadastro_Atividade'
+    end
+    object qryperfil_usuarioCadastro_Servico: TBooleanField
+      FieldName = 'Cadastro_Servico'
+    end
+    object qryperfil_usuarioCadastro_Ocorrencia: TBooleanField
+      FieldName = 'Cadastro_Ocorrencia'
+    end
+    object qryperfil_usuarioCadastro_Pluviometro: TBooleanField
+      FieldName = 'Cadastro_Pluviometro'
+    end
+    object qryperfil_usuarioCadastro_Cidade: TBooleanField
+      FieldName = 'Cadastro_Cidade'
+    end
+    object qryperfil_usuarioCadastro_Conta_Bancaria: TBooleanField
+      FieldName = 'Cadastro_Conta_Bancaria'
+    end
+    object qryperfil_usuarioCadastro_Itens_Folha_Pagamento: TBooleanField
+      FieldName = 'Cadastro_Itens_Folha_Pagamento'
+    end
+    object qryperfil_usuarioCadastro_Operacao_Bancaria: TBooleanField
+      FieldName = 'Cadastro_Operacao_Bancaria'
+    end
+    object qryperfil_usuarioCadastro_Cheque: TBooleanField
+      FieldName = 'Cadastro_Cheque'
+    end
+    object qryperfil_usuarioCadastro_Departamento: TBooleanField
+      FieldName = 'Cadastro_Departamento'
+    end
+    object qryperfil_usuarioCadastro_Tipo_Documento: TBooleanField
+      FieldName = 'Cadastro_Tipo_Documento'
+    end
+    object qryperfil_usuarioCadastro_Plano_Financeiro: TBooleanField
+      FieldName = 'Cadastro_Plano_Financeiro'
+    end
+    object qryperfil_usuarioCadastro_Condicao_Pagamento: TBooleanField
+      FieldName = 'Cadastro_Condicao_Pagamento'
+    end
+    object qryperfil_usuarioMov_Movimentacao_Safra: TBooleanField
+      FieldName = 'Mov_Movimentacao_Safra'
+    end
+    object qryperfil_usuarioMov_Contrato: TBooleanField
+      FieldName = 'Mov_Contrato'
+    end
+    object qryperfil_usuarioMov_Dados_Clima: TBooleanField
+      FieldName = 'Mov_Dados_Clima'
+    end
+    object qryperfil_usuarioMov_Contrato_Venda: TBooleanField
+      FieldName = 'Mov_Contrato_Venda'
+    end
+    object qryperfil_usuarioMov_Lancamento_Financeiro: TBooleanField
+      FieldName = 'Mov_Lancamento_Financeiro'
+    end
+    object qryperfil_usuarioMov_Folha_Pagamento: TBooleanField
+      FieldName = 'Mov_Folha_Pagamento'
+    end
+    object qryperfil_usuarioMov_Baixar_Contas: TBooleanField
+      FieldName = 'Mov_Baixar_Contas'
+    end
+    object qryperfil_usuarioMov_Lancamento_Bancario: TBooleanField
+      FieldName = 'Mov_Lancamento_Bancario'
+    end
+    object qryperfil_usuarioMov_Conciliacao_Bancaria: TBooleanField
+      FieldName = 'Mov_Conciliacao_Bancaria'
+    end
+    object qryperfil_usuarioMov_Entrada_Produto: TBooleanField
+      FieldName = 'Mov_Entrada_Produto'
+    end
+    object qryperfil_usuarioMov_Manutencao_Maquina: TBooleanField
+      FieldName = 'Mov_Manutencao_Maquina'
+    end
+    object qryperfil_usuarioRel_Lancamento_Financeiro: TBooleanField
+      FieldName = 'Rel_Lancamento_Financeiro'
+    end
+    object qryperfil_usuarioRel_Movimentacao_Safra: TBooleanField
+      FieldName = 'Rel_Movimentacao_Safra'
+    end
+    object qryperfil_usuarioRel_Dados_Clima: TBooleanField
+      FieldName = 'Rel_Dados_Clima'
+    end
+    object qryperfil_usuarioRel_Visao_Geral_Safra: TBooleanField
+      FieldName = 'Rel_Visao_Geral_Safra'
+    end
+    object qryperfil_usuarioRel_Estoque_Grao: TBooleanField
+      FieldName = 'Rel_Estoque_Grao'
+    end
+    object qryperfil_usuarioRel_Estoque_Produto: TBooleanField
+      FieldName = 'Rel_Estoque_Produto'
+    end
+    object qryperfil_usuarioRel_Contrato: TBooleanField
+      FieldName = 'Rel_Contrato'
+    end
+    object qryperfil_usuarioRel_Contrato_Venda: TBooleanField
+      FieldName = 'Rel_Contrato_Venda'
+    end
+    object qryperfil_usuarioRel_Entrada_Produto: TBooleanField
+      FieldName = 'Rel_Entrada_Produto'
+    end
+    object qryperfil_usuarioRel_Folha_Pagamento: TBooleanField
+      FieldName = 'Rel_Folha_Pagamento'
+    end
+    object qryperfil_usuarioRel_Manutencao_Maquina: TBooleanField
+      FieldName = 'Rel_Manutencao_Maquina'
+    end
+    object qryperfil_usuarioData_Cadastro: TDateTimeField
+      FieldName = 'Data_Cadastro'
+    end
+  end
+  object dsperfil_usuario: TDataSource
+    DataSet = qryperfil_usuario
+    Left = 96
+    Top = 384
   end
 end

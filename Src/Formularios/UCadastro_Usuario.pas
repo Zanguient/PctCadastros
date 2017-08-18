@@ -1,4 +1,4 @@
-unit UCadastro_Atividade;
+unit UCadastro_Usuario;
 
 interface
 
@@ -28,10 +28,12 @@ uses
   dxPScxEditorProducers, dxPScxExtEditorProducers, dxSkinsdxBarPainter,
   dxPSCore, dxPScxCommon, cxPropertiesStore, cxEditRepositoryItems, MetodosBasicos,
   AtividadeEntidade, AtividadeDominio, PropriedadeEntidade, LoginEntidade, HistoricoDominio,
-  HistoricoEntidade, cxNavigator, dxSkinsdxRibbonPainter;
+  HistoricoEntidade, cxNavigator, dxSkinsdxRibbonPainter, cxContainer,
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox, LoginDominio, IniciaDadosCadastros;
 
 type
-  TFrmCadastro_Atividade = class(TForm)
+  TFrmCadastro_Usuario = class(TForm)
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     TlbFerramentas: TToolBar;
@@ -43,7 +45,7 @@ type
     MEdtData_Cadastro: TMaskEdit;
     LblData_Cadastro: TLabel;
     LblMarca: TLabel;
-    EdtDescricao: TEdit;
+    EdtNome: TEdit;
     TabSheet2: TTabSheet;
     qryConsulta: TADOQuery;
     dsConsulta: TDataSource;
@@ -57,12 +59,21 @@ type
     BBtnExcluir: TToolButton;
     cxEditRepository1: TcxEditRepository;
     cxEditRepository1TextItem1: TcxEditRepositoryTextItem;
-    qryConsultaCodigo: TIntegerField;
-    qryConsultaDescricao: TStringField;
     cxGrid1DBTableView1Codigo: TcxGridDBColumn;
     cxGrid1DBTableView1Descricao: TcxGridDBColumn;
     cxGrid1DBTableView1Data_Cadastro: TcxGridDBColumn;
+    qryConsultaCodigo: TIntegerField;
+    qryConsultaNome: TStringField;
+    qryConsultaLogin: TStringField;
+    qryConsultaSenha: TStringField;
+    qryConsultaCodigo_Perfil: TIntegerField;
     qryConsultaData_Cadastro: TDateTimeField;
+    EdtLogin: TEdit;
+    Label1: TLabel;
+    EdtSenha: TEdit;
+    Label2: TLabel;
+    Label3: TLabel;
+    cmbPerfil: TcxLookupComboBox;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -89,10 +100,10 @@ type
     Mensagens: TMensagens;
     Log: TLog;
     GeraCodigo: TGeradorDeCodigo;
-    FAtividade: TAtividadeEntidade;
-    FAtividadeDominio: TAtividadeDominio;
+    FUsuarioDominio: TLoginDominio;
     FComandoSQL: TComandoSQLEntidade;
     Conexao: TADOConnection;
+    IniDados: IniciaDadosCadastro;
 
     function Confira: boolean;
     procedure BuscaDados;
@@ -105,7 +116,7 @@ type
   end;
 
 var
-  FrmCadastro_Atividade: TFrmCadastro_Atividade;
+  FrmCadastro_Usuario: TFrmCadastro_Usuario;
 implementation
 
 uses UDM, OperacoesConexao;
@@ -114,10 +125,10 @@ uses UDM, OperacoesConexao;
 
 { TFrmPadrao }
 
-procedure TFrmCadastro_Atividade.BBtnCancelarClick(Sender: TObject);
+procedure TFrmCadastro_Usuario.BBtnCancelarClick(Sender: TObject);
 begin
-  Op.LimpaCampos(FrmCadastro_Atividade);
-  Op.DesabilitaCampos(FrmCadastro_Atividade);
+  Op.LimpaCampos(FrmCadastro_Usuario);
+  Op.DesabilitaCampos(FrmCadastro_Usuario);
   TOperacoesConexao.CancelaConexao(Conexao);
   BBtnSalvar.Enabled:= false;
   BBtnCancelar.Enabled:= false;
@@ -125,14 +136,14 @@ begin
   BBtnExcluir.Enabled:= false;
 end;
 
-procedure TFrmCadastro_Atividade.BBtnExcluirClick(Sender: TObject);
+procedure TFrmCadastro_Usuario.BBtnExcluirClick(Sender: TObject);
 var
   Retorno: AnsiString;
 begin
   if (Mensagens.MensagemConfirmacao(MensagemConfirmaExclusao)) then
   begin
-    FAtividadeDominio:= TAtividadeDominio.Create(Conexao, FAtividade);
-    if (FAtividadeDominio.Excluir(Retorno) = 0) then
+    FUsuarioDominio:= TLoginDominio.Create(Conexao, FUsuario);
+    if (FUsuarioDominio.Excluir(Retorno) = 0) then
     begin
       TOperacoesConexao.CancelaConexao(Conexao);
       IniciaTela;
@@ -141,7 +152,7 @@ begin
     end;
 
     HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-    EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Exclusão');
+    EdtCodigo.Text +' '+ EdtNome.Text, date, TimeToStr(time), 'Exclusão');
     HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
     if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
     begin
@@ -157,17 +168,17 @@ begin
   end;
 end;
 
-procedure TFrmCadastro_Atividade.IniciaTela;
+procedure TFrmCadastro_Usuario.IniciaTela;
 begin
   BBtnSalvar.Enabled:= false;
   BBtnNovo.Enabled:= true;
   BBtnCancelar.Enabled:= false;
   BBtnExcluir.Enabled:= false;
-  Op.DesabilitaCampos(FrmCadastro_Atividade);
+  Op.DesabilitaCampos(FrmCadastro_Usuario);
   BuscaDados;
 end;
 
-procedure TFrmCadastro_Atividade.BBtnFecharClick(Sender: TObject);
+procedure TFrmCadastro_Usuario.BBtnFecharClick(Sender: TObject);
 begin
   if BBtnSalvar.Enabled = true then
   begin
@@ -177,42 +188,45 @@ begin
     Close;
 end;
 
-procedure TFrmCadastro_Atividade.BBtnNovoClick(Sender: TObject);
+procedure TFrmCadastro_Usuario.BBtnNovoClick(Sender: TObject);
 begin
   PageControl1.TabIndex:= 0;
-  Op.HabilitaCampos(FrmCadastro_Atividade);
-  Op.LimpaCampos(FrmCadastro_Atividade);
+  Op.HabilitaCampos(FrmCadastro_Usuario);
+  Op.LimpaCampos(FrmCadastro_Usuario);
   BBtnSalvar.Enabled:= true;
   BBtnCancelar.Enabled:= true;
   BBtnNovo.Enabled:= false;
   BBtnExcluir.Enabled:= false;
   achei:= false;
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryConsulta], Conexao);
+  TOperacoesConexao.IniciaQuerys([qryConsulta, dm.qryperfil_usuario], Conexao);
+  IniDados:= IniciaDadosCadastro.Create;
+  IniDados.BuscaDadosPerfilUsuario(Conexao);
   BuscaDados;
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
-  EdtDescricao.SetFocus;
+  EdtNome.SetFocus;
 end;
 
-procedure TFrmCadastro_Atividade.BBtnSalvarClick(Sender: TObject);
+procedure TFrmCadastro_Usuario.BBtnSalvarClick(Sender: TObject);
 var
   Retorno: AnsiString;
 begin
   if (Confira = true) then
   begin
-    FAtividade:= TAtividadeEntidade.Create;
-    FAtividade.CodigoPropriedade:= FPropriedade.Codigo;
-    FAtividade.CodigoUsuario:= FUsuario.Codigo;
-    FAtividade.Descricao:= EdtDescricao.Text;
-    FAtividade.DataCadastro:= StrToDateTime(MEdtData_Cadastro.Text);
-    FAtividadeDominio:= TAtividadeDominio.Create(Conexao, FAtividade);
+    FUsuario:= TLoginEntidade.Create;
+    FUsuario.Nome:= EdtNome.Text;
+    FUsuario.Login:= EdtLogin.Text;
+    FUsuario.Senha:= EdtSenha.Text;
+    FUsuario.Codigo_Perfil:= dm.qryperfil_usuarioCodigo.AsInteger;
+    FUsuario.Data_Cadastro:= StrToDateTime(MEdtData_Cadastro.Text);
+    FUsuarioDominio:= TLoginDominio.Create(Conexao, FUsuario);
 
     if (achei = false) then
     begin
-      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Atividade', Conexao));
-      FAtividade.Codigo:= StrToInt(EdtCodigo.Text);
+      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Usuario', Conexao));
+      FUsuario.Codigo:= StrToInt(EdtCodigo.Text);
 
-      if (FAtividadeDominio.Salvar(Retorno) = 0) then
+      if (FUsuarioDominio.Salvar(Retorno) = 0) then
       begin
         TOperacoesConexao.CancelaConexao(Conexao);
         IniciaTela;
@@ -221,7 +235,7 @@ begin
       end;
 
       HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-      EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Inserção');
+      EdtCodigo.Text +' '+ EdtNome.Text, date, TimeToStr(time), 'Inserção');
       HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
       if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
@@ -233,9 +247,9 @@ begin
     end
     else
     begin
-      FAtividade.Codigo:= StrToInt(EdtCodigo.Text);
+      FUsuario.Codigo:= StrToInt(EdtCodigo.Text);
 
-      if (FAtividadeDominio.Alterar(Retorno) = 0) then
+      if (FUsuarioDominio.Alterar(Retorno) = 0) then
       begin
         TOperacoesConexao.CancelaConexao(Conexao);
         IniciaTela;
@@ -244,7 +258,7 @@ begin
       end;
 
       HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-      EdtCodigo.Text +' '+ EdtDescricao.Text, date, TimeToStr(time), 'Alteração');
+      EdtCodigo.Text +' '+ EdtNome.Text, date, TimeToStr(time), 'Alteração');
       HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
       if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
       begin
@@ -261,50 +275,74 @@ begin
   end;
 end;
 
-procedure TFrmCadastro_Atividade.BuscaDados;
+procedure TFrmCadastro_Usuario.BuscaDados;
 var
   Retorno: AnsiString;
 begin
-  FAtividadeDominio:= TAtividadeDominio.Create(Conexao);
-  if (FAtividadeDominio.Buscar(qryConsulta, Retorno) = 0) and (Retorno <> '') then
+  FUsuarioDominio:= TLoginDominio.Create(Conexao);
+  if (FUsuarioDominio.Buscar(qryConsulta, Retorno) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
     Exit;
   end;
 end;
 
-function TFrmCadastro_Atividade.Confira: boolean;
+function TFrmCadastro_Usuario.Confira: boolean;
 begin
   Confira:= false;
 
-  if (EdtDescricao.Text = '') then
+  if (EdtNome.Text = '') then
   begin
     Mensagens.MensagemErro(MensagemFaltaDados);
-    EdtDescricao.SetFocus;
+    EdtNome.SetFocus;
+    exit;
+  end;
+
+  if (EdtLogin.Text = '') then
+  begin
+    Mensagens.MensagemErro(MensagemFaltaDados);
+    EdtLogin.SetFocus;
+    exit;
+  end;
+
+  if (EdtSenha.Text = '') then
+  begin
+    Mensagens.MensagemErro(MensagemFaltaDados);
+    EdtSenha.SetFocus;
+    exit;
+  end;
+
+  if (cmbPerfil.Text = '') then
+  begin
+    Mensagens.MensagemErro(MensagemFaltaDados);
+    cmbPerfil.SetFocus;
     exit;
   end;
 
   Confira:= true;
 end;
 
-constructor TFrmCadastro_Atividade.Create(FPropriedade: TPropriedadeEntidade; FUsuario: TLoginEntidade);
+constructor TFrmCadastro_Usuario.Create(FPropriedade: TPropriedadeEntidade; FUsuario: TLoginEntidade);
 begin
   Self.FPropriedade:= FPropriedade;
   Self.FUsuario:= FUsuario;
 end;
 
-procedure TFrmCadastro_Atividade.cxGrid1DBTableView1DblClick(Sender: TObject);
+procedure TFrmCadastro_Usuario.cxGrid1DBTableView1DblClick(Sender: TObject);
 begin
   PageControl1.TabIndex:= 0;
   achei:= true;
-  Op.HabilitaCampos(FrmCadastro_Atividade);
+  Op.HabilitaCampos(FrmCadastro_Usuario);
 
   EdtCodigo.Text:= qryConsultaCodigo.AsString;
   MEdtData_Cadastro.Text:= qryConsultaData_Cadastro.AsString;
-  EdtDescricao.Text:= qryConsultaDescricao.AsString;
+  EdtNome.Text:= qryConsultaNome.AsString;
+  EdtLogin.Text:= qryConsultaLogin.AsString;
+  EdtSenha.Text:= qryConsultaSenha.AsString;
+  cmbPerfil.EditValue:= qryConsultaCodigo_Perfil.AsInteger;
 
-  FAtividade:= TAtividadeEntidade.Create;
-  FAtividade.Codigo:= qryConsultaCodigo.AsInteger;
+  FUsuario:= TLoginEntidade.Create;
+  FUsuario.Codigo:= qryConsultaCodigo.AsInteger;
 
   BBtnNovo.Enabled:= false;
   BBtnSalvar.Enabled:= True;
@@ -312,29 +350,29 @@ begin
   BBtnCancelar.Enabled:= true;
 end;
 
-procedure TFrmCadastro_Atividade.EdtCidadeKeyPress(Sender: TObject;
+procedure TFrmCadastro_Usuario.EdtCidadeKeyPress(Sender: TObject;
   var Key: Char);
 begin
   Op.SomenteApaga(key);
 end;
 
-procedure TFrmCadastro_Atividade.EdtCodigo_CidadeKeyPress(Sender: TObject;
+procedure TFrmCadastro_Usuario.EdtCodigo_CidadeKeyPress(Sender: TObject;
   var Key: Char);
 begin
   Op.SomenteApaga(key);
 end;
 
-procedure TFrmCadastro_Atividade.EdtSetorKeyPress(Sender: TObject; var Key: Char);
+procedure TFrmCadastro_Usuario.EdtSetorKeyPress(Sender: TObject; var Key: Char);
 begin
   Op.SomenteApaga(key);
 end;
 
-procedure TFrmCadastro_Atividade.FormActivate(Sender: TObject);
+procedure TFrmCadastro_Usuario.FormActivate(Sender: TObject);
 begin
   ativo:= true;
 end;
 
-procedure TFrmCadastro_Atividade.FormCloseQuery(Sender: TObject;
+procedure TFrmCadastro_Usuario.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
   if (BBtnCancelar.Enabled = true) then
@@ -344,24 +382,24 @@ begin
     end
     else
     begin
-      FrmCadastro_Atividade.Free;
-      FrmCadastro_Atividade:= Nil;
+      FrmCadastro_Usuario.Free;
+      FrmCadastro_Usuario:= Nil;
     end;
 end;
 
-procedure TFrmCadastro_Atividade.FormDeactivate(Sender: TObject);
+procedure TFrmCadastro_Usuario.FormDeactivate(Sender: TObject);
 begin
   ativo:= false;
 end;
 
-procedure TFrmCadastro_Atividade.FormKeyDown(Sender: TObject; var Key: Word;
+procedure TFrmCadastro_Usuario.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if (key = vk_escape) then
     close;
 end;
 
-procedure TFrmCadastro_Atividade.FormKeyPress(Sender: TObject; var Key: Char);
+procedure TFrmCadastro_Usuario.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   if key=#13 then
   begin
@@ -370,22 +408,22 @@ begin
   end;
 end;
 
-procedure TFrmCadastro_Atividade.FormShow(Sender: TObject);
+procedure TFrmCadastro_Usuario.FormShow(Sender: TObject);
 var
   Retorno: AnsiString;
 begin
   PageControl1.TabIndex:= 0;
-  Op.HabilitaCampos(FrmCadastro_Atividade);
-  Op.LimpaCampos(FrmCadastro_Atividade);
-  Op.DesabilitaCampos(FrmCadastro_Atividade);
+  Op.HabilitaCampos(FrmCadastro_Usuario);
+  Op.LimpaCampos(FrmCadastro_Usuario);
+  Op.DesabilitaCampos(FrmCadastro_Usuario);
 end;
 
-procedure TFrmCadastro_Atividade.MEdtData_CadastroEnter(Sender: TObject);
+procedure TFrmCadastro_Usuario.MEdtData_CadastroEnter(Sender: TObject);
 begin
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
 end;
 
-procedure TFrmCadastro_Atividade.MEdtData_CadastroExit(Sender: TObject);
+procedure TFrmCadastro_Usuario.MEdtData_CadastroExit(Sender: TObject);
 begin
   if not(Op.VerificaDataHoraValida(MEdtData_Cadastro)) then
   begin
@@ -395,9 +433,9 @@ begin
 end;
 
 {initialization
-  RegisterClass(TFrmCadastro_Atividade);
+  RegisterClass(TFrmCadastro_Usuario);
 
 finalization
-  UnRegisterClass(TFrmCadastro_Atividade);}
+  UnRegisterClass(TFrmCadastro_Usuario);}
 
 end.

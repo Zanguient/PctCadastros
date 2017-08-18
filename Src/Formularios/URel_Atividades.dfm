@@ -888,7 +888,6 @@ object FrmRel_Atividades: TFrmRel_Atividades
     Left = 560
     Top = 8
     object dxComponentPrinter1Link1: TdxGridReportLink
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -930,7 +929,6 @@ object FrmRel_Atividades: TFrmRel_Atividades
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

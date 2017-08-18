@@ -138,7 +138,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
         Width = 864
         Height = 330
         Cursor = crHandPoint
-        ActivePage = TabSheet3
+        ActivePage = TabSheet5
         Style = tsFlatButtons
         TabOrder = 4
         OnChange = PageControl2Change
@@ -441,8 +441,11 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               object cxGridDBTableViewAtividadeProdutoProduto: TcxGridDBColumn
                 DataBinding.FieldName = 'Produto'
                 PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.ListColumns = <>
-                Properties.ListFieldIndex = -1
+                Properties.KeyFieldNames = 'Codigo'
+                Properties.ListColumns = <
+                  item
+                    FieldName = 'Descricao'
+                  end>
                 Width = 311
               end
               object cxGridDBTableViewAtividadeProdutoUnidade: TcxGridDBColumn
@@ -1817,7 +1820,9 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               FilterBox.CustomizeButtonAlignment = fbaLeft
               FilterBox.Position = fpTop
               FilterBox.Visible = fvNever
+              OnEditing = cxGridDBTableViewColheitaEditing
               DataController.DataSource = dsRegistroAtividadeColheita
+              DataController.KeyFieldNames = 'Codigo'
               DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoImmediatePost]
               DataController.Summary.DefaultGroupSummaryItems = <>
               DataController.Summary.FooterSummaryItems = <>
@@ -1831,7 +1836,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               OptionsBehavior.NavigatorHints = True
               OptionsCustomize.ColumnHiding = True
               OptionsCustomize.DataRowSizing = True
-              OptionsSelection.MultiSelect = True
               OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
               OptionsView.GroupByBox = False
               OptionsView.GroupFooters = gfAlwaysVisible

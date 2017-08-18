@@ -472,7 +472,6 @@ type
       Sender: TcxCustomGridTableView; APrevFocusedItem,
       AFocusedItem: TcxCustomGridTableItem);
     procedure Button1Click(Sender: TObject);
-    procedure qryRegistroAtividadeColheitaAfterDelete(DataSet: TDataSet);
     procedure cxGrid3DBBandedTableViewPlantioEditing(
       Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
       var AAllow: Boolean);
@@ -493,6 +492,9 @@ type
     procedure cxGrid2DBBandedTableViewAtividadeTalhaoAreaPropertiesValidate(
       Sender: TObject; var DisplayValue: Variant; var ErrorText: TCaption;
       var Error: Boolean);
+    procedure cxGridDBTableViewColheitaEditing(Sender: TcxCustomGridTableView;
+      AItem: TcxCustomGridTableItem; var AAllow: Boolean);
+    procedure qryRegistroAtividadeColheitaAfterDelete(DataSet: TDataSet);
   private
     FPropriedade: TPropriedadeEntidade;
     FUsuario: TLoginEntidade;
@@ -528,6 +530,8 @@ type
     IniDados: IniciaDadosCadastro;
     ValorQuantidadeAtual, ValorNovaQuantidade, ValorDiferencaQuantidade: double;
     FEstoqueProdutoDominio: TEstoqueProdutoDominio;
+    ColheitaCodigoArmazem, ColheitaCodigoProduto: integer;
+    ColheitaQuantidade: double;
 
     function PegaQuantidadeInsumoAtual: double;
     function Confira: boolean;
@@ -615,14 +619,19 @@ var
 begin
   FEstoque:= TEstoqueEntidade.Create;
   FEstoque.CodigoSafra:= dm.qrySafraCodigo.AsInteger;
-  FEstoque.CodigoArmazem:= qryRegistroAtividadeColheitaIdArmazem.AsInteger;
-  FEstoque.CodigoProduto:= qryRegistroAtividadeColheitaIdProduto.AsInteger;
+  FEstoque.CodigoArmazem:= ColheitaCodigoArmazem;
+  FEstoque.CodigoProduto:= ColheitaCodigoProduto;
   FEstoque.CodigoFazenda:= FPropriedade.Codigo;
-  FEstoque.Estoque:= qryRegistroAtividadeColheitaLiquidoSeco.AsFloat;
+  FEstoque.Estoque:= ColheitaQuantidade;
+
+  {ShowMessage('Safra: '+dm.qrySafraCodigo.AsString);
+  ShowMessage('Armazém: '+IntToStr(ColheitaCodigoArmazem));
+  ShowMessage('Produto: '+IntToStr(ColheitaCodigoProduto));
+  ShowMessage('Quantidade: '+FloatToStr(ColheitaQuantidade));}
 
   FEstoqueDominio:= TEstoqueDominio.Create(Conexao, FEstoque);
-  FEstoqueDominio.AtualizaEstoque(dm.qrySafraCodigo.AsInteger, qryRegistroAtividadeColheitaIdArmazem.AsInteger,
-                                  qryRegistroAtividadeColheitaIdProduto.AsInteger, FPropriedade.Codigo, Retorno);
+  FEstoqueDominio.AtualizaEstoque(dm.qrySafraCodigo.AsInteger, ColheitaCodigoArmazem,
+                                  ColheitaCodigoProduto, FPropriedade.Codigo, Retorno);
 
   FEstoqueDominio.Buscar(FPropriedade.Codigo, DM.qrySafraCodigo.AsInteger, 0,qryEstoqueGrao, Retorno);
 end;
@@ -747,7 +756,9 @@ begin
   IniDados.BuscaDadosDepositante(Conexao);
   IniDados.BuscaDadosSafra(Conexao);
   IniDados.BuscaDadosOcorrencia(Conexao);
-
+  ColheitaCodigoArmazem:= 0;
+  ColheitaCodigoProduto:= 0;
+  ColheitaQuantidade:= 0;
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
   cmbSafra.SetFocus;
 end;
@@ -1265,9 +1276,9 @@ begin
     ADone:= true;
   end;
 
-  if (AButtonIndex = 10) then    //post
+  if (AButtonIndex = 8) then    //delete
   begin
-    //AtualizaEstoque;
+    //AtualizaEstoqueRemocao;
   end;
 end;
 
@@ -1283,6 +1294,20 @@ begin
     //qryRegistroAtividadeColheitaIdSafra.AsInteger:= DM.qrySafraCodigo.AsInteger;
     ADone:= true;
   end;
+end;
+
+procedure TFrmRegistro_Atividade.cxGridDBTableViewColheitaEditing(
+  Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
+  var AAllow: Boolean);
+begin
+  ColheitaCodigoArmazem:= qryRegistroAtividadeColheitaIdArmazem.AsInteger;
+  ColheitaCodigoProduto:= qryRegistroAtividadeColheitaIdProduto.AsInteger;
+  ColheitaQuantidade:= qryRegistroAtividadeColheitaLiquidoSeco.AsFloat;
+
+  {ShowMessage('Safra: '+dm.qrySafraCodigo.AsString);
+  ShowMessage('Armazém: '+qryRegistroAtividadeColheitaIdArmazem.AsString);
+  ShowMessage('Produto: '+qryRegistroAtividadeColheitaIdProduto.AsString);
+  ShowMessage('Quantidade: '+qryRegistroAtividadeColheitaLiquidoSeco.AsString);}
 end;
 
 procedure TFrmRegistro_Atividade.cxGridDBTableViewTalhaoNavigatorButtonsButtonClick(

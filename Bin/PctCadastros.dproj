@@ -354,8 +354,8 @@
 			<DCCReference Include="..\Src\Formularios\UCadastro_Item_Folha_Pagamento.pas">
 				<Form>FrmCadastro_Item_Folha_Pagamento</Form>
 			</DCCReference>
-			<DCCReference Include="..\Src\Formularios\UCadastro_Atividade.pas">
-				<Form>FrmCadastro_Atividade</Form>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Perfil_Usuario.pas">
+				<Form>FrmCadastro_Perfil_Usuario</Form>
 			</DCCReference>
 			<DCCReference Include="..\Src\Entidade\PluviometroEntidade.pas"/>
 			<DCCReference Include="..\Src\Entidade\ItemFolhaPagamentoEntidade.pas"/>
@@ -411,6 +411,14 @@
 			</DCCReference>
 			<DCCReference Include="..\Src\Formularios\URel_Contrato_Venda.pas">
 				<Form>FrmRel_Contrato_Venda</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Usuario.pas">
+				<Form>FrmCadastro_Usuario</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\PerfilUsuarioEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\PerfilUsuarioDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Atividade.pas">
+				<Form>FrmCadastro_Atividade</Form>
 			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>

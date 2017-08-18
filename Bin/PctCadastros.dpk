@@ -238,7 +238,7 @@ contains
   EstoqueProdutoEntidade in '..\Src\Entidade\EstoqueProdutoEntidade.pas',
   EstoqueProdutoDominio in '..\Src\Dominio\EstoqueProdutoDominio.pas',
   UCadastro_Item_Folha_Pagamento in '..\Src\Formularios\UCadastro_Item_Folha_Pagamento.pas' {FrmCadastro_Item_Folha_Pagamento},
-  UCadastro_Atividade in '..\Src\Formularios\UCadastro_Atividade.pas' {FrmCadastro_Atividade},
+  UCadastro_Perfil_Usuario in '..\Src\Formularios\UCadastro_Perfil_Usuario.pas' {FrmCadastro_Perfil_Usuario},
   PluviometroEntidade in '..\Src\Entidade\PluviometroEntidade.pas',
   ItemFolhaPagamentoEntidade in '..\Src\Entidade\ItemFolhaPagamentoEntidade.pas',
   DadosClimaEntidade in '..\Src\Entidade\DadosClimaEntidade.pas',
@@ -263,6 +263,10 @@ contains
   URel_Entrada_Produto in '..\Src\Formularios\URel_Entrada_Produto.pas' {FrmRel_Entrada_Produto},
   URel_Estoque_Grao in '..\Src\Formularios\URel_Estoque_Grao.pas' {FrmRel_Estoque_Grao},
   URel_Contrato in '..\Src\Formularios\URel_Contrato.pas' {FrmRel_Contrato},
-  URel_Contrato_Venda in '..\Src\Formularios\URel_Contrato_Venda.pas' {FrmRel_Contrato_Venda};
+  URel_Contrato_Venda in '..\Src\Formularios\URel_Contrato_Venda.pas' {FrmRel_Contrato_Venda},
+  UCadastro_Usuario in '..\Src\Formularios\UCadastro_Usuario.pas' {FrmCadastro_Usuario},
+  PerfilUsuarioEntidade in '..\Src\Entidade\PerfilUsuarioEntidade.pas',
+  PerfilUsuarioDominio in '..\Src\Dominio\PerfilUsuarioDominio.pas',
+  UCadastro_Atividade in '..\Src\Formularios\UCadastro_Atividade.pas' {FrmCadastro_Atividade};
 
 end.

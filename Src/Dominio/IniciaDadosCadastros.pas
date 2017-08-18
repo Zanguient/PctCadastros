@@ -9,13 +9,14 @@ uses
   DepartamentoDominio, TipoDocumentoDominio, CondicaoPagamentoDominio,
   ChequeDominio, ContaBancariaDominio, OperacaoBancariaDominio,
   LancamentoBancoDominio, System.Generics.Collections, PluviometroDominio,
-  FolhaPagamentoItensDominio, ItemFolhaPagamentoDominio;
+  FolhaPagamentoItensDominio, ItemFolhaPagamentoDominio, PerfilUsuarioDominio;
 type
   IniciaDadosCadastro = class
     private
       SafraDominio: TSafraDominio;
       PessoaDominio: TPessoaDominio;
       VeiculoDominio: TVeiculoDominio;
+      PerfilUsuarioDominio: TPerfilUsuarioDominio;
       ProdutoDominio: TProdutoDominio;
       FAtividadeDominio: TAtividadeDominio;
       TalhaoDominio: TTalhaoDominio;
@@ -65,6 +66,7 @@ type
       procedure BuscaDadosPluviometro(var Conexao: TADOConnection);
       procedure BuscaDadosFuncionario(var Conexao: TADOConnection);
       procedure BuscaDadosPessoa(TipoPessoa: TList<AnsiString>; var Conexao: TADOConnection);
+      procedure BuscaDadosPerfilUsuario(var Conexao: TADOConnection);
   end;
 implementation
 
@@ -526,6 +528,22 @@ begin
   try
     VeiculoDominio:= TVeiculoDominio.Create(Conexao);
     if (VeiculoDominio.Buscar(Codigo_Propriedade, dm.qryVeiculo, Retorno) = 0) and (Retorno <> '') then
+    begin
+      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Exit;
+    end;
+  finally
+
+  end;
+end;
+
+procedure IniciaDadosCadastro.BuscaDadosPerfilUsuario(var Conexao: TADOConnection);
+var
+  Retorno: AnsiString;
+begin
+  try
+    PerfilUsuarioDominio:= TPerfilUsuarioDominio.Create(Conexao);
+    if (PerfilUsuarioDominio.Buscar(dm.qryperfil_usuario, Retorno) = 0) and (Retorno <> '') then
     begin
       Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
       Exit;

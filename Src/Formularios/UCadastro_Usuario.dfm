@@ -1,10 +1,10 @@
-object FrmCadastro_Atividade: TFrmCadastro_Atividade
+object FrmCadastro_Usuario: TFrmCadastro_Usuario
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'Cadastro de Atividades'
-  ClientHeight = 251
+  Caption = 'Cadastro de Usu'#225'rios'
+  ClientHeight = 204
   ClientWidth = 597
   Color = clWindow
   Font.Charset = DEFAULT_CHARSET
@@ -30,7 +30,7 @@ object FrmCadastro_Atividade: TFrmCadastro_Atividade
     Left = 125
     Top = 0
     Width = 472
-    Height = 251
+    Height = 204
     Cursor = crHandPoint
     ActivePage = TabSheet1
     Align = alClient
@@ -67,9 +67,48 @@ object FrmCadastro_Atividade: TFrmCadastro_Atividade
       object LblMarca: TLabel
         Left = 0
         Top = 57
-        Width = 55
+        Width = 32
         Height = 13
-        Caption = 'Descri'#231#227'o'
+        Caption = 'Nome'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label1: TLabel
+        Left = 0
+        Top = 94
+        Width = 30
+        Height = 13
+        Caption = 'Login'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label2: TLabel
+        Left = 112
+        Top = 94
+        Width = 35
+        Height = 13
+        Caption = 'Senha'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label3: TLabel
+        Left = 226
+        Top = 94
+        Width = 29
+        Height = 13
+        Caption = 'Perfil'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -106,10 +145,10 @@ object FrmCadastro_Atividade: TFrmCadastro_Atividade
         OnEnter = MEdtData_CadastroEnter
         OnExit = MEdtData_CadastroExit
       end
-      object EdtDescricao: TEdit
+      object EdtNome: TEdit
         Left = 0
         Top = 72
-        Width = 249
+        Width = 225
         Height = 17
         BevelInner = bvNone
         BevelKind = bkFlat
@@ -119,6 +158,48 @@ object FrmCadastro_Atividade: TFrmCadastro_Atividade
         MaxLength = 50
         TabOrder = 2
       end
+      object EdtLogin: TEdit
+        Left = 0
+        Top = 109
+        Width = 113
+        Height = 17
+        BevelInner = bvNone
+        BevelKind = bkFlat
+        BevelOuter = bvRaised
+        BorderStyle = bsNone
+        CharCase = ecUpperCase
+        MaxLength = 50
+        TabOrder = 3
+      end
+      object EdtSenha: TEdit
+        Left = 112
+        Top = 109
+        Width = 113
+        Height = 17
+        BevelInner = bvNone
+        BevelKind = bkFlat
+        BevelOuter = bvRaised
+        BorderStyle = bsNone
+        CharCase = ecUpperCase
+        MaxLength = 10
+        PasswordChar = '*'
+        TabOrder = 4
+      end
+      object cmbPerfil: TcxLookupComboBox
+        Left = 223
+        Top = 108
+        Properties.CharCase = ecUpperCase
+        Properties.KeyFieldNames = 'Codigo'
+        Properties.ListColumns = <
+          item
+            Caption = 'Descri'#231#227'o'
+            FieldName = 'Descricao'
+          end>
+        Properties.ListOptions.SyncMode = True
+        Properties.ListSource = DM.dsperfil_usuario
+        TabOrder = 5
+        Width = 201
+      end
     end
     object TabSheet2: TTabSheet
       Caption = 'Pesquisar'
@@ -127,7 +208,8 @@ object FrmCadastro_Atividade: TFrmCadastro_Atividade
         Left = 0
         Top = 0
         Width = 464
-        Height = 220
+        Height = 173
+        Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -203,8 +285,7 @@ object FrmCadastro_Atividade: TFrmCadastro_Atividade
             Options.Editing = False
           end
           object cxGrid1DBTableView1Descricao: TcxGridDBColumn
-            Caption = 'Descri'#231#227'o'
-            DataBinding.FieldName = 'Descricao'
+            DataBinding.FieldName = 'Nome'
             RepositoryItem = cxEditRepository1TextItem1
             Options.Editing = False
             Width = 245
@@ -226,7 +307,7 @@ object FrmCadastro_Atividade: TFrmCadastro_Atividade
     Left = 0
     Top = 0
     Width = 125
-    Height = 251
+    Height = 204
     Align = alLeft
     AutoSize = True
     ButtonHeight = 38
@@ -320,15 +401,26 @@ object FrmCadastro_Atividade: TFrmCadastro_Atividade
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      'select * from Cadastro_Atividade')
-    Left = 312
-    Top = 112
+      'select * from Cadastro_Usuario')
+    Left = 456
+    Top = 48
     object qryConsultaCodigo: TIntegerField
       FieldName = 'Codigo'
     end
-    object qryConsultaDescricao: TStringField
-      FieldName = 'Descricao'
+    object qryConsultaNome: TStringField
+      FieldName = 'Nome'
       Size = 50
+    end
+    object qryConsultaLogin: TStringField
+      FieldName = 'Login'
+      Size = 50
+    end
+    object qryConsultaSenha: TStringField
+      FieldName = 'Senha'
+      Size = 10
+    end
+    object qryConsultaCodigo_Perfil: TIntegerField
+      FieldName = 'Codigo_Perfil'
     end
     object qryConsultaData_Cadastro: TDateTimeField
       FieldName = 'Data_Cadastro'
@@ -336,8 +428,8 @@ object FrmCadastro_Atividade: TFrmCadastro_Atividade
   end
   object dsConsulta: TDataSource
     DataSet = qryConsulta
-    Left = 344
-    Top = 112
+    Left = 488
+    Top = 48
   end
   object cxPropertiesStore1: TcxPropertiesStore
     Components = <

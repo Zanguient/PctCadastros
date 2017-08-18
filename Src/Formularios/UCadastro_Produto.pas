@@ -362,8 +362,8 @@ begin
   FEstoqueProdutoDominio:= TEstoqueProdutoDominio.Create(Conexao);
   FEstoqueProdutoDominio.Buscar(0, qryEstoqueFazenda, Retorno);
   EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Produtos', Conexao));
-  IniDados:= IniciaDadosCadastro.Create;
   FTipo.Add('FAZENDA');
+  IniDados:= IniciaDadosCadastro.Create;
   IniDados.BuscaDadosPessoa(FTipo, Conexao);
   EdtCodigo_Produto.SetFocus;
 end;

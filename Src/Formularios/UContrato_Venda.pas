@@ -249,6 +249,7 @@ begin
   if (Mensagens.MensagemConfirmacao(MensagemConfirmaExclusao)) then
   begin
     FContratoVendaDominio:= TContratoVendaDominio.Create(Conexao, FContratoVenda);
+
     FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao);
     if (FLFDominio.ExcluirPeloCodigoMovimentacao( FContratoVendaDominio.BuscaCodigoLancamentoFinanceiro( StrToInt(EdtCodigo.Text), Retorno),
                                                    Retorno)=0) and (Retorno <> '') then
@@ -266,6 +267,11 @@ begin
       Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
       Exit;
     end;
+
+    {ShowMessage('Safra: '+dm.qrySafraCodigo.AsString);
+    ShowMessage('Armazém: '+dm.qryArmazemCodigo.AsString);
+    ShowMessage('Produto: '+dm.qryProdutoCodigo.AsString);
+    ShowMessage('Propriedade: '+IntToStr(FPropriedade.Codigo));}
 
     FEstoqueDominio:= TEstoqueDominio.Create(Conexao);
     FEstoqueDominio.AtualizaEstoque(dm.qrySafraCodigo.AsInteger, dm.qryArmazemCodigo.AsInteger,
@@ -672,6 +678,7 @@ begin
 
   EdtCodigo.Text:= qryConsultaCodigo.AsString;
   MEdtData_Cadastro.Text:= qryConsultaData_Cadastro.AsString;
+
   cmbSafra.EditValue:= qryConsultaCodigo_Safra.AsInteger;
   cmbContrato.EditValue:= qryConsultaCodigo_Contrato.AsInteger;
   cmbCliente.EditValue:= qryConsultaCodigo_Cliente.AsInteger;
@@ -703,8 +710,8 @@ begin
   FPessoaDominio:= TPessoaDominio.Create(Conexao);
   FPessoaDominio.BuscarDaSafra(qryConsultaCodigo_Safra.AsInteger, FPropriedade.Codigo, dm.qryArmazem, Retorno);
 
-  FProdutoDominio:= TProdutoDominio.Create(Conexao);
-  FProdutoDominio.BuscarDaSafra(qryConsultaCodigo_Safra.AsInteger, FPropriedade.Codigo, dm.qryProduto, Retorno);
+  {FProdutoDominio:= TProdutoDominio.Create(Conexao);
+  FProdutoDominio.BuscarDaSafra(qryConsultaCodigo_Safra.AsInteger, FPropriedade.Codigo, dm.qryProduto, Retorno);}
 
   if (qryConsultaCodigo_Forma_Pagamento.AsInteger <> 0) then
   begin
@@ -760,7 +767,7 @@ begin
   begin
     QtKg:= StrToFloat(EdtQuantidade_Kg.Text);
     Resultado:= QtKg / 60;
-    Op.FormataFloat(0, EdtQuantidade_Saca, Resultado);
+    Op.FormataFloat(2, EdtQuantidade_Saca, Resultado);
   end;
 end;
 

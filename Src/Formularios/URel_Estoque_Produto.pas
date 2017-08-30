@@ -36,7 +36,7 @@ uses
   HistoricoMovimentacaoFinanceiraDominio,
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
   cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses,
-  EstoqueProdutoDominio;
+  EstoqueProdutoDominio, cxNavigator, dxSkinsdxRibbonPainter;
 type
   TFrmRel_Estoque_Produto = class(TForm)
     cxGrid1: TcxGrid;

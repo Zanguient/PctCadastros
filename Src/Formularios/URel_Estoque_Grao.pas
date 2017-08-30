@@ -192,6 +192,7 @@ begin
 
   IniDados:= IniciaDadosCadastro.Create;
   IniDados.BuscaDadosSafra(Conexao);
+  IniDados.BuscaDadosProduto(Conexao);
 
 end;
 

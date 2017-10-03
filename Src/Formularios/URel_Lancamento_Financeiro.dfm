@@ -1596,6 +1596,12 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
         Styles.Header = DM.cxStyle1
         Width = 50
       end
+      object cxGrid1DBTableView5Fazenda: TcxGridDBColumn
+        DataBinding.FieldName = 'Fazenda'
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+        Width = 194
+      end
       object cxGrid1DBTableView5N_Documento: TcxGridDBColumn
         Caption = 'N'#186' Doc.'
         DataBinding.FieldName = 'N_Documento'
@@ -2623,7 +2629,7 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
         '.Descricao as TipoDocumento,'
       
         'CD.Descricao as Departamento, CPlan.Descricao as PlanoFinanceiro' +
-        ' from Lancamento_Financeiro LF'
+        ', CPro.Nome as Fazenda from Lancamento_Financeiro LF'
       
         'left join Condicao_Pagamento CPag on (LF.Codigo_Forma_Pagamento ' +
         '= CPag.Codigo)'
@@ -2638,7 +2644,10 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
         'CD.Codigo)'
       
         'left join Cadastro_Plano_Financeiro CPlan on (LF.Codigo_Plano = ' +
-        'CPlan.Codigo)')
+        'CPlan.Codigo)'
+      
+        'left join Cadastro_Pessoa CPro on (LF.Codigo_Propriedade = CPro.' +
+        'Codigo)')
     Left = 768
     Top = 104
     object qryLancamentoCodigo: TIntegerField
@@ -2700,6 +2709,10 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
     object qryLancamentoObservacoes: TStringField
       FieldName = 'Observacoes'
       Size = 800
+    end
+    object qryLancamentoFazenda: TStringField
+      FieldName = 'Fazenda'
+      Size = 100
     end
   end
   object dsLancamento: TDataSource
@@ -3139,7 +3152,7 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 42942.616098900460000000
+      ReportDocument.CreationDate = 43009.891355925920000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET
@@ -3326,6 +3339,13 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
       end
       item
         Component = cxGrid1DBTableView5Desconto
+        Properties.Strings = (
+          'SortOrder'
+          'Visible'
+          'Width')
+      end
+      item
+        Component = cxGrid1DBTableView5Fazenda
         Properties.Strings = (
           'SortOrder'
           'Visible'

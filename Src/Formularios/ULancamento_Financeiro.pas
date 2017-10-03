@@ -35,7 +35,8 @@ uses
   cxGridDBBandedTableView, LancamentoFinanceiroEntidade,
   LancamentoFinanceiroParcelasEntidade, LancamentoFinanceiroDominio,
   LancamentoFinanceiroParcelasDominio, PropriedadeEntidade, LoginEntidade,
-  System.Generics.Collections, HistoricoEntidade, HistoricoDominio;
+  System.Generics.Collections, HistoricoEntidade, HistoricoDominio, cxNavigator,
+  dxSkinsdxRibbonPainter;
 
 type
   TFrmLancamento_Financeiro = class(TForm)
@@ -191,6 +192,8 @@ type
     cxGridLevel1: TcxGridLevel;
     qryConsultaCodigo_Usuario: TIntegerField;
     qryConsultaCodigo_Pessoa: TIntegerField;
+    qryConsultaFazenda: TStringField;
+    cxGrid1DBTableView1Fazenda: TcxGridDBColumn;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

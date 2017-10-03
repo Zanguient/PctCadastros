@@ -116,9 +116,9 @@ begin
   try
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
-    FComandoSQL.ComandoSQL:= 'select * from Cadastro_Conta_Bancaria where Codigo_Propriedade = :Codigo_Propriedade';
-    FComandoSQL.Parametros.Add('Codigo_Propriedade');
-    FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FComandoSQL.ComandoSQL:= 'select * from Cadastro_Conta_Bancaria';// where Codigo_Propriedade = :Codigo_Propriedade';
+    //FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    //FComandoSQL.Valores.Add(Codigo_Propriedade);
     FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FEntidadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally

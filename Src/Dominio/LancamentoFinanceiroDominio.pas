@@ -99,11 +99,12 @@ begin
   try
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
-    FComandoSQL.ComandoSQL:= 'select LF.*, CP.Nome from Lancamento_Financeiro LF '+
-                             'left join Cadastro_Pessoa CP on (LF.Codigo_Pessoa = CP.Codigo)'+
-                             ' where LF.Codigo_Propriedade = :Codigo_Propriedade';
-    FComandoSQL.Parametros.Add('Codigo_Propriedade');
-    FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FComandoSQL.ComandoSQL:= 'select LF.*, CP.Nome, CPro.Nome as Fazenda from Lancamento_Financeiro LF '+
+                             'left join Cadastro_Pessoa CP on (LF.Codigo_Pessoa = CP.Codigo)' +
+                             'left join Cadastro_Pessoa CPro on (LF.Codigo_Propriedade = CPro.Codigo)';
+    //                         ' where LF.Codigo_Propriedade = :Codigo_Propriedade';
+    //FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    //FComandoSQL.Valores.Add(Codigo_Propriedade);
     FLFLancamentoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FLFLancamentoDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally
@@ -120,23 +121,22 @@ begin
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
     FComandoSQL.ComandoSQL:= 'select LF.*, CPag.Descricao as CondPag, CPes.Nome as Pessoa, CTD.Descricao as TipoDocumento,'+
-                             ' CD.Descricao as Departamento, CPlan.Descricao as PlanoFinanceiro from Lancamento_Financeiro LF '+
+                             ' CD.Descricao as Departamento, CPlan.Descricao as PlanoFinanceiro, CPro.Nome as Fazenda from Lancamento_Financeiro LF '+
                              //' left join Lancamento_Financeiro_Parcelas LFP on (LF.Codigo = LFP.Codigo_Lancamento_Financeiro) '+
                              ' left join Condicao_Pagamento CPag on (LF.Codigo_Forma_Pagamento = CPag.Codigo)'+
                              ' left join Cadastro_Pessoa CPes on (LF.Codigo_Pessoa = CPes.Codigo)'+
                              ' left join Cadastro_Tipo_Documento CTD on (LF.Codigo_Tipo_Documento = CTD.Codigo)'+
                              ' left join Cadastro_Departamento CD on (LF.Codigo_Departamento = CD.Codigo)'+
                              ' left join Cadastro_Plano_Financeiro CPlan on (LF.Codigo_Plano = CPlan.Codigo)'+
-                             ' where LF.Codigo_Propriedade = :Codigo_Propriedade and LF.Codigo_Safra = :Codigo_Safra '+
+                             ' left join Cadastro_Pessoa CPro on (LF.Codigo_Propriedade = CPro.Codigo) '+
+                             ' where LF.Codigo_Safra = :Codigo_Safra '+ //LF.Codigo_Propriedade = :Codigo_Propriedade and
                              ' and LF.Tipo = :Tipo';
-    FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    //FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Parametros.Add('Codigo_Safra');
     FComandoSQL.Parametros.Add('Tipo');
-    //FComandoSQL.Parametros.Add('Status');
-    FComandoSQL.Valores.Add(Codigo_Propriedade);
+    //FComandoSQL.Valores.Add(Codigo_Propriedade);
     FComandoSQL.Valores.Add(Codigo_Safra);
     FComandoSQL.Valores.Add(Tipo);
-    //FComandoSQL.Valores.Add(Status);
     FLFLancamentoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FLFLancamentoDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally

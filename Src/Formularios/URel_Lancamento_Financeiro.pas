@@ -119,6 +119,8 @@ type
     Label3: TLabel;
     cmbSafra: TcxLookupComboBox;
     cxPropertiesStore1: TcxPropertiesStore;
+    qryLancamentoFazenda: TStringField;
+    cxGrid1DBTableView5Fazenda: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);

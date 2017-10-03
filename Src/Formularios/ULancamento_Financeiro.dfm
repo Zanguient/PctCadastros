@@ -32,7 +32,7 @@ object FrmLancamento_Financeiro: TFrmLancamento_Financeiro
     Width = 688
     Height = 440
     Cursor = crHandPoint
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
@@ -1091,6 +1091,11 @@ object FrmLancamento_Financeiro: TFrmLancamento_Financeiro
             Options.Editing = False
             Width = 47
           end
+          object cxGrid1DBTableView1Fazenda: TcxGridDBColumn
+            DataBinding.FieldName = 'Fazenda'
+            Options.Editing = False
+            Width = 141
+          end
           object cxGrid1DBTableView1Tipo: TcxGridDBColumn
             DataBinding.FieldName = 'Tipo'
             Options.Editing = False
@@ -1281,8 +1286,13 @@ object FrmLancamento_Financeiro: TFrmLancamento_Financeiro
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      'select LF.*, CP.Nome from Lancamento_Financeiro LF'
-      'left join Cadastro_Pessoa CP on (LF.Codigo_Pessoa = CP.Codigo)')
+      
+        'select LF.*, CP.Nome, CPro.Nome as Fazenda from Lancamento_Finan' +
+        'ceiro LF'
+      'left join Cadastro_Pessoa CP on (LF.Codigo_Pessoa = CP.Codigo)'
+      
+        'left join Cadastro_Pessoa CPro on (LF.Codigo_Propriedade = CPro.' +
+        'Codigo)')
     Left = 672
     Top = 24
     object qryConsultaCodigo: TIntegerField
@@ -1353,6 +1363,10 @@ object FrmLancamento_Financeiro: TFrmLancamento_Financeiro
     object qryConsultaCodigo_Pessoa: TIntegerField
       FieldName = 'Codigo_Pessoa'
     end
+    object qryConsultaFazenda: TStringField
+      FieldName = 'Fazenda'
+      Size = 100
+    end
   end
   object dsConsulta: TDataSource
     DataSet = qryConsulta
@@ -1375,6 +1389,7 @@ object FrmLancamento_Financeiro: TFrmLancamento_Financeiro
     Top = 24
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1416,6 +1431,7 @@ object FrmLancamento_Financeiro: TFrmLancamento_Financeiro
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False
@@ -1483,8 +1499,8 @@ object FrmLancamento_Financeiro: TFrmLancamento_Financeiro
   end
   object dsParcelas: TDataSource
     DataSet = qryParcelas
-    Left = 768
-    Top = 24
+    Left = 760
+    Top = 56
   end
   object cxStyleRepository1: TcxStyleRepository
     PixelsPerInch = 96

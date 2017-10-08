@@ -10,6 +10,7 @@ type
       Conexao: TADOConnection;
       FRegistro: TRegistroAtividadePlantioOcorrenciaEntidade;
       FRegistroDAO: TExecutaComandosSQLDominio;
+      IdPropriedade: integer;
     public
       function Salvar(var Retorno: AnsiString): integer;
       function Alterar(var Retorno: AnsiString): integer;
@@ -18,6 +19,7 @@ type
       function BuscarConsulta(var Query: TADOQuery; var Retorno: AnsiString): integer;
       constructor Create(var Conexao: TADOConnection; FRegistro: TRegistroAtividadePlantioOcorrenciaEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
+      constructor Create(var Conexao: TADOConnection; IdPropriedade: integer); overload;
 
   end;
 implementation
@@ -53,9 +55,11 @@ begin
       FComandoSQL.Conexao:= Conexao;
       FComandoSQL.ComandoSQL:=  'select RAA.* from Registro_Atividade_Plantio_Ocorrencia RAA '+
                                 'left join Registro_Atividade RA on (RAA.Codigo_Registro_Atividade = RA.Codigo)'+
-                                'where RA.Codigo_Safra = :Codigo';
+                                'where RA.Codigo_Safra = :Codigo and RA.Codigo_Propriedade = :Codigo_Propriedade ';
       FComandoSQL.Parametros.Add('Codigo');
-      FComandoSQL.Valores.Add(IdPlantio);   //Codigo da Safra
+      FComandoSQL.Parametros.Add('Codigo_Propriedade');
+      FComandoSQL.Valores.Add(IdPlantio);
+      FComandoSQL.Valores.Add(IdPropriedade);
     end;
     FRegistroDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FRegistroDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
@@ -68,6 +72,13 @@ function TRegistroAtividadePlantioOcorrenciaDominio.BuscarConsulta(
   var Query: TADOQuery; var Retorno: AnsiString): integer;
 begin
 
+end;
+
+constructor TRegistroAtividadePlantioOcorrenciaDominio.Create(
+  var Conexao: TADOConnection; IdPropriedade: integer);
+begin
+  Self.Conexao:= Conexao;
+  Self.IdPropriedade:= IdPropriedade;
 end;
 
 constructor TRegistroAtividadePlantioOcorrenciaDominio.Create(

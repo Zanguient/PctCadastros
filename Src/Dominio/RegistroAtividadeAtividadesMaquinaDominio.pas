@@ -10,13 +10,14 @@ type
       Conexao: TADOConnection;
       FAtividadesMaquina: TRegistroAtividadeAtividadesMaquinaEntidade;
       FAtividadesMaquinaDAO: TExecutaComandosSQLDominio;
+      IdPropriedade: integer;
     public
       function Buscar(var Query: TADOQuery; var Retorno: AnsiString; IdRegistroAtividadesMaquina: integer; Tipo: integer): integer; overload;
       function Buscar(var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       function BuscarConsulta(var Query: TADOQuery; var Retorno: AnsiString): integer;
       constructor Create(var Conexao: TADOConnection; FAtividadesMaquina: TRegistroAtividadeAtividadesMaquinaEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
-
+      constructor Create(var Conexao: TADOConnection; IdPropriedade: integer); overload;
   end;
 implementation
 
@@ -45,10 +46,11 @@ begin
       FComandoSQL.Conexao:= Conexao;
       FComandoSQL.ComandoSQL:=  'select RAAM.* from Registro_Atividade_Trabalho_Maquina RAAM '+
                                 'left join Registro_Atividade RA on (RAAM.Codigo_Registro_Atividade = RA.Codigo)'+
-                                'where RA.Codigo_Safra = :Codigo';
+                                'where RA.Codigo_Safra = :Codigo and RA.Codigo_Propriedade = :Codigo_Propriedade ';
       FComandoSQL.Parametros.Add('Codigo');
+      FComandoSQL.Parametros.Add('Codigo_Propriedade');
       FComandoSQL.Valores.Add(IdRegistroAtividadesMaquina);
-
+      FComandoSQL.Valores.Add(IdPropriedade);
     end;
     FAtividadesMaquinaDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FAtividadesMaquinaDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
@@ -77,6 +79,13 @@ function TRegistroAtividadeAtividadesMaquinaDominio.BuscarConsulta(
   var Query: TADOQuery; var Retorno: AnsiString): integer;
 begin
 
+end;
+
+constructor TRegistroAtividadeAtividadesMaquinaDominio.Create(
+  var Conexao: TADOConnection; IdPropriedade: integer);
+begin
+  Self.Conexao:= Conexao;
+  Self.IdPropriedade:= IdPropriedade;
 end;
 
 constructor TRegistroAtividadeAtividadesMaquinaDominio.Create(

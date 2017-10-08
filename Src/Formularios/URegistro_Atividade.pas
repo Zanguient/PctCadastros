@@ -867,7 +867,7 @@ procedure TFrmRegistro_Atividade.BuscaDadosRegistroAtividades;
 var
   Retorno: AnsiString;
 begin
-  FRegistroAtividadeAtividadesDom:= TRegistroAtividadeAtividadesDominio.Create(Conexao);
+  FRegistroAtividadeAtividadesDom:= TRegistroAtividadeAtividadesDominio.Create(Conexao, FPropriedade.Codigo);
   if (FRegistroAtividadeAtividadesDom.Buscar(qryRegistroAtividadeAtividades, Retorno, dm.qrySafraCodigo.AsInteger, 1) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
@@ -879,7 +879,7 @@ procedure TFrmRegistro_Atividade.BuscaDadosRegistroAtividadesColheita;
 var
   Retorno: AnsiString;
 begin
-  FRegistroAtividadeColheitaDom:= TRomaneioDominio.Create(Conexao);
+  FRegistroAtividadeColheitaDom:= TRomaneioDominio.Create(Conexao, FPropriedade.Codigo);
   if (FRegistroAtividadeColheitaDom.Buscar(qryRegistroAtividadeColheita, Retorno, dm.qrySafraCodigo.AsInteger, 1) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
@@ -891,7 +891,7 @@ procedure TFrmRegistro_Atividade.BuscaDadosRegistroAtividadesMaquina;
 var
   Retorno: AnsiString;
 begin
-  FRegistroAtividadeAtividadesMaquinaDom:= TRegistroAtividadeAtividadesMaquinaDominio.Create(Conexao);
+  FRegistroAtividadeAtividadesMaquinaDom:= TRegistroAtividadeAtividadesMaquinaDominio.Create(Conexao, FPropriedade.Codigo);
   if (FRegistroAtividadeAtividadesMaquinaDom.Buscar(qryRegistroAtividadeAtividadesMaquina, Retorno, dm.qrySafraCodigo.AsInteger, 1) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
@@ -903,7 +903,7 @@ procedure TFrmRegistro_Atividade.BuscaDadosRegistroAtividadesPlantio;
 var
   Retorno: AnsiString;
 begin
-  FRegistroAtividadePlantioDom:= TRegistroAtividadePlantioDominio.Create(Conexao);
+  FRegistroAtividadePlantioDom:= TRegistroAtividadePlantioDominio.Create(Conexao, FPropriedade.Codigo);
   if (FRegistroAtividadePlantioDom.Buscar(qryRegistroAtividadePlantio, Retorno, dm.qrySafraCodigo.AsInteger, 1) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
@@ -915,7 +915,7 @@ procedure TFrmRegistro_Atividade.BuscaDadosRegistroAtividadesPlantioOcorrencia;
 var
   Retorno: AnsiString;
 begin
-  FRegistroAtividadePlantioOcorrenciaDom:= TRegistroAtividadePlantioOcorrenciaDominio.Create(Conexao);
+  FRegistroAtividadePlantioOcorrenciaDom:= TRegistroAtividadePlantioOcorrenciaDominio.Create(Conexao, FPropriedade.Codigo);
   if (FRegistroAtividadePlantioOcorrenciaDom.Buscar(qryRegistroAtividadePlantioOcorrencia, Retorno, dm.qrySafraCodigo.AsInteger, 1) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
@@ -927,7 +927,7 @@ procedure TFrmRegistro_Atividade.BuscaDadosRegistroAtividadesProduto;
 var
   Retorno: AnsiString;
 begin
-  FRegistroAtividadeAtividadesProdutoDom:= TRegistroAtividadeAtividadesProdutoDominio.Create(Conexao);
+  FRegistroAtividadeAtividadesProdutoDom:= TRegistroAtividadeAtividadesProdutoDominio.Create(Conexao, FPropriedade.Codigo);
   if (FRegistroAtividadeAtividadesProdutoDom.Buscar(qryRegistroAtividadeAtividadesProduto, Retorno, dm.qrySafraCodigo.AsInteger, 1) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
@@ -939,7 +939,7 @@ procedure TFrmRegistro_Atividade.BuscaDadosRegistroAtividadesTalhao;
 var
   Retorno: AnsiString;
 begin
-  FRegistroAtividadeAtividadesTalhaoDom:= TRegistroAtividadeAtividadesTalhaoDominio.Create(Conexao);
+  FRegistroAtividadeAtividadesTalhaoDom:= TRegistroAtividadeAtividadesTalhaoDominio.Create(Conexao, FPropriedade.Codigo);
   if (FRegistroAtividadeAtividadesTalhaoDom.Buscar(qryRegistroAtividadeAtividadesTalhao, Retorno, dm.qrySafraCodigo.AsInteger, 1) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
@@ -1425,7 +1425,7 @@ begin
   FRegistroAtividadeDom:= TRegistroAtividadeDominio.Create(Conexao);
   if (FRegistroAtividadeDom.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryConsulta, Retorno) = 0) then
   begin
-    Mensagens.MensagemWarning('Não foram encontrados registros para a safra selecionada.');
+    Mensagens.MensagemWarning('Não foram encontrados registros para a safra selecionada. Verifique se há registros lançados nessa safra na propriedade selecionada.');
     EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Registro_Atividade', Conexao));
     BuscaDadosRegistroAtividades;
     BuscaDadosRegistroAtividadesProduto;

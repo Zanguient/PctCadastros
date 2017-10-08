@@ -10,6 +10,7 @@ type
       Conexao: TADOConnection;
       FAtividadesProduto: TRegistroAtividadeAtividadesProdutoEntidade;
       FAtividadesProdutoDAO: TExecutaComandosSQLDominio;
+      IdPropriedade: integer;
     public
       function Salvar(var Retorno: AnsiString): integer;
       function Alterar(var Retorno: AnsiString): integer;
@@ -19,6 +20,7 @@ type
       function BuscarConsulta(var Query: TADOQuery; var Retorno: AnsiString): integer;
       constructor Create(var Conexao: TADOConnection; FAtividadesProduto: TRegistroAtividadeAtividadesProdutoEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
+      constructor Create(var Conexao: TADOConnection; IdPropriedade: integer); overload;
   end;
 implementation
 
@@ -53,9 +55,11 @@ begin
       FComandoSQL.Conexao:= Conexao;
       FComandoSQL.ComandoSQL:=  'select RAAP.* from Registro_Atividade_Atividades_Produto RAAP '+
                                 'left join Registro_Atividade RA on (RAAP.Codigo_Registro_Atividade = RA.Codigo)'+
-                                'where RA.Codigo_Safra = :Codigo';
+                                'where RA.Codigo_Safra = :Codigo and RA.Codigo_Propriedade = :Codigo_Propriedade ';
       FComandoSQL.Parametros.Add('Codigo');
+      FComandoSQL.Parametros.Add('Codigo_Propriedade');
       FComandoSQL.Valores.Add(IdRegistroAtividadesProduto);
+      FComandoSQL.Valores.Add(IdPropriedade);
     end;
     FAtividadesProdutoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FAtividadesProdutoDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
@@ -122,6 +126,13 @@ function TRegistroAtividadeAtividadesProdutoDominio.Salvar(
   var Retorno: AnsiString): integer;
 begin
 
+end;
+
+constructor TRegistroAtividadeAtividadesProdutoDominio.Create(
+  var Conexao: TADOConnection; IdPropriedade: integer);
+begin
+  Self.Conexao:= Conexao;
+  Self.IdPropriedade:= IdPropriedade;
 end;
 
 end.

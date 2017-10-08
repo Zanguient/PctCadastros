@@ -10,6 +10,7 @@ uses
       Conexao: TADOConnection;
       FPlantio: TRegistroAtividadePlantioEntidade;
       FPlantioDAO: TExecutaComandosSQLDominio;
+      IdPropriedade: integer;
     public
       function Salvar(var Retorno: AnsiString): integer;
       function Alterar(var Retorno: AnsiString): integer;
@@ -18,6 +19,7 @@ uses
       function BuscarConsulta(Codigo_Propriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): integer;
       constructor Create(var Conexao: TADOConnection; FPlantio: TRegistroAtividadePlantioEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
+      constructor Create(var Conexao: TADOConnection; IdPropriedade: integer); overload;
 
     end;
 implementation
@@ -53,9 +55,11 @@ begin
       FComandoSQL.Conexao:= Conexao;
       FComandoSQL.ComandoSQL:=  'select RAP.* from Registro_Atividade_Plantio RAP '+
                                 'left join Registro_Atividade RA on (RAP.Codigo_Registro_Atividade = RA.Codigo)'+
-                                'where RA.Codigo_Safra = :Codigo';
+                                'where RA.Codigo_Safra = :Codigo and RA.Codigo_Propriedade = :Codigo_Propriedade ';
       FComandoSQL.Parametros.Add('Codigo');
+      FComandoSQL.Parametros.Add('Codigo_Propriedade');
       FComandoSQL.Valores.Add(IdRegistroAtividades);
+      FComandoSQL.Valores.Add(IdPropriedade);
     end;
     FPlantioDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FPlantioDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
@@ -84,6 +88,13 @@ begin
   finally
 
   end;
+end;
+
+constructor TRegistroAtividadePlantioDominio.Create(var Conexao: TADOConnection;
+  IdPropriedade: integer);
+begin
+  Self.Conexao:= Conexao;
+  Self.IdPropriedade:= IdPropriedade;
 end;
 
 constructor TRegistroAtividadePlantioDominio.Create(

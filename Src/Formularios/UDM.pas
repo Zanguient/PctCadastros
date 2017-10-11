@@ -349,6 +349,13 @@ type
     qryperfil_usuarioRel_Folha_Pagamento: TBooleanField;
     qryperfil_usuarioRel_Manutencao_Maquina: TBooleanField;
     qryperfil_usuarioData_Cadastro: TDateTimeField;
+    qrytipo_bem_patrimonial: TADOQuery;
+    dstipo_bem_patrimonial: TDataSource;
+    qrytipo_bem_patrimonialCodigo: TIntegerField;
+    qrytipo_bem_patrimonialCodigo_Propriedade: TIntegerField;
+    qrytipo_bem_patrimonialCodigo_Usuario: TIntegerField;
+    qrytipo_bem_patrimonialDescricao: TStringField;
+    qrytipo_bem_patrimonialData_Cadastro: TDateTimeField;
     procedure DataModuleCreate(Sender: TObject);
   private
     Mensagens: TMensagens;

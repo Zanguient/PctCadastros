@@ -36,7 +36,8 @@ uses
   HistoricoMovimentacaoFinanceiraDominio,
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
   cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses,
-  FolhaPagamentoDominio, FolhaPagamentoItensDominio;
+  FolhaPagamentoDominio, FolhaPagamentoItensDominio, cxNavigator,
+  dxSkinsdxRibbonPainter;
 type
   TFrmRel_Folha_Pagamento = class(TForm)
     cxGrid1: TcxGrid;
@@ -225,26 +226,26 @@ begin
   if (cmbSafra.Text = '') then
   begin
     FPD:= TFolhaPagamentoDominio.Create(Conexao);
-    if (FPD.Buscar(FPropriedade.Codigo, qryFolha, Retorno) = 0) and (Retorno <> '') then
+    if (FPD.Buscar(FPropriedade.Codigo, qryFolha, Retorno) = 0) then
     begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
       Exit;
     end;
   end
   else
   begin
     FPD:= TFolhaPagamentoDominio.Create(Conexao);
-    if (FPD.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryFolha, Retorno) = 0) and (Retorno <> '') then
+    if (FPD.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryFolha, Retorno) = 0) then
     begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
       Exit;
     end;
   end;
 
   FPID:= TFolhaPagamentoItensDominio.Create(Conexao);
-  if (FPID.Buscar(qryFolhaItens, Retorno) = 0) and (Retorno <> '') then
+  if (FPID.Buscar(qryFolhaItens, Retorno) = 0) then
   begin
-    Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+    Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
     Exit;
   end;
 

@@ -36,7 +36,7 @@ uses
   HistoricoMovimentacaoFinanceiraDominio,
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
   cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses,
-  ContratoVendaDominio;
+  ContratoVendaDominio, cxNavigator, dxSkinsdxRibbonPainter;
 type
   TFrmRel_Contrato_Venda = class(TForm)
     cxGrid1: TcxGrid;
@@ -187,18 +187,18 @@ begin
   if (cmbSafra.Text = '') then
   begin
     FCVD:= TContratoVendaDominio.Create(Conexao);
-    if (FCVD.Buscar(FPropriedade.Codigo, qryContrato, Retorno) = 0) and (Retorno <> '') then
+    if (FCVD.Buscar(FPropriedade.Codigo, qryContrato, Retorno) = 0) then
     begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
       Exit;
     end;
   end
   else
   begin
     FCVD:= TContratoVendaDominio.Create(Conexao);
-    if (FCVD.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryContrato, Retorno) = 0) and (Retorno <> '') then
+    if (FCVD.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryContrato, Retorno) = 0) then
     begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
       Exit;
     end;
   end;

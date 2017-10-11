@@ -150,6 +150,12 @@ type
     qryConsultaCadastro_Perfil_Usuario: TBooleanField;
     qryConsultaCadastro_Usuario: TBooleanField;
     cxDBTreeList1Cadastro_Usuario: TcxDBTreeListColumn;
+    qryConsultaCadastro_Tipo_Bem_Patrimonial: TBooleanField;
+    qryConsultaMov_Patrimonio: TBooleanField;
+    qryConsultaRel_Patrimonio: TBooleanField;
+    cxDBTreeList1Cadastro_Tipo_Bem: TcxDBTreeListColumn;
+    cxDBTreeList1Mov_Patrimonio: TcxDBTreeListColumn;
+    cxDBTreeList1Rel_Patrimonio: TcxDBTreeListColumn;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

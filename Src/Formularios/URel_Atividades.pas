@@ -340,30 +340,30 @@ begin
 
     if (rgTipo.ItemIndex = 1) then
     begin
-      if (RegistroAtividade.BuscarConsulta(FPropriedade.Codigo, 1, qryRegistroAtividade, Retorno, dm.qrySafraCodigo.AsInteger) = 0) and (Retorno <> '') then
+      if (RegistroAtividade.BuscarConsulta(FPropriedade.Codigo, 1, qryRegistroAtividade, Retorno, dm.qrySafraCodigo.AsInteger) = 0) then
       begin
-        Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+        Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
         Exit;
       end;
     end
     else
     begin
-      if (RegistroAtividade.BuscarConsulta(FPropriedade.Codigo, 0, qryRegistroAtividade, Retorno, dm.qrySafraCodigo.AsInteger) = 0) and (Retorno <> '') then
+      if (RegistroAtividade.BuscarConsulta(FPropriedade.Codigo, 0, qryRegistroAtividade, Retorno, dm.qrySafraCodigo.AsInteger) = 0) then
       begin
-        Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+        Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
         Exit;
       end;
     end;
 
-    if (RegistroAtividadeAtividades.BuscarConsulta(FPropriedade.Codigo, qryRegistroAtividadeAtividades, Retorno) = 0) and (Retorno <> '') then
+    if (RegistroAtividadeAtividades.BuscarConsulta(FPropriedade.Codigo, qryRegistroAtividadeAtividades, Retorno) = 0) then
     begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
       //Exit;
     end;
 
-    if (RegistroAtividadePlantio.BuscarConsulta(FPropriedade.Codigo, qryRegistroAtividadePlantio, Retorno) = 0) and (Retorno <> '') then
+    if (RegistroAtividadePlantio.BuscarConsulta(FPropriedade.Codigo, qryRegistroAtividadePlantio, Retorno) = 0) then
     begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
       //Exit;
     end;
 

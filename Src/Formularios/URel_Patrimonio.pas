@@ -1,4 +1,4 @@
-unit URel_Estoque_Grao;
+unit URel_Patrimonio;
 
 interface
 
@@ -35,44 +35,60 @@ uses
   cxDateUtils, cxCalendar, TituloBaixarEntidade, System.Generics.Collections,
   HistoricoMovimentacaoFinanceiraDominio,
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
-  cxMemo, EstoqueDominio, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses,
-  cxNavigator, dxSkinsdxRibbonPainter;
+  cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses,
+  cxNavigator, dxSkinsdxRibbonPainter, PatrimonioDominio;
 type
-  TFrmRel_Estoque_Grao = class(TForm)
+  TFrmRel_Patrimonio = class(TForm)
     cxGrid1: TcxGrid;
     cxGrid1Level1: TcxGridLevel;
-    qryEstoque: TADOQuery;
-    dsEstoque: TDataSource;
-    qryEstoqueCodigo: TAutoIncField;
-    qryEstoqueCodigo_Safra: TIntegerField;
-    qryEstoqueCodigo_Armazem: TIntegerField;
-    qryEstoqueCodigo_Produto: TIntegerField;
-    qryEstoqueCodigo_Fazenda: TIntegerField;
-    qryEstoqueEstoque: TFloatField;
-    qryEstoqueSafra: TStringField;
-    qryEstoqueArmazem: TStringField;
-    qryEstoqueProduto: TStringField;
+    qryPatrimonio: TADOQuery;
+    dsClima: TDataSource;
     Panel1: TPanel;
-    cmbSafra: TcxLookupComboBox;
     cxPropertiesStore1: TcxPropertiesStore;
     dxComponentPrinter1: TdxComponentPrinter;
     dxComponentPrinter1Link1: TdxGridReportLink;
-    cxGrid1DBTableViewEstoque: TcxGridDBTableView;
-    cxGrid1DBTableViewEstoqueSafra: TcxGridDBColumn;
-    cxGrid1DBTableViewEstoqueArmazem: TcxGridDBColumn;
-    cxGrid1DBTableViewEstoqueProduto: TcxGridDBColumn;
-    cxGrid1DBTableViewEstoqueEstoque: TcxGridDBColumn;
+    cxGrid1DBTableViewPatrimonio: TcxGridDBTableView;
     Panel2: TPanel;
     cxImage2: TcxImage;
     cxImage1: TcxImage;
     cxImage3: TcxImage;
-    Label3: TLabel;
+    qryPatrimonioCodigo: TIntegerField;
+    qryPatrimonioCodigo_Propriedade: TIntegerField;
+    qryPatrimonioCodigo_Usuario: TIntegerField;
+    qryPatrimonioStatus: TStringField;
+    qryPatrimonioTipo: TStringField;
+    qryPatrimonioIdentificacao: TStringField;
+    qryPatrimonioResponsavel: TStringField;
+    qryPatrimonioDescricao: TStringField;
+    qryPatrimonioValor: TFloatField;
+    qryPatrimonioDataCadastro: TDateTimeField;
+    qryPatrimonioDataCompra: TDateTimeField;
+    qryPatrimonioDataVenda: TDateTimeField;
+    qryPatrimonioCodigoTipoBem: TIntegerField;
+    qryPatrimonioObservacao: TStringField;
+    qryPatrimonioTipoBem: TStringField;
+    cxGrid1DBTableViewPatrimonioCodigo: TcxGridDBColumn;
+    cxGrid1DBTableViewPatrimonioStatus: TcxGridDBColumn;
+    cxGrid1DBTableViewPatrimonioTipo: TcxGridDBColumn;
+    cxGrid1DBTableViewPatrimonioIdentificacao: TcxGridDBColumn;
+    cxGrid1DBTableViewPatrimonioResponsavel: TcxGridDBColumn;
+    cxGrid1DBTableViewPatrimonioDescricao: TcxGridDBColumn;
+    cxGrid1DBTableViewPatrimonioValor: TcxGridDBColumn;
+    cxGrid1DBTableViewPatrimonioDataCadastro: TcxGridDBColumn;
+    cxGrid1DBTableViewPatrimonioDataCompra: TcxGridDBColumn;
+    cxGrid1DBTableViewPatrimonioDataVenda: TcxGridDBColumn;
+    cxGrid1DBTableViewPatrimonioObservacao: TcxGridDBColumn;
+    cxGrid1DBTableViewPatrimonioTipoBem: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure cxImage1Click(Sender: TObject);
     procedure cxImage2Click(Sender: TObject);
     procedure cxImage3Click(Sender: TObject);
+    procedure cxGrid1DBTableViewPatrimonioDataCompraGetDataText(
+      Sender: TcxCustomGridTableItem; ARecordIndex: Integer; var AText: string);
+    procedure cxGrid1DBTableViewPatrimonioDataVendaGetDataText(
+      Sender: TcxCustomGridTableItem; ARecordIndex: Integer; var AText: string);
   private
     FPropriedade: TPropriedadeEntidade;
     FUsuario: TLoginEntidade;
@@ -83,7 +99,7 @@ type
     IniDados: IniciaDadosCadastro;
     Conexao: TADOConnection;
 
-    FEstoqueDominio: TEstoqueDominio;
+    FPDominio: TPatrimonioDominio;
 
   public
     ativo, enderec, achei: boolean;
@@ -93,7 +109,7 @@ type
   end;
 
 var
-  FrmRel_Estoque_Grao: TFrmRel_Estoque_Grao;
+  FrmRel_Patrimonio: TFrmRel_Patrimonio;
 implementation
 
 
@@ -104,17 +120,17 @@ uses UDM, OperacoesConexao;
 { TFrmPadrao }
 
 
-procedure TFrmRel_Estoque_Grao.BBtnFecharClick(Sender: TObject);
+procedure TFrmRel_Patrimonio.BBtnFecharClick(Sender: TObject);
 begin
   close;
 end;
 
-constructor TFrmRel_Estoque_Grao.Create(FPropriedade: TPropriedadeEntidade;
+constructor TFrmRel_Patrimonio.Create(FPropriedade: TPropriedadeEntidade;
   FUsuario: TLoginEntidade);
 begin
   Self.FPropriedade:= FPropriedade;
   Self.FUsuario:= FUsuario;
-  dxComponentPrinter1Link1.ReportTitle.Text:= 'Estoque de Grãos';
+  dxComponentPrinter1Link1.ReportTitle.Text:= 'Controle de Patrimônios';
   dxComponentPrinter1Link1.ReportTitle.Font.Size:= 14;
   dxComponentPrinter1Link1.OptionsView.FilterBar:= true;
   dxComponentPrinter1Link1.OptionsView.Footers:= true;
@@ -126,7 +142,7 @@ begin
   dxComponentPrinter1Link1.PDFExportOptions.Author:= AutorSistema;
   dxComponentPrinter1Link1.PDFExportOptions.Creator:= AutorSistema;
   dxComponentPrinter1Link1.PDFExportOptions.DefaultFileName:= TituloPadraoRelatorio;
-  dxComponentPrinter1Link1.PDFExportOptions.Title:= 'Estoque de Grãos';
+  dxComponentPrinter1Link1.PDFExportOptions.Title:= 'Controle de Patrimônios';
   dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Text:= '';
   dxComponentPrinter1Link1.PrinterPage.PageHeader.LeftTitle.Text:= 'Fazenda:  '+FPropriedade.NomeFazenda + #13+
                                                                    'Endereço: '+FPropriedade.Endereco +#13+
@@ -134,66 +150,63 @@ begin
 
   dxComponentPrinter1Link1.PrinterPage.PageHeader.RightTitle.Text:= NomeSistema + ', versão '+ VersaoSistema +#13+
                                                                     'Contato: '+TelefoneEmpresaDesenvolvedora;
-  dxComponentPrinter1Link1.PrinterPage.Orientation:= poPortrait;
+  dxComponentPrinter1Link1.PrinterPage.Orientation:= poLandscape;
 end;
 
-procedure TFrmRel_Estoque_Grao.cxImage1Click(Sender: TObject);
+procedure TFrmRel_Patrimonio.cxGrid1DBTableViewPatrimonioDataCompraGetDataText(
+  Sender: TcxCustomGridTableItem; ARecordIndex: Integer; var AText: string);
+begin
+  if (Sender.EditValue = '30/12/1899') then
+    AText:= '';
+end;
+
+procedure TFrmRel_Patrimonio.cxGrid1DBTableViewPatrimonioDataVendaGetDataText(
+  Sender: TcxCustomGridTableItem; ARecordIndex: Integer; var AText: string);
+begin
+  if (Sender.EditValue = '30/12/1899') then
+    AText:= '';
+end;
+
+procedure TFrmRel_Patrimonio.cxImage1Click(Sender: TObject);
 begin
   dxComponentPrinter1.Preview(true, nil);
 end;
 
-procedure TFrmRel_Estoque_Grao.cxImage2Click(Sender: TObject);
+procedure TFrmRel_Patrimonio.cxImage2Click(Sender: TObject);
 begin
   dxComponentPrinter1Link1.ExportToPDF;
 end;
 
-procedure TFrmRel_Estoque_Grao.cxImage3Click(Sender: TObject);
+procedure TFrmRel_Patrimonio.cxImage3Click(Sender: TObject);
 var
   Retorno: AnsiString;
 begin
-  if (cmbSafra.Text <> '') then
+  FPDominio:= TPatrimonioDominio.Create(Conexao);
+  if (FPDominio.Buscar(FPropriedade.Codigo, qryPatrimonio, Retorno, 1) = 0) then
   begin
-    FEstoqueDominio:= TEstoqueDominio.Create(Conexao);
-    if (FEstoqueDominio.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, 0, qryEstoque, Retorno) = 0) then
-    begin
-      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
-    end;
-  end
-  else
-  begin
-    FEstoqueDominio:= TEstoqueDominio.Create(Conexao);
-    if (FEstoqueDominio.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, 1, qryEstoque, Retorno) = 0) then
-    begin
-      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
-    end;
+    Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
+    Exit;
   end;
 
-  cxGrid1DBTableViewEstoque.ViewData.Collapse(true);
+  cxGrid1DBTableViewPatrimonio.ViewData.Collapse(true);
 end;
 
-procedure TFrmRel_Estoque_Grao.FormClose(Sender: TObject;
+procedure TFrmRel_Patrimonio.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   Release;
   TOperacoesConexao.ConfirmaConexao(Conexao);
 end;
 
-procedure TFrmRel_Estoque_Grao.FormShow(Sender: TObject);
+procedure TFrmRel_Patrimonio.FormShow(Sender: TObject);
 var
   Retorno: AnsiString;
 begin
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryEstoque,
-                                  dm.qrySafra,
-                                  dm.qryArmazem,
-                                  dm.qryProduto], Conexao);
+  TOperacoesConexao.IniciaQuerys([qryPatrimonio, dm.qrytipo_bem_patrimonial], Conexao);
 
   IniDados:= IniciaDadosCadastro.Create;
-  IniDados.BuscaDadosSafra(Conexao);
-  IniDados.BuscaDadosProduto(Conexao);
-
+  IniDados.BuscaDadosTipoBemPatrimonial(Conexao);
 end;
 
 end.

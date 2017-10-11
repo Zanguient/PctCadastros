@@ -144,7 +144,7 @@ contains
   RegistroAtividadeDominio in '..\Src\Dominio\RegistroAtividadeDominio.pas',
   RegistroAtividadePlantioDominio in '..\Src\Dominio\RegistroAtividadePlantioDominio.pas',
   UCadastro_Talhao in '..\Src\Formularios\UCadastro_Talhao.pas' {FrmCadastro_Talhao},
-  UCadastro_Veiculo in '..\Src\Formularios\UCadastro_Veiculo.pas' {FrmCadastro_Veiculo},
+  UCadastro_Patrimonio in '..\Src\Formularios\UCadastro_Patrimonio.pas' {FrmCadastro_Patrimonio},
   PessoaEntidade in '..\Src\Entidade\PessoaEntidade.pas',
   PessoaDominio in '..\Src\Dominio\PessoaDominio.pas',
   PessoaTelefoneEntidade in '..\Src\Entidade\PessoaTelefoneEntidade.pas',
@@ -256,7 +256,7 @@ contains
   UDica_Estoque in '..\Src\Formularios\UDica_Estoque.pas' {FrmDica_Estoque},
   UDica_Cadastro in '..\Src\Formularios\UDica_Cadastro.pas' {FrmDica_Cadastro},
   URel_Visao_Geral in '..\Src\Formularios\URel_Visao_Geral.pas' {FrmRel_Visao_Geral},
-  URel_Clima in '..\Src\Formularios\URel_Clima.pas' {FrmRel_Clima},
+  URel_Patrimonio in '..\Src\Formularios\URel_Patrimonio.pas' {FrmRel_Patrimonio},
   URel_Estoque_Produto in '..\Src\Formularios\URel_Estoque_Produto.pas' {FrmRel_Estoque_Produto},
   URel_Folha_Pagamento in '..\Src\Formularios\URel_Folha_Pagamento.pas' {FrmRel_Folha_Pagamento},
   URel_Lancamento_Financeiro in '..\Src\Formularios\URel_Lancamento_Financeiro.pas' {FrmRel_Lancamento_Financeiro},
@@ -267,6 +267,13 @@ contains
   UCadastro_Usuario in '..\Src\Formularios\UCadastro_Usuario.pas' {FrmCadastro_Usuario},
   PerfilUsuarioEntidade in '..\Src\Entidade\PerfilUsuarioEntidade.pas',
   PerfilUsuarioDominio in '..\Src\Dominio\PerfilUsuarioDominio.pas',
-  UCadastro_Atividade in '..\Src\Formularios\UCadastro_Atividade.pas' {FrmCadastro_Atividade};
+  UCadastro_Tipo_Bem_Patrimonial in '..\Src\Formularios\UCadastro_Tipo_Bem_Patrimonial.pas' {FrmCadastro_Tipo_Bem_Patrimonial},
+  UCadastro_Atividade in '..\Src\Formularios\UCadastro_Atividade.pas' {FrmCadastro_Atividade},
+  TipoBemPatrimonialEntidade in '..\Src\Entidade\TipoBemPatrimonialEntidade.pas',
+  TipoBemPatrimonialDominio in '..\Src\Dominio\TipoBemPatrimonialDominio.pas',
+  UCadastro_Veiculo in '..\Src\Formularios\UCadastro_Veiculo.pas' {FrmCadastro_Veiculo},
+  PatrimonioEntidade in '..\Src\Entidade\PatrimonioEntidade.pas',
+  PatrimonioDominio in '..\Src\Dominio\PatrimonioDominio.pas',
+  URel_Clima in '..\Src\Formularios\URel_Clima.pas' {FrmRel_Clima};
 
 end.

@@ -36,7 +36,8 @@ uses
   HistoricoMovimentacaoFinanceiraDominio,
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
   cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses,
-  EntradaProdutoDominio, EntradaProdutoProdutosDominio;
+  EntradaProdutoDominio, EntradaProdutoProdutosDominio, cxNavigator,
+  dxSkinsdxRibbonPainter;
 type
   TFrmRel_Entrada_Produto = class(TForm)
     cxGrid1: TcxGrid;
@@ -243,26 +244,26 @@ begin
   if (cmbSafra.Text = '') then
   begin
     EPD:= TEntradaProdutoDominio.Create(Conexao);
-    if (EPD.Buscar(FPropriedade.Codigo, qryEntrada, Retorno) = 0) and (Retorno <> '') then
+    if (EPD.Buscar(FPropriedade.Codigo, qryEntrada, Retorno) = 0) then
     begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
       Exit;
     end;
   end
   else
   begin
     EPD:= TEntradaProdutoDominio.Create(Conexao);
-    if (EPD.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryEntrada, Retorno) = 0) and (Retorno <> '') then
+    if (EPD.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryEntrada, Retorno) = 0) then
     begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
       Exit;
     end;
   end;
 
   EPPD:= TEntradaProdutoProdutosDominio.Create(Conexao);
-  if (EPPD.Buscar(qryEntradaProdutos, Retorno) = 0) and (Retorno <> '') then
+  if (EPPD.Buscar(qryEntradaProdutos, Retorno) = 0) then
   begin
-    Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+    Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
     Exit;
   end;
 

@@ -2778,7 +2778,6 @@ object FrmRel_Manutencao_Maquina: TFrmRel_Manutencao_Maquina
     end
   end
   object qryManutencao: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -3269,7 +3268,7 @@ object FrmRel_Manutencao_Maquina: TFrmRel_Manutencao_Maquina
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 42916.485367881940000000
+      ReportDocument.CreationDate = 43019.479897928240000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET
@@ -3298,7 +3297,6 @@ object FrmRel_Manutencao_Maquina: TFrmRel_Manutencao_Maquina
     end
   end
   object qryManutencaoProduto: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -3347,7 +3345,6 @@ object FrmRel_Manutencao_Maquina: TFrmRel_Manutencao_Maquina
     Top = 152
   end
   object qryManutencaoServico: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -3390,7 +3387,6 @@ object FrmRel_Manutencao_Maquina: TFrmRel_Manutencao_Maquina
     Top = 200
   end
   object qryManutencaoServicoProxTroca: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

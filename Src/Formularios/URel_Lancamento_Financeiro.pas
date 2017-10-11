@@ -246,17 +246,17 @@ begin
   end;
 
   LFPD:= TLancamentoFinanceiroParcelasDominio.Create(Conexao);
-  if (LFPD.Buscar(qryParcelas, Retorno) = 0) and (Retorno <> '') then
+  if (LFPD.Buscar(qryParcelas, Retorno) = 0) then
   begin
-    Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+    Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
     Exit;
   end;
 
   LFD:= TLancamentoFinanceiroDominio.Create(Conexao);
   if (LFD.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, rgTipoOperacao.Properties.Items[rgTipoOperacao.ItemIndex].Caption,
-                  '', qryLancamento, Retorno) = 0) and (Retorno <> '') then
+                  '', qryLancamento, Retorno) = 0) then
   begin
-    Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+    Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
     Exit;
   end;
 

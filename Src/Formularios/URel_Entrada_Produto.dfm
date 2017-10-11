@@ -2574,7 +2574,6 @@ object FrmRel_Entrada_Produto: TFrmRel_Entrada_Produto
     end
   end
   object qryEntrada: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -3137,7 +3136,7 @@ object FrmRel_Entrada_Produto: TFrmRel_Entrada_Produto
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 42916.485062777780000000
+      ReportDocument.CreationDate = 43019.478641608800000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET
@@ -3163,7 +3162,6 @@ object FrmRel_Entrada_Produto: TFrmRel_Entrada_Produto
     end
   end
   object qryEntradaProdutos: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

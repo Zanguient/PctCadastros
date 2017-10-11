@@ -37,7 +37,7 @@ uses
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
   cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses,
   ManutencaoMaquinaDominio, ManutencaoMaquinaProdutoDominio,
-  ManutencaoMaquinaServicoDominio;
+  ManutencaoMaquinaServicoDominio, cxNavigator, dxSkinsdxRibbonPainter;
 type
   TFrmRel_Manutencao_Maquina = class(TForm)
     cxGrid1: TcxGrid;
@@ -261,40 +261,40 @@ begin
   if (cmbSafra.Text = '') then
   begin
     MMD:= TManutencaoMaquinaDominio.Create(Conexao);
-    if (MMD.Buscar(FPropriedade.Codigo, qryManutencao, Retorno) = 0) and (Retorno <> '') then
+    if (MMD.Buscar(FPropriedade.Codigo, qryManutencao, Retorno) = 0) then
     begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
       Exit;
     end;
   end
   else
   begin
     MMD:= TManutencaoMaquinaDominio.Create(Conexao);
-    if (MMD.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryManutencao, Retorno) = 0) and (Retorno <> '') then
+    if (MMD.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryManutencao, Retorno) = 0) then
     begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
       Exit;
     end;
   end;
 
   MMPD:= TManutencaoMaquinaProdutoDominio.Create(Conexao);
-  if (MMPD.Buscar(qryManutencaoProduto, Retorno) = 0) and (Retorno <> '') then
+  if (MMPD.Buscar(qryManutencaoProduto, Retorno) = 0) then
   begin
-    Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+    Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
     Exit;
   end;
 
   MMSD:= TManutencaoMaquinaServicoDominio.Create(Conexao);
-  if (MMSD.Buscar(qryManutencaoServico, Retorno) = 0) and (Retorno <> '') then
+  if (MMSD.Buscar(qryManutencaoServico, Retorno) = 0) then
   begin
-    Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+    Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
     Exit;
   end;
 
   MMSPR:= TManutencaoMaquinaServicoDominio.Create(Conexao);
-  if (MMSPR.BuscarServicoProximaRevisao(qryManutencaoServicoProxTroca, Retorno) = 0) and (Retorno <> '') then
+  if (MMSPR.BuscarServicoProximaRevisao(qryManutencaoServicoProxTroca, Retorno) = 0) then
   begin
-    Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+    Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
     Exit;
   end;
 
@@ -316,7 +316,7 @@ var
   Retorno: AnsiString;
 begin
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryManutencao, qryManutencaoProduto, qryManutencaoServico, qryManutencaoServicoProxTroca], Conexao);
+  TOperacoesConexao.IniciaQuerys([dm.qrySafra, qryManutencao, qryManutencaoProduto, qryManutencaoServico, qryManutencaoServicoProxTroca], Conexao);
 
   IniDados:= IniciaDadosCadastro.Create;
   IniDados.BuscaDadosSafra(Conexao);

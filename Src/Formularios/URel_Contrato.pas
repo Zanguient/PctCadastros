@@ -35,7 +35,8 @@ uses
   cxDateUtils, cxCalendar, TituloBaixarEntidade, System.Generics.Collections,
   HistoricoMovimentacaoFinanceiraDominio,
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
-  cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses, ContratoDominio;
+  cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses, ContratoDominio,
+  cxNavigator, dxSkinsdxRibbonPainter;
 type
   TFrmRel_Contrato = class(TForm)
     cxGrid1: TcxGrid;
@@ -171,18 +172,18 @@ begin
   if (cmbSafra.Text = '') then
   begin
     FCD:= TContratoDominio.Create(Conexao);
-    if (FCD.Buscar(FPropriedade.Codigo, qryContrato, Retorno) = 0) and (Retorno <> '') then
+    if (FCD.Buscar(FPropriedade.Codigo, qryContrato, Retorno) = 0) then
     begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
       Exit;
     end;
   end
   else
   begin
     FCD:= TContratoDominio.Create(Conexao);
-    if (FCD.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryContrato, Retorno) = 0) and (Retorno <> '') then
+    if (FCD.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryContrato, Retorno) = 0) then
     begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
       Exit;
     end;
   end;

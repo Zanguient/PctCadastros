@@ -9,7 +9,8 @@ uses
   DepartamentoDominio, TipoDocumentoDominio, CondicaoPagamentoDominio,
   ChequeDominio, ContaBancariaDominio, OperacaoBancariaDominio,
   LancamentoBancoDominio, System.Generics.Collections, PluviometroDominio,
-  FolhaPagamentoItensDominio, ItemFolhaPagamentoDominio, PerfilUsuarioDominio;
+  FolhaPagamentoItensDominio, ItemFolhaPagamentoDominio, PerfilUsuarioDominio,
+  TipoBemPatrimonialDominio;
 type
   IniciaDadosCadastro = class
     private
@@ -26,6 +27,7 @@ type
       PlanoFinanceiroDominio: TPlanoFinanceiroDominio;
       DepartamentoDominio: TDepartamentoDominio;
       TipoDocumentoDominio: TTipoDocumentoDominio;
+      TipoBemPatrimonial: TTipoBemPatrimonialDominio;
       CondicaoPagamentoDominio: TCondicaoPagamentoDominio;
       ChequeDominio: TChequeDominio;
       ContaBancariaDominio: TContaBancariaDominio;
@@ -67,6 +69,7 @@ type
       procedure BuscaDadosFuncionario(var Conexao: TADOConnection);
       procedure BuscaDadosPessoa(TipoPessoa: TList<AnsiString>; var Conexao: TADOConnection);
       procedure BuscaDadosPerfilUsuario(var Conexao: TADOConnection);
+      procedure BuscaDadosTipoBemPatrimonial(var Conexao: TADOConnection);
   end;
 implementation
 
@@ -473,6 +476,19 @@ begin
     end;
   finally
 
+  end;
+end;
+
+procedure IniciaDadosCadastro.BuscaDadosTipoBemPatrimonial(
+  var Conexao: TADOConnection);
+var
+  Retorno: AnsiString;
+begin
+  TipoBemPatrimonial:= TTipoBemPatrimonialDominio.Create(Conexao);
+  if (TipoBemPatrimonial.Buscar(dm.qrytipo_bem_patrimonial, Retorno) = 0) and (Retorno <> '') then
+  begin
+    Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+    Exit;
   end;
 end;
 

@@ -2511,7 +2511,6 @@ object FrmRel_Folha_Pagamento: TFrmRel_Folha_Pagamento
     end
   end
   object qryFolha: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -3051,7 +3050,7 @@ object FrmRel_Folha_Pagamento: TFrmRel_Folha_Pagamento
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 42916.485253576390000000
+      ReportDocument.CreationDate = 43019.479501516200000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET
@@ -3077,7 +3076,6 @@ object FrmRel_Folha_Pagamento: TFrmRel_Folha_Pagamento
     end
   end
   object qryFolhaItens: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (

@@ -138,7 +138,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
         Width = 864
         Height = 330
         Cursor = crHandPoint
-        ActivePage = TabSheet5
+        ActivePage = TabSheet2
         Style = tsFlatButtons
         TabOrder = 4
         OnChange = PageControl2Change

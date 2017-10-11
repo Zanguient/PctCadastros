@@ -417,11 +417,12 @@ object FrmDica_Cadastro: TFrmDica_Cadastro
         'Servi'#231'os, Ocorr'#234'ncias, Pluvi'#244'metro, Cidade, Itens para Folha de ' +
         'Pagamento, Opera'#231#245'es Banc'#225'rias, '
       
-        'Departamento, Tipo de Documento, Plano Financeiro, Condi'#231#227'o de P' +
-        'agamento.'
+        'Contas Banc'#225'rias, Departamento, Tipo de Documento, Plano Finance' +
+        'iro, Condi'#231#227'o de Pagamento,'
+      'Perfil de Usu'#225'rio, Usu'#225'rio.'
       ''
       'Os cadastros visualizados apenas na fazenda ativa s'#227'o:'
-      '   b) Ve'#237'culos, Talh'#245'es, Contas Banc'#225'rias, Cheques.'
+      '   b) Ve'#237'culos, Talh'#245'es, Cheques, Patrim'#244'nio.'
       ''
       
         '   c) Todas as movimenta'#231#245'es s'#227'o visualizadas apenas na fazenda ' +

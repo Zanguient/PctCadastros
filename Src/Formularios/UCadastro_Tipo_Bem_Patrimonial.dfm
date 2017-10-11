@@ -1,11 +1,11 @@
-object FrmCadastro_Veiculo: TFrmCadastro_Veiculo
+object FrmCadastro_Tipo_Bem_Patrimonial: TFrmCadastro_Tipo_Bem_Patrimonial
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'Cadastro de M'#225'quinas'
-  ClientHeight = 294
-  ClientWidth = 646
+  Caption = 'Cadastro de Tipos de Bens Patrimoniais'
+  ClientHeight = 251
+  ClientWidth = 597
   Color = clWindow
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -29,8 +29,8 @@ object FrmCadastro_Veiculo: TFrmCadastro_Veiculo
   object PageControl1: TPageControl
     Left = 125
     Top = 0
-    Width = 521
-    Height = 294
+    Width = 472
+    Height = 251
     Cursor = crHandPoint
     ActivePage = TabSheet1
     Align = alClient
@@ -67,113 +67,9 @@ object FrmCadastro_Veiculo: TFrmCadastro_Veiculo
       object LblMarca: TLabel
         Left = 0
         Top = 57
-        Width = 30
+        Width = 55
         Height = 13
-        Caption = 'Placa'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lbl1: TLabel
-        Left = 72
-        Top = 57
-        Width = 69
-        Height = 13
-        Caption = 'Modelo/Ano'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label1: TLabel
-        Left = 0
-        Top = 96
-        Width = 115
-        Height = 13
-        Caption = 'Descri'#231#227'o detalhada'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label2: TLabel
-        Left = 0
-        Top = 134
-        Width = 44
-        Height = 13
-        Caption = 'Entrada'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label3: TLabel
-        Left = 167
-        Top = 134
-        Width = 31
-        Height = 13
-        Caption = 'Sa'#237'da'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label4: TLabel
-        Left = 335
-        Top = 133
-        Width = 32
-        Height = 13
-        Caption = 'Pre'#231'o'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label5: TLabel
-        Left = 0
-        Top = 176
-        Width = 73
-        Height = 13
-        Caption = 'Observa'#231#245'es'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label6: TLabel
-        Left = 88
-        Top = 134
-        Width = 65
-        Height = 13
-        Caption = 'Km Entrada'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label7: TLabel
-        Left = 255
-        Top = 133
-        Width = 52
-        Height = 13
-        Caption = 'Km Sa'#237'da'
+        Caption = 'Descri'#231#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -210,210 +106,18 @@ object FrmCadastro_Veiculo: TFrmCadastro_Veiculo
         OnEnter = MEdtData_CadastroEnter
         OnExit = MEdtData_CadastroExit
       end
-      object EdtPlaca: TEdit
+      object EdtDescricao: TEdit
         Left = 0
         Top = 72
-        Width = 73
+        Width = 249
         Height = 17
         BevelInner = bvNone
         BevelKind = bkFlat
         BevelOuter = bvRaised
         BorderStyle = bsNone
         CharCase = ecUpperCase
-        MaxLength = 20
+        MaxLength = 50
         TabOrder = 2
-      end
-      object EdtModelo: TEdit
-        Left = 72
-        Top = 72
-        Width = 217
-        Height = 17
-        BevelInner = bvNone
-        BevelKind = bkFlat
-        BevelOuter = bvRaised
-        BorderStyle = bsNone
-        CharCase = ecUpperCase
-        MaxLength = 100
-        TabOrder = 3
-      end
-      object EdtDescricao_Detalhada: TEdit
-        Left = 0
-        Top = 111
-        Width = 289
-        Height = 17
-        BevelInner = bvNone
-        BevelKind = bkFlat
-        BevelOuter = bvRaised
-        BorderStyle = bsNone
-        CharCase = ecUpperCase
-        MaxLength = 200
-        TabOrder = 4
-      end
-      object rgCategoria: TcxRadioGroup
-        Left = 304
-        Top = -3
-        Caption = 'Categoria'
-        Properties.Columns = 2
-        Properties.Items = <
-          item
-            Caption = 'M'#193'QUINA'
-          end
-          item
-            Caption = 'IMPLEMENTO'
-          end
-          item
-            Caption = 'VE'#205'CULO'
-          end
-          item
-            Caption = 'UTILIT'#193'RIO'
-          end
-          item
-            Caption = 'OUTRO'
-          end>
-        ItemIndex = 0
-        TabOrder = 12
-        Height = 64
-        Width = 202
-      end
-      object rgStatus: TcxRadioGroup
-        Left = 183
-        Top = -3
-        Caption = 'Status'
-        Properties.Items = <
-          item
-            Caption = 'ATIVO'
-          end
-          item
-            Caption = 'INATIVO'
-          end>
-        ItemIndex = 0
-        TabOrder = 11
-        Height = 52
-        Width = 107
-      end
-      object dateEntrada: TcxDateEdit
-        Left = 0
-        Top = 148
-        Hint = 'Data da entrada da m'#225'quina na propriedade'
-        ParentShowHint = False
-        Properties.DateButtons = [btnClear, btnToday]
-        Properties.EditFormat = 'DD/MM/YYYY'
-        Properties.SaveTime = False
-        Properties.ShowTime = False
-        ShowHint = True
-        TabOrder = 5
-        Width = 90
-      end
-      object dateSaida: TcxDateEdit
-        Left = 167
-        Top = 148
-        Hint = 'Data da sa'#237'da da m'#225'quina na propriedade'
-        ParentShowHint = False
-        Properties.DateButtons = [btnClear, btnToday]
-        Properties.EditFormat = 'DD/MM/YYYY'
-        Properties.SaveTime = False
-        Properties.ShowTime = False
-        ShowHint = True
-        TabOrder = 7
-        Width = 90
-      end
-      object EdtPreco: TEdit
-        Left = 335
-        Top = 148
-        Width = 114
-        Height = 17
-        BevelInner = bvNone
-        BevelKind = bkFlat
-        BevelOuter = bvRaised
-        BorderStyle = bsNone
-        CharCase = ecUpperCase
-        MaxLength = 100
-        TabOrder = 9
-        OnExit = EdtPrecoExit
-        OnKeyPress = EdtPrecoKeyPress
-      end
-      object MMOObservacao: TMemo
-        Left = 0
-        Top = 191
-        Width = 449
-        Height = 66
-        BevelInner = bvNone
-        BevelKind = bkFlat
-        BevelOuter = bvRaised
-        BorderStyle = bsNone
-        CharCase = ecUpperCase
-        MaxLength = 800
-        TabOrder = 10
-      end
-      object EdtKm_Entrada: TEdit
-        Left = 88
-        Top = 149
-        Width = 81
-        Height = 17
-        BevelInner = bvNone
-        BevelKind = bkFlat
-        BevelOuter = bvRaised
-        BorderStyle = bsNone
-        CharCase = ecUpperCase
-        MaxLength = 100
-        TabOrder = 6
-        OnExit = EdtKm_EntradaExit
-        OnKeyPress = EdtKm_EntradaKeyPress
-      end
-      object EdtKm_Saida: TEdit
-        Left = 255
-        Top = 148
-        Width = 81
-        Height = 17
-        BevelInner = bvNone
-        BevelKind = bkFlat
-        BevelOuter = bvRaised
-        BorderStyle = bsNone
-        CharCase = ecUpperCase
-        MaxLength = 100
-        TabOrder = 8
-        OnExit = EdtKm_SaidaExit
-        OnKeyPress = EdtKm_SaidaKeyPress
-      end
-      object rgTipo: TcxRadioGroup
-        Left = 304
-        Top = 60
-        Caption = 'Tipo'
-        Properties.Columns = 2
-        Properties.Items = <
-          item
-            Caption = 'PR'#211'PRIO'
-          end
-          item
-            Caption = 'TERCEIRO'
-          end>
-        ItemIndex = 0
-        TabOrder = 13
-        Height = 37
-        Width = 202
-      end
-      object rgUnidadeTrabalho: TcxRadioGroup
-        Left = 304
-        Top = 96
-        Caption = 'Unidade de Trabalho'
-        Properties.Columns = 4
-        Properties.Items = <
-          item
-            Caption = 'KM'
-          end
-          item
-            Caption = 'HORA'
-          end
-          item
-            Caption = 'DIA'
-          end
-          item
-            Caption = 'NT'
-          end>
-        ItemIndex = 3
-        TabOrder = 14
-        Height = 37
-        Width = 202
       end
     end
     object TabSheet2: TTabSheet
@@ -422,8 +126,8 @@ object FrmCadastro_Veiculo: TFrmCadastro_Veiculo
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
-        Width = 481
-        Height = 257
+        Width = 464
+        Height = 220
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -498,15 +202,12 @@ object FrmCadastro_Veiculo: TFrmCadastro_Veiculo
             DataBinding.FieldName = 'Codigo'
             Options.Editing = False
           end
-          object cxGrid1DBTableView1Placa: TcxGridDBColumn
-            DataBinding.FieldName = 'Placa'
+          object cxGrid1DBTableView1Descricao: TcxGridDBColumn
+            Caption = 'Descri'#231#227'o'
+            DataBinding.FieldName = 'Descricao'
+            RepositoryItem = cxEditRepository1TextItem1
             Options.Editing = False
-            Width = 84
-          end
-          object cxGrid1DBTableView1Modelo: TcxGridDBColumn
-            DataBinding.FieldName = 'Modelo'
-            Options.Editing = False
-            Width = 177
+            Width = 245
           end
           object cxGrid1DBTableView1Data_Cadastro: TcxGridDBColumn
             Caption = 'Data Cadastro'
@@ -525,7 +226,7 @@ object FrmCadastro_Veiculo: TFrmCadastro_Veiculo
     Left = 0
     Top = 0
     Width = 125
-    Height = 294
+    Height = 251
     Align = alLeft
     AutoSize = True
     ButtonHeight = 38
@@ -619,62 +320,24 @@ object FrmCadastro_Veiculo: TFrmCadastro_Veiculo
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      'select * from Cadastro_Veiculo')
-    Left = 360
-    Top = 8
+      'select * from Cadastro_Tipo_Bem_Patrimonial')
+    Left = 312
+    Top = 112
     object qryConsultaCodigo: TIntegerField
       FieldName = 'Codigo'
     end
-    object qryConsultaPlaca: TStringField
-      FieldName = 'Placa'
-    end
-    object qryConsultaModelo: TStringField
-      FieldName = 'Modelo'
-      Size = 100
+    object qryConsultaDescricao: TStringField
+      FieldName = 'Descricao'
+      Size = 50
     end
     object qryConsultaData_Cadastro: TDateTimeField
       FieldName = 'Data_Cadastro'
     end
-    object qryConsultaDescricao_Detalhada: TStringField
-      FieldName = 'Descricao_Detalhada'
-      Size = 200
-    end
-    object qryConsultaData_Entrada: TDateTimeField
-      FieldName = 'Data_Entrada'
-    end
-    object qryConsultaKm_Entrada: TFloatField
-      FieldName = 'Km_Entrada'
-    end
-    object qryConsultaData_Saida: TDateTimeField
-      FieldName = 'Data_Saida'
-    end
-    object qryConsultaKm_Saida: TFloatField
-      FieldName = 'Km_Saida'
-    end
-    object qryConsultaPreco: TFloatField
-      FieldName = 'Preco'
-    end
-    object qryConsultaObservacao: TStringField
-      FieldName = 'Observacao'
-      Size = 800
-    end
-    object qryConsultaStatus: TStringField
-      FieldName = 'Status'
-    end
-    object qryConsultaCategoria: TStringField
-      FieldName = 'Categoria'
-    end
-    object qryConsultaTipo: TStringField
-      FieldName = 'Tipo'
-    end
-    object qryConsultaUnidade_Trabalho: TStringField
-      FieldName = 'Unidade_Trabalho'
-    end
   end
   object dsConsulta: TDataSource
     DataSet = qryConsulta
-    Left = 392
-    Top = 8
+    Left = 344
+    Top = 112
   end
   object cxPropertiesStore1: TcxPropertiesStore
     Components = <
@@ -691,10 +354,17 @@ object FrmCadastro_Veiculo: TFrmCadastro_Veiculo
           'SortOrder'
           'Visible'
           'Width')
+      end
+      item
+        Component = cxGrid1DBTableView1Descricao
+        Properties.Strings = (
+          'SortOrder'
+          'Visible'
+          'Width')
       end>
     StorageName = 'ConfiguraGrid'
-    Left = 264
-    Top = 8
+    Left = 360
+    Top = 48
   end
   object dxComponentPrinter1: TdxComponentPrinter
     CurrentLink = dxComponentPrinter1Link1
@@ -702,11 +372,10 @@ object FrmCadastro_Veiculo: TFrmCadastro_Veiculo
     PreviewOptions.WindowState = wsMaximized
     PrintTitle = 'Impress'#227'o de relat'#243'rio'
     Version = 0
-    Left = 296
-    Top = 8
+    Left = 392
+    Top = 48
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -748,7 +417,6 @@ object FrmCadastro_Veiculo: TFrmCadastro_Veiculo
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False
@@ -758,8 +426,8 @@ object FrmCadastro_Veiculo: TFrmCadastro_Veiculo
     end
   end
   object cxEditRepository1: TcxEditRepository
-    Left = 328
-    Top = 8
+    Left = 424
+    Top = 48
     object cxEditRepository1TextItem1: TcxEditRepositoryTextItem
       Properties.CharCase = ecUpperCase
     end

@@ -2382,7 +2382,6 @@ object FrmRel_Contrato_Venda: TFrmRel_Contrato_Venda
     end
   end
   object qryContrato: TADOQuery
-    Connection = DM.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -2737,7 +2736,7 @@ object FrmRel_Contrato_Venda: TFrmRel_Contrato_Venda
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 42916.430966168980000000
+      ReportDocument.CreationDate = 43019.478308657410000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET

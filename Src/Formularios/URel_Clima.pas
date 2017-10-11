@@ -35,7 +35,8 @@ uses
   cxDateUtils, cxCalendar, TituloBaixarEntidade, System.Generics.Collections,
   HistoricoMovimentacaoFinanceiraDominio,
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
-  cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses, DadosClimaDominio;
+  cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses, DadosClimaDominio,
+  cxNavigator, dxSkinsdxRibbonPainter;
 type
   TFrmRel_Clima = class(TForm)
     cxGrid1: TcxGrid;
@@ -122,7 +123,7 @@ constructor TFrmRel_Clima.Create(FPropriedade: TPropriedadeEntidade;
 begin
   Self.FPropriedade:= FPropriedade;
   Self.FUsuario:= FUsuario;
-  dxComponentPrinter1Link1.ReportTitle.Text:= 'Contratos de Grãos';
+  dxComponentPrinter1Link1.ReportTitle.Text:= 'Dados Climáticos';
   dxComponentPrinter1Link1.ReportTitle.Font.Size:= 14;
   dxComponentPrinter1Link1.OptionsView.FilterBar:= true;
   dxComponentPrinter1Link1.OptionsView.Footers:= true;
@@ -134,7 +135,7 @@ begin
   dxComponentPrinter1Link1.PDFExportOptions.Author:= AutorSistema;
   dxComponentPrinter1Link1.PDFExportOptions.Creator:= AutorSistema;
   dxComponentPrinter1Link1.PDFExportOptions.DefaultFileName:= TituloPadraoRelatorio;
-  dxComponentPrinter1Link1.PDFExportOptions.Title:= 'Contratos de Grãos';
+  dxComponentPrinter1Link1.PDFExportOptions.Title:= 'Dados Climáticos';
   dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Text:= '';
   dxComponentPrinter1Link1.PrinterPage.PageHeader.LeftTitle.Text:= 'Fazenda:  '+FPropriedade.NomeFazenda + #13+
                                                                    'Endereço: '+FPropriedade.Endereco +#13+
@@ -162,18 +163,18 @@ begin
   if (cmbSafra.Text = '') then
   begin
     FCD:= TDadosClimaDominio.Create(Conexao);
-    if (FCD.Buscar(FPropriedade.Codigo, qryClima, Retorno) = 0) and (Retorno <> '') then
+    if (FCD.Buscar(FPropriedade.Codigo, qryClima, Retorno) = 0) then
     begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
       Exit;
     end;
   end
   else
   begin
     FCD:= TDadosClimaDominio.Create(Conexao);
-    if (FCD.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryClima, Retorno) = 0) and (Retorno <> '') then
+    if (FCD.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryClima, Retorno) = 0) then
     begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
       Exit;
     end;
   end;
@@ -194,7 +195,7 @@ var
   Retorno: AnsiString;
 begin
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
-  TOperacoesConexao.IniciaQuerys([qryClima], Conexao);
+  TOperacoesConexao.IniciaQuerys([qryClima, dm.qrySafra], Conexao);
 
   IniDados:= IniciaDadosCadastro.Create;
   IniDados.BuscaDadosSafra(Conexao);

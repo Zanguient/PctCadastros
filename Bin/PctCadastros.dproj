@@ -218,8 +218,8 @@
 			<DCCReference Include="..\Src\Formularios\UCadastro_Talhao.pas">
 				<Form>FrmCadastro_Talhao</Form>
 			</DCCReference>
-			<DCCReference Include="..\Src\Formularios\UCadastro_Veiculo.pas">
-				<Form>FrmCadastro_Veiculo</Form>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Patrimonio.pas">
+				<Form>FrmCadastro_Patrimonio</Form>
 			</DCCReference>
 			<DCCReference Include="..\Src\Entidade\PessoaEntidade.pas"/>
 			<DCCReference Include="..\Src\Dominio\PessoaDominio.pas"/>
@@ -388,8 +388,8 @@
 			<DCCReference Include="..\Src\Formularios\URel_Visao_Geral.pas">
 				<Form>FrmRel_Visao_Geral</Form>
 			</DCCReference>
-			<DCCReference Include="..\Src\Formularios\URel_Clima.pas">
-				<Form>FrmRel_Clima</Form>
+			<DCCReference Include="..\Src\Formularios\URel_Patrimonio.pas">
+				<Form>FrmRel_Patrimonio</Form>
 			</DCCReference>
 			<DCCReference Include="..\Src\Formularios\URel_Estoque_Produto.pas">
 				<Form>FrmRel_Estoque_Produto</Form>
@@ -417,8 +417,21 @@
 			</DCCReference>
 			<DCCReference Include="..\Src\Entidade\PerfilUsuarioEntidade.pas"/>
 			<DCCReference Include="..\Src\Dominio\PerfilUsuarioDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Tipo_Bem_Patrimonial.pas">
+				<Form>FrmCadastro_Tipo_Bem_Patrimonial</Form>
+			</DCCReference>
 			<DCCReference Include="..\Src\Formularios\UCadastro_Atividade.pas">
 				<Form>FrmCadastro_Atividade</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\TipoBemPatrimonialEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\TipoBemPatrimonialDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Veiculo.pas">
+				<Form>FrmCadastro_Veiculo</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\PatrimonioEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\PatrimonioDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\URel_Clima.pas">
+				<Form>FrmRel_Clima</Form>
 			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>

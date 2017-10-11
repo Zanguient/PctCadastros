@@ -146,18 +146,18 @@ begin
   if (CheckBox1.Checked) then
   begin
     FEstoqueProdutoDominio:= TEstoqueProdutoDominio.Create(Conexao);
-    if (FEstoqueProdutoDominio.BuscarEstoque(1, FPropriedade.Codigo, qryEstoque, Retorno) = 0) and (Retorno <> '') then
+    if (FEstoqueProdutoDominio.BuscarEstoque(1, FPropriedade.Codigo, qryEstoque, Retorno) = 0) then
     begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
       Exit;
     end;
   end
   else
   begin
     FEstoqueProdutoDominio:= TEstoqueProdutoDominio.Create(Conexao);
-    if (FEstoqueProdutoDominio.BuscarEstoque(0, FPropriedade.Codigo, qryEstoque, Retorno) = 0) and (Retorno <> '') then
+    if (FEstoqueProdutoDominio.BuscarEstoque(0, FPropriedade.Codigo, qryEstoque, Retorno) = 0) then
     begin
-      Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
       Exit;
     end;
   end;

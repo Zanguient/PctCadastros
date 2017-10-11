@@ -1,9 +1,9 @@
-object FrmRel_Clima: TFrmRel_Clima
+object FrmRel_Patrimonio: TFrmRel_Patrimonio
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Consulta de Dados Clim'#225'ticos'
+  Caption = 'Consulta de Patrim'#244'nios'
   ClientHeight = 432
   ClientWidth = 849
   Color = clWindow
@@ -1446,7 +1446,7 @@ object FrmRel_Clima: TFrmRel_Clima
         Position.RowIndex = 0
       end
     end
-    object cxGrid1DBTableViewEstoque: TcxGridDBTableView
+    object cxGrid1DBTableViewPatrimonio: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = False
       Navigator.Buttons.PriorPage.Visible = False
@@ -1471,8 +1471,18 @@ object FrmRel_Clima: TFrmRel_Clima
       Navigator.Buttons.Filter.Visible = False
       DataController.DataSource = dsClima
       DataController.KeyFieldNames = 'Codigo'
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.DefaultGroupSummaryItems = <
+        item
+          Format = 'R$ 0.00'
+          Kind = skSum
+          Column = cxGrid1DBTableViewPatrimonioValor
+        end>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Format = 'R$ 0.00'
+          Kind = skSum
+          Column = cxGrid1DBTableViewPatrimonioValor
+        end>
       DataController.Summary.SummaryGroups = <>
       OptionsBehavior.FocusFirstCellOnNewRecord = True
       OptionsBehavior.GoToNextCellOnEnter = True
@@ -1488,79 +1498,92 @@ object FrmRel_Clima: TFrmRel_Clima
       OptionsView.GroupSummaryLayout = gslAlignWithColumns
       OptionsView.Indicator = True
       Preview.Visible = True
-      object cxGrid1DBTableViewEstoqueCodigo: TcxGridDBColumn
+      object cxGrid1DBTableViewPatrimonioCodigo: TcxGridDBColumn
         Caption = 'C'#243'digo'
         DataBinding.FieldName = 'Codigo'
-        PropertiesClassName = 'TcxTextEditProperties'
-        Properties.Alignment.Horz = taCenter
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 55
+        Width = 57
       end
-      object cxGrid1DBTableViewEstoquePluviometro: TcxGridDBColumn
-        Caption = 'Pluvi'#244'metro'
-        DataBinding.FieldName = 'Pluviometro'
+      object cxGrid1DBTableViewPatrimonioDescricao: TcxGridDBColumn
+        Caption = 'Descri'#231#227'o'
+        DataBinding.FieldName = 'Descricao'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 150
+        Width = 262
       end
-      object cxGrid1DBTableViewEstoqueSafra: TcxGridDBColumn
-        DataBinding.FieldName = 'Safra'
+      object cxGrid1DBTableViewPatrimonioTipoBem: TcxGridDBColumn
+        Caption = 'Tipo'
+        DataBinding.FieldName = 'TipoBem'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 150
+        Width = 133
       end
-      object cxGrid1DBTableViewEstoqueUmidade: TcxGridDBColumn
-        DataBinding.FieldName = 'Umidade'
-        PropertiesClassName = 'TcxTextEditProperties'
-        Properties.Alignment.Horz = taCenter
+      object cxGrid1DBTableViewPatrimonioIdentificacao: TcxGridDBColumn
+        Caption = 'Identifica'#231#227'o'
+        DataBinding.FieldName = 'Identificacao'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 100
+        Width = 84
       end
-      object cxGrid1DBTableViewEstoqueQuantidade_Chuva: TcxGridDBColumn
-        Caption = 'Qtd. Chuva (mm)'
-        DataBinding.FieldName = 'Quantidade_Chuva'
-        PropertiesClassName = 'TcxTextEditProperties'
-        Properties.Alignment.Horz = taCenter
+      object cxGrid1DBTableViewPatrimonioResponsavel: TcxGridDBColumn
+        Caption = 'Respons'#225'vel'
+        DataBinding.FieldName = 'Responsavel'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 103
+        Width = 210
       end
-      object cxGrid1DBTableViewEstoqueTemperatura_Minima: TcxGridDBColumn
-        Caption = 'Temp. M'#237'nima'
-        DataBinding.FieldName = 'Temperatura_Minima'
-        PropertiesClassName = 'TcxTextEditProperties'
-        Properties.Alignment.Horz = taCenter
+      object cxGrid1DBTableViewPatrimonioStatus: TcxGridDBColumn
+        DataBinding.FieldName = 'Status'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 100
+        Width = 63
       end
-      object cxGrid1DBTableViewEstoqueTemperatura_Maxima: TcxGridDBColumn
-        Caption = 'Temp. M'#225'xima'
-        DataBinding.FieldName = 'Temperatura_Maxima'
-        PropertiesClassName = 'TcxTextEditProperties'
-        Properties.Alignment.Horz = taCenter
+      object cxGrid1DBTableViewPatrimonioTipo: TcxGridDBColumn
+        DataBinding.FieldName = 'Tipo'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 100
+        Width = 73
       end
-      object cxGrid1DBTableViewEstoqueData_Verificacao: TcxGridDBColumn
-        Caption = 'Verifica'#231#227'o'
-        DataBinding.FieldName = 'Data_Verificacao'
+      object cxGrid1DBTableViewPatrimonioValor: TcxGridDBColumn
+        DataBinding.FieldName = 'Valor'
+        PropertiesClassName = 'TcxCurrencyEditProperties'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 70
+        Width = 120
       end
-      object cxGrid1DBTableViewEstoqueData_Cadastro: TcxGridDBColumn
+      object cxGrid1DBTableViewPatrimonioDataCadastro: TcxGridDBColumn
         Caption = 'Cadastro'
-        DataBinding.FieldName = 'Data_Cadastro'
+        DataBinding.FieldName = 'DataCadastro'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
+      end
+      object cxGrid1DBTableViewPatrimonioDataCompra: TcxGridDBColumn
+        Caption = 'Compra'
+        DataBinding.FieldName = 'DataCompra'
+        OnGetDataText = cxGrid1DBTableViewPatrimonioDataCompraGetDataText
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+        Width = 67
+      end
+      object cxGrid1DBTableViewPatrimonioDataVenda: TcxGridDBColumn
+        Caption = 'Venda'
+        DataBinding.FieldName = 'DataVenda'
+        OnGetDataText = cxGrid1DBTableViewPatrimonioDataVendaGetDataText
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+        Width = 67
+      end
+      object cxGrid1DBTableViewPatrimonioObservacao: TcxGridDBColumn
+        Caption = 'Observa'#231#227'o'
+        DataBinding.FieldName = 'Observacao'
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+        Width = 800
       end
     end
     object cxGrid1Level1: TcxGridLevel
-      GridView = cxGrid1DBTableViewEstoque
+      GridView = cxGrid1DBTableViewPatrimonio
     end
   end
   object Panel1: TPanel
@@ -1570,46 +1593,6 @@ object FrmRel_Clima: TFrmRel_Clima
     Height = 36
     Align = alTop
     TabOrder = 1
-    object Label3: TLabel
-      Left = 127
-      Top = 2
-      Width = 30
-      Height = 13
-      Caption = 'Safra'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object cmbSafra: TcxLookupComboBox
-      Left = 127
-      Top = 15
-      Hint = 
-        'Escolha uma safra'#13#10#13#10'* Deixe o campo em branco para pesquisar em' +
-        ' todas as safras.'
-      ParentShowHint = False
-      Properties.CharCase = ecUpperCase
-      Properties.KeyFieldNames = 'Codigo'
-      Properties.ListColumns = <
-        item
-          Caption = 'Descri'#231#227'o'
-          FieldName = 'Descricao'
-        end
-        item
-          Caption = 'C'#243'd.'
-          FieldName = 'Codigo'
-        end>
-      Properties.ListOptions.SyncMode = True
-      Properties.ListSource = DM.dsSafra
-      ShowHint = True
-      Style.BorderColor = clWindow
-      Style.BorderStyle = ebsUltraFlat
-      Style.ButtonStyle = btsDefault
-      TabOrder = 0
-      Width = 167
-    end
     object Panel2: TPanel
       Left = 1
       Top = 1
@@ -1618,7 +1601,7 @@ object FrmRel_Clima: TFrmRel_Clima
       Align = alLeft
       AutoSize = True
       BevelOuter = bvNone
-      TabOrder = 1
+      TabOrder = 0
       object cxImage2: TcxImage
         Left = 37
         Top = -1
@@ -2315,173 +2298,155 @@ object FrmRel_Clima: TFrmRel_Clima
       end
     end
   end
-  object qryClima: TADOQuery
+  object qryPatrimonio: TADOQuery
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
       
-        'select DC.*, CS.Descricao as Safra, CPlu.Descricao as Pluviometr' +
-        'o from Dados_Clima DC'
-      'left join Cadastro_Safra CS on (DC.Codigo_Safra = CS.Codigo)'
+        'select CP.*, CTBP.Descricao as TipoBem from Cadastro_Patrimonio ' +
+        'CP'
       
-        'left join Cadastro_Pluviometro CPlu on (DC.Codigo_Pluviometro = ' +
-        'CPlu.Codigo)')
+        'left join Cadastro_Tipo_Bem_Patrimonial CTBP on (CP.CodigoTipoBe' +
+        'm = CTBP.Codigo)')
     Left = 592
     Top = 8
-    object qryClimaCodigo: TIntegerField
+    object qryPatrimonioCodigo: TIntegerField
       FieldName = 'Codigo'
     end
-    object qryClimaCodigo_Propriedade: TIntegerField
+    object qryPatrimonioCodigo_Propriedade: TIntegerField
       FieldName = 'Codigo_Propriedade'
     end
-    object qryClimaCodigo_Usuario: TIntegerField
+    object qryPatrimonioCodigo_Usuario: TIntegerField
       FieldName = 'Codigo_Usuario'
     end
-    object qryClimaCodigo_Safra: TIntegerField
-      FieldName = 'Codigo_Safra'
+    object qryPatrimonioStatus: TStringField
+      FieldName = 'Status'
     end
-    object qryClimaCodigo_Pluviometro: TIntegerField
-      FieldName = 'Codigo_Pluviometro'
+    object qryPatrimonioTipo: TStringField
+      FieldName = 'Tipo'
     end
-    object qryClimaUmidade: TFloatField
-      FieldName = 'Umidade'
-    end
-    object qryClimaQuantidade_Chuva: TFloatField
-      FieldName = 'Quantidade_Chuva'
-    end
-    object qryClimaTemperatura_Minima: TFloatField
-      FieldName = 'Temperatura_Minima'
-    end
-    object qryClimaTemperatura_Maxima: TFloatField
-      FieldName = 'Temperatura_Maxima'
-    end
-    object qryClimaData_Verificacao: TDateTimeField
-      FieldName = 'Data_Verificacao'
-    end
-    object qryClimaData_Cadastro: TDateTimeField
-      FieldName = 'Data_Cadastro'
-    end
-    object qryClimaSafra: TStringField
-      FieldName = 'Safra'
+    object qryPatrimonioIdentificacao: TStringField
+      FieldName = 'Identificacao'
       Size = 50
     end
-    object qryClimaPluviometro: TStringField
-      FieldName = 'Pluviometro'
+    object qryPatrimonioResponsavel: TStringField
+      FieldName = 'Responsavel'
+      Size = 100
+    end
+    object qryPatrimonioDescricao: TStringField
+      FieldName = 'Descricao'
+      Size = 200
+    end
+    object qryPatrimonioValor: TFloatField
+      FieldName = 'Valor'
+    end
+    object qryPatrimonioDataCadastro: TDateTimeField
+      FieldName = 'DataCadastro'
+    end
+    object qryPatrimonioDataCompra: TDateTimeField
+      FieldName = 'DataCompra'
+    end
+    object qryPatrimonioDataVenda: TDateTimeField
+      FieldName = 'DataVenda'
+    end
+    object qryPatrimonioCodigoTipoBem: TIntegerField
+      FieldName = 'CodigoTipoBem'
+    end
+    object qryPatrimonioObservacao: TStringField
+      FieldName = 'Observacao'
+      Size = 800
+    end
+    object qryPatrimonioTipoBem: TStringField
+      FieldName = 'TipoBem'
       Size = 50
     end
   end
   object dsClima: TDataSource
-    DataSet = qryClima
+    DataSet = qryPatrimonio
     Left = 624
     Top = 8
   end
   object cxPropertiesStore1: TcxPropertiesStore
     Components = <
       item
-        Component = cmbSafra
-        Properties.Strings = (
-          'Align'
-          'AlignWithMargins'
-          'Anchors'
-          'AutoSize'
-          'BeepOnEnter'
-          'Constraints'
-          'Cursor'
-          'CustomHint'
-          'DragCursor'
-          'DragKind'
-          'DragMode'
-          'EditValue'
-          'Enabled'
-          'FakeStyleController'
-          'Height'
-          'HelpContext'
-          'HelpKeyword'
-          'HelpType'
-          'Hint'
-          'ImeMode'
-          'ImeName'
-          'Left'
-          'Margins'
-          'Name'
-          'ParentColor'
-          'ParentCustomHint'
-          'ParentFont'
-          'ParentShowHint'
-          'PopupMenu'
-          'Properties'
-          'RepositoryItem'
-          'ShowHint'
-          'Style'
-          'StyleDisabled'
-          'StyleFocused'
-          'StyleHot'
-          'TabOrder'
-          'TabStop'
-          'Tag'
-          'Top'
-          'Touch'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = cxGrid1DBTableViewEstoqueCodigo
+        Component = cxGrid1DBTableViewPatrimonioCodigo
         Properties.Strings = (
           'SortOrder'
           'Visible'
           'Width')
       end
       item
-        Component = cxGrid1DBTableViewEstoqueData_Cadastro
+        Component = cxGrid1DBTableViewPatrimonioDataCadastro
         Properties.Strings = (
           'SortOrder'
           'Visible'
           'Width')
       end
       item
-        Component = cxGrid1DBTableViewEstoqueData_Verificacao
+        Component = cxGrid1DBTableViewPatrimonioDataCompra
         Properties.Strings = (
           'SortOrder'
           'Visible'
           'Width')
       end
       item
-        Component = cxGrid1DBTableViewEstoquePluviometro
+        Component = cxGrid1DBTableViewPatrimonioDataVenda
         Properties.Strings = (
           'SortOrder'
           'Visible'
           'Width')
       end
       item
-        Component = cxGrid1DBTableViewEstoqueQuantidade_Chuva
+        Component = cxGrid1DBTableViewPatrimonioDescricao
         Properties.Strings = (
           'SortOrder'
           'Visible'
           'Width')
       end
       item
-        Component = cxGrid1DBTableViewEstoqueSafra
+        Component = cxGrid1DBTableViewPatrimonioIdentificacao
         Properties.Strings = (
           'SortOrder'
           'Visible'
           'Width')
       end
       item
-        Component = cxGrid1DBTableViewEstoqueTemperatura_Maxima
+        Component = cxGrid1DBTableViewPatrimonioObservacao
         Properties.Strings = (
           'SortOrder'
           'Visible'
           'Width')
       end
       item
-        Component = cxGrid1DBTableViewEstoqueTemperatura_Minima
+        Component = cxGrid1DBTableViewPatrimonioResponsavel
         Properties.Strings = (
           'SortOrder'
           'Visible'
           'Width')
       end
       item
-        Component = cxGrid1DBTableViewEstoqueUmidade
+        Component = cxGrid1DBTableViewPatrimonioStatus
+        Properties.Strings = (
+          'SortOrder'
+          'Visible'
+          'Width')
+      end
+      item
+        Component = cxGrid1DBTableViewPatrimonioTipo
+        Properties.Strings = (
+          'SortOrder'
+          'Visible'
+          'Width')
+      end
+      item
+        Component = cxGrid1DBTableViewPatrimonioTipoBem
+        Properties.Strings = (
+          'SortOrder'
+          'Visible'
+          'Width')
+      end
+      item
+        Component = cxGrid1DBTableViewPatrimonioValor
         Properties.Strings = (
           'SortOrder'
           'Visible'
@@ -2536,7 +2501,7 @@ object FrmRel_Clima: TFrmRel_Clima
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 43019.477761238430000000
+      ReportDocument.CreationDate = 43019.463510185180000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET

@@ -36,7 +36,8 @@ uses
   HistoricoMovimentacaoFinanceiraDominio,
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
   cxMemo, EstoqueDominio, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses,
-  cxNavigator, dxSkinsdxRibbonPainter;
+  cxNavigator, dxSkinsdxRibbonPainter, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White;
 type
   TFrmRel_Estoque_Grao = class(TForm)
     cxGrid1: TcxGrid;

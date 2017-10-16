@@ -37,7 +37,9 @@ uses
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
   cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses,
   EstoqueProdutoDominio, LancamentoFinanceiroDominio,
-  LancamentoFinanceiroParcelasDominio, cxNavigator, dxSkinsdxRibbonPainter;
+  LancamentoFinanceiroParcelasDominio, cxNavigator, dxSkinsdxRibbonPainter,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White;
 type
   TFrmRel_Lancamento_Financeiro = class(TForm)
     cxGrid1: TcxGrid;

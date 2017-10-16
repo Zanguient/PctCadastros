@@ -24,9 +24,9 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
   TextHeight = 13
   object cxGrid1: TcxGrid
     Left = 0
-    Top = 36
+    Top = 39
     Width = 849
-    Height = 396
+    Height = 393
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -37,6 +37,8 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
     TabOrder = 0
     LookAndFeel.Kind = lfUltraFlat
     LookAndFeel.NativeStyle = False
+    ExplicitTop = 36
+    ExplicitHeight = 396
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = False
@@ -1518,20 +1520,21 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
     Left = 0
     Top = 0
     Width = 849
-    Height = 36
+    Height = 39
     Align = alTop
     TabOrder = 1
     object Panel2: TPanel
       Left = 1
       Top = 1
       Width = 120
-      Height = 34
+      Height = 37
       Align = alLeft
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitTop = 2
       object cxImage2: TcxImage
-        Left = 36
-        Top = -1
+        Left = 37
+        Top = 0
         Cursor = crHandPoint
         Hint = 'Clique para gerar o arquivo PDF da consulta'
         ParentShowHint = False
@@ -1590,8 +1593,8 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
         Width = 40
       end
       object cxImage1: TcxImage
-        Left = 73
-        Top = -1
+        Left = 74
+        Top = 0
         Cursor = crHandPoint
         Hint = 'Clique para imprimir'
         ParentShowHint = False
@@ -1837,8 +1840,8 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
         Width = 40
       end
       object cxImage3: TcxImage
-        Left = -1
-        Top = -1
+        Left = 0
+        Top = 0
         Cursor = crHandPoint
         Hint = 'Clique para pesquisar'
         ParentShowHint = False
@@ -2340,7 +2343,7 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 42977.607575798610000000
+      ReportDocument.CreationDate = 43024.454317141200000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET

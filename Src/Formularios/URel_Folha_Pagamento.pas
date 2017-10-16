@@ -37,7 +37,8 @@ uses
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
   cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses,
   FolhaPagamentoDominio, FolhaPagamentoItensDominio, cxNavigator,
-  dxSkinsdxRibbonPainter;
+  dxSkinsdxRibbonPainter, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White;
 type
   TFrmRel_Folha_Pagamento = class(TForm)
     cxGrid1: TcxGrid;

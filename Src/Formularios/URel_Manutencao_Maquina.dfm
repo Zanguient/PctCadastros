@@ -24,9 +24,9 @@ object FrmRel_Manutencao_Maquina: TFrmRel_Manutencao_Maquina
   TextHeight = 13
   object cxGrid1: TcxGrid
     Left = 0
-    Top = 36
+    Top = 39
     Width = 849
-    Height = 396
+    Height = 393
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -37,6 +37,8 @@ object FrmRel_Manutencao_Maquina: TFrmRel_Manutencao_Maquina
     TabOrder = 0
     LookAndFeel.Kind = lfUltraFlat
     LookAndFeel.NativeStyle = False
+    ExplicitTop = 36
+    ExplicitHeight = 396
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = False
@@ -2032,12 +2034,12 @@ object FrmRel_Manutencao_Maquina: TFrmRel_Manutencao_Maquina
     Left = 0
     Top = 0
     Width = 849
-    Height = 36
+    Height = 39
     Align = alTop
     TabOrder = 1
     object Label3: TLabel
       Left = 127
-      Top = 0
+      Top = 3
       Width = 30
       Height = 13
       Caption = 'Safra'
@@ -2052,13 +2054,14 @@ object FrmRel_Manutencao_Maquina: TFrmRel_Manutencao_Maquina
       Left = 1
       Top = 1
       Width = 120
-      Height = 34
+      Height = 37
       Align = alLeft
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitHeight = 34
       object cxImage2: TcxImage
-        Left = 36
-        Top = -1
+        Left = 37
+        Top = 0
         Cursor = crHandPoint
         Hint = 'Clique para gerar o arquivo PDF da consulta'
         ParentShowHint = False
@@ -2117,8 +2120,8 @@ object FrmRel_Manutencao_Maquina: TFrmRel_Manutencao_Maquina
         Width = 40
       end
       object cxImage1: TcxImage
-        Left = 73
-        Top = -1
+        Left = 74
+        Top = 0
         Cursor = crHandPoint
         Hint = 'Clique para imprimir'
         ParentShowHint = False
@@ -2364,8 +2367,8 @@ object FrmRel_Manutencao_Maquina: TFrmRel_Manutencao_Maquina
         Width = 40
       end
       object cxImage3: TcxImage
-        Left = -1
-        Top = -1
+        Left = 0
+        Top = 0
         Cursor = crHandPoint
         Hint = 'Clique para pesquisar'
         ParentShowHint = False
@@ -2753,7 +2756,7 @@ object FrmRel_Manutencao_Maquina: TFrmRel_Manutencao_Maquina
     end
     object cmbSafra: TcxLookupComboBox
       Left = 127
-      Top = 13
+      Top = 16
       Hint = 'Escolha uma safra'
       ParentShowHint = False
       Properties.CharCase = ecUpperCase
@@ -3268,7 +3271,7 @@ object FrmRel_Manutencao_Maquina: TFrmRel_Manutencao_Maquina
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 43019.479897928240000000
+      ReportDocument.CreationDate = 43024.455034375000000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET

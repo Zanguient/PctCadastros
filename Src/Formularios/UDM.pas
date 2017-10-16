@@ -356,6 +356,7 @@ type
     qrytipo_bem_patrimonialCodigo_Usuario: TIntegerField;
     qrytipo_bem_patrimonialDescricao: TStringField;
     qrytipo_bem_patrimonialData_Cadastro: TDateTimeField;
+    cxStyle2: TcxStyle;
     procedure DataModuleCreate(Sender: TObject);
   private
     Mensagens: TMensagens;

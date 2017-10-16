@@ -138,7 +138,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
         Width = 864
         Height = 330
         Cursor = crHandPoint
-        ActivePage = TabSheet2
+        ActivePage = TabSheet3
         Style = tsFlatButtons
         TabOrder = 4
         OnChange = PageControl2Change
@@ -977,7 +977,13 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               DataController.MasterKeyFieldNames = 'Codigo'
               DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoImmediatePost]
               DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = '0.00'
+                  Kind = skSum
+                  FieldName = 'Custo'
+                  Column = cxGrid2DBBandedTableViewAtividadeProdutoCusto
+                end>
               DataController.Summary.SummaryGroups = <>
               DateTimeHandling.DateFormat = 'DD/MM/YYYY'
               FilterRow.InfoText = 'Clique para definir um filtro'
@@ -987,6 +993,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               OptionsBehavior.GoToNextCellOnEnter = True
               OptionsBehavior.NavigatorHints = True
               OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
+              OptionsView.Footer = True
               OptionsView.GroupByBox = False
               OptionsView.GroupFooters = gfAlwaysVisible
               OptionsView.GroupSummaryLayout = gslAlignWithColumns
@@ -2569,7 +2576,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
         Width = 90
       end
       object cmbSafra: TcxLookupComboBox
-        Left = 0
+        Left = 2
         Top = 68
         Properties.CharCase = ecUpperCase
         Properties.KeyFieldNames = 'Codigo'

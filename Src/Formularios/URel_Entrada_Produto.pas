@@ -37,7 +37,8 @@ uses
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
   cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses,
   EntradaProdutoDominio, EntradaProdutoProdutosDominio, cxNavigator,
-  dxSkinsdxRibbonPainter;
+  dxSkinsdxRibbonPainter, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White;
 type
   TFrmRel_Entrada_Produto = class(TForm)
     cxGrid1: TcxGrid;

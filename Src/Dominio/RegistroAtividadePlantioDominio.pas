@@ -17,6 +17,7 @@ uses
       function Excluir(var Retorno: AnsiString): integer;
       function Buscar(var Query: TADOQuery; var Retorno: AnsiString; IdRegistroAtividades: integer; Tipo: integer): integer;
       function BuscarConsulta(Codigo_Propriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): integer;
+      function BuscarResumo(Codigo_Propriedade, Codigo_Safra: integer; Query: TADOQuery; var Retorno: AnsiString): integer;
       constructor Create(var Conexao: TADOConnection; FPlantio: TRegistroAtividadePlantioEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
       constructor Create(var Conexao: TADOConnection; IdPropriedade: integer); overload;
@@ -82,6 +83,31 @@ begin
                              'left join Cadastro_Talhao CT on (RAP.Codigo_Talhao = CT.Codigo) '+
                              ' where RAP.Codigo_Propriedade = :Codigo_Propriedade order by RAP.Codigo_Registro_Atividade';
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FPlantioDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FPlantioDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TRegistroAtividadePlantioDominio.BuscarResumo(Codigo_Propriedade,
+  Codigo_Safra: integer; Query: TADOQuery; var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select CP.Nome, CT.Descricao_Talhao as Talhao, SUM(RAP.Area_Plantada) as AreaTotal from Registro_Atividade RA'+
+                            ' left join Registro_Atividade_Plantio RAP on (RA.Codigo = RAP.Codigo_Registro_Atividade)'+
+                            ' left join Cadastro_Talhao CT on (RAP.Codigo_Talhao = CT.Codigo)'+
+                            ' left join Cadastro_Pessoa CP on (RA.Codigo_Propriedade = CP.Codigo)'+
+                            ' where RA.Codigo_Safra = :Codigo_Safra and RA.Codigo_Propriedade = :Codigo_Propriedade'+
+                            ' group by CP.Nome, CT.Descricao_Talhao';
+    FComandoSQL.Parametros.Add('Codigo_Safra');
+    FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    FComandoSQL.Valores.Add(Codigo_Safra);
     FComandoSQL.Valores.Add(Codigo_Propriedade);
     FPlantioDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FPlantioDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);

@@ -1,11 +1,11 @@
 ﻿object FrmRel_Visao_Geral: TFrmRel_Visao_Geral
   Left = 0
   Top = 0
-  Align = alClient
+  Align = alCustom
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Vis'#227'o Geral da Safra'
-  ClientHeight = 432
+  ClientHeight = 467
   ClientWidth = 849
   Color = clWindow
   Font.Charset = DEFAULT_CHARSET
@@ -24,1341 +24,16 @@
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object cxGrid1: TcxGrid
-    Left = 0
-    Top = 36
-    Width = 849
-    Height = 396
-    Align = alClient
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 0
-    LookAndFeel.Kind = lfUltraFlat
-    LookAndFeel.NativeStyle = False
-    RootLevelOptions.DetailTabsPosition = dtpTop
-    object cxGrid1DBTableView1: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      Navigator.Buttons.First.Visible = False
-      Navigator.Buttons.PriorPage.Visible = False
-      Navigator.Buttons.Prior.Visible = False
-      Navigator.Buttons.Next.Enabled = False
-      Navigator.Buttons.Next.Visible = False
-      Navigator.Buttons.NextPage.Visible = False
-      Navigator.Buttons.Last.Visible = False
-      Navigator.Buttons.Insert.Enabled = False
-      Navigator.Buttons.Insert.Visible = False
-      Navigator.Buttons.Append.Visible = False
-      Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
-      Navigator.Buttons.Delete.ImageIndex = 2
-      Navigator.Buttons.Delete.Visible = True
-      Navigator.Buttons.Edit.Visible = False
-      Navigator.Buttons.Post.Visible = False
-      Navigator.Buttons.Cancel.Visible = False
-      Navigator.Buttons.Refresh.Visible = False
-      Navigator.Buttons.SaveBookmark.Visible = False
-      Navigator.Buttons.GotoBookmark.Visible = False
-      Navigator.Buttons.Filter.Visible = False
-      Navigator.Visible = True
-      FilterBox.CustomizeButtonAlignment = fbaLeft
-      FilterBox.Position = fpTop
-      FilterBox.Visible = fvNever
-      DataController.Filter.Active = True
-      DataController.Summary.DefaultGroupSummaryItems = <
-        item
-          Format = '#0.0,0'
-          Kind = skSum
-          Position = spFooter
-        end>
-      DataController.Summary.FooterSummaryItems = <
-        item
-          Kind = skCount
-          FieldName = 'Codigo'
-        end>
-      DataController.Summary.SummaryGroups = <>
-      DateTimeHandling.DateFormat = 'DD/MM/YYYY'
-      FilterRow.InfoText = 'Clique para definir um filtro'
-      FilterRow.Visible = True
-      NewItemRow.InfoText = 'Clique para adicionar uma nova linha'
-      NewItemRow.SeparatorColor = clMenu
-      OptionsBehavior.GoToNextCellOnEnter = True
-      OptionsCustomize.ColumnHiding = True
-      OptionsCustomize.ColumnsQuickCustomization = True
-      OptionsCustomize.DataRowSizing = True
-      OptionsSelection.MultiSelect = True
-      OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
-      OptionsView.Footer = True
-      OptionsView.GroupByBox = False
-      OptionsView.GroupFooterMultiSummaries = True
-      OptionsView.GroupFooters = gfAlwaysVisible
-      OptionsView.GroupSummaryLayout = gslAlignWithColumns
-      OptionsView.Indicator = True
-      Preview.Visible = True
-      object cxGrid1DBTableView1Codigo: TcxGridDBColumn
-        Caption = 'C'#243'digo'
-        DataBinding.FieldName = 'Codigo'
-        Options.Editing = False
-        Width = 48
-      end
-      object cxGrid1DBTableView1Codigo_Propriedade: TcxGridDBColumn
-        DataBinding.FieldName = 'Codigo_Propriedade'
-        Visible = False
-        Options.Editing = False
-      end
-      object cxGrid1DBTableView1Numero_Talhao: TcxGridDBColumn
-        Caption = 'N'#186' Talh'#227'o'
-        DataBinding.FieldName = 'Numero_Talhao'
-        Width = 74
-      end
-      object cxGrid1DBTableView1Descricao_Talhao: TcxGridDBColumn
-        Caption = 'Descri'#231#227'o'
-        DataBinding.FieldName = 'Descricao_Talhao'
-        MinWidth = 50
-        Width = 179
-      end
-      object cxGrid1DBTableView1Area: TcxGridDBColumn
-        Caption = #193'rea'
-        DataBinding.FieldName = 'Area'
-        Width = 55
-      end
-      object cxGrid1DBTableView1Data_Cadastro: TcxGridDBColumn
-        Caption = 'Data Cadastro'
-        DataBinding.FieldName = 'Data_Cadastro'
-        Options.Editing = False
-        Width = 89
-      end
-    end
-    object cxGrid1DBTableView2: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-    end
-    object cxGrid1DBTableView3: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-    end
-    object cxGrid1DBTableView4: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-    end
-    object cxGrid1DBTableView6: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
-      DataController.KeyFieldNames = 'Codigo'
-      DataController.MasterKeyFieldNames = 'Codigo'
-      DataController.Summary.DefaultGroupSummaryItems = <
-        item
-          Kind = skSum
-          FieldName = 'Area'
-          Column = cxGrid1DBTableView6Area
-          DisplayText = #193'rea Total'
-        end>
-      DataController.Summary.FooterSummaryItems = <
-        item
-          Kind = skSum
-          FieldName = 'Area'
-          Column = cxGrid1DBTableView6Area
-          DisplayText = #193'rea Total'
-        end>
-      DataController.Summary.SummaryGroups = <>
-      OptionsView.Footer = True
-      OptionsView.GroupFooters = gfAlwaysVisible
-      object cxGrid1DBTableView6Codigo_Registro_Atividade: TcxGridDBColumn
-        Caption = 'C'#243'd.'
-        DataBinding.FieldName = 'Codigo_Registro_Atividade'
-        Options.Editing = False
-      end
-      object cxGrid1DBTableView6Data_Cadastro: TcxGridDBColumn
-        Caption = 'Cadastro'
-        DataBinding.FieldName = 'Data_Cadastro'
-        Options.Editing = False
-        Width = 85
-      end
-      object cxGrid1DBTableView6Data_Inicio_Atividade: TcxGridDBColumn
-        Caption = 'In'#237'cio'
-        DataBinding.FieldName = 'Data_Inicio_Atividade'
-        Options.Editing = False
-        Width = 85
-      end
-      object cxGrid1DBTableView6Data_Fim_Atividade: TcxGridDBColumn
-        Caption = 'Fim'
-        DataBinding.FieldName = 'Data_Fim_Atividade'
-        Options.Editing = False
-        Width = 85
-      end
-      object cxGrid1DBTableView6Atividade: TcxGridDBColumn
-        DataBinding.FieldName = 'Atividade'
-        Options.Editing = False
-        Width = 215
-      end
-      object cxGrid1DBTableView6Talhao: TcxGridDBColumn
-        Caption = 'Talh'#227'o'
-        DataBinding.FieldName = 'Talhao'
-        Options.Editing = False
-        Width = 150
-      end
-      object cxGrid1DBTableView6Area: TcxGridDBColumn
-        Caption = #193'rea'
-        DataBinding.FieldName = 'Area'
-        Options.Editing = False
-        Width = 60
-      end
-      object cxGrid1DBTableView6Produto: TcxGridDBColumn
-        DataBinding.FieldName = 'Produto'
-        Options.Editing = False
-        Width = 212
-      end
-      object cxGrid1DBTableView6Quantidade: TcxGridDBColumn
-        Caption = 'Qtde.'
-        DataBinding.FieldName = 'Quantidade'
-        Options.Editing = False
-        Width = 80
-      end
-      object cxGrid1DBTableView6Unidade: TcxGridDBColumn
-        Caption = 'Un.'
-        DataBinding.FieldName = 'Unidade'
-        Options.Editing = False
-        Width = 43
-      end
-      object cxGrid1DBTableView6Custo: TcxGridDBColumn
-        DataBinding.FieldName = 'Custo'
-        Options.Editing = False
-        Width = 120
-      end
-      object cxGrid1DBTableView6Observacao: TcxGridDBColumn
-        Caption = 'Observa'#231#245'es'
-        DataBinding.FieldName = 'Observacao'
-        Options.Editing = False
-        Width = 500
-      end
-    end
-    object cxGrid1DBTableView7: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
-      DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
-      DataController.MasterKeyFieldNames = 'Codigo'
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      object cxGrid1DBTableView7Codigo_Registro_Atividade: TcxGridDBColumn
-        Caption = 'C'#243'd.'
-        DataBinding.FieldName = 'Codigo_Registro_Atividade'
-        Options.Editing = False
-      end
-      object cxGrid1DBTableView7Variedade: TcxGridDBColumn
-        DataBinding.FieldName = 'Variedade'
-        Options.Editing = False
-      end
-      object cxGrid1DBTableView7Data_Plantio: TcxGridDBColumn
-        Caption = 'Plantio'
-        DataBinding.FieldName = 'Data_Plantio'
-        Options.Editing = False
-      end
-      object cxGrid1DBTableView7Observacao: TcxGridDBColumn
-        Caption = 'Observa'#231#245'es'
-        DataBinding.FieldName = 'Observacao'
-        Options.Editing = False
-      end
-    end
-    object cxGrid1DBTableView8: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
-      DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
-      DataController.MasterKeyFieldNames = 'Codigo'
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      object cxGrid1DBTableView8Codigo: TcxGridDBColumn
-        DataBinding.FieldName = 'Codigo'
-      end
-      object cxGrid1DBTableView8Codigo_Registro_Atividade: TcxGridDBColumn
-        DataBinding.FieldName = 'Codigo_Registro_Atividade'
-      end
-      object cxGrid1DBTableView8Codigo_Variedade: TcxGridDBColumn
-        DataBinding.FieldName = 'Codigo_Variedade'
-      end
-      object cxGrid1DBTableView8Observacao: TcxGridDBColumn
-        DataBinding.FieldName = 'Observacao'
-      end
-      object cxGrid1DBTableView8Data_Plantio: TcxGridDBColumn
-        DataBinding.FieldName = 'Data_Plantio'
-      end
-      object cxGrid1DBTableView8Variedade: TcxGridDBColumn
-        DataBinding.FieldName = 'Variedade'
-      end
-    end
-    object cxGrid1DBTableView9: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
-      DataController.KeyFieldNames = 'Codigo'
-      DataController.MasterKeyFieldNames = 'Codigo'
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      object cxGrid1DBTableView9Codigo_Registro_Atividade: TcxGridDBColumn
-        Caption = 'C'#243'd.'
-        DataBinding.FieldName = 'Codigo_Registro_Atividade'
-      end
-      object cxGrid1DBTableView9Data_Cadastro: TcxGridDBColumn
-        Caption = 'Cadastro'
-        DataBinding.FieldName = 'Data_Cadastro'
-        Width = 85
-      end
-      object cxGrid1DBTableView9Data_Inicio_Plantio: TcxGridDBColumn
-        Caption = 'In'#237'cio'
-        DataBinding.FieldName = 'Data_Inicio_Plantio'
-        Width = 85
-      end
-      object cxGrid1DBTableView9Data_Fim_Plantio: TcxGridDBColumn
-        Caption = 'Fim'
-        DataBinding.FieldName = 'Data_Fim_Plantio'
-        Width = 85
-      end
-      object cxGrid1DBTableView9Talhao: TcxGridDBColumn
-        Caption = 'Talh'#227'o'
-        DataBinding.FieldName = 'Talhao'
-        Width = 150
-      end
-      object cxGrid1DBTableView9Area: TcxGridDBColumn
-        Caption = #193'rea'
-        DataBinding.FieldName = 'Area'
-        Width = 60
-      end
-      object cxGrid1DBTableView9Variedade: TcxGridDBColumn
-        DataBinding.FieldName = 'Variedade'
-        Width = 227
-      end
-      object cxGrid1DBTableView9Observacao: TcxGridDBColumn
-        Caption = 'Observa'#231#245'es'
-        DataBinding.FieldName = 'Observacao'
-        Width = 500
-      end
-    end
-    object cxGrid1DBTableView10: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
-      DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
-      DataController.MasterKeyFieldNames = 'Codigo'
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      object cxGrid1DBTableView10Codigo_Registro_Atividade: TcxGridDBColumn
-        Caption = 'C'#243'd.'
-        DataBinding.FieldName = 'Codigo_Registro_Atividade'
-      end
-      object cxGrid1DBTableView10Data_Cadastro: TcxGridDBColumn
-        Caption = 'Cadastro'
-        DataBinding.FieldName = 'Data_Cadastro'
-        Width = 70
-      end
-      object cxGrid1DBTableView10Data_Inicio_Plantio: TcxGridDBColumn
-        Caption = 'In'#237'cio'
-        DataBinding.FieldName = 'Data_Inicio_Plantio'
-        Width = 70
-      end
-      object cxGrid1DBTableView10Data_Fim_Plantio: TcxGridDBColumn
-        Caption = 'Fim'
-        DataBinding.FieldName = 'Data_Fim_Plantio'
-        Width = 70
-      end
-      object cxGrid1DBTableView10Talhao: TcxGridDBColumn
-        Caption = 'Talh'#227'o'
-        DataBinding.FieldName = 'Talhao'
-        Width = 150
-      end
-      object cxGrid1DBTableView10Area: TcxGridDBColumn
-        Caption = #193'rea'
-        DataBinding.FieldName = 'Area'
-        Width = 60
-      end
-      object cxGrid1DBTableView10Variedade: TcxGridDBColumn
-        DataBinding.FieldName = 'Variedade'
-        Width = 158
-      end
-      object cxGrid1DBTableView10Observacao: TcxGridDBColumn
-        Caption = 'Observa'#231#227'o'
-        DataBinding.FieldName = 'Observacao'
-        Width = 500
-      end
-    end
-    object cxGrid1DBTableView11: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      object cxGrid1DBTableView11Codigo: TcxGridDBColumn
-        DataBinding.FieldName = 'Codigo'
-      end
-      object cxGrid1DBTableView11Codigo_Registro_Atividade: TcxGridDBColumn
-        DataBinding.FieldName = 'Codigo_Registro_Atividade'
-      end
-      object cxGrid1DBTableView11Codigo_Variedade: TcxGridDBColumn
-        DataBinding.FieldName = 'Codigo_Variedade'
-      end
-      object cxGrid1DBTableView11Observacao: TcxGridDBColumn
-        DataBinding.FieldName = 'Observacao'
-      end
-      object cxGrid1DBTableView11Variedade: TcxGridDBColumn
-        DataBinding.FieldName = 'Variedade'
-      end
-      object cxGrid1DBTableView11Codigo_Talhao: TcxGridDBColumn
-        DataBinding.FieldName = 'Codigo_Talhao'
-      end
-      object cxGrid1DBTableView11Data_Cadastro: TcxGridDBColumn
-        DataBinding.FieldName = 'Data_Cadastro'
-      end
-      object cxGrid1DBTableView11Data_Inicio_Plantio: TcxGridDBColumn
-        DataBinding.FieldName = 'Data_Inicio_Plantio'
-      end
-      object cxGrid1DBTableView11Data_Fim_Plantio: TcxGridDBColumn
-        DataBinding.FieldName = 'Data_Fim_Plantio'
-      end
-      object cxGrid1DBTableView11Talhao: TcxGridDBColumn
-        DataBinding.FieldName = 'Talhao'
-      end
-      object cxGrid1DBTableView11Area: TcxGridDBColumn
-        DataBinding.FieldName = 'Area'
-      end
-    end
-    object cxGrid1DBTableView12: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
-      DataController.KeyFieldNames = 'Codigo'
-      DataController.MasterKeyFieldNames = 'Codigo'
-      DataController.Summary.DefaultGroupSummaryItems = <
-        item
-          Kind = skSum
-          FieldName = 'Area'
-          Column = cxGrid1DBTableView12Area
-          DisplayText = #193'rea Total'
-        end>
-      DataController.Summary.FooterSummaryItems = <
-        item
-          Kind = skSum
-          FieldName = 'Area'
-          Column = cxGrid1DBTableView12Area
-          DisplayText = #193'rea Total'
-        end>
-      DataController.Summary.SummaryGroups = <>
-      OptionsView.Footer = True
-      OptionsView.GroupFooters = gfAlwaysVisible
-      object cxGrid1DBTableView12Codigo_Registro_Atividade: TcxGridDBColumn
-        Caption = 'C'#243'd.'
-        DataBinding.FieldName = 'Codigo_Registro_Atividade'
-        Options.Editing = False
-      end
-      object cxGrid1DBTableView12Data_Cadastro: TcxGridDBColumn
-        Caption = 'Cadastro'
-        DataBinding.FieldName = 'Data_Cadastro'
-        Options.Editing = False
-        Width = 70
-      end
-      object cxGrid1DBTableView12Data_Inicio_Plantio: TcxGridDBColumn
-        Caption = 'In'#237'cio'
-        DataBinding.FieldName = 'Data_Inicio_Plantio'
-        Options.Editing = False
-        Width = 70
-      end
-      object cxGrid1DBTableView12Data_Fim_Plantio: TcxGridDBColumn
-        Caption = 'Fim'
-        DataBinding.FieldName = 'Data_Fim_Plantio'
-        Options.Editing = False
-        Width = 70
-      end
-      object cxGrid1DBTableView12Talhao: TcxGridDBColumn
-        Caption = 'Talh'#227'o'
-        DataBinding.FieldName = 'Talhao'
-        Options.Editing = False
-        Width = 150
-      end
-      object cxGrid1DBTableView12Area: TcxGridDBColumn
-        Caption = #193'rea'
-        DataBinding.FieldName = 'Area'
-        Options.Editing = False
-        Width = 60
-      end
-      object cxGrid1DBTableView12Variedade: TcxGridDBColumn
-        DataBinding.FieldName = 'Variedade'
-        Options.Editing = False
-        Width = 151
-      end
-      object cxGrid1DBTableView12Observacao: TcxGridDBColumn
-        DataBinding.FieldName = 'Observacao'
-        Options.Editing = False
-        Width = 500
-      end
-    end
-    object cxGrid1DBTableView13: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
-      DataController.KeyFieldNames = 'Codigo'
-      DataController.MasterKeyFieldNames = 'Codigo'
-      DataController.Summary.DefaultGroupSummaryItems = <
-        item
-          Kind = skSum
-          FieldName = 'Area'
-          Column = cxGrid1DBTableView13Area
-          DisplayText = #193'rea Total'
-        end>
-      DataController.Summary.FooterSummaryItems = <
-        item
-          Kind = skSum
-          FieldName = 'Area'
-          Column = cxGrid1DBTableView13Area
-          DisplayText = #193'rea Total'
-        end>
-      DataController.Summary.SummaryGroups = <>
-      OptionsBehavior.GoToNextCellOnEnter = True
-      OptionsBehavior.NavigatorHints = True
-      OptionsView.Footer = True
-      OptionsView.GroupFooters = gfAlwaysVisible
-      object cxGrid1DBTableView13Codigo_Registro_Atividade: TcxGridDBColumn
-        Caption = 'C'#243'd.'
-        DataBinding.FieldName = 'Codigo_Registro_Atividade'
-      end
-      object cxGrid1DBTableView13Data_Cadastro: TcxGridDBColumn
-        Caption = 'Cadastro'
-        DataBinding.FieldName = 'Data_Cadastro'
-        Width = 70
-      end
-      object cxGrid1DBTableView13Data_Inicio_Colheita: TcxGridDBColumn
-        Caption = 'In'#237'cio'
-        DataBinding.FieldName = 'Data_Inicio_Colheita'
-        Width = 70
-      end
-      object cxGrid1DBTableView13Data_Fim_Colheita: TcxGridDBColumn
-        Caption = 'Fim'
-        DataBinding.FieldName = 'Data_Fim_Colheita'
-        Width = 70
-      end
-      object cxGrid1DBTableView13Data_Emissao_Romaneio: TcxGridDBColumn
-        Caption = 'Emiss'#227'o Romaneio'
-        DataBinding.FieldName = 'Data_Emissao_Romaneio'
-        Width = 93
-      end
-      object cxGrid1DBTableView13NRomaneio: TcxGridDBColumn
-        Caption = 'N'#186' Romaneio'
-        DataBinding.FieldName = 'NRomaneio'
-        Width = 70
-      end
-      object cxGrid1DBTableView13Talhao: TcxGridDBColumn
-        Caption = 'Talh'#227'o'
-        DataBinding.FieldName = 'Talhao'
-        Width = 150
-      end
-      object cxGrid1DBTableView13Area: TcxGridDBColumn
-        Caption = #193'rea'
-        DataBinding.FieldName = 'Area'
-        Width = 60
-      end
-      object cxGrid1DBTableView13Motorista: TcxGridDBColumn
-        DataBinding.FieldName = 'Motorista'
-        Width = 200
-      end
-      object cxGrid1DBTableView13Veiculo: TcxGridDBColumn
-        Caption = 'Ve'#237'culo'
-        DataBinding.FieldName = 'Veiculo'
-        Width = 200
-      end
-      object cxGrid1DBTableView13Transportadora: TcxGridDBColumn
-        DataBinding.FieldName = 'Transportadora'
-        Width = 200
-      end
-      object cxGrid1DBTableView13Armazem: TcxGridDBColumn
-        Caption = 'Armaz'#233'm'
-        DataBinding.FieldName = 'Armazem'
-        Width = 200
-      end
-      object cxGrid1DBTableView13Produto: TcxGridDBColumn
-        DataBinding.FieldName = 'Produto'
-        Width = 200
-      end
-      object cxGrid1DBTableView13Produtor: TcxGridDBColumn
-        DataBinding.FieldName = 'Produtor'
-        Width = 200
-      end
-      object cxGrid1DBTableView13Depositante: TcxGridDBColumn
-        DataBinding.FieldName = 'Depositante'
-        Width = 200
-      end
-      object cxGrid1DBTableView13PesoBruto: TcxGridDBColumn
-        Caption = 'Peso Bruto'
-        DataBinding.FieldName = 'PesoBruto'
-        Width = 100
-      end
-      object cxGrid1DBTableView13Tara: TcxGridDBColumn
-        DataBinding.FieldName = 'Tara'
-        Width = 100
-      end
-      object cxGrid1DBTableView13LiquidoUmido: TcxGridDBColumn
-        Caption = 'L'#237'quido '#218'mido'
-        DataBinding.FieldName = 'LiquidoUmido'
-        Width = 100
-      end
-      object cxGrid1DBTableView13Descontos: TcxGridDBColumn
-        DataBinding.FieldName = 'Descontos'
-        Width = 100
-      end
-      object cxGrid1DBTableView13LiquidoSeco: TcxGridDBColumn
-        Caption = 'L'#237'quido Seco'
-        DataBinding.FieldName = 'LiquidoSeco'
-        Width = 100
-      end
-      object cxGrid1DBTableView13PrecoFrete: TcxGridDBColumn
-        Caption = 'Pre'#231'o Frete'
-        DataBinding.FieldName = 'PrecoFrete'
-        Width = 100
-      end
-      object cxGrid1DBTableView13Observacoes: TcxGridDBColumn
-        DataBinding.FieldName = 'Observacoes'
-        Width = 500
-      end
-    end
-    object cxGrid1DBBandedTableViewAtividades: TcxGridDBBandedTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DataSource = dsAtividades
-      DataController.KeyFieldNames = 'Codigo'
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <
-        item
-        end>
-      DataController.Summary.SummaryGroups = <>
-      OptionsCustomize.ColumnsQuickCustomization = True
-      OptionsView.Footer = True
-      Bands = <
-        item
-          Caption = 'Atividades Realizadas'
-          HeaderAlignmentHorz = taLeftJustify
-          Styles.Header = DM.cxStyle1
-        end>
-      object cxGrid1DBBandedTableViewAtividadesAtividade: TcxGridDBBandedColumn
-        DataBinding.FieldName = 'Atividade'
-        Options.Editing = False
-        Width = 220
-        Position.BandIndex = 0
-        Position.ColIndex = 0
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewAtividadesTipo_Atividade: TcxGridDBBandedColumn
-        Caption = 'Tipo'
-        DataBinding.FieldName = 'Tipo_Atividade'
-        Options.Editing = False
-        Width = 94
-        Position.BandIndex = 0
-        Position.ColIndex = 1
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewAtividadesData_Inicio_Atividade: TcxGridDBBandedColumn
-        Caption = 'In'#237'cio'
-        DataBinding.FieldName = 'Data_Inicio_Atividade'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 2
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewAtividadesData_Fim_Atividade: TcxGridDBBandedColumn
-        Caption = 'Fim'
-        DataBinding.FieldName = 'Data_Fim_Atividade'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 3
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewAtividadesData_Cadastro: TcxGridDBBandedColumn
-        Caption = 'Cadastro'
-        DataBinding.FieldName = 'Data_Cadastro'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 4
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewAtividadesObservacao: TcxGridDBBandedColumn
-        Caption = 'Observa'#231#245'es'
-        DataBinding.FieldName = 'Observacao'
-        Options.Editing = False
-        Width = 600
-        Position.BandIndex = 0
-        Position.ColIndex = 5
-        Position.RowIndex = 0
-      end
-    end
-    object cxGrid1DBBandedTableViewPlantis: TcxGridDBBandedTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DataSource = dsPlantis
-      DataController.KeyFieldNames = 'Codigo'
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <
-        item
-          Kind = skSum
-          Column = cxGrid1DBBandedTableViewPlantisAreaTotal
-        end
-        item
-          Kind = skSum
-          Column = cxGrid1DBBandedTableViewPlantisArea_Plantada
-        end>
-      DataController.Summary.SummaryGroups = <>
-      OptionsCustomize.ColumnsQuickCustomization = True
-      OptionsView.Footer = True
-      Bands = <
-        item
-          Caption = 'Plantios Realizados'
-          HeaderAlignmentHorz = taLeftJustify
-          Styles.Header = DM.cxStyle1
-        end>
-      object cxGrid1DBBandedTableViewPlantisTalho: TcxGridDBBandedColumn
-        DataBinding.FieldName = 'Talh'#227'o'
-        Options.Editing = False
-        Width = 167
-        Position.BandIndex = 0
-        Position.ColIndex = 0
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewPlantisVariedade: TcxGridDBBandedColumn
-        DataBinding.FieldName = 'Variedade'
-        Options.Editing = False
-        Width = 107
-        Position.BandIndex = 0
-        Position.ColIndex = 1
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewPlantisData_Plantio: TcxGridDBBandedColumn
-        Caption = 'Plantio'
-        DataBinding.FieldName = 'Data_Plantio'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 2
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewPlantisData_Inicio_Plantio: TcxGridDBBandedColumn
-        Caption = 'In'#237'cio'
-        DataBinding.FieldName = 'Data_Inicio_Plantio'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 3
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewPlantisData_Fim_Plantio: TcxGridDBBandedColumn
-        Caption = 'Fim'
-        DataBinding.FieldName = 'Data_Fim_Plantio'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 4
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewPlantisData_Cadastro: TcxGridDBBandedColumn
-        Caption = 'Cadastro'
-        DataBinding.FieldName = 'Data_Cadastro'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 5
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewPlantisAreaTotal: TcxGridDBBandedColumn
-        Caption = #193'rea Total'
-        DataBinding.FieldName = 'AreaTotal'
-        Options.Editing = False
-        Width = 72
-        Position.BandIndex = 0
-        Position.ColIndex = 6
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewPlantisArea_Plantada: TcxGridDBBandedColumn
-        Caption = #193'rea Plantada'
-        DataBinding.FieldName = 'Area_Plantada'
-        Options.Editing = False
-        Width = 72
-        Position.BandIndex = 0
-        Position.ColIndex = 7
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewPlantisStand_Plantio: TcxGridDBBandedColumn
-        Caption = 'Stand Plantio'
-        DataBinding.FieldName = 'Stand_Plantio'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 8
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewPlantisStand_Inicial: TcxGridDBBandedColumn
-        Caption = 'Stand Inicial'
-        DataBinding.FieldName = 'Stand_Inicial'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 9
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewPlantisData_Stand_Inicial: TcxGridDBBandedColumn
-        Caption = 'Data Stand Inicial'
-        DataBinding.FieldName = 'Data_Stand_Inicial'
-        Options.Editing = False
-        Width = 90
-        Position.BandIndex = 0
-        Position.ColIndex = 10
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewPlantisStand_Final: TcxGridDBBandedColumn
-        Caption = 'Stand Final'
-        DataBinding.FieldName = 'Stand_Final'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 11
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewPlantisData_Stand_Final: TcxGridDBBandedColumn
-        Caption = 'Data Stand Final'
-        DataBinding.FieldName = 'Data_Stand_Final'
-        Options.Editing = False
-        Width = 90
-        Position.BandIndex = 0
-        Position.ColIndex = 12
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewPlantisObservacao: TcxGridDBBandedColumn
-        Caption = 'Observa'#231#245'es'
-        DataBinding.FieldName = 'Observacao'
-        Options.Editing = False
-        Width = 600
-        Position.BandIndex = 0
-        Position.ColIndex = 13
-        Position.RowIndex = 0
-      end
-    end
-    object cxGrid1DBBandedTableViewRomaneios: TcxGridDBBandedTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DataSource = dsRomaneios
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <
-        item
-          Kind = skSum
-          Column = cxGrid1DBBandedTableViewRomaneiosPesoBruto
-        end
-        item
-          Kind = skSum
-          Column = cxGrid1DBBandedTableViewRomaneiosLiquidoUmido
-        end
-        item
-          Kind = skSum
-          Column = cxGrid1DBBandedTableViewRomaneiosDescontos
-        end
-        item
-          Kind = skSum
-          Column = cxGrid1DBBandedTableViewRomaneiosLiquidoSeco
-        end
-        item
-          Kind = skCount
-          Column = cxGrid1DBBandedTableViewRomaneiosNRomaneio
-        end>
-      DataController.Summary.SummaryGroups = <>
-      OptionsCustomize.ColumnsQuickCustomization = True
-      OptionsView.Footer = True
-      Bands = <
-        item
-          Caption = 'Romaneios'
-          HeaderAlignmentHorz = taLeftJustify
-          Styles.Header = DM.cxStyle1
-        end>
-      object cxGrid1DBBandedTableViewRomaneiosNRomaneio: TcxGridDBBandedColumn
-        Caption = 'N'#186' Romaneio'
-        DataBinding.FieldName = 'NRomaneio'
-        Options.Editing = False
-        Width = 71
-        Position.BandIndex = 0
-        Position.ColIndex = 0
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewRomaneiosData_Inicio_Colheita: TcxGridDBBandedColumn
-        Caption = 'Ini. Colheita'
-        DataBinding.FieldName = 'Data_Inicio_Colheita'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 1
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewRomaneiosData_Fim_Colheita: TcxGridDBBandedColumn
-        Caption = 'Fim Colheita'
-        DataBinding.FieldName = 'Data_Fim_Colheita'
-        Options.Editing = False
-        Width = 90
-        Position.BandIndex = 0
-        Position.ColIndex = 2
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewRomaneiosData_Emissao_Romaneio: TcxGridDBBandedColumn
-        Caption = 'Emiss'#227'o Rom.'
-        DataBinding.FieldName = 'Data_Emissao_Romaneio'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 3
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewRomaneiosData_Cadastro: TcxGridDBBandedColumn
-        Caption = 'Cadastro'
-        DataBinding.FieldName = 'Data_Cadastro'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 4
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewRomaneiosTalhao: TcxGridDBBandedColumn
-        Caption = 'Talh'#227'o'
-        DataBinding.FieldName = 'Talhao'
-        Options.Editing = False
-        Width = 156
-        Position.BandIndex = 0
-        Position.ColIndex = 5
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewRomaneiosProduto: TcxGridDBBandedColumn
-        DataBinding.FieldName = 'Produto'
-        Options.Editing = False
-        Width = 150
-        Position.BandIndex = 0
-        Position.ColIndex = 6
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewRomaneiosProdutor: TcxGridDBBandedColumn
-        DataBinding.FieldName = 'Produtor'
-        Options.Editing = False
-        Width = 200
-        Position.BandIndex = 0
-        Position.ColIndex = 7
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewRomaneiosDepositante: TcxGridDBBandedColumn
-        DataBinding.FieldName = 'Depositante'
-        Options.Editing = False
-        Width = 200
-        Position.BandIndex = 0
-        Position.ColIndex = 8
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewRomaneiosArmazem: TcxGridDBBandedColumn
-        DataBinding.FieldName = 'Armazem'
-        Options.Editing = False
-        Width = 200
-        Position.BandIndex = 0
-        Position.ColIndex = 9
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewRomaneiosPesoBruto: TcxGridDBBandedColumn
-        Caption = 'Peso Bruto'
-        DataBinding.FieldName = 'PesoBruto'
-        Options.Editing = False
-        Width = 100
-        Position.BandIndex = 0
-        Position.ColIndex = 10
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewRomaneiosTara: TcxGridDBBandedColumn
-        DataBinding.FieldName = 'Tara'
-        Options.Editing = False
-        Width = 100
-        Position.BandIndex = 0
-        Position.ColIndex = 11
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewRomaneiosLiquidoUmido: TcxGridDBBandedColumn
-        Caption = 'Liquido Umido'
-        DataBinding.FieldName = 'LiquidoUmido'
-        Options.Editing = False
-        Width = 100
-        Position.BandIndex = 0
-        Position.ColIndex = 12
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewRomaneiosDescontos: TcxGridDBBandedColumn
-        DataBinding.FieldName = 'Descontos'
-        Options.Editing = False
-        Width = 100
-        Position.BandIndex = 0
-        Position.ColIndex = 13
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewRomaneiosLiquidoSeco: TcxGridDBBandedColumn
-        Caption = 'Liquido Seco'
-        DataBinding.FieldName = 'LiquidoSeco'
-        Options.Editing = False
-        Width = 100
-        Position.BandIndex = 0
-        Position.ColIndex = 14
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewRomaneiosPrecoFrete: TcxGridDBBandedColumn
-        Caption = 'Pre'#231'o Frete'
-        DataBinding.FieldName = 'PrecoFrete'
-        PropertiesClassName = 'TcxCurrencyEditProperties'
-        Options.Editing = False
-        Width = 100
-        Position.BandIndex = 0
-        Position.ColIndex = 15
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewRomaneiosObservacoes: TcxGridDBBandedColumn
-        Caption = 'Observa'#231#245'es'
-        DataBinding.FieldName = 'Observacoes'
-        Options.Editing = False
-        Width = 600
-        Position.BandIndex = 0
-        Position.ColIndex = 16
-        Position.RowIndex = 0
-      end
-    end
-    object cxGrid1DBBandedTableViewManutencoes: TcxGridDBBandedTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DataSource = dsManutencoes
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <
-        item
-          Kind = skSum
-          Column = cxGrid1DBBandedTableViewManutencoesPreco_Total
-        end>
-      DataController.Summary.SummaryGroups = <>
-      OptionsCustomize.ColumnsQuickCustomization = True
-      OptionsView.Footer = True
-      Bands = <
-        item
-          Caption = 'Manuten'#231#245'es Realizadas'
-          HeaderAlignmentHorz = taLeftJustify
-          Styles.Header = DM.cxStyle1
-        end>
-      object cxGrid1DBBandedTableViewManutencoesMaquina: TcxGridDBBandedColumn
-        Caption = 'M'#225'quina'
-        DataBinding.FieldName = 'Maquina'
-        Options.Editing = False
-        Width = 200
-        Position.BandIndex = 0
-        Position.ColIndex = 0
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewManutencoesTipo_Atividade: TcxGridDBBandedColumn
-        Caption = 'Tipo'
-        DataBinding.FieldName = 'Tipo_Atividade'
-        Options.Editing = False
-        Width = 90
-        Position.BandIndex = 0
-        Position.ColIndex = 1
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewManutencoesUT_Inicial: TcxGridDBBandedColumn
-        AlternateCaption = 'Unidade de Trabalho Inicial'
-        Caption = 'U.T Inicial'
-        DataBinding.FieldName = 'UT_Inicial'
-        Options.Editing = False
-        Position.BandIndex = 0
-        Position.ColIndex = 2
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewManutencoesUT_Final: TcxGridDBBandedColumn
-        AlternateCaption = 'Unidade de Trabalho Final'
-        Caption = 'U.T Final'
-        DataBinding.FieldName = 'UT_Final'
-        Options.Editing = False
-        Position.BandIndex = 0
-        Position.ColIndex = 3
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewManutencoesPreco_UT: TcxGridDBBandedColumn
-        AlternateCaption = 'Pre'#231'o por Unidade de Trabalho'
-        Caption = 'Pre'#231'o U.T'
-        DataBinding.FieldName = 'Preco_UT'
-        PropertiesClassName = 'TcxCurrencyEditProperties'
-        Options.Editing = False
-        Width = 100
-        Position.BandIndex = 0
-        Position.ColIndex = 4
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewManutencoesPreco_Total: TcxGridDBBandedColumn
-        Caption = 'Pre'#231'o Total'
-        DataBinding.FieldName = 'Preco_Total'
-        PropertiesClassName = 'TcxCurrencyEditProperties'
-        Options.Editing = False
-        Width = 100
-        Position.BandIndex = 0
-        Position.ColIndex = 5
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewManutencoesData_Trabalho_Inicial: TcxGridDBBandedColumn
-        Caption = 'Inicio'
-        DataBinding.FieldName = 'Data_Trabalho_Inicial'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 6
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewManutencoesData_Trabalho_Final: TcxGridDBBandedColumn
-        Caption = 'Fim'
-        DataBinding.FieldName = 'Data_Trabalho_Final'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 7
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewManutencoesData_Cadastro: TcxGridDBBandedColumn
-        Caption = 'Cadastro'
-        DataBinding.FieldName = 'Data_Cadastro'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 8
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableViewManutencoesObservacao: TcxGridDBBandedColumn
-        Caption = 'Observa'#231#245'es'
-        DataBinding.FieldName = 'Observacao'
-        Options.Editing = False
-        Width = 600
-        Position.BandIndex = 0
-        Position.ColIndex = 9
-        Position.RowIndex = 0
-      end
-    end
-    object cxGrid1DBBandedTableView1: TcxGridDBBandedTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DataSource = dsAtividadesProdutos
-      DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
-      DataController.KeyFieldNames = 'Codigo'
-      DataController.MasterKeyFieldNames = 'Codigo'
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <
-        item
-          Format = 'R$ #0.0,0'
-          Kind = skSum
-          Column = cxGrid1DBBandedTableView1Custo
-        end>
-      DataController.Summary.SummaryGroups = <>
-      OptionsCustomize.ColumnsQuickCustomization = True
-      OptionsView.Footer = True
-      Bands = <
-        item
-          Caption = 'Insumos utilizados'
-          HeaderAlignmentHorz = taLeftJustify
-          Styles.Header = DM.cxStyle1
-        end>
-      object cxGrid1DBBandedTableView1Produto: TcxGridDBBandedColumn
-        DataBinding.FieldName = 'Produto'
-        Options.Editing = False
-        Width = 232
-        Position.BandIndex = 0
-        Position.ColIndex = 0
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableView1Quantidade: TcxGridDBBandedColumn
-        DataBinding.FieldName = 'Quantidade'
-        Options.Editing = False
-        Width = 67
-        Position.BandIndex = 0
-        Position.ColIndex = 1
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableView1Unidade: TcxGridDBBandedColumn
-        DataBinding.FieldName = 'Unidade'
-        Options.Editing = False
-        Width = 48
-        Position.BandIndex = 0
-        Position.ColIndex = 2
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableView1Custo: TcxGridDBBandedColumn
-        DataBinding.FieldName = 'Custo'
-        PropertiesClassName = 'TcxCurrencyEditProperties'
-        Options.Editing = False
-        Width = 120
-        Position.BandIndex = 0
-        Position.ColIndex = 3
-        Position.RowIndex = 0
-      end
-    end
-    object cxGrid1DBBandedTableView2: TcxGridDBBandedTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DataSource = dsAtividadesTalhao
-      DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
-      DataController.KeyFieldNames = 'Codigo'
-      DataController.MasterKeyFieldNames = 'Codigo'
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      OptionsCustomize.ColumnsQuickCustomization = True
-      OptionsView.Footer = True
-      Bands = <
-        item
-          Caption = 'Talh'#245'es aplicados'
-          HeaderAlignmentHorz = taLeftJustify
-          Styles.Header = DM.cxStyle1
-        end>
-      object cxGrid1DBBandedTableView2Talhao: TcxGridDBBandedColumn
-        Caption = 'Talh'#227'o'
-        DataBinding.FieldName = 'Talhao'
-        Options.Editing = False
-        Width = 211
-        Position.BandIndex = 0
-        Position.ColIndex = 0
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableView2AreaTotal: TcxGridDBBandedColumn
-        Caption = #193'rea Total'
-        DataBinding.FieldName = 'AreaTotal'
-        Options.Editing = False
-        Width = 100
-        Position.BandIndex = 0
-        Position.ColIndex = 1
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableView2Area: TcxGridDBBandedColumn
-        Caption = #193'rea Aplicada'
-        DataBinding.FieldName = 'Area'
-        Options.Editing = False
-        Width = 100
-        Position.BandIndex = 0
-        Position.ColIndex = 2
-        Position.RowIndex = 0
-      end
-    end
-    object cxGrid1DBBandedTableView3: TcxGridDBBandedTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DataSource = dsPlantioOcorrencia
-      DataController.DetailKeyFieldNames = 'Codigo_Plantio'
-      DataController.KeyFieldNames = 'Codigo'
-      DataController.MasterKeyFieldNames = 'Codigo'
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      OptionsCustomize.ColumnsQuickCustomization = True
-      OptionsView.Footer = True
-      Bands = <
-        item
-          Caption = 'Ocorr'#234'ncias'
-          HeaderAlignmentHorz = taLeftJustify
-          Styles.Header = DM.cxStyle1
-        end>
-      object cxGrid1DBBandedTableView3Ocorrencia: TcxGridDBBandedColumn
-        DataBinding.FieldName = 'Ocorrencia'
-        Options.Editing = False
-        Width = 100
-        Position.BandIndex = 0
-        Position.ColIndex = 0
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableView3Intensidade: TcxGridDBBandedColumn
-        DataBinding.FieldName = 'Intensidade'
-        Options.Editing = False
-        Width = 95
-        Position.BandIndex = 0
-        Position.ColIndex = 1
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableView3Area_Analisada: TcxGridDBBandedColumn
-        Caption = #193'rea Analisada'
-        DataBinding.FieldName = 'Area_Analisada'
-        Options.Editing = False
-        Width = 77
-        Position.BandIndex = 0
-        Position.ColIndex = 2
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableView3Estadio: TcxGridDBBandedColumn
-        DataBinding.FieldName = 'Estadio'
-        Options.Editing = False
-        Width = 75
-        Position.BandIndex = 0
-        Position.ColIndex = 3
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableView3Data_Ocorrencia: TcxGridDBBandedColumn
-        Caption = 'Ocorr'#234'ncia'
-        DataBinding.FieldName = 'Data_Ocorrencia'
-        Options.Editing = False
-        Width = 70
-        Position.BandIndex = 0
-        Position.ColIndex = 4
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableView3Dias_Plantio: TcxGridDBBandedColumn
-        Caption = 'Dias Ap'#243's Plantio'
-        DataBinding.FieldName = 'Dias_Plantio'
-        Options.Editing = False
-        Width = 86
-        Position.BandIndex = 0
-        Position.ColIndex = 5
-        Position.RowIndex = 0
-      end
-      object cxGrid1DBBandedTableView3Observacao: TcxGridDBBandedColumn
-        Caption = 'Observa'#231#245'es'
-        DataBinding.FieldName = 'Observacao'
-        Options.Editing = False
-        Width = 600
-        Position.BandIndex = 0
-        Position.ColIndex = 6
-        Position.RowIndex = 0
-      end
-    end
-    object cxGrid1Level1: TcxGridLevel
-      Caption = 'Atividades'
-      GridView = cxGrid1DBBandedTableViewAtividades
-      Options.DetailTabsPosition = dtpTop
-      object cxGrid1Level5: TcxGridLevel
-        Caption = 'Insumos'
-        GridView = cxGrid1DBBandedTableView1
-        Options.DetailTabsPosition = dtpTop
-      end
-      object cxGrid1Level6: TcxGridLevel
-        Caption = 'Talh'#245'es'
-        GridView = cxGrid1DBBandedTableView2
-      end
-    end
-    object cxGrid1Level2: TcxGridLevel
-      Caption = 'Plantios'
-      GridView = cxGrid1DBBandedTableViewPlantis
-      Options.DetailTabsPosition = dtpTop
-      object cxGrid1Level7: TcxGridLevel
-        Caption = 'Ocorr'#234'ncias'
-        GridView = cxGrid1DBBandedTableView3
-      end
-    end
-    object cxGrid1Level3: TcxGridLevel
-      Caption = 'Colheita'
-      GridView = cxGrid1DBBandedTableViewRomaneios
-      Options.DetailTabsPosition = dtpTop
-    end
-    object cxGrid1Level4: TcxGridLevel
-      Caption = 'Manuten'#231#245'es'
-      GridView = cxGrid1DBBandedTableViewManutencoes
-      Options.DetailTabsPosition = dtpTop
-    end
-  end
   object Panel1: TPanel
     Left = 0
     Top = 0
     Width = 849
-    Height = 36
+    Height = 39
     Align = alTop
     TabOrder = 1
     object Label3: TLabel
-      Left = 127
-      Top = 2
+      Left = 159
+      Top = 3
       Width = 30
       Height = 13
       Caption = 'Safra'
@@ -1370,8 +45,8 @@
       ParentFont = False
     end
     object cmbSafra: TcxLookupComboBox
-      Left = 127
-      Top = 15
+      Left = 159
+      Top = 16
       Hint = 'Escolha uma safra'
       ParentShowHint = False
       Properties.CharCase = ecUpperCase
@@ -1397,15 +72,15 @@
     object Panel2: TPanel
       Left = 1
       Top = 1
-      Width = 114
-      Height = 34
+      Width = 151
+      Height = 37
       Align = alLeft
       AutoSize = True
       BevelOuter = bvNone
       TabOrder = 1
       object cxImage2: TcxImage
         Left = 37
-        Top = -1
+        Top = 0
         Cursor = crHandPoint
         Hint = 'Clique para gerar o arquivo PDF da consulta'
         ParentShowHint = False
@@ -1465,9 +140,9 @@
       end
       object cxImage1: TcxImage
         Left = 74
-        Top = -1
+        Top = 0
         Cursor = crHandPoint
-        Hint = 'Clique para imprimir'
+        Hint = 'Clique para imprimir as atividades da safra'
         ParentShowHint = False
         Picture.Data = {
           055449636F6E0000010003003030000001000800A80E00003600000020200000
@@ -1712,7 +387,7 @@
       end
       object cxImage3: TcxImage
         Left = 0
-        Top = -1
+        Top = 0
         Cursor = crHandPoint
         Hint = 'Clique para pesquisar'
         ParentShowHint = False
@@ -2097,6 +772,13498 @@
         Height = 36
         Width = 40
       end
+      object cxImage4: TcxImage
+        Left = 111
+        Top = 0
+        Cursor = crHandPoint
+        Hint = 'Clique para imprimir os custos da safra'
+        ParentShowHint = False
+        Picture.Data = {
+          055449636F6E0000010003003030000001000800A80E00003600000020200000
+          01000800A8080000DE0E00001010000001000800680500008617000028000000
+          3000000060000000010008000000000000090000000000000000000000000000
+          0000000000000000FFFFFF00867DA4009383A20091819E0062616200B28E9D00
+          B6909C007F727400AB8E9100A88385006F4A4A00976666007B565600684A4A00
+          382828008C696900937373004A3A3A00594646006A545400725F5F004D424200
+          1F1C1C00BEAEAE003A383800B8B3B3003E3D3D004948480043424200FFFEFE00
+          F2F1F1007F605F00A27573007E6665009D868500E6D8D700C0948F0084666300
+          836F6D00AE817B00B58B8500716968008578760099939200665C5A0050484600
+          59514F00FCEAE600AFA7A500FCF3F100FFC5B600CB9E9200FDD7CD00FCE5DF00
+          A59A9700FFB49C00FFD4C600D9BFB700EBE1DE00EEDBD400AFA19C00F4E3DD00
+          C0BAB80097786B00CFB6AC0091827C00FFD2BB00DACCC500D4AC9600E0B69D00
+          DBD6D300FFC59E00FEE4D200E6D5CA005C595700E6E3E100FFCDA800E3C0A500
+          F2D8C500EED9CA00FFFBF800BDA49000B29E8D00FCD7B700FFF0E200F1C9A200
+          FFD6AD00FFD7B100FFDAB400FFDCB900FFDEBE00FFE0C200F2D6BA00FFE2C500
+          BFAE9E00FFEBD700FFEBD800FFECD900FFEEDD00B3ACA500F2E9E000CCC7C200
+          FFFAF50077757300CCCBCA00FFE0BF00E7CEB200FFE5CA00FFE7CD00756A5E00
+          FFE9D200FFF4E800FFF5EA00FFF7EE00FED3A100F2E5D600FFF9F200FED7A500
+          F0D5B100FFDBA900F1D4A90066646100FFDFAE00FFE3B300FFEFD200FFF3DE00
+          FFEFCF00F6E1B400FFECC200E8D9B700FBF3E100FAF6ED00FFE9B600EEE0BE00
+          F1E8D200FFEDBB00FFF1C700F2E8C900FFFEFB00FFF1BE00EEE5C600FFF6D500
+          FAF7EA00FFF5C200FFF7CC00FFF9D700FFF8C600FFFADA00FFFAC800FFFBCF00
+          FFFEEB00FFFDCA00FFFFCD00FFFFD200FFFFD600FFFFDC00FFFFE300FFFFF200
+          FFFFF500FFFFFE004D745A0073A38300687B6E005DDD880057B0750000000000
+          5EC4FF00A1B4BE006A7D89004B91BF00A4AAAE004FB3FB00415564003D506000
+          93A5B4003E94EC0051575D00417CC3005A6FAE00696D79007D7D7E0067676800
+          FDFDFD00FAFAFA00F7F7F700F5F5F500F2F2F200F1F1F100EFEFEF00EDEDED00
+          EAEAEA00E9E9E900E7E7E700E4E4E400E2E2E200E1E1E100DEDEDE00DDDDDD00
+          DADADA00D8D8D800D6D6D600D4D4D400D3D3D300D1D1D100CFCFCF00CCCCCC00
+          CACACA00C9C9C900C6C6C600C2C2C200C0C0C000BFBFBF00BDBDBD00BABABA00
+          B9B9B900B6B6B600B4B4B400B2B2B200B0B0B000AEAEAE00ADADAD00AAAAAA00
+          A9A9A900A7A7A700A5A5A500A2A2A200A0A0A0009E9E9E009999990095959500
+          929292008E8E8E00898989008686860083838300818181007A7A7A0077777700
+          7575750073737300707070006E6E6E006A6A6A00656565005F5F5F005C5C5C00
+          5B5B5B0059595900525252004E4E4E0036363600333333003030300028282800
+          0F0F0F00A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6EFEFEFA6A6A6A6A6A6A6A6A6A6
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6
+          A6A6EFEFF1EDEFEFEFA6A6A6EFEFEEEDEFEFA6A6A6A6A6A6A6A6A6A6A6A6A6A6
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6EFEF19FCFDFCF9F3EFEFEFEF1DFDFCFD
+          FAF3EFEFA6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6EFEF
+          1DFB1DEF1BFBFBFD1BF61DFC2D25BFE5FAFD1CB6EFEFA6A6A6A6A6A6A6A6A6A6
+          A6A6A6A6A6A6A6A6A6A6A6A6EFEFF9FB1DE6C1CCDEEAF8FBFBFC142934250101
+          01D9F4FD1BF5B5EFA6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6EFEFEF1919EC
+          C6BBBDCDDBDAD9E1EE0A342542EDE9D3BC0101C7EC1BFBF7EFEFA6A6A6A6A6A6
+          A6A6A6A6A6A6A6A6A6EFEF1B1BF3D0BABBBDBECEDCDBDAD9D82927F7F4F1EDEB
+          E8DEC7B801BBE01CFDF9F2EFA6A6A6A6A6A6A6A6A6A6A6EFEFFA1BF9D9B9BABB
+          BDBEBFD0DDDCDBDAD9F61DF9F7F4F1EDEBE8E5DECEBC0101CEF0FD1CF0A6A6A6
+          A6A6A6A6A6A6EFB61B1CE4B8B9BABBBDBEBFC1D1DFDDDCDBDA051B1DF9F7F4F1
+          EDEBE8E5E1DBD2C2B701C1E51BA6A6A6A6A6A6A6A6EF1D1DE9BCB8B9BABBBDBE
+          BFC1C2D1E0DFDDDCDBDAE1EBF7F9F7F4F1EDEBE8E5E1DBD6D1C4BA0119A6A6A6
+          A6A6A6A6EF1DF1C6B7B8B9BABBBDBEBFC1C2C2D2E1E0DFDDDCDBDAD9D8DEE8F1
+          F4F1EDEBE8E5E1DBD6D9E6F21BA6A6A6A6A6A6A6051D01B7B8B9BABBBDBEBFC1
+          C2C2CCE7E5E1E0DFDDDCDBDAD9D8D8D7DBE5B5EDEBE8ECF4B61C1B1BF1A6A6A6
+          A6A6A6A6051CB7B8B9BABBBDBEBFC1C2CEE6F4F4F4F2EBE7DFDDDCDBDAD9D8D8
+          D7D6D5D8E3F4FCFCE169EC1CF1A6A6A6A6A6A6A6051CB8B9BABBBDBEBFC1D1EA
+          F4EBD8D6E5E9F1F4F3ECE6DCDBDAD9D8D8D7D6D5D3D2D6E8D9D0E91CF1A6A6A6
+          A6A6A6A6051CB9BABBBDBEBFD8EAF4E6D4C7C8D7E4E3E2E3E8EDF4F3B5E6DDD9
+          D8D8D7D6D5D3D2D6E4DAE91CF1A6A6A6A6A6A6A605FABABBBDBED7EEF4E6CCC6
+          C7C8CAD8E4E4E3E2E1E1E2E6ECF3F4B5E5DBD8D7D6D5D3A3A4A5EEFAF1A6A6A6
+          A6A6A6A605FABBC1DAEEF2E1C7C4C6C7C8CACBC3C3D0D8E1E2E1E1E0DFDDE5EA
+          F1F4EFE6DBD6D5A3A4A4F4FAF1A6A6A6A6A6A6A605F1DEF1EED8C6C2C4C6C7C8
+          CACBC9BDBEBFBFBFC8D2DBE1E0DFDDDCDBE2E8EFF4EEE7E7A1A1EEFAF1A6A6A6
+          A6A6A6A605F6B5D7C1C2C2C4C6C7C8CACBCDC1BDBDBEBFBFBFC0C1C5CDD4DDDD
+          DCDBDAD9DEE6EDF4F1E8B5F9F1A6A6A6A6A6A6A605EDBFC1C2C2C4C6C7C8CACB
+          CDC6BCBDDCDFD7CEC4BFC0C1C1C1C2C7D0D7DBDAD9D8D8D9E5ECF6F9F1A6A6A6
+          A6A6A6A605EDC1C2C2C4C6C7C8CACBCDCABCBCCFD7BDC5D0DCE2D8CCC3C1C1C2
+          C2C2C5CBD1D7D8D8D7D6E9F9F1A6A6A6A6A6A6A605EDC2C2C4C6C7C8CACBCDCD
+          BEBBCCDEBFBDBDBDBEBFC9D2DDDFD6CDC4C2C2C3C4C4C8CED2D7E9F8EFA6A6A6
+          A6A6A6A605EDC2C4C6C7C8CACBCDCDBDBACBDEBEBCBCBDBDBDBEBFBFBFC2CDD6
+          E0E0D4CCC3C4C4C4C5C6E6F8A6A6A6A6A6A6A6A60505C8C6C7C8CACBCDCDBDB9
+          CEDBBDBBBBBCBCBDBDBDBEBFBFBFC0C1C1C4CED8E2DED5CBC4C5F3F9A6A6A6A6
+          A6A6A6A6A605E8C7C8CACBCDC9BCC4D8E7C7BABABBBBBCBCBDBDBDBEBFBFBFC0
+          C1C1C1C2C2C7D1E5C6DBF7A6A6A6A6A6A6A6A6A6A6A6F5EBD8CE69CBCFDCE7ED
+          E6B5F3E9E1D4C4BCBCBDBDBDBEBFBFBFC0C1C1C1C2C2D4D5C7F4F4A6A6A6A6A6
+          A6A6A6A6A6A6A60505B6F3EAE1E1D2C5D2DDDBDEE4E7B5F2E9DED1C6BDBEBFBF
+          BFC0C1C1C1D0DDC7EDF5A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6F1D7BFBFBFBF
+          D1E0DDDBD9D7D5D3D9E1E7EDEEE7DFCFC3BFC0C2D6D8C8ED05A6A6A6A6A6A6A6
+          A6A6A6A6A6A6A6A6A6A6F0CDBBBBBBBBD9E3E1DDDBD9D7D5D3D1CFCDCBD6DFE7
+          F3D1D1DDCDDDF3EEA6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6F3C5B8B8B732
+          32BDC1CBD1D4D9D7D5D3D1CFCDCBC8C6B5E4DDE3F2F2A6A6A6A6A6A6A6A6A6A6
+          A6A6A6A6A6A6A6A6A6A6EDE31A34383838383333353051BEC2C7CCD0CFCDCBC8
+          F4F7EFE4A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A62B29734D
+          48483838383838383339495584BBC0CEF6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6
+          A6A6A6A6A6A6A6A6A6A6A6A61134585858585858584D4D4D48484848483423ED
+          EDA6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6104E5959
+          59595959595959595959595857282DA6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6
+          A6A6A6A6A6A6A6A6A6A6A6A60C545A5A5A5A5A5A5A5A5A5A5A5A5A5A5A212AA6
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6215C5C5C
+          5C5C5C5C5C5C5C5C5C5C5C5C5B0C2AA6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6
+          A6A6A6A6A6A6A6A6A6A6A642295E5E5E5E5E5E5E5E5E5E5E5E5E5E5E6B0D2AA6
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A610456D6D6D
+          6D6D6D6D6D6D6D6D6D6D6D6D4514A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6
+          A6A6A6A6A6A6A6A6A6A6A60C4F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F2515A6A6
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6102160606060
+          6060606060606060606060602115A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6
+          A6A6A6A6A6A6A6A6A6A61034636363636363636363636363636363500DA6A6A6
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A60C5055555555
+          55555555555555555555554115A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6
+          A6A6A6A6A6A6A6A6A6112170707070707070707070707070707070210DA6A6A6
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6103A7272727272
+          727272727272727272724A0DA6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6
+          A6A6A6A6A6A6A6A6272875757575757575757575757575757567290DA6A6A6A6
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A627213B515151515151
+          5151515151515151514420A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6
+          A6A6A6A6A6A6270C0C41413A242424BE1E1E1E1E1E1E1E1E3B10A6A6A6A6A6A6
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A60C0C0C0C0C0C0C0C
+          0C0C0C0C0C0C0C0C0CA6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6
+          A6A6A6A6FFFE3FFFFFFF0000FFFC0703FFFF0000FFF00000FFFF0000FFC00000
+          3FFF0000FF0000000FFF0000FC00000003FF0000F800000000FF0000E0000000
+          007F0000C0000000007F000080000000007F000000000000007F000000000000
+          007F000000000000007F000000000000007F000000000000007F000000000000
+          007F000000000000007F000000000000007F000000000000007F000000000000
+          007F000000000000007F000000000000007F00000000000000FF000000000000
+          00FF00008000000001FF0000C000000001FF0000E000000003FF0000FC000000
+          07FF0000FC0000000FFF0000FC0000003FFF0000FC000000FFFF0000FF000007
+          FFFF0000FF000007FFFF0000FF00001FFFFF0000FF00001FFFFF0000FF00001F
+          FFFF0000FE00001FFFFF0000FE00003FFFFF0000FE00003FFFFF0000FC00003F
+          FFFF0000FC00007FFFFF0000FC00007FFFFF0000F800007FFFFF0000F80000FF
+          FFFF0000F00000FFFFFF0000E00001FFFFFF0000C00003FFFFFF0000F00007FF
+          FFFF000028000000200000004000000001000800000000000004000000000000
+          00000000000000000000000000000000FFFFFF00867DA4009383A20091819E00
+          62616200B28E9D00B6909C007F727400AB8E9100A88385006F4A4A0097666600
+          7B565600684A4A00382828008C696900937373004A3A3A00594646006A545400
+          725F5F004D4242001F1C1C00BEAEAE003A383800B8B3B3003E3D3D0049484800
+          43424200FFFEFE00F2F1F1007F605F00A27573007E6665009D868500E6D8D700
+          C0948F0084666300836F6D00AE817B00B58B8500716968008578760099939200
+          665C5A005048460059514F00FCEAE600AFA7A500FCF3F100FFC5B600CB9E9200
+          FDD7CD00FCE5DF00A59A9700FFB49C00FFD4C600D9BFB700EBE1DE00EEDBD400
+          AFA19C00F4E3DD00C0BAB80097786B00CFB6AC0091827C00FFD2BB00DACCC500
+          D4AC9600E0B69D00DBD6D300FFC59E00FEE4D200E6D5CA005C595700E6E3E100
+          FFCDA800E3C0A500F2D8C500EED9CA00FFFBF800BDA49000B29E8D00FCD7B700
+          FFF0E200F1C9A200FFD6AD00FFD7B100FFDAB400FFDCB900FFDEBE00FFE0C200
+          F2D6BA00FFE2C500BFAE9E00FFEBD700FFEBD800FFECD900FFEEDD00B3ACA500
+          F2E9E000CCC7C200FFFAF50077757300CCCBCA00FFE0BF00E7CEB200FFE5CA00
+          FFE7CD00756A5E00FFE9D200FFF4E800FFF5EA00FFF7EE00FED3A100F2E5D600
+          FFF9F200FED7A500F0D5B100FFDBA900F1D4A90066646100FFDFAE00FFE3B300
+          FFEFD200FFF3DE00FFEFCF00F6E1B400FFECC200E8D9B700FBF3E100FAF6ED00
+          FFE9B600EEE0BE00F1E8D200FFEDBB00FFF1C700F2E8C900FFFEFB00FFF1BE00
+          EEE5C600FFF6D500FAF7EA00FFF5C200FFF7CC00FFF9D700FFF8C600FFFADA00
+          FFFAC800FFFBCF00FFFEEB00FFFDCA00FFFFCD00FFFFD200FFFFD600FFFFDC00
+          FFFFE300FFFFF200FFFFF500FFFFFE004D745A0073A38300687B6E005DDD8800
+          57B07500000000005EC4FF00A1B4BE006A7D89004B91BF00A4AAAE004FB3FB00
+          415564003D50600093A5B4003E94EC0051575D00417CC3005A6FAE00696D7900
+          7D7D7E0067676800FDFDFD00FAFAFA00F7F7F700F5F5F500F2F2F200F1F1F100
+          EFEFEF00EDEDED00EAEAEA00E9E9E900E7E7E700E4E4E400E2E2E200E1E1E100
+          DEDEDE00DDDDDD00DADADA00D8D8D800D6D6D600D4D4D400D3D3D300D1D1D100
+          CFCFCF00CCCCCC00CACACA00C9C9C900C6C6C600C2C2C200C0C0C000BFBFBF00
+          BDBDBD00BABABA00B9B9B900B6B6B600B4B4B400B2B2B200B0B0B000AEAEAE00
+          ADADAD00AAAAAA00A9A9A900A7A7A700A5A5A500A2A2A200A0A0A0009E9E9E00
+          9999990095959500929292008E8E8E0089898900868686008383830081818100
+          7A7A7A00777777007575750073737300707070006E6E6E006A6A6A0065656500
+          5F5F5F005C5C5C005B5B5B0059595900525252004E4E4E003636360033333300
+          30303000282828000F0F0F00A6A6A6A6A6A6A6A6A6A6A605050505A6A6A605F4
+          0505A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6F4051D1BF205F4051B1B
+          05F405A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A605051B1BF6FBFC1B1B192231
+          1B1B1B05F4A6A6A6A6A6A6A6A6A6A6A6A6A605F41B1DE6BBD3E2F2FA22250747
+          01C1B51B1BB605A6A6A6A6A6A6A6A6A605051B19EBBFBBBDD5DBD9180A27F1B5
+          E5CBBBBBE01B1DF405A6A6A6A6A6A6F4051BF2C9B9BBBDBFD6DDDBDE1BF9F5F1
+          B5E8E4D1BF01CE1B1D05A6A6A6A6051B1BD2B8B9BBBDBFC1D8DEDDDBE9F2F8F5
+          F1B5E8E4DBD1C1B81B05A6A6A6A605E21EB8B9BBBDBFC1C3DEE0DEDDDBD9D8E5
+          EBEFB5E8E4E0E8F11BF4A6A6A6A605CCB8B9BBBDBFC1D9EFF4EDE9E2DDDBD9D8
+          D7D8E2E7FAFCD7EE1B05A6A6A6A605CDB9BBBDC4E0EEE7D2DDE8ECF2F0E8E0D9
+          D8D7D5D4D2E3D0E91D05A6A6A6A60569BBC2DFEEE6CDC7C9D9E4E2E1E5EBF0EF
+          E9E0D7D5D4A2A5EE1D05A6A6A6A605D8E5F2E1C7C5C7C9CBBFC4CDD7DFE0DEE1
+          E8EFF1E9DDA2A5F41D05A6A6A6A605EED7C1C3C5C7C9CCC5BDC3BFBFC0C7D1D8
+          DDDBDCE5EC05F4ED1D05A6A6A6A6F6C8C1C3C5C7C9CCCABCD4D7D9D7CCC2C1C1
+          C4CDD2D8D8D9E2F01C05A6A6A6A6F5C1C3C5C7C9CCCDBDCCD1BDBDC0CBD5DAD6
+          CDC4C2C4C8CED2E9FA05A6A6A6A6F3C7C5C7C9CCCCBDCBD6BBBCBDBDBEBFBFC5
+          CFD8DAD4CDC4C5E9F5A6A6A6A6A6A6E8C7C9CCC9C5DBE5CCBABBBCBDBDBEBFBF
+          C0C1C1C7D4DECDF8A6A6A6A6A6A6A6A6EEE6E5DEE5DBDBE6E9E6E2D5C9BDBEBF
+          BFC0C1C1D8D005A6A6A6A6A6A6A6A6A6A6A6EABFBFBFD8DEDAD7D4DDE3E8E4E2
+          D2C3C5D8D105A6A6A6A6A6A6A6A6A6A6A6A6E9B9B8B8C7D0D3DAD7D4D1CECBCB
+          E2DEDA0505A6A6A6A6A6A6A6A6A6A6A6A6A6EB1A4E38383335363EBFC4C9CBC9
+          E30505A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A64246574D4D4D4848384D434F44
+          05A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A61058595A59595A59595958462D
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6215B5B5B5B5B5B5B5B5B5B3405
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6256C6C6C6C6C6C6C6C6C5E2505
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A610416D6D6D6D6D6D6D6D6D6D1005
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A610506262626262626262625014A6
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A61128555555555555555555553A14A6
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6113A7171717171717171717122A6A6
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A621757575757575757575756522A6A6
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6A6103B5151515151515151515122A6A6A6
+          A6A6A6A6A6A6A6A6A6A6A6A6A6A6A611111111111111111111111111A6A6A6A6
+          A6A6A6A6A6A6A6A6A6A6A6A6FFE1C3FFFFC001FFFF00007FFC00001FF0000007
+          E0000003C0000003C0000003C0000003C0000003C0000003C0000003C0000003
+          C0000003C0000003C0000007E000000FF000001FFC00003FFC00007FFC0001FF
+          FE0007FFFE000FFFFE000FFFFE000FFFFC000FFFFC001FFFF8001FFFF8003FFF
+          F8003FFFF0007FFFE000FFFF2800000010000000200000000100080000000000
+          000100000000000000000000000000000000000000000000FFFFFF00867DA400
+          9383A20091819E0062616200B28E9D00B6909C007F727400AB8E9100A8838500
+          6F4A4A00976666007B565600684A4A00382828008C696900937373004A3A3A00
+          594646006A545400725F5F004D4242001F1C1C00BEAEAE003A383800B8B3B300
+          3E3D3D004948480043424200FFFEFE00F2F1F1007F605F00A27573007E666500
+          9D868500E6D8D700C0948F0084666300836F6D00AE817B00B58B850071696800
+          8578760099939200665C5A005048460059514F00FCEAE600AFA7A500FCF3F100
+          FFC5B600CB9E9200FDD7CD00FCE5DF00A59A9700FFB49C00FFD4C600D9BFB700
+          EBE1DE00EEDBD400AFA19C00F4E3DD00C0BAB80097786B00CFB6AC0091827C00
+          FFD2BB00DACCC500D4AC9600E0B69D00DBD6D300FFC59E00FEE4D200E6D5CA00
+          5C595700E6E3E100FFCDA800E3C0A500F2D8C500EED9CA00FFFBF800BDA49000
+          B29E8D00FCD7B700FFF0E200F1C9A200FFD6AD00FFD7B100FFDAB400FFDCB900
+          FFDEBE00FFE0C200F2D6BA00FFE2C500BFAE9E00FFEBD700FFEBD800FFECD900
+          FFEEDD00B3ACA500F2E9E000CCC7C200FFFAF50077757300CCCBCA00FFE0BF00
+          E7CEB200FFE5CA00FFE7CD00756A5E00FFE9D200FFF4E800FFF5EA00FFF7EE00
+          FED3A100F2E5D600FFF9F200FED7A500F0D5B100FFDBA900F1D4A90066646100
+          FFDFAE00FFE3B300FFEFD200FFF3DE00FFEFCF00F6E1B400FFECC200E8D9B700
+          FBF3E100FAF6ED00FFE9B600EEE0BE00F1E8D200FFEDBB00FFF1C700F2E8C900
+          FFFEFB00FFF1BE00EEE5C600FFF6D500FAF7EA00FFF5C200FFF7CC00FFF9D700
+          FFF8C600FFFADA00FFFAC800FFFBCF00FFFEEB00FFFDCA00FFFFCD00FFFFD200
+          FFFFD600FFFFDC00FFFFE300FFFFF200FFFFF500FFFFFE004D745A0073A38300
+          687B6E005DDD880057B07500000000005EC4FF00A1B4BE006A7D89004B91BF00
+          A4AAAE004FB3FB00415564003D50600093A5B4003E94EC0051575D00417CC300
+          5A6FAE00696D79007D7D7E0067676800FDFDFD00FAFAFA00F7F7F700F5F5F500
+          F2F2F200F1F1F100EFEFEF00EDEDED00EAEAEA00E9E9E900E7E7E700E4E4E400
+          E2E2E200E1E1E100DEDEDE00DDDDDD00DADADA00D8D8D800D6D6D600D4D4D400
+          D3D3D300D1D1D100CFCFCF00CCCCCC00CACACA00C9C9C900C6C6C600C2C2C200
+          C0C0C000BFBFBF00BDBDBD00BABABA00B9B9B900B6B6B600B4B4B400B2B2B200
+          B0B0B000AEAEAE00ADADAD00AAAAAA00A9A9A900A7A7A700A5A5A500A2A2A200
+          A0A0A0009E9E9E009999990095959500929292008E8E8E008989890086868600
+          83838300818181007A7A7A00777777007575750073737300707070006E6E6E00
+          6A6A6A00656565005F5F5F005C5C5C005B5B5B0059595900525252004E4E4E00
+          363636003333330030303000282828000F0F0F00A6A6A6A6A6EBEBEBEBEBEBEB
+          A6A6A6A6A6A6A6EBEBF91B1B1B1B1B1BEDB5A6A6A6A6EBF91BBCDA230AD9C2DB
+          FA1BB5A6A61B1BBDBCC0DDE7F5F2E8D6C0DBEDA6A6DDB8BBC8E6B5E5DAE0E6E8
+          E9F5B5A6A6E1C8E3E5D0DEE8ECEBE3D4A2F9B5A6A6EEE0C7C8C8C8C4CDD4E4E9
+          A3FAEBA6A6E4C4C8CBD0C9CDD2D3CECACEF3A6A6A6E8C9D2DEE1CDBCBEBFC7D4
+          D4F0A6A6A6A6E3D0BEDAD6DCD8D5D5F0F0A6A6A6A6A6A6643939353C4CC1F2A6
+          A6A6A6A6A6A6A609595A5A58572DA6A6A6A6A6A6A6A6A6536C6C6C6C5C15A6A6
+          A6A6A6A6A6A6A63A6363636115A6A6A6A6A6A6A6A6A637727272727215A6A6A6
+          A6A6A6A6A6A6090909090909A6A6A6A6A6A6A6A6F80F05CCE003BBBDC001D9EF
+          8001E9E28001D9D88001E2E78001D7EE8003A6A6800305CDC007BDC4E01FE7D2
+          E03FECF2E03FE0D9E07FD5D4C07FD0E9C0FFA6A6}
+        ShowHint = True
+        Style.BorderStyle = ebsOffice11
+        Style.Shadow = False
+        TabOrder = 3
+        OnClick = cxImage4Click
+        Height = 36
+        Width = 40
+      end
+    end
+  end
+  object cxPageControl1: TcxPageControl
+    Left = 0
+    Top = 39
+    Width = 849
+    Height = 428
+    Align = alClient
+    TabOrder = 0
+    Properties.ActivePage = cxTabSheet1
+    Properties.CustomButtons.Buttons = <>
+    Properties.Style = 6
+    ClientRectBottom = 428
+    ClientRectRight = 849
+    ClientRectTop = 24
+    object cxTabSheet1: TcxTabSheet
+      Caption = 'Atividades da Safra'
+      ImageIndex = 0
+      object cxPageControl3: TcxPageControl
+        Left = 0
+        Top = 0
+        Width = 849
+        Height = 404
+        Align = alClient
+        TabOrder = 0
+        Properties.ActivePage = cxTabSheet7
+        Properties.CustomButtons.Buttons = <>
+        Properties.Style = 6
+        ClientRectBottom = 404
+        ClientRectRight = 849
+        ClientRectTop = 24
+        object cxTabSheet7: TcxTabSheet
+          Caption = 'Atividades'
+          ImageIndex = 0
+          object cxGrid1: TcxGrid
+            Left = 0
+            Top = 0
+            Width = 849
+            Height = 380
+            Align = alClient
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            LookAndFeel.Kind = lfUltraFlat
+            LookAndFeel.NativeStyle = False
+            object cxGrid1DBTableView1: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              Navigator.Buttons.First.Visible = False
+              Navigator.Buttons.PriorPage.Visible = False
+              Navigator.Buttons.Prior.Visible = False
+              Navigator.Buttons.Next.Enabled = False
+              Navigator.Buttons.Next.Visible = False
+              Navigator.Buttons.NextPage.Visible = False
+              Navigator.Buttons.Last.Visible = False
+              Navigator.Buttons.Insert.Enabled = False
+              Navigator.Buttons.Insert.Visible = False
+              Navigator.Buttons.Append.Visible = False
+              Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
+              Navigator.Buttons.Delete.ImageIndex = 2
+              Navigator.Buttons.Delete.Visible = True
+              Navigator.Buttons.Edit.Visible = False
+              Navigator.Buttons.Post.Visible = False
+              Navigator.Buttons.Cancel.Visible = False
+              Navigator.Buttons.Refresh.Visible = False
+              Navigator.Buttons.SaveBookmark.Visible = False
+              Navigator.Buttons.GotoBookmark.Visible = False
+              Navigator.Buttons.Filter.Visible = False
+              Navigator.Visible = True
+              FilterBox.CustomizeButtonAlignment = fbaLeft
+              FilterBox.Position = fpTop
+              FilterBox.Visible = fvNever
+              DataController.Filter.Active = True
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = '#0.0,0'
+                  Kind = skSum
+                  Position = spFooter
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skCount
+                  FieldName = 'Codigo'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              DateTimeHandling.DateFormat = 'DD/MM/YYYY'
+              FilterRow.InfoText = 'Clique para definir um filtro'
+              FilterRow.Visible = True
+              NewItemRow.InfoText = 'Clique para adicionar uma nova linha'
+              NewItemRow.SeparatorColor = clMenu
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsCustomize.ColumnHiding = True
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsCustomize.DataRowSizing = True
+              OptionsSelection.MultiSelect = True
+              OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
+              OptionsView.Footer = True
+              OptionsView.GroupByBox = False
+              OptionsView.GroupFooterMultiSummaries = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              OptionsView.GroupSummaryLayout = gslAlignWithColumns
+              OptionsView.Indicator = True
+              Preview.Visible = True
+              object cxGrid1DBTableView1Codigo: TcxGridDBColumn
+                Caption = 'C'#243'digo'
+                DataBinding.FieldName = 'Codigo'
+                Options.Editing = False
+                Width = 48
+              end
+              object cxGrid1DBTableView1Codigo_Propriedade: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Propriedade'
+                Visible = False
+                Options.Editing = False
+              end
+              object cxGrid1DBTableView1Numero_Talhao: TcxGridDBColumn
+                Caption = 'N'#186' Talh'#227'o'
+                DataBinding.FieldName = 'Numero_Talhao'
+                Width = 74
+              end
+              object cxGrid1DBTableView1Descricao_Talhao: TcxGridDBColumn
+                Caption = 'Descri'#231#227'o'
+                DataBinding.FieldName = 'Descricao_Talhao'
+                MinWidth = 50
+                Width = 179
+              end
+              object cxGrid1DBTableView1Area: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 55
+              end
+              object cxGrid1DBTableView1Data_Cadastro: TcxGridDBColumn
+                Caption = 'Data Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 89
+              end
+            end
+            object cxGrid1DBTableView2: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGrid1DBTableView3: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGrid1DBTableView4: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGrid1DBTableView6: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGrid1DBTableView6Area
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGrid1DBTableView6Area
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGrid1DBTableView6Codigo_Registro_Atividade: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGrid1DBTableView6Data_Cadastro: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGrid1DBTableView6Data_Inicio_Atividade: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGrid1DBTableView6Data_Fim_Atividade: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGrid1DBTableView6Atividade: TcxGridDBColumn
+                DataBinding.FieldName = 'Atividade'
+                Options.Editing = False
+                Width = 215
+              end
+              object cxGrid1DBTableView6Talhao: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGrid1DBTableView6Area: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGrid1DBTableView6Produto: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 212
+              end
+              object cxGrid1DBTableView6Quantidade: TcxGridDBColumn
+                Caption = 'Qtde.'
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 80
+              end
+              object cxGrid1DBTableView6Unidade: TcxGridDBColumn
+                Caption = 'Un.'
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 43
+              end
+              object cxGrid1DBTableView6Custo: TcxGridDBColumn
+                DataBinding.FieldName = 'Custo'
+                Options.Editing = False
+                Width = 120
+              end
+              object cxGrid1DBTableView6Observacao: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGrid1DBTableView7: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGrid1DBTableView7Codigo_Registro_Atividade: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGrid1DBTableView7Variedade: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+              end
+              object cxGrid1DBTableView7Data_Plantio: TcxGridDBColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+              end
+              object cxGrid1DBTableView7Observacao: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+              end
+            end
+            object cxGrid1DBTableView8: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGrid1DBTableView8Codigo: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGrid1DBTableView8Codigo_Registro_Atividade: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGrid1DBTableView8Codigo_Variedade: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGrid1DBTableView8Observacao: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGrid1DBTableView8Data_Plantio: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Plantio'
+              end
+              object cxGrid1DBTableView8Variedade: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+            end
+            object cxGrid1DBTableView9: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGrid1DBTableView9Codigo_Registro_Atividade: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGrid1DBTableView9Data_Cadastro: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 85
+              end
+              object cxGrid1DBTableView9Data_Inicio_Plantio: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 85
+              end
+              object cxGrid1DBTableView9Data_Fim_Plantio: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 85
+              end
+              object cxGrid1DBTableView9Talhao: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGrid1DBTableView9Area: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGrid1DBTableView9Variedade: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 227
+              end
+              object cxGrid1DBTableView9Observacao: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGrid1DBTableView10: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGrid1DBTableView10Codigo_Registro_Atividade: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGrid1DBTableView10Data_Cadastro: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGrid1DBTableView10Data_Inicio_Plantio: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 70
+              end
+              object cxGrid1DBTableView10Data_Fim_Plantio: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 70
+              end
+              object cxGrid1DBTableView10Talhao: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGrid1DBTableView10Area: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGrid1DBTableView10Variedade: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 158
+              end
+              object cxGrid1DBTableView10Observacao: TcxGridDBColumn
+                Caption = 'Observa'#231#227'o'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGrid1DBTableView11: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGrid1DBTableView11Codigo: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGrid1DBTableView11Codigo_Registro_Atividade: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGrid1DBTableView11Codigo_Variedade: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGrid1DBTableView11Observacao: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGrid1DBTableView11Variedade: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+              object cxGrid1DBTableView11Codigo_Talhao: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+              end
+              object cxGrid1DBTableView11Data_Cadastro: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Cadastro'
+              end
+              object cxGrid1DBTableView11Data_Inicio_Plantio: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+              end
+              object cxGrid1DBTableView11Data_Fim_Plantio: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+              end
+              object cxGrid1DBTableView11Talhao: TcxGridDBColumn
+                DataBinding.FieldName = 'Talhao'
+              end
+              object cxGrid1DBTableView11Area: TcxGridDBColumn
+                DataBinding.FieldName = 'Area'
+              end
+            end
+            object cxGrid1DBTableView12: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGrid1DBTableView12Area
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGrid1DBTableView12Area
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGrid1DBTableView12Codigo_Registro_Atividade: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGrid1DBTableView12Data_Cadastro: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGrid1DBTableView12Data_Inicio_Plantio: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGrid1DBTableView12Data_Fim_Plantio: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGrid1DBTableView12Talhao: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGrid1DBTableView12Area: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGrid1DBTableView12Variedade: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 151
+              end
+              object cxGrid1DBTableView12Observacao: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGrid1DBTableView13: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGrid1DBTableView13Area
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGrid1DBTableView13Area
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsBehavior.NavigatorHints = True
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGrid1DBTableView13Codigo_Registro_Atividade: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGrid1DBTableView13Data_Cadastro: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGrid1DBTableView13Data_Inicio_Colheita: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Width = 70
+              end
+              object cxGrid1DBTableView13Data_Fim_Colheita: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Width = 70
+              end
+              object cxGrid1DBTableView13Data_Emissao_Romaneio: TcxGridDBColumn
+                Caption = 'Emiss'#227'o Romaneio'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Width = 93
+              end
+              object cxGrid1DBTableView13NRomaneio: TcxGridDBColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Width = 70
+              end
+              object cxGrid1DBTableView13Talhao: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGrid1DBTableView13Area: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGrid1DBTableView13Motorista: TcxGridDBColumn
+                DataBinding.FieldName = 'Motorista'
+                Width = 200
+              end
+              object cxGrid1DBTableView13Veiculo: TcxGridDBColumn
+                Caption = 'Ve'#237'culo'
+                DataBinding.FieldName = 'Veiculo'
+                Width = 200
+              end
+              object cxGrid1DBTableView13Transportadora: TcxGridDBColumn
+                DataBinding.FieldName = 'Transportadora'
+                Width = 200
+              end
+              object cxGrid1DBTableView13Armazem: TcxGridDBColumn
+                Caption = 'Armaz'#233'm'
+                DataBinding.FieldName = 'Armazem'
+                Width = 200
+              end
+              object cxGrid1DBTableView13Produto: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Width = 200
+              end
+              object cxGrid1DBTableView13Produtor: TcxGridDBColumn
+                DataBinding.FieldName = 'Produtor'
+                Width = 200
+              end
+              object cxGrid1DBTableView13Depositante: TcxGridDBColumn
+                DataBinding.FieldName = 'Depositante'
+                Width = 200
+              end
+              object cxGrid1DBTableView13PesoBruto: TcxGridDBColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Width = 100
+              end
+              object cxGrid1DBTableView13Tara: TcxGridDBColumn
+                DataBinding.FieldName = 'Tara'
+                Width = 100
+              end
+              object cxGrid1DBTableView13LiquidoUmido: TcxGridDBColumn
+                Caption = 'L'#237'quido '#218'mido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Width = 100
+              end
+              object cxGrid1DBTableView13Descontos: TcxGridDBColumn
+                DataBinding.FieldName = 'Descontos'
+                Width = 100
+              end
+              object cxGrid1DBTableView13LiquidoSeco: TcxGridDBColumn
+                Caption = 'L'#237'quido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Width = 100
+              end
+              object cxGrid1DBTableView13PrecoFrete: TcxGridDBColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                Width = 100
+              end
+              object cxGrid1DBTableView13Observacoes: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacoes'
+                Width = 500
+              end
+            end
+            object cxGrid1DBBandedTableViewAtividades: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAtividades
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Atividades Realizadas'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGrid1DBBandedTableViewAtividadesAtividade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Atividade'
+                Options.Editing = False
+                Width = 220
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewAtividadesTipo_Atividade: TcxGridDBBandedColumn
+                Caption = 'Tipo'
+                DataBinding.FieldName = 'Tipo_Atividade'
+                Options.Editing = False
+                Width = 94
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewAtividadesData_Inicio_Atividade: TcxGridDBBandedColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Atividade'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewAtividadesData_Fim_Atividade: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Atividade'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewAtividadesData_Cadastro: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewAtividadesObservacao: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+            end
+            object cxGrid1DBBandedTableViewPlantis: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsPlantis
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGrid1DBBandedTableViewPlantisAreaTotal
+                end
+                item
+                  Kind = skSum
+                  Column = cxGrid1DBBandedTableViewPlantisArea_Plantada
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Plantios Realizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGrid1DBBandedTableViewPlantisTalho: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Talh'#227'o'
+                Options.Editing = False
+                Width = 167
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewPlantisVariedade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 107
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewPlantisData_Plantio: TcxGridDBBandedColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewPlantisData_Inicio_Plantio: TcxGridDBBandedColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewPlantisData_Fim_Plantio: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewPlantisData_Cadastro: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewPlantisAreaTotal: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewPlantisArea_Plantada: TcxGridDBBandedColumn
+                Caption = #193'rea Plantada'
+                DataBinding.FieldName = 'Area_Plantada'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewPlantisStand_Plantio: TcxGridDBBandedColumn
+                Caption = 'Stand Plantio'
+                DataBinding.FieldName = 'Stand_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewPlantisStand_Inicial: TcxGridDBBandedColumn
+                Caption = 'Stand Inicial'
+                DataBinding.FieldName = 'Stand_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewPlantisData_Stand_Inicial: TcxGridDBBandedColumn
+                Caption = 'Data Stand Inicial'
+                DataBinding.FieldName = 'Data_Stand_Inicial'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewPlantisStand_Final: TcxGridDBBandedColumn
+                Caption = 'Stand Final'
+                DataBinding.FieldName = 'Stand_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewPlantisData_Stand_Final: TcxGridDBBandedColumn
+                Caption = 'Data Stand Final'
+                DataBinding.FieldName = 'Data_Stand_Final'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewPlantisObservacao: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+            end
+            object cxGrid1DBBandedTableViewRomaneios: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsRomaneios
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGrid1DBBandedTableViewRomaneiosPesoBruto
+                end
+                item
+                  Kind = skSum
+                  Column = cxGrid1DBBandedTableViewRomaneiosLiquidoUmido
+                end
+                item
+                  Kind = skSum
+                  Column = cxGrid1DBBandedTableViewRomaneiosDescontos
+                end
+                item
+                  Kind = skSum
+                  Column = cxGrid1DBBandedTableViewRomaneiosLiquidoSeco
+                end
+                item
+                  Kind = skCount
+                  Column = cxGrid1DBBandedTableViewRomaneiosNRomaneio
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Romaneios'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGrid1DBBandedTableViewRomaneiosNRomaneio: TcxGridDBBandedColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Options.Editing = False
+                Width = 71
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewRomaneiosData_Inicio_Colheita: TcxGridDBBandedColumn
+                Caption = 'Ini. Colheita'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewRomaneiosData_Fim_Colheita: TcxGridDBBandedColumn
+                Caption = 'Fim Colheita'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewRomaneiosData_Emissao_Romaneio: TcxGridDBBandedColumn
+                Caption = 'Emiss'#227'o Rom.'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewRomaneiosData_Cadastro: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewRomaneiosTalhao: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 156
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewRomaneiosProduto: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 150
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewRomaneiosProdutor: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produtor'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewRomaneiosDepositante: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Depositante'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewRomaneiosArmazem: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Armazem'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewRomaneiosPesoBruto: TcxGridDBBandedColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewRomaneiosTara: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Tara'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewRomaneiosLiquidoUmido: TcxGridDBBandedColumn
+                Caption = 'Liquido Umido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewRomaneiosDescontos: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Descontos'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewRomaneiosLiquidoSeco: TcxGridDBBandedColumn
+                Caption = 'Liquido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 14
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewRomaneiosPrecoFrete: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 15
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewRomaneiosObservacoes: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacoes'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 16
+                Position.RowIndex = 0
+              end
+            end
+            object cxGrid1DBBandedTableViewManutencoes: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsManutencoes
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGrid1DBBandedTableViewManutencoesPreco_Total
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Manuten'#231#245'es Realizadas'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGrid1DBBandedTableViewManutencoesMaquina: TcxGridDBBandedColumn
+                Caption = 'M'#225'quina'
+                DataBinding.FieldName = 'Maquina'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewManutencoesTipo_Atividade: TcxGridDBBandedColumn
+                Caption = 'Tipo'
+                DataBinding.FieldName = 'Tipo_Atividade'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewManutencoesUT_Inicial: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Inicial'
+                Caption = 'U.T Inicial'
+                DataBinding.FieldName = 'UT_Inicial'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewManutencoesUT_Final: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Final'
+                Caption = 'U.T Final'
+                DataBinding.FieldName = 'UT_Final'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewManutencoesPreco_UT: TcxGridDBBandedColumn
+                AlternateCaption = 'Pre'#231'o por Unidade de Trabalho'
+                Caption = 'Pre'#231'o U.T'
+                DataBinding.FieldName = 'Preco_UT'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewManutencoesPreco_Total: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Total'
+                DataBinding.FieldName = 'Preco_Total'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewManutencoesData_Trabalho_Inicial: TcxGridDBBandedColumn
+                Caption = 'Inicio'
+                DataBinding.FieldName = 'Data_Trabalho_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewManutencoesData_Trabalho_Final: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Trabalho_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewManutencoesData_Cadastro: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableViewManutencoesObservacao: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+            end
+            object cxGrid1DBBandedTableView1: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAtividadesProdutos
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ #0.0,0'
+                  Kind = skSum
+                  Column = cxGrid1DBBandedTableView1Custo
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Insumos utilizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGrid1DBBandedTableView1Produto: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 232
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableView1Quantidade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 67
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableView1Unidade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 48
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableView1Custo: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Custo'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 120
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+            end
+            object cxGrid1DBBandedTableView2: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAtividadesTalhao
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Talh'#245'es aplicados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGrid1DBBandedTableView2Talhao: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 211
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableView2AreaTotal: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableView2Area: TcxGridDBBandedColumn
+                Caption = #193'rea Aplicada'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+            end
+            object cxGrid1DBBandedTableView3: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsPlantioOcorrencia
+              DataController.DetailKeyFieldNames = 'Codigo_Plantio'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Ocorr'#234'ncias'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGrid1DBBandedTableView3Ocorrencia: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Ocorrencia'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableView3Intensidade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Intensidade'
+                Options.Editing = False
+                Width = 95
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableView3Area_Analisada: TcxGridDBBandedColumn
+                Caption = #193'rea Analisada'
+                DataBinding.FieldName = 'Area_Analisada'
+                Options.Editing = False
+                Width = 77
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableView3Estadio: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Estadio'
+                Options.Editing = False
+                Width = 75
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableView3Data_Ocorrencia: TcxGridDBBandedColumn
+                Caption = 'Ocorr'#234'ncia'
+                DataBinding.FieldName = 'Data_Ocorrencia'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableView3Dias_Plantio: TcxGridDBBandedColumn
+                Caption = 'Dias Ap'#243's Plantio'
+                DataBinding.FieldName = 'Dias_Plantio'
+                Options.Editing = False
+                Width = 86
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGrid1DBBandedTableView3Observacao: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+            end
+            object cxGrid1Level1: TcxGridLevel
+              Caption = 'Atividades'
+              GridView = cxGrid1DBBandedTableViewAtividades
+              Options.DetailTabsPosition = dtpTop
+              object cxGrid1Level5: TcxGridLevel
+                Caption = 'Insumos'
+                GridView = cxGrid1DBBandedTableView1
+                Options.DetailTabsPosition = dtpTop
+              end
+              object cxGrid1Level6: TcxGridLevel
+                Caption = 'Talh'#245'es'
+                GridView = cxGrid1DBBandedTableView2
+              end
+            end
+          end
+        end
+        object cxTabSheet8: TcxTabSheet
+          Caption = 'Plantio'
+          ImageIndex = 1
+          object cxGrid7: TcxGrid
+            Left = 0
+            Top = 0
+            Width = 849
+            Height = 380
+            Align = alClient
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            LookAndFeel.Kind = lfUltraFlat
+            LookAndFeel.NativeStyle = False
+            object cxGridDBTableView61: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              Navigator.Buttons.First.Visible = False
+              Navigator.Buttons.PriorPage.Visible = False
+              Navigator.Buttons.Prior.Visible = False
+              Navigator.Buttons.Next.Enabled = False
+              Navigator.Buttons.Next.Visible = False
+              Navigator.Buttons.NextPage.Visible = False
+              Navigator.Buttons.Last.Visible = False
+              Navigator.Buttons.Insert.Enabled = False
+              Navigator.Buttons.Insert.Visible = False
+              Navigator.Buttons.Append.Visible = False
+              Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
+              Navigator.Buttons.Delete.ImageIndex = 2
+              Navigator.Buttons.Delete.Visible = True
+              Navigator.Buttons.Edit.Visible = False
+              Navigator.Buttons.Post.Visible = False
+              Navigator.Buttons.Cancel.Visible = False
+              Navigator.Buttons.Refresh.Visible = False
+              Navigator.Buttons.SaveBookmark.Visible = False
+              Navigator.Buttons.GotoBookmark.Visible = False
+              Navigator.Buttons.Filter.Visible = False
+              Navigator.Visible = True
+              FilterBox.CustomizeButtonAlignment = fbaLeft
+              FilterBox.Position = fpTop
+              FilterBox.Visible = fvNever
+              DataController.Filter.Active = True
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = '#0.0,0'
+                  Kind = skSum
+                  Position = spFooter
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skCount
+                  FieldName = 'Codigo'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              DateTimeHandling.DateFormat = 'DD/MM/YYYY'
+              FilterRow.InfoText = 'Clique para definir um filtro'
+              FilterRow.Visible = True
+              NewItemRow.InfoText = 'Clique para adicionar uma nova linha'
+              NewItemRow.SeparatorColor = clMenu
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsCustomize.ColumnHiding = True
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsCustomize.DataRowSizing = True
+              OptionsSelection.MultiSelect = True
+              OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
+              OptionsView.Footer = True
+              OptionsView.GroupByBox = False
+              OptionsView.GroupFooterMultiSummaries = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              OptionsView.GroupSummaryLayout = gslAlignWithColumns
+              OptionsView.Indicator = True
+              Preview.Visible = True
+              object cxGridDBColumn426: TcxGridDBColumn
+                Caption = 'C'#243'digo'
+                DataBinding.FieldName = 'Codigo'
+                Options.Editing = False
+                Width = 48
+              end
+              object cxGridDBColumn427: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Propriedade'
+                Visible = False
+                Options.Editing = False
+              end
+              object cxGridDBColumn428: TcxGridDBColumn
+                Caption = 'N'#186' Talh'#227'o'
+                DataBinding.FieldName = 'Numero_Talhao'
+                Width = 74
+              end
+              object cxGridDBColumn429: TcxGridDBColumn
+                Caption = 'Descri'#231#227'o'
+                DataBinding.FieldName = 'Descricao_Talhao'
+                MinWidth = 50
+                Width = 179
+              end
+              object cxGridDBColumn430: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 55
+              end
+              object cxGridDBColumn431: TcxGridDBColumn
+                Caption = 'Data Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 89
+              end
+            end
+            object cxGridDBTableView62: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView63: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView64: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView65: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn438
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn438
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn432: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn433: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn434: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn435: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn436: TcxGridDBColumn
+                DataBinding.FieldName = 'Atividade'
+                Options.Editing = False
+                Width = 215
+              end
+              object cxGridDBColumn437: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGridDBColumn438: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGridDBColumn439: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 212
+              end
+              object cxGridDBColumn440: TcxGridDBColumn
+                Caption = 'Qtde.'
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 80
+              end
+              object cxGridDBColumn441: TcxGridDBColumn
+                Caption = 'Un.'
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 43
+              end
+              object cxGridDBColumn442: TcxGridDBColumn
+                DataBinding.FieldName = 'Custo'
+                Options.Editing = False
+                Width = 120
+              end
+              object cxGridDBColumn443: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGridDBTableView66: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn444: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn445: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn446: TcxGridDBColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+              end
+              object cxGridDBColumn447: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+              end
+            end
+            object cxGridDBTableView67: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn448: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGridDBColumn449: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn450: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGridDBColumn451: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGridDBColumn452: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Plantio'
+              end
+              object cxGridDBColumn453: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+            end
+            object cxGridDBTableView68: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn454: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn455: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 85
+              end
+              object cxGridDBColumn456: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 85
+              end
+              object cxGridDBColumn457: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 85
+              end
+              object cxGridDBColumn458: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn459: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn460: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 227
+              end
+              object cxGridDBColumn461: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGridDBTableView69: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn462: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn463: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGridDBColumn464: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 70
+              end
+              object cxGridDBColumn465: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 70
+              end
+              object cxGridDBColumn466: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn467: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn468: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 158
+              end
+              object cxGridDBColumn469: TcxGridDBColumn
+                Caption = 'Observa'#231#227'o'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGridDBTableView70: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn470: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGridDBColumn471: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn472: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGridDBColumn473: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGridDBColumn474: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+              object cxGridDBColumn475: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+              end
+              object cxGridDBColumn476: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Cadastro'
+              end
+              object cxGridDBColumn477: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+              end
+              object cxGridDBColumn478: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+              end
+              object cxGridDBColumn479: TcxGridDBColumn
+                DataBinding.FieldName = 'Talhao'
+              end
+              object cxGridDBColumn480: TcxGridDBColumn
+                DataBinding.FieldName = 'Area'
+              end
+            end
+            object cxGridDBTableView71: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn486
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn486
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn481: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn482: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn483: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn484: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn485: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGridDBColumn486: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGridDBColumn487: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 151
+              end
+              object cxGridDBColumn488: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGridDBTableView72: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn496
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn496
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsBehavior.NavigatorHints = True
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn489: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn490: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGridDBColumn491: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Width = 70
+              end
+              object cxGridDBColumn492: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Width = 70
+              end
+              object cxGridDBColumn493: TcxGridDBColumn
+                Caption = 'Emiss'#227'o Romaneio'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Width = 93
+              end
+              object cxGridDBColumn494: TcxGridDBColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Width = 70
+              end
+              object cxGridDBColumn495: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn496: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn497: TcxGridDBColumn
+                DataBinding.FieldName = 'Motorista'
+                Width = 200
+              end
+              object cxGridDBColumn498: TcxGridDBColumn
+                Caption = 'Ve'#237'culo'
+                DataBinding.FieldName = 'Veiculo'
+                Width = 200
+              end
+              object cxGridDBColumn499: TcxGridDBColumn
+                DataBinding.FieldName = 'Transportadora'
+                Width = 200
+              end
+              object cxGridDBColumn500: TcxGridDBColumn
+                Caption = 'Armaz'#233'm'
+                DataBinding.FieldName = 'Armazem'
+                Width = 200
+              end
+              object cxGridDBColumn501: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Width = 200
+              end
+              object cxGridDBColumn502: TcxGridDBColumn
+                DataBinding.FieldName = 'Produtor'
+                Width = 200
+              end
+              object cxGridDBColumn503: TcxGridDBColumn
+                DataBinding.FieldName = 'Depositante'
+                Width = 200
+              end
+              object cxGridDBColumn504: TcxGridDBColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Width = 100
+              end
+              object cxGridDBColumn505: TcxGridDBColumn
+                DataBinding.FieldName = 'Tara'
+                Width = 100
+              end
+              object cxGridDBColumn506: TcxGridDBColumn
+                Caption = 'L'#237'quido '#218'mido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Width = 100
+              end
+              object cxGridDBColumn507: TcxGridDBColumn
+                DataBinding.FieldName = 'Descontos'
+                Width = 100
+              end
+              object cxGridDBColumn508: TcxGridDBColumn
+                Caption = 'L'#237'quido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Width = 100
+              end
+              object cxGridDBColumn509: TcxGridDBColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                Width = 100
+              end
+              object cxGridDBColumn510: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacoes'
+                Width = 500
+              end
+            end
+            object cxGridDBBandedTableView43: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAtividades
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Atividades Realizadas'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn452: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Atividade'
+                Options.Editing = False
+                Width = 220
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn453: TcxGridDBBandedColumn
+                Caption = 'Tipo'
+                DataBinding.FieldName = 'Tipo_Atividade'
+                Options.Editing = False
+                Width = 94
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn454: TcxGridDBBandedColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Atividade'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn455: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Atividade'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn456: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn457: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView44: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsPlantis
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn464
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn465
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Plantios Realizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn458: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Talh'#227'o'
+                Options.Editing = False
+                Width = 167
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn459: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 107
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn460: TcxGridDBBandedColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn461: TcxGridDBBandedColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn462: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn463: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn464: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn465: TcxGridDBBandedColumn
+                Caption = #193'rea Plantada'
+                DataBinding.FieldName = 'Area_Plantada'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn466: TcxGridDBBandedColumn
+                Caption = 'Stand Plantio'
+                DataBinding.FieldName = 'Stand_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn467: TcxGridDBBandedColumn
+                Caption = 'Stand Inicial'
+                DataBinding.FieldName = 'Stand_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn468: TcxGridDBBandedColumn
+                Caption = 'Data Stand Inicial'
+                DataBinding.FieldName = 'Data_Stand_Inicial'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn469: TcxGridDBBandedColumn
+                Caption = 'Stand Final'
+                DataBinding.FieldName = 'Stand_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn470: TcxGridDBBandedColumn
+                Caption = 'Data Stand Final'
+                DataBinding.FieldName = 'Data_Stand_Final'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn471: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView45: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsRomaneios
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn482
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn484
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn485
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn486
+                end
+                item
+                  Kind = skCount
+                  Column = cxGridDBBandedColumn472
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Romaneios'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn472: TcxGridDBBandedColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Options.Editing = False
+                Width = 71
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn473: TcxGridDBBandedColumn
+                Caption = 'Ini. Colheita'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn474: TcxGridDBBandedColumn
+                Caption = 'Fim Colheita'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn475: TcxGridDBBandedColumn
+                Caption = 'Emiss'#227'o Rom.'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn476: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn477: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 156
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn478: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 150
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn479: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produtor'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn480: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Depositante'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn481: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Armazem'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn482: TcxGridDBBandedColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn483: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Tara'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn484: TcxGridDBBandedColumn
+                Caption = 'Liquido Umido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn485: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Descontos'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn486: TcxGridDBBandedColumn
+                Caption = 'Liquido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 14
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn487: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 15
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn488: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacoes'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 16
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView46: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsManutencoes
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn494
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Manuten'#231#245'es Realizadas'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn489: TcxGridDBBandedColumn
+                Caption = 'M'#225'quina'
+                DataBinding.FieldName = 'Maquina'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn490: TcxGridDBBandedColumn
+                Caption = 'Tipo'
+                DataBinding.FieldName = 'Tipo_Atividade'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn491: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Inicial'
+                Caption = 'U.T Inicial'
+                DataBinding.FieldName = 'UT_Inicial'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn492: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Final'
+                Caption = 'U.T Final'
+                DataBinding.FieldName = 'UT_Final'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn493: TcxGridDBBandedColumn
+                AlternateCaption = 'Pre'#231'o por Unidade de Trabalho'
+                Caption = 'Pre'#231'o U.T'
+                DataBinding.FieldName = 'Preco_UT'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn494: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Total'
+                DataBinding.FieldName = 'Preco_Total'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn495: TcxGridDBBandedColumn
+                Caption = 'Inicio'
+                DataBinding.FieldName = 'Data_Trabalho_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn496: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Trabalho_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn497: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn498: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView47: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAtividadesProdutos
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ #0.0,0'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn502
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Insumos utilizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn499: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 232
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn500: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 67
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn501: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 48
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn502: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Custo'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 120
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView48: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAtividadesTalhao
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Talh'#245'es aplicados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn503: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 211
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn504: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn505: TcxGridDBBandedColumn
+                Caption = #193'rea Aplicada'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView49: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsPlantioOcorrencia
+              DataController.DetailKeyFieldNames = 'Codigo_Plantio'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Ocorr'#234'ncias'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn506: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Ocorrencia'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn507: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Intensidade'
+                Options.Editing = False
+                Width = 95
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn508: TcxGridDBBandedColumn
+                Caption = #193'rea Analisada'
+                DataBinding.FieldName = 'Area_Analisada'
+                Options.Editing = False
+                Width = 77
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn509: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Estadio'
+                Options.Editing = False
+                Width = 75
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn510: TcxGridDBBandedColumn
+                Caption = 'Ocorr'#234'ncia'
+                DataBinding.FieldName = 'Data_Ocorrencia'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn511: TcxGridDBBandedColumn
+                Caption = 'Dias Ap'#243's Plantio'
+                DataBinding.FieldName = 'Dias_Plantio'
+                Options.Editing = False
+                Width = 86
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn512: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridLevel8: TcxGridLevel
+              Caption = 'Plantios'
+              GridView = cxGridDBBandedTableView44
+              Options.DetailTabsPosition = dtpTop
+              object cxGridLevel9: TcxGridLevel
+                Caption = 'Ocorr'#234'ncias'
+                GridView = cxGridDBBandedTableView49
+              end
+            end
+          end
+        end
+        object cxTabSheet9: TcxTabSheet
+          Caption = 'Colheita'
+          ImageIndex = 2
+          object cxGrid8: TcxGrid
+            Left = 0
+            Top = 0
+            Width = 849
+            Height = 380
+            Align = alClient
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            LookAndFeel.Kind = lfUltraFlat
+            LookAndFeel.NativeStyle = False
+            object cxGridDBTableView73: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              Navigator.Buttons.First.Visible = False
+              Navigator.Buttons.PriorPage.Visible = False
+              Navigator.Buttons.Prior.Visible = False
+              Navigator.Buttons.Next.Enabled = False
+              Navigator.Buttons.Next.Visible = False
+              Navigator.Buttons.NextPage.Visible = False
+              Navigator.Buttons.Last.Visible = False
+              Navigator.Buttons.Insert.Enabled = False
+              Navigator.Buttons.Insert.Visible = False
+              Navigator.Buttons.Append.Visible = False
+              Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
+              Navigator.Buttons.Delete.ImageIndex = 2
+              Navigator.Buttons.Delete.Visible = True
+              Navigator.Buttons.Edit.Visible = False
+              Navigator.Buttons.Post.Visible = False
+              Navigator.Buttons.Cancel.Visible = False
+              Navigator.Buttons.Refresh.Visible = False
+              Navigator.Buttons.SaveBookmark.Visible = False
+              Navigator.Buttons.GotoBookmark.Visible = False
+              Navigator.Buttons.Filter.Visible = False
+              Navigator.Visible = True
+              FilterBox.CustomizeButtonAlignment = fbaLeft
+              FilterBox.Position = fpTop
+              FilterBox.Visible = fvNever
+              DataController.Filter.Active = True
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = '#0.0,0'
+                  Kind = skSum
+                  Position = spFooter
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skCount
+                  FieldName = 'Codigo'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              DateTimeHandling.DateFormat = 'DD/MM/YYYY'
+              FilterRow.InfoText = 'Clique para definir um filtro'
+              FilterRow.Visible = True
+              NewItemRow.InfoText = 'Clique para adicionar uma nova linha'
+              NewItemRow.SeparatorColor = clMenu
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsCustomize.ColumnHiding = True
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsCustomize.DataRowSizing = True
+              OptionsSelection.MultiSelect = True
+              OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
+              OptionsView.Footer = True
+              OptionsView.GroupByBox = False
+              OptionsView.GroupFooterMultiSummaries = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              OptionsView.GroupSummaryLayout = gslAlignWithColumns
+              OptionsView.Indicator = True
+              Preview.Visible = True
+              object cxGridDBColumn511: TcxGridDBColumn
+                Caption = 'C'#243'digo'
+                DataBinding.FieldName = 'Codigo'
+                Options.Editing = False
+                Width = 48
+              end
+              object cxGridDBColumn512: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Propriedade'
+                Visible = False
+                Options.Editing = False
+              end
+              object cxGridDBColumn513: TcxGridDBColumn
+                Caption = 'N'#186' Talh'#227'o'
+                DataBinding.FieldName = 'Numero_Talhao'
+                Width = 74
+              end
+              object cxGridDBColumn514: TcxGridDBColumn
+                Caption = 'Descri'#231#227'o'
+                DataBinding.FieldName = 'Descricao_Talhao'
+                MinWidth = 50
+                Width = 179
+              end
+              object cxGridDBColumn515: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 55
+              end
+              object cxGridDBColumn516: TcxGridDBColumn
+                Caption = 'Data Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 89
+              end
+            end
+            object cxGridDBTableView74: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView75: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView76: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView77: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn523
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn523
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn517: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn518: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn519: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn520: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn521: TcxGridDBColumn
+                DataBinding.FieldName = 'Atividade'
+                Options.Editing = False
+                Width = 215
+              end
+              object cxGridDBColumn522: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGridDBColumn523: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGridDBColumn524: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 212
+              end
+              object cxGridDBColumn525: TcxGridDBColumn
+                Caption = 'Qtde.'
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 80
+              end
+              object cxGridDBColumn526: TcxGridDBColumn
+                Caption = 'Un.'
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 43
+              end
+              object cxGridDBColumn527: TcxGridDBColumn
+                DataBinding.FieldName = 'Custo'
+                Options.Editing = False
+                Width = 120
+              end
+              object cxGridDBColumn528: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGridDBTableView78: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn529: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn530: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn531: TcxGridDBColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+              end
+              object cxGridDBColumn532: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+              end
+            end
+            object cxGridDBTableView79: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn533: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGridDBColumn534: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn535: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGridDBColumn536: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGridDBColumn537: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Plantio'
+              end
+              object cxGridDBColumn538: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+            end
+            object cxGridDBTableView80: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn539: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn540: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 85
+              end
+              object cxGridDBColumn541: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 85
+              end
+              object cxGridDBColumn542: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 85
+              end
+              object cxGridDBColumn543: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn544: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn545: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 227
+              end
+              object cxGridDBColumn546: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGridDBTableView81: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn547: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn548: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGridDBColumn549: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 70
+              end
+              object cxGridDBColumn550: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 70
+              end
+              object cxGridDBColumn551: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn552: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn553: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 158
+              end
+              object cxGridDBColumn554: TcxGridDBColumn
+                Caption = 'Observa'#231#227'o'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGridDBTableView82: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn555: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGridDBColumn556: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn557: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGridDBColumn558: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGridDBColumn559: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+              object cxGridDBColumn560: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+              end
+              object cxGridDBColumn561: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Cadastro'
+              end
+              object cxGridDBColumn562: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+              end
+              object cxGridDBColumn563: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+              end
+              object cxGridDBColumn564: TcxGridDBColumn
+                DataBinding.FieldName = 'Talhao'
+              end
+              object cxGridDBColumn565: TcxGridDBColumn
+                DataBinding.FieldName = 'Area'
+              end
+            end
+            object cxGridDBTableView83: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn571
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn571
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn566: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn567: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn568: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn569: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn570: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGridDBColumn571: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGridDBColumn572: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 151
+              end
+              object cxGridDBColumn573: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGridDBTableView84: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn581
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn581
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsBehavior.NavigatorHints = True
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn574: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn575: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGridDBColumn576: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Width = 70
+              end
+              object cxGridDBColumn577: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Width = 70
+              end
+              object cxGridDBColumn578: TcxGridDBColumn
+                Caption = 'Emiss'#227'o Romaneio'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Width = 93
+              end
+              object cxGridDBColumn579: TcxGridDBColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Width = 70
+              end
+              object cxGridDBColumn580: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn581: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn582: TcxGridDBColumn
+                DataBinding.FieldName = 'Motorista'
+                Width = 200
+              end
+              object cxGridDBColumn583: TcxGridDBColumn
+                Caption = 'Ve'#237'culo'
+                DataBinding.FieldName = 'Veiculo'
+                Width = 200
+              end
+              object cxGridDBColumn584: TcxGridDBColumn
+                DataBinding.FieldName = 'Transportadora'
+                Width = 200
+              end
+              object cxGridDBColumn585: TcxGridDBColumn
+                Caption = 'Armaz'#233'm'
+                DataBinding.FieldName = 'Armazem'
+                Width = 200
+              end
+              object cxGridDBColumn586: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Width = 200
+              end
+              object cxGridDBColumn587: TcxGridDBColumn
+                DataBinding.FieldName = 'Produtor'
+                Width = 200
+              end
+              object cxGridDBColumn588: TcxGridDBColumn
+                DataBinding.FieldName = 'Depositante'
+                Width = 200
+              end
+              object cxGridDBColumn589: TcxGridDBColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Width = 100
+              end
+              object cxGridDBColumn590: TcxGridDBColumn
+                DataBinding.FieldName = 'Tara'
+                Width = 100
+              end
+              object cxGridDBColumn591: TcxGridDBColumn
+                Caption = 'L'#237'quido '#218'mido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Width = 100
+              end
+              object cxGridDBColumn592: TcxGridDBColumn
+                DataBinding.FieldName = 'Descontos'
+                Width = 100
+              end
+              object cxGridDBColumn593: TcxGridDBColumn
+                Caption = 'L'#237'quido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Width = 100
+              end
+              object cxGridDBColumn594: TcxGridDBColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                Width = 100
+              end
+              object cxGridDBColumn595: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacoes'
+                Width = 500
+              end
+            end
+            object cxGridDBBandedTableView50: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAtividades
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Atividades Realizadas'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn513: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Atividade'
+                Options.Editing = False
+                Width = 220
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn514: TcxGridDBBandedColumn
+                Caption = 'Tipo'
+                DataBinding.FieldName = 'Tipo_Atividade'
+                Options.Editing = False
+                Width = 94
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn515: TcxGridDBBandedColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Atividade'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn516: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Atividade'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn517: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn518: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView51: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsPlantis
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn525
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn526
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Plantios Realizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn519: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Talh'#227'o'
+                Options.Editing = False
+                Width = 167
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn520: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 107
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn521: TcxGridDBBandedColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn522: TcxGridDBBandedColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn523: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn524: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn525: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn526: TcxGridDBBandedColumn
+                Caption = #193'rea Plantada'
+                DataBinding.FieldName = 'Area_Plantada'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn527: TcxGridDBBandedColumn
+                Caption = 'Stand Plantio'
+                DataBinding.FieldName = 'Stand_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn528: TcxGridDBBandedColumn
+                Caption = 'Stand Inicial'
+                DataBinding.FieldName = 'Stand_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn529: TcxGridDBBandedColumn
+                Caption = 'Data Stand Inicial'
+                DataBinding.FieldName = 'Data_Stand_Inicial'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn530: TcxGridDBBandedColumn
+                Caption = 'Stand Final'
+                DataBinding.FieldName = 'Stand_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn531: TcxGridDBBandedColumn
+                Caption = 'Data Stand Final'
+                DataBinding.FieldName = 'Data_Stand_Final'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn532: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView52: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsRomaneios
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn543
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn545
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn546
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn547
+                end
+                item
+                  Kind = skCount
+                  Column = cxGridDBBandedColumn533
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Romaneios'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn533: TcxGridDBBandedColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Options.Editing = False
+                Width = 71
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn534: TcxGridDBBandedColumn
+                Caption = 'Ini. Colheita'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn535: TcxGridDBBandedColumn
+                Caption = 'Fim Colheita'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn536: TcxGridDBBandedColumn
+                Caption = 'Emiss'#227'o Rom.'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn537: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn538: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 156
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn539: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 150
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn540: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produtor'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn541: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Depositante'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn542: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Armazem'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn543: TcxGridDBBandedColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn544: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Tara'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn545: TcxGridDBBandedColumn
+                Caption = 'Liquido Umido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn546: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Descontos'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn547: TcxGridDBBandedColumn
+                Caption = 'Liquido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 14
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn548: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 15
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn549: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacoes'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 16
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView53: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsManutencoes
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn555
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Manuten'#231#245'es Realizadas'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn550: TcxGridDBBandedColumn
+                Caption = 'M'#225'quina'
+                DataBinding.FieldName = 'Maquina'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn551: TcxGridDBBandedColumn
+                Caption = 'Tipo'
+                DataBinding.FieldName = 'Tipo_Atividade'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn552: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Inicial'
+                Caption = 'U.T Inicial'
+                DataBinding.FieldName = 'UT_Inicial'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn553: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Final'
+                Caption = 'U.T Final'
+                DataBinding.FieldName = 'UT_Final'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn554: TcxGridDBBandedColumn
+                AlternateCaption = 'Pre'#231'o por Unidade de Trabalho'
+                Caption = 'Pre'#231'o U.T'
+                DataBinding.FieldName = 'Preco_UT'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn555: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Total'
+                DataBinding.FieldName = 'Preco_Total'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn556: TcxGridDBBandedColumn
+                Caption = 'Inicio'
+                DataBinding.FieldName = 'Data_Trabalho_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn557: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Trabalho_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn558: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn559: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView54: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAtividadesProdutos
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ #0.0,0'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn563
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Insumos utilizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn560: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 232
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn561: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 67
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn562: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 48
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn563: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Custo'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 120
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView55: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAtividadesTalhao
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Talh'#245'es aplicados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn564: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 211
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn565: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn566: TcxGridDBBandedColumn
+                Caption = #193'rea Aplicada'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView56: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsPlantioOcorrencia
+              DataController.DetailKeyFieldNames = 'Codigo_Plantio'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Ocorr'#234'ncias'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn567: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Ocorrencia'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn568: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Intensidade'
+                Options.Editing = False
+                Width = 95
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn569: TcxGridDBBandedColumn
+                Caption = #193'rea Analisada'
+                DataBinding.FieldName = 'Area_Analisada'
+                Options.Editing = False
+                Width = 77
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn570: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Estadio'
+                Options.Editing = False
+                Width = 75
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn571: TcxGridDBBandedColumn
+                Caption = 'Ocorr'#234'ncia'
+                DataBinding.FieldName = 'Data_Ocorrencia'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn572: TcxGridDBBandedColumn
+                Caption = 'Dias Ap'#243's Plantio'
+                DataBinding.FieldName = 'Dias_Plantio'
+                Options.Editing = False
+                Width = 86
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn573: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridLevel17: TcxGridLevel
+              Caption = 'Colheita'
+              GridView = cxGridDBBandedTableView52
+              Options.DetailTabsPosition = dtpTop
+            end
+          end
+        end
+        object cxTabSheet10: TcxTabSheet
+          Caption = 'Manuten'#231#227'o'
+          ImageIndex = 3
+          object cxGrid9: TcxGrid
+            Left = 0
+            Top = 0
+            Width = 849
+            Height = 380
+            Align = alClient
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            LookAndFeel.Kind = lfUltraFlat
+            LookAndFeel.NativeStyle = False
+            object cxGridDBTableView85: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              Navigator.Buttons.First.Visible = False
+              Navigator.Buttons.PriorPage.Visible = False
+              Navigator.Buttons.Prior.Visible = False
+              Navigator.Buttons.Next.Enabled = False
+              Navigator.Buttons.Next.Visible = False
+              Navigator.Buttons.NextPage.Visible = False
+              Navigator.Buttons.Last.Visible = False
+              Navigator.Buttons.Insert.Enabled = False
+              Navigator.Buttons.Insert.Visible = False
+              Navigator.Buttons.Append.Visible = False
+              Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
+              Navigator.Buttons.Delete.ImageIndex = 2
+              Navigator.Buttons.Delete.Visible = True
+              Navigator.Buttons.Edit.Visible = False
+              Navigator.Buttons.Post.Visible = False
+              Navigator.Buttons.Cancel.Visible = False
+              Navigator.Buttons.Refresh.Visible = False
+              Navigator.Buttons.SaveBookmark.Visible = False
+              Navigator.Buttons.GotoBookmark.Visible = False
+              Navigator.Buttons.Filter.Visible = False
+              Navigator.Visible = True
+              FilterBox.CustomizeButtonAlignment = fbaLeft
+              FilterBox.Position = fpTop
+              FilterBox.Visible = fvNever
+              DataController.Filter.Active = True
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = '#0.0,0'
+                  Kind = skSum
+                  Position = spFooter
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skCount
+                  FieldName = 'Codigo'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              DateTimeHandling.DateFormat = 'DD/MM/YYYY'
+              FilterRow.InfoText = 'Clique para definir um filtro'
+              FilterRow.Visible = True
+              NewItemRow.InfoText = 'Clique para adicionar uma nova linha'
+              NewItemRow.SeparatorColor = clMenu
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsCustomize.ColumnHiding = True
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsCustomize.DataRowSizing = True
+              OptionsSelection.MultiSelect = True
+              OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
+              OptionsView.Footer = True
+              OptionsView.GroupByBox = False
+              OptionsView.GroupFooterMultiSummaries = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              OptionsView.GroupSummaryLayout = gslAlignWithColumns
+              OptionsView.Indicator = True
+              Preview.Visible = True
+              object cxGridDBColumn596: TcxGridDBColumn
+                Caption = 'C'#243'digo'
+                DataBinding.FieldName = 'Codigo'
+                Options.Editing = False
+                Width = 48
+              end
+              object cxGridDBColumn597: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Propriedade'
+                Visible = False
+                Options.Editing = False
+              end
+              object cxGridDBColumn598: TcxGridDBColumn
+                Caption = 'N'#186' Talh'#227'o'
+                DataBinding.FieldName = 'Numero_Talhao'
+                Width = 74
+              end
+              object cxGridDBColumn599: TcxGridDBColumn
+                Caption = 'Descri'#231#227'o'
+                DataBinding.FieldName = 'Descricao_Talhao'
+                MinWidth = 50
+                Width = 179
+              end
+              object cxGridDBColumn600: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 55
+              end
+              object cxGridDBColumn601: TcxGridDBColumn
+                Caption = 'Data Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 89
+              end
+            end
+            object cxGridDBTableView86: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView87: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView88: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView89: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn608
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn608
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn602: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn603: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn604: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn605: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn606: TcxGridDBColumn
+                DataBinding.FieldName = 'Atividade'
+                Options.Editing = False
+                Width = 215
+              end
+              object cxGridDBColumn607: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGridDBColumn608: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGridDBColumn609: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 212
+              end
+              object cxGridDBColumn610: TcxGridDBColumn
+                Caption = 'Qtde.'
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 80
+              end
+              object cxGridDBColumn611: TcxGridDBColumn
+                Caption = 'Un.'
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 43
+              end
+              object cxGridDBColumn612: TcxGridDBColumn
+                DataBinding.FieldName = 'Custo'
+                Options.Editing = False
+                Width = 120
+              end
+              object cxGridDBColumn613: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGridDBTableView90: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn614: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn615: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn616: TcxGridDBColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+              end
+              object cxGridDBColumn617: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+              end
+            end
+            object cxGridDBTableView91: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn618: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGridDBColumn619: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn620: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGridDBColumn621: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGridDBColumn622: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Plantio'
+              end
+              object cxGridDBColumn623: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+            end
+            object cxGridDBTableView92: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn624: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn625: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 85
+              end
+              object cxGridDBColumn626: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 85
+              end
+              object cxGridDBColumn627: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 85
+              end
+              object cxGridDBColumn628: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn629: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn630: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 227
+              end
+              object cxGridDBColumn631: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGridDBTableView93: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn632: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn633: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGridDBColumn634: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 70
+              end
+              object cxGridDBColumn635: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 70
+              end
+              object cxGridDBColumn636: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn637: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn638: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 158
+              end
+              object cxGridDBColumn639: TcxGridDBColumn
+                Caption = 'Observa'#231#227'o'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGridDBTableView94: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn640: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGridDBColumn641: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn642: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGridDBColumn643: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGridDBColumn644: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+              object cxGridDBColumn645: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+              end
+              object cxGridDBColumn646: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Cadastro'
+              end
+              object cxGridDBColumn647: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+              end
+              object cxGridDBColumn648: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+              end
+              object cxGridDBColumn649: TcxGridDBColumn
+                DataBinding.FieldName = 'Talhao'
+              end
+              object cxGridDBColumn650: TcxGridDBColumn
+                DataBinding.FieldName = 'Area'
+              end
+            end
+            object cxGridDBTableView95: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn656
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn656
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn651: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn652: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn653: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn654: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn655: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGridDBColumn656: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGridDBColumn657: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 151
+              end
+              object cxGridDBColumn658: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGridDBTableView96: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn666
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn666
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsBehavior.NavigatorHints = True
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn659: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn660: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGridDBColumn661: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Width = 70
+              end
+              object cxGridDBColumn662: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Width = 70
+              end
+              object cxGridDBColumn663: TcxGridDBColumn
+                Caption = 'Emiss'#227'o Romaneio'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Width = 93
+              end
+              object cxGridDBColumn664: TcxGridDBColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Width = 70
+              end
+              object cxGridDBColumn665: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn666: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn667: TcxGridDBColumn
+                DataBinding.FieldName = 'Motorista'
+                Width = 200
+              end
+              object cxGridDBColumn668: TcxGridDBColumn
+                Caption = 'Ve'#237'culo'
+                DataBinding.FieldName = 'Veiculo'
+                Width = 200
+              end
+              object cxGridDBColumn669: TcxGridDBColumn
+                DataBinding.FieldName = 'Transportadora'
+                Width = 200
+              end
+              object cxGridDBColumn670: TcxGridDBColumn
+                Caption = 'Armaz'#233'm'
+                DataBinding.FieldName = 'Armazem'
+                Width = 200
+              end
+              object cxGridDBColumn671: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Width = 200
+              end
+              object cxGridDBColumn672: TcxGridDBColumn
+                DataBinding.FieldName = 'Produtor'
+                Width = 200
+              end
+              object cxGridDBColumn673: TcxGridDBColumn
+                DataBinding.FieldName = 'Depositante'
+                Width = 200
+              end
+              object cxGridDBColumn674: TcxGridDBColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Width = 100
+              end
+              object cxGridDBColumn675: TcxGridDBColumn
+                DataBinding.FieldName = 'Tara'
+                Width = 100
+              end
+              object cxGridDBColumn676: TcxGridDBColumn
+                Caption = 'L'#237'quido '#218'mido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Width = 100
+              end
+              object cxGridDBColumn677: TcxGridDBColumn
+                DataBinding.FieldName = 'Descontos'
+                Width = 100
+              end
+              object cxGridDBColumn678: TcxGridDBColumn
+                Caption = 'L'#237'quido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Width = 100
+              end
+              object cxGridDBColumn679: TcxGridDBColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                Width = 100
+              end
+              object cxGridDBColumn680: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacoes'
+                Width = 500
+              end
+            end
+            object cxGridDBBandedTableView57: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAtividades
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Atividades Realizadas'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn574: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Atividade'
+                Options.Editing = False
+                Width = 220
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn575: TcxGridDBBandedColumn
+                Caption = 'Tipo'
+                DataBinding.FieldName = 'Tipo_Atividade'
+                Options.Editing = False
+                Width = 94
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn576: TcxGridDBBandedColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Atividade'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn577: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Atividade'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn578: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn579: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView58: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsPlantis
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn586
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn587
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Plantios Realizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn580: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Talh'#227'o'
+                Options.Editing = False
+                Width = 167
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn581: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 107
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn582: TcxGridDBBandedColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn583: TcxGridDBBandedColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn584: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn585: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn586: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn587: TcxGridDBBandedColumn
+                Caption = #193'rea Plantada'
+                DataBinding.FieldName = 'Area_Plantada'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn588: TcxGridDBBandedColumn
+                Caption = 'Stand Plantio'
+                DataBinding.FieldName = 'Stand_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn589: TcxGridDBBandedColumn
+                Caption = 'Stand Inicial'
+                DataBinding.FieldName = 'Stand_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn590: TcxGridDBBandedColumn
+                Caption = 'Data Stand Inicial'
+                DataBinding.FieldName = 'Data_Stand_Inicial'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn591: TcxGridDBBandedColumn
+                Caption = 'Stand Final'
+                DataBinding.FieldName = 'Stand_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn592: TcxGridDBBandedColumn
+                Caption = 'Data Stand Final'
+                DataBinding.FieldName = 'Data_Stand_Final'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn593: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView59: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsRomaneios
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn604
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn606
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn607
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn608
+                end
+                item
+                  Kind = skCount
+                  Column = cxGridDBBandedColumn594
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Romaneios'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn594: TcxGridDBBandedColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Options.Editing = False
+                Width = 71
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn595: TcxGridDBBandedColumn
+                Caption = 'Ini. Colheita'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn596: TcxGridDBBandedColumn
+                Caption = 'Fim Colheita'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn597: TcxGridDBBandedColumn
+                Caption = 'Emiss'#227'o Rom.'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn598: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn599: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 156
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn600: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 150
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn601: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produtor'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn602: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Depositante'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn603: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Armazem'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn604: TcxGridDBBandedColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn605: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Tara'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn606: TcxGridDBBandedColumn
+                Caption = 'Liquido Umido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn607: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Descontos'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn608: TcxGridDBBandedColumn
+                Caption = 'Liquido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 14
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn609: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 15
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn610: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacoes'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 16
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView60: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsManutencoes
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn616
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Manuten'#231#245'es Realizadas'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn611: TcxGridDBBandedColumn
+                Caption = 'M'#225'quina'
+                DataBinding.FieldName = 'Maquina'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn612: TcxGridDBBandedColumn
+                Caption = 'Tipo'
+                DataBinding.FieldName = 'Tipo_Atividade'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn613: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Inicial'
+                Caption = 'U.T Inicial'
+                DataBinding.FieldName = 'UT_Inicial'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn614: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Final'
+                Caption = 'U.T Final'
+                DataBinding.FieldName = 'UT_Final'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn615: TcxGridDBBandedColumn
+                AlternateCaption = 'Pre'#231'o por Unidade de Trabalho'
+                Caption = 'Pre'#231'o U.T'
+                DataBinding.FieldName = 'Preco_UT'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn616: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Total'
+                DataBinding.FieldName = 'Preco_Total'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn617: TcxGridDBBandedColumn
+                Caption = 'Inicio'
+                DataBinding.FieldName = 'Data_Trabalho_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn618: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Trabalho_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn619: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn620: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView61: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAtividadesProdutos
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ #0.0,0'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn624
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Insumos utilizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn621: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 232
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn622: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 67
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn623: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 48
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn624: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Custo'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 120
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView62: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAtividadesTalhao
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Talh'#245'es aplicados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn625: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 211
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn626: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn627: TcxGridDBBandedColumn
+                Caption = #193'rea Aplicada'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView63: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsPlantioOcorrencia
+              DataController.DetailKeyFieldNames = 'Codigo_Plantio'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Ocorr'#234'ncias'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn628: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Ocorrencia'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn629: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Intensidade'
+                Options.Editing = False
+                Width = 95
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn630: TcxGridDBBandedColumn
+                Caption = #193'rea Analisada'
+                DataBinding.FieldName = 'Area_Analisada'
+                Options.Editing = False
+                Width = 77
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn631: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Estadio'
+                Options.Editing = False
+                Width = 75
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn632: TcxGridDBBandedColumn
+                Caption = 'Ocorr'#234'ncia'
+                DataBinding.FieldName = 'Data_Ocorrencia'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn633: TcxGridDBBandedColumn
+                Caption = 'Dias Ap'#243's Plantio'
+                DataBinding.FieldName = 'Dias_Plantio'
+                Options.Editing = False
+                Width = 86
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn634: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridLevel25: TcxGridLevel
+              Caption = 'Manuten'#231#245'es'
+              GridView = cxGridDBBandedTableView60
+              Options.DetailTabsPosition = dtpTop
+            end
+          end
+        end
+      end
+    end
+    object cxTabSheet2: TcxTabSheet
+      Caption = 'Custos da Safra'
+      ImageIndex = 1
+      object cxPageControl2: TcxPageControl
+        Left = 0
+        Top = 0
+        Width = 849
+        Height = 404
+        Align = alClient
+        TabOrder = 0
+        Properties.ActivePage = cxTabSheet3
+        Properties.CustomButtons.Buttons = <>
+        Properties.Style = 6
+        ClientRectBottom = 404
+        ClientRectRight = 849
+        ClientRectTop = 24
+        object cxTabSheet3: TcxTabSheet
+          Caption = 'Total de Contas Pagas'
+          ImageIndex = 0
+          object cxGrid4: TcxGrid
+            Left = 0
+            Top = 0
+            Width = 849
+            Height = 380
+            Align = alClient
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            LookAndFeel.Kind = lfUltraFlat
+            LookAndFeel.NativeStyle = False
+            object cxGridDBTableView25: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              Navigator.Buttons.First.Visible = False
+              Navigator.Buttons.PriorPage.Visible = False
+              Navigator.Buttons.Prior.Visible = False
+              Navigator.Buttons.Next.Enabled = False
+              Navigator.Buttons.Next.Visible = False
+              Navigator.Buttons.NextPage.Visible = False
+              Navigator.Buttons.Last.Visible = False
+              Navigator.Buttons.Insert.Enabled = False
+              Navigator.Buttons.Insert.Visible = False
+              Navigator.Buttons.Append.Visible = False
+              Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
+              Navigator.Buttons.Delete.ImageIndex = 2
+              Navigator.Buttons.Delete.Visible = True
+              Navigator.Buttons.Edit.Visible = False
+              Navigator.Buttons.Post.Visible = False
+              Navigator.Buttons.Cancel.Visible = False
+              Navigator.Buttons.Refresh.Visible = False
+              Navigator.Buttons.SaveBookmark.Visible = False
+              Navigator.Buttons.GotoBookmark.Visible = False
+              Navigator.Buttons.Filter.Visible = False
+              Navigator.Visible = True
+              FilterBox.CustomizeButtonAlignment = fbaLeft
+              FilterBox.Position = fpTop
+              FilterBox.Visible = fvNever
+              DataController.Filter.Active = True
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = '#0.0,0'
+                  Kind = skSum
+                  Position = spFooter
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skCount
+                  FieldName = 'Codigo'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              DateTimeHandling.DateFormat = 'DD/MM/YYYY'
+              FilterRow.InfoText = 'Clique para definir um filtro'
+              FilterRow.Visible = True
+              NewItemRow.InfoText = 'Clique para adicionar uma nova linha'
+              NewItemRow.SeparatorColor = clMenu
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsCustomize.ColumnHiding = True
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsCustomize.DataRowSizing = True
+              OptionsSelection.MultiSelect = True
+              OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
+              OptionsView.Footer = True
+              OptionsView.GroupByBox = False
+              OptionsView.GroupFooterMultiSummaries = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              OptionsView.GroupSummaryLayout = gslAlignWithColumns
+              OptionsView.Indicator = True
+              Preview.Visible = True
+              object cxGridDBColumn171: TcxGridDBColumn
+                Caption = 'C'#243'digo'
+                DataBinding.FieldName = 'Codigo'
+                Options.Editing = False
+                Width = 48
+              end
+              object cxGridDBColumn172: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Propriedade'
+                Visible = False
+                Options.Editing = False
+              end
+              object cxGridDBColumn173: TcxGridDBColumn
+                Caption = 'N'#186' Talh'#227'o'
+                DataBinding.FieldName = 'Numero_Talhao'
+                Width = 74
+              end
+              object cxGridDBColumn174: TcxGridDBColumn
+                Caption = 'Descri'#231#227'o'
+                DataBinding.FieldName = 'Descricao_Talhao'
+                MinWidth = 50
+                Width = 179
+              end
+              object cxGridDBColumn175: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 55
+              end
+              object cxGridDBColumn176: TcxGridDBColumn
+                Caption = 'Data Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 89
+              end
+            end
+            object cxGridDBTableView26: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView27: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView28: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView29: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn183
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn183
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn177: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn178: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn179: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn180: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn181: TcxGridDBColumn
+                DataBinding.FieldName = 'Atividade'
+                Options.Editing = False
+                Width = 215
+              end
+              object cxGridDBColumn182: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGridDBColumn183: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGridDBColumn184: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 212
+              end
+              object cxGridDBColumn185: TcxGridDBColumn
+                Caption = 'Qtde.'
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 80
+              end
+              object cxGridDBColumn186: TcxGridDBColumn
+                Caption = 'Un.'
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 43
+              end
+              object cxGridDBColumn187: TcxGridDBColumn
+                DataBinding.FieldName = 'Custo'
+                Options.Editing = False
+                Width = 120
+              end
+              object cxGridDBColumn188: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGridDBTableView30: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn189: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn190: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn191: TcxGridDBColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+              end
+              object cxGridDBColumn192: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+              end
+            end
+            object cxGridDBTableView31: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn193: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGridDBColumn194: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn195: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGridDBColumn196: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGridDBColumn197: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Plantio'
+              end
+              object cxGridDBColumn198: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+            end
+            object cxGridDBTableView32: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn199: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn200: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 85
+              end
+              object cxGridDBColumn201: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 85
+              end
+              object cxGridDBColumn202: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 85
+              end
+              object cxGridDBColumn203: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn204: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn205: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 227
+              end
+              object cxGridDBColumn206: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGridDBTableView33: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn207: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn208: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGridDBColumn209: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 70
+              end
+              object cxGridDBColumn210: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 70
+              end
+              object cxGridDBColumn211: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn212: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn213: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 158
+              end
+              object cxGridDBColumn214: TcxGridDBColumn
+                Caption = 'Observa'#231#227'o'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGridDBTableView34: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn215: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGridDBColumn216: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn217: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGridDBColumn218: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGridDBColumn219: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+              object cxGridDBColumn220: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+              end
+              object cxGridDBColumn221: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Cadastro'
+              end
+              object cxGridDBColumn222: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+              end
+              object cxGridDBColumn223: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+              end
+              object cxGridDBColumn224: TcxGridDBColumn
+                DataBinding.FieldName = 'Talhao'
+              end
+              object cxGridDBColumn225: TcxGridDBColumn
+                DataBinding.FieldName = 'Area'
+              end
+            end
+            object cxGridDBTableView35: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn231
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn231
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn226: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn227: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn228: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn229: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn230: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGridDBColumn231: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGridDBColumn232: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 151
+              end
+              object cxGridDBColumn233: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGridDBTableView36: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn241
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn241
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsBehavior.NavigatorHints = True
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn234: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn235: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGridDBColumn236: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Width = 70
+              end
+              object cxGridDBColumn237: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Width = 70
+              end
+              object cxGridDBColumn238: TcxGridDBColumn
+                Caption = 'Emiss'#227'o Romaneio'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Width = 93
+              end
+              object cxGridDBColumn239: TcxGridDBColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Width = 70
+              end
+              object cxGridDBColumn240: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn241: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn242: TcxGridDBColumn
+                DataBinding.FieldName = 'Motorista'
+                Width = 200
+              end
+              object cxGridDBColumn243: TcxGridDBColumn
+                Caption = 'Ve'#237'culo'
+                DataBinding.FieldName = 'Veiculo'
+                Width = 200
+              end
+              object cxGridDBColumn244: TcxGridDBColumn
+                DataBinding.FieldName = 'Transportadora'
+                Width = 200
+              end
+              object cxGridDBColumn245: TcxGridDBColumn
+                Caption = 'Armaz'#233'm'
+                DataBinding.FieldName = 'Armazem'
+                Width = 200
+              end
+              object cxGridDBColumn246: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Width = 200
+              end
+              object cxGridDBColumn247: TcxGridDBColumn
+                DataBinding.FieldName = 'Produtor'
+                Width = 200
+              end
+              object cxGridDBColumn248: TcxGridDBColumn
+                DataBinding.FieldName = 'Depositante'
+                Width = 200
+              end
+              object cxGridDBColumn249: TcxGridDBColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Width = 100
+              end
+              object cxGridDBColumn250: TcxGridDBColumn
+                DataBinding.FieldName = 'Tara'
+                Width = 100
+              end
+              object cxGridDBColumn251: TcxGridDBColumn
+                Caption = 'L'#237'quido '#218'mido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Width = 100
+              end
+              object cxGridDBColumn252: TcxGridDBColumn
+                DataBinding.FieldName = 'Descontos'
+                Width = 100
+              end
+              object cxGridDBColumn253: TcxGridDBColumn
+                Caption = 'L'#237'quido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Width = 100
+              end
+              object cxGridDBColumn254: TcxGridDBColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                Width = 100
+              end
+              object cxGridDBColumn255: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacoes'
+                Width = 500
+              end
+            end
+            object cxGridDBBandedTableView14: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn150
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn151
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Plantios Realizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn140: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn141: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn142: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn143: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn144: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Talh'#227'o'
+                Options.Editing = False
+                Width = 167
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn145: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 107
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn146: TcxGridDBBandedColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn147: TcxGridDBBandedColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn148: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn149: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn150: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn151: TcxGridDBBandedColumn
+                Caption = #193'rea Plantada'
+                DataBinding.FieldName = 'Area_Plantada'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn152: TcxGridDBBandedColumn
+                Caption = 'Stand Plantio'
+                DataBinding.FieldName = 'Stand_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn153: TcxGridDBBandedColumn
+                Caption = 'Stand Inicial'
+                DataBinding.FieldName = 'Stand_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn154: TcxGridDBBandedColumn
+                Caption = 'Data Stand Inicial'
+                DataBinding.FieldName = 'Data_Stand_Inicial'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 14
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn155: TcxGridDBBandedColumn
+                Caption = 'Stand Final'
+                DataBinding.FieldName = 'Stand_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 15
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn156: TcxGridDBBandedColumn
+                Caption = 'Data Stand Final'
+                DataBinding.FieldName = 'Data_Stand_Final'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 16
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn157: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 17
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView15: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn178
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn180
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn181
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn182
+                end
+                item
+                  Kind = skCount
+                  Column = cxGridDBBandedColumn160
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Romaneios'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn158: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn159: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn160: TcxGridDBBandedColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Options.Editing = False
+                Width = 71
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn161: TcxGridDBBandedColumn
+                Caption = 'Ini. Colheita'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn162: TcxGridDBBandedColumn
+                Caption = 'Fim Colheita'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn163: TcxGridDBBandedColumn
+                Caption = 'Emiss'#227'o Rom.'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn164: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn165: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 156
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn166: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 150
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn167: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produtor'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn168: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Depositante'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn169: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Armazem'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn170: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn171: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdMotorista'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn172: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdVeiculo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 14
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn173: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdTransportadora'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 15
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn174: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdArmazem'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 16
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn175: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdProduto'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 17
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn176: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdProdutor'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 18
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn177: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdDepositante'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 19
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn178: TcxGridDBBandedColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 20
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn179: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Tara'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 21
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn180: TcxGridDBBandedColumn
+                Caption = 'Liquido Umido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 22
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn181: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Descontos'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 23
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn182: TcxGridDBBandedColumn
+                Caption = 'Liquido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 24
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn183: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 25
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn184: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacoes'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 26
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView16: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              Bands = <
+                item
+                  Caption = 'Manuten'#231#245'es Realizadas'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn185: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn186: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn187: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Maquina'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn188: TcxGridDBBandedColumn
+                Caption = 'M'#225'quina'
+                DataBinding.FieldName = 'Maquina'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn189: TcxGridDBBandedColumn
+                Caption = 'Tipo'
+                DataBinding.FieldName = 'Tipo_Atividade'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn190: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Inicial'
+                Caption = 'U.T Inicial'
+                DataBinding.FieldName = 'UT_Inicial'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn191: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Final'
+                Caption = 'U.T Final'
+                DataBinding.FieldName = 'UT_Final'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn192: TcxGridDBBandedColumn
+                AlternateCaption = 'Pre'#231'o por Unidade de Trabalho'
+                Caption = 'Pre'#231'o U.T'
+                DataBinding.FieldName = 'Preco_UT'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn193: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Total'
+                DataBinding.FieldName = 'Preco_Total'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn194: TcxGridDBBandedColumn
+                Caption = 'Inicio'
+                DataBinding.FieldName = 'Data_Trabalho_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn195: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Trabalho_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn196: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn197: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView17: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ #0.0,0'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn205
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Insumos utilizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn198: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn199: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn200: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn201: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Produto'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn202: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 232
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn203: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 67
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn204: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 48
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn205: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Custo'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 120
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView18: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              Bands = <
+                item
+                  Caption = 'Talh'#245'es aplicados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn206: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn207: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn208: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn209: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn210: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 211
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn211: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn212: TcxGridDBBandedColumn
+                Caption = #193'rea Aplicada'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView19: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Plantio'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              Bands = <
+                item
+                  Caption = 'Ocorr'#234'ncias'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn213: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn214: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn215: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Plantio'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn216: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Ocorrencia'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn217: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Ocorrencia'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn218: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Intensidade'
+                Options.Editing = False
+                Width = 95
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn219: TcxGridDBBandedColumn
+                Caption = #193'rea Analisada'
+                DataBinding.FieldName = 'Area_Analisada'
+                Options.Editing = False
+                Width = 77
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn220: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Estadio'
+                Options.Editing = False
+                Width = 75
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn221: TcxGridDBBandedColumn
+                Caption = 'Ocorr'#234'ncia'
+                DataBinding.FieldName = 'Data_Ocorrencia'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn222: TcxGridDBBandedColumn
+                Caption = 'Dias Ap'#243's Plantio'
+                DataBinding.FieldName = 'Dias_Plantio'
+                Options.Editing = False
+                Width = 86
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn223: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+            end
+            object cxGrid4DBBandedTableView20: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsCustoTotal
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  FieldName = 'Total'
+                  Column = cxGridDBBandedColumn226
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  FieldName = 'Total'
+                  Column = cxGridDBBandedColumn226
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Resumo das Contas Pagas'
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn224: TcxGridDBBandedColumn
+                Caption = 'Propriedade'
+                DataBinding.FieldName = 'Nome'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn225: TcxGridDBBandedColumn
+                Caption = 'Plano Financeiro'
+                DataBinding.FieldName = 'Descricao'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 350
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn226: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Total'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+            end
+            object cxGrid4DBBandedTableView1: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAreaTotal
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGrid4DBBandedTableView1AreaTotal
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGrid4DBBandedTableView1AreaTotal
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Total de '#193'rea Plantada'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGrid4DBBandedTableView1Nome: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Nome'
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGrid4DBBandedTableView1AreaTotal: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Styles.Header = DM.cxStyle1
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGrid4DBBandedTableView1Talhao: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Styles.Header = DM.cxStyle1
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+            end
+            object cxGrid4DBBandedTableView2: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsColheitaTotal
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGrid4DBBandedTableView2TotalColhido
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGrid4DBBandedTableView2TotalColhido
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Total de '#193'rea Colhida'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGrid4DBBandedTableView2Nome: TcxGridDBBandedColumn
+                Caption = 'Propriedade'
+                DataBinding.FieldName = 'Nome'
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGrid4DBBandedTableView2Produto: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGrid4DBBandedTableView2TotalColhido: TcxGridDBBandedColumn
+                Caption = 'Total Colhido'
+                DataBinding.FieldName = 'TotalColhido'
+                Styles.Header = DM.cxStyle1
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+            end
+            object cxGrid4Level3: TcxGridLevel
+              Caption = 'Total de Contas Pagas'
+              GridView = cxGrid4DBBandedTableView20
+            end
+          end
+        end
+        object cxTabSheet4: TcxTabSheet
+          Caption = #193'rea Total Plantada'
+          ImageIndex = 1
+          object cxGrid2: TcxGrid
+            Left = 0
+            Top = 0
+            Width = 849
+            Height = 380
+            Align = alClient
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            LookAndFeel.Kind = lfUltraFlat
+            LookAndFeel.NativeStyle = False
+            object cxGridDBTableView1: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              Navigator.Buttons.First.Visible = False
+              Navigator.Buttons.PriorPage.Visible = False
+              Navigator.Buttons.Prior.Visible = False
+              Navigator.Buttons.Next.Enabled = False
+              Navigator.Buttons.Next.Visible = False
+              Navigator.Buttons.NextPage.Visible = False
+              Navigator.Buttons.Last.Visible = False
+              Navigator.Buttons.Insert.Enabled = False
+              Navigator.Buttons.Insert.Visible = False
+              Navigator.Buttons.Append.Visible = False
+              Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
+              Navigator.Buttons.Delete.ImageIndex = 2
+              Navigator.Buttons.Delete.Visible = True
+              Navigator.Buttons.Edit.Visible = False
+              Navigator.Buttons.Post.Visible = False
+              Navigator.Buttons.Cancel.Visible = False
+              Navigator.Buttons.Refresh.Visible = False
+              Navigator.Buttons.SaveBookmark.Visible = False
+              Navigator.Buttons.GotoBookmark.Visible = False
+              Navigator.Buttons.Filter.Visible = False
+              Navigator.Visible = True
+              FilterBox.CustomizeButtonAlignment = fbaLeft
+              FilterBox.Position = fpTop
+              FilterBox.Visible = fvNever
+              DataController.Filter.Active = True
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = '#0.0,0'
+                  Kind = skSum
+                  Position = spFooter
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skCount
+                  FieldName = 'Codigo'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              DateTimeHandling.DateFormat = 'DD/MM/YYYY'
+              FilterRow.InfoText = 'Clique para definir um filtro'
+              FilterRow.Visible = True
+              NewItemRow.InfoText = 'Clique para adicionar uma nova linha'
+              NewItemRow.SeparatorColor = clMenu
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsCustomize.ColumnHiding = True
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsCustomize.DataRowSizing = True
+              OptionsSelection.MultiSelect = True
+              OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
+              OptionsView.Footer = True
+              OptionsView.GroupByBox = False
+              OptionsView.GroupFooterMultiSummaries = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              OptionsView.GroupSummaryLayout = gslAlignWithColumns
+              OptionsView.Indicator = True
+              Preview.Visible = True
+              object cxGridDBColumn1: TcxGridDBColumn
+                Caption = 'C'#243'digo'
+                DataBinding.FieldName = 'Codigo'
+                Options.Editing = False
+                Width = 48
+              end
+              object cxGridDBColumn2: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Propriedade'
+                Visible = False
+                Options.Editing = False
+              end
+              object cxGridDBColumn3: TcxGridDBColumn
+                Caption = 'N'#186' Talh'#227'o'
+                DataBinding.FieldName = 'Numero_Talhao'
+                Width = 74
+              end
+              object cxGridDBColumn4: TcxGridDBColumn
+                Caption = 'Descri'#231#227'o'
+                DataBinding.FieldName = 'Descricao_Talhao'
+                MinWidth = 50
+                Width = 179
+              end
+              object cxGridDBColumn5: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 55
+              end
+              object cxGridDBColumn6: TcxGridDBColumn
+                Caption = 'Data Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 89
+              end
+            end
+            object cxGridDBTableView2: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView3: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView4: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView5: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn13
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn13
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn7: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn8: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn9: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn10: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn11: TcxGridDBColumn
+                DataBinding.FieldName = 'Atividade'
+                Options.Editing = False
+                Width = 215
+              end
+              object cxGridDBColumn12: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGridDBColumn13: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGridDBColumn14: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 212
+              end
+              object cxGridDBColumn15: TcxGridDBColumn
+                Caption = 'Qtde.'
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 80
+              end
+              object cxGridDBColumn16: TcxGridDBColumn
+                Caption = 'Un.'
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 43
+              end
+              object cxGridDBColumn17: TcxGridDBColumn
+                DataBinding.FieldName = 'Custo'
+                Options.Editing = False
+                Width = 120
+              end
+              object cxGridDBColumn18: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGridDBTableView6: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn19: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn20: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn21: TcxGridDBColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+              end
+              object cxGridDBColumn22: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+              end
+            end
+            object cxGridDBTableView7: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn23: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGridDBColumn24: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn25: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGridDBColumn26: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGridDBColumn27: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Plantio'
+              end
+              object cxGridDBColumn28: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+            end
+            object cxGridDBTableView8: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn29: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn30: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 85
+              end
+              object cxGridDBColumn31: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 85
+              end
+              object cxGridDBColumn32: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 85
+              end
+              object cxGridDBColumn33: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn34: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn35: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 227
+              end
+              object cxGridDBColumn36: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGridDBTableView9: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn37: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn38: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGridDBColumn39: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 70
+              end
+              object cxGridDBColumn40: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 70
+              end
+              object cxGridDBColumn41: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn42: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn43: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 158
+              end
+              object cxGridDBColumn44: TcxGridDBColumn
+                Caption = 'Observa'#231#227'o'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGridDBTableView10: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn45: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGridDBColumn46: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn47: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGridDBColumn48: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGridDBColumn49: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+              object cxGridDBColumn50: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+              end
+              object cxGridDBColumn51: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Cadastro'
+              end
+              object cxGridDBColumn52: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+              end
+              object cxGridDBColumn53: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+              end
+              object cxGridDBColumn54: TcxGridDBColumn
+                DataBinding.FieldName = 'Talhao'
+              end
+              object cxGridDBColumn55: TcxGridDBColumn
+                DataBinding.FieldName = 'Area'
+              end
+            end
+            object cxGridDBTableView11: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn61
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn61
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn56: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn57: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn58: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn59: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn60: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGridDBColumn61: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGridDBColumn62: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 151
+              end
+              object cxGridDBColumn63: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGridDBTableView12: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn71
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn71
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsBehavior.NavigatorHints = True
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn64: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn65: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGridDBColumn66: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Width = 70
+              end
+              object cxGridDBColumn67: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Width = 70
+              end
+              object cxGridDBColumn68: TcxGridDBColumn
+                Caption = 'Emiss'#227'o Romaneio'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Width = 93
+              end
+              object cxGridDBColumn69: TcxGridDBColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Width = 70
+              end
+              object cxGridDBColumn70: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn71: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn72: TcxGridDBColumn
+                DataBinding.FieldName = 'Motorista'
+                Width = 200
+              end
+              object cxGridDBColumn73: TcxGridDBColumn
+                Caption = 'Ve'#237'culo'
+                DataBinding.FieldName = 'Veiculo'
+                Width = 200
+              end
+              object cxGridDBColumn74: TcxGridDBColumn
+                DataBinding.FieldName = 'Transportadora'
+                Width = 200
+              end
+              object cxGridDBColumn75: TcxGridDBColumn
+                Caption = 'Armaz'#233'm'
+                DataBinding.FieldName = 'Armazem'
+                Width = 200
+              end
+              object cxGridDBColumn76: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Width = 200
+              end
+              object cxGridDBColumn77: TcxGridDBColumn
+                DataBinding.FieldName = 'Produtor'
+                Width = 200
+              end
+              object cxGridDBColumn78: TcxGridDBColumn
+                DataBinding.FieldName = 'Depositante'
+                Width = 200
+              end
+              object cxGridDBColumn79: TcxGridDBColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Width = 100
+              end
+              object cxGridDBColumn80: TcxGridDBColumn
+                DataBinding.FieldName = 'Tara'
+                Width = 100
+              end
+              object cxGridDBColumn81: TcxGridDBColumn
+                Caption = 'L'#237'quido '#218'mido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Width = 100
+              end
+              object cxGridDBColumn82: TcxGridDBColumn
+                DataBinding.FieldName = 'Descontos'
+                Width = 100
+              end
+              object cxGridDBColumn83: TcxGridDBColumn
+                Caption = 'L'#237'quido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Width = 100
+              end
+              object cxGridDBColumn84: TcxGridDBColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                Width = 100
+              end
+              object cxGridDBColumn85: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacoes'
+                Width = 500
+              end
+            end
+            object cxGridDBBandedTableView1: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn11
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn12
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Plantios Realizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn1: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn2: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn3: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn4: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn5: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Talh'#227'o'
+                Options.Editing = False
+                Width = 167
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn6: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 107
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn7: TcxGridDBBandedColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn8: TcxGridDBBandedColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn9: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn10: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn11: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn12: TcxGridDBBandedColumn
+                Caption = #193'rea Plantada'
+                DataBinding.FieldName = 'Area_Plantada'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn13: TcxGridDBBandedColumn
+                Caption = 'Stand Plantio'
+                DataBinding.FieldName = 'Stand_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn14: TcxGridDBBandedColumn
+                Caption = 'Stand Inicial'
+                DataBinding.FieldName = 'Stand_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn15: TcxGridDBBandedColumn
+                Caption = 'Data Stand Inicial'
+                DataBinding.FieldName = 'Data_Stand_Inicial'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 14
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn16: TcxGridDBBandedColumn
+                Caption = 'Stand Final'
+                DataBinding.FieldName = 'Stand_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 15
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn17: TcxGridDBBandedColumn
+                Caption = 'Data Stand Final'
+                DataBinding.FieldName = 'Data_Stand_Final'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 16
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn18: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 17
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView2: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn39
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn41
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn42
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn43
+                end
+                item
+                  Kind = skCount
+                  Column = cxGridDBBandedColumn21
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Romaneios'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn19: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn20: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn21: TcxGridDBBandedColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Options.Editing = False
+                Width = 71
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn22: TcxGridDBBandedColumn
+                Caption = 'Ini. Colheita'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn23: TcxGridDBBandedColumn
+                Caption = 'Fim Colheita'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn24: TcxGridDBBandedColumn
+                Caption = 'Emiss'#227'o Rom.'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn25: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn26: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 156
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn27: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 150
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn28: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produtor'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn29: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Depositante'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn30: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Armazem'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn31: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn32: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdMotorista'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn33: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdVeiculo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 14
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn34: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdTransportadora'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 15
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn35: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdArmazem'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 16
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn36: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdProduto'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 17
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn37: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdProdutor'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 18
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn38: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdDepositante'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 19
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn39: TcxGridDBBandedColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 20
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn40: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Tara'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 21
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn41: TcxGridDBBandedColumn
+                Caption = 'Liquido Umido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 22
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn42: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Descontos'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 23
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn43: TcxGridDBBandedColumn
+                Caption = 'Liquido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 24
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn44: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 25
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn45: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacoes'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 26
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView3: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              Bands = <
+                item
+                  Caption = 'Manuten'#231#245'es Realizadas'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn46: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn47: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn48: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Maquina'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn49: TcxGridDBBandedColumn
+                Caption = 'M'#225'quina'
+                DataBinding.FieldName = 'Maquina'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn50: TcxGridDBBandedColumn
+                Caption = 'Tipo'
+                DataBinding.FieldName = 'Tipo_Atividade'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn51: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Inicial'
+                Caption = 'U.T Inicial'
+                DataBinding.FieldName = 'UT_Inicial'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn52: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Final'
+                Caption = 'U.T Final'
+                DataBinding.FieldName = 'UT_Final'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn53: TcxGridDBBandedColumn
+                AlternateCaption = 'Pre'#231'o por Unidade de Trabalho'
+                Caption = 'Pre'#231'o U.T'
+                DataBinding.FieldName = 'Preco_UT'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn54: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Total'
+                DataBinding.FieldName = 'Preco_Total'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn55: TcxGridDBBandedColumn
+                Caption = 'Inicio'
+                DataBinding.FieldName = 'Data_Trabalho_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn56: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Trabalho_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn57: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn58: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView4: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ #0.0,0'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn66
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Insumos utilizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn59: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn60: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn61: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn62: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Produto'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn63: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 232
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn64: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 67
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn65: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 48
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn66: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Custo'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 120
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView5: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              Bands = <
+                item
+                  Caption = 'Talh'#245'es aplicados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn67: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn68: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn69: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn70: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn71: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 211
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn72: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn73: TcxGridDBBandedColumn
+                Caption = #193'rea Aplicada'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView6: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Plantio'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              Bands = <
+                item
+                  Caption = 'Ocorr'#234'ncias'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn74: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn75: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn76: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Plantio'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn77: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Ocorrencia'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn78: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Ocorrencia'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn79: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Intensidade'
+                Options.Editing = False
+                Width = 95
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn80: TcxGridDBBandedColumn
+                Caption = #193'rea Analisada'
+                DataBinding.FieldName = 'Area_Analisada'
+                Options.Editing = False
+                Width = 77
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn81: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Estadio'
+                Options.Editing = False
+                Width = 75
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn82: TcxGridDBBandedColumn
+                Caption = 'Ocorr'#234'ncia'
+                DataBinding.FieldName = 'Data_Ocorrencia'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn83: TcxGridDBBandedColumn
+                Caption = 'Dias Ap'#243's Plantio'
+                DataBinding.FieldName = 'Dias_Plantio'
+                Options.Editing = False
+                Width = 86
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn84: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView7: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAreaTotal
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = '0.00'
+                  Kind = skSum
+                  FieldName = 'AreaTotal'
+                  Column = cxGridDBBandedTableView7AreaTotal
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = '0.00'
+                  Kind = skSum
+                  FieldName = 'AreaTotal'
+                  Column = cxGridDBBandedTableView7AreaTotal
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Resumo da '#193'rea Plantada'
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedTableView7Nome: TcxGridDBBandedColumn
+                Caption = 'Propriedade'
+                DataBinding.FieldName = 'Nome'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedTableView7Talhao: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedTableView7AreaTotal: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 84
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView8: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAreaTotal
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn89
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn89
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Total de '#193'rea Plantada'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn88: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Nome'
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn89: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Styles.Header = DM.cxStyle1
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn90: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Styles.Header = DM.cxStyle1
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView9: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsColheitaTotal
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn93
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn93
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Total de '#193'rea Colhida'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn91: TcxGridDBBandedColumn
+                Caption = 'Propriedade'
+                DataBinding.FieldName = 'Nome'
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn92: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn93: TcxGridDBBandedColumn
+                Caption = 'Total Colhido'
+                DataBinding.FieldName = 'TotalColhido'
+                Styles.Header = DM.cxStyle1
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridLevel1: TcxGridLevel
+              Caption = 'Total de Contas Pagas'
+              GridView = cxGridDBBandedTableView7
+            end
+          end
+        end
+        object cxTabSheet5: TcxTabSheet
+          Caption = 'Total de Romaneios'
+          ImageIndex = 2
+          object cxGrid3: TcxGrid
+            Left = 0
+            Top = 0
+            Width = 849
+            Height = 380
+            Align = alClient
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            LookAndFeel.Kind = lfUltraFlat
+            LookAndFeel.NativeStyle = False
+            object cxGridDBTableView13: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              Navigator.Buttons.First.Visible = False
+              Navigator.Buttons.PriorPage.Visible = False
+              Navigator.Buttons.Prior.Visible = False
+              Navigator.Buttons.Next.Enabled = False
+              Navigator.Buttons.Next.Visible = False
+              Navigator.Buttons.NextPage.Visible = False
+              Navigator.Buttons.Last.Visible = False
+              Navigator.Buttons.Insert.Enabled = False
+              Navigator.Buttons.Insert.Visible = False
+              Navigator.Buttons.Append.Visible = False
+              Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
+              Navigator.Buttons.Delete.ImageIndex = 2
+              Navigator.Buttons.Delete.Visible = True
+              Navigator.Buttons.Edit.Visible = False
+              Navigator.Buttons.Post.Visible = False
+              Navigator.Buttons.Cancel.Visible = False
+              Navigator.Buttons.Refresh.Visible = False
+              Navigator.Buttons.SaveBookmark.Visible = False
+              Navigator.Buttons.GotoBookmark.Visible = False
+              Navigator.Buttons.Filter.Visible = False
+              Navigator.Visible = True
+              FilterBox.CustomizeButtonAlignment = fbaLeft
+              FilterBox.Position = fpTop
+              FilterBox.Visible = fvNever
+              DataController.Filter.Active = True
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = '#0.0,0'
+                  Kind = skSum
+                  Position = spFooter
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skCount
+                  FieldName = 'Codigo'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              DateTimeHandling.DateFormat = 'DD/MM/YYYY'
+              FilterRow.InfoText = 'Clique para definir um filtro'
+              FilterRow.Visible = True
+              NewItemRow.InfoText = 'Clique para adicionar uma nova linha'
+              NewItemRow.SeparatorColor = clMenu
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsCustomize.ColumnHiding = True
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsCustomize.DataRowSizing = True
+              OptionsSelection.MultiSelect = True
+              OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
+              OptionsView.Footer = True
+              OptionsView.GroupByBox = False
+              OptionsView.GroupFooterMultiSummaries = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              OptionsView.GroupSummaryLayout = gslAlignWithColumns
+              OptionsView.Indicator = True
+              Preview.Visible = True
+              object cxGridDBColumn86: TcxGridDBColumn
+                Caption = 'C'#243'digo'
+                DataBinding.FieldName = 'Codigo'
+                Options.Editing = False
+                Width = 48
+              end
+              object cxGridDBColumn87: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Propriedade'
+                Visible = False
+                Options.Editing = False
+              end
+              object cxGridDBColumn88: TcxGridDBColumn
+                Caption = 'N'#186' Talh'#227'o'
+                DataBinding.FieldName = 'Numero_Talhao'
+                Width = 74
+              end
+              object cxGridDBColumn89: TcxGridDBColumn
+                Caption = 'Descri'#231#227'o'
+                DataBinding.FieldName = 'Descricao_Talhao'
+                MinWidth = 50
+                Width = 179
+              end
+              object cxGridDBColumn90: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 55
+              end
+              object cxGridDBColumn91: TcxGridDBColumn
+                Caption = 'Data Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 89
+              end
+            end
+            object cxGridDBTableView14: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView15: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView16: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView17: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn98
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn98
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn92: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn93: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn94: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn95: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn96: TcxGridDBColumn
+                DataBinding.FieldName = 'Atividade'
+                Options.Editing = False
+                Width = 215
+              end
+              object cxGridDBColumn97: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGridDBColumn98: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGridDBColumn99: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 212
+              end
+              object cxGridDBColumn100: TcxGridDBColumn
+                Caption = 'Qtde.'
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 80
+              end
+              object cxGridDBColumn101: TcxGridDBColumn
+                Caption = 'Un.'
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 43
+              end
+              object cxGridDBColumn102: TcxGridDBColumn
+                DataBinding.FieldName = 'Custo'
+                Options.Editing = False
+                Width = 120
+              end
+              object cxGridDBColumn103: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGridDBTableView18: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn104: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn105: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn106: TcxGridDBColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+              end
+              object cxGridDBColumn107: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+              end
+            end
+            object cxGridDBTableView19: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn108: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGridDBColumn109: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn110: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGridDBColumn111: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGridDBColumn112: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Plantio'
+              end
+              object cxGridDBColumn113: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+            end
+            object cxGridDBTableView20: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn114: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn115: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 85
+              end
+              object cxGridDBColumn116: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 85
+              end
+              object cxGridDBColumn117: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 85
+              end
+              object cxGridDBColumn118: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn119: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn120: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 227
+              end
+              object cxGridDBColumn121: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGridDBTableView21: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn122: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn123: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGridDBColumn124: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 70
+              end
+              object cxGridDBColumn125: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 70
+              end
+              object cxGridDBColumn126: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn127: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn128: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 158
+              end
+              object cxGridDBColumn129: TcxGridDBColumn
+                Caption = 'Observa'#231#227'o'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGridDBTableView22: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn130: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGridDBColumn131: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn132: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGridDBColumn133: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGridDBColumn134: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+              object cxGridDBColumn135: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+              end
+              object cxGridDBColumn136: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Cadastro'
+              end
+              object cxGridDBColumn137: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+              end
+              object cxGridDBColumn138: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+              end
+              object cxGridDBColumn139: TcxGridDBColumn
+                DataBinding.FieldName = 'Talhao'
+              end
+              object cxGridDBColumn140: TcxGridDBColumn
+                DataBinding.FieldName = 'Area'
+              end
+            end
+            object cxGridDBTableView23: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn146
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn146
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn141: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn142: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn143: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn144: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn145: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGridDBColumn146: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGridDBColumn147: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 151
+              end
+              object cxGridDBColumn148: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGridDBTableView24: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn156
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn156
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsBehavior.NavigatorHints = True
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn149: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn150: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGridDBColumn151: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Width = 70
+              end
+              object cxGridDBColumn152: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Width = 70
+              end
+              object cxGridDBColumn153: TcxGridDBColumn
+                Caption = 'Emiss'#227'o Romaneio'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Width = 93
+              end
+              object cxGridDBColumn154: TcxGridDBColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Width = 70
+              end
+              object cxGridDBColumn155: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn156: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn157: TcxGridDBColumn
+                DataBinding.FieldName = 'Motorista'
+                Width = 200
+              end
+              object cxGridDBColumn158: TcxGridDBColumn
+                Caption = 'Ve'#237'culo'
+                DataBinding.FieldName = 'Veiculo'
+                Width = 200
+              end
+              object cxGridDBColumn159: TcxGridDBColumn
+                DataBinding.FieldName = 'Transportadora'
+                Width = 200
+              end
+              object cxGridDBColumn160: TcxGridDBColumn
+                Caption = 'Armaz'#233'm'
+                DataBinding.FieldName = 'Armazem'
+                Width = 200
+              end
+              object cxGridDBColumn161: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Width = 200
+              end
+              object cxGridDBColumn162: TcxGridDBColumn
+                DataBinding.FieldName = 'Produtor'
+                Width = 200
+              end
+              object cxGridDBColumn163: TcxGridDBColumn
+                DataBinding.FieldName = 'Depositante'
+                Width = 200
+              end
+              object cxGridDBColumn164: TcxGridDBColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Width = 100
+              end
+              object cxGridDBColumn165: TcxGridDBColumn
+                DataBinding.FieldName = 'Tara'
+                Width = 100
+              end
+              object cxGridDBColumn166: TcxGridDBColumn
+                Caption = 'L'#237'quido '#218'mido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Width = 100
+              end
+              object cxGridDBColumn167: TcxGridDBColumn
+                DataBinding.FieldName = 'Descontos'
+                Width = 100
+              end
+              object cxGridDBColumn168: TcxGridDBColumn
+                Caption = 'L'#237'quido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Width = 100
+              end
+              object cxGridDBColumn169: TcxGridDBColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                Width = 100
+              end
+              object cxGridDBColumn170: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacoes'
+                Width = 500
+              end
+            end
+            object cxGridDBBandedTableView10: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn101
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn102
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Plantios Realizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn85: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn86: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn87: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn94: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn95: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Talh'#227'o'
+                Options.Editing = False
+                Width = 167
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn96: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 107
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn97: TcxGridDBBandedColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn98: TcxGridDBBandedColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn99: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn100: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn101: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn102: TcxGridDBBandedColumn
+                Caption = #193'rea Plantada'
+                DataBinding.FieldName = 'Area_Plantada'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn103: TcxGridDBBandedColumn
+                Caption = 'Stand Plantio'
+                DataBinding.FieldName = 'Stand_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn104: TcxGridDBBandedColumn
+                Caption = 'Stand Inicial'
+                DataBinding.FieldName = 'Stand_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn105: TcxGridDBBandedColumn
+                Caption = 'Data Stand Inicial'
+                DataBinding.FieldName = 'Data_Stand_Inicial'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 14
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn106: TcxGridDBBandedColumn
+                Caption = 'Stand Final'
+                DataBinding.FieldName = 'Stand_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 15
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn107: TcxGridDBBandedColumn
+                Caption = 'Data Stand Final'
+                DataBinding.FieldName = 'Data_Stand_Final'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 16
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn108: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 17
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView11: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn129
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn131
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn132
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn133
+                end
+                item
+                  Kind = skCount
+                  Column = cxGridDBBandedColumn111
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Romaneios'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn109: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn110: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn111: TcxGridDBBandedColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Options.Editing = False
+                Width = 71
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn112: TcxGridDBBandedColumn
+                Caption = 'Ini. Colheita'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn113: TcxGridDBBandedColumn
+                Caption = 'Fim Colheita'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn114: TcxGridDBBandedColumn
+                Caption = 'Emiss'#227'o Rom.'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn115: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn116: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 156
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn117: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 150
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn118: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produtor'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn119: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Depositante'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn120: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Armazem'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn121: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn122: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdMotorista'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn123: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdVeiculo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 14
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn124: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdTransportadora'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 15
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn125: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdArmazem'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 16
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn126: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdProduto'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 17
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn127: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdProdutor'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 18
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn128: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdDepositante'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 19
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn129: TcxGridDBBandedColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 20
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn130: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Tara'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 21
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn131: TcxGridDBBandedColumn
+                Caption = 'Liquido Umido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 22
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn132: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Descontos'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 23
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn133: TcxGridDBBandedColumn
+                Caption = 'Liquido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 24
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn134: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 25
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn135: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacoes'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 26
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView12: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              Bands = <
+                item
+                  Caption = 'Manuten'#231#245'es Realizadas'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn136: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn137: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn138: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Maquina'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn139: TcxGridDBBandedColumn
+                Caption = 'M'#225'quina'
+                DataBinding.FieldName = 'Maquina'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn227: TcxGridDBBandedColumn
+                Caption = 'Tipo'
+                DataBinding.FieldName = 'Tipo_Atividade'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn228: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Inicial'
+                Caption = 'U.T Inicial'
+                DataBinding.FieldName = 'UT_Inicial'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn229: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Final'
+                Caption = 'U.T Final'
+                DataBinding.FieldName = 'UT_Final'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn230: TcxGridDBBandedColumn
+                AlternateCaption = 'Pre'#231'o por Unidade de Trabalho'
+                Caption = 'Pre'#231'o U.T'
+                DataBinding.FieldName = 'Preco_UT'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn231: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Total'
+                DataBinding.FieldName = 'Preco_Total'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn232: TcxGridDBBandedColumn
+                Caption = 'Inicio'
+                DataBinding.FieldName = 'Data_Trabalho_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn233: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Trabalho_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn234: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn235: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView13: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ #0.0,0'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn243
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Insumos utilizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn236: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn237: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn238: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn239: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Produto'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn240: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 232
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn241: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 67
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn242: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 48
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn243: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Custo'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 120
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView20: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              Bands = <
+                item
+                  Caption = 'Talh'#245'es aplicados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn244: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn245: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn246: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn247: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn248: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 211
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn249: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn250: TcxGridDBBandedColumn
+                Caption = #193'rea Aplicada'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView21: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Plantio'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              Bands = <
+                item
+                  Caption = 'Ocorr'#234'ncias'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn251: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn252: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn253: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Plantio'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn254: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Ocorrencia'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn255: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Ocorrencia'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn256: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Intensidade'
+                Options.Editing = False
+                Width = 95
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn257: TcxGridDBBandedColumn
+                Caption = #193'rea Analisada'
+                DataBinding.FieldName = 'Area_Analisada'
+                Options.Editing = False
+                Width = 77
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn258: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Estadio'
+                Options.Editing = False
+                Width = 75
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn259: TcxGridDBBandedColumn
+                Caption = 'Ocorr'#234'ncia'
+                DataBinding.FieldName = 'Data_Ocorrencia'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn260: TcxGridDBBandedColumn
+                Caption = 'Dias Ap'#243's Plantio'
+                DataBinding.FieldName = 'Dias_Plantio'
+                Options.Editing = False
+                Width = 86
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn261: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView22: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsColheitaTotal
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = '0.00'
+                  Kind = skSum
+                  FieldName = 'TotalColhidoS'
+                  Column = cxGridDBBandedTableView22TotalColhidoS
+                end
+                item
+                  Format = '0.00'
+                  Kind = skSum
+                  FieldName = 'TotalColhidoT'
+                  Column = cxGridDBBandedTableView22TotalColhidoT
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = '0.00'
+                  Kind = skSum
+                  FieldName = 'TotalColhidoS'
+                  Column = cxGridDBBandedTableView22TotalColhidoS
+                end
+                item
+                  Format = '0.00'
+                  Kind = skSum
+                  FieldName = 'TotalColhidoT'
+                  Column = cxGridDBBandedTableView22TotalColhidoT
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Resumo dos Romaneios'
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedTableView22Nome: TcxGridDBBandedColumn
+                Caption = 'Propriedade'
+                DataBinding.FieldName = 'Nome'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedTableView22Produto: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedTableView22TotalColhidoT: TcxGridDBBandedColumn
+                Caption = 'Total (t)'
+                DataBinding.FieldName = 'TotalColhidoT'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedTableView22TotalColhidoS: TcxGridDBBandedColumn
+                Caption = 'Total (s)'
+                DataBinding.FieldName = 'TotalColhidoS'
+                PropertiesClassName = 'TcxTextEditProperties'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView23: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAreaTotal
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn266
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn266
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Total de '#193'rea Plantada'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn265: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Nome'
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn266: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Styles.Header = DM.cxStyle1
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn267: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Styles.Header = DM.cxStyle1
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView24: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsColheitaTotal
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn270
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn270
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Total de '#193'rea Colhida'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn268: TcxGridDBBandedColumn
+                Caption = 'Propriedade'
+                DataBinding.FieldName = 'Nome'
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn269: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn270: TcxGridDBBandedColumn
+                Caption = 'Total Colhido'
+                DataBinding.FieldName = 'TotalColhido'
+                Styles.Header = DM.cxStyle1
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridLevel2: TcxGridLevel
+              Caption = 'Total de Contas Pagas'
+              GridView = cxGridDBBandedTableView22
+            end
+          end
+        end
+        object cxTabSheet6: TcxTabSheet
+          Caption = 'Resumo'
+          ImageIndex = 3
+          object cxGrid5: TcxGrid
+            Left = 0
+            Top = 89
+            Width = 849
+            Height = 64
+            Align = alTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            LookAndFeel.Kind = lfUltraFlat
+            LookAndFeel.NativeStyle = False
+            object cxGridDBTableView37: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              Navigator.Buttons.First.Visible = False
+              Navigator.Buttons.PriorPage.Visible = False
+              Navigator.Buttons.Prior.Visible = False
+              Navigator.Buttons.Next.Enabled = False
+              Navigator.Buttons.Next.Visible = False
+              Navigator.Buttons.NextPage.Visible = False
+              Navigator.Buttons.Last.Visible = False
+              Navigator.Buttons.Insert.Enabled = False
+              Navigator.Buttons.Insert.Visible = False
+              Navigator.Buttons.Append.Visible = False
+              Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
+              Navigator.Buttons.Delete.ImageIndex = 2
+              Navigator.Buttons.Delete.Visible = True
+              Navigator.Buttons.Edit.Visible = False
+              Navigator.Buttons.Post.Visible = False
+              Navigator.Buttons.Cancel.Visible = False
+              Navigator.Buttons.Refresh.Visible = False
+              Navigator.Buttons.SaveBookmark.Visible = False
+              Navigator.Buttons.GotoBookmark.Visible = False
+              Navigator.Buttons.Filter.Visible = False
+              Navigator.Visible = True
+              FilterBox.CustomizeButtonAlignment = fbaLeft
+              FilterBox.Position = fpTop
+              FilterBox.Visible = fvNever
+              DataController.Filter.Active = True
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = '#0.0,0'
+                  Kind = skSum
+                  Position = spFooter
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skCount
+                  FieldName = 'Codigo'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              DateTimeHandling.DateFormat = 'DD/MM/YYYY'
+              FilterRow.InfoText = 'Clique para definir um filtro'
+              FilterRow.Visible = True
+              NewItemRow.InfoText = 'Clique para adicionar uma nova linha'
+              NewItemRow.SeparatorColor = clMenu
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsCustomize.ColumnHiding = True
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsCustomize.DataRowSizing = True
+              OptionsSelection.MultiSelect = True
+              OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
+              OptionsView.Footer = True
+              OptionsView.GroupByBox = False
+              OptionsView.GroupFooterMultiSummaries = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              OptionsView.GroupSummaryLayout = gslAlignWithColumns
+              OptionsView.Indicator = True
+              Preview.Visible = True
+              object cxGridDBColumn256: TcxGridDBColumn
+                Caption = 'C'#243'digo'
+                DataBinding.FieldName = 'Codigo'
+                Options.Editing = False
+                Width = 48
+              end
+              object cxGridDBColumn257: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Propriedade'
+                Visible = False
+                Options.Editing = False
+              end
+              object cxGridDBColumn258: TcxGridDBColumn
+                Caption = 'N'#186' Talh'#227'o'
+                DataBinding.FieldName = 'Numero_Talhao'
+                Width = 74
+              end
+              object cxGridDBColumn259: TcxGridDBColumn
+                Caption = 'Descri'#231#227'o'
+                DataBinding.FieldName = 'Descricao_Talhao'
+                MinWidth = 50
+                Width = 179
+              end
+              object cxGridDBColumn260: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 55
+              end
+              object cxGridDBColumn261: TcxGridDBColumn
+                Caption = 'Data Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 89
+              end
+            end
+            object cxGridDBTableView38: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView39: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView40: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView41: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn268
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn268
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn262: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn263: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn264: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn265: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn266: TcxGridDBColumn
+                DataBinding.FieldName = 'Atividade'
+                Options.Editing = False
+                Width = 215
+              end
+              object cxGridDBColumn267: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGridDBColumn268: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGridDBColumn269: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 212
+              end
+              object cxGridDBColumn270: TcxGridDBColumn
+                Caption = 'Qtde.'
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 80
+              end
+              object cxGridDBColumn271: TcxGridDBColumn
+                Caption = 'Un.'
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 43
+              end
+              object cxGridDBColumn272: TcxGridDBColumn
+                DataBinding.FieldName = 'Custo'
+                Options.Editing = False
+                Width = 120
+              end
+              object cxGridDBColumn273: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGridDBTableView42: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn274: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn275: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn276: TcxGridDBColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+              end
+              object cxGridDBColumn277: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+              end
+            end
+            object cxGridDBTableView43: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn278: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGridDBColumn279: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn280: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGridDBColumn281: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGridDBColumn282: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Plantio'
+              end
+              object cxGridDBColumn283: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+            end
+            object cxGridDBTableView44: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn284: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn285: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 85
+              end
+              object cxGridDBColumn286: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 85
+              end
+              object cxGridDBColumn287: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 85
+              end
+              object cxGridDBColumn288: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn289: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn290: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 227
+              end
+              object cxGridDBColumn291: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGridDBTableView45: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn292: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn293: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGridDBColumn294: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 70
+              end
+              object cxGridDBColumn295: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 70
+              end
+              object cxGridDBColumn296: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn297: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn298: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 158
+              end
+              object cxGridDBColumn299: TcxGridDBColumn
+                Caption = 'Observa'#231#227'o'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGridDBTableView46: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn300: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGridDBColumn301: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn302: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGridDBColumn303: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGridDBColumn304: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+              object cxGridDBColumn305: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+              end
+              object cxGridDBColumn306: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Cadastro'
+              end
+              object cxGridDBColumn307: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+              end
+              object cxGridDBColumn308: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+              end
+              object cxGridDBColumn309: TcxGridDBColumn
+                DataBinding.FieldName = 'Talhao'
+              end
+              object cxGridDBColumn310: TcxGridDBColumn
+                DataBinding.FieldName = 'Area'
+              end
+            end
+            object cxGridDBTableView47: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn316
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn316
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn311: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn312: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn313: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn314: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn315: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGridDBColumn316: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGridDBColumn317: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 151
+              end
+              object cxGridDBColumn318: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGridDBTableView48: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn326
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn326
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsBehavior.NavigatorHints = True
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn319: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn320: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGridDBColumn321: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Width = 70
+              end
+              object cxGridDBColumn322: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Width = 70
+              end
+              object cxGridDBColumn323: TcxGridDBColumn
+                Caption = 'Emiss'#227'o Romaneio'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Width = 93
+              end
+              object cxGridDBColumn324: TcxGridDBColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Width = 70
+              end
+              object cxGridDBColumn325: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn326: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn327: TcxGridDBColumn
+                DataBinding.FieldName = 'Motorista'
+                Width = 200
+              end
+              object cxGridDBColumn328: TcxGridDBColumn
+                Caption = 'Ve'#237'culo'
+                DataBinding.FieldName = 'Veiculo'
+                Width = 200
+              end
+              object cxGridDBColumn329: TcxGridDBColumn
+                DataBinding.FieldName = 'Transportadora'
+                Width = 200
+              end
+              object cxGridDBColumn330: TcxGridDBColumn
+                Caption = 'Armaz'#233'm'
+                DataBinding.FieldName = 'Armazem'
+                Width = 200
+              end
+              object cxGridDBColumn331: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Width = 200
+              end
+              object cxGridDBColumn332: TcxGridDBColumn
+                DataBinding.FieldName = 'Produtor'
+                Width = 200
+              end
+              object cxGridDBColumn333: TcxGridDBColumn
+                DataBinding.FieldName = 'Depositante'
+                Width = 200
+              end
+              object cxGridDBColumn334: TcxGridDBColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Width = 100
+              end
+              object cxGridDBColumn335: TcxGridDBColumn
+                DataBinding.FieldName = 'Tara'
+                Width = 100
+              end
+              object cxGridDBColumn336: TcxGridDBColumn
+                Caption = 'L'#237'quido '#218'mido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Width = 100
+              end
+              object cxGridDBColumn337: TcxGridDBColumn
+                DataBinding.FieldName = 'Descontos'
+                Width = 100
+              end
+              object cxGridDBColumn338: TcxGridDBColumn
+                Caption = 'L'#237'quido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Width = 100
+              end
+              object cxGridDBColumn339: TcxGridDBColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                Width = 100
+              end
+              object cxGridDBColumn340: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacoes'
+                Width = 500
+              end
+            end
+            object cxGridDBBandedTableView25: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn281
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn282
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Plantios Realizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn271: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn272: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn273: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn274: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn275: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Talh'#227'o'
+                Options.Editing = False
+                Width = 167
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn276: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 107
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn277: TcxGridDBBandedColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn278: TcxGridDBBandedColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn279: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn280: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn281: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn282: TcxGridDBBandedColumn
+                Caption = #193'rea Plantada'
+                DataBinding.FieldName = 'Area_Plantada'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn283: TcxGridDBBandedColumn
+                Caption = 'Stand Plantio'
+                DataBinding.FieldName = 'Stand_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn284: TcxGridDBBandedColumn
+                Caption = 'Stand Inicial'
+                DataBinding.FieldName = 'Stand_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn285: TcxGridDBBandedColumn
+                Caption = 'Data Stand Inicial'
+                DataBinding.FieldName = 'Data_Stand_Inicial'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 14
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn286: TcxGridDBBandedColumn
+                Caption = 'Stand Final'
+                DataBinding.FieldName = 'Stand_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 15
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn287: TcxGridDBBandedColumn
+                Caption = 'Data Stand Final'
+                DataBinding.FieldName = 'Data_Stand_Final'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 16
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn288: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 17
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView26: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn309
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn311
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn312
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn313
+                end
+                item
+                  Kind = skCount
+                  Column = cxGridDBBandedColumn291
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Romaneios'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn289: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn290: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn291: TcxGridDBBandedColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Options.Editing = False
+                Width = 71
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn292: TcxGridDBBandedColumn
+                Caption = 'Ini. Colheita'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn293: TcxGridDBBandedColumn
+                Caption = 'Fim Colheita'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn294: TcxGridDBBandedColumn
+                Caption = 'Emiss'#227'o Rom.'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn295: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn296: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 156
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn297: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 150
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn298: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produtor'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn299: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Depositante'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn300: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Armazem'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn301: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn302: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdMotorista'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn303: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdVeiculo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 14
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn304: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdTransportadora'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 15
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn305: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdArmazem'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 16
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn306: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdProduto'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 17
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn307: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdProdutor'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 18
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn308: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdDepositante'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 19
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn309: TcxGridDBBandedColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 20
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn310: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Tara'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 21
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn311: TcxGridDBBandedColumn
+                Caption = 'Liquido Umido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 22
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn312: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Descontos'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 23
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn313: TcxGridDBBandedColumn
+                Caption = 'Liquido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 24
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn314: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 25
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn315: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacoes'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 26
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView27: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              Bands = <
+                item
+                  Caption = 'Manuten'#231#245'es Realizadas'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn316: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn317: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn318: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Maquina'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn319: TcxGridDBBandedColumn
+                Caption = 'M'#225'quina'
+                DataBinding.FieldName = 'Maquina'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn320: TcxGridDBBandedColumn
+                Caption = 'Tipo'
+                DataBinding.FieldName = 'Tipo_Atividade'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn321: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Inicial'
+                Caption = 'U.T Inicial'
+                DataBinding.FieldName = 'UT_Inicial'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn322: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Final'
+                Caption = 'U.T Final'
+                DataBinding.FieldName = 'UT_Final'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn323: TcxGridDBBandedColumn
+                AlternateCaption = 'Pre'#231'o por Unidade de Trabalho'
+                Caption = 'Pre'#231'o U.T'
+                DataBinding.FieldName = 'Preco_UT'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn324: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Total'
+                DataBinding.FieldName = 'Preco_Total'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn325: TcxGridDBBandedColumn
+                Caption = 'Inicio'
+                DataBinding.FieldName = 'Data_Trabalho_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn326: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Trabalho_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn327: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn328: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView28: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ #0.0,0'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn336
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Insumos utilizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn329: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn330: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn331: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn332: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Produto'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn333: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 232
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn334: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 67
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn335: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 48
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn336: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Custo'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 120
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView29: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              Bands = <
+                item
+                  Caption = 'Talh'#245'es aplicados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn337: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn338: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn339: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn340: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn341: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 211
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn342: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn343: TcxGridDBBandedColumn
+                Caption = #193'rea Aplicada'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView30: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Plantio'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              Bands = <
+                item
+                  Caption = 'Ocorr'#234'ncias'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn344: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn345: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn346: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Plantio'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn347: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Ocorrencia'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn348: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Ocorrencia'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn349: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Intensidade'
+                Options.Editing = False
+                Width = 95
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn350: TcxGridDBBandedColumn
+                Caption = #193'rea Analisada'
+                DataBinding.FieldName = 'Area_Analisada'
+                Options.Editing = False
+                Width = 77
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn351: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Estadio'
+                Options.Editing = False
+                Width = 75
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn352: TcxGridDBBandedColumn
+                Caption = 'Ocorr'#234'ncia'
+                DataBinding.FieldName = 'Data_Ocorrencia'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn353: TcxGridDBBandedColumn
+                Caption = 'Dias Ap'#243's Plantio'
+                DataBinding.FieldName = 'Dias_Plantio'
+                Options.Editing = False
+                Width = 86
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn354: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView31: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsSumarioSacasHectare
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  FieldName = 'Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  FieldName = 'Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.GroupByBox = False
+              Bands = <
+                item
+                  Caption = 'Sacas por Hectare'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedTableView31Propriedade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Propriedade'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedTableView31SomatoriaColheita: TcxGridDBBandedColumn
+                Caption = 'Somat'#243'ria Romaneios'
+                DataBinding.FieldName = 'SomatoriaColheita'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 150
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedTableView31TotalAreaPlantada: TcxGridDBBandedColumn
+                Caption = #193'rea Plantada'
+                DataBinding.FieldName = 'TotalAreaPlantada'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedTableView31SacasPorHectare: TcxGridDBBandedColumn
+                Caption = 'Sacas Por Hectare'
+                DataBinding.FieldName = 'SacasPorHectare'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 150
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView32: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAreaTotal
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn359
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn359
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Total de '#193'rea Plantada'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn358: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Nome'
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn359: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Styles.Header = DM.cxStyle1
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn360: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Styles.Header = DM.cxStyle1
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView33: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsColheitaTotal
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn363
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn363
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Total de '#193'rea Colhida'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn361: TcxGridDBBandedColumn
+                Caption = 'Propriedade'
+                DataBinding.FieldName = 'Nome'
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn362: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn363: TcxGridDBBandedColumn
+                Caption = 'Total Colhido'
+                DataBinding.FieldName = 'TotalColhido'
+                Styles.Header = DM.cxStyle1
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridLevel3: TcxGridLevel
+              Caption = 'Total de Contas Pagas'
+              GridView = cxGridDBBandedTableView31
+            end
+          end
+          object cxGrid6: TcxGrid
+            Left = 0
+            Top = 0
+            Width = 849
+            Height = 89
+            Align = alTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 1
+            LookAndFeel.Kind = lfUltraFlat
+            LookAndFeel.NativeStyle = False
+            object cxGridDBTableView49: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              Navigator.Buttons.First.Visible = False
+              Navigator.Buttons.PriorPage.Visible = False
+              Navigator.Buttons.Prior.Visible = False
+              Navigator.Buttons.Next.Enabled = False
+              Navigator.Buttons.Next.Visible = False
+              Navigator.Buttons.NextPage.Visible = False
+              Navigator.Buttons.Last.Visible = False
+              Navigator.Buttons.Insert.Enabled = False
+              Navigator.Buttons.Insert.Visible = False
+              Navigator.Buttons.Append.Visible = False
+              Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
+              Navigator.Buttons.Delete.ImageIndex = 2
+              Navigator.Buttons.Delete.Visible = True
+              Navigator.Buttons.Edit.Visible = False
+              Navigator.Buttons.Post.Visible = False
+              Navigator.Buttons.Cancel.Visible = False
+              Navigator.Buttons.Refresh.Visible = False
+              Navigator.Buttons.SaveBookmark.Visible = False
+              Navigator.Buttons.GotoBookmark.Visible = False
+              Navigator.Buttons.Filter.Visible = False
+              Navigator.Visible = True
+              FilterBox.CustomizeButtonAlignment = fbaLeft
+              FilterBox.Position = fpTop
+              FilterBox.Visible = fvNever
+              DataController.Filter.Active = True
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = '#0.0,0'
+                  Kind = skSum
+                  Position = spFooter
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skCount
+                  FieldName = 'Codigo'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              DateTimeHandling.DateFormat = 'DD/MM/YYYY'
+              FilterRow.InfoText = 'Clique para definir um filtro'
+              FilterRow.Visible = True
+              NewItemRow.InfoText = 'Clique para adicionar uma nova linha'
+              NewItemRow.SeparatorColor = clMenu
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsCustomize.ColumnHiding = True
+              OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsCustomize.DataRowSizing = True
+              OptionsSelection.MultiSelect = True
+              OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
+              OptionsView.Footer = True
+              OptionsView.GroupByBox = False
+              OptionsView.GroupFooterMultiSummaries = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              OptionsView.GroupSummaryLayout = gslAlignWithColumns
+              OptionsView.Indicator = True
+              Preview.Visible = True
+              object cxGridDBColumn341: TcxGridDBColumn
+                Caption = 'C'#243'digo'
+                DataBinding.FieldName = 'Codigo'
+                Options.Editing = False
+                Width = 48
+              end
+              object cxGridDBColumn342: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Propriedade'
+                Visible = False
+                Options.Editing = False
+              end
+              object cxGridDBColumn343: TcxGridDBColumn
+                Caption = 'N'#186' Talh'#227'o'
+                DataBinding.FieldName = 'Numero_Talhao'
+                Width = 74
+              end
+              object cxGridDBColumn344: TcxGridDBColumn
+                Caption = 'Descri'#231#227'o'
+                DataBinding.FieldName = 'Descricao_Talhao'
+                MinWidth = 50
+                Width = 179
+              end
+              object cxGridDBColumn345: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 55
+              end
+              object cxGridDBColumn346: TcxGridDBColumn
+                Caption = 'Data Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 89
+              end
+            end
+            object cxGridDBTableView50: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView51: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView52: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxGridDBTableView53: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn353
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn353
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn347: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn348: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn349: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn350: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Atividade'
+                Options.Editing = False
+                Width = 85
+              end
+              object cxGridDBColumn351: TcxGridDBColumn
+                DataBinding.FieldName = 'Atividade'
+                Options.Editing = False
+                Width = 215
+              end
+              object cxGridDBColumn352: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGridDBColumn353: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGridDBColumn354: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 212
+              end
+              object cxGridDBColumn355: TcxGridDBColumn
+                Caption = 'Qtde.'
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 80
+              end
+              object cxGridDBColumn356: TcxGridDBColumn
+                Caption = 'Un.'
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 43
+              end
+              object cxGridDBColumn357: TcxGridDBColumn
+                DataBinding.FieldName = 'Custo'
+                Options.Editing = False
+                Width = 120
+              end
+              object cxGridDBColumn358: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGridDBTableView54: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn359: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn360: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn361: TcxGridDBColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+              end
+              object cxGridDBColumn362: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+              end
+            end
+            object cxGridDBTableView55: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn363: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGridDBColumn364: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn365: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGridDBColumn366: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGridDBColumn367: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Plantio'
+              end
+              object cxGridDBColumn368: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+            end
+            object cxGridDBTableView56: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn369: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn370: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 85
+              end
+              object cxGridDBColumn371: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 85
+              end
+              object cxGridDBColumn372: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 85
+              end
+              object cxGridDBColumn373: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn374: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn375: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 227
+              end
+              object cxGridDBColumn376: TcxGridDBColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGridDBTableView57: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn377: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn378: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGridDBColumn379: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Width = 70
+              end
+              object cxGridDBColumn380: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Width = 70
+              end
+              object cxGridDBColumn381: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn382: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn383: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Width = 158
+              end
+              object cxGridDBColumn384: TcxGridDBColumn
+                Caption = 'Observa'#231#227'o'
+                DataBinding.FieldName = 'Observacao'
+                Width = 500
+              end
+            end
+            object cxGridDBTableView58: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxGridDBColumn385: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo'
+              end
+              object cxGridDBColumn386: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn387: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+              end
+              object cxGridDBColumn388: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+              end
+              object cxGridDBColumn389: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+              end
+              object cxGridDBColumn390: TcxGridDBColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+              end
+              object cxGridDBColumn391: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Cadastro'
+              end
+              object cxGridDBColumn392: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+              end
+              object cxGridDBColumn393: TcxGridDBColumn
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+              end
+              object cxGridDBColumn394: TcxGridDBColumn
+                DataBinding.FieldName = 'Talhao'
+              end
+              object cxGridDBColumn395: TcxGridDBColumn
+                DataBinding.FieldName = 'Area'
+              end
+            end
+            object cxGridDBTableView59: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn401
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn401
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn396: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Options.Editing = False
+              end
+              object cxGridDBColumn397: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn398: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn399: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+              end
+              object cxGridDBColumn400: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 150
+              end
+              object cxGridDBColumn401: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 60
+              end
+              object cxGridDBColumn402: TcxGridDBColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 151
+              end
+              object cxGridDBColumn403: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 500
+              end
+            end
+            object cxGridDBTableView60: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn411
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  FieldName = 'Area'
+                  Column = cxGridDBColumn411
+                  DisplayText = #193'rea Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsBehavior.NavigatorHints = True
+              OptionsView.Footer = True
+              OptionsView.GroupFooters = gfAlwaysVisible
+              object cxGridDBColumn404: TcxGridDBColumn
+                Caption = 'C'#243'd.'
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+              end
+              object cxGridDBColumn405: TcxGridDBColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Width = 70
+              end
+              object cxGridDBColumn406: TcxGridDBColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Width = 70
+              end
+              object cxGridDBColumn407: TcxGridDBColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Width = 70
+              end
+              object cxGridDBColumn408: TcxGridDBColumn
+                Caption = 'Emiss'#227'o Romaneio'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Width = 93
+              end
+              object cxGridDBColumn409: TcxGridDBColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Width = 70
+              end
+              object cxGridDBColumn410: TcxGridDBColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Width = 150
+              end
+              object cxGridDBColumn411: TcxGridDBColumn
+                Caption = #193'rea'
+                DataBinding.FieldName = 'Area'
+                Width = 60
+              end
+              object cxGridDBColumn412: TcxGridDBColumn
+                DataBinding.FieldName = 'Motorista'
+                Width = 200
+              end
+              object cxGridDBColumn413: TcxGridDBColumn
+                Caption = 'Ve'#237'culo'
+                DataBinding.FieldName = 'Veiculo'
+                Width = 200
+              end
+              object cxGridDBColumn414: TcxGridDBColumn
+                DataBinding.FieldName = 'Transportadora'
+                Width = 200
+              end
+              object cxGridDBColumn415: TcxGridDBColumn
+                Caption = 'Armaz'#233'm'
+                DataBinding.FieldName = 'Armazem'
+                Width = 200
+              end
+              object cxGridDBColumn416: TcxGridDBColumn
+                DataBinding.FieldName = 'Produto'
+                Width = 200
+              end
+              object cxGridDBColumn417: TcxGridDBColumn
+                DataBinding.FieldName = 'Produtor'
+                Width = 200
+              end
+              object cxGridDBColumn418: TcxGridDBColumn
+                DataBinding.FieldName = 'Depositante'
+                Width = 200
+              end
+              object cxGridDBColumn419: TcxGridDBColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Width = 100
+              end
+              object cxGridDBColumn420: TcxGridDBColumn
+                DataBinding.FieldName = 'Tara'
+                Width = 100
+              end
+              object cxGridDBColumn421: TcxGridDBColumn
+                Caption = 'L'#237'quido '#218'mido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Width = 100
+              end
+              object cxGridDBColumn422: TcxGridDBColumn
+                DataBinding.FieldName = 'Descontos'
+                Width = 100
+              end
+              object cxGridDBColumn423: TcxGridDBColumn
+                Caption = 'L'#237'quido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Width = 100
+              end
+              object cxGridDBColumn424: TcxGridDBColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                Width = 100
+              end
+              object cxGridDBColumn425: TcxGridDBColumn
+                DataBinding.FieldName = 'Observacoes'
+                Width = 500
+              end
+            end
+            object cxGridDBBandedTableView34: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn368
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn369
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Plantios Realizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn262: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn263: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn264: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Variedade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn355: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn356: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Talh'#227'o'
+                Options.Editing = False
+                Width = 167
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn357: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Variedade'
+                Options.Editing = False
+                Width = 107
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn364: TcxGridDBBandedColumn
+                Caption = 'Plantio'
+                DataBinding.FieldName = 'Data_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn365: TcxGridDBBandedColumn
+                Caption = 'In'#237'cio'
+                DataBinding.FieldName = 'Data_Inicio_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn366: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Fim_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn367: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn368: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn369: TcxGridDBBandedColumn
+                Caption = #193'rea Plantada'
+                DataBinding.FieldName = 'Area_Plantada'
+                Options.Editing = False
+                Width = 72
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn370: TcxGridDBBandedColumn
+                Caption = 'Stand Plantio'
+                DataBinding.FieldName = 'Stand_Plantio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn371: TcxGridDBBandedColumn
+                Caption = 'Stand Inicial'
+                DataBinding.FieldName = 'Stand_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn372: TcxGridDBBandedColumn
+                Caption = 'Data Stand Inicial'
+                DataBinding.FieldName = 'Data_Stand_Inicial'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 14
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn373: TcxGridDBBandedColumn
+                Caption = 'Stand Final'
+                DataBinding.FieldName = 'Stand_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 15
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn374: TcxGridDBBandedColumn
+                Caption = 'Data Stand Final'
+                DataBinding.FieldName = 'Data_Stand_Final'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 16
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn375: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 17
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView35: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn396
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn398
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn399
+                end
+                item
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn400
+                end
+                item
+                  Kind = skCount
+                  Column = cxGridDBBandedColumn378
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Romaneios'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn376: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn377: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn378: TcxGridDBBandedColumn
+                Caption = 'N'#186' Romaneio'
+                DataBinding.FieldName = 'NRomaneio'
+                Options.Editing = False
+                Width = 71
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn379: TcxGridDBBandedColumn
+                Caption = 'Ini. Colheita'
+                DataBinding.FieldName = 'Data_Inicio_Colheita'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn380: TcxGridDBBandedColumn
+                Caption = 'Fim Colheita'
+                DataBinding.FieldName = 'Data_Fim_Colheita'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn381: TcxGridDBBandedColumn
+                Caption = 'Emiss'#227'o Rom.'
+                DataBinding.FieldName = 'Data_Emissao_Romaneio'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn382: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn383: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 156
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn384: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 150
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn385: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produtor'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn386: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Depositante'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn387: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Armazem'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn388: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn389: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdMotorista'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 13
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn390: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdVeiculo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 14
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn391: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdTransportadora'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 15
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn392: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdArmazem'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 16
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn393: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdProduto'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 17
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn394: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdProdutor'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 18
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn395: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'IdDepositante'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 19
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn396: TcxGridDBBandedColumn
+                Caption = 'Peso Bruto'
+                DataBinding.FieldName = 'PesoBruto'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 20
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn397: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Tara'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 21
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn398: TcxGridDBBandedColumn
+                Caption = 'Liquido Umido'
+                DataBinding.FieldName = 'LiquidoUmido'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 22
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn399: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Descontos'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 23
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn400: TcxGridDBBandedColumn
+                Caption = 'Liquido Seco'
+                DataBinding.FieldName = 'LiquidoSeco'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 24
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn401: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Frete'
+                DataBinding.FieldName = 'PrecoFrete'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 25
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn402: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacoes'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 26
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView36: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              Bands = <
+                item
+                  Caption = 'Manuten'#231#245'es Realizadas'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn403: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn404: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn405: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Maquina'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn406: TcxGridDBBandedColumn
+                Caption = 'M'#225'quina'
+                DataBinding.FieldName = 'Maquina'
+                Options.Editing = False
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn407: TcxGridDBBandedColumn
+                Caption = 'Tipo'
+                DataBinding.FieldName = 'Tipo_Atividade'
+                Options.Editing = False
+                Width = 90
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn408: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Inicial'
+                Caption = 'U.T Inicial'
+                DataBinding.FieldName = 'UT_Inicial'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn409: TcxGridDBBandedColumn
+                AlternateCaption = 'Unidade de Trabalho Final'
+                Caption = 'U.T Final'
+                DataBinding.FieldName = 'UT_Final'
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn410: TcxGridDBBandedColumn
+                AlternateCaption = 'Pre'#231'o por Unidade de Trabalho'
+                Caption = 'Pre'#231'o U.T'
+                DataBinding.FieldName = 'Preco_UT'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn411: TcxGridDBBandedColumn
+                Caption = 'Pre'#231'o Total'
+                DataBinding.FieldName = 'Preco_Total'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn412: TcxGridDBBandedColumn
+                Caption = 'Inicio'
+                DataBinding.FieldName = 'Data_Trabalho_Inicial'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn413: TcxGridDBBandedColumn
+                Caption = 'Fim'
+                DataBinding.FieldName = 'Data_Trabalho_Final'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn414: TcxGridDBBandedColumn
+                Caption = 'Cadastro'
+                DataBinding.FieldName = 'Data_Cadastro'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 11
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn415: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 12
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView37: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ #0.0,0'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn423
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Insumos utilizados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn416: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn417: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn418: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn419: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Produto'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn420: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Options.Editing = False
+                Width = 232
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn421: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Quantidade'
+                Options.Editing = False
+                Width = 67
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn422: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Unidade'
+                Options.Editing = False
+                Width = 48
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn423: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Custo'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Width = 120
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView38: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              Bands = <
+                item
+                  Caption = 'Talh'#245'es aplicados'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn424: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn425: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn426: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade_Atividade'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn427: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Talhao'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn428: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Options.Editing = False
+                Width = 211
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn429: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn430: TcxGridDBBandedColumn
+                Caption = #193'rea Aplicada'
+                DataBinding.FieldName = 'Area'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView39: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DetailKeyFieldNames = 'Codigo_Plantio'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              Bands = <
+                item
+                  Caption = 'Ocorr'#234'ncias'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn431: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn432: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn433: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Plantio'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn434: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Ocorrencia'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn435: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Ocorrencia'
+                Options.Editing = False
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn436: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Intensidade'
+                Options.Editing = False
+                Width = 95
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn437: TcxGridDBBandedColumn
+                Caption = #193'rea Analisada'
+                DataBinding.FieldName = 'Area_Analisada'
+                Options.Editing = False
+                Width = 77
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn438: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Estadio'
+                Options.Editing = False
+                Width = 75
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn439: TcxGridDBBandedColumn
+                Caption = 'Ocorr'#234'ncia'
+                DataBinding.FieldName = 'Data_Ocorrencia'
+                Options.Editing = False
+                Width = 70
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn440: TcxGridDBBandedColumn
+                Caption = 'Dias Ap'#243's Plantio'
+                DataBinding.FieldName = 'Dias_Plantio'
+                Options.Editing = False
+                Width = 86
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn441: TcxGridDBBandedColumn
+                Caption = 'Observa'#231#245'es'
+                DataBinding.FieldName = 'Observacao'
+                Options.Editing = False
+                Width = 600
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView40: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsSumarioCustoHectare
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  FieldName = 'Total'
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  FieldName = 'Total'
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.GroupByBox = False
+              Bands = <
+                item
+                  Caption = 'Resumo da Safra'
+                  Styles.Header = DM.cxStyle1
+                end
+                item
+                  Caption = 'Custo por Hectare'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Position.BandIndex = 0
+                  Position.ColIndex = 0
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn442: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Propriedade'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 200
+                Position.BandIndex = 1
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn443: TcxGridDBBandedColumn
+                Caption = 'Somat'#243'ria Custo'
+                DataBinding.FieldName = 'SomatoriaCusto'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 150
+                Position.BandIndex = 1
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn444: TcxGridDBBandedColumn
+                Caption = #193'rea Plantada'
+                DataBinding.FieldName = 'TotalAreaPlantada'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 100
+                Position.BandIndex = 1
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn445: TcxGridDBBandedColumn
+                Caption = 'Custo Por Hectare'
+                DataBinding.FieldName = 'CustoPorHectare'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Options.Editing = False
+                Styles.Header = DM.cxStyle1
+                Width = 150
+                Position.BandIndex = 1
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView41: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsAreaTotal
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn447
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn447
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Total de '#193'rea Plantada'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn446: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Nome'
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn447: TcxGridDBBandedColumn
+                Caption = #193'rea Total'
+                DataBinding.FieldName = 'AreaTotal'
+                Styles.Header = DM.cxStyle1
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn448: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                Styles.Header = DM.cxStyle1
+                Width = 200
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridDBBandedTableView42: TcxGridDBBandedTableView
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = dsColheitaTotal
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn451
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ 0.00'
+                  Kind = skSum
+                  Column = cxGridDBBandedColumn451
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.Footer = True
+              Bands = <
+                item
+                  Caption = 'Total de '#193'rea Colhida'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = DM.cxStyle1
+                end>
+              object cxGridDBBandedColumn449: TcxGridDBBandedColumn
+                Caption = 'Propriedade'
+                DataBinding.FieldName = 'Nome'
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn450: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                Styles.Header = DM.cxStyle1
+                Width = 250
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGridDBBandedColumn451: TcxGridDBBandedColumn
+                Caption = 'Total Colhido'
+                DataBinding.FieldName = 'TotalColhido'
+                Styles.Header = DM.cxStyle1
+                Width = 100
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+            end
+            object cxGridLevel4: TcxGridLevel
+              Caption = 'Total de Contas Pagas'
+              GridView = cxGridDBBandedTableView40
+            end
+          end
+        end
+      end
     end
   end
   object qryAtividades: TADOQuery
@@ -2108,8 +14275,8 @@
         'left join Registro_Atividade RA on (RAA.Codigo_Registro_Atividad' +
         'e = RA.Codigo)'
       'order by RA.Codigo')
-    Left = 592
-    Top = 56
+    Left = 576
+    Top = 48
     object qryAtividadesCodigo: TAutoIncField
       FieldName = 'Codigo'
       ReadOnly = True
@@ -2150,13 +14317,13 @@
   end
   object dsAtividades: TDataSource
     DataSet = qryAtividades
-    Left = 624
-    Top = 56
+    Left = 608
+    Top = 48
   end
   object dsPlantis: TDataSource
     DataSet = qryPlantis
     Left = 704
-    Top = 104
+    Top = 16
   end
   object qryPlantis: TADOQuery
     CursorType = ctStatic
@@ -2168,7 +14335,7 @@
         'e = RA.Codigo)'
       'order by RA.Codigo')
     Left = 672
-    Top = 104
+    Top = 16
     object qryPlantisCodigo: TAutoIncField
       FieldName = 'Codigo'
       ReadOnly = True
@@ -2252,7 +14419,7 @@
   object dsRomaneios: TDataSource
     DataSet = qryRomaneios
     Left = 792
-    Top = 152
+    Top = 192
   end
   object qryRomaneios: TADOQuery
     CursorType = ctStatic
@@ -2264,7 +14431,7 @@
         'e = RA.Codigo)'
       'order by RA.Codigo')
     Left = 760
-    Top = 152
+    Top = 192
     object qryRomaneiosCodigo: TAutoIncField
       FieldName = 'Codigo'
       ReadOnly = True
@@ -2392,7 +14559,7 @@
   object dsManutencoes: TDataSource
     DataSet = qryManutencoes
     Left = 792
-    Top = 200
+    Top = 240
   end
   object qryManutencoes: TADOQuery
     CursorType = ctStatic
@@ -2404,7 +14571,7 @@
         'de = RA.Codigo)'
       'order by RA.Codigo')
     Left = 760
-    Top = 200
+    Top = 240
     object qryManutencoesCodigo: TAutoIncField
       FieldName = 'Codigo'
       ReadOnly = True
@@ -2464,8 +14631,8 @@
         'left join Registro_Atividade RA on (RAAP.Codigo_Registro_Ativida' +
         'de = RA.Codigo)'
       'order by RA.Codigo')
-    Left = 672
-    Top = 56
+    Left = 656
+    Top = 48
     object qryAtividadesProdutosCodigo: TAutoIncField
       FieldName = 'Codigo'
       ReadOnly = True
@@ -2503,8 +14670,8 @@
   end
   object dsAtividadesProdutos: TDataSource
     DataSet = qryAtividadesProdutos
-    Left = 704
-    Top = 56
+    Left = 688
+    Top = 48
   end
   object qryAtividadesTalhao: TADOQuery
     CursorType = ctStatic
@@ -2515,8 +14682,8 @@
         'left join Registro_Atividade RA on (RAAT.Codigo_Registro_Ativida' +
         'de = RA.Codigo)'
       'order by RA.Codigo')
-    Left = 760
-    Top = 56
+    Left = 744
+    Top = 48
     object qryAtividadesTalhaoCodigo: TAutoIncField
       FieldName = 'Codigo'
       ReadOnly = True
@@ -2557,8 +14724,8 @@
   end
   object dsAtividadesTalhao: TDataSource
     DataSet = qryAtividadesTalhao
-    Left = 792
-    Top = 56
+    Left = 776
+    Top = 48
   end
   object qryPlantioOcorrencia: TADOQuery
     CursorType = ctStatic
@@ -2570,7 +14737,7 @@
         'de = RA.Codigo)'
       'order by RA.Codigo')
     Left = 760
-    Top = 104
+    Top = 144
     object qryPlantioOcorrenciaCodigo: TAutoIncField
       FieldName = 'Codigo'
       ReadOnly = True
@@ -2618,75 +14785,24 @@
   object dsPlantioOcorrencia: TDataSource
     DataSet = qryPlantioOcorrencia
     Left = 792
-    Top = 104
+    Top = 144
   end
   object cxPropertiesStore1: TcxPropertiesStore
-    Components = <
-      item
-        Component = cxGrid1DBBandedTableViewAtividadesAtividade
-        Properties.Strings = (
-          'SortOrder'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = cxGrid1DBBandedTableViewAtividadesData_Cadastro
-        Properties.Strings = (
-          'SortOrder'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = cxGrid1DBBandedTableViewAtividadesData_Fim_Atividade
-        Properties.Strings = (
-          'SortOrder'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = cxGrid1DBBandedTableViewAtividadesData_Inicio_Atividade
-        Properties.Strings = (
-          'SortOrder'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = cxGrid1DBBandedTableViewAtividadesObservacao
-        Properties.Strings = (
-          'SortOrder'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = cxGrid1DBBandedTableViewAtividadesTipo_Atividade
-        Properties.Strings = (
-          'SortOrder'
-          'Visible'
-          'Width')
-      end>
+    Components = <>
     StorageName = 'cxPropertiesStore1'
     Left = 424
     Top = 16
   end
   object dxComponentPrinter1: TdxComponentPrinter
-    CurrentLink = dxComponentPrinter1Link1
+    CurrentLink = dxComponentPrinter1Link5
     PreviewOptions.Caption = 'Visualiza'#231#227'o de relat'#243'rio'
     PreviewOptions.WindowState = wsMaximized
     PrintTitle = 'Impress'#227'o de relat'#243'rio'
     Version = 0
     Left = 456
     Top = 16
-    object dxComponentPrinter1Link1: TdxGridReportLink
+    object dxComponentPrinter1Link5: TdxCompositionReportLink
       Active = True
-      Component = cxGrid1
-      DateFormat = 1
-      PDFExportOptions.Author = 'ProCampo'
-      PDFExportOptions.Creator = 'ProCampo'
-      PDFExportOptions.DefaultFileName = 'Relat'#243'rio'
-      PDFExportOptions.DefaultFileNameAssigned = True
-      PDFExportOptions.OpenDocumentAfterExport = True
-      PDFExportOptions.IsCreatorAssigned = True
-      PrinterPage.CenterOnPageH = True
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2695,47 +14811,467 @@
       PrinterPage.Margins.Left = 12700
       PrinterPage.Margins.Right = 12700
       PrinterPage.Margins.Top = 12700
-      PrinterPage.Orientation = poLandscape
-      PrinterPage.PageFooter.CenterTitle.Strings = (
-        '[Date Printed]')
-      PrinterPage.PageFooter.LeftTitle.Strings = (
-        'P'#225'gina [Page #] de [Total Pages]')
-      PrinterPage.PageFooter.RightTitle.Strings = (
-        '[Time Printed]')
-      PrinterPage.PageHeader.CenterTitle.Strings = (
-        'FAV Sistemas')
-      PrinterPage.PageHeader.LeftTitle.Strings = (
-        'SAC - Sistema de Acompanhamento Comercial')
-      PrinterPage.PageHeader.RightTitle.Strings = (
-        '(64)3631-1926 / (64)9958-7272')
       PrinterPage.PageSize.X = 210000
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 42945.378350243050000000
-      ReportDocument.Creator = 'ProCampo'
-      ReportDocument.IsDescriptionAssigned = True
-      ReportFootnotes.Font.Charset = ANSI_CHARSET
-      ReportFootnotes.Font.Color = clBlack
-      ReportFootnotes.Font.Height = -13
-      ReportFootnotes.Font.Name = 'Tahoma'
-      ReportFootnotes.Font.Style = [fsBold]
-      ReportFootnotes.Mode = fnmOnLastPage
-      ReportTitle.Font.Charset = ANSI_CHARSET
-      ReportTitle.Font.Color = clBlack
-      ReportTitle.Font.Height = -19
-      ReportTitle.Font.Name = 'Tahoma'
-      ReportTitle.Font.Style = [fsBold]
-      TimeFormat = 3
-      AssignedFormatValues = [fvDate, fvTime]
-      OptionsOnEveryPage.Footers = False
-      OptionsOnEveryPage.FilterBar = False
-      OptionsView.Caption = False
-      OptionsView.ExpandButtons = False
-      OptionsView.FilterBar = False
-      OptionsView.GroupFooters = False
+      ReportDocument.CreationDate = 43024.512283530090000000
+      ReportDocument.IsCaptionAssigned = True
+      Items = <
+        item
+          ReportLink = dxComponentPrinter1Link1
+          BuiltInCompositionItem = True
+        end
+        item
+          ReportLink = dxComponentPrinter1Link2
+          BuiltInCompositionItem = True
+        end
+        item
+          ReportLink = dxComponentPrinter1Link3
+          BuiltInCompositionItem = True
+        end
+        item
+          ReportLink = dxComponentPrinter1Link4
+          BuiltInCompositionItem = True
+        end>
       BuiltInReportLink = True
+    end
+    object dxComponentPrinter1Link1: TdxGridReportLink
+      Active = True
+      Component = cxGrid1
+      PageNumberFormat = pnfNumeral
+      PrinterPage.DMPaper = 9
+      PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
+      PrinterPage.Header = 6350
+      PrinterPage.Margins.Bottom = 12700
+      PrinterPage.Margins.Left = 12700
+      PrinterPage.Margins.Right = 12700
+      PrinterPage.Margins.Top = 12700
+      PrinterPage.PageSize.X = 210000
+      PrinterPage.PageSize.Y = 297000
+      PrinterPage._dxMeasurementUnits_ = 0
+      PrinterPage._dxLastMU_ = 2
+      ReportDocument.CreationDate = 43024.512283402780000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      BuiltInReportLink = True
+    end
+    object dxComponentPrinter1Link2: TdxGridReportLink
+      Active = True
+      Component = cxGrid7
+      PageNumberFormat = pnfNumeral
+      PrinterPage.DMPaper = 9
+      PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
+      PrinterPage.Header = 6350
+      PrinterPage.Margins.Bottom = 12700
+      PrinterPage.Margins.Left = 12700
+      PrinterPage.Margins.Right = 12700
+      PrinterPage.Margins.Top = 12700
+      PrinterPage.PageSize.X = 210000
+      PrinterPage.PageSize.Y = 297000
+      PrinterPage._dxMeasurementUnits_ = 0
+      PrinterPage._dxLastMU_ = 2
+      ReportDocument.CreationDate = 43024.512283449080000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      BuiltInReportLink = True
+    end
+    object dxComponentPrinter1Link3: TdxGridReportLink
+      Active = True
+      Component = cxGrid8
+      PageNumberFormat = pnfNumeral
+      PrinterPage.DMPaper = 9
+      PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
+      PrinterPage.Header = 6350
+      PrinterPage.Margins.Bottom = 12700
+      PrinterPage.Margins.Left = 12700
+      PrinterPage.Margins.Right = 12700
+      PrinterPage.Margins.Top = 12700
+      PrinterPage.PageSize.X = 210000
+      PrinterPage.PageSize.Y = 297000
+      PrinterPage._dxMeasurementUnits_ = 0
+      PrinterPage._dxLastMU_ = 2
+      ReportDocument.CreationDate = 43024.512283495370000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      BuiltInReportLink = True
+    end
+    object dxComponentPrinter1Link4: TdxGridReportLink
+      Active = True
+      Component = cxGrid9
+      PageNumberFormat = pnfNumeral
+      PrinterPage.DMPaper = 9
+      PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
+      PrinterPage.Header = 6350
+      PrinterPage.Margins.Bottom = 12700
+      PrinterPage.Margins.Left = 12700
+      PrinterPage.Margins.Right = 12700
+      PrinterPage.Margins.Top = 12700
+      PrinterPage.PageSize.X = 210000
+      PrinterPage.PageSize.Y = 297000
+      PrinterPage._dxMeasurementUnits_ = 0
+      PrinterPage._dxLastMU_ = 2
+      ReportDocument.CreationDate = 43024.512283518520000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      BuiltInReportLink = True
+    end
+  end
+  object qryCustoTotal: TADOQuery
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      
+        'select CP.Nome, CPF.Descricao, SUM(LFP.Valor) as Total from Lanc' +
+        'amento_Financeiro LF'
+      
+        'left join Lancamento_Financeiro_Parcelas LFP on (LF.Codigo = LFP' +
+        '.Codigo_Lancamento_Financeiro)'
+      
+        'left join Cadastro_Plano_Financeiro CPF on (LF.Codigo_Plano = CP' +
+        'F.Codigo)'
+      
+        'left join Cadastro_Pessoa CP on (LF.Codigo_Propriedade = CP.Codi' +
+        'go)'
+      'where LF.Codigo_Safra = 1 and LF.Codigo_Propriedade = 15'
+      'group by CP.Nome, CPF.Descricao'
+      ''
+      ''
+      '')
+    Left = 392
+    Top = 352
+    object qryCustoTotalNome: TStringField
+      FieldName = 'Nome'
+      Size = 100
+    end
+    object qryCustoTotalDescricao: TStringField
+      FieldName = 'Descricao'
+      Size = 500
+    end
+    object qryCustoTotalTotal: TFloatField
+      FieldName = 'Total'
+      ReadOnly = True
+    end
+  end
+  object dsCustoTotal: TDataSource
+    DataSet = qryCustoTotal
+    Left = 424
+    Top = 352
+  end
+  object dsAreaTotal: TDataSource
+    DataSet = qryAreaTotal
+    Left = 344
+    Top = 352
+  end
+  object qryAreaTotal: TADOQuery
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      
+        'select CP.Nome, CT.Descricao_Talhao as Talhao, SUM(RAP.Area_Plan' +
+        'tada) as AreaTotal from Registro_Atividade RA'
+      
+        'left join Registro_Atividade_Plantio RAP on (RA.Codigo = RAP.Cod' +
+        'igo_Registro_Atividade)'
+      'left join Cadastro_Talhao CT on (RAP.Codigo_Talhao = CT.Codigo)'
+      
+        'left join Cadastro_Pessoa CP on (RA.Codigo_Propriedade = CP.Codi' +
+        'go)'
+      'where RA.Codigo_Safra = 1 and RA.Codigo_Propriedade = 15'
+      'group by CP.Nome, CT.Descricao_Talhao')
+    Left = 312
+    Top = 352
+    object qryAreaTotalNome: TStringField
+      FieldName = 'Nome'
+      Size = 100
+    end
+    object qryAreaTotalAreaTotal: TFloatField
+      FieldName = 'AreaTotal'
+      ReadOnly = True
+    end
+    object qryAreaTotalTalhao: TStringField
+      FieldName = 'Talhao'
+      Size = 50
+    end
+  end
+  object qryColheitaTotal: TADOQuery
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      
+        'select CP.Nome, CPro.Descricao as Produto, SUM(RAC.LiquidoSeco) ' +
+        'as TotalColhidoT,'
+      
+        'SUM(RAC.LiquidoSeco) / 60 as TotalColhidoS from Registro_Ativida' +
+        'de RA'
+      
+        'left join Registro_Atividade_Colheita RAC on (RA.Codigo = RAC.Co' +
+        'digo_Registro_Atividade)'
+      
+        'left join Cadastro_Produtos CPro on (RAC.IdProduto = CPro.Codigo' +
+        ')'
+      
+        'left join Cadastro_Pessoa CP on (RA.Codigo_Propriedade = CP.Codi' +
+        'go)'
+      'where RA.Codigo_Safra = 1 and RA.Codigo_Propriedade = 15'
+      'group by CP.Nome, CPro.Descricao')
+    Left = 232
+    Top = 352
+    object qryColheitaTotalNome: TStringField
+      FieldName = 'Nome'
+      Size = 100
+    end
+    object qryColheitaTotalProduto: TStringField
+      FieldName = 'Produto'
+      Size = 50
+    end
+    object qryColheitaTotalTotalColhidoT: TFloatField
+      FieldName = 'TotalColhidoT'
+      ReadOnly = True
+    end
+    object qryColheitaTotalTotalColhidoS: TFloatField
+      FieldName = 'TotalColhidoS'
+      ReadOnly = True
+      DisplayFormat = '0.00'
+    end
+  end
+  object dsColheitaTotal: TDataSource
+    DataSet = qryColheitaTotal
+    Left = 264
+    Top = 352
+  end
+  object qrySumarioCustoHectare: TADOQuery
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select'
+      'Propriedade,'
+      'SomatoriaCusto,'
+      'TotalAreaPlantada,'
+      '(SomatoriaCusto / TotalAreaPlantada) as CustoPorHectare'
+      ' from (select '
+      'CP.Nome as Propriedade, '
+      'SUM(LFP.Valor) as SomatoriaCusto,'
+      '(select SUM(RAP.Area_Plantada) from Registro_Atividade RA'
+      
+        'left join Registro_Atividade_Plantio RAP on (RA.Codigo = RAP.Cod' +
+        'igo_Registro_Atividade)'
+      
+        'where RA.Codigo_Safra = 1 and RA.Codigo_Propriedade = 15) as Tot' +
+        'alAreaPlantada'
+      'from '
+      'Lancamento_Financeiro LF, '
+      'Lancamento_Financeiro_Parcelas LFP,'
+      'Cadastro_Pessoa CP'
+      'where '
+      #9'LF.Codigo = LFP.Codigo_Lancamento_Financeiro and'
+      #9'LF.Codigo_Propriedade = CP.Codigo and'
+      #9'LF.Codigo_Safra = 1 and LF.Codigo_Propriedade = 15'
+      'group by '
+      #9'CP.Nome) t')
+    Left = 232
+    Top = 400
+    object qrySumarioCustoHectarePropriedade: TStringField
+      FieldName = 'Propriedade'
+      Size = 100
+    end
+    object qrySumarioCustoHectareSomatoriaCusto: TFloatField
+      FieldName = 'SomatoriaCusto'
+      ReadOnly = True
+    end
+    object qrySumarioCustoHectareTotalAreaPlantada: TFloatField
+      FieldName = 'TotalAreaPlantada'
+      ReadOnly = True
+    end
+    object qrySumarioCustoHectareCustoPorHectare: TFloatField
+      FieldName = 'CustoPorHectare'
+      ReadOnly = True
+    end
+  end
+  object dsSumarioCustoHectare: TDataSource
+    DataSet = qrySumarioCustoHectare
+    Left = 264
+    Top = 400
+  end
+  object dxComponentPrinter2: TdxComponentPrinter
+    CurrentLink = dxComponentPrinter2Link2
+    PreviewOptions.Caption = 'Visualiza'#231#227'o de relat'#243'rio'
+    PreviewOptions.WindowState = wsMaximized
+    PrintTitle = 'Impress'#227'o de relat'#243'rio'
+    Version = 0
+    Left = 504
+    Top = 16
+    object dxComponentPrinter2Link1: TdxCustomContainerReportLink
+      Active = True
+      Component = cxTabSheet3
+      PrinterPage.DMPaper = 9
+      PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
+      PrinterPage.Header = 6350
+      PrinterPage.Margins.Bottom = 12700
+      PrinterPage.Margins.Left = 12700
+      PrinterPage.Margins.Right = 12700
+      PrinterPage.Margins.Top = 12700
+      PrinterPage.PageSize.X = 210000
+      PrinterPage.PageSize.Y = 297000
+      PrinterPage._dxMeasurementUnits_ = 0
+      PrinterPage._dxLastMU_ = 2
+      ReportDocument.CreationDate = 43024.474365081020000000
+      BuiltInReportLink = True
+      HiddenComponents = {}
+      ExcludedComponents = {}
+      AggregatedReportLinks = {}
+    end
+    object dxComponentPrinter2Link3: TdxCustomContainerReportLink
+      Active = True
+      Component = cxTabSheet4
+      PrinterPage.DMPaper = 9
+      PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
+      PrinterPage.Header = 6350
+      PrinterPage.Margins.Bottom = 12700
+      PrinterPage.Margins.Left = 12700
+      PrinterPage.Margins.Right = 12700
+      PrinterPage.Margins.Top = 12700
+      PrinterPage.PageSize.X = 210000
+      PrinterPage.PageSize.Y = 297000
+      PrinterPage._dxMeasurementUnits_ = 0
+      PrinterPage._dxLastMU_ = 2
+      ReportDocument.CreationDate = 43024.474365127320000000
+      BuiltInReportLink = True
+      HiddenComponents = {}
+      ExcludedComponents = {}
+      AggregatedReportLinks = {}
+    end
+    object dxComponentPrinter2Link4: TdxCustomContainerReportLink
+      Active = True
+      Component = cxTabSheet5
+      PrinterPage.DMPaper = 9
+      PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
+      PrinterPage.Header = 6350
+      PrinterPage.Margins.Bottom = 12700
+      PrinterPage.Margins.Left = 12700
+      PrinterPage.Margins.Right = 12700
+      PrinterPage.Margins.Top = 12700
+      PrinterPage.PageSize.X = 210000
+      PrinterPage.PageSize.Y = 297000
+      PrinterPage._dxMeasurementUnits_ = 0
+      PrinterPage._dxLastMU_ = 2
+      ReportDocument.CreationDate = 43024.474365173610000000
+      BuiltInReportLink = True
+      HiddenComponents = {}
+      ExcludedComponents = {}
+      AggregatedReportLinks = {}
+    end
+    object dxComponentPrinter2Link5: TdxCustomContainerReportLink
+      Active = True
+      Component = cxTabSheet6
+      PrinterPage.DMPaper = 9
+      PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
+      PrinterPage.Header = 6350
+      PrinterPage.Margins.Bottom = 12700
+      PrinterPage.Margins.Left = 12700
+      PrinterPage.Margins.Right = 12700
+      PrinterPage.Margins.Top = 12700
+      PrinterPage.PageSize.X = 210000
+      PrinterPage.PageSize.Y = 297000
+      PrinterPage._dxMeasurementUnits_ = 0
+      PrinterPage._dxLastMU_ = 2
+      ReportDocument.CreationDate = 43024.474365243060000000
+      BuiltInReportLink = True
+      HiddenComponents = {}
+      ExcludedComponents = {}
+      AggregatedReportLinks = {}
+    end
+    object dxComponentPrinter2Link2: TdxCompositionReportLink
+      PrinterPage.DMPaper = 9
+      PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
+      PrinterPage.Header = 6350
+      PrinterPage.Margins.Bottom = 12700
+      PrinterPage.Margins.Left = 12700
+      PrinterPage.Margins.Right = 12700
+      PrinterPage.Margins.Top = 12700
+      PrinterPage.PageSize.X = 210000
+      PrinterPage.PageSize.Y = 297000
+      PrinterPage._dxMeasurementUnits_ = 0
+      PrinterPage._dxLastMU_ = 2
+      ReportDocument.CreationDate = 43023.907203923610000000
+      ReportDocument.IsCaptionAssigned = True
+      Items = <
+        item
+          ReportLink = dxComponentPrinter2Link1
+          BuiltInCompositionItem = True
+        end
+        item
+          ReportLink = dxComponentPrinter2Link3
+          BuiltInCompositionItem = True
+        end
+        item
+          ReportLink = dxComponentPrinter2Link4
+          BuiltInCompositionItem = True
+        end
+        item
+          ReportLink = dxComponentPrinter2Link5
+          BuiltInCompositionItem = True
+        end>
+      BuiltInReportLink = True
+    end
+  end
+  object dsSumarioSacasHectare: TDataSource
+    DataSet = qrySumarioSacasHectare
+    Left = 344
+    Top = 400
+  end
+  object qrySumarioSacasHectare: TADOQuery
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select'
+      'Propriedade,'
+      'SomatoriaColheita,'
+      'TotalAreaPlantada,'
+      '(SomatoriaColheita / TotalAreaPlantada) / 60 as SacasPorHectare'
+      ' from (select '
+      'CP.Nome as Propriedade, '
+      'SUM(RAC.LiquidoSeco) as SomatoriaColheita,'
+      '(select SUM(RAP.Area_Plantada) from Registro_Atividade RA'
+      
+        'left join Registro_Atividade_Plantio RAP on (RA.Codigo = RAP.Cod' +
+        'igo_Registro_Atividade)'
+      
+        'where RA.Codigo_Safra = 1 and RA.Codigo_Propriedade = 15) as Tot' +
+        'alAreaPlantada'
+      'from '
+      'Registro_Atividade RA, '
+      'Registro_Atividade_Colheita RAC,'
+      'Cadastro_Pessoa CP'
+      'where '
+      #9'RA.Codigo = RAC.Codigo_Registro_Atividade and'
+      #9'RA.Codigo_Propriedade = CP.Codigo and'
+      #9'RA.Codigo_Safra = 1 and RA.Codigo_Propriedade = 15'
+      'group by '
+      #9'CP.Nome) t')
+    Left = 312
+    Top = 400
+    object qrySumarioSacasHectarePropriedade: TStringField
+      FieldName = 'Propriedade'
+      Size = 100
+    end
+    object qrySumarioSacasHectareSomatoriaColheita: TFloatField
+      FieldName = 'SomatoriaColheita'
+      ReadOnly = True
+    end
+    object qrySumarioSacasHectareTotalAreaPlantada: TFloatField
+      FieldName = 'TotalAreaPlantada'
+      ReadOnly = True
+    end
+    object qrySumarioSacasHectareSacasPorHectare: TFloatField
+      FieldName = 'SacasPorHectare'
+      ReadOnly = True
+      DisplayFormat = '0.00'
     end
   end
 end

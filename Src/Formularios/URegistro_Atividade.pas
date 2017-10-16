@@ -44,7 +44,9 @@ uses
   RegistroAtividadeAtividadesMaquinaDominio,
   RegistroAtividadePlantioOcorrenciaDominio, PropriedadeEntidade,
   LoginEntidade, HistoricoEntidade, HistoricoDominio, System.Generics.Collections,
-  cxNavigator, dxSkinsdxRibbonPainter, EstoqueProdutoDominio;
+  cxNavigator, dxSkinsdxRibbonPainter, EstoqueProdutoDominio, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White;
 
 type
   TFrmRegistro_Atividade = class(TForm)
@@ -1162,7 +1164,7 @@ procedure TFrmRegistro_Atividade.cxGrid3DBBandedTableViewPlantioEditing(
   Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
   var AAllow: Boolean);
 begin
-  ValorQuantidadeAtual:= PegaQuantidadeInsumoAtual;
+  //ValorQuantidadeAtual:= PegaQuantidadeInsumoAtual;
 end;
 
 procedure TFrmRegistro_Atividade.cxGrid3DBBandedTableViewPlantioNavigatorButtonsButtonClick(

@@ -36,7 +36,9 @@ uses
   HistoricoMovimentacaoFinanceiraDominio,
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
   cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses,
-  ContratoVendaDominio, cxNavigator, dxSkinsdxRibbonPainter;
+  ContratoVendaDominio, cxNavigator, dxSkinsdxRibbonPainter, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White;
 type
   TFrmRel_Contrato_Venda = class(TForm)
     cxGrid1: TcxGrid;

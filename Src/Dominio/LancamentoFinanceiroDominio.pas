@@ -20,6 +20,8 @@ type
       function Buscar(Codigo_Propriedade: integer; Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       function Buscar(Codigo_Propriedade, Codigo_Safra: integer; Tipo, Status: AnsiString; Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       function BuscarParaBaixar(Codigo_Propriedade: integer; Query: TADOQuery; Tudo, CodigoSafra: Integer; Status, Tipo: AnsiString; var Retorno: AnsiString): integer;
+      function BuscarResumo(Codigo_Propriedade, Codigo_Safra: integer; Query: TADOQuery; var Retorno: AnsiString): integer;
+      function BuscarSumarioFinalSafra(Codigo_Propriedade, Codigo_Safra: integer; Query: TADOQuery; var Retorno: AnsiString): integer;
       constructor Create(var Conexao: TADOConnection; FLFLancamento: TLancamentoFinanceiroEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
   end;
@@ -182,6 +184,75 @@ begin
       FComandoSQL.Valores.Add(Tipo);
       FComandoSQL.Valores.Add(Codigo_Propriedade);
     end;
+    FLFLancamentoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FLFLancamentoDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TLancamentoFinanceiroDominio.BuscarResumo(Codigo_Propriedade,
+  Codigo_Safra: integer; Query: TADOQuery; var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select CP.Nome, CPF.Descricao, SUM(LFP.Valor) as Total from Lancamento_Financeiro LF '+
+                             ' left join Lancamento_Financeiro_Parcelas LFP on (LF.Codigo = LFP.Codigo_Lancamento_Financeiro) '+
+                             ' left join Cadastro_Plano_Financeiro CPF on (LF.Codigo_Plano = CPF.Codigo)'+
+                             ' left join Cadastro_Pessoa CP on (LF.Codigo_Propriedade = CP.Codigo)'+
+                             ' where LF.Codigo_Safra = :Codigo_Safra and LF.Codigo_Propriedade = :Codigo_Propriedade'+
+                             ' group by CP.Nome, CPF.Descricao';
+    FComandoSQL.Parametros.Add('Codigo_Safra');
+    FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    FComandoSQL.Valores.Add(Codigo_Safra);
+    FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FLFLancamentoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FLFLancamentoDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TLancamentoFinanceiroDominio.BuscarSumarioFinalSafra(
+  Codigo_Propriedade, Codigo_Safra: integer; Query: TADOQuery;
+  var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select'+
+                            ' Propriedade,'+
+                            ' SomatoriaCusto,'+
+                            ' TotalAreaPlantada,'+
+                            ' (SomatoriaCusto / TotalAreaPlantada) as CustoPorHectare'+
+                            '  from (select'+
+                            ' CP.Nome as Propriedade,'+
+                            ' SUM(LFP.Valor) as SomatoriaCusto,'+
+                            ' (select SUM(RAP.Area_Plantada) from Registro_Atividade RA'+
+                            ' left join Registro_Atividade_Plantio RAP on (RA.Codigo = RAP.Codigo_Registro_Atividade)'+
+                            ' where RA.Codigo_Safra = :Codigo_Safra1 and RA.Codigo_Propriedade = :Codigo_Propriedade1) as TotalAreaPlantada'+
+                            ' from'+
+                            ' Lancamento_Financeiro LF,'+
+                            ' Lancamento_Financeiro_Parcelas LFP,'+
+                            ' Cadastro_Pessoa CP'+
+                            ' where'+
+                            ' 	LF.Codigo = LFP.Codigo_Lancamento_Financeiro and'+
+                            ' 	LF.Codigo_Propriedade = CP.Codigo and'+
+                            ' 	LF.Codigo_Safra = :Codigo_Safra2 and LF.Codigo_Propriedade = :Codigo_Propriedade2'+
+                            ' group by CP.Nome) t';
+    FComandoSQL.Parametros.Add('Codigo_Safra1');
+    FComandoSQL.Parametros.Add('Codigo_Propriedade1');
+    FComandoSQL.Parametros.Add('Codigo_Safra2');
+    FComandoSQL.Parametros.Add('Codigo_Propriedade2');
+    FComandoSQL.Valores.Add(Codigo_Safra);
+    FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FComandoSQL.Valores.Add(Codigo_Safra);
+    FComandoSQL.Valores.Add(Codigo_Propriedade);
     FLFLancamentoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FLFLancamentoDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally

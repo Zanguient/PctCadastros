@@ -17,6 +17,7 @@ uses
         function Buscar(Codigo_Propriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
         function Buscar(Codigo_Propriedade: integer; Codigo_Safra: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
         function BuscarConsulta(Codigo_Propriedade: integer; Tipo: integer; var Query: TADOQuery; var Retorno: AnsiString; IdSafra: integer): integer;
+        function BuscarSumarioFinalSafra(Codigo_Propriedade, Codigo_Safra: integer; Query: TADOQuery; var Retorno: AnsiString): integer;
         constructor Create(var Conexao: TADOConnection; FRegistroAtividade: TRegistroAtividadeEntidade); overload;
         constructor Create(var Conexao: TADOConnection); overload;
 
@@ -117,6 +118,49 @@ begin
                                ' where RA.Codigo_Propriedade = :Codigo_Propriedade';
     end;
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FRegistroAtividadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FRegistroAtividadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TRegistroAtividadeDominio.BuscarSumarioFinalSafra(Codigo_Propriedade,
+  Codigo_Safra: integer; Query: TADOQuery; var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select' +
+                            ' Propriedade,'+
+                            ' SomatoriaColheita,'+
+                            ' TotalAreaPlantada,'+
+                            ' (SomatoriaColheita / TotalAreaPlantada) / 60 as SacasPorHectare'+
+                            '  from (select'+
+                            ' CP.Nome as Propriedade,'+
+                            ' SUM(RAC.LiquidoSeco) as SomatoriaColheita,'+
+                            ' (select SUM(RAP.Area_Plantada) from Registro_Atividade RA'+
+                            ' left join Registro_Atividade_Plantio RAP on (RA.Codigo = RAP.Codigo_Registro_Atividade)'+
+                            ' where RA.Codigo_Safra = :Codigo_Safra1 and RA.Codigo_Propriedade = :Codigo_Propriedade1) as TotalAreaPlantada'+
+                            ' from'+
+                            ' Registro_Atividade RA,'+
+                            ' Registro_Atividade_Colheita RAC,'+
+                            ' Cadastro_Pessoa CP'+
+                            ' where'+
+                            ' 	RA.Codigo = RAC.Codigo_Registro_Atividade and'+
+                            ' 	RA.Codigo_Propriedade = CP.Codigo and'+
+                            ' 	RA.Codigo_Safra = :Codigo_Safra2 and RA.Codigo_Propriedade = :Codigo_Propriedade2'+
+                            ' group by CP.Nome) t';
+    FComandoSQL.Parametros.Add('Codigo_Safra1');
+    FComandoSQL.Parametros.Add('Codigo_Propriedade1');
+    FComandoSQL.Parametros.Add('Codigo_Safra2');
+    FComandoSQL.Parametros.Add('Codigo_Propriedade2');
+    FComandoSQL.Valores.Add(Codigo_Safra);
+    FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FComandoSQL.Valores.Add(Codigo_Safra);
     FComandoSQL.Valores.Add(Codigo_Propriedade);
     FRegistroAtividadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FRegistroAtividadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);

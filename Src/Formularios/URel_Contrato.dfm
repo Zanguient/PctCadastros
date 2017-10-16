@@ -24,9 +24,9 @@ object FrmRel_Contrato: TFrmRel_Contrato
   TextHeight = 13
   object cxGrid1: TcxGrid
     Left = 0
-    Top = 36
+    Top = 39
     Width = 849
-    Height = 396
+    Height = 393
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -37,6 +37,8 @@ object FrmRel_Contrato: TFrmRel_Contrato
     TabOrder = 0
     LookAndFeel.Kind = lfUltraFlat
     LookAndFeel.NativeStyle = False
+    ExplicitTop = 36
+    ExplicitHeight = 396
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = False
@@ -1594,12 +1596,12 @@ object FrmRel_Contrato: TFrmRel_Contrato
     Left = 0
     Top = 0
     Width = 849
-    Height = 36
+    Height = 39
     Align = alTop
     TabOrder = 1
     object Label3: TLabel
       Left = 127
-      Top = 2
+      Top = 3
       Width = 30
       Height = 13
       Caption = 'Safra'
@@ -1612,7 +1614,7 @@ object FrmRel_Contrato: TFrmRel_Contrato
     end
     object cmbSafra: TcxLookupComboBox
       Left = 127
-      Top = 15
+      Top = 16
       Hint = 
         'Escolha uma safra'#13#10#13#10'* Deixe o campo em branco para pesquisar em' +
         ' todas as safras.'
@@ -1641,14 +1643,15 @@ object FrmRel_Contrato: TFrmRel_Contrato
       Left = 1
       Top = 1
       Width = 114
-      Height = 34
+      Height = 37
       Align = alLeft
       AutoSize = True
       BevelOuter = bvNone
       TabOrder = 1
+      ExplicitTop = 0
       object cxImage2: TcxImage
         Left = 37
-        Top = -1
+        Top = 0
         Cursor = crHandPoint
         Hint = 'Clique para gerar o arquivo PDF da consulta'
         ParentShowHint = False
@@ -1708,7 +1711,7 @@ object FrmRel_Contrato: TFrmRel_Contrato
       end
       object cxImage1: TcxImage
         Left = 74
-        Top = -1
+        Top = 0
         Cursor = crHandPoint
         Hint = 'Clique para imprimir'
         ParentShowHint = False
@@ -1955,7 +1958,7 @@ object FrmRel_Contrato: TFrmRel_Contrato
       end
       object cxImage3: TcxImage
         Left = 0
-        Top = -1
+        Top = 0
         Cursor = crHandPoint
         Hint = 'Clique para pesquisar'
         ParentShowHint = False
@@ -2565,7 +2568,7 @@ object FrmRel_Contrato: TFrmRel_Contrato
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 43019.478002291670000000
+      ReportDocument.CreationDate = 43024.452475416660000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET

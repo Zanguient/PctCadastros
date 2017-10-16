@@ -24,9 +24,9 @@ object FrmRel_Patrimonio: TFrmRel_Patrimonio
   TextHeight = 13
   object cxGrid1: TcxGrid
     Left = 0
-    Top = 36
+    Top = 39
     Width = 849
-    Height = 396
+    Height = 393
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -1590,21 +1590,21 @@ object FrmRel_Patrimonio: TFrmRel_Patrimonio
     Left = 0
     Top = 0
     Width = 849
-    Height = 36
+    Height = 39
     Align = alTop
     TabOrder = 1
     object Panel2: TPanel
       Left = 1
       Top = 1
       Width = 114
-      Height = 34
+      Height = 37
       Align = alLeft
       AutoSize = True
       BevelOuter = bvNone
       TabOrder = 0
       object cxImage2: TcxImage
         Left = 37
-        Top = -1
+        Top = 0
         Cursor = crHandPoint
         Hint = 'Clique para gerar o arquivo PDF da consulta'
         ParentShowHint = False
@@ -1664,7 +1664,7 @@ object FrmRel_Patrimonio: TFrmRel_Patrimonio
       end
       object cxImage1: TcxImage
         Left = 74
-        Top = -1
+        Top = 0
         Cursor = crHandPoint
         Hint = 'Clique para imprimir'
         ParentShowHint = False
@@ -1911,7 +1911,7 @@ object FrmRel_Patrimonio: TFrmRel_Patrimonio
       end
       object cxImage3: TcxImage
         Left = 0
-        Top = -1
+        Top = 0
         Cursor = crHandPoint
         Hint = 'Clique para pesquisar'
         ParentShowHint = False
@@ -2501,7 +2501,7 @@ object FrmRel_Patrimonio: TFrmRel_Patrimonio
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 43019.463510185180000000
+      ReportDocument.CreationDate = 43024.490357824080000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET

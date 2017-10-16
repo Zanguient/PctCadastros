@@ -36,7 +36,9 @@ uses
   HistoricoMovimentacaoFinanceiraDominio,
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
   cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses,
-  cxNavigator, dxSkinsdxRibbonPainter, PatrimonioDominio;
+  cxNavigator, dxSkinsdxRibbonPainter, PatrimonioDominio, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White;
 type
   TFrmRel_Patrimonio = class(TForm)
     cxGrid1: TcxGrid;

@@ -37,7 +37,9 @@ uses
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
   cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses,
   ManutencaoMaquinaDominio, ManutencaoMaquinaProdutoDominio,
-  ManutencaoMaquinaServicoDominio, cxNavigator, dxSkinsdxRibbonPainter;
+  ManutencaoMaquinaServicoDominio, cxNavigator, dxSkinsdxRibbonPainter,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White;
 type
   TFrmRel_Manutencao_Maquina = class(TForm)
     cxGrid1: TcxGrid;

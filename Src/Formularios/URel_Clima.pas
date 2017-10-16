@@ -36,7 +36,8 @@ uses
   HistoricoMovimentacaoFinanceiraDominio,
   HistoricoMovimentacaoFinanceiraEntidade, dxLayoutContainer, dxLayoutControl,
   cxMemo, Vcl.Menus, cxButtons, cxImage, dxGDIPlusClasses, DadosClimaDominio,
-  cxNavigator, dxSkinsdxRibbonPainter;
+  cxNavigator, dxSkinsdxRibbonPainter, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White;
 type
   TFrmRel_Clima = class(TForm)
     cxGrid1: TcxGrid;

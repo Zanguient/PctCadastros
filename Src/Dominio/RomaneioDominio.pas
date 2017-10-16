@@ -18,6 +18,7 @@ type
       function Buscar(var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       function Buscar(var Query: TADOQuery; var Retorno: AnsiString; Codigo: integer; Tipo: integer): integer; overload;
       function BuscarConsulta(var Query: TADOQuery; var Retorno: AnsiString): integer;
+      function BuscarResumo(Codigo_Propriedade, Codigo_Safra: integer; Query: TADOQuery; var Retorno: AnsiString): integer;
       constructor Create(var Conexao: TADOConnection; FRomaneioEntidade: TRomaneioEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
       constructor Create(var Conexao: TADOConnection; IdPropriedade: integer); overload;
@@ -151,6 +152,32 @@ begin
                             'left join Cadastro_Produtos CP on (RAC.IdProduto = CP.Codigo)'+
                             'left join Cadastro_Pessoa CPProdutor on (RAC.IdProdutor = CPProdutor.Codigo)'+
                             'left join Cadastro_Pessoa CPDepositante on (RAC.IdDepositante = CPDepositante.Codigo)';
+    FRomaneioDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FRomaneioDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TRomaneioDominio.BuscarResumo(Codigo_Propriedade,
+  Codigo_Safra: integer; Query: TADOQuery; var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select CP.Nome, CPro.Descricao as Produto, SUM(RAC.LiquidoSeco) as TotalColhidoT,'+
+                            ' SUM(RAC.LiquidoSeco) / 60 as TotalColhidoS from Registro_Atividade RA'+
+                            ' left join Registro_Atividade_Colheita RAC on (RA.Codigo = RAC.Codigo_Registro_Atividade)'+
+                            ' left join Cadastro_Produtos CPro on (RAC.IdProduto = CPro.Codigo)'+
+                            ' left join Cadastro_Pessoa CP on (RA.Codigo_Propriedade = CP.Codigo)'+
+                            ' where RA.Codigo_Safra = :Codigo_Safra and RA.Codigo_Propriedade = :Codigo_Propriedade'+
+                            ' group by CP.Nome, CPro.Descricao';
+    FComandoSQL.Parametros.Add('Codigo_Safra');
+    FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    FComandoSQL.Valores.Add(Codigo_Safra);
+    FComandoSQL.Valores.Add(Codigo_Propriedade);
     FRomaneioDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FRomaneioDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally

@@ -480,8 +480,6 @@ type
     procedure cxGrid2DBBandedTableViewAtividadeProdutoFocusedItemChanged(
       Sender: TcxCustomGridTableView; APrevFocusedItem,
       AFocusedItem: TcxCustomGridTableItem);
-    procedure cxGrid2DBBandedTableView2NavigatorButtonsButtonClick(
-      Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
     procedure cxGrid2DBBandedTableView3NavigatorButtonsButtonClick(
       Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
     procedure cxGrid2DBBandedTableView1NavigatorButtonsButtonClick(
@@ -497,6 +495,8 @@ type
     procedure cxGridDBTableViewColheitaEditing(Sender: TcxCustomGridTableView;
       AItem: TcxCustomGridTableItem; var AAllow: Boolean);
     procedure qryRegistroAtividadeColheitaAfterDelete(DataSet: TDataSet);
+    procedure cxGrid2DBBandedTableViewAtividadeProdutoNavigatorButtonsButtonClick(
+      Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
   private
     FPropriedade: TPropriedadeEntidade;
     FUsuario: TLoginEntidade;
@@ -1052,12 +1052,48 @@ procedure TFrmRegistro_Atividade.cxGrid2DBBandedTableViewAtividadeProdutoFocused
   AFocusedItem: TcxCustomGridTableItem);
 var
   Qtde, ValorUnitario: double;
+  AStr: AnsiString;
 begin
-  if (AFocusedItem = cxGrid2DBBandedTableViewAtividadeProdutoCusto) then
+  AStr := cxGrid2DBBandedTableViewAtividadeProduto.GetColumnByFieldName( (AFocusedItem as TcxGridDBBandedColumn).DataBinding.FieldName).Name;
+  if (AStr = 'cxGrid2DBBandedTableViewAtividadeProdutoCusto') then
   begin
     Qtde:= qryRegistroAtividadeAtividadesProdutoQuantidade.AsFloat;
     ValorUnitario:= qryRegistroAtividadeAtividadesProdutoPrecoCompra.AsFloat;
     cxGrid2DBBandedTableViewAtividadeProdutoCusto.EditValue:= Qtde * ValorUnitario;
+  end;
+end;
+
+procedure TFrmRegistro_Atividade.cxGrid2DBBandedTableViewAtividadeProdutoNavigatorButtonsButtonClick(
+  Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
+begin
+  if (AButtonIndex = 6) then
+  begin
+    if (qryRegistroAtividadeAtividadesAtividade.AsString <> '') then
+    begin
+      qryRegistroAtividadeAtividadesProduto.Insert;
+      qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade.AsInteger:= qryRegistroAtividadeAtividadesCodigo_Registro_Atividade.AsInteger;
+      qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade_Atividade.AsInteger:= qryRegistroAtividadeAtividadesCodigo.AsInteger;
+      //qryRegistroAtividadeAtividadesProduto.Post;
+      //qryRegistroAtividadeAtividadesProduto.Append;
+      ADone:= true;
+    end
+    else
+    begin
+      Mensagens.MensagemErro('Por favor, primeiramente é preciso informar uma atividade.');
+      Exit;
+    end;
+  end;
+
+  if (AButtonIndex = 8) then
+  begin
+    if (achei = true) then
+    begin
+      if (qryRegistroAtividadeAtividadesProdutoControla_Estoque.AsBoolean = true) then
+      begin
+        FEstoqueProdutoDominio:= TEstoqueProdutoDominio.Create(Conexao);
+        FEstoqueProdutoDominio.AtualizarEstoque(qryRegistroAtividadeAtividadesProdutoCodigo_Produto.AsInteger, FPropriedade.Codigo, qryRegistroAtividadeAtividadesProdutoQuantidade.AsInteger, '+');
+      end;
+    end;
   end;
 end;
 
@@ -1096,40 +1132,6 @@ begin
     qryRegistroAtividadeAtividadesTalhaoAreaDisponivel.AsFloat:= 0;
     qryRegistroAtividadeAtividadesTalhao.Post;
     exit;
-  end;
-end;
-
-procedure TFrmRegistro_Atividade.cxGrid2DBBandedTableView2NavigatorButtonsButtonClick(
-  Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
-begin
-  if (AButtonIndex = 6) then
-  begin
-    if (qryRegistroAtividadeAtividadesAtividade.AsString <> '') then
-    begin
-      qryRegistroAtividadeAtividadesProduto.Insert;
-      qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade.AsInteger:= qryRegistroAtividadeAtividadesCodigo_Registro_Atividade.AsInteger;
-      qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade_Atividade.AsInteger:= qryRegistroAtividadeAtividadesCodigo.AsInteger;
-      //qryRegistroAtividadeAtividadesProduto.Post;
-      //qryRegistroAtividadeAtividadesProduto.Append;
-      ADone:= true;
-    end
-    else
-    begin
-      Mensagens.MensagemErro('Por favor, primeiramente é preciso informar uma atividade.');
-      Exit;
-    end;
-  end;
-
-  if (AButtonIndex = 8) then
-  begin
-    if (achei = true) then
-    begin
-      if (qryRegistroAtividadeAtividadesProdutoControla_Estoque.AsBoolean = true) then
-      begin
-        FEstoqueProdutoDominio:= TEstoqueProdutoDominio.Create(Conexao);
-        FEstoqueProdutoDominio.AtualizarEstoque(qryRegistroAtividadeAtividadesProdutoCodigo_Produto.AsInteger, FPropriedade.Codigo, qryRegistroAtividadeAtividadesProdutoQuantidade.AsInteger, '+');
-      end;
-    end;
   end;
 end;
 

@@ -41,7 +41,8 @@ uses
   EntradaProdutoProdutosEntidade, EntradaProdutoProdutosDominio, cxMemo,
   ProdutoDominio, LancamentoFinanceiroEntidade, LancamentoFinanceiroDominio,
   EstoqueProdutoDominio, System.Generics.Collections, cxNavigator,
-  dxSkinsdxRibbonPainter;
+  dxSkinsdxRibbonPainter, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White;
 
 type
   TFrmEntrada_Produto = class(TForm)
@@ -1171,7 +1172,7 @@ begin
   FLF.Codigo_Forma_Pagamento:= dm.qrycondicaoPagamentoCodigo.AsInteger;
 
   FLF.Data_Lancamento:= StrToDateTime(MEdtData_Cadastro.Text);
-  FLF.Data_Vencimento:= StrToDateTime(MEdtData_Cadastro.Text);
+  FLF.Data_Vencimento:= dateEmissao.Date;
   FLF.Codigo_Pessoa:= DM.qrypessoaCodigo.AsInteger;
 
   if (cmbTipoDocumento.Text = '') then

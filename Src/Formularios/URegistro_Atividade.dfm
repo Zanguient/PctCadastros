@@ -78,7 +78,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
         ParentFont = False
       end
       object Label1: TLabel
-        Left = 198
+        Left = 202
         Top = 54
         Width = 31
         Height = 13
@@ -91,7 +91,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
         ParentFont = False
       end
       object Label2: TLabel
-        Left = 285
+        Left = 289
         Top = 54
         Width = 20
         Height = 13
@@ -939,7 +939,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               end
             end
             object cxGrid2DBBandedTableViewAtividadeProduto: TcxGridDBBandedTableView
-              Navigator.Buttons.OnButtonClick = cxGrid2DBBandedTableView2NavigatorButtonsButtonClick
+              Navigator.Buttons.OnButtonClick = cxGrid2DBBandedTableViewAtividadeProdutoNavigatorButtonsButtonClick
               Navigator.Buttons.CustomButtons = <>
               Navigator.Buttons.Images = DM.ImageList1
               Navigator.Buttons.First.Visible = False
@@ -995,9 +995,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
               OptionsView.Footer = True
               OptionsView.GroupByBox = False
-              OptionsView.GroupFooters = gfAlwaysVisible
-              OptionsView.GroupSummaryLayout = gslAlignWithColumns
-              OptionsView.Indicator = True
+              OptionsView.GroupFooterMultiSummaries = True
               Bands = <
                 item
                   Caption = 'Produtos'
@@ -2556,7 +2554,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
         end
       end
       object dateEditInicio: TcxDateEdit
-        Left = 198
+        Left = 202
         Top = 68
         Properties.DateButtons = [btnClear, btnToday]
         Properties.EditFormat = 'DD/MM/YYYY'
@@ -2566,7 +2564,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
         Width = 90
       end
       object dateEditFim: TcxDateEdit
-        Left = 285
+        Left = 289
         Top = 68
         Properties.DateButtons = [btnClear, btnToday]
         Properties.EditFormat = 'DD/MM/YYYY'
@@ -2728,7 +2726,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     Version = 0
     Left = 464
     object dxComponentPrinter1Link1: TdxGridReportLink
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2770,7 +2767,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

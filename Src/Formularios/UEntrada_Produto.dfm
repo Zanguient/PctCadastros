@@ -317,10 +317,15 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
       object dateEmissao: TcxDateEdit
         Left = 103
         Top = 68
+        Hint = 
+          'A data de lan'#231'amento ser'#225' utilizada como data base para o vencim' +
+          'ento das parcelas do financeiro.'
+        ParentShowHint = False
         Properties.DateButtons = [btnClear, btnToday]
         Properties.EditFormat = 'DD/MM/YYYY'
         Properties.SaveTime = False
         Properties.ShowTime = False
+        ShowHint = True
         TabOrder = 4
         Width = 90
       end
@@ -1018,6 +1023,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
           OptionsBehavior.FocusFirstCellOnNewRecord = True
           OptionsBehavior.GoToNextCellOnEnter = True
           OptionsBehavior.NavigatorHints = True
+          OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
           OptionsView.Footer = True
           OptionsView.GroupByBox = False
           OptionsView.GroupFooterMultiSummaries = True
@@ -1725,7 +1731,6 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
     Left = 488
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1767,7 +1772,6 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

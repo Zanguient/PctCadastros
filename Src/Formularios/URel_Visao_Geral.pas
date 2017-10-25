@@ -2387,6 +2387,8 @@ begin
                                   qryColheitaTotal,
                                   qryAreaTotal,
                                   qryCustoTotal,
+                                  qrySumarioCustoHectare,
+                                  qrySumarioSacasHectare,
                                   dm.qrySafra,
                                   dm.qryPropriedade,
                                   dm.qryAtividade,

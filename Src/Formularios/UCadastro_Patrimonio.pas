@@ -32,7 +32,8 @@ uses
   LoginEntidade, PropriedadeEntidade, HistoricoEntidade, HistoricoDominio,
   cxNavigator, dxSkinsdxRibbonPainter, cxLookupEdit, cxDBLookupEdit,
   cxDBLookupComboBox, IniciaDadosCadastros, PatrimonioEntidade,
-  PatrimonioDominio;
+  PatrimonioDominio, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White;
 
 type
   TFrmCadastro_Patrimonio = class(TForm)
@@ -95,6 +96,9 @@ type
     qryConsultaDataVenda: TDateTimeField;
     qryConsultaCodigoTipoBem: TIntegerField;
     qryConsultaObservacao: TStringField;
+    Label6: TLabel;
+    EdtQuantidade: TEdit;
+    qryConsultaQuantidade: TIntegerField;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -111,6 +115,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure EdtValorKeyPress(Sender: TObject; var Key: Char);
     procedure EdtValorExit(Sender: TObject);
+    procedure EdtQuantidadeKeyPress(Sender: TObject; var Key: Char);
+    procedure EdtQuantidadeExit(Sender: TObject);
   private
     FPropriedade: TPropriedadeEntidade;
     FUsuario: TLoginEntidade;
@@ -208,6 +214,8 @@ begin
   BBtnCancelar.Enabled:= true;
   BBtnNovo.Enabled:= false;
   BBtnExcluir.Enabled:= false;
+  EdtQuantidade.Text:= '1';
+  EdtValor.Text:= '0,00';
   achei:= false;
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
@@ -235,6 +243,7 @@ begin
     FPatrimonio.Responsavel:= EdtResponsavel.Text;
     FPatrimonio.Descricao:= EdtDescricao.Text;
     FPatrimonio.Valor:= StrToFloat(EdtValor.Text);
+    FPatrimonio.Quantidade:= StrToInt(EdtQuantidade.Text);
     FPatrimonio.DataCadastro:= StrToDateTime(MEdtData_Cadastro.Text);
 
     if (dateCompra.Text <> '') then
@@ -358,6 +367,13 @@ begin
     exit;
   end;
 
+  if (EdtQuantidade.Text = '') then
+  begin
+    Mensagens.MensagemErro(MensagemFaltaDados);
+    EdtQuantidade.SetFocus;
+    exit;
+  end;
+
   Confira:= true;
 end;
 
@@ -404,6 +420,7 @@ begin
     dateVenda.Clear;
 
   MMOObservacao.Text:= qryConsultaObservacao.AsString;
+  EdtQuantidade.Text:= qryConsultaQuantidade.AsString;
 
   FPatrimonio:= TPatrimonioEntidade.Create;
   FPatrimonio.Codigo:= qryConsultaCodigo.AsInteger;
@@ -412,6 +429,22 @@ begin
   BBtnSalvar.Enabled:= True;
   BBtnExcluir.Enabled:= true;
   BBtnCancelar.Enabled:= true;
+end;
+
+procedure TFrmCadastro_Patrimonio.EdtQuantidadeExit(Sender: TObject);
+begin
+  if (Op.VerificaCampoEmBranco(EdtQuantidade)) then
+  begin
+    Mensagens.MensagemErro(MensagemCampoNulo);
+    EdtQuantidade.SetFocus;
+    Exit;
+  end;
+end;
+
+procedure TFrmCadastro_Patrimonio.EdtQuantidadeKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  Op.SomenteNumero(key);
 end;
 
 procedure TFrmCadastro_Patrimonio.EdtValorExit(Sender: TObject);

@@ -1552,6 +1552,11 @@ object FrmRel_Patrimonio: TFrmRel_Patrimonio
         Styles.Header = DM.cxStyle1
         Width = 120
       end
+      object cxGrid1DBTableViewPatrimonioQuantidade: TcxGridDBColumn
+        DataBinding.FieldName = 'Quantidade'
+        Styles.Header = DM.cxStyle1
+        Width = 76
+      end
       object cxGrid1DBTableViewPatrimonioDataCadastro: TcxGridDBColumn
         Caption = 'Cadastro'
         DataBinding.FieldName = 'DataCadastro'
@@ -2360,6 +2365,9 @@ object FrmRel_Patrimonio: TFrmRel_Patrimonio
       FieldName = 'TipoBem'
       Size = 50
     end
+    object qryPatrimonioQuantidade: TIntegerField
+      FieldName = 'Quantidade'
+    end
   end
   object dsClima: TDataSource
     DataSet = qryPatrimonio
@@ -2501,7 +2509,7 @@ object FrmRel_Patrimonio: TFrmRel_Patrimonio
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 43024.490357824080000000
+      ReportDocument.CreationDate = 43033.017298495370000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET

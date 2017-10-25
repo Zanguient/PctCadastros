@@ -104,7 +104,7 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
         ParentFont = False
       end
       object Label2: TLabel
-        Left = 287
+        Left = 322
         Top = 94
         Width = 44
         Height = 13
@@ -117,7 +117,7 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
         ParentFont = False
       end
       object Label3: TLabel
-        Left = 374
+        Left = 409
         Top = 94
         Width = 35
         Height = 13
@@ -156,11 +156,24 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
         ParentFont = False
       end
       object Label4: TLabel
-        Left = 192
+        Left = 178
         Top = 97
         Width = 29
         Height = 13
         Caption = 'Valor'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label6: TLabel
+        Left = 250
+        Top = 97
+        Width = 30
+        Height = 13
+        Caption = 'Qtde.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -231,7 +244,7 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
       object EdtDescricao: TEdit
         Left = 0
         Top = 111
-        Width = 193
+        Width = 179
         Height = 17
         BevelInner = bvNone
         BevelKind = bkFlat
@@ -278,7 +291,7 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
         Width = 107
       end
       object dateCompra: TcxDateEdit
-        Left = 287
+        Left = 322
         Top = 108
         Hint = 'Data da entrada da m'#225'quina na propriedade'
         ParentShowHint = False
@@ -287,11 +300,11 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
         Properties.SaveTime = False
         Properties.ShowTime = False
         ShowHint = True
-        TabOrder = 9
+        TabOrder = 10
         Width = 90
       end
       object dateVenda: TcxDateEdit
-        Left = 374
+        Left = 409
         Top = 108
         Hint = 'Data da sa'#237'da da m'#225'quina na propriedade'
         ParentShowHint = False
@@ -300,7 +313,7 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
         Properties.SaveTime = False
         Properties.ShowTime = False
         ShowHint = True
-        TabOrder = 10
+        TabOrder = 11
         Width = 90
       end
       object MMOObservacao: TMemo
@@ -314,7 +327,7 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
         BorderStyle = bsNone
         CharCase = ecUpperCase
         MaxLength = 800
-        TabOrder = 11
+        TabOrder = 12
       end
       object cmbTipoBem: TcxLookupComboBox
         Left = 287
@@ -335,9 +348,9 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
         Width = 167
       end
       object EdtValor: TEdit
-        Left = 192
+        Left = 178
         Top = 111
-        Width = 97
+        Width = 73
         Height = 17
         BevelInner = bvNone
         BevelKind = bkFlat
@@ -349,14 +362,25 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
         OnExit = EdtValorExit
         OnKeyPress = EdtValorKeyPress
       end
+      object EdtQuantidade: TEdit
+        Left = 250
+        Top = 111
+        Width = 73
+        Height = 17
+        BevelInner = bvNone
+        BevelKind = bkFlat
+        BevelOuter = bvRaised
+        BorderStyle = bsNone
+        CharCase = ecUpperCase
+        MaxLength = 50
+        TabOrder = 9
+        OnExit = EdtQuantidadeExit
+        OnKeyPress = EdtQuantidadeKeyPress
+      end
     end
     object TabSheet2: TTabSheet
       Caption = 'Pesquisar'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
@@ -608,6 +632,9 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
       FieldName = 'Observacao'
       Size = 800
     end
+    object qryConsultaQuantidade: TIntegerField
+      FieldName = 'Quantidade'
+    end
   end
   object dsConsulta: TDataSource
     DataSet = qryConsulta
@@ -644,6 +671,7 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
     Top = 8
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -685,6 +713,7 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

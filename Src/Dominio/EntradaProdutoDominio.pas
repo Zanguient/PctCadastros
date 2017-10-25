@@ -17,6 +17,10 @@ type
       function BuscaCodigoLancamentoFinanceiro(CodigoEntrada: integer; var Retorno: AnsiString): integer;
       function Buscar(CodigoPropriedade: Integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       function Buscar(CodigoPropriedade: Integer; CodigoSafra: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
+      function BuscarNFNormal(CodigoPropriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): Integer; overload;
+      function BuscarNFNormal(CodigoPropriedade: integer; CodigoSafra: integer; var Query: TADOQuery; var Retorno: AnsiString): Integer; overload;
+      function BuscarNFReferencia(CodigoPropriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): Integer; overload;
+      function BuscarNFReferencia(CodigoPropriedade: integer; CodigoSafra: integer; var Query: TADOQuery; var Retorno: AnsiString): Integer; overload;
       constructor Create(var Conexao: TADOConnection; FEntidade: TEntradaProdutoEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
   end;
@@ -51,6 +55,8 @@ begin
       ' ,Valor_Desconto = :Valor_Desconto'+
       ' ,Valor_Total_NF = :Valor_Total_NF'+
       ' ,Codigo_Lancamento_Financeiro = :Codigo_Lancamento_Financeiro'+
+      ' ,Tipo_Nota = :Tipo_Nota'+
+      ' ,N_Nota_Fiscal_Referencia = :N_Nota_Fiscal_Referencia'+
       ' ,Observacoes = :Observacoes'+
       ' where Codigo = :Codigo';
     FComandoSQL.Parametros.Add('N_Nota_Fiscal');
@@ -69,6 +75,8 @@ begin
     FComandoSQL.Parametros.Add('Valor_Desconto');
     FComandoSQL.Parametros.Add('Valor_Total_NF');
     FComandoSQL.Parametros.Add('Codigo_Lancamento_Financeiro');
+    FComandoSQL.Parametros.Add('Tipo_Nota');
+    FComandoSQL.Parametros.Add('N_Nota_Fiscal_Referencia');
     FComandoSQL.Parametros.Add('Observacoes');
     FComandoSQL.Parametros.Add('Codigo');
     FComandoSQL.Valores.Add(FEntidade.N_Nota_Fiscal);
@@ -87,6 +95,8 @@ begin
     FComandoSQL.Valores.Add(FEntidade.Valor_Desconto);
     FComandoSQL.Valores.Add(FEntidade.Valor_Total_NF);
     FComandoSQL.Valores.Add(FEntidade.Codigo_Lancamento_Financeiro);
+    FComandoSQL.Valores.Add(FEntidade.Tipo_Nota);
+    FComandoSQL.Valores.Add(FEntidade.N_Nota_Fiscal_Referencia);
     FComandoSQL.Valores.Add(FEntidade.Observacoes);
     FComandoSQL.Valores.Add(FEntidade.Codigo);
     FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
@@ -142,6 +152,46 @@ begin
     FComandoSQL.Parametros.Add('Codigo_Safra');
     FComandoSQL.Valores.Add(CodigoPropriedade);
     FComandoSQL.Valores.Add(CodigoSafra);
+    FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FEntidadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TEntradaProdutoDominio.BuscarNFNormal(CodigoPropriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): Integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select EP.N_Nota_Fiscal, EP.N_Nota_Fiscal_Referencia, EP.Data_Cadastro, CPesForn.Nome as Fornecedor, EP.Valor_Total_NF '+
+                            ' from Entrada_Produto EP '+
+                            ' left join Cadastro_Pessoa CPesForn on (EP.Codigo_Fornecedor = CPesForn.Codigo) '+
+                            '  where EP.Codigo_Propriedade = :Codigo_Propriedade';
+    FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    FComandoSQL.Valores.Add(CodigoPropriedade);
+    FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FEntidadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TEntradaProdutoDominio.BuscarNFReferencia(CodigoPropriedade: integer;
+  var Query: TADOQuery; var Retorno: AnsiString): Integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select EP.N_Nota_Fiscal_Referencia, EP.N_Nota_Fiscal, EP.Data_Cadastro, EP.Valor_Total_NF '+
+                            ' from Entrada_Produto EP '+
+                            ' where EP.Codigo_Propriedade = :Codigo_Propriedade';
+    FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    FComandoSQL.Valores.Add(CodigoPropriedade);
     FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FEntidadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally
@@ -234,6 +284,8 @@ begin
            ' ,Valor_Desconto '+
            ' ,Valor_Total_NF '+
            ' ,Codigo_Lancamento_Financeiro '+
+           ' ,Tipo_Nota '+
+           ' ,N_Nota_Fiscal_Referencia '+
            ' ,Observacoes) '+
      ' VALUES '+
            ' (:Codigo '+
@@ -256,6 +308,8 @@ begin
            ' ,:Valor_Desconto '+
            ' ,:Valor_Total_NF '+
            ' ,:Codigo_Lancamento_Financeiro '+
+           ' ,:Tipo_Nota '+
+           ' ,:N_Nota_Fiscal_Referencia '+
            ' ,:Observacoes)';
     FComandoSQL.Parametros.Add('Codigo');
     FComandoSQL.Parametros.Add('Data_Cadastro');
@@ -277,6 +331,8 @@ begin
     FComandoSQL.Parametros.Add('Valor_Desconto');
     FComandoSQL.Parametros.Add('Valor_Total_NF');
     FComandoSQL.Parametros.Add('Codigo_Lancamento_Financeiro');
+    FComandoSQL.Parametros.Add('Tipo_Nota');
+    FComandoSQL.Parametros.Add('N_Nota_Fiscal_Referencia');
     FComandoSQL.Parametros.Add('Observacoes');
     FComandoSQL.Valores.Add(FEntidade.Codigo);
     FComandoSQL.Valores.Add(FEntidade.Data_Cadastro);
@@ -298,9 +354,56 @@ begin
     FComandoSQL.Valores.Add(FEntidade.Valor_Desconto);
     FComandoSQL.Valores.Add(FEntidade.Valor_Total_NF);
     FComandoSQL.Valores.Add(FEntidade.Codigo_Lancamento_Financeiro);
+    FComandoSQL.Valores.Add(FEntidade.Tipo_Nota);
+    FComandoSQL.Valores.Add(FEntidade.N_Nota_Fiscal_Referencia);
     FComandoSQL.Valores.Add(FEntidade.Observacoes);
     FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FEntidadeDAO.ExecutaComandoSQLSalvarAlterarExcluir(Retorno);
+  finally
+
+  end;
+end;
+
+function TEntradaProdutoDominio.BuscarNFNormal(CodigoPropriedade,
+  CodigoSafra: integer; var Query: TADOQuery; var Retorno: AnsiString): Integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select EP.N_Nota_Fiscal, EP.N_Nota_Fiscal_Referencia, EP.Data_Cadastro, CPesForn.Nome as Fornecedor, EP.Valor_Total_NF '+
+                            ' from Entrada_Produto EP '+
+                            ' left join Cadastro_Pessoa CPesForn on (EP.Codigo_Fornecedor = CPesForn.Codigo) '+
+                            '  where EP.Codigo_Propriedade = :Codigo_Propriedade and EP.Codigo_Safra = :Codigo_Safra';
+    FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    FComandoSQL.Parametros.Add('Codigo_Safra');
+    FComandoSQL.Valores.Add(CodigoPropriedade);
+    FComandoSQL.Valores.Add(CodigoSafra);
+    FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FEntidadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TEntradaProdutoDominio.BuscarNFReferencia(CodigoPropriedade,
+  CodigoSafra: integer; var Query: TADOQuery; var Retorno: AnsiString): Integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select EP.N_Nota_Fiscal_Referencia, EP.N_Nota_Fiscal, EP.Data_Cadastro, EP.Valor_Total_NF '+
+                            ' from Entrada_Produto EP '+
+                            ' where EP.Codigo_Propriedade = :Codigo_Propriedade and EP.Codigo_Safra = :Codigo_Safra';
+    FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    FComandoSQL.Parametros.Add('Codigo_Safra');
+    FComandoSQL.Valores.Add(CodigoPropriedade);
+    FComandoSQL.Valores.Add(CodigoSafra);
+    FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FEntidadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally
 
   end;

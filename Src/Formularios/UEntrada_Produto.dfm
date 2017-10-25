@@ -272,6 +272,20 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
         Font.Style = [fsBold]
         ParentFont = False
       end
+      object LblNota: TLabel
+        Left = 551
+        Top = 17
+        Width = 67
+        Height = 13
+        Caption = 'N'#186' Nota Ref.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Visible = False
+      end
       object EdtCodigo: TEdit
         Left = 0
         Top = 32
@@ -1029,7 +1043,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
           OptionsView.GroupFooterMultiSummaries = True
           Bands = <
             item
-              Caption = 'Lan'#231'amentos dos produtos da nota fiscal'
+              Caption = 'Lan'#231'amento dos produtos da nota fiscal'
               HeaderAlignmentHorz = taLeftJustify
               Styles.Header = cxStyle1
             end>
@@ -1077,7 +1091,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
                 FieldName = 'Unidade_Compra'
               end>
             Properties.ListFieldIndex = 1
-            Properties.OnChange = cxGrid2DBBandedTableView1ProdutoPropertiesChange
+            Properties.OnCloseUp = cxGrid2DBBandedTableView1ProdutoPropertiesCloseUp
             Width = 226
             Position.BandIndex = 0
             Position.ColIndex = 3
@@ -1346,11 +1360,53 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
       end
       object cbGerar_Financeiro: TCheckBox
         Left = 366
-        Top = 31
+        Top = 16
         Width = 97
         Height = 17
         Caption = 'Gerar Financeiro'
         TabOrder = 19
+      end
+      object cbGerar_Estoque: TCheckBox
+        Left = 366
+        Top = 35
+        Width = 97
+        Height = 17
+        Caption = 'Gerar Estoque'
+        TabOrder = 20
+      end
+      object rgTipo_Nota: TcxRadioGroup
+        Left = 469
+        Top = 0
+        Caption = 'Tipo Nota'
+        Properties.Items = <
+          item
+            Caption = 'Normal'
+          end
+          item
+            Caption = 'Remessa'
+          end>
+        Properties.OnEditValueChanged = rgTipo_NotaPropertiesEditValueChanged
+        ItemIndex = 0
+        TabOrder = 21
+        Height = 52
+        Width = 76
+      end
+      object EdtN_Nota_Fiscal_Referencia: TEdit
+        Left = 551
+        Top = 34
+        Width = 74
+        Height = 17
+        Hint = 'N'#186' da nota fiscal normal na qual essa nota se refere'
+        BevelInner = bvNone
+        BevelKind = bkFlat
+        BevelOuter = bvRaised
+        BorderStyle = bsNone
+        CharCase = ecUpperCase
+        MaxLength = 15
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 22
+        Visible = False
       end
     end
     object TabSheet2: TTabSheet
@@ -1712,6 +1768,12 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
     object qryConsultaCodigo_Lancamento_Financeiro: TIntegerField
       FieldName = 'Codigo_Lancamento_Financeiro'
     end
+    object qryConsultaTipo_Nota: TStringField
+      FieldName = 'Tipo_Nota'
+    end
+    object qryConsultaN_Nota_Fiscal_Referencia: TStringField
+      FieldName = 'N_Nota_Fiscal_Referencia'
+    end
   end
   object dsConsulta: TDataSource
     DataSet = qryConsulta
@@ -1731,6 +1793,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
     Left = 488
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1772,6 +1835,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

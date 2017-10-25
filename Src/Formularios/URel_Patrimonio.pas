@@ -81,6 +81,8 @@ type
     cxGrid1DBTableViewPatrimonioDataVenda: TcxGridDBColumn;
     cxGrid1DBTableViewPatrimonioObservacao: TcxGridDBColumn;
     cxGrid1DBTableViewPatrimonioTipoBem: TcxGridDBColumn;
+    qryPatrimonioQuantidade: TIntegerField;
+    cxGrid1DBTableViewPatrimonioQuantidade: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);

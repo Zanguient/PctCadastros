@@ -35,7 +35,9 @@ uses
   EstoqueProdutoDominio, EstoqueProdutoEntidade, cxCurrencyEdit, cxCalendar,
   cxGridBandedTableView, cxGridDBBandedTableView, dxLayoutContainer,
   cxGridCustomLayoutView, cxGridLayoutView, cxGridDBLayoutView,
-  IniciaDadosCadastros, cxNavigator, dxSkinsdxRibbonPainter;
+  IniciaDadosCadastros, cxNavigator, dxSkinsdxRibbonPainter, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White;
 
 type
   TFrmCadastro_Produto = class(TForm)
@@ -659,7 +661,6 @@ begin
   Op.FormataFloat(2, EdtVolume, qryConsultaVolume.AsFloat);
   EdtCarencia.Text:= qryConsultaCarencia.AsString;
   MEdtData_Cadastro.Text:= qryConsultaData_Cadastro.AsString;
-
   if (qryConsultaData_Ultima_Compra.AsString = '30/12/1899') then
     MEdtUltima_Compra.Text:= ''
   else
@@ -676,15 +677,10 @@ begin
   CBControla_Estoque.Checked:= qryConsultaControla_Estoque.AsBoolean;
   cmbMarca.EditValue:= qryConsultaCodigo_Marca.AsInteger;
   cmbGrupo.EditValue:= qryConsultaCodigo_Grupo.AsInteger;
-  //qryMarca.Locate('Codigo', qryConsultaCodigo_Marca.AsInteger, []);
-  //qryGrupo.Locate('Codigo', qryConsultaCodigo_Grupo.AsInteger, []);
-
   FEstoqueProdutoDominio:= TEstoqueProdutoDominio.Create(Conexao);
   FEstoqueProdutoDominio.Buscar(qryConsultaCodigo.AsInteger, qryEstoqueFazenda, Retorno);
-
   FProdutoAplicacaoDominio := TProdutoAplicacaoDominio.Create(Conexao);
   FProdutoAplicacaoDominio.Buscar(qryConsultaCodigo.AsInteger, qryProdutoAplicacao, Retorno);
-
   qryProdutoAplicacao.First;
   while not qryProdutoAplicacao.Eof do
   begin
@@ -708,7 +704,6 @@ begin
 
     qryProdutoAplicacao.Next;
   end;
-
   FProduto:= TProdutoEntidade.Create;
   FProduto.Codigo:= qryConsultaCodigo.AsInteger;
 
@@ -731,9 +726,14 @@ end;
 
 procedure TFrmCadastro_Produto.cxGrid2DBBandedTableView1NomePropertiesCloseUp(
   Sender: TObject);
+var
+  Codigo: Variant;
 begin
+  with TcxLookupComboBox(cxGrid2DBBandedTableView1.Controller.EditingController.Edit).Properties.Grid.DataController do
+    Codigo := Values[FocusedRecordIndex, 1];
+
   qryEstoqueFazenda.Edit;
-  qryEstoqueFazendaCodigo_Propriedade.AsInteger:= DM.qrypessoaCodigo.AsInteger;
+  qryEstoqueFazendaCodigo_Propriedade.AsInteger:= Codigo;
   qryEstoqueFazendaEstoque.AsFloat:= 0;
   qryEstoqueFazenda.Post;
 end;

@@ -26,7 +26,7 @@ uses
 implementation
 
 uses
-  ComandoSQLEntidade, SysUtils, StrUtils;
+  ComandoSQLEntidade, SysUtils, StrUtils, Dialogs;
 
 { TPessoaDominio }
 
@@ -138,7 +138,6 @@ begin
       ParApl:= ParApl + ':'+StringReplace(TipoPessoa.Items[i], ' ','',[rfReplaceAll])+', ';
       PAux.Add(StringReplace(TipoPessoa.Items[i], ' ','', [rfReplaceAll]));
     end;
-
     ParApl:= LeftStr(ParApl, Length(ParApl)-2);
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;

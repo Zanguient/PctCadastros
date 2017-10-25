@@ -42,7 +42,7 @@ begin
   try
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
-    FComandoSQL.ComandoSQL:= 'sselect CV.*, CS.Descricao as Safra, CPesArm.Nome as Armazem,'+
+    FComandoSQL.ComandoSQL:= 'select CV.*, CS.Descricao as Safra, CPesArm.Nome as Armazem,'+
                             ' CP.Descricao as Produto, CPesCli.Nome as Cliente, CPag.Descricao as CondPag,'+
                             ' CPlan.Descricao as PlanoFinanceiro, CTD.Descricao as TipoDocumento,'+
                             ' CD.Descricao as Departamento from Contrato_Venda CV'+

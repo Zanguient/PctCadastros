@@ -14815,7 +14815,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43024.512283530090000000
+      ReportDocument.CreationDate = 43031.946315601850000000
       ReportDocument.IsCaptionAssigned = True
       Items = <
         item
@@ -14839,7 +14839,6 @@
     object dxComponentPrinter1Link1: TdxGridReportLink
       Active = True
       Component = cxGrid1
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -14852,14 +14851,12 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43024.512283402780000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      ReportDocument.CreationDate = 43031.946315520840000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Active = True
       Component = cxGrid7
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -14872,14 +14869,12 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43024.512283449080000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      ReportDocument.CreationDate = 43031.946315543980000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link3: TdxGridReportLink
       Active = True
       Component = cxGrid8
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -14892,14 +14887,12 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43024.512283495370000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      ReportDocument.CreationDate = 43031.946315578700000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link4: TdxGridReportLink
       Active = True
       Component = cxGrid9
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -14912,8 +14905,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43024.512283518520000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      ReportDocument.CreationDate = 43031.946315590280000000
       BuiltInReportLink = True
     end
   end
@@ -15116,7 +15108,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43024.474365081020000000
+      ReportDocument.CreationDate = 43031.946315682870000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {}
@@ -15137,7 +15129,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43024.474365127320000000
+      ReportDocument.CreationDate = 43031.946315729170000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {}
@@ -15158,7 +15150,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43024.474365173610000000
+      ReportDocument.CreationDate = 43031.946315763890000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {}
@@ -15179,7 +15171,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43024.474365243060000000
+      ReportDocument.CreationDate = 43031.946315844910000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {}

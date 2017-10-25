@@ -74,7 +74,7 @@ type
 implementation
 
 uses
-  Constantes;
+  Constantes, Dialogs;
 
 { IniciaDadosCadastro }
 

@@ -17,6 +17,7 @@ type
       FDataCompra: TDate;
       FDataVenda: TDate;
       FCodigoTipoBem: integer;
+      FQuantidade: integer;
       FObservacao: AnsiString;
       procedure SetCodigo(const Value: integer);
       procedure SetCodigoPropriedade(const Value: integer);
@@ -32,6 +33,7 @@ type
       procedure SetStatus(const Value: AnsiString);
       procedure SetTipo(const Value: AnsiString);
       procedure SetValor(const Value: double);
+    procedure SetQuantidade(const Value: integer);
     public
       property Codigo: integer read FCodigo write SetCodigo;
       property CodigoPropriedade: integer read FCodigoPropriedade write SetCodigoPropriedade;
@@ -46,6 +48,7 @@ type
       property DataCompra: TDate read FDataCompra write SetDataCompra;
       property DataVenda: TDate read FDataVenda write SetDataVenda;
       property CodigoTipoBem: integer read FCodigoTipoBem write SetCodigoTipoBem;
+      property Quantidade: integer read FQuantidade write SetQuantidade;
       property Observacao: AnsiString read FObservacao write SetObservacao;
 
   end;
@@ -101,6 +104,11 @@ end;
 procedure TPatrimonioEntidade.SetObservacao(const Value: AnsiString);
 begin
   FObservacao := Value;
+end;
+
+procedure TPatrimonioEntidade.SetQuantidade(const Value: integer);
+begin
+  FQuantidade := Value;
 end;
 
 procedure TPatrimonioEntidade.SetResponsavel(const Value: AnsiString);

@@ -42,7 +42,8 @@ uses
   ProdutoDominio, LancamentoFinanceiroEntidade, LancamentoFinanceiroDominio,
   EstoqueProdutoDominio, System.Generics.Collections, cxNavigator,
   dxSkinsdxRibbonPainter, dxSkinMetropolis, dxSkinMetropolisDark,
-  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White;
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
+  cxGroupBox, cxRadioGroup;
 
 type
   TFrmEntrada_Produto = class(TForm)
@@ -217,6 +218,12 @@ type
     qryConsultaCodigo_Comprador: TIntegerField;
     qryConsultaCodigo_Lancamento_Financeiro: TIntegerField;
     cbGerar_Financeiro: TCheckBox;
+    cbGerar_Estoque: TCheckBox;
+    rgTipo_Nota: TcxRadioGroup;
+    LblNota: TLabel;
+    EdtN_Nota_Fiscal_Referencia: TEdit;
+    qryConsultaTipo_Nota: TStringField;
+    qryConsultaN_Nota_Fiscal_Referencia: TStringField;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -232,7 +239,6 @@ type
     procedure cxGrid1DBTableView1DblClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure EdtValor_FreteKeyPress(Sender: TObject; var Key: Char);
-    procedure cxGrid2DBBandedTableView1ProdutoPropertiesChange(Sender: TObject);
     procedure cxGrid2DBBandedTableView1Editing(Sender: TcxCustomGridTableView;
       AItem: TcxCustomGridTableItem; var AAllow: Boolean);
     procedure cxGrid2DBBandedTableView1QuantidadePropertiesEditValueChanged(
@@ -265,6 +271,9 @@ type
     procedure EdtValor_SeguroChange(Sender: TObject);
     procedure EdtValor_Outras_DespesasChange(Sender: TObject);
     procedure EdtValor_DescontoChange(Sender: TObject);
+    procedure rgTipo_NotaPropertiesEditValueChanged(Sender: TObject);
+    procedure cxGrid2DBBandedTableView1ProdutoPropertiesCloseUp(
+      Sender: TObject);
   private
     FPropriedade: TPropriedadeEntidade;
     FUsuario: TLoginEntidade;
@@ -283,7 +292,7 @@ type
     FEntradaProdutoProdutosDominio: TEntradaProdutoProdutosDominio;
 
     FComandoSQL: TComandoSQLEntidade;
-    Conexao: TADOConnection;
+    Conexao, ConexaoEstoque: TADOConnection;
     IniDados: IniciaDadosCadastro;
     FLF: TLancamentoFinanceiroEntidade;
     FLFDominio: TLancamentoFinanceiroDominio;
@@ -323,6 +332,7 @@ uses UDM, OperacoesConexao, RegistroAtividadeDominio, PessoaDominio,
 procedure TFrmEntrada_Produto.BBtnCancelarClick(Sender: TObject);
 begin
   TOperacoesConexao.CancelaConexao(Conexao);
+  TOperacoesConexao.CancelaConexao(ConexaoEstoque);
   Op.LimpaCampos(FrmEntrada_Produto);
   Op.DesabilitaCampos(FrmEntrada_Produto);
   iniciou:= false;
@@ -386,6 +396,7 @@ begin
     end;
 
     TOperacoesConexao.ConfirmaConexao(Conexao);
+    TOperacoesConexao.ConfirmaConexao(ConexaoEstoque);
     IniciaTela;
     Mensagens.MensagemInformacao(MensagemSalvoComSucesso);
   end;
@@ -415,6 +426,8 @@ begin
   TipoPessoa:= TList<AnsiString>.Create();
 
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
+  ConexaoEstoque:= TOperacoesConexao.NovaConexao(ConexaoEstoque);
+
   TOperacoesConexao.IniciaQuerys([qryConsulta,
                                   qryEntradaProdutos,
                                   DM.qrySafra,
@@ -460,6 +473,7 @@ begin
   BBtnExcluir.Enabled:= false;
   CodigoLancamentoFinanceiro:= 0;
   cbGerar_Financeiro.Checked:= false;
+  cbGerar_Estoque.Checked:= false;
   BuscaDados;
   achei:= false;
   iniciou:= true;
@@ -511,6 +525,8 @@ begin
     FEntradaProdutoEntidade.Valor_Desconto:= StrToFloat(EdtValor_Desconto.Text);
     FEntradaProdutoEntidade.Valor_Total_NF:= StrToFloat(EdtValor_Total_NF.Text);
     FEntradaProdutoEntidade.Observacoes:= MMOObservacao.Text;
+    FEntradaProdutoEntidade.Tipo_Nota:= rgTipo_Nota.Properties.Items[rgTipo_Nota.ItemIndex].Caption;
+    FEntradaProdutoEntidade.N_Nota_Fiscal_Referencia:= EdtN_Nota_Fiscal_Referencia.Text;
 
     if (achei = false) then
     begin
@@ -619,6 +635,14 @@ begin
       end;
     end;
 
+    if (cbGerar_Estoque.Checked) then
+    begin
+      TOperacoesConexao.ConfirmaConexao(ConexaoEstoque);
+    end
+    else
+    begin
+      TOperacoesConexao.CancelaConexao(ConexaoEstoque);
+    end;
 
     TOperacoesConexao.ConfirmaConexao(Conexao);
     IniciaTela;
@@ -808,6 +832,12 @@ begin
   Op.FormataFloat(2, EdtValor_Total_NF, qryConsultaValor_Total_NF.AsFloat);
   MMOObservacao.Text:= qryConsultaObservacoes.AsString;
 
+  if (qryConsultaTipo_Nota.AsString = 'Normal') then
+    rgTipo_Nota.ItemIndex:= 0
+  else if (qryConsultaTipo_Nota.AsString = 'Remessa') then
+    rgTipo_Nota.ItemIndex:= 1;
+
+  EdtN_Nota_Fiscal_Referencia.Text:= qryConsultaN_Nota_Fiscal_Referencia.AsString;
   FEntradaProdutoEntidade:= TEntradaProdutoEntidade.Create;
   FEntradaProdutoEntidade.Codigo:= qryConsultaCodigo.AsInteger;
 
@@ -885,7 +915,7 @@ begin
 
 end;
 
-procedure TFrmEntrada_Produto.cxGrid2DBBandedTableView1ProdutoPropertiesChange(
+procedure TFrmEntrada_Produto.cxGrid2DBBandedTableView1ProdutoPropertiesCloseUp(
   Sender: TObject);
 var
   Preco: Variant;
@@ -923,7 +953,7 @@ begin
 
   if (qryEntradaProdutosControla_Estoque.AsBoolean = True) then
   begin
-    FEstoqueProdutoDominio:= TEstoqueProdutoDominio.Create(Conexao);
+    FEstoqueProdutoDominio:= TEstoqueProdutoDominio.Create(ConexaoEstoque);
     FEstoqueProdutoDominio.AtualizarEstoque(qryEntradaProdutosCodigo_Produto.AsInteger, FPropriedade.Codigo, ValorDiferencaQuantidade, '+');
   end;
 end;
@@ -1157,6 +1187,7 @@ begin
   Op.DesabilitaCampos(FrmEntrada_Produto);
   qryEntradaProdutos.Close;
   cbGerar_Financeiro.Checked:= false;
+  cbGerar_Estoque.Checked:= false;
 end;
 
 function TFrmEntrada_Produto.GeraFinanceiro(var Retorno: AnsiString): integer;
@@ -1255,6 +1286,21 @@ begin
   else
   begin
     Result:= 0;
+  end;
+end;
+
+procedure TFrmEntrada_Produto.rgTipo_NotaPropertiesEditValueChanged(
+  Sender: TObject);
+begin
+  if (rgTipo_Nota.Properties.Items[rgTipo_Nota.ItemIndex].Caption = 'Normal') then
+  begin
+    LblNota.Visible:= false;
+    EdtN_Nota_Fiscal_Referencia.Visible:= false;
+  end
+  else
+  begin
+    LblNota.Visible:= true;
+    EdtN_Nota_Fiscal_Referencia.Visible:= true;
   end;
 end;
 

@@ -24,6 +24,8 @@ type
       FValor_Desconto: double;
       FValor_Total_NF: double;
       FCodigo_Lancamento_Financeiro: Integer;
+      FTipo_Nota: AnsiString;
+      FN_Nota_Fiscal_Referencia: AnsiString;
       FObservacoes: AnsiString;
       procedure SetCodigo(const Value: integer);
       procedure SetCodigo_Departamento(const Value: integer);
@@ -45,7 +47,9 @@ type
       procedure SetValor_Total_NF(const Value: double);
       procedure SetValor_Produtos(const Value: double);
       procedure SetCodigo_Lancamento_Financeiro(const Value: Integer);
-    procedure SetCodigo_Comprador(const Value: integer);
+      procedure SetCodigo_Comprador(const Value: integer);
+    procedure SetN_Nota_Fiscal_Referencia(const Value: AnsiString);
+    procedure SetTipo_Nota(const Value: AnsiString);
     public
       property Codigo: integer read FCodigo write SetCodigo;
       property Data_Cadastro: TDateTime read FData_Cadastro write SetData_Cadastro;
@@ -68,6 +72,8 @@ type
       property Valor_Total_NF: double read FValor_Total_NF write SetValor_Total_NF;
       property Codigo_Lancamento_Financeiro: Integer read FCodigo_Lancamento_Financeiro write SetCodigo_Lancamento_Financeiro;
       property Observacoes: AnsiString read FObservacoes write SetObservacoes;
+      property Tipo_Nota: AnsiString read FTipo_Nota write SetTipo_Nota;
+      property N_Nota_Fiscal_Referencia: AnsiString read FN_Nota_Fiscal_Referencia write SetN_Nota_Fiscal_Referencia;
 
   end;
 implementation
@@ -148,9 +154,20 @@ begin
   FN_Nota_Fiscal := Value;
 end;
 
+procedure TEntradaProdutoEntidade.SetN_Nota_Fiscal_Referencia(
+  const Value: AnsiString);
+begin
+  FN_Nota_Fiscal_Referencia := Value;
+end;
+
 procedure TEntradaProdutoEntidade.SetObservacoes(const Value: AnsiString);
 begin
   FObservacoes := Value;
+end;
+
+procedure TEntradaProdutoEntidade.SetTipo_Nota(const Value: AnsiString);
+begin
+  FTipo_Nota := Value;
 end;
 
 procedure TEntradaProdutoEntidade.SetValor_Desconto(const Value: double);

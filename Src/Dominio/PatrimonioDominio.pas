@@ -36,7 +36,7 @@ begin
                              ' Status = :Status, Tipo = :Tipo, Identificacao = :Identificacao, '+
                              ' Responsavel = :Responsavel, Descricao = :Descricao, Valor = :Valor, '+
                              ' DataCompra = :DataCompra, DataVenda = :DataVenda, '+
-                             ' CodigoTipoBem = :CodigoTipoBem, Observacao = :Observacao '+
+                             ' CodigoTipoBem = :CodigoTipoBem, Quantidade = :Quantidade, Observacao = :Observacao '+
                              ' where Codigo = :Codigo';
     FComandoSQL.Parametros.Add('Status');
     FComandoSQL.Parametros.Add('Tipo');
@@ -47,6 +47,7 @@ begin
     FComandoSQL.Parametros.Add('DataCompra');
     FComandoSQL.Parametros.Add('DataVenda');
     FComandoSQL.Parametros.Add('CodigoTipoBem');
+    FComandoSQL.Parametros.Add('Quantidade');
     FComandoSQL.Parametros.Add('Observacao');
     FComandoSQL.Parametros.Add('Codigo');
     FComandoSQL.Valores.Add(FEntidade.Status);
@@ -58,6 +59,7 @@ begin
     FComandoSQL.Valores.Add(FEntidade.DataCompra);
     FComandoSQL.Valores.Add(FEntidade.DataVenda);
     FComandoSQL.Valores.Add(FEntidade.CodigoTipoBem);
+    FComandoSQL.Valores.Add(FEntidade.Quantidade);
     FComandoSQL.Valores.Add(FEntidade.Observacao);
     FComandoSQL.Valores.Add(FEntidade.Codigo);
     FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
@@ -141,12 +143,12 @@ begin
                              ' (Codigo, Codigo_Propriedade, Codigo_Usuario, '+
                              ' Status, Tipo, Identificacao, Responsavel, '+
                              ' Descricao, Valor, DataCadastro, DataCompra, '+
-                             ' DataVenda, CodigoTipoBem, Observacao) '+
+                             ' DataVenda, CodigoTipoBem, Quantidade, Observacao) '+
                              ' values '+
                              ' (:Codigo, :Codigo_Propriedade, :Codigo_Usuario, '+
                              ' :Status, :Tipo, :Identificacao, :Responsavel, '+
                              ' :Descricao, :Valor, :DataCadastro, :DataCompra, '+
-                             ' :DataVenda, :CodigoTipoBem, :Observacao) ';
+                             ' :DataVenda, :CodigoTipoBem, :Quantidade, :Observacao) ';
     FComandoSQL.Parametros.Add('Codigo');
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Parametros.Add('Codigo_Usuario');
@@ -160,6 +162,7 @@ begin
     FComandoSQL.Parametros.Add('DataCompra');
     FComandoSQL.Parametros.Add('DataVenda');
     FComandoSQL.Parametros.Add('CodigoTipoBem');
+    FComandoSQL.Parametros.Add('Quantidade');
     FComandoSQL.Parametros.Add('Observacao');
     FComandoSQL.Valores.Add(FEntidade.Codigo);
     FComandoSQL.Valores.Add(FEntidade.CodigoPropriedade);
@@ -174,6 +177,7 @@ begin
     FComandoSQL.Valores.Add(FEntidade.DataCompra);
     FComandoSQL.Valores.Add(FEntidade.DataVenda);
     FComandoSQL.Valores.Add(FEntidade.CodigoTipoBem);
+    FComandoSQL.Valores.Add(FEntidade.Quantidade);
     FComandoSQL.Valores.Add(FEntidade.Observacao);
     FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FEntidadeDAO.ExecutaComandoSQLSalvarAlterarExcluir(Retorno);

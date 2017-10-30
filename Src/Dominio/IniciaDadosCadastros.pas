@@ -543,7 +543,7 @@ var
 begin
   try
     VeiculoDominio:= TVeiculoDominio.Create(Conexao);
-    if (VeiculoDominio.Buscar(Codigo_Propriedade, dm.qryVeiculo, Retorno) = 0) and (Retorno <> '') then
+    if (VeiculoDominio.Buscar(dm.qryVeiculo, Retorno) = 0) and (Retorno <> '') then
     begin
       Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
       Exit;

@@ -122,18 +122,24 @@ begin
     FComandoSQL.Conexao:= Conexao;
     if (Tipo = 0) then
     begin
-      FComandoSQL.ComandoSQL:= 'select EP.Estoque, CP.Descricao, CPes.Nome from Estoque_Produto EP'+
-                                ' left join Cadastro_Produtos CP on (EP.Codigo_Produto = CP.Codigo)'+
-                                ' left join Cadastro_Pessoa CPes on (EP.Codigo_Propriedade = CPes.Codigo)'+
+      FComandoSQL.ComandoSQL:= 'select EP.Estoque, CP.Descricao, CP.Preco_Compra, CP.Data_Validade, CP.Aplicacao,'+
+                               ' CGP.Descricao as Grupo, CM.Descricao as Marca, CPes.Nome from Estoque_Produto EP'+
+                               ' left join Cadastro_Produtos CP on (EP.Codigo_Produto = CP.Codigo)'+
+                               ' left join Cadastro_Pessoa CPes on (EP.Codigo_Propriedade = CPes.Codigo)'+
+                               ' left join Cadastro_Grupo_Produtos CGP on (CP.Codigo_Grupo = CGP.Codigo)'+
+                               ' left join Cadastro_Marca CM on (CP.Codigo_Marca = CM.Codigo)'+
                                 ' where EP.Codigo_Propriedade = :Codigo_Propriedade ';
       FComandoSQL.Parametros.Add('Codigo_Propriedade');
       FComandoSQL.Valores.Add(Codigo_Propriedade);
     end
     else
     begin
-      FComandoSQL.ComandoSQL:= 'select EP.Estoque, CP.Descricao, CPes.Nome from Estoque_Produto EP'+
-                                ' left join Cadastro_Produtos CP on (EP.Codigo_Produto = CP.Codigo)'+
-                                ' left join Cadastro_Pessoa CPes on (EP.Codigo_Propriedade = CPes.Codigo)';
+      FComandoSQL.ComandoSQL:= 'select EP.Estoque, CP.Descricao, CP.Preco_Compra, CP.Data_Validade, CP.Aplicacao,'+
+                               ' CGP.Descricao as Grupo, CM.Descricao as Marca, CPes.Nome from Estoque_Produto EP'+
+                               ' left join Cadastro_Produtos CP on (EP.Codigo_Produto = CP.Codigo)'+
+                               ' left join Cadastro_Pessoa CPes on (EP.Codigo_Propriedade = CPes.Codigo)'+
+                               ' left join Cadastro_Grupo_Produtos CGP on (CP.Codigo_Grupo = CGP.Codigo)'+
+                               ' left join Cadastro_Marca CM on (CP.Codigo_Marca = CM.Codigo)';
     end;
     FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FEntidadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);

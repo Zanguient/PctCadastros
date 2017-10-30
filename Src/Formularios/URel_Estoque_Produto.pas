@@ -61,12 +61,24 @@ type
     cxGrid1DBTableViewEstoqueEstoque: TcxGridDBColumn;
     CheckBox1: TCheckBox;
     cxImage3: TcxImage;
+    qryEstoquePreco_Compra: TFloatField;
+    qryEstoqueData_Validade: TDateTimeField;
+    qryEstoqueAplicacao: TStringField;
+    qryEstoqueGrupo: TStringField;
+    qryEstoqueMarca: TStringField;
+    cxGrid1DBTableViewEstoquePreco_Compra: TcxGridDBColumn;
+    cxGrid1DBTableViewEstoqueData_Validade: TcxGridDBColumn;
+    cxGrid1DBTableViewEstoqueAplicacao: TcxGridDBColumn;
+    cxGrid1DBTableViewEstoqueGrupo: TcxGridDBColumn;
+    cxGrid1DBTableViewEstoqueMarca: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure cxImage1Click(Sender: TObject);
     procedure cxImage2Click(Sender: TObject);
     procedure cxImage3Click(Sender: TObject);
+    procedure qryEstoqueData_ValidadeGetText(Sender: TField; var Text: string;
+      DisplayText: Boolean);
   private
     FPropriedade: TPropriedadeEntidade;
     FUsuario: TLoginEntidade;
@@ -183,6 +195,15 @@ begin
   IniDados:= IniciaDadosCadastro.Create;
   //IniDados.BuscaDadosSafra(Conexao);
 
+end;
+
+procedure TFrmRel_Estoque_Produto.qryEstoqueData_ValidadeGetText(Sender: TField;
+  var Text: string; DisplayText: Boolean);
+begin
+  if (Sender.AsString = '30/12/1899') then   //1899-12-30 00:00:00.000
+    Text:= ''
+  else
+    Text:= Sender.AsString;
 end;
 
 end.

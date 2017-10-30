@@ -39,7 +39,8 @@ uses
   ManutencaoMaquinaProdutoDominio, LoginEntidade, HistoricoEntidade,
   HistoricoDominio, ProdutoDominio, EstoqueProdutoDominio, System.Generics.Collections,
   cxNavigator, dxSkinsdxRibbonPainter, LancamentoFinanceiroEntidade,
-  LancamentoFinanceiroDominio;
+  LancamentoFinanceiroDominio, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White;
 
 type
   TFrmManutencao_Maquina = class(TForm)

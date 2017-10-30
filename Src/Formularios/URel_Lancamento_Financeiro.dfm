@@ -37,8 +37,6 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
     TabOrder = 0
     LookAndFeel.Kind = lfUltraFlat
     LookAndFeel.NativeStyle = False
-    ExplicitTop = 36
-    ExplicitHeight = 396
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = False
@@ -1880,7 +1878,6 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
       Align = alLeft
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitHeight = 34
       object cxImage2: TcxImage
         Left = 37
         Top = 0
@@ -3155,7 +3152,7 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 43024.454792488420000000
+      ReportDocument.CreationDate = 43038.640521111110000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET

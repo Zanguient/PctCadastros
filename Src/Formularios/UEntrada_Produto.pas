@@ -226,7 +226,6 @@ type
     qryConsultaN_Nota_Fiscal_Referencia: TStringField;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
-    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure BBtnCancelarClick(Sender: TObject);
     procedure MEdtData_CadastroEnter(Sender: TObject);
@@ -274,6 +273,7 @@ type
     procedure rgTipo_NotaPropertiesEditValueChanged(Sender: TObject);
     procedure cxGrid2DBBandedTableView1ProdutoPropertiesCloseUp(
       Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     FPropriedade: TPropriedadeEntidade;
     FUsuario: TLoginEntidade;
@@ -1140,8 +1140,8 @@ begin
   ativo:= true;
 end;
 
-procedure TFrmEntrada_Produto.FormCloseQuery(Sender: TObject;
-  var CanClose: Boolean);
+procedure TFrmEntrada_Produto.FormClose(Sender: TObject;
+  var Action: TCloseAction);
 begin
   if (BBtnCancelar.Enabled = true) then
     begin

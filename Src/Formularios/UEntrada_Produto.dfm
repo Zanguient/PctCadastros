@@ -19,7 +19,7 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
   Scaled = False
   Visible = True
   OnActivate = FormActivate
-  OnCloseQuery = FormCloseQuery
+  OnClose = FormClose
   OnDeactivate = FormDeactivate
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
@@ -1793,7 +1793,6 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
     Left = 488
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1835,7 +1834,6 @@ object FrmEntrada_Produto: TFrmEntrada_Produto
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

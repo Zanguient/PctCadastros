@@ -14,7 +14,8 @@ type
       function Salvar(var Retorno: AnsiString): integer;
       function Alterar(var Retorno: AnsiString): integer;
       function Excluir(var Retorno: AnsiString): integer;
-      function Buscar(Codigo_Propriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): integer;
+      function Buscar(Codigo_Propriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
+      function Buscar(var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       constructor Create(var Conexao: TADOConnection; FVeiculo: TVeiculoEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
 
@@ -87,6 +88,24 @@ begin
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Parametros.Add('Status');
     FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FComandoSQL.Valores.Add('ATIVO');
+    FVeiculoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FVeiculoDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TVeiculoDominio.Buscar(var Query: TADOQuery;
+  var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select * from Cadastro_Veiculo where Status = :Status';
+    FComandoSQL.Parametros.Add('Status');
     FComandoSQL.Valores.Add('ATIVO');
     FVeiculoDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FVeiculoDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);

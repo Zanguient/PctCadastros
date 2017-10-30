@@ -37,8 +37,8 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
     TabOrder = 0
     LookAndFeel.Kind = lfUltraFlat
     LookAndFeel.NativeStyle = False
-    ExplicitTop = 36
-    ExplicitHeight = 396
+    ExplicitLeft = 1
+    ExplicitTop = 43
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = False
@@ -1472,10 +1472,27 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
       Navigator.Buttons.GotoBookmark.Visible = False
       Navigator.Buttons.Filter.Visible = False
       DataController.DataSource = dsEstoque
-      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.DefaultGroupSummaryItems = <
+        item
+          Kind = skSum
+          FieldName = 'Estoque'
+          Column = cxGrid1DBTableViewEstoqueEstoque
+        end
+        item
+          Kind = skCount
+          FieldName = 'Descricao'
+          Column = cxGrid1DBTableViewEstoqueDescricao
+        end>
       DataController.Summary.FooterSummaryItems = <
         item
           Kind = skSum
+          FieldName = 'Estoque'
+          Column = cxGrid1DBTableViewEstoqueEstoque
+        end
+        item
+          Kind = skCount
+          FieldName = 'Descricao'
+          Column = cxGrid1DBTableViewEstoqueDescricao
         end>
       DataController.Summary.SummaryGroups = <>
       OptionsBehavior.FocusFirstCellOnNewRecord = True
@@ -1497,19 +1514,54 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
         DataBinding.FieldName = 'Nome'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 258
+        Width = 200
       end
       object cxGrid1DBTableViewEstoqueDescricao: TcxGridDBColumn
         Caption = 'Produto'
         DataBinding.FieldName = 'Descricao'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 231
+        Width = 250
       end
       object cxGrid1DBTableViewEstoqueEstoque: TcxGridDBColumn
         DataBinding.FieldName = 'Estoque'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
+        Width = 70
+      end
+      object cxGrid1DBTableViewEstoquePreco_Compra: TcxGridDBColumn
+        Caption = 'Pre'#231'o'
+        DataBinding.FieldName = 'Preco_Compra'
+        PropertiesClassName = 'TcxCurrencyEditProperties'
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+        Width = 100
+      end
+      object cxGrid1DBTableViewEstoqueData_Validade: TcxGridDBColumn
+        Caption = 'Validade'
+        DataBinding.FieldName = 'Data_Validade'
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+        Width = 63
+      end
+      object cxGrid1DBTableViewEstoqueMarca: TcxGridDBColumn
+        DataBinding.FieldName = 'Marca'
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+        Width = 100
+      end
+      object cxGrid1DBTableViewEstoqueGrupo: TcxGridDBColumn
+        DataBinding.FieldName = 'Grupo'
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+        Width = 100
+      end
+      object cxGrid1DBTableViewEstoqueAplicacao: TcxGridDBColumn
+        Caption = 'Aplica'#231#227'o'
+        DataBinding.FieldName = 'Aplicacao'
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+        Width = 300
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -1531,7 +1583,6 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
       Align = alLeft
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitTop = 2
       object cxImage2: TcxImage
         Left = 37
         Top = 0
@@ -2244,14 +2295,21 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
     Parameters = <>
     SQL.Strings = (
       
-        'select EP.Estoque, CP.Descricao, CPes.Nome from Estoque_Produto ' +
-        'EP'
+        'select EP.Estoque, CP.Descricao, CP.Preco_Compra, CP.Data_Valida' +
+        'de, CP.Aplicacao, '
+      
+        'CGP.Descricao as Grupo, CM.Descricao as Marca, CPes.Nome from Es' +
+        'toque_Produto EP'
       
         'left join Cadastro_Produtos CP on (EP.Codigo_Produto = CP.Codigo' +
         ')'
       
         'left join Cadastro_Pessoa CPes on (EP.Codigo_Propriedade = CPes.' +
-        'Codigo)')
+        'Codigo)'
+      
+        'left join Cadastro_Grupo_Produtos CGP on (CP.Codigo_Grupo = CGP.' +
+        'Codigo)'
+      'left join Cadastro_Marca CM on (CP.Codigo_Marca = CM.Codigo)')
     Left = 592
     Top = 8
     object qryEstoqueNome: TStringField
@@ -2265,6 +2323,25 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
     object qryEstoqueEstoque: TFloatField
       FieldName = 'Estoque'
     end
+    object qryEstoquePreco_Compra: TFloatField
+      FieldName = 'Preco_Compra'
+    end
+    object qryEstoqueData_Validade: TDateTimeField
+      FieldName = 'Data_Validade'
+      OnGetText = qryEstoqueData_ValidadeGetText
+    end
+    object qryEstoqueAplicacao: TStringField
+      FieldName = 'Aplicacao'
+      Size = 800
+    end
+    object qryEstoqueGrupo: TStringField
+      FieldName = 'Grupo'
+      Size = 50
+    end
+    object qryEstoqueMarca: TStringField
+      FieldName = 'Marca'
+      Size = 50
+    end
   end
   object dsEstoque: TDataSource
     DataSet = qryEstoque
@@ -2273,6 +2350,20 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
   end
   object cxPropertiesStore1: TcxPropertiesStore
     Components = <
+      item
+        Component = cxGrid1DBTableViewEstoqueAplicacao
+        Properties.Strings = (
+          'SortOrder'
+          'Visible'
+          'Width')
+      end
+      item
+        Component = cxGrid1DBTableViewEstoqueData_Validade
+        Properties.Strings = (
+          'SortOrder'
+          'Visible'
+          'Width')
+      end
       item
         Component = cxGrid1DBTableViewEstoqueDescricao
         Properties.Strings = (
@@ -2288,7 +2379,28 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
           'Width')
       end
       item
+        Component = cxGrid1DBTableViewEstoqueGrupo
+        Properties.Strings = (
+          'SortOrder'
+          'Visible'
+          'Width')
+      end
+      item
+        Component = cxGrid1DBTableViewEstoqueMarca
+        Properties.Strings = (
+          'SortOrder'
+          'Visible'
+          'Width')
+      end
+      item
         Component = cxGrid1DBTableViewEstoqueNome
+        Properties.Strings = (
+          'SortOrder'
+          'Visible'
+          'Width')
+      end
+      item
+        Component = cxGrid1DBTableViewEstoquePreco_Compra
         Properties.Strings = (
           'SortOrder'
           'Visible'
@@ -2343,7 +2455,7 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 43024.454317141200000000
+      ReportDocument.CreationDate = 43038.587432905090000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET

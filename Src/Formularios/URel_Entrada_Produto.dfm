@@ -2552,35 +2552,25 @@ object FrmRel_Entrada_Produto: TFrmRel_Entrada_Produto
             item
               Format = 'R$ #0.0,0'
               Kind = skSum
+              FieldName = 'Valor_Total_NF'
+              Column = cxGrid1DBTableView5Valor_Total_NF
             end
             item
-              Format = 'R$ #0.0,0'
-              Kind = skSum
-            end
-            item
-              Format = 'R$ #0.0,0'
-              Kind = skSum
-            end
-            item
-              Format = 'R$ #0.0,0'
-              Kind = skSum
+              Kind = skCount
+              FieldName = 'Codigo'
+              Column = cxGrid1DBTableView5Codigo
             end>
           DataController.Summary.FooterSummaryItems = <
             item
               Format = 'R$ #0.0,0'
               Kind = skSum
+              FieldName = 'Valor_Total_NF'
+              Column = cxGrid1DBTableView5Valor_Total_NF
             end
             item
-              Format = 'R$ #0.0,0'
-              Kind = skSum
-            end
-            item
-              Format = 'R$ #0.0,0'
-              Kind = skSum
-            end
-            item
-              Format = 'R$ #0.0,0'
-              Kind = skSum
+              Kind = skCount
+              FieldName = 'Codigo'
+              Column = cxGrid1DBTableView5Codigo
             end>
           DataController.Summary.SummaryGroups = <>
           OptionsBehavior.FocusFirstCellOnNewRecord = True

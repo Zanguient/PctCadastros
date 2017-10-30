@@ -169,7 +169,8 @@ begin
     FComandoSQL.ComandoSQL:= 'select EP.N_Nota_Fiscal, EP.N_Nota_Fiscal_Referencia, EP.Data_Cadastro, CPesForn.Nome as Fornecedor, EP.Valor_Total_NF '+
                             ' from Entrada_Produto EP '+
                             ' left join Cadastro_Pessoa CPesForn on (EP.Codigo_Fornecedor = CPesForn.Codigo) '+
-                            '  where EP.Codigo_Propriedade = :Codigo_Propriedade';
+                            '  where EP.Codigo_Propriedade = :Codigo_Propriedade and EP.N_Nota_Fiscal in '+
+                            ' (select EP.N_Nota_Fiscal_Referencia from Entrada_Produto EP where EP.N_Nota_Fiscal_Referencia <> '+QuotedStr('')+')';
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Valores.Add(CodigoPropriedade);
     FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
@@ -189,7 +190,8 @@ begin
     FComandoSQL.Conexao:= Conexao;
     FComandoSQL.ComandoSQL:= 'select EP.N_Nota_Fiscal_Referencia, EP.N_Nota_Fiscal, EP.Data_Cadastro, EP.Valor_Total_NF '+
                             ' from Entrada_Produto EP '+
-                            ' where EP.Codigo_Propriedade = :Codigo_Propriedade';
+                            ' where EP.Codigo_Propriedade = :Codigo_Propriedade and '+
+                            ' EP.N_Nota_Fiscal_Referencia <> '+QuotedStr('')+'';
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Valores.Add(CodigoPropriedade);
     FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
@@ -375,7 +377,8 @@ begin
     FComandoSQL.ComandoSQL:= 'select EP.N_Nota_Fiscal, EP.N_Nota_Fiscal_Referencia, EP.Data_Cadastro, CPesForn.Nome as Fornecedor, EP.Valor_Total_NF '+
                             ' from Entrada_Produto EP '+
                             ' left join Cadastro_Pessoa CPesForn on (EP.Codigo_Fornecedor = CPesForn.Codigo) '+
-                            '  where EP.Codigo_Propriedade = :Codigo_Propriedade and EP.Codigo_Safra = :Codigo_Safra';
+                            '  where EP.Codigo_Propriedade = :Codigo_Propriedade and EP.Codigo_Safra = :Codigo_Safra and EP.N_Nota_Fiscal in '+
+                            ' (select EP.N_Nota_Fiscal_Referencia from Entrada_Produto EP where EP.N_Nota_Fiscal_Referencia <> '+QuotedStr('')+')';
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Parametros.Add('Codigo_Safra');
     FComandoSQL.Valores.Add(CodigoPropriedade);
@@ -397,11 +400,10 @@ begin
     FComandoSQL.Conexao:= Conexao;
     FComandoSQL.ComandoSQL:= 'select EP.N_Nota_Fiscal_Referencia, EP.N_Nota_Fiscal, EP.Data_Cadastro, EP.Valor_Total_NF '+
                             ' from Entrada_Produto EP '+
-                            ' where EP.Codigo_Propriedade = :Codigo_Propriedade and EP.Codigo_Safra = :Codigo_Safra';
+                            ' where EP.Codigo_Propriedade = :Codigo_Propriedade and '+
+                            ' EP.N_Nota_Fiscal_Referencia <> '+QuotedStr('')+'';
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
-    FComandoSQL.Parametros.Add('Codigo_Safra');
     FComandoSQL.Valores.Add(CodigoPropriedade);
-    FComandoSQL.Valores.Add(CodigoSafra);
     FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FEntidadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally

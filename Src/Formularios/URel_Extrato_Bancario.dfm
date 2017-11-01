@@ -1,9 +1,9 @@
-object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
+object FrmRel_Extrato_Bancario: TFrmRel_Extrato_Bancario
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Estoque de produtos'
+  Caption = 'Consulta Extrato Banc'#225'rio'
   ClientHeight = 432
   ClientWidth = 849
   Color = clWindow
@@ -1469,29 +1469,10 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
       Navigator.Buttons.SaveBookmark.Visible = False
       Navigator.Buttons.GotoBookmark.Visible = False
       Navigator.Buttons.Filter.Visible = False
-      DataController.DataSource = dsEstoque
-      DataController.Summary.DefaultGroupSummaryItems = <
-        item
-          Kind = skSum
-          FieldName = 'Estoque'
-          Column = cxGrid1DBTableViewEstoqueEstoque
-        end
-        item
-          Kind = skCount
-          FieldName = 'Descricao'
-          Column = cxGrid1DBTableViewEstoqueDescricao
-        end>
-      DataController.Summary.FooterSummaryItems = <
-        item
-          Kind = skSum
-          FieldName = 'Estoque'
-          Column = cxGrid1DBTableViewEstoqueEstoque
-        end
-        item
-          Kind = skCount
-          FieldName = 'Descricao'
-          Column = cxGrid1DBTableViewEstoqueDescricao
-        end>
+      DataController.DataSource = dsExtrato
+      DataController.KeyFieldNames = 'Codigo'
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
       OptionsBehavior.FocusFirstCellOnNewRecord = True
       OptionsBehavior.GoToNextCellOnEnter = True
@@ -1507,59 +1488,107 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
       OptionsView.GroupSummaryLayout = gslAlignWithColumns
       OptionsView.Indicator = True
       Preview.Visible = True
-      object cxGrid1DBTableViewEstoqueNome: TcxGridDBColumn
-        Caption = 'Fazenda'
-        DataBinding.FieldName = 'Nome'
+      object cxGrid1DBTableViewEstoqueCodigo: TcxGridDBColumn
+        Caption = 'C'#243'digo'
+        DataBinding.FieldName = 'Codigo'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 200
+        Width = 53
+      end
+      object cxGrid1DBTableViewEstoqueN_Documento: TcxGridDBColumn
+        Caption = 'N'#186' Doc.'
+        DataBinding.FieldName = 'N_Documento'
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+        Width = 67
+      end
+      object cxGrid1DBTableViewEstoqueData_Lancamento: TcxGridDBColumn
+        Caption = 'Lan'#231'amento'
+        DataBinding.FieldName = 'Data_Lancamento'
+        PropertiesClassName = 'TcxDateEditProperties'
+        Properties.DisplayFormat = 'DD/MM/YYYY'
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+        Width = 78
       end
       object cxGrid1DBTableViewEstoqueDescricao: TcxGridDBColumn
-        Caption = 'Produto'
+        Caption = 'Descri'#231#227'o'
         DataBinding.FieldName = 'Descricao'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 250
+        Width = 257
       end
-      object cxGrid1DBTableViewEstoqueEstoque: TcxGridDBColumn
-        DataBinding.FieldName = 'Estoque'
-        Options.Editing = False
-        Styles.Header = DM.cxStyle1
-        Width = 70
-      end
-      object cxGrid1DBTableViewEstoquePreco_Compra: TcxGridDBColumn
-        Caption = 'Pre'#231'o'
-        DataBinding.FieldName = 'Preco_Compra'
+      object cxGrid1DBTableViewEstoqueValor: TcxGridDBColumn
+        DataBinding.FieldName = 'Valor'
         PropertiesClassName = 'TcxCurrencyEditProperties'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 100
+        Width = 120
       end
-      object cxGrid1DBTableViewEstoqueData_Validade: TcxGridDBColumn
-        Caption = 'Validade'
-        DataBinding.FieldName = 'Data_Validade'
+      object cxGrid1DBTableViewEstoqueConta_Corrente: TcxGridDBColumn
+        Caption = 'Conta'
+        DataBinding.FieldName = 'Conta_Corrente'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 63
+        Width = 85
       end
-      object cxGrid1DBTableViewEstoqueMarca: TcxGridDBColumn
-        DataBinding.FieldName = 'Marca'
+      object cxGrid1DBTableViewEstoqueNumero_Cheque: TcxGridDBColumn
+        Caption = 'N'#186' Cheque'
+        DataBinding.FieldName = 'Numero_Cheque'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 100
+        Width = 90
       end
-      object cxGrid1DBTableViewEstoqueGrupo: TcxGridDBColumn
-        DataBinding.FieldName = 'Grupo'
+      object cxGrid1DBTableViewEstoqueOperacao: TcxGridDBColumn
+        Caption = 'Opera'#231#227'o'
+        DataBinding.FieldName = 'Operacao'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 100
+        Width = 160
       end
-      object cxGrid1DBTableViewEstoqueAplicacao: TcxGridDBColumn
-        Caption = 'Aplica'#231#227'o'
-        DataBinding.FieldName = 'Aplicacao'
+      object cxGrid1DBTableViewEstoqueStatus: TcxGridDBColumn
+        DataBinding.FieldName = 'Status'
         Options.Editing = False
         Styles.Header = DM.cxStyle1
-        Width = 300
+        Width = 66
+      end
+      object cxGrid1DBTableViewEstoqueSaldo_Anterior: TcxGridDBColumn
+        Caption = 'Saldo Anterior'
+        DataBinding.FieldName = 'Saldo_Anterior'
+        PropertiesClassName = 'TcxCurrencyEditProperties'
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+        Width = 120
+      end
+      object cxGrid1DBTableViewEstoqueSaldo_Atual: TcxGridDBColumn
+        Caption = 'Saldo Atual'
+        DataBinding.FieldName = 'Saldo_Atual'
+        PropertiesClassName = 'TcxCurrencyEditProperties'
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+        Width = 120
+      end
+      object cxGrid1DBTableViewEstoqueConta_Corrente_1: TcxGridDBColumn
+        Caption = 'Conta Transf.'
+        DataBinding.FieldName = 'Conta_Corrente_1'
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+      end
+      object cxGrid1DBTableViewEstoqueSaldo_Anterior_Transferencia: TcxGridDBColumn
+        Caption = 'Saldo Ant. Transf.'
+        DataBinding.FieldName = 'Saldo_Anterior_Transferencia'
+        PropertiesClassName = 'TcxCurrencyEditProperties'
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+        Width = 120
+      end
+      object cxGrid1DBTableViewEstoqueSaldo_Atual_Transferencia: TcxGridDBColumn
+        Caption = 'Saldo At. Transf.'
+        DataBinding.FieldName = 'Saldo_Atual_Transferencia'
+        PropertiesClassName = 'TcxCurrencyEditProperties'
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+        Width = 120
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -1573,14 +1602,53 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
     Height = 39
     Align = alTop
     TabOrder = 1
+    object Label3: TLabel
+      Left = 127
+      Top = 4
+      Width = 85
+      Height = 13
+      Caption = 'Conta Banc'#225'ria'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object cmbConta: TcxLookupComboBox
+      Left = 127
+      Top = 17
+      Hint = 
+        'Escolha uma conta'#13#10#13#10'* Deixe o campo em branco para pesquisar em' +
+        ' todas as contas.'
+      ParentShowHint = False
+      Properties.CharCase = ecUpperCase
+      Properties.KeyFieldNames = 'Codigo'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Conta_Corrente'
+        end
+        item
+          FieldName = 'Codigo'
+        end>
+      Properties.ListOptions.SyncMode = True
+      Properties.ListSource = DM.dsContaBancaria
+      ShowHint = True
+      Style.BorderColor = clWindow
+      Style.BorderStyle = ebsUltraFlat
+      Style.ButtonStyle = btsDefault
+      TabOrder = 0
+      Width = 167
+    end
     object Panel2: TPanel
       Left = 1
       Top = 1
-      Width = 120
+      Width = 114
       Height = 37
       Align = alLeft
+      AutoSize = True
       BevelOuter = bvNone
-      TabOrder = 0
+      TabOrder = 1
       object cxImage2: TcxImage
         Left = 37
         Top = 0
@@ -2276,131 +2344,145 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
         Width = 40
       end
     end
-    object CheckBox1: TCheckBox
-      Left = 136
-      Top = 10
-      Width = 145
-      Height = 17
-      Hint = 'Marque essa op'#231#227'o para buscar produtos de todas as fazendas'
-      Caption = 'Buscar todas as fazendas'
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 1
-    end
   end
-  object qryEstoque: TADOQuery
+  object qryExtrato: TADOQuery
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
       
-        'select EP.Estoque, CP.Descricao, CP.Preco_Compra, CP.Data_Valida' +
-        'de, CP.Aplicacao, '
+        'select LB.*, CCB1.Conta_Corrente, CC.Numero_Cheque, COB.Operacao' +
+        ', CCB2.Conta_Corrente'
+      'from Lancamento_Banco LB'
       
-        'CGP.Descricao as Grupo, CM.Descricao as Marca, CPes.Nome from Es' +
-        'toque_Produto EP'
+        'left join Cadastro_Conta_Bancaria CCB1 on (LB.Codigo_Conta = CCB' +
+        '1.Codigo)'
+      'left join Cadastro_Cheque CC on (LB.Codigo_Cheque = CC.Codigo)'
       
-        'left join Cadastro_Produtos CP on (EP.Codigo_Produto = CP.Codigo' +
-        ')'
+        'left join Cadastro_Operacao_Bancaria COB on (LB.Codigo_Operacao ' +
+        '= COB.Codigo)'
       
-        'left join Cadastro_Pessoa CPes on (EP.Codigo_Propriedade = CPes.' +
-        'Codigo)'
-      
-        'left join Cadastro_Grupo_Produtos CGP on (CP.Codigo_Grupo = CGP.' +
-        'Codigo)'
-      'left join Cadastro_Marca CM on (CP.Codigo_Marca = CM.Codigo)')
+        'left join Cadastro_Conta_Bancaria CCB2 on (LB.Codigo_Conta_Trans' +
+        'ferencia = CCB2.Codigo)')
     Left = 592
     Top = 8
-    object qryEstoqueNome: TStringField
-      FieldName = 'Nome'
-      Size = 100
+    object qryExtratoCodigo: TIntegerField
+      FieldName = 'Codigo'
     end
-    object qryEstoqueDescricao: TStringField
+    object qryExtratoCodigo_Propriedade: TIntegerField
+      FieldName = 'Codigo_Propriedade'
+    end
+    object qryExtratoCodigo_Usuario: TIntegerField
+      FieldName = 'Codigo_Usuario'
+    end
+    object qryExtratoN_Documento: TIntegerField
+      FieldName = 'N_Documento'
+    end
+    object qryExtratoData_Lancamento: TDateTimeField
+      FieldName = 'Data_Lancamento'
+    end
+    object qryExtratoCodigo_Conta: TIntegerField
+      FieldName = 'Codigo_Conta'
+    end
+    object qryExtratoCodigo_Cheque: TIntegerField
+      FieldName = 'Codigo_Cheque'
+    end
+    object qryExtratoCodigo_Operacao: TIntegerField
+      FieldName = 'Codigo_Operacao'
+    end
+    object qryExtratoCodigo_Plano: TIntegerField
+      FieldName = 'Codigo_Plano'
+    end
+    object qryExtratoDescricao: TStringField
       FieldName = 'Descricao'
       Size = 50
     end
-    object qryEstoqueEstoque: TFloatField
-      FieldName = 'Estoque'
+    object qryExtratoValor: TFloatField
+      FieldName = 'Valor'
     end
-    object qryEstoquePreco_Compra: TFloatField
-      FieldName = 'Preco_Compra'
+    object qryExtratoStatus: TStringField
+      FieldName = 'Status'
+      Size = 30
     end
-    object qryEstoqueData_Validade: TDateTimeField
-      FieldName = 'Data_Validade'
-      OnGetText = qryEstoqueData_ValidadeGetText
+    object qryExtratoSaldo_Anterior: TFloatField
+      FieldName = 'Saldo_Anterior'
     end
-    object qryEstoqueAplicacao: TStringField
-      FieldName = 'Aplicacao'
-      Size = 800
+    object qryExtratoSaldo_Atual: TFloatField
+      FieldName = 'Saldo_Atual'
     end
-    object qryEstoqueGrupo: TStringField
-      FieldName = 'Grupo'
+    object qryExtratoCodigo_Conta_Transferencia: TIntegerField
+      FieldName = 'Codigo_Conta_Transferencia'
+    end
+    object qryExtratoSaldo_Anterior_Transferencia: TFloatField
+      FieldName = 'Saldo_Anterior_Transferencia'
+    end
+    object qryExtratoSaldo_Atual_Transferencia: TFloatField
+      FieldName = 'Saldo_Atual_Transferencia'
+    end
+    object qryExtratoConta_Corrente: TStringField
+      FieldName = 'Conta_Corrente'
+    end
+    object qryExtratoNumero_Cheque: TStringField
+      FieldName = 'Numero_Cheque'
+    end
+    object qryExtratoOperacao: TStringField
+      FieldName = 'Operacao'
       Size = 50
     end
-    object qryEstoqueMarca: TStringField
-      FieldName = 'Marca'
-      Size = 50
+    object qryExtratoConta_Corrente_1: TStringField
+      FieldName = 'Conta_Corrente_1'
     end
   end
-  object dsEstoque: TDataSource
-    DataSet = qryEstoque
+  object dsExtrato: TDataSource
+    DataSet = qryExtrato
     Left = 624
     Top = 8
   end
   object cxPropertiesStore1: TcxPropertiesStore
     Components = <
       item
-        Component = cxGrid1DBTableViewEstoqueAplicacao
+        Component = cmbConta
         Properties.Strings = (
-          'SortOrder'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = cxGrid1DBTableViewEstoqueData_Validade
-        Properties.Strings = (
-          'SortOrder'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = cxGrid1DBTableViewEstoqueDescricao
-        Properties.Strings = (
-          'SortOrder'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = cxGrid1DBTableViewEstoqueEstoque
-        Properties.Strings = (
-          'SortOrder'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = cxGrid1DBTableViewEstoqueGrupo
-        Properties.Strings = (
-          'SortOrder'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = cxGrid1DBTableViewEstoqueMarca
-        Properties.Strings = (
-          'SortOrder'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = cxGrid1DBTableViewEstoqueNome
-        Properties.Strings = (
-          'SortOrder'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = cxGrid1DBTableViewEstoquePreco_Compra
-        Properties.Strings = (
-          'SortOrder'
+          'Align'
+          'AlignWithMargins'
+          'Anchors'
+          'AutoSize'
+          'BeepOnEnter'
+          'Constraints'
+          'Cursor'
+          'CustomHint'
+          'DragCursor'
+          'DragKind'
+          'DragMode'
+          'EditValue'
+          'Enabled'
+          'FakeStyleController'
+          'Height'
+          'HelpContext'
+          'HelpKeyword'
+          'HelpType'
+          'Hint'
+          'ImeMode'
+          'ImeName'
+          'Left'
+          'Margins'
+          'Name'
+          'ParentColor'
+          'ParentCustomHint'
+          'ParentFont'
+          'ParentShowHint'
+          'PopupMenu'
+          'Properties'
+          'RepositoryItem'
+          'ShowHint'
+          'Style'
+          'StyleDisabled'
+          'StyleFocused'
+          'StyleHot'
+          'TabOrder'
+          'TabStop'
+          'Tag'
+          'Top'
+          'Touch'
           'Visible'
           'Width')
       end>
@@ -2453,7 +2535,7 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 43039.976002962960000000
+      ReportDocument.CreationDate = 43040.557898414350000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET
@@ -2469,12 +2551,9 @@ object FrmRel_Estoque_Produto: TFrmRel_Estoque_Produto
       ReportTitle.Font.Style = [fsBold]
       TimeFormat = 3
       AssignedFormatValues = [fvDate, fvTime]
-      OptionsOnEveryPage.Footers = False
-      OptionsOnEveryPage.FilterBar = False
-      OptionsView.Caption = False
+      OptionsView.Footers = False
       OptionsView.ExpandButtons = False
       OptionsView.FilterBar = False
-      OptionsView.GroupFooters = False
       BuiltInReportLink = True
     end
   end

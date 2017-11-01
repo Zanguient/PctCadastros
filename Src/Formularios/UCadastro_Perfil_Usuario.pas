@@ -31,7 +31,8 @@ uses
   HistoricoEntidade, cxNavigator, dxSkinsdxRibbonPainter, cxTL,
   cxTLdxBarBuiltInMenu, cxInplaceContainer, cxTLData, cxDBTL, dxtree, dxdbtree,
   PerfilUsuarioEntidade, PerfilUsuarioDominio, cxMaskEdit, cxCheckBox,
-  cxCalendar, cxTextEdit;
+  cxCalendar, cxTextEdit, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White;
 
 type
   TFrmCadastro_Perfil_Usuario = class(TForm)
@@ -156,6 +157,8 @@ type
     cxDBTreeList1Cadastro_Tipo_Bem: TcxDBTreeListColumn;
     cxDBTreeList1Mov_Patrimonio: TcxDBTreeListColumn;
     cxDBTreeList1Rel_Patrimonio: TcxDBTreeListColumn;
+    qryConsultaRel_Extrato_Bancario: TBooleanField;
+    cxDBTreeList1Rel_Extrato_Bancario: TcxDBTreeListColumn;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

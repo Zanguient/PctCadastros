@@ -32,7 +32,7 @@ object FrmLancamento_Financeiro: TFrmLancamento_Financeiro
     Width = 688
     Height = 440
     Cursor = crHandPoint
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
@@ -1389,7 +1389,6 @@ object FrmLancamento_Financeiro: TFrmLancamento_Financeiro
     Top = 24
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1431,7 +1430,6 @@ object FrmLancamento_Financeiro: TFrmLancamento_Financeiro
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

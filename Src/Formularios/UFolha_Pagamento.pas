@@ -43,7 +43,8 @@ uses
   EstoqueProdutoDominio, System.Generics.Collections,
   FolhaPagamentoItensEntidade, FolhaPagamentoItensDominio,
   FolhaPagamentoDominio, FolhaPagamentoEntidade, cxNavigator,
-  dxSkinsdxRibbonPainter;
+  dxSkinsdxRibbonPainter, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White;
 
 type
   TFrmFolha_Pagamento = class(TForm)

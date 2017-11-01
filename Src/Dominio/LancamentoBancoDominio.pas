@@ -15,6 +15,8 @@ type
       function Alterar(var Retorno: AnsiString): integer;
       function Excluir(var Retorno: AnsiString): integer;
       function Buscar(Codigo_Propriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): integer;
+      function BuscarRelatorio(Codigo_Propriedade: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
+      function BuscarRelatorio(Codigo_Propriedade: integer; Codigo_Conta: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       function AtualizaStatusLancamentoBanco(CodigoLancamento: integer; Status: AnsiString): integer;
       function BuscarParaConciliar(Codigo_Propriedade: integer; Status: AnsiString; var Query: TADOQuery; var Retorno: AnsiString): integer;
       constructor Create(var Conexao: TADOConnection; FEntidade: TLancamentoBancoEntidade); overload;
@@ -134,6 +136,57 @@ begin
     FComandoSQL.Parametros.Add('Codigo_Propriedade');
     FComandoSQL.Valores.Add(Status);
     FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FEntidadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TLancamentoBancoDominio.BuscarRelatorio(Codigo_Propriedade: integer;
+  var Query: TADOQuery; var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select LB.*, CCB1.Conta_Corrente, CC.Numero_Cheque, COB.Operacao, CCB2.Conta_Corrente '+
+                             ' from Lancamento_Banco LB '+
+                             ' left join Cadastro_Conta_Bancaria CCB1 on (LB.Codigo_Conta = CCB1.Codigo) '+
+                             ' left join Cadastro_Cheque CC on (LB.Codigo_Cheque = CC.Codigo) '+
+                             ' left join Cadastro_Operacao_Bancaria COB on (LB.Codigo_Operacao = COB.Codigo) '+
+                             ' left join Cadastro_Conta_Bancaria CCB2 on (LB.Codigo_Conta_Transferencia = CCB2.Codigo) '+
+                             ' where LB.Codigo_Propriedade = :Codigo_Propriedade';
+    FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FEntidadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TLancamentoBancoDominio.BuscarRelatorio(Codigo_Propriedade,
+  Codigo_Conta: integer; var Query: TADOQuery;
+  var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select LB.*, CCB1.Conta_Corrente, CC.Numero_Cheque, COB.Operacao, CCB2.Conta_Corrente '+
+                             ' from Lancamento_Banco LB '+
+                             ' left join Cadastro_Conta_Bancaria CCB1 on (LB.Codigo_Conta = CCB1.Codigo) '+
+                             ' left join Cadastro_Cheque CC on (LB.Codigo_Cheque = CC.Codigo) '+
+                             ' left join Cadastro_Operacao_Bancaria COB on (LB.Codigo_Operacao = COB.Codigo) '+
+                             ' left join Cadastro_Conta_Bancaria CCB2 on (LB.Codigo_Conta_Transferencia = CCB2.Codigo) '+
+                             ' where LB.Codigo_Propriedade = :Codigo_Propriedade and LB.Codigo_Conta = :Codigo_Conta';
+    FComandoSQL.Parametros.Add('Codigo_Propriedade');
+    FComandoSQL.Parametros.Add('Codigo_Conta');
+    FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FComandoSQL.Valores.Add(Codigo_Conta);
     FEntidadeDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FEntidadeDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally

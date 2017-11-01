@@ -152,7 +152,6 @@ type
     qryRegistroAtividadeAtividadesProdutoUnidade: TStringField;
     qryRegistroAtividadeAtividadesProdutoCusto: TFloatField;
     qryRegistroAtividadeAtividadesProdutoProduto: TStringField;
-    qryRegistroAtividadeAtividadesProdutoPrecoCompra: TFloatField;
     cxGridDBTableViewAtividade: TcxGridDBTableView;
     qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade_Atividade: TIntegerField;
     cxGrid2DBTableView1: TcxGridDBTableView;
@@ -392,20 +391,8 @@ type
     cxGrid3DBBandedTableView1: TcxGridDBBandedTableView;
     qryRegistroAtividadeAtividadesProdutoControla_Estoque: TBooleanField;
     cxGrid2DBBandedTableViewAtividade: TcxGridDBBandedTableView;
-    cxGrid2Level3: TcxGridLevel;
-    cxGrid2DBBandedTableViewAtividadeProduto: TcxGridDBBandedTableView;
     cxGrid2Level4: TcxGridLevel;
     cxGrid2DBBandedTableViewAtividadeTalhao: TcxGridDBBandedTableView;
-    cxGrid2DBBandedTableViewAtividadeProdutoCodigo: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableViewAtividadeProdutoCodigo_Registro_Atividade: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableViewAtividadeProdutoCodigo_Produto: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableViewAtividadeProdutoQuantidade: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableViewAtividadeProdutoUnidade: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableViewAtividadeProdutoCusto: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableViewAtividadeProdutoProduto: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableViewAtividadeProdutoPrecoCompra: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableViewAtividadeProdutoCodigo_Registro_Atividade_Atividade: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableViewAtividadeProdutoControla_Estoque: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableViewAtividadeCodigo: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableViewAtividadeCodigo_Registro_Atividade: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableViewAtividadeCodigo_Atividade: TcxGridDBBandedColumn;
@@ -422,6 +409,23 @@ type
     cxGrid2DBBandedTableViewAtividadeTalhaoArea: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableViewAtividadeTalhaoAreaDisponivel: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableViewAtividadeTalhaoCodigo_Registro_Atividade_Atividade: TcxGridDBBandedColumn;
+    qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade_Talhao: TIntegerField;
+    cxGrid2Level1: TcxGridLevel;
+    cxGrid2DBBandedTableView1: TcxGridDBBandedTableView;
+    cxGrid2DBBandedTableView1Codigo: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableView1Codigo_Registro_Atividade: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableView1Codigo_Produto: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableView1Quantidade: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableView1Unidade: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableView1Custo: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableView1Produto: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableView1Codigo_Registro_Atividade_Atividade: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableView1Controla_Estoque: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableView1Codigo_Registro_Atividade_Talhao: TcxGridDBBandedColumn;
+    qryRegistroAtividadeAtividadesProdutoValor_Unitario: TFloatField;
+    cxGrid2DBBandedTableView1Valor_Unitario: TcxGridDBBandedColumn;
+    qryRegistroAtividadeColheitaTalhao: TStringField;
+    cxGridDBTableViewColheitaTalhao: TcxGridDBBandedColumn;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -477,26 +481,26 @@ type
     procedure cxGrid3DBBandedTableViewPlantioEditing(
       Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
       var AAllow: Boolean);
-    procedure cxGrid2DBBandedTableViewAtividadeProdutoFocusedItemChanged(
-      Sender: TcxCustomGridTableView; APrevFocusedItem,
-      AFocusedItem: TcxCustomGridTableItem);
     procedure cxGrid2DBBandedTableView3NavigatorButtonsButtonClick(
       Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
     procedure cxGrid2DBBandedTableView1NavigatorButtonsButtonClick(
       Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
-    procedure cxGrid2DBBandedTableViewAtividadeProdutoQuantidadePropertiesEditValueChanged(
-      Sender: TObject);
-    procedure cxGrid2DBBandedTableViewAtividadeProdutoEditing(
-      Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
-      var AAllow: Boolean);
     procedure cxGrid2DBBandedTableViewAtividadeTalhaoAreaPropertiesValidate(
       Sender: TObject; var DisplayValue: Variant; var ErrorText: TCaption;
       var Error: Boolean);
     procedure cxGridDBTableViewColheitaEditing(Sender: TcxCustomGridTableView;
       AItem: TcxCustomGridTableItem; var AAllow: Boolean);
     procedure qryRegistroAtividadeColheitaAfterDelete(DataSet: TDataSet);
-    procedure cxGrid2DBBandedTableViewAtividadeProdutoNavigatorButtonsButtonClick(
+    procedure cxGrid2DBBandedTableViewAtividadeNavigatorButtonsButtonClick(
       Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
+    procedure cxGrid2DBBandedTableView1Editing(Sender: TcxCustomGridTableView;
+      AItem: TcxCustomGridTableItem; var AAllow: Boolean);
+    procedure cxGrid2DBBandedTableView1FocusedItemChanged(
+      Sender: TcxCustomGridTableView; APrevFocusedItem,
+      AFocusedItem: TcxCustomGridTableItem);
+    procedure cxGrid2DBBandedTableView1QuantidadePropertiesEditValueChanged(
+      Sender: TObject);
+    procedure cxGrid2DBBandedTableView1ProdutoPropertiesChange(Sender: TObject);
   private
     FPropriedade: TPropriedadeEntidade;
     FUsuario: TLoginEntidade;
@@ -1026,62 +1030,49 @@ begin
   BBtnCancelar.Enabled:= true;
 end;
 
-procedure TFrmRegistro_Atividade.cxGrid2DBBandedTableView1NavigatorButtonsButtonClick(
-  Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
-begin
-  if (AButtonIndex = 6) then
-  begin
-    qryRegistroAtividadeAtividades.Insert;
-    qryRegistroAtividadeAtividadesCodigo_Registro_Atividade.AsInteger:= StrToInt(EdtCodigo.Text);
-    qryRegistroAtividadeAtividadesData_Cadastro.AsDateTime:= date;
-    //qryRegistroAtividadeAtividadesCodigo_Registro_Atividade_Talhao.AsInteger:= qryRegistroAtividadeAtividadesTalhaoCodigo.AsInteger;
-    //qryRegistroAtividadeColheitaIdSafra.AsInteger:= DM.qrySafraCodigo.AsInteger;
-    ADone:= true;
-  end;
-end;
-
-procedure TFrmRegistro_Atividade.cxGrid2DBBandedTableViewAtividadeProdutoEditing(
+procedure TFrmRegistro_Atividade.cxGrid2DBBandedTableView1Editing(
   Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
   var AAllow: Boolean);
 begin
-  ValorQuantidadeAtual:= PegaQuantidadeInsumoAtual;
+  //ValorQuantidadeAtual:= PegaQuantidadeInsumoAtual;
 end;
 
-procedure TFrmRegistro_Atividade.cxGrid2DBBandedTableViewAtividadeProdutoFocusedItemChanged(
+procedure TFrmRegistro_Atividade.cxGrid2DBBandedTableView1FocusedItemChanged(
   Sender: TcxCustomGridTableView; APrevFocusedItem,
   AFocusedItem: TcxCustomGridTableItem);
 var
   Qtde, ValorUnitario: double;
   AStr: AnsiString;
 begin
-  AStr := cxGrid2DBBandedTableViewAtividadeProduto.GetColumnByFieldName( (AFocusedItem as TcxGridDBBandedColumn).DataBinding.FieldName).Name;
-  if (AStr = 'cxGrid2DBBandedTableViewAtividadeProdutoCusto') then
+  AStr := cxGrid2DBBandedTableView1.GetColumnByFieldName( (AFocusedItem as TcxGridDBBandedColumn).DataBinding.FieldName).Name;
+  if (AStr = 'cxGrid2DBBandedTableView1Custo') then
   begin
     Qtde:= qryRegistroAtividadeAtividadesProdutoQuantidade.AsFloat;
-    ValorUnitario:= qryRegistroAtividadeAtividadesProdutoPrecoCompra.AsFloat;
-    cxGrid2DBBandedTableViewAtividadeProdutoCusto.EditValue:= Qtde * ValorUnitario;
+    ValorUnitario:= qryRegistroAtividadeAtividadesProdutoValor_Unitario.AsFloat;
+    cxGrid2DBBandedTableView1Custo.EditValue:= Qtde * ValorUnitario;
   end;
 end;
 
-procedure TFrmRegistro_Atividade.cxGrid2DBBandedTableViewAtividadeProdutoNavigatorButtonsButtonClick(
+procedure TFrmRegistro_Atividade.cxGrid2DBBandedTableView1NavigatorButtonsButtonClick(
   Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
 begin
-  if (AButtonIndex = 6) then
+  if (qryRegistroAtividadeAtividadesAtividade.AsString <> '') then
   begin
-    if (qryRegistroAtividadeAtividadesAtividade.AsString <> '') then
+    if (AButtonIndex = 6) then
     begin
       qryRegistroAtividadeAtividadesProduto.Insert;
-      qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade.AsInteger:= qryRegistroAtividadeAtividadesCodigo_Registro_Atividade.AsInteger;
+      qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade.AsInteger:= StrToInt(EdtCodigo.Text);
       qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade_Atividade.AsInteger:= qryRegistroAtividadeAtividadesCodigo.AsInteger;
-      //qryRegistroAtividadeAtividadesProduto.Post;
-      //qryRegistroAtividadeAtividadesProduto.Append;
+      qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade_Talhao.AsInteger:= qryRegistroAtividadeAtividadesTalhaoCodigo.AsInteger;
+      //qryRegistroAtividadeAtividadesCodigo_Registro_Atividade_Talhao.AsInteger:= qryRegistroAtividadeAtividadesTalhaoCodigo.AsInteger;
+      //qryRegistroAtividadeColheitaIdSafra.AsInteger:= DM.qrySafraCodigo.AsInteger;
       ADone:= true;
-    end
-    else
-    begin
-      Mensagens.MensagemErro('Por favor, primeiramente é preciso informar uma atividade.');
-      Exit;
     end;
+  end
+  else
+  begin
+    Mensagens.MensagemErro('Por favor, primeiramente é preciso informar uma atividade.');
+    Exit;
   end;
 
   if (AButtonIndex = 8) then
@@ -1097,7 +1088,30 @@ begin
   end;
 end;
 
-procedure TFrmRegistro_Atividade.cxGrid2DBBandedTableViewAtividadeProdutoQuantidadePropertiesEditValueChanged(
+procedure TFrmRegistro_Atividade.cxGrid2DBBandedTableView1ProdutoPropertiesChange(
+  Sender: TObject);
+var
+  Valor, Produto, CodigoProduto: Variant;
+begin
+  {with TcxLookupComboBox(cxGrid2DBBandedTableView1.Controller.EditingController.Edit).Properties.Grid.DataController do
+    CodigoProduto := Values[FocusedRecordIndex, 0];
+
+  with TcxLookupComboBox(cxGrid2DBBandedTableView1.Controller.EditingController.Edit).Properties.Grid.DataController do
+    Produto := Values[FocusedRecordIndex, 1];
+
+  with TcxLookupComboBox(cxGrid2DBBandedTableView1.Controller.EditingController.Edit).Properties.Grid.DataController do
+    Valor := Values[FocusedRecordIndex, 2];
+
+  qryRegistroAtividadeAtividadesProduto.Edit;
+  qryRegistroAtividadeAtividadesProdutoCodigo_Produto.AsInteger:= CodigoProduto;
+  qryRegistroAtividadeAtividadesProdutoProduto.AsString:= Produto;
+  qryRegistroAtividadeAtividadesProdutoValor_Unitario.AsFloat:= Valor;
+  qryRegistroAtividadeAtividadesProduto.Post; }
+  qryRegistroAtividadeAtividadesProdutoCodigo_Produto.AsString:= DM.qryProdutoCodigo.AsString;
+  qryRegistroAtividadeAtividadesProdutoValor_Unitario.AsString:= dm.qryProdutoPreco_Compra.AsString;
+end;
+
+procedure TFrmRegistro_Atividade.cxGrid2DBBandedTableView1QuantidadePropertiesEditValueChanged(
   Sender: TObject);
 var
   Quantidade, Preco: double;
@@ -1119,6 +1133,20 @@ begin
   qryRegistroAtividadeAtividadesProdutoCusto.AsFloat:= Quantidade * Preco;
   qryRegistroAtividadeAtividadesProdutoQuantidade.AsFloat:= Quantidade;
   qryRegistroAtividadeAtividadesProduto.Post;}
+end;
+
+procedure TFrmRegistro_Atividade.cxGrid2DBBandedTableViewAtividadeNavigatorButtonsButtonClick(
+  Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
+begin
+  if (AButtonIndex = 6) then
+  begin
+    qryRegistroAtividadeAtividades.Insert;
+    qryRegistroAtividadeAtividadesCodigo_Registro_Atividade.AsInteger:= StrToInt(EdtCodigo.Text);
+    qryRegistroAtividadeAtividadesData_Cadastro.AsDateTime:= date;
+    //qryRegistroAtividadeAtividadesCodigo_Registro_Atividade_Talhao.AsInteger:= qryRegistroAtividadeAtividadesTalhaoCodigo.AsInteger;
+    //qryRegistroAtividadeColheitaIdSafra.AsInteger:= DM.qrySafraCodigo.AsInteger;
+    ADone:= true;
+  end;
 end;
 
 procedure TFrmRegistro_Atividade.cxGrid2DBBandedTableViewAtividadeTalhaoAreaPropertiesValidate(
@@ -1448,7 +1476,7 @@ begin
     qryRegistroAtividadeAtividadesMaquina.Properties['Unique Table'].Value:= 'Registro_Atividade_Trabalho_Maquina';
 
     cxGrid2DBBandedTableViewAtividade.ViewData.Collapse(true);
-    cxGrid2DBBandedTableViewAtividadeProduto.ViewData.Collapse(true);
+    cxGrid2DBBandedTableView1.ViewData.Collapse(true);
     cxGrid2DBBandedTableViewAtividadeTalhao.ViewData.Collapse(true);
     cxGridDBTableViewMaquinas.ViewData.Collapse(true);
     cxGrid3DBTableViewOcorrencia.ViewData.Collapse(true);
@@ -1515,7 +1543,7 @@ begin
     qryRegistroAtividadeAtividadesMaquina.Properties['Unique Table'].Value:= 'Registro_Atividade_Trabalho_Maquina';
 
     cxGrid2DBBandedTableViewAtividade.ViewData.Collapse(true);
-    cxGrid2DBBandedTableViewAtividadeProduto.ViewData.Collapse(true);
+    cxGrid2DBBandedTableView1.ViewData.Collapse(true);
     cxGrid2DBBandedTableViewAtividadeTalhao.ViewData.Collapse(true);
     cxGridDBTableViewMaquinas.ViewData.Collapse(true);
     cxGrid3DBTableViewOcorrencia.ViewData.Collapse(true);

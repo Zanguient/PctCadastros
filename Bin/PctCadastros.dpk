@@ -205,6 +205,7 @@ contains
   UCadastro_Veiculo in '..\Src\Formularios\UCadastro_Veiculo.pas' {FrmCadastro_Veiculo},
   PatrimonioEntidade in '..\Src\Entidade\PatrimonioEntidade.pas',
   PatrimonioDominio in '..\Src\Dominio\PatrimonioDominio.pas',
+  URel_Extrato_Bancario in '..\Src\Formularios\URel_Extrato_Bancario.pas' {FrmRel_Extrato_Bancario},
   URel_Clima in '..\Src\Formularios\URel_Clima.pas' {FrmRel_Clima};
 
 end.

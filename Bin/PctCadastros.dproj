@@ -361,6 +361,9 @@
 			</DCCReference>
 			<DCCReference Include="..\Src\Entidade\PatrimonioEntidade.pas"/>
 			<DCCReference Include="..\Src\Dominio\PatrimonioDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\URel_Extrato_Bancario.pas">
+				<Form>FrmRel_Extrato_Bancario</Form>
+			</DCCReference>
 			<DCCReference Include="..\Src\Formularios\URel_Clima.pas">
 				<Form>FrmRel_Clima</Form>
 			</DCCReference>

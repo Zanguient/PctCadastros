@@ -33,7 +33,8 @@ uses
   cxGridDBBandedTableView, cxCurrencyEdit, cxLabel, PropriedadeEntidade,
   LoginEntidade, HistoricoEntidade, HistoricoDominio, cxCheckBox,
   TituloBaixarEntidade, System.Generics.Collections, cxNavigator,
-  dxSkinsdxRibbonPainter;
+  dxSkinsdxRibbonPainter, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White;
 const
   UM_CHECK = WM_USER + 10000;
 type

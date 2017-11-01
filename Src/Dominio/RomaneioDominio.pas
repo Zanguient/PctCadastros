@@ -17,7 +17,8 @@ type
       function Excluir(var Retorno: AnsiString): integer;
       function Buscar(var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       function Buscar(var Query: TADOQuery; var Retorno: AnsiString; Codigo: integer; Tipo: integer): integer; overload;
-      function BuscarConsulta(var Query: TADOQuery; var Retorno: AnsiString): integer;
+      function BuscarConsulta(var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
+      function BuscarConsulta(Codigo_Propriedade, Codigo_Safra: integer; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
       function BuscarResumo(Codigo_Propriedade, Codigo_Safra: integer; Query: TADOQuery; var Retorno: AnsiString): integer;
       constructor Create(var Conexao: TADOConnection; FRomaneioEntidade: TRomaneioEntidade); overload;
       constructor Create(var Conexao: TADOConnection); overload;
@@ -125,6 +126,47 @@ begin
       FComandoSQL.Valores.Add(Codigo);
       FComandoSQL.Valores.Add(IdPropriedade);
     end;
+    FRomaneioDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FRomaneioDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TRomaneioDominio.BuscarConsulta(Codigo_Propriedade,
+  Codigo_Safra: integer; var Query: TADOQuery;
+  var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:='select '+
+                            ' Talhao, '+
+                            ' C.Colheita_Talhao, '+
+                            ' (C.Colheita_Talhao / 60) as Sacas, '+
+                            ' (C.Colheita_Talhao / C.Colheita_Total)*100 as Percentual, '+
+                            ' C.Colheita_Total '+
+                            ' from ( '+
+                            ' select CT.Numero_Talhao + ' +QuotedStr(' - ')+ '+CT.Descricao_Talhao as Talhao, sum(RAC.LiquidoSeco) as Colheita_Talhao, '+
+                            ' (select sum(RAC.LiquidoSeco) from Registro_Atividade_Colheita RAC '+
+                            ' left join Registro_Atividade RA on (RAC.Codigo_Registro_Atividade = RA.Codigo) '+
+                            ' where RA.Codigo_Safra = :Codigo_Safra1 and RA.Codigo_Propriedade = :Codigo_Propriedade1) as Colheita_Total '+
+                            ' from Registro_Atividade_Colheita RAC '+
+                            ' left join Registro_Atividade RA on (RAC.Codigo_Registro_Atividade = RA.Codigo) '+
+                            ' left join Cadastro_Talhao CT on (RAC.Codigo_Talhao = CT.Codigo) '+
+                            ' where RA.Codigo_Safra = :Codigo_Safra2 and RA.Codigo_Propriedade = :Codigo_Propriedade2 '+
+                            ' group by CT.Numero_Talhao + ' +QuotedStr(' - ')+ '+CT.Descricao_Talhao with rollup'+
+                            ' )C ';
+    FComandoSQL.Parametros.Add('Codigo_Safra1');
+    FComandoSQL.Parametros.Add('Codigo_Propriedade1');
+    FComandoSQL.Parametros.Add('Codigo_Safra2');
+    FComandoSQL.Parametros.Add('Codigo_Propriedade2');
+    FComandoSQL.Valores.Add(Codigo_Safra);
+    FComandoSQL.Valores.Add(Codigo_Propriedade);
+    FComandoSQL.Valores.Add(Codigo_Safra);
+    FComandoSQL.Valores.Add(Codigo_Propriedade);
     FRomaneioDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FRomaneioDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally

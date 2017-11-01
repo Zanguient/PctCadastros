@@ -34,7 +34,9 @@ uses
   LoginEntidade, HistoricoEntidade, HistoricoDominio, cxCheckBox, dxCore,
   cxDateUtils, cxCalendar, TituloBaixarEntidade, System.Generics.Collections,
   HistoricoMovimentacaoFinanceiraDominio,
-  HistoricoMovimentacaoFinanceiraEntidade;
+  HistoricoMovimentacaoFinanceiraEntidade, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinsdxRibbonPainter;
 const
   UM_CHECK = WM_USER + 10000;
 type

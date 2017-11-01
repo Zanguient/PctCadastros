@@ -357,6 +357,12 @@ type
     qrytipo_bem_patrimonialDescricao: TStringField;
     qrytipo_bem_patrimonialData_Cadastro: TDateTimeField;
     cxStyle2: TcxStyle;
+    qryperfil_usuarioCadastro_Perfil_Usuario: TBooleanField;
+    qryperfil_usuarioCadastro_Usuario: TBooleanField;
+    qryperfil_usuarioCadastro_Tipo_Bem_Patrimonial: TBooleanField;
+    qryperfil_usuarioMov_Patrimonio: TBooleanField;
+    qryperfil_usuarioRel_Patrimonio: TBooleanField;
+    qryperfil_usuarioRel_Extrato_Bancario: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
   private
     Mensagens: TMensagens;

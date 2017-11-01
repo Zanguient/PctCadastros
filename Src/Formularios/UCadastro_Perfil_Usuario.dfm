@@ -97,7 +97,6 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
           Summary.FooterSummaryItems = <
             item
               AlignHorz = taCenter
-              AlignVert = vaTop
               Kind = skCount
               AlignHorzAssigned = True
             end>
@@ -758,12 +757,25 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
           Summary.FooterSummaryItems = <>
           Summary.GroupFooterSummaryItems = <>
         end
+        object cxDBTreeList1Rel_Extrato_Bancario: TcxDBTreeListColumn
+          PropertiesClassName = 'TcxCheckBoxProperties'
+          Properties.ImmediatePost = True
+          Properties.NullStyle = nssUnchecked
+          Caption.Text = 'Rel. Extrato'
+          DataBinding.FieldName = 'Rel_Extrato_Bancario'
+          Width = 76
+          Position.ColIndex = 52
+          Position.RowIndex = 0
+          Position.BandIndex = 0
+          Summary.FooterSummaryItems = <>
+          Summary.GroupFooterSummaryItems = <>
+        end
         object cxDBTreeList1Data_Cadastro: TcxDBTreeListColumn
           Caption.Text = 'Data Cadastro'
           DataBinding.FieldName = 'Data_Cadastro'
           Options.Editing = False
           Width = 86
-          Position.ColIndex = 52
+          Position.ColIndex = 53
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -1020,6 +1032,9 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
     object qryConsultaRel_Patrimonio: TBooleanField
       FieldName = 'Rel_Patrimonio'
     end
+    object qryConsultaRel_Extrato_Bancario: TBooleanField
+      FieldName = 'Rel_Extrato_Bancario'
+    end
   end
   object dsConsulta: TDataSource
     DataSet = qryConsulta
@@ -1041,7 +1056,6 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
     Left = 784
     Top = 8
     object dxComponentPrinter1Link1: TdxGridReportLink
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1083,7 +1097,6 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False

@@ -36,7 +36,8 @@ uses
   LancamentoFinanceiroParcelasEntidade, LancamentoFinanceiroDominio,
   LancamentoFinanceiroParcelasDominio, PropriedadeEntidade, LoginEntidade,
   System.Generics.Collections, HistoricoEntidade, HistoricoDominio, cxNavigator,
-  dxSkinsdxRibbonPainter;
+  dxSkinsdxRibbonPainter, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White;
 
 type
   TFrmLancamento_Financeiro = class(TForm)
@@ -441,17 +442,40 @@ begin
         Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
         Exit;
       end;
-    end;
 
-    HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
-    EdtCodigo.Text +' '+EdtN_Documento.Text+' - '+EdtDescricao.Text, date, TimeToStr(time), 'Inserção');
-    HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
-    if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
+      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+      EdtCodigo.Text +' '+EdtN_Documento.Text+' - '+EdtDescricao.Text, date, TimeToStr(time), 'Inserção');
+      HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
+      begin
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Exit;
+      end;
+
+    end
+    else
     begin
-      TOperacoesConexao.CancelaConexao(Conexao);
-      IniciaTela;
-      Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
-      Exit;
+      if (FLFDominio.Alterar(Retorno) = 0) then
+      begin
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+        Exit;
+      end;
+
+      HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
+      EdtCodigo.Text +' '+EdtN_Documento.Text+' - '+EdtDescricao.Text, date, TimeToStr(time), 'Alteração');
+      HistoricoDominio:= THistoricoDominio.Create(Conexao, HistoricoEntidade);
+      if (HistoricoDominio.Salvar(HistoricoEntidade, Retorno) = 0) then
+      begin
+        TOperacoesConexao.CancelaConexao(Conexao);
+        IniciaTela;
+        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Exit;
+      end;
+
     end;
 
     FLFPDominio:= TLancamentoFinanceiroParcelasDominio.Create(Conexao);

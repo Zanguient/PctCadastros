@@ -4,7 +4,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Movimenta'#231#245'es de Safras'
-  ClientHeight = 459
+  ClientHeight = 478
   ClientWidth = 996
   Color = clWindow
   Font.Charset = DEFAULT_CHARSET
@@ -30,7 +30,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     Left = 125
     Top = 0
     Width = 871
-    Height = 459
+    Height = 478
     Cursor = crHandPoint
     ActivePage = TabSheet1
     Align = alClient
@@ -136,7 +136,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
         Left = 2
         Top = 95
         Width = 864
-        Height = 330
+        Height = 352
         Cursor = crHandPoint
         ActivePage = TabSheet3
         Style = tsFlatButtons
@@ -148,7 +148,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
             Left = 0
             Top = 0
             Width = 856
-            Height = 299
+            Height = 321
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -809,7 +809,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               end
             end
             object cxGrid2DBBandedTableViewAtividade: TcxGridDBBandedTableView
-              Navigator.Buttons.OnButtonClick = cxGrid2DBBandedTableView1NavigatorButtonsButtonClick
+              Navigator.Buttons.OnButtonClick = cxGrid2DBBandedTableViewAtividadeNavigatorButtonsButtonClick
               Navigator.Buttons.CustomButtons = <>
               Navigator.Buttons.Images = DM.ImageList1
               Navigator.Buttons.First.Visible = False
@@ -924,6 +924,12 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               object cxGrid2DBBandedTableViewAtividadeTipo_Atividade: TcxGridDBBandedColumn
                 Caption = 'Tipo'
                 DataBinding.FieldName = 'Tipo_Atividade'
+                PropertiesClassName = 'TcxComboBoxProperties'
+                Properties.CharCase = ecUpperCase
+                Properties.Items.Strings = (
+                  'PR'#201'-PLANTIO'
+                  'PLANTIO'
+                  'P'#211'S-PLANTIO')
                 Width = 81
                 Position.BandIndex = 0
                 Position.ColIndex = 7
@@ -939,7 +945,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               end
             end
             object cxGrid2DBBandedTableViewAtividadeProduto: TcxGridDBBandedTableView
-              Navigator.Buttons.OnButtonClick = cxGrid2DBBandedTableViewAtividadeProdutoNavigatorButtonsButtonClick
               Navigator.Buttons.CustomButtons = <>
               Navigator.Buttons.Images = DM.ImageList1
               Navigator.Buttons.First.Visible = False
@@ -969,8 +974,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               FilterBox.CustomizeButtonAlignment = fbaLeft
               FilterBox.Position = fpTop
               FilterBox.Visible = fvNever
-              OnEditing = cxGrid2DBBandedTableViewAtividadeProdutoEditing
-              OnFocusedItemChanged = cxGrid2DBBandedTableViewAtividadeProdutoFocusedItemChanged
               DataController.DataSource = dsRegistroAtividadeProduto
               DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Atividade'
               DataController.KeyFieldNames = 'Codigo'
@@ -1059,7 +1062,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               object cxGrid2DBBandedTableViewAtividadeProdutoQuantidade: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'Quantidade'
                 PropertiesClassName = 'TcxTextEditProperties'
-                Properties.OnEditValueChanged = cxGrid2DBBandedTableViewAtividadeProdutoQuantidadePropertiesEditValueChanged
                 Position.BandIndex = 0
                 Position.ColIndex = 7
                 Position.RowIndex = 0
@@ -1118,7 +1120,12 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               DataController.MasterKeyFieldNames = 'Codigo'
               DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoImmediatePost]
               DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skCount
+                  FieldName = 'Talhao'
+                  Column = cxGrid2DBBandedTableViewAtividadeTalhaoTalhao
+                end>
               DataController.Summary.SummaryGroups = <>
               DateTimeHandling.DateFormat = 'DD/MM/YYYY'
               FilterRow.InfoText = 'Clique para definir um filtro'
@@ -1131,6 +1138,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               OptionsCustomize.ColumnHiding = True
               OptionsCustomize.DataRowSizing = True
               OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
+              OptionsView.Footer = True
               OptionsView.GroupByBox = False
               OptionsView.GroupFooters = gfAlwaysVisible
               OptionsView.GroupSummaryLayout = gslAlignWithColumns
@@ -1138,7 +1146,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               Preview.Visible = True
               Bands = <
                 item
-                  Caption = 'Talh'#245'es'
+                  Caption = 'Talh'#245'es envolvidos na atividade'
                   HeaderAlignmentHorz = taLeftJustify
                   Styles.Header = cxStyle2
                 end>
@@ -1201,19 +1209,191 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 Position.RowIndex = 0
               end
             end
+            object cxGrid2DBBandedTableView1: TcxGridDBBandedTableView
+              Navigator.Buttons.OnButtonClick = cxGrid2DBBandedTableView1NavigatorButtonsButtonClick
+              Navigator.Buttons.CustomButtons = <>
+              Navigator.Buttons.Images = DM.ImageList1
+              Navigator.Buttons.First.Visible = False
+              Navigator.Buttons.PriorPage.Visible = False
+              Navigator.Buttons.Prior.Visible = False
+              Navigator.Buttons.Next.Enabled = False
+              Navigator.Buttons.Next.Visible = False
+              Navigator.Buttons.NextPage.Visible = False
+              Navigator.Buttons.Last.Visible = False
+              Navigator.Buttons.Insert.Hint = 'Clique para inserir um novo talh'#227'o na atividade selecionada'
+              Navigator.Buttons.Insert.Visible = True
+              Navigator.Buttons.Append.Visible = False
+              Navigator.Buttons.Delete.Hint = 'Clique para remover o registro selecionado'
+              Navigator.Buttons.Delete.ImageIndex = 2
+              Navigator.Buttons.Delete.Visible = True
+              Navigator.Buttons.Edit.Visible = False
+              Navigator.Buttons.Post.Hint = 'Clique para confirmar o registro'
+              Navigator.Buttons.Post.Visible = True
+              Navigator.Buttons.Cancel.Visible = False
+              Navigator.Buttons.Refresh.Visible = False
+              Navigator.Buttons.SaveBookmark.Visible = False
+              Navigator.Buttons.GotoBookmark.Visible = False
+              Navigator.Buttons.Filter.Visible = False
+              Navigator.InfoPanel.DisplayMask = '[RecordIndex] de [RecordCount]'
+              Navigator.InfoPanel.Visible = True
+              Navigator.Visible = True
+              FilterBox.CustomizeButtonAlignment = fbaLeft
+              FilterBox.Position = fpTop
+              FilterBox.Visible = fvNever
+              OnEditing = cxGrid2DBBandedTableView1Editing
+              OnFocusedItemChanged = cxGrid2DBBandedTableView1FocusedItemChanged
+              DataController.DataSource = dsRegistroAtividadeProduto
+              DataController.DetailKeyFieldNames = 'Codigo_Registro_Atividade_Talhao'
+              DataController.KeyFieldNames = 'Codigo'
+              DataController.MasterKeyFieldNames = 'Codigo'
+              DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoImmediatePost]
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = 'R$ #0.0,0'
+                  Kind = skSum
+                  FieldName = 'Custo'
+                  Column = cxGrid2DBBandedTableView1Custo
+                end>
+              DataController.Summary.SummaryGroups = <>
+              DateTimeHandling.DateFormat = 'DD/MM/YYYY'
+              FilterRow.InfoText = 'Clique para definir um filtro'
+              NewItemRow.InfoText = 'Clique para adicionar uma nova linha'
+              NewItemRow.SeparatorColor = clMenu
+              OptionsBehavior.FocusFirstCellOnNewRecord = True
+              OptionsBehavior.GoToNextCellOnEnter = True
+              OptionsBehavior.NavigatorHints = True
+              OptionsBehavior.ExpandMasterRowOnDblClick = False
+              OptionsCustomize.DataRowSizing = True
+              OptionsView.NoDataToDisplayInfoText = 'N'#227'o h'#225' dados para visualizar'
+              OptionsView.Footer = True
+              OptionsView.GroupByBox = False
+              OptionsView.GroupFooters = gfAlwaysVisible
+              OptionsView.GroupSummaryLayout = gslAlignWithColumns
+              OptionsView.Indicator = True
+              Preview.Visible = True
+              Bands = <
+                item
+                  Caption = 'Produtos utilizados no talh'#227'o selecionado'
+                  HeaderAlignmentHorz = taLeftJustify
+                  Styles.Header = cxStyle2
+                end>
+              object cxGrid2DBBandedTableView1Codigo: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo'
+                Visible = False
+                Options.Editing = False
+                Position.BandIndex = 0
+                Position.ColIndex = 0
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableView1Codigo_Registro_Atividade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade'
+                Visible = False
+                Options.Editing = False
+                Width = 135
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableView1Codigo_Produto: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Produto'
+                Visible = False
+                Options.Editing = False
+                Width = 82
+                Position.BandIndex = 0
+                Position.ColIndex = 2
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableView1Codigo_Registro_Atividade_Atividade: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade_Atividade'
+                Visible = False
+                Options.Editing = False
+                Width = 198
+                Position.BandIndex = 0
+                Position.ColIndex = 3
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableView1Codigo_Registro_Atividade_Talhao: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Codigo_Registro_Atividade_Talhao'
+                Visible = False
+                Options.Editing = False
+                Width = 173
+                Position.BandIndex = 0
+                Position.ColIndex = 4
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableView1Produto: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Produto'
+                PropertiesClassName = 'TcxLookupComboBoxProperties'
+                Properties.KeyFieldNames = 'Codigo'
+                Properties.ListColumns = <
+                  item
+                    Caption = 'Produto'
+                    FieldName = 'Descricao'
+                  end>
+                Properties.ListOptions.SyncMode = True
+                Properties.OnChange = cxGrid2DBBandedTableView1ProdutoPropertiesChange
+                Width = 233
+                Position.BandIndex = 0
+                Position.ColIndex = 5
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableView1Unidade: TcxGridDBBandedColumn
+                Caption = 'Un.'
+                DataBinding.FieldName = 'Unidade'
+                Width = 31
+                Position.BandIndex = 0
+                Position.ColIndex = 6
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableView1Valor_Unitario: TcxGridDBBandedColumn
+                Caption = 'Valor Unit'#225'rio'
+                DataBinding.FieldName = 'Valor_Unitario'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Width = 120
+                Position.BandIndex = 0
+                Position.ColIndex = 7
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableView1Quantidade: TcxGridDBBandedColumn
+                Caption = 'Qtde.'
+                DataBinding.FieldName = 'Quantidade'
+                PropertiesClassName = 'TcxTextEditProperties'
+                Properties.OnEditValueChanged = cxGrid2DBBandedTableView1QuantidadePropertiesEditValueChanged
+                Width = 59
+                Position.BandIndex = 0
+                Position.ColIndex = 8
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableView1Custo: TcxGridDBBandedColumn
+                Caption = 'Valor Total'
+                DataBinding.FieldName = 'Custo'
+                PropertiesClassName = 'TcxCurrencyEditProperties'
+                Width = 120
+                Position.BandIndex = 0
+                Position.ColIndex = 9
+                Position.RowIndex = 0
+              end
+              object cxGrid2DBBandedTableView1Controla_Estoque: TcxGridDBBandedColumn
+                DataBinding.FieldName = 'Controla_Estoque'
+                Visible = False
+                Position.BandIndex = 0
+                Position.ColIndex = 10
+                Position.RowIndex = 0
+              end
+            end
             object cxGridLevel1: TcxGridLevel
               Caption = 'Atividades'
               GridView = cxGrid2DBBandedTableViewAtividade
               Options.DetailTabsPosition = dtpTop
-              object cxGrid2Level3: TcxGridLevel
-                Caption = 'Produtos'
-                GridView = cxGrid2DBBandedTableViewAtividadeProduto
-                Options.DetailTabsPosition = dtpTop
-              end
               object cxGrid2Level4: TcxGridLevel
                 Caption = 'Talh'#245'es'
                 GridView = cxGrid2DBBandedTableViewAtividadeTalhao
                 Options.DetailTabsPosition = dtpTop
+                object cxGrid2Level1: TcxGridLevel
+                  Caption = 'Produtos'
+                  GridView = cxGrid2DBBandedTableView1
+                end
               end
             end
           end
@@ -1226,7 +1406,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
             Left = 0
             Top = 0
             Width = 856
-            Height = 299
+            Height = 321
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -1785,7 +1965,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
             Left = 0
             Top = 0
             Width = 853
-            Height = 169
+            Height = 193
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -1862,12 +2042,26 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 Position.ColIndex = 0
                 Position.RowIndex = 0
               end
+              object cxGridDBTableViewColheitaTalhao: TcxGridDBBandedColumn
+                Caption = 'Talh'#227'o'
+                DataBinding.FieldName = 'Talhao'
+                PropertiesClassName = 'TcxLookupComboBoxProperties'
+                Properties.KeyFieldNames = 'Codigo'
+                Properties.ListColumns = <
+                  item
+                    FieldName = 'Descricao_Talhao'
+                  end>
+                Width = 157
+                Position.BandIndex = 0
+                Position.ColIndex = 1
+                Position.RowIndex = 0
+              end
               object cxGridDBTableViewColheitaNRomaneio: TcxGridDBBandedColumn
                 Caption = 'N'#186' Romaneio'
                 DataBinding.FieldName = 'NRomaneio'
                 Width = 82
                 Position.BandIndex = 0
-                Position.ColIndex = 1
+                Position.ColIndex = 2
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaData_Cadastro: TcxGridDBBandedColumn
@@ -1875,7 +2069,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 DataBinding.FieldName = 'Data_Cadastro'
                 Width = 80
                 Position.BandIndex = 0
-                Position.ColIndex = 2
+                Position.ColIndex = 3
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaData_Inicio_Colheita: TcxGridDBBandedColumn
@@ -1883,7 +2077,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 DataBinding.FieldName = 'Data_Inicio_Colheita'
                 Width = 80
                 Position.BandIndex = 0
-                Position.ColIndex = 3
+                Position.ColIndex = 4
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaData_Fim_Colheita: TcxGridDBBandedColumn
@@ -1891,7 +2085,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 DataBinding.FieldName = 'Data_Fim_Colheita'
                 Width = 80
                 Position.BandIndex = 0
-                Position.ColIndex = 4
+                Position.ColIndex = 5
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaData_Emissao_Romaneio: TcxGridDBBandedColumn
@@ -1899,105 +2093,105 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 DataBinding.FieldName = 'Data_Emissao_Romaneio'
                 Width = 80
                 Position.BandIndex = 0
-                Position.ColIndex = 5
+                Position.ColIndex = 6
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaMotorista: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'Motorista'
                 Width = 170
                 Position.BandIndex = 0
-                Position.ColIndex = 6
+                Position.ColIndex = 7
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaVeiculo: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'Veiculo'
                 Width = 100
                 Position.BandIndex = 0
-                Position.ColIndex = 14
+                Position.ColIndex = 15
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaTransportadora: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'Transportadora'
                 Width = 170
                 Position.BandIndex = 0
-                Position.ColIndex = 15
+                Position.ColIndex = 16
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaArmazem: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'Armazem'
                 Width = 170
                 Position.BandIndex = 0
-                Position.ColIndex = 16
+                Position.ColIndex = 17
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaProduto: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'Produto'
                 Width = 170
                 Position.BandIndex = 0
-                Position.ColIndex = 17
+                Position.ColIndex = 18
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaProdutor: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'Produtor'
                 Width = 170
                 Position.BandIndex = 0
-                Position.ColIndex = 18
+                Position.ColIndex = 19
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaDepositante: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'Depositante'
                 Width = 170
                 Position.BandIndex = 0
-                Position.ColIndex = 19
+                Position.ColIndex = 20
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaIdMotorista: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'IdMotorista'
                 Visible = False
                 Position.BandIndex = 0
-                Position.ColIndex = 7
+                Position.ColIndex = 8
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaIdVeiculo: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'IdVeiculo'
                 Visible = False
                 Position.BandIndex = 0
-                Position.ColIndex = 8
+                Position.ColIndex = 9
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaIdTransportadora: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'IdTransportadora'
                 Visible = False
                 Position.BandIndex = 0
-                Position.ColIndex = 9
+                Position.ColIndex = 10
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaIdArmazem: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'IdArmazem'
                 Visible = False
                 Position.BandIndex = 0
-                Position.ColIndex = 10
+                Position.ColIndex = 11
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaIdProduto: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'IdProduto'
                 Visible = False
                 Position.BandIndex = 0
-                Position.ColIndex = 11
+                Position.ColIndex = 12
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaIdProdutor: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'IdProdutor'
                 Visible = False
                 Position.BandIndex = 0
-                Position.ColIndex = 12
+                Position.ColIndex = 13
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaIdDepositante: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'IdDepositante'
                 Visible = False
                 Position.BandIndex = 0
-                Position.ColIndex = 13
+                Position.ColIndex = 14
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaPesoBruto: TcxGridDBBandedColumn
@@ -2005,14 +2199,14 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 DataBinding.FieldName = 'PesoBruto'
                 Width = 130
                 Position.BandIndex = 0
-                Position.ColIndex = 20
+                Position.ColIndex = 21
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaTara: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'Tara'
                 Width = 130
                 Position.BandIndex = 0
-                Position.ColIndex = 21
+                Position.ColIndex = 22
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaLiquidoUmido: TcxGridDBBandedColumn
@@ -2020,14 +2214,14 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 DataBinding.FieldName = 'LiquidoUmido'
                 Width = 130
                 Position.BandIndex = 0
-                Position.ColIndex = 22
+                Position.ColIndex = 23
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaDescontos: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'Descontos'
                 Width = 130
                 Position.BandIndex = 0
-                Position.ColIndex = 23
+                Position.ColIndex = 24
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaLiquidoSeco: TcxGridDBBandedColumn
@@ -2035,7 +2229,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 DataBinding.FieldName = 'LiquidoSeco'
                 Width = 130
                 Position.BandIndex = 0
-                Position.ColIndex = 24
+                Position.ColIndex = 25
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaPrecoFrete: TcxGridDBBandedColumn
@@ -2044,7 +2238,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 PropertiesClassName = 'TcxCurrencyEditProperties'
                 Width = 130
                 Position.BandIndex = 0
-                Position.ColIndex = 25
+                Position.ColIndex = 26
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaObservacoes: TcxGridDBBandedColumn
@@ -2052,21 +2246,21 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                 DataBinding.FieldName = 'Observacoes'
                 Width = 500
                 Position.BandIndex = 0
-                Position.ColIndex = 26
+                Position.ColIndex = 27
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaCodigo_Talhao: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'Codigo_Talhao'
                 Visible = False
                 Position.BandIndex = 0
-                Position.ColIndex = 27
+                Position.ColIndex = 28
                 Position.RowIndex = 0
               end
               object cxGridDBTableViewColheitaCodigo_Registro_Atividade: TcxGridDBBandedColumn
                 DataBinding.FieldName = 'Codigo_Registro_Atividade'
                 Visible = False
                 Position.BandIndex = 0
-                Position.ColIndex = 28
+                Position.ColIndex = 29
                 Position.RowIndex = 0
               end
             end
@@ -2076,7 +2270,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
           end
           object cxGrid1: TcxGrid
             Left = 0
-            Top = 175
+            Top = 197
             Width = 853
             Height = 124
             Hint = 'O estoque listado corresponde '#224' fazenda ativa.'
@@ -2232,7 +2426,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
             Left = 0
             Top = 0
             Width = 856
-            Height = 299
+            Height = 321
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -2594,7 +2788,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     Left = 0
     Top = 0
     Width = 125
-    Height = 459
+    Height = 478
     Align = alLeft
     AutoSize = True
     ButtonHeight = 38
@@ -2955,6 +3149,17 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     object qryRegistroAtividadeColheitaData_Cadastro: TDateTimeField
       FieldName = 'Data_Cadastro'
     end
+    object qryRegistroAtividadeColheitaTalhao: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Talhao'
+      LookupDataSet = DM.qryTalhao
+      LookupKeyFields = 'Codigo'
+      LookupResultField = 'Descricao_Talhao'
+      KeyFields = 'Codigo_Talhao'
+      LookupCache = True
+      Size = 50
+      Lookup = True
+    end
     object qryRegistroAtividadeColheitaNRomaneio: TIntegerField
       FieldName = 'NRomaneio'
     end
@@ -3138,16 +3343,6 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
       Size = 100
       Lookup = True
     end
-    object qryRegistroAtividadeAtividadesProdutoPrecoCompra: TFloatField
-      FieldKind = fkLookup
-      FieldName = 'PrecoCompra'
-      LookupDataSet = DM.qryProduto
-      LookupKeyFields = 'Codigo'
-      LookupResultField = 'Preco_Compra'
-      KeyFields = 'Codigo_Produto'
-      LookupCache = True
-      Lookup = True
-    end
     object qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade_Atividade: TIntegerField
       FieldName = 'Codigo_Registro_Atividade_Atividade'
     end
@@ -3160,6 +3355,12 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
       KeyFields = 'Codigo_Produto'
       LookupCache = True
       Lookup = True
+    end
+    object qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade_Talhao: TIntegerField
+      FieldName = 'Codigo_Registro_Atividade_Talhao'
+    end
+    object qryRegistroAtividadeAtividadesProdutoValor_Unitario: TFloatField
+      FieldName = 'Valor_Unitario'
     end
   end
   object dsRegistroAtividadeProduto: TDataSource

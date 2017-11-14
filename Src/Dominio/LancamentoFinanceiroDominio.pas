@@ -203,7 +203,8 @@ begin
                              ' left join Lancamento_Financeiro_Parcelas LFP on (LF.Codigo = LFP.Codigo_Lancamento_Financeiro) '+
                              ' left join Cadastro_Plano_Financeiro CPF on (LF.Codigo_Plano = CPF.Codigo)'+
                              ' left join Cadastro_Pessoa CP on (LF.Codigo_Propriedade = CP.Codigo)'+
-                             ' where LF.Codigo_Safra = :Codigo_Safra and LF.Codigo_Propriedade = :Codigo_Propriedade'+
+                             ' where LF.Codigo_Safra = :Codigo_Safra and LF.Codigo_Propriedade = :Codigo_Propriedade and '+
+                             ' LF.Tipo = '+QuotedStr('Pagar')+' and LFP.Status = '+QuotedStr('Pago')+''+
                              ' group by CP.Nome, CPF.Descricao';
     FComandoSQL.Parametros.Add('Codigo_Safra');
     FComandoSQL.Parametros.Add('Codigo_Propriedade');

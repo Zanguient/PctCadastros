@@ -2690,99 +2690,102 @@ begin
     if (FRegistroAtividadeAtividadesDom.Buscar(qryAtividades, Retorno, dm.qrySafraCodigo.AsInteger, 1) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     FRegistroAtividadeAtividadesProdutoDom:= TRegistroAtividadeAtividadesProdutoDominio.Create(Conexao, FPropriedade.Codigo);
     if (FRegistroAtividadeAtividadesProdutoDom.Buscar(qryAtividadesProdutos, Retorno, dm.qrySafraCodigo.AsInteger, 1) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     FRegistroAtividadeAtividadesTalhaoDom:= TRegistroAtividadeAtividadesTalhaoDominio.Create(Conexao, FPropriedade.Codigo);
     if (FRegistroAtividadeAtividadesTalhaoDom.Buscar(qryAtividadesTalhao, Retorno, dm.qrySafraCodigo.AsInteger, 1) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     FRegistroAtividadePlantioDom:= TRegistroAtividadePlantioDominio.Create(Conexao, FPropriedade.Codigo);
     if (FRegistroAtividadePlantioDom.Buscar(qryPlantis, Retorno, dm.qrySafraCodigo.AsInteger, 1) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     FRegistroAtividadePlantioOcorrenciaDom:= TRegistroAtividadePlantioOcorrenciaDominio.Create(Conexao, FPropriedade.Codigo);
     if (FRegistroAtividadePlantioOcorrenciaDom.Buscar(qryPlantioOcorrencia, Retorno, dm.qrySafraCodigo.AsInteger, 1) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     FRegistroAtividadeColheitaDom:= TRomaneioDominio.Create(Conexao, FPropriedade.Codigo);
     if (FRegistroAtividadeColheitaDom.Buscar(qryRomaneios, Retorno, dm.qrySafraCodigo.AsInteger, 1) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     FRegistroAtividadeAtividadesMaquinaDom:= TRegistroAtividadeAtividadesMaquinaDominio.Create(Conexao, FPropriedade.Codigo);
     if (FRegistroAtividadeAtividadesMaquinaDom.Buscar(qryManutencoes, Retorno, dm.qrySafraCodigo.AsInteger, 1) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
+
+
+
 
     //Resumo
     FRegistroAtividadeDom:= TRegistroAtividadeDominio.Create(Conexao);
     if (FRegistroAtividadeDom.BuscarSumarioFinalSafra(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qrySumarioSacasHectare, Retorno) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     FLancamentoFinanceiroDom:= TLancamentoFinanceiroDominio.Create(Conexao);
     if (FLancamentoFinanceiroDom.BuscarSumarioFinalSafra(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qrySumarioCustoHectare, Retorno) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     FLancamentoFinanceiroDom:= TLancamentoFinanceiroDominio.Create(Conexao);
     if (FLancamentoFinanceiroDom.BuscarResumo(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryCustoTotal, Retorno) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     FRegistroAtividadePlantioDom:= TRegistroAtividadePlantioDominio.Create(Conexao);
     if (FRegistroAtividadePlantioDom.BuscarResumo(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryAreaTotal, Retorno) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     FRegistroAtividadeColheitaDom:= TRomaneioDominio.Create(Conexao);
     if (FRegistroAtividadeColheitaDom.BuscarResumo(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryColheitaTotal, Retorno) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     FRegistroAtividadeAtividadesTalhaoDom:= TRegistroAtividadeAtividadesTalhaoDominio.Create(Conexao);
     if (FRegistroAtividadeAtividadesTalhaoDom.BuscarConsulta(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryCustoTalhao, Retorno) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     FRegistroAtividadeColheitaDom:= TRomaneioDominio.Create(Conexao);
     if (FRegistroAtividadeColheitaDom.BuscarConsulta(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryColheitaTalhao, Retorno) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     cxGrid1DBBandedTableViewAtividades.ViewData.Collapse(true);

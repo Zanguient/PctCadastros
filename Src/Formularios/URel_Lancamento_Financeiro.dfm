@@ -1602,6 +1602,12 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
         Styles.Header = DM.cxStyle1
         Width = 194
       end
+      object cxGrid1DBTableView5Safra: TcxGridDBColumn
+        DataBinding.FieldName = 'Safra'
+        Options.Editing = False
+        Styles.Header = DM.cxStyle1
+        Width = 135
+      end
       object cxGrid1DBTableView5N_Documento: TcxGridDBColumn
         Caption = 'N'#186' Doc.'
         DataBinding.FieldName = 'N_Documento'
@@ -2597,7 +2603,9 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
     object cmbSafra: TcxLookupComboBox
       Left = 127
       Top = 16
-      Hint = 'Escolha uma safra'
+      Hint = 
+        'Escolha uma safra'#13#10#13#10'* Deixe o campo em branco para pesquisar em' +
+        ' todas as safras.'
       ParentShowHint = False
       Properties.CharCase = ecUpperCase
       Properties.KeyFieldNames = 'Codigo'
@@ -2625,8 +2633,8 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
     Parameters = <>
     SQL.Strings = (
       
-        'select LF.*, CPag.Descricao as CondPag, CPes.Nome as Pessoa, CTD' +
-        '.Descricao as TipoDocumento,'
+        'select LF.*, CS.Descricao as Safra, CPag.Descricao as CondPag, C' +
+        'Pes.Nome as Pessoa, CTD.Descricao as TipoDocumento,'
       
         'CD.Descricao as Departamento, CPlan.Descricao as PlanoFinanceiro' +
         ', CPro.Nome as Fazenda from Lancamento_Financeiro LF'
@@ -2647,7 +2655,8 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
         'CPlan.Codigo)'
       
         'left join Cadastro_Pessoa CPro on (LF.Codigo_Propriedade = CPro.' +
-        'Codigo)')
+        'Codigo)'
+      'left join Cadastro_Safra CS on (LF.Codigo_Safra = CS.Codigo)')
     Left = 768
     Top = 104
     object qryLancamentoCodigo: TIntegerField
@@ -2713,6 +2722,10 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
     object qryLancamentoFazenda: TStringField
       FieldName = 'Fazenda'
       Size = 100
+    end
+    object qryLancamentoSafra: TStringField
+      FieldName = 'Safra'
+      Size = 50
     end
   end
   object dsLancamento: TDataSource
@@ -3152,7 +3165,7 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Novo documento'
-      ReportDocument.CreationDate = 43038.640521111110000000
+      ReportDocument.CreationDate = 43053.959065381950000000
       ReportDocument.Creator = 'ProCampo'
       ReportDocument.IsDescriptionAssigned = True
       ReportFootnotes.Font.Charset = ANSI_CHARSET
@@ -3395,6 +3408,13 @@ object FrmRel_Lancamento_Financeiro: TFrmRel_Lancamento_Financeiro
       end
       item
         Component = cxGrid1DBTableView5PlanoFinanceiro
+        Properties.Strings = (
+          'SortOrder'
+          'Visible'
+          'Width')
+      end
+      item
+        Component = cxGrid1DBTableView5Safra
         Properties.Strings = (
           'SortOrder'
           'Visible'

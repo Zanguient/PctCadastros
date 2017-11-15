@@ -1037,6 +1037,9 @@
     object cxTabSheet1: TcxTabSheet
       Caption = 'Atividades da Safra'
       ImageIndex = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object cxPageControl3: TcxPageControl
         Left = 0
         Top = 0
@@ -1053,6 +1056,9 @@
         object cxTabSheet7: TcxTabSheet
           Caption = 'Atividades'
           ImageIndex = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object cxGrid1: TcxGrid
             Left = 0
             Top = 0
@@ -2472,6 +2478,9 @@
         object cxTabSheet8: TcxTabSheet
           Caption = 'Plantio'
           ImageIndex = 1
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object cxGrid7: TcxGrid
             Left = 0
             Top = 0
@@ -3776,6 +3785,9 @@
         object cxTabSheet9: TcxTabSheet
           Caption = 'Colheita'
           ImageIndex = 2
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object cxGrid8: TcxGrid
             Left = 0
             Top = 0
@@ -5076,6 +5088,9 @@
         object cxTabSheet10: TcxTabSheet
           Caption = 'Manuten'#231#227'o'
           ImageIndex = 3
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object cxGrid9: TcxGrid
             Left = 0
             Top = 0
@@ -18134,7 +18149,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43048.910500601850000000
+      ReportDocument.CreationDate = 43053.943529201390000000
       ReportDocument.IsCaptionAssigned = True
       Items = <
         item
@@ -18158,6 +18173,7 @@
     object dxComponentPrinter1Link1: TdxGridReportLink
       Active = True
       Component = cxGrid1
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -18171,12 +18187,14 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43048.910500509260000000
+      ReportDocument.CreationDate = 43053.943529120370000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Active = True
       Component = cxGrid7
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -18190,12 +18208,14 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43048.910500567130000000
+      ReportDocument.CreationDate = 43053.943529143520000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link3: TdxGridReportLink
       Active = True
       Component = cxGrid8
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -18209,12 +18229,14 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43048.910500578710000000
+      ReportDocument.CreationDate = 43053.943529178240000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link4: TdxGridReportLink
       Active = True
       Component = cxGrid9
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -18228,7 +18250,8 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43048.910500601850000000
+      ReportDocument.CreationDate = 43053.943529189810000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -18432,7 +18455,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43048.910500740740000000
+      ReportDocument.CreationDate = 43053.943529317130000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {}
@@ -18454,7 +18477,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43048.910500787040000000
+      ReportDocument.CreationDate = 43053.943529375000000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {}
@@ -18476,7 +18499,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43048.910500833340000000
+      ReportDocument.CreationDate = 43053.943529421300000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {}
@@ -18498,7 +18521,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43048.910501018520000000
+      ReportDocument.CreationDate = 43053.943529629630000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {}

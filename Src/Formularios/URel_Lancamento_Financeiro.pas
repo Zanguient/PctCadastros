@@ -122,6 +122,8 @@ type
     cxPropertiesStore1: TcxPropertiesStore;
     qryLancamentoFazenda: TStringField;
     cxGrid1DBTableView5Fazenda: TcxGridDBColumn;
+    qryLancamentoSafra: TStringField;
+    cxGrid1DBTableView5Safra: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
@@ -239,26 +241,47 @@ procedure TFrmRel_Lancamento_Financeiro.cxImage3Click(Sender: TObject);
 var
   Retorno: AnsiString;
 begin
-  if (cmbSafra.Text = '') then
+  {if (cmbSafra.Text = '') then
   begin
     Mensagens.MensagemWarning(MensagemCampoNulo);
     cmbSafra.SetFocus;
     exit;
-  end;
+  end;}
 
-  LFPD:= TLancamentoFinanceiroParcelasDominio.Create(Conexao);
-  if (LFPD.Buscar(qryParcelas, Retorno) = 0) then
+  if (cmbSafra.Text = '') then
   begin
-    Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-    Exit;
-  end;
+    LFPD:= TLancamentoFinanceiroParcelasDominio.Create(Conexao);
+    if (LFPD.Buscar(qryParcelas, Retorno) = 0) then
+    begin
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
+      Exit;
+    end;
 
-  LFD:= TLancamentoFinanceiroDominio.Create(Conexao);
-  if (LFD.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, rgTipoOperacao.Properties.Items[rgTipoOperacao.ItemIndex].Caption,
-                  '', qryLancamento, Retorno) = 0) then
+    LFD:= TLancamentoFinanceiroDominio.Create(Conexao);
+    if (LFD.Buscar(FPropriedade.Codigo, rgTipoOperacao.Properties.Items[rgTipoOperacao.ItemIndex].Caption,
+                    '', qryLancamento, Retorno) = 0) then
+    begin
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
+      Exit;
+    end;
+  end
+  else
   begin
-    Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-    Exit;
+    LFD:= TLancamentoFinanceiroDominio.Create(Conexao);
+    if (LFD.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, rgTipoOperacao.Properties.Items[rgTipoOperacao.ItemIndex].Caption,
+                    '', qryLancamento, Retorno) = 0) then
+    begin
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
+      Exit;
+    end;
+
+    LFPD:= TLancamentoFinanceiroParcelasDominio.Create(Conexao);
+    if (LFPD.Buscar(qryParcelas, Retorno) = 0) then
+    begin
+      Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
+      Exit;
+    end;
+
   end;
 
   cxGrid1DBTableView5.ViewData.Collapse(true);

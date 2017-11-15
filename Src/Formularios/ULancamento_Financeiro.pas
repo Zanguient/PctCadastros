@@ -391,7 +391,12 @@ begin
     FLF.Codigo_Usuario:= FUsuario.Codigo;
 
     FLF.N_Documento:= StrToInt(EdtN_Documento.Text);
-    FLF.Codigo_Safra:= dm.qrySafraCodigo.AsInteger;
+
+    if (cmbSafra.Text = '') then
+      FLF.Codigo_Safra:= 0
+    else
+      FLF.Codigo_Safra:= dm.qrySafraCodigo.AsInteger;
+
     FLF.Codigo_Forma_Pagamento:= dm.qrycondicaoPagamentoCodigo.AsInteger;
 
     if (dateLancamento.Text <> '') then
@@ -519,12 +524,12 @@ begin
     exit;
   end;
 
-  if (cmbSafra.Text = '') then
+  {if (cmbSafra.Text = '') then
   begin
     Mensagens.MensagemErro(MensagemFaltaDados);
     cmbSafra.SetFocus;
     exit;
-  end;
+  end;}
 
   if (cmbCondicaoPagamento.Text = '') then
   begin
@@ -601,6 +606,7 @@ begin
 
   EdtCodigo.Text:= qryConsultaCodigo.AsString;
   EdtN_Documento.Text:= qryConsultaN_Documento.AsString;
+
   if (qryConsultaTipo.AsString = 'Pagar') then
     rgTipoOperacao.ItemIndex:= 0
   else

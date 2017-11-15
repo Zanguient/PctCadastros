@@ -56,10 +56,6 @@ type
     BBtnSalvar: TToolButton;
     BBtnCancelar: TToolButton;
     BBtnFechar: TToolButton;
-    LblCodigo: TLabel;
-    EdtCodigo: TEdit;
-    MEdtData_Cadastro: TMaskEdit;
-    LblData_Cadastro: TLabel;
     qryConsulta: TADOQuery;
     dsConsulta: TDataSource;
     BBtnNovo: TToolButton;
@@ -69,13 +65,6 @@ type
     BBtnExcluir: TToolButton;
     cxEditRepository1: TcxEditRepository;
     cxEditRepository1TextItem1: TcxEditRepositoryTextItem;
-    Label12: TLabel;
-    PageControl2: TPageControl;
-    TabSheet3: TTabSheet;
-    TabSheet4: TTabSheet;
-    cxGrid2: TcxGrid;
-    cxGridDBTableViewTalhao: TcxGridDBTableView;
-    cxGridLevel1: TcxGridLevel;
     qryRegistroAtividadeAtividades: TADOQuery;
     dsRegistroAtividade: TDataSource;
     qryRegistroAtividadeAtividadesCodigo: TIntegerField;
@@ -87,8 +76,6 @@ type
     qryConsultaCodigo_Safra: TIntegerField;
     qryConsultaCodigo_Propriedade: TIntegerField;
     qryConsultaData_Cadastro: TDateTimeField;
-    cxGrid3: TcxGrid;
-    cxGridDBTableViewPlantio: TcxGridDBTableView;
     qryRegistroAtividadePlantio: TADOQuery;
     dsRegistroAtividadePlantio: TDataSource;
     qryRegistroAtividadePlantioCodigo: TAutoIncField;
@@ -96,11 +83,6 @@ type
     qryRegistroAtividadePlantioCodigo_Variedade: TIntegerField;
     qryRegistroAtividadePlantioObservacao: TStringField;
     qryRegistroAtividadePlantioVariedade: TStringField;
-    cxGridDBTableViewPlantioCodigo: TcxGridDBColumn;
-    cxGridDBTableViewPlantioObservacao: TcxGridDBColumn;
-    cxGridDBTableViewPlantioVariedade: TcxGridDBColumn;
-    TabSheet5: TTabSheet;
-    cxGrid4: TcxGrid;
     qryRegistroAtividadeColheita: TADOQuery;
     dsRegistroAtividadeColheita: TDataSource;
     qryRegistroAtividadeColheitaCodigo: TIntegerField;
@@ -130,7 +112,6 @@ type
     qryRegistroAtividadeColheitaPrecoFrete: TFloatField;
     qryRegistroAtividadePlantioCodigo_Talhao: TIntegerField;
     qryRegistroAtividadeColheitaCodigo_Talhao: TIntegerField;
-    cxGridDBTableViewPlantioCodigo_Talhao: TcxGridDBColumn;
     qryRegistroAtividadeAtividadesData_Cadastro: TDateTimeField;
     qryRegistroAtividadeAtividadesData_Inicio_Atividade: TDateTimeField;
     qryRegistroAtividadeAtividadesData_Fim_Atividade: TDateTimeField;
@@ -140,9 +121,6 @@ type
     qryRegistroAtividadeColheitaCodigo_Registro_Atividade: TIntegerField;
     qryRegistroAtividadeColheitaData_Inicio_Colheita: TDateTimeField;
     qryRegistroAtividadeColheitaData_Fim_Colheita: TDateTimeField;
-    cxGridDBTableViewPlantioData_Cadastro: TcxGridDBColumn;
-    cxGridDBTableViewPlantioData_Inicio_Plantio: TcxGridDBColumn;
-    cxGridDBTableViewPlantioData_Fim_Plantio: TcxGridDBColumn;
     qryRegistroAtividadeAtividadesProduto: TADOQuery;
     dsRegistroAtividadeProduto: TDataSource;
     qryRegistroAtividadeAtividadesProdutoCodigo: TAutoIncField;
@@ -152,125 +130,30 @@ type
     qryRegistroAtividadeAtividadesProdutoUnidade: TStringField;
     qryRegistroAtividadeAtividadesProdutoCusto: TFloatField;
     qryRegistroAtividadeAtividadesProdutoProduto: TStringField;
-    cxGridDBTableViewAtividade: TcxGridDBTableView;
     qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade_Atividade: TIntegerField;
-    cxGrid2DBTableView1: TcxGridDBTableView;
-    cxGrid2DBTableView2: TcxGridDBTableView;
-    cxGridDBTableViewAtividadeProduto: TcxGridDBTableView;
     qryRegistroAtividadeAtividadesTalhao: TADOQuery;
     dsRegistroAtividadeTalhao: TDataSource;
     qryRegistroAtividadeAtividadesTalhaoCodigo: TAutoIncField;
     qryRegistroAtividadeAtividadesTalhaoCodigo_Registro_Atividade: TIntegerField;
     qryRegistroAtividadeAtividadesTalhaoCodigo_Talhao: TIntegerField;
-    cxGridDBTableViewAtividadeProdutoCodigo: TcxGridDBColumn;
-    cxGridDBTableViewAtividadeProdutoCodigo_Registro_Atividade: TcxGridDBColumn;
-    cxGridDBTableViewAtividadeProdutoCodigo_Produto: TcxGridDBColumn;
-    cxGridDBTableViewAtividadeProdutoUnidade: TcxGridDBColumn;
-    cxGridDBTableViewAtividadeProdutoCusto: TcxGridDBColumn;
-    cxGridDBTableViewAtividadeProdutoProduto: TcxGridDBColumn;
-    cxGridDBTableViewAtividadeProdutoPrecoCompra: TcxGridDBColumn;
-    cxGridDBTableViewAtividadeProdutoCodigo_Registro_Atividade_Atividade: TcxGridDBColumn;
-    cxGridDBTableViewTalhaoCodigo: TcxGridDBColumn;
-    cxGridDBTableViewTalhaoCodigo_Registro_Atividade: TcxGridDBColumn;
-    cxGridDBTableViewTalhaoCodigo_Talhao: TcxGridDBColumn;
-    cxGridDBTableViewTalhaoArea: TcxGridDBColumn;
-    cxGridDBTableViewTalhaoTalhao: TcxGridDBColumn;
-    cxGridDBTableViewAtividadeCodigo: TcxGridDBColumn;
-    cxGridDBTableViewAtividadeCodigo_Registro_Atividade: TcxGridDBColumn;
-    cxGridDBTableViewAtividadeCodigo_Atividade: TcxGridDBColumn;
-    cxGridDBTableViewAtividadeObservacao: TcxGridDBColumn;
-    cxGridDBTableViewAtividadeAtividade: TcxGridDBColumn;
-    cxGridDBTableViewAtividadeData_Cadastro: TcxGridDBColumn;
-    cxGridDBTableViewAtividadeData_Inicio_Atividade: TcxGridDBColumn;
-    cxGridDBTableViewAtividadeData_Fim_Atividade: TcxGridDBColumn;
     cxEditRepository1LookupComboBoxArea: TcxEditRepositoryLookupComboBoxItem;
     cxEditRepository1LookupComboBoxItemTalhao: TcxEditRepositoryLookupComboBoxItem;
     qryRegistroAtividadeAtividadesTalhaoArea: TFloatField;
-    qryRegistroAtividadeAtividadesTalhaoTalhao: TStringField;
     qryRegistroAtividadeAtividadesTalhaoAreaDisponivel: TFloatField;
-    cxGridDBTableViewTalhaoAreaDisponivel: TcxGridDBColumn;
-    cxGrid2DBTableView3: TcxGridDBTableView;
-    cxGrid2DBTableView4: TcxGridDBTableView;
-    cxGrid2DBLayoutView1Group_Root: TdxLayoutGroup;
-    cxGrid2DBLayoutView1: TcxGridDBLayoutView;
     qryRegistroAtividadeAtividadesTalhaoCodigo_Registro_Atividade_Atividade: TIntegerField;
-    cxGridDBTableViewTalhaoCodigo_Registro_Atividade_Atividade: TcxGridDBColumn;
-    dateEditInicio: TcxDateEdit;
-    Label1: TLabel;
-    dateEditFim: TcxDateEdit;
-    Label2: TLabel;
     qryConsultaInicio_Safra: TDateTimeField;
     qryConsultaFim_Safra: TDateTimeField;
-    cxGrid1: TcxGrid;
-    cxGridLevel4: TcxGridLevel;
     dsEstoqueGrao: TDataSource;
     cxStyleRepository1: TcxStyleRepository;
     cxStyle1: TcxStyle;
-    cxGrid1DBBandedTableView1: TcxGridDBBandedTableView;
-    cxGrid1DBBandedTableView1Codigo: TcxGridDBBandedColumn;
-    cxGrid1DBBandedTableView1Codigo_Safra: TcxGridDBBandedColumn;
-    cxGrid1DBBandedTableView1Codigo_Armazem: TcxGridDBBandedColumn;
-    cxGrid1DBBandedTableView1Codigo_Produto: TcxGridDBBandedColumn;
-    cxGrid1DBBandedTableView1Codigo_Fazenda: TcxGridDBBandedColumn;
-    cxGrid1DBBandedTableView1Estoque: TcxGridDBBandedColumn;
-    cxGrid1DBBandedTableView1Armazem: TcxGridDBBandedColumn;
-    cxGrid1DBBandedTableView1Produto: TcxGridDBBandedColumn;
     cxStyle2: TcxStyle;
-    cxGrid4Level1: TcxGridLevel;
-    cxGridDBTableViewColheita: TcxGridDBBandedTableView;
-    cxGridDBTableViewColheitaCodigo: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaData_Cadastro: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaNRomaneio: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaData_Emissao_Romaneio: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaIdMotorista: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaIdVeiculo: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaIdTransportadora: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaIdArmazem: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaIdProduto: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaIdProdutor: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaIdDepositante: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaPesoBruto: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaTara: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaLiquidoUmido: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaDescontos: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaLiquidoSeco: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaObservacoes: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaMotorista: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaVeiculo: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaTransportadora: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaArmazem: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaProduto: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaProdutor: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaDepositante: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaPrecoFrete: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaCodigo_Talhao: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaCodigo_Registro_Atividade: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaData_Inicio_Colheita: TcxGridDBBandedColumn;
-    cxGridDBTableViewColheitaData_Fim_Colheita: TcxGridDBBandedColumn;
     cxStyle3: TcxStyle;
     cxStyle4: TcxStyle;
     qryRegistroAtividadePlantioArea_Plantada: TFloatField;
-    cxGridDBTableViewPlantioArea_Plantada: TcxGridDBColumn;
-    cmbSafra: TcxLookupComboBox;
-    cxGridDBTableViewMaquinas: TcxGridDBTableView;
     qryRegistroAtividadeAtividadesMaquina: TADOQuery;
     dsRegistroAtividadeMaquina: TDataSource;
-    cxGridDBTableViewMaquinasCodigo: TcxGridDBColumn;
-    cxGridDBTableViewMaquinasCodigo_Registro_Atividade: TcxGridDBColumn;
-    cxGridDBTableViewMaquinasCodigo_Registro_Atividade_Atividade: TcxGridDBColumn;
-    cxGridDBTableViewMaquinasCodigo_Maquina: TcxGridDBColumn;
-    cxGridDBTableViewMaquinasUT_Inicial: TcxGridDBColumn;
-    cxGridDBTableViewMaquinasUT_Final: TcxGridDBColumn;
-    cxGridDBTableViewMaquinasPreco_UT: TcxGridDBColumn;
-    cxGridDBTableViewMaquinasPreco_Total: TcxGridDBColumn;
-    cxGridDBTableViewMaquinasData_Trabalho_Inicial: TcxGridDBColumn;
-    cxGridDBTableViewMaquinasData_Trabalho_Final: TcxGridDBColumn;
-    cxGridDBTableViewMaquinasObservacao: TcxGridDBColumn;
-    cxGridDBTableViewMaquinasMaquina: TcxGridDBColumn;
     qryRegistroAtividadePlantioTalhao: TStringField;
     qryRegistroAtividadePlantioAreaDisponivel: TFloatField;
-    cxGridDBTableViewPlantioAreaDisponivel: TcxGridDBColumn;
-    cxGridDBTableViewPlantioTalhao: TcxGridDBColumn;
     qryRegistroAtividadeAtividadesMaquinaCodigo: TAutoIncField;
     qryRegistroAtividadeAtividadesMaquinaCodigo_Registro_Atividade: TIntegerField;
     qryRegistroAtividadeAtividadesMaquinaCodigo_Maquina: TIntegerField;
@@ -283,72 +166,12 @@ type
     qryRegistroAtividadeAtividadesMaquinaData_Trabalho_Final: TDateTimeField;
     qryRegistroAtividadeAtividadesMaquinaTipo_Atividade: TStringField;
     qryRegistroAtividadeAtividadesMaquinaObservacao: TStringField;
-    TabSheet2: TTabSheet;
-    cxGrid5: TcxGrid;
-    cxGridDBTableView1: TcxGridDBTableView;
-    cxGridDBTableView1Codigo: TcxGridDBColumn;
-    cxGridDBTableView1Codigo_Registro_Atividade: TcxGridDBColumn;
-    cxGridDBTableView1Codigo_Maquina: TcxGridDBColumn;
-    cxGridDBTableView1UT_Inicial: TcxGridDBColumn;
-    cxGridDBTableView1UT_Final: TcxGridDBColumn;
-    cxGridDBTableView1Preco_UT: TcxGridDBColumn;
-    cxGridDBTableView1Preco_Total: TcxGridDBColumn;
-    cxGridDBTableView1Data_Cadastro: TcxGridDBColumn;
-    cxGridDBTableView1Data_Trabalho_Inicial: TcxGridDBColumn;
-    cxGridDBTableView1Data_Trabalho_Final: TcxGridDBColumn;
-    cxGridDBTableView1Tipo_Atividade: TcxGridDBColumn;
-    cxGridDBTableView1Observacao: TcxGridDBColumn;
-    cxGridDBTableView1Maquina: TcxGridDBColumn;
-    cxGrid5DBBandedTableView1: TcxGridDBBandedTableView;
-    cxGrid5Level1: TcxGridLevel;
-    cxGrid5DBBandedTableView2: TcxGridDBBandedTableView;
-    cxGrid5DBBandedTableView2Codigo: TcxGridDBBandedColumn;
-    cxGrid5DBBandedTableView2Codigo_Registro_Atividade: TcxGridDBBandedColumn;
-    cxGrid5DBBandedTableView2Codigo_Maquina: TcxGridDBBandedColumn;
-    cxGrid5DBBandedTableView2UT_Inicial: TcxGridDBBandedColumn;
-    cxGrid5DBBandedTableView2UT_Final: TcxGridDBBandedColumn;
-    cxGrid5DBBandedTableView2Preco_UT: TcxGridDBBandedColumn;
-    cxGrid5DBBandedTableView2Preco_Total: TcxGridDBBandedColumn;
-    cxGrid5DBBandedTableView2Data_Cadastro: TcxGridDBBandedColumn;
-    cxGrid5DBBandedTableView2Data_Trabalho_Inicial: TcxGridDBBandedColumn;
-    cxGrid5DBBandedTableView2Data_Trabalho_Final: TcxGridDBBandedColumn;
-    cxGrid5DBBandedTableView2Tipo_Atividade: TcxGridDBBandedColumn;
-    cxGrid5DBBandedTableView2Observacao: TcxGridDBBandedColumn;
     qryRegistroAtividadeAtividadesMaquinaModelo: TStringField;
-    cxGrid5DBBandedTableView2Modelo: TcxGridDBBandedColumn;
     qryRegistroAtividadePlantioStand_Plantio: TIntegerField;
     qryRegistroAtividadePlantioStand_Inicial: TIntegerField;
     qryRegistroAtividadePlantioData_Stand_Inicial: TDateTimeField;
     qryRegistroAtividadePlantioStand_Final: TIntegerField;
     qryRegistroAtividadePlantioData_Stand_Final: TDateTimeField;
-    cxGridDBTableViewPlantioCodigo1: TcxGridDBColumn;
-    cxGridDBTableViewPlantioCodigo_Variedade: TcxGridDBColumn;
-    cxGridDBTableViewPlantioStand_Plantio: TcxGridDBColumn;
-    cxGridDBTableViewPlantioStand_Inicial: TcxGridDBColumn;
-    cxGridDBTableViewPlantioData_Stand_Inicial: TcxGridDBColumn;
-    cxGridDBTableViewPlantioStand_Final: TcxGridDBColumn;
-    cxGridDBTableViewPlantioData_Stand_Final: TcxGridDBColumn;
-    cxGrid3Level1: TcxGridLevel;
-    cxGrid3DBBandedTableViewPlantio: TcxGridDBBandedTableView;
-    cxGrid3DBBandedTableViewPlantioCodigo: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableViewPlantioCodigo_Registro_Atividade: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableViewPlantioCodigo_Variedade: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableViewPlantioObservacao: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableViewPlantioVariedade: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableViewPlantioCodigo_Talhao: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableViewPlantioData_Cadastro: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableViewPlantioData_Inicio_Plantio: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableViewPlantioData_Fim_Plantio: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableViewPlantioArea_Plantada: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableViewPlantioTalhao: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableViewPlantioAreaDisponivel: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableViewPlantioStand_Plantio: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableViewPlantioStand_Inicial: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableViewPlantioData_Stand_Inicial: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableViewPlantioStand_Final: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableViewPlantioData_Stand_Final: TcxGridDBBandedColumn;
-    cxGrid3Level2: TcxGridLevel;
-    cxGrid3DBTableViewOcorrencia: TcxGridDBTableView;
     qryRegistroAtividadePlantioOcorrencia: TADOQuery;
     dsRegistroAtividadePlantioOcorrencia: TDataSource;
     qryRegistroAtividadePlantioOcorrenciaCodigo: TAutoIncField;
@@ -359,25 +182,11 @@ type
     qryRegistroAtividadePlantioOcorrenciaData_Ocorrencia: TDateTimeField;
     qryRegistroAtividadePlantioOcorrenciaObservacao: TStringField;
     qryRegistroAtividadePlantioOcorrenciaOcorrencia: TStringField;
-    cxGrid3DBTableViewOcorrenciaCodigo: TcxGridDBColumn;
-    cxGrid3DBTableViewOcorrenciaCodigo_Registro_Atividade: TcxGridDBColumn;
-    cxGrid3DBTableViewOcorrenciaCodigo_Plantio: TcxGridDBColumn;
-    cxGrid3DBTableViewOcorrenciaCodigo_Ocorrencia: TcxGridDBColumn;
-    cxGrid3DBTableViewOcorrenciaIntensidade: TcxGridDBColumn;
-    cxGrid3DBTableViewOcorrenciaArea_Analisada: TcxGridDBColumn;
-    cxGrid3DBTableViewOcorrenciaData_Ocorrencia: TcxGridDBColumn;
-    cxGrid3DBTableViewOcorrenciaObservacao: TcxGridDBColumn;
-    cxGrid3DBTableViewOcorrenciaOcorrencia: TcxGridDBColumn;
-    cxGrid3DBTableViewEstadios: TcxGridDBTableView;
     qryRegistroAtividadePlantioOcorrenciaDias_Plantio: TIntegerField;
-    cxGrid3DBTableViewOcorrenciaDias_Plantio: TcxGridDBColumn;
     qryRegistroAtividadePlantioData_Plantio: TDateTimeField;
-    cxGrid3DBBandedTableViewPlantioData_Plantio: TcxGridDBBandedColumn;
     qryRegistroAtividadeAtividadesTipo_Atividade: TStringField;
-    cxGridDBTableViewAtividadeTipo_Atividade: TcxGridDBColumn;
     qryRegistroAtividadePlantioOcorrenciaArea_Analisada: TFloatField;
     qryRegistroAtividadePlantioOcorrenciaEstadio: TStringField;
-    cxGrid3DBTableViewOcorrenciaEstadio: TcxGridDBColumn;
     qryEstoqueGrao: TADOQuery;
     qryEstoqueGraoCodigo: TAutoIncField;
     qryEstoqueGraoCodigo_Safra: TIntegerField;
@@ -387,48 +196,263 @@ type
     qryEstoqueGraoEstoque: TFloatField;
     qryEstoqueGraoArmazem: TStringField;
     qryEstoqueGraoProduto: TStringField;
-    cxGridDBTableViewAtividadeProdutoQuantidade: TcxGridDBColumn;
-    cxGrid3DBBandedTableView1: TcxGridDBBandedTableView;
     qryRegistroAtividadeAtividadesProdutoControla_Estoque: TBooleanField;
+    qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade_Talhao: TIntegerField;
+    qryRegistroAtividadeAtividadesProdutoValor_Unitario: TFloatField;
+    qryRegistroAtividadeColheitaTalhao: TStringField;
+    Panel1: TPanel;
+    LblCodigo: TLabel;
+    LblData_Cadastro: TLabel;
+    Label12: TLabel;
+    Label1: TLabel;
+    Label2: TLabel;
+    EdtCodigo: TEdit;
+    MEdtData_Cadastro: TMaskEdit;
+    dateEditInicio: TcxDateEdit;
+    dateEditFim: TcxDateEdit;
+    cmbSafra: TcxLookupComboBox;
+    Panel2: TPanel;
+    PageControl2: TPageControl;
+    TabSheet3: TTabSheet;
+    cxGrid2: TcxGrid;
+    cxGridDBTableViewTalhao: TcxGridDBTableView;
+    cxGridDBTableViewTalhaoCodigo: TcxGridDBColumn;
+    cxGridDBTableViewTalhaoCodigo_Registro_Atividade_Atividade: TcxGridDBColumn;
+    cxGridDBTableViewTalhaoCodigo_Registro_Atividade: TcxGridDBColumn;
+    cxGridDBTableViewTalhaoCodigo_Talhao: TcxGridDBColumn;
+    cxGridDBTableViewTalhaoTalhao: TcxGridDBColumn;
+    cxGridDBTableViewTalhaoAreaDisponivel: TcxGridDBColumn;
+    cxGridDBTableViewTalhaoArea: TcxGridDBColumn;
+    cxGridDBTableViewAtividade: TcxGridDBTableView;
+    cxGridDBTableViewAtividadeCodigo: TcxGridDBColumn;
+    cxGridDBTableViewAtividadeCodigo_Registro_Atividade: TcxGridDBColumn;
+    cxGridDBTableViewAtividadeCodigo_Atividade: TcxGridDBColumn;
+    cxGridDBTableViewAtividadeAtividade: TcxGridDBColumn;
+    cxGridDBTableViewAtividadeTipo_Atividade: TcxGridDBColumn;
+    cxGridDBTableViewAtividadeData_Cadastro: TcxGridDBColumn;
+    cxGridDBTableViewAtividadeData_Inicio_Atividade: TcxGridDBColumn;
+    cxGridDBTableViewAtividadeData_Fim_Atividade: TcxGridDBColumn;
+    cxGridDBTableViewAtividadeObservacao: TcxGridDBColumn;
+    cxGrid2DBTableView1: TcxGridDBTableView;
+    cxGrid2DBTableView2: TcxGridDBTableView;
+    cxGridDBTableViewAtividadeProduto: TcxGridDBTableView;
+    cxGridDBTableViewAtividadeProdutoCodigo: TcxGridDBColumn;
+    cxGridDBTableViewAtividadeProdutoCodigo_Registro_Atividade_Atividade: TcxGridDBColumn;
+    cxGridDBTableViewAtividadeProdutoCodigo_Registro_Atividade: TcxGridDBColumn;
+    cxGridDBTableViewAtividadeProdutoCodigo_Produto: TcxGridDBColumn;
+    cxGridDBTableViewAtividadeProdutoProduto: TcxGridDBColumn;
+    cxGridDBTableViewAtividadeProdutoUnidade: TcxGridDBColumn;
+    cxGridDBTableViewAtividadeProdutoQuantidade: TcxGridDBColumn;
+    cxGridDBTableViewAtividadeProdutoPrecoCompra: TcxGridDBColumn;
+    cxGridDBTableViewAtividadeProdutoCusto: TcxGridDBColumn;
+    cxGrid2DBTableView3: TcxGridDBTableView;
+    cxGrid2DBTableView4: TcxGridDBTableView;
+    cxGrid2DBLayoutView1: TcxGridDBLayoutView;
+    cxGrid2DBLayoutView1Group_Root: TdxLayoutGroup;
+    cxGridDBTableViewMaquina: TcxGridDBTableView;
+    cxGridDBTableViewMaquinaCodigo: TcxGridDBColumn;
+    cxGridDBTableViewMaquinaCodigo_Registro_Atividade: TcxGridDBColumn;
+    cxGridDBTableViewMaquinaCodigo_Registro_Atividade_Atividade: TcxGridDBColumn;
+    cxGridDBTableViewMaquinaCodigo_Maquina: TcxGridDBColumn;
+    cxGridDBTableViewMaquinaMaquina: TcxGridDBColumn;
+    cxGridDBTableViewMaquinaUT_Inicial: TcxGridDBColumn;
+    cxGridDBTableViewMaquinaUT_Final: TcxGridDBColumn;
+    cxGridDBTableViewMaquinaPreco_UT: TcxGridDBColumn;
+    cxGridDBTableViewMaquinaPreco_Total: TcxGridDBColumn;
+    cxGridDBTableViewMaquinaData_Trabalho_Inicial: TcxGridDBColumn;
+    cxGridDBTableViewMaquinaData_Trabalho_Final: TcxGridDBColumn;
+    cxGridDBTableViewMaquinaObservacao: TcxGridDBColumn;
+    cxGridDBTableViewMaquinas: TcxGridDBTableView;
+    cxGridDBTableViewMaquinasCodigo: TcxGridDBColumn;
+    cxGridDBTableViewMaquinasCodigo_Registro_Atividade: TcxGridDBColumn;
+    cxGridDBTableViewMaquinasCodigo_Registro_Atividade_Atividade: TcxGridDBColumn;
+    cxGridDBTableViewMaquinasCodigo_Maquina: TcxGridDBColumn;
+    cxGridDBTableViewMaquinasMaquina: TcxGridDBColumn;
+    cxGridDBTableViewMaquinasUT_Inicial: TcxGridDBColumn;
+    cxGridDBTableViewMaquinasUT_Final: TcxGridDBColumn;
+    cxGridDBTableViewMaquinasPreco_UT: TcxGridDBColumn;
+    cxGridDBTableViewMaquinasPreco_Total: TcxGridDBColumn;
+    cxGridDBTableViewMaquinasData_Trabalho_Inicial: TcxGridDBColumn;
+    cxGridDBTableViewMaquinasData_Trabalho_Final: TcxGridDBColumn;
+    cxGridDBTableViewMaquinasObservacao: TcxGridDBColumn;
     cxGrid2DBBandedTableViewAtividade: TcxGridDBBandedTableView;
-    cxGrid2Level4: TcxGridLevel;
-    cxGrid2DBBandedTableViewAtividadeTalhao: TcxGridDBBandedTableView;
     cxGrid2DBBandedTableViewAtividadeCodigo: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableViewAtividadeCodigo_Registro_Atividade: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableViewAtividadeCodigo_Atividade: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableViewAtividadeObservacao: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableViewAtividadeAtividade: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableViewAtividadeData_Cadastro: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableViewAtividadeData_Inicio_Atividade: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableViewAtividadeData_Fim_Atividade: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableViewAtividadeTipo_Atividade: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableViewAtividadeObservacao: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableViewAtividadeProduto: TcxGridDBBandedTableView;
+    cxGrid2DBBandedTableViewAtividadeProdutoCodigo: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableViewAtividadeProdutoCodigo_Registro_Atividade: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableViewAtividadeProdutoCodigo_Registro_Atividade_Atividade: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableViewAtividadeProdutoCodigo_Produto: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableViewAtividadeProdutoProduto: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableViewAtividadeProdutoUnidade: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableViewAtividadeProdutoPrecoCompra: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableViewAtividadeProdutoQuantidade: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableViewAtividadeProdutoCusto: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableViewAtividadeProdutoControla_Estoque: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableViewAtividadeTalhao: TcxGridDBBandedTableView;
     cxGrid2DBBandedTableViewAtividadeTalhaoCodigo: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableViewAtividadeTalhaoCodigo_Registro_Atividade: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableViewAtividadeTalhaoCodigo_Talhao: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableViewAtividadeTalhaoTalhao: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableViewAtividadeTalhaoArea: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableViewAtividadeTalhaoAreaDisponivel: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableViewAtividadeTalhaoCodigo_Registro_Atividade_Atividade: TcxGridDBBandedColumn;
-    qryRegistroAtividadeAtividadesProdutoCodigo_Registro_Atividade_Talhao: TIntegerField;
-    cxGrid2Level1: TcxGridLevel;
+    cxGrid2DBBandedTableViewAtividadeTalhaoCodigo_Talhao: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableViewAtividadeTalhaoAreaDisponivel: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableViewAtividadeTalhaoArea: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableView1: TcxGridDBBandedTableView;
     cxGrid2DBBandedTableView1Codigo: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableView1Codigo_Registro_Atividade: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableView1Codigo_Produto: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableView1Quantidade: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableView1Unidade: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableView1Custo: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableView1Produto: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableView1Codigo_Registro_Atividade_Atividade: TcxGridDBBandedColumn;
-    cxGrid2DBBandedTableView1Controla_Estoque: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableView1Codigo_Registro_Atividade_Talhao: TcxGridDBBandedColumn;
-    qryRegistroAtividadeAtividadesProdutoValor_Unitario: TFloatField;
+    cxGrid2DBBandedTableView1Produto: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableView1Unidade: TcxGridDBBandedColumn;
     cxGrid2DBBandedTableView1Valor_Unitario: TcxGridDBBandedColumn;
-    qryRegistroAtividadeColheitaTalhao: TStringField;
+    cxGrid2DBBandedTableView1Quantidade: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableView1Custo: TcxGridDBBandedColumn;
+    cxGrid2DBBandedTableView1Controla_Estoque: TcxGridDBBandedColumn;
+    cxGridLevel1: TcxGridLevel;
+    cxGrid2Level4: TcxGridLevel;
+    cxGrid2Level1: TcxGridLevel;
+    TabSheet4: TTabSheet;
+    cxGrid3: TcxGrid;
+    cxGridDBTableViewPlantio: TcxGridDBTableView;
+    cxGridDBTableViewPlantioCodigo: TcxGridDBColumn;
+    cxGridDBTableViewPlantioCodigo_Talhao: TcxGridDBColumn;
+    cxGridDBTableViewPlantioTalhao: TcxGridDBColumn;
+    cxGridDBTableViewPlantioVariedade: TcxGridDBColumn;
+    cxGridDBTableViewPlantioData_Cadastro: TcxGridDBColumn;
+    cxGridDBTableViewPlantioData_Inicio_Plantio: TcxGridDBColumn;
+    cxGridDBTableViewPlantioData_Fim_Plantio: TcxGridDBColumn;
+    cxGridDBTableViewPlantioAreaDisponivel: TcxGridDBColumn;
+    cxGridDBTableViewPlantioArea_Plantada: TcxGridDBColumn;
+    cxGridDBTableViewPlantioStand_Plantio: TcxGridDBColumn;
+    cxGridDBTableViewPlantioStand_Inicial: TcxGridDBColumn;
+    cxGridDBTableViewPlantioData_Stand_Inicial: TcxGridDBColumn;
+    cxGridDBTableViewPlantioStand_Final: TcxGridDBColumn;
+    cxGridDBTableViewPlantioData_Stand_Final: TcxGridDBColumn;
+    cxGridDBTableViewPlantioObservacao: TcxGridDBColumn;
+    cxGridDBTableViewPlantioCodigo1: TcxGridDBColumn;
+    cxGridDBTableViewPlantioCodigo_Variedade: TcxGridDBColumn;
+    cxGrid3DBBandedTableViewPlantio: TcxGridDBBandedTableView;
+    cxGrid3DBBandedTableViewPlantioCodigo: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioCodigo_Registro_Atividade: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioCodigo_Variedade: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioCodigo_Talhao: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioTalhao: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioVariedade: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioData_Cadastro: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioData_Plantio: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioData_Inicio_Plantio: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioData_Fim_Plantio: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioAreaDisponivel: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioArea_Plantada: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioStand_Plantio: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioStand_Inicial: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioData_Stand_Inicial: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioStand_Final: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioData_Stand_Final: TcxGridDBBandedColumn;
+    cxGrid3DBBandedTableViewPlantioObservacao: TcxGridDBBandedColumn;
+    cxGrid3DBTableViewOcorrencia: TcxGridDBTableView;
+    cxGrid3DBTableViewOcorrenciaCodigo: TcxGridDBColumn;
+    cxGrid3DBTableViewOcorrenciaCodigo_Registro_Atividade: TcxGridDBColumn;
+    cxGrid3DBTableViewOcorrenciaCodigo_Plantio: TcxGridDBColumn;
+    cxGrid3DBTableViewOcorrenciaCodigo_Ocorrencia: TcxGridDBColumn;
+    cxGrid3DBTableViewOcorrenciaOcorrencia: TcxGridDBColumn;
+    cxGrid3DBTableViewOcorrenciaIntensidade: TcxGridDBColumn;
+    cxGrid3DBTableViewOcorrenciaArea_Analisada: TcxGridDBColumn;
+    cxGrid3DBTableViewOcorrenciaEstadio: TcxGridDBColumn;
+    cxGrid3DBTableViewOcorrenciaData_Ocorrencia: TcxGridDBColumn;
+    cxGrid3DBTableViewOcorrenciaDias_Plantio: TcxGridDBColumn;
+    cxGrid3DBTableViewOcorrenciaObservacao: TcxGridDBColumn;
+    cxGrid3DBTableViewEstadios: TcxGridDBTableView;
+    cxGrid3DBBandedTableView1: TcxGridDBBandedTableView;
+    cxGrid3Level1: TcxGridLevel;
+    cxGrid3Level2: TcxGridLevel;
+    TabSheet5: TTabSheet;
+    cxGrid4: TcxGrid;
+    cxGridDBTableViewColheita: TcxGridDBBandedTableView;
+    cxGridDBTableViewColheitaCodigo: TcxGridDBBandedColumn;
     cxGridDBTableViewColheitaTalhao: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaNRomaneio: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaData_Cadastro: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaData_Inicio_Colheita: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaData_Fim_Colheita: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaData_Emissao_Romaneio: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaMotorista: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaVeiculo: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaTransportadora: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaArmazem: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaProduto: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaProdutor: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaDepositante: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaIdMotorista: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaIdVeiculo: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaIdTransportadora: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaIdArmazem: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaIdProduto: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaIdProdutor: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaIdDepositante: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaPesoBruto: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaTara: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaLiquidoUmido: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaDescontos: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaLiquidoSeco: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaPrecoFrete: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaObservacoes: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaCodigo_Talhao: TcxGridDBBandedColumn;
+    cxGridDBTableViewColheitaCodigo_Registro_Atividade: TcxGridDBBandedColumn;
+    cxGrid4Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBBandedTableView1: TcxGridDBBandedTableView;
+    cxGrid1DBBandedTableView1Codigo: TcxGridDBBandedColumn;
+    cxGrid1DBBandedTableView1Codigo_Safra: TcxGridDBBandedColumn;
+    cxGrid1DBBandedTableView1Codigo_Armazem: TcxGridDBBandedColumn;
+    cxGrid1DBBandedTableView1Codigo_Produto: TcxGridDBBandedColumn;
+    cxGrid1DBBandedTableView1Codigo_Fazenda: TcxGridDBBandedColumn;
+    cxGrid1DBBandedTableView1Armazem: TcxGridDBBandedColumn;
+    cxGrid1DBBandedTableView1Produto: TcxGridDBBandedColumn;
+    cxGrid1DBBandedTableView1Estoque: TcxGridDBBandedColumn;
+    cxGridLevel4: TcxGridLevel;
+    TabSheet2: TTabSheet;
+    cxGrid5: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridDBTableView1Codigo: TcxGridDBColumn;
+    cxGridDBTableView1Codigo_Registro_Atividade: TcxGridDBColumn;
+    cxGridDBTableView1Codigo_Maquina: TcxGridDBColumn;
+    cxGridDBTableView1Maquina: TcxGridDBColumn;
+    cxGridDBTableView1UT_Inicial: TcxGridDBColumn;
+    cxGridDBTableView1UT_Final: TcxGridDBColumn;
+    cxGridDBTableView1Preco_UT: TcxGridDBColumn;
+    cxGridDBTableView1Preco_Total: TcxGridDBColumn;
+    cxGridDBTableView1Data_Cadastro: TcxGridDBColumn;
+    cxGridDBTableView1Data_Trabalho_Inicial: TcxGridDBColumn;
+    cxGridDBTableView1Data_Trabalho_Final: TcxGridDBColumn;
+    cxGridDBTableView1Tipo_Atividade: TcxGridDBColumn;
+    cxGridDBTableView1Observacao: TcxGridDBColumn;
+    cxGrid5DBBandedTableView1: TcxGridDBBandedTableView;
+    cxGrid5DBBandedTableView2: TcxGridDBBandedTableView;
+    cxGrid5DBBandedTableView2Codigo: TcxGridDBBandedColumn;
+    cxGrid5DBBandedTableView2Codigo_Registro_Atividade: TcxGridDBBandedColumn;
+    cxGrid5DBBandedTableView2Codigo_Maquina: TcxGridDBBandedColumn;
+    cxGrid5DBBandedTableView2Modelo: TcxGridDBBandedColumn;
+    cxGrid5DBBandedTableView2Tipo_Atividade: TcxGridDBBandedColumn;
+    cxGrid5DBBandedTableView2UT_Inicial: TcxGridDBBandedColumn;
+    cxGrid5DBBandedTableView2UT_Final: TcxGridDBBandedColumn;
+    cxGrid5DBBandedTableView2Preco_UT: TcxGridDBBandedColumn;
+    cxGrid5DBBandedTableView2Preco_Total: TcxGridDBBandedColumn;
+    cxGrid5DBBandedTableView2Data_Cadastro: TcxGridDBBandedColumn;
+    cxGrid5DBBandedTableView2Data_Trabalho_Inicial: TcxGridDBBandedColumn;
+    cxGrid5DBBandedTableView2Data_Trabalho_Final: TcxGridDBBandedColumn;
+    cxGrid5DBBandedTableView2Observacao: TcxGridDBBandedColumn;
+    cxGrid5Level1: TcxGridLevel;
+    cxGrid2DBBandedTableViewAtividadeTalhaoDescricao_Talhao: TcxGridDBBandedColumn;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
-    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure BBtnCancelarClick(Sender: TObject);
     procedure MEdtData_CadastroEnter(Sender: TObject);
@@ -463,7 +487,6 @@ type
       E: EDatabaseError; var Action: TDataAction);
     procedure qryRegistroAtividadeColheitaBeforePost(DataSet: TDataSet);
     procedure qryRegistroAtividadeColheitaAfterPost(DataSet: TDataSet);
-    procedure TabSheet4Enter(Sender: TObject);
     procedure PageControl2Change(Sender: TObject);
     procedure cxLookupComboBox1PropertiesCloseUp(Sender: TObject);
     procedure cxGrid5DBBandedTableView2NavigatorButtonsButtonClick(
@@ -501,6 +524,7 @@ type
     procedure cxGrid2DBBandedTableView1QuantidadePropertiesEditValueChanged(
       Sender: TObject);
     procedure cxGrid2DBBandedTableView1ProdutoPropertiesChange(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     FPropriedade: TPropriedadeEntidade;
     FUsuario: TLoginEntidade;
@@ -555,6 +579,8 @@ type
     procedure IniciaTela;
     procedure AtualizaEstoque;
     procedure AtualizaEstoqueRemocao;
+    procedure ValidaDadosAtualizaEstoque;
+    procedure SetGridHeight(AGrid: TcxGrid; ARowsNumber: Integer);
   public
     ativo, enderec, achei: boolean;
     constructor Create(FPropriedade: TPropriedadeEntidade; FUsuario: TLoginEntidade);
@@ -565,7 +591,8 @@ var
   FrmRegistro_Atividade: TFrmRegistro_Atividade;
 implementation
 
-uses UDM, ProdutoDominio, SafraDominio, TalhaoDominio, VariedadeCulturaDominio, ComObj, DateUtils;
+uses UDM, ProdutoDominio, SafraDominio, TalhaoDominio, VariedadeCulturaDominio, ComObj, DateUtils,
+      Math;
 
 {$R *.dfm}
 
@@ -577,23 +604,6 @@ var
   FEstoqueDominio: TEstoqueDominio;
   Retorno: AnsiString;
 begin
-  if (qryRegistroAtividadeColheitaIdArmazem.AsInteger = 0) or (qryRegistroAtividadeColheitaIdArmazem.Value = null) then
-  begin
-    Mensagens.MensagemErro('Campo Armazém é obrigatório.');
-    exit;
-  end;
-
-  if (qryRegistroAtividadeColheitaIdProduto.AsInteger = 0) or (qryRegistroAtividadeColheitaIdProduto.Value = null) then
-  begin
-    Mensagens.MensagemErro('Campo Produto é obrigatório.');
-    exit;
-  end;
-
-  if (qryRegistroAtividadeColheitaLiquidoSeco.AsFloat = 0) or (qryRegistroAtividadeColheitaLiquidoSeco.Value = null) then
-  begin
-    Mensagens.MensagemErro('Campo Liquido Seco é obrigatório.');
-    exit;
-  end;
 
   FEstoque:= TEstoqueEntidade.Create;
   FEstoque.CodigoSafra:= dm.qrySafraCodigo.AsInteger;
@@ -955,7 +965,7 @@ end;
 
 procedure TFrmRegistro_Atividade.Button1Click(Sender: TObject);
 begin
-  qryRegistroAtividadeAtividadesProduto.Refresh;
+  SetGridHeight(cxGrid1, cxGrid2DBTableView1.ViewData.RecordCount);
 end;
 
 {procedure TFrmRegistro_Atividade.BuscaDadosSafra;
@@ -1395,8 +1405,8 @@ begin
   ativo:= true;
 end;
 
-procedure TFrmRegistro_Atividade.FormCloseQuery(Sender: TObject;
-  var CanClose: Boolean);
+procedure TFrmRegistro_Atividade.FormClose(Sender: TObject;
+  var Action: TCloseAction);
 begin
   if (BBtnCancelar.Enabled = true) then
     begin
@@ -1405,8 +1415,7 @@ begin
     end
     else
     begin
-      FrmRegistro_Atividade.Free;
-      FrmRegistro_Atividade:= Nil;
+      Action:= caFree;
     end;
 end;
 
@@ -1640,6 +1649,7 @@ procedure TFrmRegistro_Atividade.qryRegistroAtividadeColheitaBeforePost(
   FEstoqueDominio: TEstoqueDominio;
   Retorno: AnsiString;}
 begin
+  ValidaDadosAtualizaEstoque;
   {FEstoque:= TEstoqueEntidade.Create;
   FEstoque.CodigoSafra:= dm.qrySafraCodigo.AsInteger;
   FEstoque.CodigoArmazem:= qryRegistroAtividadeColheitaIdArmazem.AsInteger;
@@ -1682,8 +1692,61 @@ begin
   end;}
 end;
 
-procedure TFrmRegistro_Atividade.TabSheet4Enter(Sender: TObject);
+procedure TFrmRegistro_Atividade.ValidaDadosAtualizaEstoque;
 begin
+  if (qryRegistroAtividadeColheitaIdArmazem.AsInteger = 0) or (qryRegistroAtividadeColheitaIdArmazem.Value = null) then
+  begin
+    Mensagens.MensagemErro('Campo Armazém é obrigatório.');
+    Abort;
+  end;
+
+  if (qryRegistroAtividadeColheitaIdProduto.AsInteger = 0) or (qryRegistroAtividadeColheitaIdProduto.Value = null) then
+  begin
+    Mensagens.MensagemErro('Campo Produto é obrigatório.');
+    Abort;
+  end;
+
+  if (qryRegistroAtividadeColheitaLiquidoSeco.AsFloat = 0) or (qryRegistroAtividadeColheitaLiquidoSeco.Value = null) then
+  begin
+    Mensagens.MensagemErro('Campo Liquido Seco é obrigatório.');
+    Abort;
+  end;
+
+end;
+
+procedure TFrmRegistro_Atividade.SetGridHeight(AGrid: TcxGrid; ARowsNumber: Integer);
+var
+  I: Integer;
+  AHeight: Integer;
+begin
+  if (AGrid = nil) or (AGrid.FocusedView = nil) then
+    Exit;
+  AHeight := 0;
+  with AGrid.FocusedView as TcxGridDBBandedTableView do
+  begin
+    with DataController.DataModeController do
+      GridModeBufferCount := Max(GridModeBufferCount, ARowsNumber);
+
+    ViewData.Collapse(True);
+
+    with ViewInfo do
+    begin
+
+      for I := 0 to ARowsNumber - 1 do
+      begin
+        Inc(AHeight, RecordsViewInfo.Items[I].DataHeight);
+        if I < ARowsNumber - 1 then
+          Inc(AHeight, GridLineWidth);
+      end;
+
+      if OptionsView.GroupByBox then
+        Inc(AHeight, GroupByBoxViewInfo.Height);
+
+      Inc(AHeight, HeaderViewInfo.Bounds.Bottom - HeaderViewInfo.Bounds.Top);
+    end;
+    Inc(AHeight, GetSystemMetrics(SM_CYHSCROLL));
+    AGrid.Height := AHeight;
+  end;
 end;
 
 {initialization

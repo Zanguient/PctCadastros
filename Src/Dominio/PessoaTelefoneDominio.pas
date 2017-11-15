@@ -34,7 +34,7 @@ begin
   try
     FComandoSQL:= TComandoSQLEntidade.Create;
     FComandoSQL.Conexao:= Conexao;
-    FComandoSQL.ComandoSQL:= 'select * from Cadastro_Pessoa_Telefone';
+    FComandoSQL.ComandoSQL:= 'select * from Cadastro_Pessoa_Telefone order by CodigoPessoa';
     FPessoaTelefoneDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FPessoaTelefoneDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally

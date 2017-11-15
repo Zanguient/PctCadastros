@@ -206,6 +206,7 @@ contains
   PatrimonioEntidade in '..\Src\Entidade\PatrimonioEntidade.pas',
   PatrimonioDominio in '..\Src\Dominio\PatrimonioDominio.pas',
   URel_Extrato_Bancario in '..\Src\Formularios\URel_Extrato_Bancario.pas' {FrmRel_Extrato_Bancario},
+  URel_Cadastros in '..\Src\Formularios\URel_Cadastros.pas' {FrmRel_Cadastros},
   URel_Clima in '..\Src\Formularios\URel_Clima.pas' {FrmRel_Clima};
 
 end.

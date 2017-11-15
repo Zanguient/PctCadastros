@@ -364,6 +364,9 @@
 			<DCCReference Include="..\Src\Formularios\URel_Extrato_Bancario.pas">
 				<Form>FrmRel_Extrato_Bancario</Form>
 			</DCCReference>
+			<DCCReference Include="..\Src\Formularios\URel_Cadastros.pas">
+				<Form>FrmRel_Cadastros</Form>
+			</DCCReference>
 			<DCCReference Include="..\Src\Formularios\URel_Clima.pas">
 				<Form>FrmRel_Clima</Form>
 			</DCCReference>

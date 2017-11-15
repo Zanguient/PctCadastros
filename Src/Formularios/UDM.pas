@@ -363,6 +363,7 @@ type
     qryperfil_usuarioMov_Patrimonio: TBooleanField;
     qryperfil_usuarioRel_Patrimonio: TBooleanField;
     qryperfil_usuarioRel_Extrato_Bancario: TBooleanField;
+    qryperfil_usuarioRel_Cadastros: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
   private
     Mensagens: TMensagens;

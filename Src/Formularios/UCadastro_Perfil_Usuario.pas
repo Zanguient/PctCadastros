@@ -159,6 +159,8 @@ type
     cxDBTreeList1Rel_Patrimonio: TcxDBTreeListColumn;
     qryConsultaRel_Extrato_Bancario: TBooleanField;
     cxDBTreeList1Rel_Extrato_Bancario: TcxDBTreeListColumn;
+    qryConsultaRel_Cadastros: TBooleanField;
+    cxDBTreeList1Rel_Cadastros: TcxDBTreeListColumn;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

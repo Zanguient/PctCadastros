@@ -14,6 +14,7 @@ uses
         function Salvar(var Retorno: AnsiString): integer;
         function Alterar(var Retorno: AnsiString): integer;
         function Excluir(var Retorno: AnsiString): integer;
+        function BuscarConsulta(var Query: TADOQuery; var Retorno: AnsiString): integer;
         function Buscar(var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
         function Buscar(TipoPessoa: AnsiString; var Query: TADOQuery; var Retorno: AnsiString): integer; overload;
         function BuscarTipoPessoa(TipoPessoa: TList<AnsiString>; var Query: TADOQuery; var Retorno: AnsiString): integer;
@@ -85,6 +86,26 @@ begin
                              ' where CPT.Tipo_Pessoa = :Tipo';
     FComandoSQL.Parametros.Add('Tipo');
     FComandoSQL.Valores.Add(TipoPessoa);
+    FPessoaDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
+    Result:= FPessoaDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
+  finally
+
+  end;
+end;
+
+function TPessoaDominio.BuscarConsulta(var Query: TADOQuery;
+  var Retorno: AnsiString): integer;
+var
+  FComandoSQL: TComandoSQLEntidade;
+begin
+  try
+    FComandoSQL:= TComandoSQLEntidade.Create;
+    FComandoSQL.Conexao:= Conexao;
+    FComandoSQL.ComandoSQL:= 'select CP.*, CPD.CNPJ, CPD.IE, CPD.CPF, CPD.RG, CPT.Tipo_Pessoa'+
+                            ' from Cadastro_Pessoa CP'+
+                            ' left join Cadastro_Pessoa_Documentos CPD on (CP.Codigo = CPD.CodigoPessoa)'+
+                            ' left join Cadastro_Pessoa_Tipo CPT on (CP.Codigo = CPT.Codigo_Pessoa)'+
+                            ' order by CP.Codigo';
     FPessoaDAO:= TExecutaComandosSQLDominio.Create(FComandoSQL);
     Result:= FPessoaDAO.ExecutaComandoSQLRetornaADOQuery(Query, Retorno);
   finally

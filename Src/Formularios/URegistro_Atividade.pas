@@ -525,6 +525,8 @@ type
       Sender: TObject);
     procedure cxGrid2DBBandedTableView1ProdutoPropertiesChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure cxGrid2DBBandedTableView1ProdutoPropertiesCloseUp(
+      Sender: TObject);
   private
     FPropriedade: TPropriedadeEntidade;
     FUsuario: TLoginEntidade;
@@ -771,7 +773,7 @@ begin
   IniDados.BuscaDadosProdutor(Conexao);
   IniDados.BuscaDadosDepositante(Conexao);
   IniDados.BuscaDadosSafra(Conexao);
-  IniDados.BuscaDadosOcorrencia(Conexao);
+  IniDados.BuscaDadosOcorrencia('SAFRA', Conexao);
   ColheitaCodigoArmazem:= 0;
   ColheitaCodigoProduto:= 0;
   ColheitaQuantidade:= 0;
@@ -1117,6 +1119,11 @@ begin
   qryRegistroAtividadeAtividadesProdutoProduto.AsString:= Produto;
   qryRegistroAtividadeAtividadesProdutoValor_Unitario.AsFloat:= Valor;
   qryRegistroAtividadeAtividadesProduto.Post; }
+end;
+
+procedure TFrmRegistro_Atividade.cxGrid2DBBandedTableView1ProdutoPropertiesCloseUp(
+  Sender: TObject);
+begin
   qryRegistroAtividadeAtividadesProdutoCodigo_Produto.AsString:= DM.qryProdutoCodigo.AsString;
   qryRegistroAtividadeAtividadesProdutoValor_Unitario.AsString:= dm.qryProdutoPreco_Compra.AsString;
 end;

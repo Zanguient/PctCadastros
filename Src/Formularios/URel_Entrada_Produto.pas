@@ -690,19 +690,19 @@ begin
     if (EPD.Buscar(FPropriedade.Codigo, qryEntrada, Retorno) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     if (EPD.BuscarNFNormal(FPropriedade.Codigo, qryNFNormal, Retorno) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     if (EPD.BuscarNFReferencia(FPropriedade.Codigo, qryReferencia, Retorno) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
   end
   else
@@ -711,19 +711,19 @@ begin
     if (EPD.Buscar(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryEntrada, Retorno) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     if (EPD.BuscarNFNormal(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryNFNormal, Retorno) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
 
     if (EPD.BuscarNFReferencia(FPropriedade.Codigo, dm.qrySafraCodigo.AsInteger, qryReferencia, Retorno) = 0) then
     begin
       Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-      Exit;
+      //Exit;
     end;
   end;
 
@@ -731,7 +731,7 @@ begin
   if (EPPD.Buscar(qryEntradaProdutos, Retorno) = 0) then
   begin
     Mensagens.MensagemWarning(MensagemFimPesquisa + ' '+Retorno);
-    Exit;
+    //Exit;
   end;
 
   cxPageControl1.Properties.TabIndex:= 0;

@@ -32,16 +32,12 @@ object FrmCadastro_Ocorrencia: TFrmCadastro_Ocorrencia
     Width = 472
     Height = 251
     Cursor = crHandPoint
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Cadastrar'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object LblCodigo: TLabel
         Left = 0
         Top = 13
@@ -122,6 +118,22 @@ object FrmCadastro_Ocorrencia: TFrmCadastro_Ocorrencia
         CharCase = ecUpperCase
         MaxLength = 50
         TabOrder = 2
+      end
+      object rgLocal: TcxRadioGroup
+        Left = 0
+        Top = 93
+        Caption = 'Local Aplica'#231#227'o'
+        Properties.Items = <
+          item
+            Caption = 'FUNCION'#193'RIO'
+          end
+          item
+            Caption = 'SAFRA'
+          end>
+        ItemIndex = 0
+        TabOrder = 3
+        Height = 59
+        Width = 111
       end
     end
     object TabSheet2: TTabSheet
@@ -321,6 +333,7 @@ object FrmCadastro_Ocorrencia: TFrmCadastro_Ocorrencia
     end
   end
   object qryConsulta: TADOQuery
+    Connection = DM.ADOConnection
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -336,6 +349,10 @@ object FrmCadastro_Ocorrencia: TFrmCadastro_Ocorrencia
     end
     object qryConsultaData_Cadastro: TDateTimeField
       FieldName = 'Data_Cadastro'
+    end
+    object qryConsultaLocal_Aplicacao: TStringField
+      FieldName = 'Local_Aplicacao'
+      Size = 30
     end
   end
   object dsConsulta: TDataSource

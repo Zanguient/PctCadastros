@@ -1037,9 +1037,6 @@
     object cxTabSheet1: TcxTabSheet
       Caption = 'Atividades da Safra'
       ImageIndex = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object cxPageControl3: TcxPageControl
         Left = 0
         Top = 0
@@ -1047,7 +1044,7 @@
         Height = 404
         Align = alClient
         TabOrder = 0
-        Properties.ActivePage = cxTabSheet8
+        Properties.ActivePage = cxTabSheet10
         Properties.CustomButtons.Buttons = <>
         Properties.Style = 6
         ClientRectBottom = 404
@@ -1056,9 +1053,6 @@
         object cxTabSheet7: TcxTabSheet
           Caption = 'Atividades'
           ImageIndex = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object cxGrid1: TcxGrid
             Left = 0
             Top = 0
@@ -1666,6 +1660,8 @@
                 end>
               DataController.Summary.SummaryGroups = <>
               OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
               OptionsView.Footer = True
               Bands = <
                 item
@@ -2236,6 +2232,8 @@
               DataController.Summary.FooterSummaryItems = <>
               DataController.Summary.SummaryGroups = <>
               OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
               OptionsView.Footer = True
               OptionsView.GroupByBox = False
               Bands = <
@@ -2366,6 +2364,8 @@
                 end>
               DataController.Summary.SummaryGroups = <>
               OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
               OptionsView.Footer = True
               OptionsView.GroupByBox = False
               Bands = <
@@ -2478,9 +2478,6 @@
         object cxTabSheet8: TcxTabSheet
           Caption = 'Plantio'
           ImageIndex = 1
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object cxGrid7: TcxGrid
             Left = 0
             Top = 0
@@ -3165,6 +3162,8 @@
                 end>
               DataController.Summary.SummaryGroups = <>
               OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
               OptionsView.Footer = True
               Bands = <
                 item
@@ -3703,6 +3702,8 @@
               DataController.Summary.FooterSummaryItems = <>
               DataController.Summary.SummaryGroups = <>
               OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
               OptionsView.Footer = True
               Bands = <
                 item
@@ -3785,9 +3786,6 @@
         object cxTabSheet9: TcxTabSheet
           Caption = 'Colheita'
           ImageIndex = 2
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object cxGrid8: TcxGrid
             Left = 0
             Top = 0
@@ -4631,6 +4629,8 @@
                 end>
               DataController.Summary.SummaryGroups = <>
               OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
               OptionsView.Footer = True
               Bands = <
                 item
@@ -5088,9 +5088,6 @@
         object cxTabSheet10: TcxTabSheet
           Caption = 'Manuten'#231#227'o'
           ImageIndex = 3
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object cxGrid9: TcxGrid
             Left = 0
             Top = 0
@@ -6101,6 +6098,8 @@
                 end>
               DataController.Summary.SummaryGroups = <>
               OptionsCustomize.ColumnsQuickCustomization = True
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
               OptionsView.Footer = True
               Bands = <
                 item
@@ -6400,7 +6399,7 @@
         Height = 404
         Align = alClient
         TabOrder = 0
-        Properties.ActivePage = cxTabSheet3
+        Properties.ActivePage = cxTabSheet6
         Properties.CustomButtons.Buttons = <>
         Properties.Style = 6
         ClientRectBottom = 404
@@ -7851,6 +7850,8 @@
                   Column = cxGridDBBandedColumn226
                 end>
               DataController.Summary.SummaryGroups = <>
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
               OptionsView.Footer = True
               Bands = <
                 item
@@ -9439,6 +9440,8 @@
                   Column = cxGridDBBandedTableView7AreaTotal
                 end>
               DataController.Summary.SummaryGroups = <>
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
               OptionsView.Footer = True
               Bands = <
                 item
@@ -11039,6 +11042,8 @@
                   Column = cxGridDBBandedTableView22TotalColhidoT
                 end>
               DataController.Summary.SummaryGroups = <>
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
               OptionsView.Footer = True
               Bands = <
                 item
@@ -12635,6 +12640,8 @@
                   FieldName = 'Total'
                 end>
               DataController.Summary.SummaryGroups = <>
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
               OptionsView.GroupByBox = False
               Bands = <
                 item
@@ -14239,6 +14246,8 @@
                   FieldName = 'Total'
                 end>
               DataController.Summary.SummaryGroups = <>
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
               OptionsView.GroupByBox = False
               Bands = <
                 item
@@ -15839,6 +15848,8 @@
                   FieldName = 'Total'
                 end>
               DataController.Summary.SummaryGroups = <>
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
               OptionsView.GroupByBox = False
               Bands = <
                 item
@@ -17431,6 +17442,8 @@
                   FieldName = 'Total'
                 end>
               DataController.Summary.SummaryGroups = <>
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
               OptionsView.GroupByBox = False
               Bands = <
                 item
@@ -18149,7 +18162,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43053.943529201390000000
+      ReportDocument.CreationDate = 43060.727608032410000000
       ReportDocument.IsCaptionAssigned = True
       Items = <
         item
@@ -18187,7 +18200,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43053.943529120370000000
+      ReportDocument.CreationDate = 43060.727607870370000000
       AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
@@ -18208,7 +18221,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43053.943529143520000000
+      ReportDocument.CreationDate = 43060.727607916670000000
       AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
@@ -18229,7 +18242,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43053.943529178240000000
+      ReportDocument.CreationDate = 43060.727607986110000000
       AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
@@ -18250,7 +18263,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43053.943529189810000000
+      ReportDocument.CreationDate = 43060.727608020830000000
       AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
@@ -18455,7 +18468,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43053.943529317130000000
+      ReportDocument.CreationDate = 43060.727608229160000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {}
@@ -18477,7 +18490,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43053.943529375000000000
+      ReportDocument.CreationDate = 43060.727608275460000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {}
@@ -18499,7 +18512,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43053.943529421300000000
+      ReportDocument.CreationDate = 43060.727608310180000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {}
@@ -18521,7 +18534,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43053.943529629630000000
+      ReportDocument.CreationDate = 43060.727608425930000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {}

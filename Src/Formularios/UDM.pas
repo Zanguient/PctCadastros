@@ -338,7 +338,6 @@ type
     qryperfil_usuarioMov_Entrada_Produto: TBooleanField;
     qryperfil_usuarioMov_Manutencao_Maquina: TBooleanField;
     qryperfil_usuarioRel_Lancamento_Financeiro: TBooleanField;
-    qryperfil_usuarioRel_Movimentacao_Safra: TBooleanField;
     qryperfil_usuarioRel_Dados_Clima: TBooleanField;
     qryperfil_usuarioRel_Visao_Geral_Safra: TBooleanField;
     qryperfil_usuarioRel_Estoque_Grao: TBooleanField;
@@ -364,6 +363,14 @@ type
     qryperfil_usuarioRel_Patrimonio: TBooleanField;
     qryperfil_usuarioRel_Extrato_Bancario: TBooleanField;
     qryperfil_usuarioRel_Cadastros: TBooleanField;
+    qryCargo: TADOQuery;
+    dsCargo: TDataSource;
+    qryCargoCodigo: TIntegerField;
+    qryCargoCodigo_Propriedade: TIntegerField;
+    qryCargoCodigo_Usuario: TIntegerField;
+    qryCargoDescricao: TStringField;
+    qryCargoData_Cadastro: TDateTimeField;
+    qryperfil_usuarioCadastro_Cargo: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
   private
     Mensagens: TMensagens;

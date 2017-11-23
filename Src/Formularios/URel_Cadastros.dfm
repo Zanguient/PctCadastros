@@ -2534,6 +2534,7 @@ object FrmRel_Cadastros: TFrmRel_Cadastros
     Left = 456
     Top = 16
     object dxComponentPrinter1Link1: TdxGridReportLink
+      Component = cxGrid1
       DateFormat = 1
       PDFExportOptions.Author = 'ProCampo'
       PDFExportOptions.Creator = 'ProCampo'

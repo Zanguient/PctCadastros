@@ -445,6 +445,18 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
           Summary.FooterSummaryItems = <>
           Summary.GroupFooterSummaryItems = <>
         end
+        object cxDBTreeList1Cadastro_Cargo: TcxDBTreeListColumn
+          PropertiesClassName = 'TcxCheckBoxProperties'
+          Properties.ImmediatePost = True
+          Properties.NullStyle = nssUnchecked
+          Caption.Text = 'Cadastro Cargo'
+          DataBinding.FieldName = 'Cadastro_Cargo'
+          Position.ColIndex = 28
+          Position.RowIndex = 0
+          Position.BandIndex = 0
+          Summary.FooterSummaryItems = <>
+          Summary.GroupFooterSummaryItems = <>
+        end
         object cxDBTreeList1Mov_Movimentacao_Safra: TcxDBTreeListColumn
           PropertiesClassName = 'TcxCheckBoxProperties'
           Properties.ImmediatePost = True
@@ -452,7 +464,7 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
           Caption.Text = 'Mov. Movimenta'#231#227'o Safra'
           DataBinding.FieldName = 'Mov_Movimentacao_Safra'
           Width = 135
-          Position.ColIndex = 28
+          Position.ColIndex = 29
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -465,7 +477,7 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
           Caption.Text = 'Mov. Contrato'
           DataBinding.FieldName = 'Mov_Contrato'
           Width = 78
-          Position.ColIndex = 29
+          Position.ColIndex = 30
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -478,7 +490,7 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
           Caption.Text = 'Mov. Dados Clima'
           DataBinding.FieldName = 'Mov_Dados_Clima'
           Width = 95
-          Position.ColIndex = 30
+          Position.ColIndex = 31
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -491,7 +503,7 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
           Caption.Text = 'Mov. Patrim'#244'nio'
           DataBinding.FieldName = 'Mov_Patrimonio'
           Width = 85
-          Position.ColIndex = 31
+          Position.ColIndex = 32
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -504,7 +516,7 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
           Caption.Text = 'Mov. Contrato Venda'
           DataBinding.FieldName = 'Mov_Contrato_Venda'
           Width = 111
-          Position.ColIndex = 32
+          Position.ColIndex = 33
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -517,7 +529,7 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
           Caption.Text = 'Mov. Lan'#231'amento Financeiro'
           DataBinding.FieldName = 'Mov_Lancamento_Financeiro'
           Width = 143
-          Position.ColIndex = 33
+          Position.ColIndex = 34
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -530,7 +542,7 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
           Caption.Text = 'Mov. Folha Pagamento'
           DataBinding.FieldName = 'Mov_Folha_Pagamento'
           Width = 118
-          Position.ColIndex = 34
+          Position.ColIndex = 35
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -543,7 +555,7 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
           Caption.Text = 'Mov. Baixar Contas'
           DataBinding.FieldName = 'Mov_Baixar_Contas'
           Width = 100
-          Position.ColIndex = 35
+          Position.ColIndex = 36
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -556,7 +568,7 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
           Caption.Text = 'Mov. Lan'#231'amento Banc'#225'rio'
           DataBinding.FieldName = 'Mov_Lancamento_Bancario'
           Width = 138
-          Position.ColIndex = 36
+          Position.ColIndex = 37
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -569,7 +581,7 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
           Caption.Text = 'Mov. Concilia'#231#227'o Banc'#225'ria'
           DataBinding.FieldName = 'Mov_Conciliacao_Bancaria'
           Width = 134
-          Position.ColIndex = 37
+          Position.ColIndex = 38
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -582,7 +594,7 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
           Caption.Text = 'Mov. Entrada Produto'
           DataBinding.FieldName = 'Mov_Entrada_Produto'
           Width = 114
-          Position.ColIndex = 38
+          Position.ColIndex = 39
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -595,7 +607,7 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
           Caption.Text = 'Mov. Manuten'#231#227'o M'#225'quina'
           DataBinding.FieldName = 'Mov_Manutencao_Maquina'
           Width = 136
-          Position.ColIndex = 39
+          Position.ColIndex = 40
           Position.RowIndex = 0
           Position.BandIndex = 0
           Summary.FooterSummaryItems = <>
@@ -608,19 +620,6 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
           Caption.Text = 'Rel. Lan'#231'amento Financeiro'
           DataBinding.FieldName = 'Rel_Lancamento_Financeiro'
           Width = 139
-          Position.ColIndex = 40
-          Position.RowIndex = 0
-          Position.BandIndex = 0
-          Summary.FooterSummaryItems = <>
-          Summary.GroupFooterSummaryItems = <>
-        end
-        object cxDBTreeList1Rel_Movimentacao_Safra: TcxDBTreeListColumn
-          PropertiesClassName = 'TcxCheckBoxProperties'
-          Properties.ImmediatePost = True
-          Properties.NullStyle = nssUnchecked
-          Caption.Text = 'Rel. Movimenta'#231#227'o Safra'
-          DataBinding.FieldName = 'Rel_Movimentacao_Safra'
-          Width = 128
           Position.ColIndex = 41
           Position.RowIndex = 0
           Position.BandIndex = 0
@@ -879,6 +878,7 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
     end
   end
   object qryConsulta: TADOQuery
+    Connection = DM.ADOConnection
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -997,9 +997,6 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
     object qryConsultaRel_Lancamento_Financeiro: TBooleanField
       FieldName = 'Rel_Lancamento_Financeiro'
     end
-    object qryConsultaRel_Movimentacao_Safra: TBooleanField
-      FieldName = 'Rel_Movimentacao_Safra'
-    end
     object qryConsultaRel_Dados_Clima: TBooleanField
       FieldName = 'Rel_Dados_Clima'
     end
@@ -1050,6 +1047,9 @@ object FrmCadastro_Perfil_Usuario: TFrmCadastro_Perfil_Usuario
     end
     object qryConsultaRel_Cadastros: TBooleanField
       FieldName = 'Rel_Cadastros'
+    end
+    object qryConsultaCadastro_Cargo: TBooleanField
+      FieldName = 'Cadastro_Cargo'
     end
   end
   object dsConsulta: TDataSource

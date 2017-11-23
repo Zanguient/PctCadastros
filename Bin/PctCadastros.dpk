@@ -199,7 +199,7 @@ contains
   PerfilUsuarioEntidade in '..\Src\Entidade\PerfilUsuarioEntidade.pas',
   PerfilUsuarioDominio in '..\Src\Dominio\PerfilUsuarioDominio.pas',
   UCadastro_Tipo_Bem_Patrimonial in '..\Src\Formularios\UCadastro_Tipo_Bem_Patrimonial.pas' {FrmCadastro_Tipo_Bem_Patrimonial},
-  UCadastro_Atividade in '..\Src\Formularios\UCadastro_Atividade.pas' {FrmCadastro_Atividade},
+  UCadastro_Cargo in '..\Src\Formularios\UCadastro_Cargo.pas' {FrmCadastro_Cargo},
   TipoBemPatrimonialEntidade in '..\Src\Entidade\TipoBemPatrimonialEntidade.pas',
   TipoBemPatrimonialDominio in '..\Src\Dominio\TipoBemPatrimonialDominio.pas',
   UCadastro_Veiculo in '..\Src\Formularios\UCadastro_Veiculo.pas' {FrmCadastro_Veiculo},
@@ -207,6 +207,15 @@ contains
   PatrimonioDominio in '..\Src\Dominio\PatrimonioDominio.pas',
   URel_Extrato_Bancario in '..\Src\Formularios\URel_Extrato_Bancario.pas' {FrmRel_Extrato_Bancario},
   URel_Cadastros in '..\Src\Formularios\URel_Cadastros.pas' {FrmRel_Cadastros},
-  URel_Clima in '..\Src\Formularios\URel_Clima.pas' {FrmRel_Clima};
+  URel_Clima in '..\Src\Formularios\URel_Clima.pas' {FrmRel_Clima},
+  PessoaFuncionarioDocumentoEntidade in '..\Src\Entidade\PessoaFuncionarioDocumentoEntidade.pas',
+  PessoaFuncionarioOcorrenciaEntidade in '..\Src\Entidade\PessoaFuncionarioOcorrenciaEntidade.pas',
+  PessoaFuncionarioFeriasEntidade in '..\Src\Entidade\PessoaFuncionarioFeriasEntidade.pas',
+  PessoaFuncionarioDocumentoDominio in '..\Src\Dominio\PessoaFuncionarioDocumentoDominio.pas',
+  PessoaFuncionarioOcorrenciaDominio in '..\Src\Dominio\PessoaFuncionarioOcorrenciaDominio.pas',
+  PessoaFuncionarioFeriasDominio in '..\Src\Dominio\PessoaFuncionarioFeriasDominio.pas',
+  UCadastro_Atividade in '..\Src\Formularios\UCadastro_Atividade.pas' {FrmCadastro_Atividade},
+  CargoEntidade in '..\Src\Entidade\CargoEntidade.pas',
+  CargoDominio in '..\Src\Dominio\CargoDominio.pas';
 
 end.

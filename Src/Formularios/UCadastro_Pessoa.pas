@@ -32,7 +32,13 @@ uses
   PessoaDocumentosEntidade, PessoaDocumentosDominio, PessoaTelefoneDominio,
   cxCheckGroup, PessoaTipoEntidade, PessoaTipoDominio, PropriedadeEntidade,
   LoginEntidade, HistoricoEntidade, HistoricoDominio, cxNavigator,
-  dxSkinsdxRibbonPainter;
+  dxSkinsdxRibbonPainter, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
+  cxDBLookupComboBox, PessoaFuncionarioFeriasDominio,
+  PessoaFuncionarioOcorrenciaDominio, PessoaFuncionarioDocumentoEntidade,
+  PessoaFuncionarioDocumentoDominio, IniciaDadosCadastros,
+  PessoaFuncionarioOcorrenciaEntidade, PessoaFuncionarioFeriasEntidade, dxCore,
+  cxDateUtils, cxCalendar, cxLookupEdit, cxDBLookupEdit;
 
 type
   TFrmCadastro_Pessoa = class(TForm)
@@ -117,6 +123,115 @@ type
     qryPessoaTipoCodigo: TAutoIncField;
     qryPessoaTipoCodigo_Pessoa: TIntegerField;
     qryPessoaTipoTipo_Pessoa: TStringField;
+    TabSheet4: TTabSheet;
+    GroupBox1: TGroupBox;
+    Label7: TLabel;
+    EdtCTPS_Numero: TEdit;
+    EdtCTPS_Serie: TEdit;
+    Label8: TLabel;
+    GroupBox2: TGroupBox;
+    Label9: TLabel;
+    Label10: TLabel;
+    EdtTE_Numero: TEdit;
+    EdtTE_Cidade: TEdit;
+    Label11: TLabel;
+    EdtTE_Zona: TEdit;
+    EdtTE_Secao: TEdit;
+    Label12: TLabel;
+    GroupBox3: TGroupBox;
+    Label13: TLabel;
+    Label14: TLabel;
+    EdtCM_Numero: TEdit;
+    EdtCM_Serie: TEdit;
+    Label15: TLabel;
+    EdtCM_Categoria: TEdit;
+    GroupBox4: TGroupBox;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    EdtCNH_Numero: TEdit;
+    EdtCNH_Categoria: TEdit;
+    EdtCNH_Cidade: TEdit;
+    GroupBox5: TGroupBox;
+    Label19: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    EdtPIS_Numero: TEdit;
+    EdtPIS_Banco: TEdit;
+    EdtPIS_Emissao: TMaskEdit;
+    EdtPIS_Agencia: TEdit;
+    Label22: TLabel;
+    TabSheet5: TTabSheet;
+    cxGrid3: TcxGrid;
+    cxGridDBTableView2: TcxGridDBTableView;
+    cxGridLevel2: TcxGridLevel;
+    TabSheet6: TTabSheet;
+    cxGrid4: TcxGrid;
+    cxGridDBTableView3: TcxGridDBTableView;
+    cxGridLevel3: TcxGridLevel;
+    qryPessoaFuncionarioOcorrencia: TADOQuery;
+    dsPessoaFuncionarioOcorrencia: TDataSource;
+    qryPessoaFuncionarioOcorrenciaCodigo: TAutoIncField;
+    qryPessoaFuncionarioOcorrenciaCodigo_Pessoa: TIntegerField;
+    qryPessoaFuncionarioOcorrenciaCodigo_Ocorrencia: TIntegerField;
+    qryPessoaFuncionarioOcorrenciaData_Ocorrencia: TDateTimeField;
+    qryPessoaFuncionarioOcorrenciaData_Cadastro: TDateTimeField;
+    qryPessoaFuncionarioOcorrenciaObservacao: TStringField;
+    qryPessoaFuncionarioFerias: TADOQuery;
+    dsPessoaFuncionarioFerias: TDataSource;
+    qryPessoaFuncionarioFeriasCodigo: TAutoIncField;
+    qryPessoaFuncionarioFeriasCodigo_Pessoa: TIntegerField;
+    qryPessoaFuncionarioFeriasFerias_De: TWideStringField;
+    qryPessoaFuncionarioFeriasFerias_Ate: TWideStringField;
+    qryPessoaFuncionarioFeriasReferente_De: TWideStringField;
+    qryPessoaFuncionarioFeriasReferente_Ate: TWideStringField;
+    qryPessoaFuncionarioFeriasObservacao: TStringField;
+    cxGridDBTableView2Codigo: TcxGridDBColumn;
+    cxGridDBTableView2Codigo_Pessoa: TcxGridDBColumn;
+    cxGridDBTableView2Codigo_Ocorrencia: TcxGridDBColumn;
+    cxGridDBTableView2Data_Ocorrencia: TcxGridDBColumn;
+    cxGridDBTableView2Data_Cadastro: TcxGridDBColumn;
+    cxGridDBTableView2Observacao: TcxGridDBColumn;
+    cxGridDBTableView3Codigo: TcxGridDBColumn;
+    cxGridDBTableView3Codigo_Pessoa: TcxGridDBColumn;
+    cxGridDBTableView3Ferias_De: TcxGridDBColumn;
+    cxGridDBTableView3Ferias_Ate: TcxGridDBColumn;
+    cxGridDBTableView3Referente_De: TcxGridDBColumn;
+    cxGridDBTableView3Referente_Ate: TcxGridDBColumn;
+    cxGridDBTableView3Observacao: TcxGridDBColumn;
+    qryPessoaFuncionarioDocumento: TADOQuery;
+    dsPessoaFuncionarioDocumento: TDataSource;
+    qryPessoaFuncionarioDocumentoCodigo: TAutoIncField;
+    qryPessoaFuncionarioDocumentoCodigo_Pessoa: TIntegerField;
+    qryPessoaFuncionarioDocumentoCTPS_Numero: TStringField;
+    qryPessoaFuncionarioDocumentoCTPS_Serie: TStringField;
+    qryPessoaFuncionarioDocumentoTitulo_Numero: TStringField;
+    qryPessoaFuncionarioDocumentoTitulo_Cidade: TStringField;
+    qryPessoaFuncionarioDocumentoTitulo_Zona: TStringField;
+    qryPessoaFuncionarioDocumentoTitulo_Secao: TStringField;
+    qryPessoaFuncionarioDocumentoCertificado_Militar_Numero: TStringField;
+    qryPessoaFuncionarioDocumentoCertificado_Militar_Serie: TStringField;
+    qryPessoaFuncionarioDocumentoCertificado_Militar_Categoria: TStringField;
+    qryPessoaFuncionarioDocumentoCNH_Numero: TStringField;
+    qryPessoaFuncionarioDocumentoCNH_Categoria: TStringField;
+    qryPessoaFuncionarioDocumentoCNH_Cidade: TStringField;
+    qryPessoaFuncionarioDocumentoPIS_Numero: TStringField;
+    qryPessoaFuncionarioDocumentoPIS_Emissao: TStringField;
+    qryPessoaFuncionarioDocumentoPIS_Banco: TStringField;
+    qryPessoaFuncionarioDocumentoPIS_Agencia: TStringField;
+    GroupBox6: TGroupBox;
+    Label23: TLabel;
+    dateAdmissao: TcxDateEdit;
+    Label24: TLabel;
+    dateDemissao: TcxDateEdit;
+    cmbCargo: TcxLookupComboBox;
+    Label25: TLabel;
+    Label26: TLabel;
+    dateNascimento: TcxDateEdit;
+    qryPessoaFuncionarioDocumentoCodigo_Cargo: TIntegerField;
+    qryPessoaFuncionarioDocumentoData_Nascimento: TDateTimeField;
+    qryPessoaFuncionarioDocumentoData_Admissao: TDateTimeField;
+    qryPessoaFuncionarioDocumentoData_Demissao: TDateTimeField;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -137,6 +252,11 @@ type
     procedure cxGridDBTableView1NavigatorButtonsButtonClick(Sender: TObject;
       AButtonIndex: Integer; var ADone: Boolean);
     procedure cmbTipoPessoaPropertiesChange(Sender: TObject);
+    procedure cgTipoPessoaPropertiesEditValueChanged(Sender: TObject);
+    procedure cxGridDBTableView2NavigatorButtonsButtonClick(Sender: TObject;
+      AButtonIndex: Integer; var ADone: Boolean);
+    procedure cxGridDBTableView3NavigatorButtonsButtonClick(Sender: TObject;
+      AButtonIndex: Integer; var ADone: Boolean);
   private
     FPropriedade: TPropriedadeEntidade;
     FUsuario: TLoginEntidade;
@@ -150,16 +270,25 @@ type
     FPessoa: TPessoaEntidade;
     FPessoaTipoEntidade: TPessoaTipoEntidade;
     FPessoaDocumentos: TPessoaDocumentosEntidade;
+    FPessoaFuncionarioDocumento: TPessoaFuncionarioDocumentoEntidade;
+    FPessoaFuncionarioOcorrencia: TPessoaFuncionarioOcorrenciaEntidade;
+    FPessoaFuncionarioFerias: TPessoaFuncionarioFeriasEntidade;
     FPessoaDominio: TPessoaDominio;
     FPessoaDocumentosDominio: TPessoaDocumentosDominio;
     FPessoaTipoDominio: TPessoaTipoDominio;
     FPessoaTelefoneDominio: TPessoaTelefoneDominio;
+    FPessoaFuncionarioDocumentoDominio: TPessoaFuncionarioDocumentoDominio;
+    FPessoaFuncionarioOcorrenciaDominio: TPessoaFuncionarioOcorrenciaDominio;
+    FPessoaFuncionarioFeriasDominio: TPessoaFuncionarioFeriasDominio;
     FComandoSQL: TComandoSQLEntidade;
     Conexao: TADOConnection;
+    IniDados: IniciaDadosCadastro;
 
     function Confira: boolean;
     procedure BuscaDados;
     procedure BuscaDadosTelefone;
+    procedure BuscaDadosFuncionarioOcorrencia;
+    procedure BuscaDadosFuncionarioFerias;
     procedure OcultaExibeGB;
     procedure IniciaTela;
   public
@@ -197,18 +326,13 @@ begin
   if (Mensagens.MensagemConfirmacao(MensagemConfirmaExclusao)) then
   begin
     FPessoaDominio:= TPessoaDominio.Create(Conexao, FPessoa);
-    if (FPessoaDominio.Excluir(Retorno) = 0) then
-    begin
-      TOperacoesConexao.CancelaConexao(Conexao);
-      IniciaTela;
-      Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
-      Exit;
-    end;
-
     FPessoaDocumentosDominio:= TPessoaDocumentosDominio.Create(Conexao, FPessoaDocumentos);
     FPessoaTipoDominio:= TPessoaTipoDominio.Create(Conexao);
+    FPessoaFuncionarioDocumentoDominio:= TPessoaFuncionarioDocumentoDominio.Create(Conexao, FPessoaFuncionarioDocumento);
+    FPessoaFuncionarioOcorrenciaDominio:= TPessoaFuncionarioOcorrenciaDominio.Create(Conexao, FPessoaFuncionarioOcorrencia);
+    FPessoaFuncionarioFeriasDominio:= TPessoaFuncionarioFeriasDominio.Create(Conexao, FPessoaFuncionarioFerias);
 
-    if (FPessoaDocumentosDominio.Excluir(Retorno)=0) then
+    if (FPessoaDominio.Excluir(Retorno) = 0) and (Retorno <> '') then
     begin
       TOperacoesConexao.CancelaConexao(Conexao);
       IniciaTela;
@@ -216,7 +340,39 @@ begin
       Exit;
     end;
 
-    if (FPessoaTipoDominio.Excluir(StrToInt(EdtCodigo.Text), Retorno)=0) then
+    if (FPessoaDocumentosDominio.Excluir(Retorno)=0) and (Retorno <> '') then
+    begin
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+      Exit;
+    end;
+
+    if (FPessoaTipoDominio.Excluir(StrToInt(EdtCodigo.Text), Retorno)=0) and (Retorno <> '') then
+    begin
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+      Exit;
+    end;
+
+    if (FPessoaFuncionarioDocumentoDominio.Excluir(Retorno)=0) and (Retorno <> '') then
+    begin
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+      Exit;
+    end;
+
+    if (FPessoaFuncionarioOcorrenciaDominio.Excluir(Retorno)=0) and (Retorno <> '') then
+    begin
+      TOperacoesConexao.CancelaConexao(Conexao);
+      IniciaTela;
+      Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+      Exit;
+    end;
+
+    if (FPessoaFuncionarioFeriasDominio.Excluir(Retorno)=0) and (Retorno <> '') then
     begin
       TOperacoesConexao.CancelaConexao(Conexao);
       IniciaTela;
@@ -256,6 +412,7 @@ begin
   Op.HabilitaCampos(FrmCadastro_Pessoa);
   Op.LimpaCampos(FrmCadastro_Pessoa);
   PageControl1.TabIndex:= 0;
+  PageControl2.TabIndex:= 0;
   BBtnSalvar.Enabled:= true;
   BBtnCancelar.Enabled:= true;
   BBtnNovo.Enabled:= false;
@@ -265,10 +422,23 @@ begin
   TOperacoesConexao.IniciaQuerys([qryConsulta,
                                   qrypessoaTelefone,
                                   qryPessoaDocumentos,
-                                  qryPessoaTipo], Conexao);
+                                  qryPessoaTipo,
+                                  qryPessoaFuncionarioOcorrencia,
+                                  qryPessoaFuncionarioFerias,
+                                  qryPessoaFuncionarioDocumento,
+                                  dm.qryocorrencia,
+                                  dm.qryCargo], Conexao);
   EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Pessoa', Conexao));
   BuscaDados;
   BuscaDadosTelefone;
+  BuscaDadosFuncionarioOcorrencia;
+  BuscaDadosFuncionarioFerias;
+  TabSheet4.TabVisible:= false;
+  TabSheet5.TabVisible:= false;
+  TabSheet6.TabVisible:= false;
+  IniDados:= IniciaDadosCadastro.Create;
+  IniDados.BuscaDadosOcorrencia('FUNCIONÁRIO', Conexao);
+  IniDados.BuscaDadosCargo(Conexao);
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
   EdtNome.SetFocus;
 end;
@@ -311,6 +481,51 @@ begin
     FPessoaDocumentos.CPF:= MEdtCPF.Text;
     FPessoaDocumentos.RG:= EdtRG.Text;
 
+    //if (cgTipoPessoa.States[8] = cbsChecked) then
+    //begin
+    FPessoaFuncionarioDocumento:= TPessoaFuncionarioDocumentoEntidade.Create;
+    FPessoaFuncionarioDocumento.Codigo_Pessoa:= StrToInt(EdtCodigo.Text);
+    FPessoaFuncionarioDocumento.CTPS_Numero:= EdtCTPS_Numero.Text;
+    FPessoaFuncionarioDocumento.CTPS_Serie:= EdtCTPS_Serie.Text;
+    FPessoaFuncionarioDocumento.Titulo_Numero:= EdtTE_Numero.Text;
+    FPessoaFuncionarioDocumento.Titulo_Cidade:= EdtTE_Cidade.Text;
+    FPessoaFuncionarioDocumento.Titulo_Zona:= EdtTE_Zona.Text;
+    FPessoaFuncionarioDocumento.Titulo_Secao:= EdtTE_Secao.Text;
+    FPessoaFuncionarioDocumento.Certificado_Militar_Numero:= EdtCM_Numero.Text;
+    FPessoaFuncionarioDocumento.Certificado_Militar_Serie:= EdtCM_Serie.Text;
+    FPessoaFuncionarioDocumento.Certificado_Militar_Categoria:= EdtCM_Categoria.Text;
+    FPessoaFuncionarioDocumento.CNH_Numero:= EdtCNH_Numero.Text;
+    FPessoaFuncionarioDocumento.CNH_Categoria:= EdtCNH_Categoria.Text;
+    FPessoaFuncionarioDocumento.CNH_Cidade:= EdtCNH_Cidade.Text;
+    FPessoaFuncionarioDocumento.PIS_Numero:= EdtPIS_Numero.Text;
+    FPessoaFuncionarioDocumento.PIS_Emissao:= EdtPIS_Emissao.Text;
+    FPessoaFuncionarioDocumento.PIS_Banco:= EdtPIS_Banco.Text;
+    FPessoaFuncionarioDocumento.PIS_Agencia:= EdtPIS_Agencia.Text;
+
+    if (cmbCargo.Text <> '') then
+      FPessoaFuncionarioDocumento.Codigo_Cargo:= dm.qryCargoCodigo.AsInteger
+    else
+      FPessoaFuncionarioDocumento.Codigo_Cargo:= 0;
+
+    if (dateNascimento.Text <> '') then
+      FPessoaFuncionarioDocumento.Data_Nascimento:= dateNascimento.Date
+    else
+      FPessoaFuncionarioDocumento.Data_Nascimento:= 0;
+
+    if (dateAdmissao.Text <> '') then
+      FPessoaFuncionarioDocumento.Data_Admissao:= dateAdmissao.Date
+    else
+      FPessoaFuncionarioDocumento.Data_Admissao:= 0;
+
+    if (dateDemissao.Text <> '') then
+      FPessoaFuncionarioDocumento.Data_Demissao:= dateDemissao.Date
+    else
+      FPessoaFuncionarioDocumento.Data_Demissao:= 0;
+
+
+    FPessoaFuncionarioDocumentoDominio:= TPessoaFuncionarioDocumentoDominio.Create(Conexao, FPessoaFuncionarioDocumento);
+    //end;
+
     FPessoaDominio:= TPessoaDominio.Create(Conexao, FPessoa);
     FPessoaDocumentosDominio:= TPessoaDocumentosDominio.Create(Conexao, FPessoaDocumentos);
     FPessoaTipoDominio:= TPessoaTipoDominio.Create(Conexao);
@@ -336,6 +551,17 @@ begin
         Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
         Exit;
       end;
+
+      //if (cgTipoPessoa.States[8] = cbsChecked) then
+      //begin
+        if (FPessoaFuncionarioDocumentoDominio.Salvar(Retorno)=0) then
+        begin
+          TOperacoesConexao.CancelaConexao(Conexao);
+          IniciaTela;
+          Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+          Exit;
+        end;
+      //end;
 
       HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
       EdtCodigo.Text +' - '+EdtNome.Text, date, TimeToStr(time), 'Inserção');
@@ -368,6 +594,17 @@ begin
         IniciaTela;
         Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
         Exit;
+      end;
+
+      if (cgTipoPessoa.States[8] = cbsChecked) then
+      begin
+        if (FPessoaFuncionarioDocumentoDominio.Alterar(Retorno)=0) then
+        begin
+          TOperacoesConexao.CancelaConexao(Conexao);
+          IniciaTela;
+          Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
+          Exit;
+        end;
       end;
 
       HistoricoEntidade:= THistoricoEntidade.Create(FPropriedade.Codigo, FUsuario.Codigo, Self.Name,
@@ -410,6 +647,30 @@ begin
   end;
 end;
 
+procedure TFrmCadastro_Pessoa.BuscaDadosFuncionarioFerias;
+var
+  Retorno: AnsiString;
+begin
+  FPessoaFuncionarioFeriasDominio:= TPessoaFuncionarioFeriasDominio.Create(Conexao);
+  if (FPessoaFuncionarioFeriasDominio.Buscar(StrToInt(EdtCodigo.Text), qryPessoaFuncionarioFerias, Retorno) = 0) and (Retorno <> '') then
+  begin
+    Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+    Exit;
+  end;
+end;
+
+procedure TFrmCadastro_Pessoa.BuscaDadosFuncionarioOcorrencia;
+var
+  Retorno: AnsiString;
+begin
+  FPessoaFuncionarioOcorrenciaDominio:= TPessoaFuncionarioOcorrenciaDominio.Create(Conexao);
+  if (FPessoaFuncionarioOcorrenciaDominio.Buscar(StrToInt(EdtCodigo.Text), qryPessoaFuncionarioOcorrencia, Retorno) = 0) and (Retorno <> '') then
+  begin
+    Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+    Exit;
+  end;
+end;
+
 procedure TFrmCadastro_Pessoa.BuscaDadosTelefone;
 var
   Retorno: AnsiString;
@@ -419,6 +680,23 @@ begin
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
     Exit;
+  end;
+end;
+
+procedure TFrmCadastro_Pessoa.cgTipoPessoaPropertiesEditValueChanged(
+  Sender: TObject);
+begin
+  if (cgTipoPessoa.States[8] = cbsChecked) then
+  begin
+    TabSheet4.TabVisible:= true;
+    TabSheet5.TabVisible:= True;
+    TabSheet6.TabVisible:= true;
+  end
+  else
+  begin
+    TabSheet4.TabVisible:= false;
+    TabSheet5.TabVisible:= false;
+    TabSheet6.TabVisible:= false;
   end;
 end;
 
@@ -475,6 +753,7 @@ begin
   //Busca os documentos na tabela de documentos
   FPessoaDocumentosDominio := TPessoaDocumentosDominio.Create(Conexao);
   FPessoaDocumentosDominio.Buscar(qryConsultaCodigo.AsInteger, qryPessoaDocumentos, Retorno);
+
   FPessoaTipoDominio := TPessoaTipoDominio.Create(Conexao);
   FPessoaTipoDominio.Buscar(qryConsultaCodigo.AsInteger, qryPessoaTipo, Retorno);
 
@@ -515,15 +794,65 @@ begin
   EdtIE.Text:= qryPessoaDocumentosIE.AsString;
   MEdtCPF.Text:= qryPessoaDocumentosCPF.AsString;
   EdtRG.Text:= qryPessoaDocumentosRG.AsString;
-  //
 
   FPessoa:= TPessoaEntidade.Create;
+  FPessoaTipoEntidade:= TPessoaTipoEntidade.Create;
   FPessoaDocumentos:= TPessoaDocumentosEntidade.Create;
+  FPessoaFuncionarioDocumento:= TPessoaFuncionarioDocumentoEntidade.Create;
+  FPessoaFuncionarioOcorrencia:= TPessoaFuncionarioOcorrenciaEntidade.Create;
+  FPessoaFuncionarioFerias:= TPessoaFuncionarioFeriasEntidade.Create;
+
   FPessoa.Codigo:= qryConsultaCodigo.AsInteger;
   FPessoaDocumentos.CodigoPessoa:= qryConsultaCodigo.AsInteger;
+  FPessoaTipoEntidade.Codigo_Pessoa:= qryConsultaCodigo.AsInteger;
+  FPessoaFuncionarioDocumento.Codigo_Pessoa:= qryConsultaCodigo.AsInteger;
+  FPessoaFuncionarioOcorrencia.Codigo_Pessoa:= qryConsultaCodigo.AsInteger;
+  FPessoaFuncionarioFerias.Codigo_Pessoa:= qryConsultaCodigo.AsInteger;
+
+  if (cgTipoPessoa.States[8] = cbsChecked) then
+  begin
+    FPessoaFuncionarioDocumentoDominio := TPessoaFuncionarioDocumentoDominio.Create(Conexao);
+    FPessoaFuncionarioDocumentoDominio.Buscar(qryConsultaCodigo.AsInteger, qryPessoaFuncionarioDocumento, Retorno);
+
+    EdtCTPS_Numero.Text:= qryPessoaFuncionarioDocumentoCTPS_Numero.AsString;
+    EdtCTPS_Serie.Text:= qryPessoaFuncionarioDocumentoCTPS_Serie.AsString;
+    EdtTE_Numero.Text:= qryPessoaFuncionarioDocumentoTitulo_Numero.AsString;
+    EdtTE_Cidade.Text:= qryPessoaFuncionarioDocumentoTitulo_Cidade.AsString;
+    EdtTE_Zona.Text:= qryPessoaFuncionarioDocumentoTitulo_Zona.AsString;
+    EdtTE_Secao.Text:= qryPessoaFuncionarioDocumentoTitulo_Secao.AsString;
+    EdtCM_Numero.Text:= qryPessoaFuncionarioDocumentoCertificado_Militar_Numero.AsString;
+    EdtCM_Serie.Text:= qryPessoaFuncionarioDocumentoCertificado_Militar_Serie.AsString;
+    EdtCM_Categoria.Text:= qryPessoaFuncionarioDocumentoCertificado_Militar_Categoria.AsString;
+    EdtCNH_Numero.Text:= qryPessoaFuncionarioDocumentoCNH_Numero.AsString;
+    EdtCNH_Categoria.Text:= qryPessoaFuncionarioDocumentoCNH_Categoria.AsString;
+    EdtCNH_Cidade.Text:= qryPessoaFuncionarioDocumentoCNH_Cidade.AsString;
+    EdtPIS_Numero.Text:= qryPessoaFuncionarioDocumentoPIS_Numero.AsString;
+    EdtPIS_Banco.Text:= qryPessoaFuncionarioDocumentoPIS_Banco.AsString;
+    EdtPIS_Agencia.Text:= qryPessoaFuncionarioDocumentoPIS_Agencia.AsString;
+    EdtPIS_Emissao.Text:= qryPessoaFuncionarioDocumentoPIS_Emissao.AsString;
+    cmbCargo.EditValue:= qryPessoaFuncionarioDocumentoCodigo_Cargo.AsInteger;
+
+    if ( Op.VerificaDataValidaValor(qryPessoaFuncionarioDocumentoData_Nascimento.AsString)) then
+      dateNascimento.Date:= qryPessoaFuncionarioDocumentoData_Nascimento.AsDateTime
+    else
+      dateNascimento.Clear;
+
+    if (Op.VerificaDataValidaValor(qryPessoaFuncionarioDocumentoData_Admissao.AsString)) then
+      dateAdmissao.Date:= qryPessoaFuncionarioDocumentoData_Admissao.AsDateTime
+    else
+      dateAdmissao.Clear;
+
+    if (Op.VerificaDataValidaValor(qryPessoaFuncionarioDocumentoData_Demissao.AsString))then
+      dateDemissao.Date:= qryPessoaFuncionarioDocumentoData_Demissao.AsDateTime
+    else
+      dateDemissao.Clear;
+
+  end;
 
   OcultaExibeGB;
   BuscaDadosTelefone;
+  BuscaDadosFuncionarioOcorrencia;
+  BuscaDadosFuncionarioFerias;
   BBtnNovo.Enabled:= false;
   BBtnSalvar.Enabled:= True;
   BBtnExcluir.Enabled:= true;
@@ -537,6 +866,28 @@ begin
   begin
     qrypessoaTelefone.Insert;
     qrypessoaTelefoneCodigoPessoa.AsInteger:= StrToInt(EdtCodigo.Text);
+    ADone:= true;
+  end;
+end;
+
+procedure TFrmCadastro_Pessoa.cxGridDBTableView2NavigatorButtonsButtonClick(
+  Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
+begin
+  if (AButtonIndex = 6) then
+  begin
+    qryPessoaFuncionarioOcorrencia.Insert;
+    qryPessoaFuncionarioOcorrenciaCodigo_Pessoa.AsInteger:= StrToInt(EdtCodigo.Text);
+    ADone:= true;
+  end;
+end;
+
+procedure TFrmCadastro_Pessoa.cxGridDBTableView3NavigatorButtonsButtonClick(
+  Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
+begin
+  if (AButtonIndex = 6) then
+  begin
+    qryPessoaFuncionarioFerias.Insert;
+    qryPessoaFuncionarioFeriasCodigo_Pessoa.AsInteger:= StrToInt(EdtCodigo.Text);
     ADone:= true;
   end;
 end;
@@ -604,7 +955,11 @@ var
   Retorno: AnsiString;
 begin
   PageControl1.TabIndex:= 0;
+  PageControl2.TabIndex:= 0;
   Op.HabilitaCampos(FrmCadastro_Pessoa);
+  TabSheet4.TabVisible:= false;
+  TabSheet5.TabVisible:= false;
+  TabSheet6.TabVisible:= false;
   Op.LimpaCampos(FrmCadastro_Pessoa);
   Op.DesabilitaCampos(FrmCadastro_Pessoa);
 end;

@@ -1,4 +1,4 @@
-unit UCadastro_Ocorrencia;
+unit UCadastro_Cargo;
 
 interface
 
@@ -27,14 +27,13 @@ uses
   dxPScxPageControlProducer, dxPScxGridLnk, dxPScxGridLayoutViewLnk,
   dxPScxEditorProducers, dxPScxExtEditorProducers, dxSkinsdxBarPainter,
   dxPSCore, dxPScxCommon, cxPropertiesStore, cxEditRepositoryItems, MetodosBasicos,
-  AtividadeEntidade, AtividadeDominio, OcorrenciaEntidade, OcorrenciaDominio,
-  PropriedadeEntidade, LoginEntidade, HistoricoEntidade, HistoricoDominio,
-  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, cxNavigator,
-  dxSkinsdxRibbonPainter, cxContainer, cxGroupBox, cxRadioGroup;
+  AtividadeEntidade, AtividadeDominio, PropriedadeEntidade, LoginEntidade, HistoricoDominio,
+  HistoricoEntidade, cxNavigator, dxSkinsdxRibbonPainter, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, CargoEntidade, CargoDominio;
 
 type
-  TFrmCadastro_Ocorrencia = class(TForm)
+  TFrmCadastro_Cargo = class(TForm)
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     TlbFerramentas: TToolBar;
@@ -66,8 +65,6 @@ type
     cxGrid1DBTableView1Descricao: TcxGridDBColumn;
     cxGrid1DBTableView1Data_Cadastro: TcxGridDBColumn;
     qryConsultaData_Cadastro: TDateTimeField;
-    rgLocal: TcxRadioGroup;
-    qryConsultaLocal_Aplicacao: TStringField;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -90,13 +87,12 @@ type
     FUsuario: TLoginEntidade;
     HistoricoEntidade: THistoricoEntidade;
     HistoricoDominio: THistoricoDominio;
-
     Op: TOperacoes;
     Mensagens: TMensagens;
     Log: TLog;
     GeraCodigo: TGeradorDeCodigo;
-    FOcorrencia: TOcorrenciaEntidade;
-    FOcorrenciaDominio: TOcorrenciaDominio;
+    FCargo: TCargoEntidade;
+    FCargoDominio: TCargoDominio;
     FComandoSQL: TComandoSQLEntidade;
     Conexao: TADOConnection;
 
@@ -111,7 +107,7 @@ type
   end;
 
 var
-  FrmCadastro_Ocorrencia: TFrmCadastro_Ocorrencia;
+  FrmCadastro_Cargo: TFrmCadastro_Cargo;
 implementation
 
 uses UDM, OperacoesConexao;
@@ -120,10 +116,10 @@ uses UDM, OperacoesConexao;
 
 { TFrmPadrao }
 
-procedure TFrmCadastro_Ocorrencia.BBtnCancelarClick(Sender: TObject);
+procedure TFrmCadastro_Cargo.BBtnCancelarClick(Sender: TObject);
 begin
-  Op.LimpaCampos(FrmCadastro_Ocorrencia);
-  Op.DesabilitaCampos(FrmCadastro_Ocorrencia);
+  Op.LimpaCampos(FrmCadastro_Cargo);
+  Op.DesabilitaCampos(FrmCadastro_Cargo);
   TOperacoesConexao.CancelaConexao(Conexao);
   BBtnSalvar.Enabled:= false;
   BBtnCancelar.Enabled:= false;
@@ -131,24 +127,14 @@ begin
   BBtnExcluir.Enabled:= false;
 end;
 
-procedure TFrmCadastro_Ocorrencia.IniciaTela;
-begin
-  BBtnSalvar.Enabled:= false;
-  BBtnNovo.Enabled:= true;
-  BBtnCancelar.Enabled:= false;
-  BBtnExcluir.Enabled:= false;
-  Op.DesabilitaCampos(FrmCadastro_Ocorrencia);
-  BuscaDados;
-end;
-
-procedure TFrmCadastro_Ocorrencia.BBtnExcluirClick(Sender: TObject);
+procedure TFrmCadastro_Cargo.BBtnExcluirClick(Sender: TObject);
 var
   Retorno: AnsiString;
 begin
   if (Mensagens.MensagemConfirmacao(MensagemConfirmaExclusao)) then
   begin
-    FOcorrenciaDominio:= TOcorrenciaDominio.Create(Conexao, FOcorrencia);
-    if (FOcorrenciaDominio.Excluir(Retorno) = 0) then
+    FCargoDominio:= TCargoDominio.Create(Conexao, FCargo);
+    if (FCargoDominio.Excluir(Retorno) = 0) then
     begin
       TOperacoesConexao.CancelaConexao(Conexao);
       IniciaTela;
@@ -173,7 +159,17 @@ begin
   end;
 end;
 
-procedure TFrmCadastro_Ocorrencia.BBtnFecharClick(Sender: TObject);
+procedure TFrmCadastro_Cargo.IniciaTela;
+begin
+  BBtnSalvar.Enabled:= false;
+  BBtnNovo.Enabled:= true;
+  BBtnCancelar.Enabled:= false;
+  BBtnExcluir.Enabled:= false;
+  Op.DesabilitaCampos(FrmCadastro_Cargo);
+  BuscaDados;
+end;
+
+procedure TFrmCadastro_Cargo.BBtnFecharClick(Sender: TObject);
 begin
   if BBtnSalvar.Enabled = true then
   begin
@@ -183,41 +179,42 @@ begin
     Close;
 end;
 
-procedure TFrmCadastro_Ocorrencia.BBtnNovoClick(Sender: TObject);
+procedure TFrmCadastro_Cargo.BBtnNovoClick(Sender: TObject);
 begin
   PageControl1.TabIndex:= 0;
-  Op.HabilitaCampos(FrmCadastro_Ocorrencia);
-  Op.LimpaCampos(FrmCadastro_Ocorrencia);
+  Op.HabilitaCampos(FrmCadastro_Cargo);
+  Op.LimpaCampos(FrmCadastro_Cargo);
   BBtnSalvar.Enabled:= true;
   BBtnCancelar.Enabled:= true;
   BBtnNovo.Enabled:= false;
   BBtnExcluir.Enabled:= false;
+  achei:= false;
   Conexao:= TOperacoesConexao.NovaConexao(Conexao);
   TOperacoesConexao.IniciaQuerys([qryConsulta], Conexao);
   BuscaDados;
-  achei:= false;
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
   EdtDescricao.SetFocus;
 end;
 
-procedure TFrmCadastro_Ocorrencia.BBtnSalvarClick(Sender: TObject);
+procedure TFrmCadastro_Cargo.BBtnSalvarClick(Sender: TObject);
 var
   Retorno: AnsiString;
 begin
   if (Confira = true) then
   begin
-    FOcorrencia:= TOcorrenciaEntidade.Create;
-    FOcorrencia.Codigo_Propriedade:= FPropriedade.Codigo;
-    FOcorrencia.Codigo_Usuario:= FUsuario.Codigo;
-    FOcorrencia.Descricao:= EdtDescricao.Text;
-    FOcorrencia.Local_Aplicacao:= rgLocal.Properties.Items[rgLocal.ItemIndex].Caption;
-    FOcorrencia.DataCadastro:= StrToDateTime(MEdtData_Cadastro.Text);
-    FOcorrenciaDominio:= TOcorrenciaDominio.Create(Conexao, FOcorrencia);
+    FCargo:= TCargoEntidade.Create;
+    FCargo.CodigoPropriedade:= FPropriedade.Codigo;
+    FCargo.CodigoUsuario:= FUsuario.Codigo;
+    FCargo.Descricao:= EdtDescricao.Text;
+    FCargo.DataCadastro:= StrToDateTime(MEdtData_Cadastro.Text);
+    FCargoDominio:= TCargoDominio.Create(Conexao, FCargo);
+
     if (achei = false) then
     begin
-      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Ocorrencia', Conexao));
-      FOcorrencia.Codigo:= StrToInt(EdtCodigo.Text);
-      if (FOcorrenciaDominio.Salvar(Retorno) = 0) then
+      EdtCodigo.Text:= IntToStr(GeraCodigo.GeraCodigoSequencia('Cadastro_Cargo', Conexao));
+      FCargo.Codigo:= StrToInt(EdtCodigo.Text);
+
+      if (FCargoDominio.Salvar(Retorno) = 0) then
       begin
         TOperacoesConexao.CancelaConexao(Conexao);
         IniciaTela;
@@ -232,15 +229,15 @@ begin
       begin
         TOperacoesConexao.CancelaConexao(Conexao);
         IniciaTela;
-        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
         Exit;
       end;
     end
     else
     begin
-      FOcorrencia.Codigo:= StrToInt(EdtCodigo.Text);
+      FCargo.Codigo:= StrToInt(EdtCodigo.Text);
 
-      if (FOcorrenciaDominio.Alterar(Retorno) = 0) then
+      if (FCargoDominio.Alterar(Retorno) = 0) then
       begin
         TOperacoesConexao.CancelaConexao(Conexao);
         IniciaTela;
@@ -255,7 +252,7 @@ begin
       begin
         TOperacoesConexao.CancelaConexao(Conexao);
         IniciaTela;
-        Mensagens.MensagemErro(MensagemImpossivelSalvarHistorico+' - '+Retorno);
+        Mensagens.MensagemErro(MensagemErroAoGravar+' - '+Retorno);
         Exit;
       end;
     end;
@@ -266,19 +263,19 @@ begin
   end;
 end;
 
-procedure TFrmCadastro_Ocorrencia.BuscaDados;
+procedure TFrmCadastro_Cargo.BuscaDados;
 var
   Retorno: AnsiString;
 begin
-  FOcorrenciaDominio:= TOcorrenciaDominio.Create(Conexao);
-  if (FOcorrenciaDominio.Buscar(qryConsulta, Retorno) = 0) and (Retorno <> '') then
+  FCargoDominio:= TCargoDominio.Create(Conexao);
+  if (FCargoDominio.Buscar(qryConsulta, Retorno) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
     Exit;
   end;
 end;
 
-function TFrmCadastro_Ocorrencia.Confira: boolean;
+function TFrmCadastro_Cargo.Confira: boolean;
 begin
   Confira:= false;
 
@@ -292,30 +289,24 @@ begin
   Confira:= true;
 end;
 
-constructor TFrmCadastro_Ocorrencia.Create(FPropriedade: TPropriedadeEntidade; FUsuario: TLoginEntidade);
+constructor TFrmCadastro_Cargo.Create(FPropriedade: TPropriedadeEntidade; FUsuario: TLoginEntidade);
 begin
   Self.FPropriedade:= FPropriedade;
   Self.FUsuario:= FUsuario;
 end;
 
-procedure TFrmCadastro_Ocorrencia.cxGrid1DBTableView1DblClick(Sender: TObject);
+procedure TFrmCadastro_Cargo.cxGrid1DBTableView1DblClick(Sender: TObject);
 begin
   PageControl1.TabIndex:= 0;
   achei:= true;
-  Op.HabilitaCampos(FrmCadastro_Ocorrencia);
+  Op.HabilitaCampos(FrmCadastro_Cargo);
 
   EdtCodigo.Text:= qryConsultaCodigo.AsString;
   MEdtData_Cadastro.Text:= qryConsultaData_Cadastro.AsString;
-
-  if (qryConsultaLocal_Aplicacao.AsString = 'FUNCIONÁRIO') then
-    rgLocal.ItemIndex:= 0
-  else
-    rgLocal.ItemIndex:= 1;
-
   EdtDescricao.Text:= qryConsultaDescricao.AsString;
 
-  FOcorrencia:= TOcorrenciaEntidade.Create;
-  FOcorrencia.Codigo:= qryConsultaCodigo.AsInteger;
+  FCargo:= TCargoEntidade.Create;
+  FCargo.Codigo:= qryConsultaCodigo.AsInteger;
 
   BBtnNovo.Enabled:= false;
   BBtnSalvar.Enabled:= True;
@@ -323,29 +314,29 @@ begin
   BBtnCancelar.Enabled:= true;
 end;
 
-procedure TFrmCadastro_Ocorrencia.EdtCidadeKeyPress(Sender: TObject;
+procedure TFrmCadastro_Cargo.EdtCidadeKeyPress(Sender: TObject;
   var Key: Char);
 begin
   Op.SomenteApaga(key);
 end;
 
-procedure TFrmCadastro_Ocorrencia.EdtCodigo_CidadeKeyPress(Sender: TObject;
+procedure TFrmCadastro_Cargo.EdtCodigo_CidadeKeyPress(Sender: TObject;
   var Key: Char);
 begin
   Op.SomenteApaga(key);
 end;
 
-procedure TFrmCadastro_Ocorrencia.EdtSetorKeyPress(Sender: TObject; var Key: Char);
+procedure TFrmCadastro_Cargo.EdtSetorKeyPress(Sender: TObject; var Key: Char);
 begin
   Op.SomenteApaga(key);
 end;
 
-procedure TFrmCadastro_Ocorrencia.FormActivate(Sender: TObject);
+procedure TFrmCadastro_Cargo.FormActivate(Sender: TObject);
 begin
   ativo:= true;
 end;
 
-procedure TFrmCadastro_Ocorrencia.FormCloseQuery(Sender: TObject;
+procedure TFrmCadastro_Cargo.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
   if (BBtnCancelar.Enabled = true) then
@@ -355,24 +346,24 @@ begin
     end
     else
     begin
-      FrmCadastro_Ocorrencia.Free;
-      FrmCadastro_Ocorrencia:= Nil;
+      FrmCadastro_Cargo.Free;
+      FrmCadastro_Cargo:= Nil;
     end;
 end;
 
-procedure TFrmCadastro_Ocorrencia.FormDeactivate(Sender: TObject);
+procedure TFrmCadastro_Cargo.FormDeactivate(Sender: TObject);
 begin
   ativo:= false;
 end;
 
-procedure TFrmCadastro_Ocorrencia.FormKeyDown(Sender: TObject; var Key: Word;
+procedure TFrmCadastro_Cargo.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if (key = vk_escape) then
     close;
 end;
 
-procedure TFrmCadastro_Ocorrencia.FormKeyPress(Sender: TObject; var Key: Char);
+procedure TFrmCadastro_Cargo.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   if key=#13 then
   begin
@@ -381,22 +372,22 @@ begin
   end;
 end;
 
-procedure TFrmCadastro_Ocorrencia.FormShow(Sender: TObject);
+procedure TFrmCadastro_Cargo.FormShow(Sender: TObject);
 var
   Retorno: AnsiString;
 begin
   PageControl1.TabIndex:= 0;
-  Op.HabilitaCampos(FrmCadastro_Ocorrencia);
-  Op.LimpaCampos(FrmCadastro_Ocorrencia);
-  Op.DesabilitaCampos(FrmCadastro_Ocorrencia);
+  Op.HabilitaCampos(FrmCadastro_Cargo);
+  Op.LimpaCampos(FrmCadastro_Cargo);
+  Op.DesabilitaCampos(FrmCadastro_Cargo);
 end;
 
-procedure TFrmCadastro_Ocorrencia.MEdtData_CadastroEnter(Sender: TObject);
+procedure TFrmCadastro_Cargo.MEdtData_CadastroEnter(Sender: TObject);
 begin
   MEdtData_Cadastro.Text:= DateTimeToStr(now);
 end;
 
-procedure TFrmCadastro_Ocorrencia.MEdtData_CadastroExit(Sender: TObject);
+procedure TFrmCadastro_Cargo.MEdtData_CadastroExit(Sender: TObject);
 begin
   if not(Op.VerificaDataHoraValida(MEdtData_Cadastro)) then
   begin
@@ -406,9 +397,9 @@ begin
 end;
 
 {initialization
-  RegisterClass(TFrmCadastro_Ocorrencia);
+  RegisterClass(TFrmCadastro_Cargo);
 
 finalization
-  UnRegisterClass(TFrmCadastro_Ocorrencia);}
+  UnRegisterClass(TFrmCadastro_Cargo);}
 
 end.

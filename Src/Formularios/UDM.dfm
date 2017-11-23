@@ -9,7 +9,7 @@ object DM: TDM
     Left = 128
     Top = 8
     Bitmap = {
-      494C01010B00B800C80420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010B00B800CC0420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1618,7 +1618,7 @@ object DM: TDM
     Left = 208
     Top = 8
     Bitmap = {
-      494C010102000800640420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000800680420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000002000000001002000000000000040
       000000000000000000000000000000000000000000000000000000000000B484
       84006C666E006C666E0000000000000000000000000000000000000000000000
@@ -2159,7 +2159,7 @@ object DM: TDM
     Left = 32
     Top = 88
     Bitmap = {
-      494C01010300A000A8040C000C00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010300A000AC040C000C00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000300000000C00000001002000000000000009
       000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -2247,7 +2247,7 @@ object DM: TDM
     Left = 321
     Top = 7
     Bitmap = {
-      494C010109000C00C80720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109000C00CC0720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5012,7 +5012,6 @@ object DM: TDM
     end
   end
   object qryperfil_usuario: TADOQuery
-    Connection = ADOConnection
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
@@ -5131,9 +5130,6 @@ object DM: TDM
     object qryperfil_usuarioRel_Lancamento_Financeiro: TBooleanField
       FieldName = 'Rel_Lancamento_Financeiro'
     end
-    object qryperfil_usuarioRel_Movimentacao_Safra: TBooleanField
-      FieldName = 'Rel_Movimentacao_Safra'
-    end
     object qryperfil_usuarioRel_Dados_Clima: TBooleanField
       FieldName = 'Rel_Dados_Clima'
     end
@@ -5185,6 +5181,9 @@ object DM: TDM
     object qryperfil_usuarioRel_Cadastros: TBooleanField
       FieldName = 'Rel_Cadastros'
     end
+    object qryperfil_usuarioCadastro_Cargo: TBooleanField
+      FieldName = 'Cadastro_Cargo'
+    end
   end
   object dsperfil_usuario: TDataSource
     DataSet = qryperfil_usuario
@@ -5219,5 +5218,34 @@ object DM: TDM
     DataSet = qrytipo_bem_patrimonial
     Left = 192
     Top = 384
+  end
+  object qryCargo: TADOQuery
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select * from Cadastro_Cargo')
+    Left = 64
+    Top = 232
+    object qryCargoCodigo: TIntegerField
+      FieldName = 'Codigo'
+    end
+    object qryCargoCodigo_Propriedade: TIntegerField
+      FieldName = 'Codigo_Propriedade'
+    end
+    object qryCargoCodigo_Usuario: TIntegerField
+      FieldName = 'Codigo_Usuario'
+    end
+    object qryCargoDescricao: TStringField
+      FieldName = 'Descricao'
+      Size = 100
+    end
+    object qryCargoData_Cadastro: TDateTimeField
+      FieldName = 'Data_Cadastro'
+    end
+  end
+  object dsCargo: TDataSource
+    DataSet = qryCargo
+    Left = 96
+    Top = 232
   end
 end

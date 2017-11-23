@@ -87,7 +87,6 @@ type
     qryConsultaMov_Entrada_Produto: TBooleanField;
     qryConsultaMov_Manutencao_Maquina: TBooleanField;
     qryConsultaRel_Lancamento_Financeiro: TBooleanField;
-    qryConsultaRel_Movimentacao_Safra: TBooleanField;
     qryConsultaRel_Dados_Clima: TBooleanField;
     qryConsultaRel_Visao_Geral_Safra: TBooleanField;
     qryConsultaRel_Estoque_Grao: TBooleanField;
@@ -136,7 +135,6 @@ type
     cxDBTreeList1Mov_Entrada_Produto: TcxDBTreeListColumn;
     cxDBTreeList1Mov_Manutencao_Maquina: TcxDBTreeListColumn;
     cxDBTreeList1Rel_Lancamento_Financeiro: TcxDBTreeListColumn;
-    cxDBTreeList1Rel_Movimentacao_Safra: TcxDBTreeListColumn;
     cxDBTreeList1Rel_Dados_Clima: TcxDBTreeListColumn;
     cxDBTreeList1Rel_Visao_Geral_Safra: TcxDBTreeListColumn;
     cxDBTreeList1Rel_Estoque_Grao: TcxDBTreeListColumn;
@@ -161,6 +159,8 @@ type
     cxDBTreeList1Rel_Extrato_Bancario: TcxDBTreeListColumn;
     qryConsultaRel_Cadastros: TBooleanField;
     cxDBTreeList1Rel_Cadastros: TcxDBTreeListColumn;
+    qryConsultaCadastro_Cargo: TBooleanField;
+    cxDBTreeList1Cadastro_Cargo: TcxDBTreeListColumn;
     procedure BBtnSalvarClick(Sender: TObject);
     procedure BBtnFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

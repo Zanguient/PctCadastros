@@ -351,8 +351,8 @@
 			<DCCReference Include="..\Src\Formularios\UCadastro_Tipo_Bem_Patrimonial.pas">
 				<Form>FrmCadastro_Tipo_Bem_Patrimonial</Form>
 			</DCCReference>
-			<DCCReference Include="..\Src\Formularios\UCadastro_Atividade.pas">
-				<Form>FrmCadastro_Atividade</Form>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Cargo.pas">
+				<Form>FrmCadastro_Cargo</Form>
 			</DCCReference>
 			<DCCReference Include="..\Src\Entidade\TipoBemPatrimonialEntidade.pas"/>
 			<DCCReference Include="..\Src\Dominio\TipoBemPatrimonialDominio.pas"/>
@@ -370,6 +370,17 @@
 			<DCCReference Include="..\Src\Formularios\URel_Clima.pas">
 				<Form>FrmRel_Clima</Form>
 			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\PessoaFuncionarioDocumentoEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\PessoaFuncionarioOcorrenciaEntidade.pas"/>
+			<DCCReference Include="..\Src\Entidade\PessoaFuncionarioFeriasEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\PessoaFuncionarioDocumentoDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\PessoaFuncionarioOcorrenciaDominio.pas"/>
+			<DCCReference Include="..\Src\Dominio\PessoaFuncionarioFeriasDominio.pas"/>
+			<DCCReference Include="..\Src\Formularios\UCadastro_Atividade.pas">
+				<Form>FrmCadastro_Atividade</Form>
+			</DCCReference>
+			<DCCReference Include="..\Src\Entidade\CargoEntidade.pas"/>
+			<DCCReference Include="..\Src\Dominio\CargoDominio.pas"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

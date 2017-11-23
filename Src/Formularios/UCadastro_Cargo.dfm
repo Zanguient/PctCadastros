@@ -1,11 +1,11 @@
-object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
+object FrmCadastro_Cargo: TFrmCadastro_Cargo
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'Cadastro de Patrim'#244'nios'
-  ClientHeight = 294
-  ClientWidth = 646
+  Caption = 'Cadastro de Cargos'
+  ClientHeight = 251
+  ClientWidth = 597
   Color = clWindow
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -29,10 +29,10 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
   object PageControl1: TPageControl
     Left = 125
     Top = 0
-    Width = 521
-    Height = 294
+    Width = 472
+    Height = 251
     Cursor = crHandPoint
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 0
@@ -67,113 +67,9 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
       object LblMarca: TLabel
         Left = 0
         Top = 57
-        Width = 74
-        Height = 13
-        Caption = 'Identifica'#231#227'o'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lbl1: TLabel
-        Left = 81
-        Top = 57
-        Width = 72
-        Height = 13
-        Caption = 'Respons'#225'vel'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label1: TLabel
-        Left = 0
-        Top = 96
         Width = 55
         Height = 13
         Caption = 'Descri'#231#227'o'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label2: TLabel
-        Left = 322
-        Top = 94
-        Width = 44
-        Height = 13
-        Caption = 'Compra'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label3: TLabel
-        Left = 409
-        Top = 94
-        Width = 35
-        Height = 13
-        Caption = 'Venda'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label5: TLabel
-        Left = 0
-        Top = 132
-        Width = 73
-        Height = 13
-        Caption = 'Observa'#231#245'es'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label12: TLabel
-        Left = 287
-        Top = 55
-        Width = 52
-        Height = 13
-        Caption = 'Tipo Bem'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label4: TLabel
-        Left = 178
-        Top = 97
-        Width = 29
-        Height = 13
-        Caption = 'Valor'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label6: TLabel
-        Left = 250
-        Top = 97
-        Width = 30
-        Height = 13
-        Caption = 'Qtde.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -210,182 +106,32 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
         OnEnter = MEdtData_CadastroEnter
         OnExit = MEdtData_CadastroExit
       end
-      object EdtIdentificacao: TEdit
-        Left = 0
-        Top = 72
-        Width = 82
-        Height = 17
-        Hint = 
-          'Se este campo n'#227'o for preenchido, ser'#225' preenchido automaticament' +
-          'e com o valor do campo C'#243'digo.'
-        BevelInner = bvNone
-        BevelKind = bkFlat
-        BevelOuter = bvRaised
-        BorderStyle = bsNone
-        CharCase = ecUpperCase
-        MaxLength = 50
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 4
-      end
-      object EdtResponsavel: TEdit
-        Left = 81
-        Top = 72
-        Width = 208
-        Height = 17
-        BevelInner = bvNone
-        BevelKind = bkFlat
-        BevelOuter = bvRaised
-        BorderStyle = bsNone
-        CharCase = ecUpperCase
-        MaxLength = 100
-        TabOrder = 5
-      end
       object EdtDescricao: TEdit
         Left = 0
-        Top = 111
-        Width = 179
+        Top = 72
+        Width = 249
         Height = 17
         BevelInner = bvNone
         BevelKind = bkFlat
         BevelOuter = bvRaised
         BorderStyle = bsNone
         CharCase = ecUpperCase
-        MaxLength = 200
-        TabOrder = 7
-      end
-      object rgTipo: TcxRadioGroup
-        Left = 304
-        Top = 0
-        Caption = 'Tipo'
-        Properties.Columns = 3
-        Properties.Items = <
-          item
-            Caption = 'COMPRA'
-          end
-          item
-            Caption = 'VENDA'
-          end
-          item
-            Caption = 'TROCA'
-          end>
-        ItemIndex = 0
-        TabOrder = 3
-        Height = 49
-        Width = 202
-      end
-      object rgStatus: TcxRadioGroup
-        Left = 183
-        Top = -3
-        Caption = 'Status'
-        Properties.Items = <
-          item
-            Caption = 'ATIVO'
-          end
-          item
-            Caption = 'INATIVO'
-          end>
-        ItemIndex = 0
+        MaxLength = 50
         TabOrder = 2
-        Height = 52
-        Width = 107
-      end
-      object dateCompra: TcxDateEdit
-        Left = 322
-        Top = 108
-        Hint = 'Data da entrada da m'#225'quina na propriedade'
-        ParentShowHint = False
-        Properties.DateButtons = [btnClear, btnToday]
-        Properties.EditFormat = 'DD/MM/YYYY'
-        Properties.SaveTime = False
-        Properties.ShowTime = False
-        ShowHint = True
-        TabOrder = 10
-        Width = 90
-      end
-      object dateVenda: TcxDateEdit
-        Left = 409
-        Top = 108
-        Hint = 'Data da sa'#237'da da m'#225'quina na propriedade'
-        ParentShowHint = False
-        Properties.DateButtons = [btnClear, btnToday]
-        Properties.EditFormat = 'DD/MM/YYYY'
-        Properties.SaveTime = False
-        Properties.ShowTime = False
-        ShowHint = True
-        TabOrder = 11
-        Width = 90
-      end
-      object MMOObservacao: TMemo
-        Left = 0
-        Top = 147
-        Width = 506
-        Height = 116
-        BevelInner = bvNone
-        BevelKind = bkFlat
-        BevelOuter = bvRaised
-        BorderStyle = bsNone
-        CharCase = ecUpperCase
-        MaxLength = 800
-        TabOrder = 12
-      end
-      object cmbTipoBem: TcxLookupComboBox
-        Left = 287
-        Top = 69
-        Properties.CharCase = ecUpperCase
-        Properties.KeyFieldNames = 'Codigo'
-        Properties.ListColumns = <
-          item
-            Caption = 'Descri'#231#227'o'
-            FieldName = 'Descricao'
-          end>
-        Properties.ListOptions.SyncMode = True
-        Properties.ListSource = DM.dstipo_bem_patrimonial
-        Style.BorderColor = clWindow
-        Style.BorderStyle = ebsUltraFlat
-        Style.ButtonStyle = btsDefault
-        TabOrder = 6
-        Width = 167
-      end
-      object EdtValor: TEdit
-        Left = 178
-        Top = 111
-        Width = 73
-        Height = 17
-        BevelInner = bvNone
-        BevelKind = bkFlat
-        BevelOuter = bvRaised
-        BorderStyle = bsNone
-        CharCase = ecUpperCase
-        MaxLength = 50
-        TabOrder = 8
-        OnExit = EdtValorExit
-        OnKeyPress = EdtValorKeyPress
-      end
-      object EdtQuantidade: TEdit
-        Left = 250
-        Top = 111
-        Width = 73
-        Height = 17
-        BevelInner = bvNone
-        BevelKind = bkFlat
-        BevelOuter = bvRaised
-        BorderStyle = bsNone
-        CharCase = ecUpperCase
-        MaxLength = 50
-        TabOrder = 9
-        OnExit = EdtQuantidadeExit
-        OnKeyPress = EdtQuantidadeKeyPress
       end
     end
     object TabSheet2: TTabSheet
       Caption = 'Pesquisar'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
-        Width = 481
-        Height = 257
+        Width = 464
+        Height = 220
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -460,21 +206,16 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
             DataBinding.FieldName = 'Codigo'
             Options.Editing = False
           end
-          object cxGrid1DBTableView1Placa: TcxGridDBColumn
-            Caption = 'Identifica'#231#227'o'
-            DataBinding.FieldName = 'Identificacao'
-            Options.Editing = False
-            Width = 84
-          end
-          object cxGrid1DBTableView1Modelo: TcxGridDBColumn
+          object cxGrid1DBTableView1Descricao: TcxGridDBColumn
             Caption = 'Descri'#231#227'o'
             DataBinding.FieldName = 'Descricao'
+            RepositoryItem = cxEditRepository1TextItem1
             Options.Editing = False
-            Width = 177
+            Width = 245
           end
           object cxGrid1DBTableView1Data_Cadastro: TcxGridDBColumn
             Caption = 'Data Cadastro'
-            DataBinding.FieldName = 'DataCadastro'
+            DataBinding.FieldName = 'Data_Cadastro'
             Options.Editing = False
             Width = 94
           end
@@ -489,7 +230,7 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
     Left = 0
     Top = 0
     Width = 125
-    Height = 294
+    Height = 251
     Align = alLeft
     AutoSize = True
     ButtonHeight = 38
@@ -583,63 +324,24 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      'select * from Cadastro_Patrimonio')
-    Left = 360
-    Top = 8
+      'select * from Cadastro_Atividade')
+    Left = 312
+    Top = 112
     object qryConsultaCodigo: TIntegerField
       FieldName = 'Codigo'
     end
-    object qryConsultaCodigo_Propriedade: TIntegerField
-      FieldName = 'Codigo_Propriedade'
-    end
-    object qryConsultaCodigo_Usuario: TIntegerField
-      FieldName = 'Codigo_Usuario'
-    end
-    object qryConsultaStatus: TStringField
-      FieldName = 'Status'
-    end
-    object qryConsultaTipo: TStringField
-      FieldName = 'Tipo'
-    end
-    object qryConsultaIdentificacao: TStringField
-      FieldName = 'Identificacao'
-      Size = 50
-    end
-    object qryConsultaResponsavel: TStringField
-      FieldName = 'Responsavel'
-      Size = 100
-    end
     object qryConsultaDescricao: TStringField
       FieldName = 'Descricao'
-      Size = 200
+      Size = 50
     end
-    object qryConsultaValor: TFloatField
-      FieldName = 'Valor'
-    end
-    object qryConsultaDataCadastro: TDateTimeField
-      FieldName = 'DataCadastro'
-    end
-    object qryConsultaDataCompra: TDateTimeField
-      FieldName = 'DataCompra'
-    end
-    object qryConsultaDataVenda: TDateTimeField
-      FieldName = 'DataVenda'
-    end
-    object qryConsultaCodigoTipoBem: TIntegerField
-      FieldName = 'CodigoTipoBem'
-    end
-    object qryConsultaObservacao: TStringField
-      FieldName = 'Observacao'
-      Size = 800
-    end
-    object qryConsultaQuantidade: TIntegerField
-      FieldName = 'Quantidade'
+    object qryConsultaData_Cadastro: TDateTimeField
+      FieldName = 'Data_Cadastro'
     end
   end
   object dsConsulta: TDataSource
     DataSet = qryConsulta
-    Left = 392
-    Top = 8
+    Left = 344
+    Top = 112
   end
   object cxPropertiesStore1: TcxPropertiesStore
     Components = <
@@ -656,10 +358,17 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
           'SortOrder'
           'Visible'
           'Width')
+      end
+      item
+        Component = cxGrid1DBTableView1Descricao
+        Properties.Strings = (
+          'SortOrder'
+          'Visible'
+          'Width')
       end>
     StorageName = 'ConfiguraGrid'
-    Left = 264
-    Top = 8
+    Left = 360
+    Top = 48
   end
   object dxComponentPrinter1: TdxComponentPrinter
     CurrentLink = dxComponentPrinter1Link1
@@ -667,10 +376,11 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
     PreviewOptions.WindowState = wsMaximized
     PrintTitle = 'Impress'#227'o de relat'#243'rio'
     Version = 0
-    Left = 296
-    Top = 8
+    Left = 392
+    Top = 48
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -712,6 +422,7 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False
@@ -721,8 +432,8 @@ object FrmCadastro_Patrimonio: TFrmCadastro_Patrimonio
     end
   end
   object cxEditRepository1: TcxEditRepository
-    Left = 328
-    Top = 8
+    Left = 424
+    Top = 48
     object cxEditRepository1TextItem1: TcxEditRepositoryTextItem
       Properties.CharCase = ecUpperCase
     end

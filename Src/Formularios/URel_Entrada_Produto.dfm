@@ -2831,6 +2831,9 @@ object FrmRel_Entrada_Produto: TFrmRel_Entrada_Produto
     object cxTabSheet2: TcxTabSheet
       Caption = 'Refer'#234'ncias'
       ImageIndex = 1
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object cxGrid2: TcxGrid
         Left = 0
         Top = 0

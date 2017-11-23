@@ -10,7 +10,7 @@ uses
   ChequeDominio, ContaBancariaDominio, OperacaoBancariaDominio,
   LancamentoBancoDominio, System.Generics.Collections, PluviometroDominio,
   FolhaPagamentoItensDominio, ItemFolhaPagamentoDominio, PerfilUsuarioDominio,
-  TipoBemPatrimonialDominio;
+  TipoBemPatrimonialDominio, CargoDominio;
 type
   IniciaDadosCadastro = class
     private
@@ -36,6 +36,7 @@ type
       LancamentoBancoDominio: TLancamentoBancoDominio;
       PluviometroDominio: TPluviometroDominio;
       ItemFolhaPagamento: TItemFolhaPagamentoDominio;
+      CargoDominio: TCargoDominio;
       Mensagens: TMensagens;
 
     public
@@ -54,7 +55,7 @@ type
       procedure BuscaDadosTalhao(Codigo_Propriedade: integer; var Conexao: TADOConnection);
       procedure BuscaDadosVariedade(Codigo_Propriedade: integer; var Conexao: TADOConnection);
       procedure BuscaDadosServico(var Conexao: TADOConnection);
-      procedure BuscaDadosOcorrencia(var Conexao: TADOConnection);
+      procedure BuscaDadosOcorrencia(Local_Aplicacao: AnsiString; var Conexao: TADOConnection);
       procedure BuscaDadosPlanoFinanceiro(var Conexao: TADOConnection);
       procedure BuscaDadosDepartamento(var Conexao: TADOConnection);
       procedure BuscaDadosItensFolhaPagamento(var Conexao: TADOConnection);
@@ -70,6 +71,7 @@ type
       procedure BuscaDadosPessoa(TipoPessoa: TList<AnsiString>; var Conexao: TADOConnection);
       procedure BuscaDadosPerfilUsuario(var Conexao: TADOConnection);
       procedure BuscaDadosTipoBemPatrimonial(var Conexao: TADOConnection);
+      procedure BuscaDadosCargo(var Conexao: TADOConnection);
   end;
 implementation
 
@@ -100,6 +102,18 @@ var
 begin
   FAtividadeDominio:= TAtividadeDominio.Create(Conexao);
   if (FAtividadeDominio.Buscar(dm.qryAtividade, Retorno) = 0) and (Retorno <> '') then
+  begin
+    Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
+    Exit;
+  end;
+end;
+
+procedure IniciaDadosCadastro.BuscaDadosCargo(var Conexao: TADOConnection);
+var
+  Retorno: AnsiString;
+begin
+  CargoDominio:= TCargoDominio.Create(Conexao);
+  if (CargoDominio.Buscar(dm.qryCargo, Retorno) = 0) and (Retorno <> '') then
   begin
     Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
     Exit;
@@ -281,13 +295,13 @@ begin
   end;
 end;
 
-procedure IniciaDadosCadastro.BuscaDadosOcorrencia(var Conexao: TADOConnection);
+procedure IniciaDadosCadastro.BuscaDadosOcorrencia(Local_Aplicacao: AnsiString; var Conexao: TADOConnection);
 var
   Retorno: AnsiString;
 begin
   try
     OcorrenciaDominio:= TOcorrenciaDominio.Create(Conexao);
-    if (OcorrenciaDominio.Buscar(dm.qryocorrencia, Retorno) = 0) and (Retorno <> '') then
+    if (OcorrenciaDominio.Buscar(Local_Aplicacao, dm.qryocorrencia, Retorno) = 0) and (Retorno <> '') then
     begin
       Mensagens.MensagemErro(MensagemErroAoBuscar + Retorno);
       Exit;

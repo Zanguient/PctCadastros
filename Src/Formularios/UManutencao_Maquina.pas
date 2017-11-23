@@ -477,6 +477,7 @@ procedure TFrmManutencao_Maquina.BBtnSalvarClick(Sender: TObject);
 var
   Retorno: AnsiString;
   CodLan: integer;
+  V1: Variant;
 begin
   if (Confira = true) then
   begin
@@ -516,9 +517,12 @@ begin
     else
       FManutencaoMaquina.Codigo_Tipo_Documento:= 0;
 
+    V1 := cxGrid2DBBandedTableViewServico.DataController.Summary.FooterSummaryValues[0];
+    //ShowMessage(VarToStr(V1));
+
     if (achei = false) then
     begin
-      if (cbGerar_Financeiro.Checked) then
+      if (cbGerar_Financeiro.Checked) and (V1 <> Null) then
       begin
         if (GeraFinanceiro(Retorno) = 0) then
         begin
@@ -553,7 +557,7 @@ begin
     end
     else
     begin
-      if (cbGerar_Financeiro.Checked) then
+      if (cbGerar_Financeiro.Checked) and (V1 <> Null) then
       begin
         FManutencaoMaquinaDominio:= TManutencaoMaquinaDominio.Create(Conexao);
         FLFDominio:= TLancamentoFinanceiroDominio.Create(Conexao);

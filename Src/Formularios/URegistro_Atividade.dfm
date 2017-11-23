@@ -190,7 +190,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
           Width = 863
           Height = 358
           Cursor = crHandPoint
-          ActivePage = TabSheet3
+          ActivePage = TabSheet5
           Align = alClient
           Style = tsFlatButtons
           TabOrder = 0
@@ -1397,6 +1397,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
                     end>
                   Properties.ListOptions.SyncMode = True
                   Properties.OnChange = cxGrid2DBBandedTableView1ProdutoPropertiesChange
+                  Properties.OnCloseUp = cxGrid2DBBandedTableView1ProdutoPropertiesCloseUp
                   Width = 233
                   Position.BandIndex = 0
                   Position.ColIndex = 5
@@ -1468,8 +1469,9 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
             object cxGrid3: TcxGrid
               Left = 0
               Top = 0
-              Width = 856
-              Height = 321
+              Width = 855
+              Height = 327
+              Align = alClient
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -11
@@ -1478,6 +1480,8 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               ParentFont = False
               TabOrder = 0
               LookAndFeel.NativeStyle = False
+              ExplicitWidth = 856
+              ExplicitHeight = 321
               object cxGridDBTableViewPlantio: TcxGridDBTableView
                 Navigator.Buttons.OnButtonClick = cxGridDBTableView2NavigatorButtonsButtonClick
                 Navigator.Buttons.CustomButtons = <>
@@ -2024,15 +2028,12 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
           object TabSheet5: TTabSheet
             Caption = 'Colheita'
             ImageIndex = 2
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object cxGrid4: TcxGrid
               Left = 0
               Top = 0
-              Width = 853
+              Width = 855
               Height = 193
+              Align = alTop
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -11
@@ -2041,6 +2042,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               ParentFont = False
               TabOrder = 0
               LookAndFeel.NativeStyle = False
+              ExplicitWidth = 853
               object cxGridDBTableViewColheita: TcxGridDBBandedTableView
                 Navigator.Buttons.OnButtonClick = cxGridDBTableView3NavigatorButtonsButtonClick
                 Navigator.Buttons.CustomButtons = <>
@@ -2336,10 +2338,11 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
             end
             object cxGrid1: TcxGrid
               Left = 0
-              Top = 197
-              Width = 853
+              Top = 203
+              Width = 855
               Height = 124
               Hint = 'O estoque listado corresponde '#224' fazenda ativa.'
+              Align = alBottom
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -11
@@ -2350,6 +2353,8 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               LookAndFeel.NativeStyle = False
               LookAndFeel.SkinName = ''
               RootLevelOptions.TabsForEmptyDetails = False
+              ExplicitTop = 197
+              ExplicitWidth = 853
               object cxGrid1DBBandedTableView1: TcxGridDBBandedTableView
                 Navigator.Buttons.OnButtonClick = cxGridDBTableView3NavigatorButtonsButtonClick
                 Navigator.Buttons.CustomButtons = <>
@@ -2488,15 +2493,12 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
           object TabSheet2: TTabSheet
             Caption = 'Trabalho de M'#225'quinas'
             ImageIndex = 3
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object cxGrid5: TcxGrid
               Left = 0
               Top = 0
-              Width = 856
-              Height = 321
+              Width = 855
+              Height = 327
+              Align = alClient
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -11
@@ -2505,6 +2507,8 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
               ParentFont = False
               TabOrder = 0
               LookAndFeel.NativeStyle = False
+              ExplicitWidth = 856
+              ExplicitHeight = 321
               object cxGridDBTableView1: TcxGridDBTableView
                 Navigator.Buttons.OnButtonClick = cxGridDBTableView2NavigatorButtonsButtonClick
                 Navigator.Buttons.CustomButtons = <>
@@ -2956,6 +2960,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
     Version = 0
     Left = 464
     object dxComponentPrinter1Link1: TdxGridReportLink
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2997,6 +3002,7 @@ object FrmRegistro_Atividade: TFrmRegistro_Atividade
       ReportTitle.Font.Name = 'Tahoma'
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = 'Vendas'
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsOnEveryPage.Footers = False
       OptionsOnEveryPage.FilterBar = False
       OptionsView.ExpandButtons = False
